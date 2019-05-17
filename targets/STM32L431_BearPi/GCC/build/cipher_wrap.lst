@@ -1,0 +1,1095 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"cipher_wrap.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.ccm_ctx_free,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	ccm_ctx_free:
+  25              	.LFB11:
+  26              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** /**
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  * \file cipher_wrap.c
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  * \brief Generic cipher wrapper for mbed TLS
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  * \author Adriaan de Jong <dejong@fox-it.com>
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *  Copyright (C) 2006-2015, ARM Limited, All Rights Reserved
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *  SPDX-License-Identifier: Apache-2.0
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *  Licensed under the Apache License, Version 2.0 (the "License"); you may
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *  not use this file except in compliance with the License.
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *  You may obtain a copy of the License at
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *  http://www.apache.org/licenses/LICENSE-2.0
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *  Unless required by applicable law or agreed to in writing, software
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *  See the License for the specific language governing permissions and
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *  limitations under the License.
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  *  This file is part of mbed TLS (https://tls.mbed.org)
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****  */
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if !defined(MBEDTLS_CONFIG_FILE)
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #include "mbedtls/config.h"
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #else
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #include MBEDTLS_CONFIG_FILE
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_C)
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 2
+
+
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #include "mbedtls/cipher_internal.h"
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_AES_C)
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #include "mbedtls/aes.h"
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_ARC4_C)
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #include "mbedtls/arc4.h"
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CAMELLIA_C)
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #include "mbedtls/camellia.h"
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_DES_C)
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #include "mbedtls/des.h"
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_BLOWFISH_C)
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #include "mbedtls/blowfish.h"
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_GCM_C)
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #include "mbedtls/gcm.h"
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CCM_C)
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #include "mbedtls/ccm.h"
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_NULL_CIPHER)
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #include <string.h>
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_PLATFORM_C)
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #include "mbedtls/platform.h"
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #else
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #include <stdlib.h>
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #define mbedtls_calloc    calloc
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #define mbedtls_free       free
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_GCM_C)
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** /* shared by all GCM ciphers */
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static void *gcm_ctx_alloc( void )
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** {
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     void *ctx = mbedtls_calloc( 1, sizeof( mbedtls_gcm_context ) );
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     if( ctx != NULL )
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****         mbedtls_gcm_init( (mbedtls_gcm_context *) ctx );
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     return( ctx );
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static void gcm_ctx_free( void *ctx )
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 3
+
+
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     mbedtls_gcm_free( ctx );
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     mbedtls_free( ctx );
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif /* MBEDTLS_GCM_C */
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CCM_C)
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** /* shared by all CCM ciphers */
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static void *ccm_ctx_alloc( void )
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** {
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     void *ctx = mbedtls_calloc( 1, sizeof( mbedtls_ccm_context ) );
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     if( ctx != NULL )
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****         mbedtls_ccm_init( (mbedtls_ccm_context *) ctx );
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     return( ctx );
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static void ccm_ctx_free( void *ctx )
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** {
+  27              		.loc 1 108 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  32 0000 10B5     		push	{r4, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+  37 0002 0446     		mov	r4, r0
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     mbedtls_ccm_free( ctx );
+  38              		.loc 1 109 0
+  39 0004 FFF7FEFF 		bl	mbedtls_ccm_free
+  40              	.LVL1:
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     mbedtls_free( ctx );
+  41              		.loc 1 110 0
+  42 0008 024B     		ldr	r3, .L3
+  43 000a 1B68     		ldr	r3, [r3]
+  44 000c 2046     		mov	r0, r4
+  45 000e 9847     		blx	r3
+  46              	.LVL2:
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+  47              		.loc 1 111 0
+  48 0010 10BD     		pop	{r4, pc}
+  49              	.LVL3:
+  50              	.L4:
+  51 0012 00BF     		.align	2
+  52              	.L3:
+  53 0014 00000000 		.word	mbedtls_free
+  54              		.cfi_endproc
+  55              	.LFE11:
+  57              		.section	.text.ccm_ctx_alloc,"ax",%progbits
+  58              		.align	1
+  59              		.syntax unified
+  60              		.thumb
+  61              		.thumb_func
+  62              		.fpu fpv4-sp-d16
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 4
+
+
+  64              	ccm_ctx_alloc:
+  65              	.LFB10:
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     void *ctx = mbedtls_calloc( 1, sizeof( mbedtls_ccm_context ) );
+  66              		.loc 1 98 0
+  67              		.cfi_startproc
+  68              		@ args = 0, pretend = 0, frame = 0
+  69              		@ frame_needed = 0, uses_anonymous_args = 0
+  70 0000 10B5     		push	{r4, lr}
+  71              	.LCFI1:
+  72              		.cfi_def_cfa_offset 8
+  73              		.cfi_offset 4, -8
+  74              		.cfi_offset 14, -4
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  75              		.loc 1 99 0
+  76 0002 054B     		ldr	r3, .L8
+  77 0004 1B68     		ldr	r3, [r3]
+  78 0006 4021     		movs	r1, #64
+  79 0008 0120     		movs	r0, #1
+  80 000a 9847     		blx	r3
+  81              	.LVL4:
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****         mbedtls_ccm_init( (mbedtls_ccm_context *) ctx );
+  82              		.loc 1 101 0
+  83 000c 0446     		mov	r4, r0
+  84 000e 08B1     		cbz	r0, .L5
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  85              		.loc 1 102 0
+  86 0010 FFF7FEFF 		bl	mbedtls_ccm_init
+  87              	.LVL5:
+  88              	.L5:
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+  89              		.loc 1 105 0
+  90 0014 2046     		mov	r0, r4
+  91 0016 10BD     		pop	{r4, pc}
+  92              	.LVL6:
+  93              	.L9:
+  94              		.align	2
+  95              	.L8:
+  96 0018 00000000 		.word	mbedtls_calloc
+  97              		.cfi_endproc
+  98              	.LFE10:
+ 100              		.section	.text.ccm_aes_setkey_wrap,"ax",%progbits
+ 101              		.align	1
+ 102              		.syntax unified
+ 103              		.thumb
+ 104              		.thumb_func
+ 105              		.fpu fpv4-sp-d16
+ 107              	ccm_aes_setkey_wrap:
+ 108              	.LFB18:
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif /* MBEDTLS_CCM_C */
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_AES_C)
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static int aes_crypt_ecb_wrap( void *ctx, mbedtls_operation_t operation,
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****         const unsigned char *input, unsigned char *output )
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** {
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     return mbedtls_aes_crypt_ecb( (mbedtls_aes_context *) ctx, operation, input, output );
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 5
+
+
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_MODE_CBC)
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static int aes_crypt_cbc_wrap( void *ctx, mbedtls_operation_t operation, size_t length,
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****         unsigned char *iv, const unsigned char *input, unsigned char *output )
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** {
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     return mbedtls_aes_crypt_cbc( (mbedtls_aes_context *) ctx, operation, length, iv, input,
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****                           output );
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif /* MBEDTLS_CIPHER_MODE_CBC */
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_MODE_CFB)
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static int aes_crypt_cfb128_wrap( void *ctx, mbedtls_operation_t operation,
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****         size_t length, size_t *iv_off, unsigned char *iv,
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****         const unsigned char *input, unsigned char *output )
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** {
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     return mbedtls_aes_crypt_cfb128( (mbedtls_aes_context *) ctx, operation, length, iv_off, iv,
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****                              input, output );
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif /* MBEDTLS_CIPHER_MODE_CFB */
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_MODE_CTR)
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static int aes_crypt_ctr_wrap( void *ctx, size_t length, size_t *nc_off,
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****         unsigned char *nonce_counter, unsigned char *stream_block,
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****         const unsigned char *input, unsigned char *output )
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** {
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     return mbedtls_aes_crypt_ctr( (mbedtls_aes_context *) ctx, length, nc_off, nonce_counter,
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****                           stream_block, input, output );
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif /* MBEDTLS_CIPHER_MODE_CTR */
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static int aes_setkey_dec_wrap( void *ctx, const unsigned char *key,
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****                                 unsigned int key_bitlen )
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** {
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     return mbedtls_aes_setkey_dec( (mbedtls_aes_context *) ctx, key, key_bitlen );
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static int aes_setkey_enc_wrap( void *ctx, const unsigned char *key,
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****                                 unsigned int key_bitlen )
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** {
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     return mbedtls_aes_setkey_enc( (mbedtls_aes_context *) ctx, key, key_bitlen );
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static void * aes_ctx_alloc( void )
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** {
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     mbedtls_aes_context *aes = mbedtls_calloc( 1, sizeof( mbedtls_aes_context ) );
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     if( aes == NULL )
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****         return( NULL );
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     mbedtls_aes_init( aes );
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     return( aes );
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static void aes_ctx_free( void *ctx )
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** {
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     mbedtls_aes_free( (mbedtls_aes_context *) ctx );
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 6
+
+
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     mbedtls_free( ctx );
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_base_t aes_info = {
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_ID_AES,
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     aes_crypt_ecb_wrap,
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_MODE_CBC)
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     aes_crypt_cbc_wrap,
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_MODE_CFB)
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     aes_crypt_cfb128_wrap,
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_MODE_CTR)
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     aes_crypt_ctr_wrap,
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_MODE_STREAM)
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     NULL,
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     aes_setkey_enc_wrap,
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     aes_setkey_dec_wrap,
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     aes_ctx_alloc,
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     aes_ctx_free
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_info_t aes_128_ecb_info = {
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_AES_128_ECB,
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_MODE_ECB,
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     128,
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     "AES-128-ECB",
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     0,
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     &aes_info
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_info_t aes_192_ecb_info = {
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_AES_192_ECB,
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_MODE_ECB,
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     192,
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     "AES-192-ECB",
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     0,
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     &aes_info
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_info_t aes_256_ecb_info = {
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_AES_256_ECB,
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_MODE_ECB,
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     256,
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     "AES-256-ECB",
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     0,
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     &aes_info
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 7
+
+
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_MODE_CBC)
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_info_t aes_128_cbc_info = {
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_AES_128_CBC,
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_MODE_CBC,
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     128,
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     "AES-128-CBC",
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     0,
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     &aes_info
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_info_t aes_192_cbc_info = {
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_AES_192_CBC,
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_MODE_CBC,
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     192,
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     "AES-192-CBC",
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     0,
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     &aes_info
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_info_t aes_256_cbc_info = {
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_AES_256_CBC,
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_MODE_CBC,
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     256,
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     "AES-256-CBC",
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     0,
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     &aes_info
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif /* MBEDTLS_CIPHER_MODE_CBC */
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_MODE_CFB)
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_info_t aes_128_cfb128_info = {
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_AES_128_CFB128,
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_MODE_CFB,
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     128,
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     "AES-128-CFB128",
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     0,
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     &aes_info
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_info_t aes_192_cfb128_info = {
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_AES_192_CFB128,
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_MODE_CFB,
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     192,
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     "AES-192-CFB128",
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     0,
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     &aes_info
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 8
+
+
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_info_t aes_256_cfb128_info = {
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_AES_256_CFB128,
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_MODE_CFB,
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     256,
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     "AES-256-CFB128",
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     0,
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     &aes_info
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif /* MBEDTLS_CIPHER_MODE_CFB */
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_MODE_CTR)
+ 306:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_info_t aes_128_ctr_info = {
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_AES_128_CTR,
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_MODE_CTR,
+ 309:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     128,
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     "AES-128-CTR",
+ 311:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     0,
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     &aes_info
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_info_t aes_192_ctr_info = {
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_AES_192_CTR,
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_MODE_CTR,
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     192,
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     "AES-192-CTR",
+ 322:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     0,
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 325:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     &aes_info
+ 326:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 327:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 328:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_info_t aes_256_ctr_info = {
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_AES_256_CTR,
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_MODE_CTR,
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     256,
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     "AES-256-CTR",
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     0,
+ 335:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 336:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     &aes_info
+ 337:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 338:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif /* MBEDTLS_CIPHER_MODE_CTR */
+ 339:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 340:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_GCM_C)
+ 341:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static int gcm_aes_setkey_wrap( void *ctx, const unsigned char *key,
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****                                 unsigned int key_bitlen )
+ 343:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** {
+ 344:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     return mbedtls_gcm_setkey( (mbedtls_gcm_context *) ctx, MBEDTLS_CIPHER_ID_AES,
+ 345:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****                      key, key_bitlen );
+ 346:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+ 347:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 348:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_base_t gcm_aes_info = {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 9
+
+
+ 349:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_ID_AES,
+ 350:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     NULL,
+ 351:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_MODE_CBC)
+ 352:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     NULL,
+ 353:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+ 354:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_MODE_CFB)
+ 355:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     NULL,
+ 356:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+ 357:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_MODE_CTR)
+ 358:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     NULL,
+ 359:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+ 360:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CIPHER_MODE_STREAM)
+ 361:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     NULL,
+ 362:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif
+ 363:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     gcm_aes_setkey_wrap,
+ 364:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     gcm_aes_setkey_wrap,
+ 365:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     gcm_ctx_alloc,
+ 366:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     gcm_ctx_free,
+ 367:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 368:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 369:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_info_t aes_128_gcm_info = {
+ 370:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_AES_128_GCM,
+ 371:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_MODE_GCM,
+ 372:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     128,
+ 373:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     "AES-128-GCM",
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     12,
+ 375:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_VARIABLE_IV_LEN,
+ 376:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 377:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     &gcm_aes_info
+ 378:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 379:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 380:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_info_t aes_192_gcm_info = {
+ 381:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_AES_192_GCM,
+ 382:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_MODE_GCM,
+ 383:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     192,
+ 384:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     "AES-192-GCM",
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     12,
+ 386:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_VARIABLE_IV_LEN,
+ 387:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 388:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     &gcm_aes_info
+ 389:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 390:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 391:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static const mbedtls_cipher_info_t aes_256_gcm_info = {
+ 392:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_AES_256_GCM,
+ 393:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_MODE_GCM,
+ 394:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     256,
+ 395:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     "AES-256-GCM",
+ 396:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     12,
+ 397:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     MBEDTLS_CIPHER_VARIABLE_IV_LEN,
+ 398:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     16,
+ 399:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     &gcm_aes_info
+ 400:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** };
+ 401:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif /* MBEDTLS_GCM_C */
+ 402:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 403:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #if defined(MBEDTLS_CCM_C)
+ 404:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** static int ccm_aes_setkey_wrap( void *ctx, const unsigned char *key,
+ 405:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****                                 unsigned int key_bitlen )
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 10
+
+
+ 406:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** {
+ 109              		.loc 1 406 0
+ 110              		.cfi_startproc
+ 111              		@ args = 0, pretend = 0, frame = 0
+ 112              		@ frame_needed = 0, uses_anonymous_args = 0
+ 113              	.LVL7:
+ 114 0000 08B5     		push	{r3, lr}
+ 115              	.LCFI2:
+ 116              		.cfi_def_cfa_offset 8
+ 117              		.cfi_offset 3, -8
+ 118              		.cfi_offset 14, -4
+ 407:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     return mbedtls_ccm_setkey( (mbedtls_ccm_context *) ctx, MBEDTLS_CIPHER_ID_AES,
+ 119              		.loc 1 407 0
+ 120 0002 1346     		mov	r3, r2
+ 121 0004 0A46     		mov	r2, r1
+ 122              	.LVL8:
+ 123 0006 0221     		movs	r1, #2
+ 124              	.LVL9:
+ 125 0008 FFF7FEFF 		bl	mbedtls_ccm_setkey
+ 126              	.LVL10:
+ 408:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****                      key, key_bitlen );
+ 409:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+ 127              		.loc 1 409 0
+ 128 000c 08BD     		pop	{r3, pc}
+ 129              		.cfi_endproc
+ 130              	.LFE18:
+ 132              		.section	.text.aes_ctx_free,"ax",%progbits
+ 133              		.align	1
+ 134              		.syntax unified
+ 135              		.thumb
+ 136              		.thumb_func
+ 137              		.fpu fpv4-sp-d16
+ 139              	aes_ctx_free:
+ 140              	.LFB17:
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     mbedtls_aes_free( (mbedtls_aes_context *) ctx );
+ 141              		.loc 1 176 0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145              	.LVL11:
+ 146 0000 10B5     		push	{r4, lr}
+ 147              	.LCFI3:
+ 148              		.cfi_def_cfa_offset 8
+ 149              		.cfi_offset 4, -8
+ 150              		.cfi_offset 14, -4
+ 151 0002 0446     		mov	r4, r0
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     mbedtls_free( ctx );
+ 152              		.loc 1 177 0
+ 153 0004 FFF7FEFF 		bl	mbedtls_aes_free
+ 154              	.LVL12:
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+ 155              		.loc 1 178 0
+ 156 0008 024B     		ldr	r3, .L14
+ 157 000a 1B68     		ldr	r3, [r3]
+ 158 000c 2046     		mov	r0, r4
+ 159 000e 9847     		blx	r3
+ 160              	.LVL13:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 11
+
+
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 161              		.loc 1 179 0
+ 162 0010 10BD     		pop	{r4, pc}
+ 163              	.LVL14:
+ 164              	.L15:
+ 165 0012 00BF     		.align	2
+ 166              	.L14:
+ 167 0014 00000000 		.word	mbedtls_free
+ 168              		.cfi_endproc
+ 169              	.LFE17:
+ 171              		.section	.text.aes_ctx_alloc,"ax",%progbits
+ 172              		.align	1
+ 173              		.syntax unified
+ 174              		.thumb
+ 175              		.thumb_func
+ 176              		.fpu fpv4-sp-d16
+ 178              	aes_ctx_alloc:
+ 179              	.LFB16:
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     mbedtls_aes_context *aes = mbedtls_calloc( 1, sizeof( mbedtls_aes_context ) );
+ 180              		.loc 1 164 0
+ 181              		.cfi_startproc
+ 182              		@ args = 0, pretend = 0, frame = 0
+ 183              		@ frame_needed = 0, uses_anonymous_args = 0
+ 184 0000 10B5     		push	{r4, lr}
+ 185              	.LCFI4:
+ 186              		.cfi_def_cfa_offset 8
+ 187              		.cfi_offset 4, -8
+ 188              		.cfi_offset 14, -4
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 189              		.loc 1 165 0
+ 190 0002 074B     		ldr	r3, .L20
+ 191 0004 1B68     		ldr	r3, [r3]
+ 192 0006 4FF48C71 		mov	r1, #280
+ 193 000a 0120     		movs	r0, #1
+ 194 000c 9847     		blx	r3
+ 195              	.LVL15:
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****         return( NULL );
+ 196              		.loc 1 167 0
+ 197 000e 20B1     		cbz	r0, .L18
+ 198 0010 0446     		mov	r4, r0
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 199              		.loc 1 170 0
+ 200 0012 FFF7FEFF 		bl	mbedtls_aes_init
+ 201              	.LVL16:
+ 202              	.L16:
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 203              		.loc 1 173 0
+ 204 0016 2046     		mov	r0, r4
+ 205 0018 10BD     		pop	{r4, pc}
+ 206              	.LVL17:
+ 207              	.L18:
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 208              		.loc 1 168 0
+ 209 001a 0024     		movs	r4, #0
+ 210 001c FBE7     		b	.L16
+ 211              	.L21:
+ 212 001e 00BF     		.align	2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 12
+
+
+ 213              	.L20:
+ 214 0020 00000000 		.word	mbedtls_calloc
+ 215              		.cfi_endproc
+ 216              	.LFE16:
+ 218              		.section	.text.aes_setkey_dec_wrap,"ax",%progbits
+ 219              		.align	1
+ 220              		.syntax unified
+ 221              		.thumb
+ 222              		.thumb_func
+ 223              		.fpu fpv4-sp-d16
+ 225              	aes_setkey_dec_wrap:
+ 226              	.LFB14:
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     return mbedtls_aes_setkey_dec( (mbedtls_aes_context *) ctx, key, key_bitlen );
+ 227              		.loc 1 153 0
+ 228              		.cfi_startproc
+ 229              		@ args = 0, pretend = 0, frame = 0
+ 230              		@ frame_needed = 0, uses_anonymous_args = 0
+ 231              	.LVL18:
+ 232 0000 08B5     		push	{r3, lr}
+ 233              	.LCFI5:
+ 234              		.cfi_def_cfa_offset 8
+ 235              		.cfi_offset 3, -8
+ 236              		.cfi_offset 14, -4
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+ 237              		.loc 1 154 0
+ 238 0002 FFF7FEFF 		bl	mbedtls_aes_setkey_dec
+ 239              	.LVL19:
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 240              		.loc 1 155 0
+ 241 0006 08BD     		pop	{r3, pc}
+ 242              		.cfi_endproc
+ 243              	.LFE14:
+ 245              		.section	.text.aes_setkey_enc_wrap,"ax",%progbits
+ 246              		.align	1
+ 247              		.syntax unified
+ 248              		.thumb
+ 249              		.thumb_func
+ 250              		.fpu fpv4-sp-d16
+ 252              	aes_setkey_enc_wrap:
+ 253              	.LFB15:
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     return mbedtls_aes_setkey_enc( (mbedtls_aes_context *) ctx, key, key_bitlen );
+ 254              		.loc 1 159 0
+ 255              		.cfi_startproc
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258              	.LVL20:
+ 259 0000 08B5     		push	{r3, lr}
+ 260              	.LCFI6:
+ 261              		.cfi_def_cfa_offset 8
+ 262              		.cfi_offset 3, -8
+ 263              		.cfi_offset 14, -4
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+ 264              		.loc 1 160 0
+ 265 0002 FFF7FEFF 		bl	mbedtls_aes_setkey_enc
+ 266              	.LVL21:
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 267              		.loc 1 161 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 13
+
+
+ 268 0006 08BD     		pop	{r3, pc}
+ 269              		.cfi_endproc
+ 270              	.LFE15:
+ 272              		.section	.text.aes_crypt_cbc_wrap,"ax",%progbits
+ 273              		.align	1
+ 274              		.syntax unified
+ 275              		.thumb
+ 276              		.thumb_func
+ 277              		.fpu fpv4-sp-d16
+ 279              	aes_crypt_cbc_wrap:
+ 280              	.LFB13:
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     return mbedtls_aes_crypt_cbc( (mbedtls_aes_context *) ctx, operation, length, iv, input,
+ 281              		.loc 1 125 0
+ 282              		.cfi_startproc
+ 283              		@ args = 8, pretend = 0, frame = 0
+ 284              		@ frame_needed = 0, uses_anonymous_args = 0
+ 285              	.LVL22:
+ 286 0000 10B5     		push	{r4, lr}
+ 287              	.LCFI7:
+ 288              		.cfi_def_cfa_offset 8
+ 289              		.cfi_offset 4, -8
+ 290              		.cfi_offset 14, -4
+ 291 0002 82B0     		sub	sp, sp, #8
+ 292              	.LCFI8:
+ 293              		.cfi_def_cfa_offset 16
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****                           output );
+ 294              		.loc 1 126 0
+ 295 0004 059C     		ldr	r4, [sp, #20]
+ 296 0006 0194     		str	r4, [sp, #4]
+ 297 0008 049C     		ldr	r4, [sp, #16]
+ 298 000a 0094     		str	r4, [sp]
+ 299 000c FFF7FEFF 		bl	mbedtls_aes_crypt_cbc
+ 300              	.LVL23:
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** #endif /* MBEDTLS_CIPHER_MODE_CBC */
+ 301              		.loc 1 128 0
+ 302 0010 02B0     		add	sp, sp, #8
+ 303              	.LCFI9:
+ 304              		.cfi_def_cfa_offset 8
+ 305              		@ sp needed
+ 306 0012 10BD     		pop	{r4, pc}
+ 307              		.cfi_endproc
+ 308              	.LFE13:
+ 310              		.section	.text.aes_crypt_ecb_wrap,"ax",%progbits
+ 311              		.align	1
+ 312              		.syntax unified
+ 313              		.thumb
+ 314              		.thumb_func
+ 315              		.fpu fpv4-sp-d16
+ 317              	aes_crypt_ecb_wrap:
+ 318              	.LFB12:
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c ****     return mbedtls_aes_crypt_ecb( (mbedtls_aes_context *) ctx, operation, input, output );
+ 319              		.loc 1 118 0
+ 320              		.cfi_startproc
+ 321              		@ args = 0, pretend = 0, frame = 0
+ 322              		@ frame_needed = 0, uses_anonymous_args = 0
+ 323              	.LVL24:
+ 324 0000 08B5     		push	{r3, lr}
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 14
+
+
+ 325              	.LCFI10:
+ 326              		.cfi_def_cfa_offset 8
+ 327              		.cfi_offset 3, -8
+ 328              		.cfi_offset 14, -4
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** }
+ 329              		.loc 1 119 0
+ 330 0002 FFF7FEFF 		bl	mbedtls_aes_crypt_ecb
+ 331              	.LVL25:
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\cipher_wrap.c **** 
+ 332              		.loc 1 120 0
+ 333 0006 08BD     		pop	{r3, pc}
+ 334              		.cfi_endproc
+ 335              	.LFE12:
+ 337              		.comm	mbedtls_cipher_supported,40,4
+ 338              		.global	mbedtls_cipher_definitions
+ 339              		.section	.rodata.aes_128_cbc_info,"a",%progbits
+ 340              		.align	2
+ 343              	aes_128_cbc_info:
+ 344 0000 05       		.byte	5
+ 345 0001 02       		.byte	2
+ 346 0002 0000     		.space	2
+ 347 0004 80000000 		.word	128
+ 348 0008 3C000000 		.word	.LC5
+ 349 000c 10000000 		.word	16
+ 350 0010 00000000 		.word	0
+ 351 0014 10000000 		.word	16
+ 352 0018 00000000 		.word	aes_info
+ 353              		.section	.rodata.aes_128_ccm_info,"a",%progbits
+ 354              		.align	2
+ 357              	aes_128_ccm_info:
+ 358 0000 2B       		.byte	43
+ 359 0001 08       		.byte	8
+ 360 0002 0000     		.space	2
+ 361 0004 80000000 		.word	128
+ 362 0008 18000000 		.word	.LC2
+ 363 000c 0C000000 		.word	12
+ 364 0010 01000000 		.word	1
+ 365 0014 10000000 		.word	16
+ 366 0018 00000000 		.word	ccm_aes_info
+ 367              		.section	.rodata.aes_128_ecb_info,"a",%progbits
+ 368              		.align	2
+ 371              	aes_128_ecb_info:
+ 372 0000 02       		.byte	2
+ 373 0001 01       		.byte	1
+ 374 0002 0000     		.space	2
+ 375 0004 80000000 		.word	128
+ 376 0008 60000000 		.word	.LC8
+ 377 000c 10000000 		.word	16
+ 378 0010 00000000 		.word	0
+ 379 0014 10000000 		.word	16
+ 380 0018 00000000 		.word	aes_info
+ 381              		.section	.rodata.aes_192_cbc_info,"a",%progbits
+ 382              		.align	2
+ 385              	aes_192_cbc_info:
+ 386 0000 06       		.byte	6
+ 387 0001 02       		.byte	2
+ 388 0002 0000     		.space	2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 15
+
+
+ 389 0004 C0000000 		.word	192
+ 390 0008 30000000 		.word	.LC4
+ 391 000c 10000000 		.word	16
+ 392 0010 00000000 		.word	0
+ 393 0014 10000000 		.word	16
+ 394 0018 00000000 		.word	aes_info
+ 395              		.section	.rodata.aes_192_ccm_info,"a",%progbits
+ 396              		.align	2
+ 399              	aes_192_ccm_info:
+ 400 0000 2C       		.byte	44
+ 401 0001 08       		.byte	8
+ 402 0002 0000     		.space	2
+ 403 0004 C0000000 		.word	192
+ 404 0008 0C000000 		.word	.LC1
+ 405 000c 0C000000 		.word	12
+ 406 0010 01000000 		.word	1
+ 407 0014 10000000 		.word	16
+ 408 0018 00000000 		.word	ccm_aes_info
+ 409              		.section	.rodata.aes_192_ecb_info,"a",%progbits
+ 410              		.align	2
+ 413              	aes_192_ecb_info:
+ 414 0000 03       		.byte	3
+ 415 0001 01       		.byte	1
+ 416 0002 0000     		.space	2
+ 417 0004 C0000000 		.word	192
+ 418 0008 54000000 		.word	.LC7
+ 419 000c 10000000 		.word	16
+ 420 0010 00000000 		.word	0
+ 421 0014 10000000 		.word	16
+ 422 0018 00000000 		.word	aes_info
+ 423              		.section	.rodata.aes_256_cbc_info,"a",%progbits
+ 424              		.align	2
+ 427              	aes_256_cbc_info:
+ 428 0000 07       		.byte	7
+ 429 0001 02       		.byte	2
+ 430 0002 0000     		.space	2
+ 431 0004 00010000 		.word	256
+ 432 0008 24000000 		.word	.LC3
+ 433 000c 10000000 		.word	16
+ 434 0010 00000000 		.word	0
+ 435 0014 10000000 		.word	16
+ 436 0018 00000000 		.word	aes_info
+ 437              		.section	.rodata.aes_256_ccm_info,"a",%progbits
+ 438              		.align	2
+ 441              	aes_256_ccm_info:
+ 442 0000 2D       		.byte	45
+ 443 0001 08       		.byte	8
+ 444 0002 0000     		.space	2
+ 445 0004 00010000 		.word	256
+ 446 0008 00000000 		.word	.LC0
+ 447 000c 0C000000 		.word	12
+ 448 0010 01000000 		.word	1
+ 449 0014 10000000 		.word	16
+ 450 0018 00000000 		.word	ccm_aes_info
+ 451              		.section	.rodata.aes_256_ecb_info,"a",%progbits
+ 452              		.align	2
+ 455              	aes_256_ecb_info:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 16
+
+
+ 456 0000 04       		.byte	4
+ 457 0001 01       		.byte	1
+ 458 0002 0000     		.space	2
+ 459 0004 00010000 		.word	256
+ 460 0008 48000000 		.word	.LC6
+ 461 000c 10000000 		.word	16
+ 462 0010 00000000 		.word	0
+ 463 0014 10000000 		.word	16
+ 464 0018 00000000 		.word	aes_info
+ 465              		.section	.rodata.aes_info,"a",%progbits
+ 466              		.align	2
+ 469              	aes_info:
+ 470 0000 02       		.byte	2
+ 471 0001 000000   		.space	3
+ 472 0004 00000000 		.word	aes_crypt_ecb_wrap
+ 473 0008 00000000 		.word	aes_crypt_cbc_wrap
+ 474 000c 00000000 		.word	aes_setkey_enc_wrap
+ 475 0010 00000000 		.word	aes_setkey_dec_wrap
+ 476 0014 00000000 		.word	aes_ctx_alloc
+ 477 0018 00000000 		.word	aes_ctx_free
+ 478              		.section	.rodata.ccm_aes_info,"a",%progbits
+ 479              		.align	2
+ 482              	ccm_aes_info:
+ 483 0000 02       		.byte	2
+ 484 0001 000000   		.space	3
+ 485 0004 00000000 		.word	0
+ 486 0008 00000000 		.word	0
+ 487 000c 00000000 		.word	ccm_aes_setkey_wrap
+ 488 0010 00000000 		.word	ccm_aes_setkey_wrap
+ 489 0014 00000000 		.word	ccm_ctx_alloc
+ 490 0018 00000000 		.word	ccm_ctx_free
+ 491              		.section	.rodata.mbedtls_cipher_definitions,"a",%progbits
+ 492              		.align	2
+ 495              	mbedtls_cipher_definitions:
+ 496 0000 02       		.byte	2
+ 497 0001 000000   		.space	3
+ 498 0004 00000000 		.word	aes_128_ecb_info
+ 499 0008 03       		.byte	3
+ 500 0009 000000   		.space	3
+ 501 000c 00000000 		.word	aes_192_ecb_info
+ 502 0010 04       		.byte	4
+ 503 0011 000000   		.space	3
+ 504 0014 00000000 		.word	aes_256_ecb_info
+ 505 0018 05       		.byte	5
+ 506 0019 000000   		.space	3
+ 507 001c 00000000 		.word	aes_128_cbc_info
+ 508 0020 06       		.byte	6
+ 509 0021 000000   		.space	3
+ 510 0024 00000000 		.word	aes_192_cbc_info
+ 511 0028 07       		.byte	7
+ 512 0029 000000   		.space	3
+ 513 002c 00000000 		.word	aes_256_cbc_info
+ 514 0030 2B       		.byte	43
+ 515 0031 000000   		.space	3
+ 516 0034 00000000 		.word	aes_128_ccm_info
+ 517 0038 2C       		.byte	44
+ 518 0039 000000   		.space	3
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 17
+
+
+ 519 003c 00000000 		.word	aes_192_ccm_info
+ 520 0040 2D       		.byte	45
+ 521 0041 000000   		.space	3
+ 522 0044 00000000 		.word	aes_256_ccm_info
+ 523 0048 00       		.byte	0
+ 524 0049 000000   		.space	3
+ 525 004c 00000000 		.word	0
+ 526              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 527              		.align	2
+ 528              	.LC0:
+ 529 0000 4145532D 		.ascii	"AES-256-CCM\000"
+ 529      3235362D 
+ 529      43434D00 
+ 530              	.LC1:
+ 531 000c 4145532D 		.ascii	"AES-192-CCM\000"
+ 531      3139322D 
+ 531      43434D00 
+ 532              	.LC2:
+ 533 0018 4145532D 		.ascii	"AES-128-CCM\000"
+ 533      3132382D 
+ 533      43434D00 
+ 534              	.LC3:
+ 535 0024 4145532D 		.ascii	"AES-256-CBC\000"
+ 535      3235362D 
+ 535      43424300 
+ 536              	.LC4:
+ 537 0030 4145532D 		.ascii	"AES-192-CBC\000"
+ 537      3139322D 
+ 537      43424300 
+ 538              	.LC5:
+ 539 003c 4145532D 		.ascii	"AES-128-CBC\000"
+ 539      3132382D 
+ 539      43424300 
+ 540              	.LC6:
+ 541 0048 4145532D 		.ascii	"AES-256-ECB\000"
+ 541      3235362D 
+ 541      45434200 
+ 542              	.LC7:
+ 543 0054 4145532D 		.ascii	"AES-192-ECB\000"
+ 543      3139322D 
+ 543      45434200 
+ 544              	.LC8:
+ 545 0060 4145532D 		.ascii	"AES-128-ECB\000"
+ 545      3132382D 
+ 545      45434200 
+ 546              		.text
+ 547              	.Letext0:
+ 548              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 549              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 550              		.file 4 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls
+ 551              		.file 5 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls
+ 552              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 553              		.file 7 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls
+ 554              		.file 8 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls
+ 555              		.file 9 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 556              		.file 10 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 557              		.file 11 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 18
+
+
+ 558              		.file 12 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 559              		.file 13 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 560              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtl
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 cipher_wrap.c
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:18     .text.ccm_ctx_free:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:24     .text.ccm_ctx_free:00000000 ccm_ctx_free
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:53     .text.ccm_ctx_free:00000014 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:58     .text.ccm_ctx_alloc:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:64     .text.ccm_ctx_alloc:00000000 ccm_ctx_alloc
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:96     .text.ccm_ctx_alloc:00000018 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:101    .text.ccm_aes_setkey_wrap:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:107    .text.ccm_aes_setkey_wrap:00000000 ccm_aes_setkey_wrap
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:133    .text.aes_ctx_free:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:139    .text.aes_ctx_free:00000000 aes_ctx_free
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:167    .text.aes_ctx_free:00000014 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:172    .text.aes_ctx_alloc:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:178    .text.aes_ctx_alloc:00000000 aes_ctx_alloc
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:214    .text.aes_ctx_alloc:00000020 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:219    .text.aes_setkey_dec_wrap:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:225    .text.aes_setkey_dec_wrap:00000000 aes_setkey_dec_wrap
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:246    .text.aes_setkey_enc_wrap:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:252    .text.aes_setkey_enc_wrap:00000000 aes_setkey_enc_wrap
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:273    .text.aes_crypt_cbc_wrap:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:279    .text.aes_crypt_cbc_wrap:00000000 aes_crypt_cbc_wrap
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:311    .text.aes_crypt_ecb_wrap:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:317    .text.aes_crypt_ecb_wrap:00000000 aes_crypt_ecb_wrap
+                            *COM*:00000028 mbedtls_cipher_supported
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:495    .rodata.mbedtls_cipher_definitions:00000000 mbedtls_cipher_definitions
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:340    .rodata.aes_128_cbc_info:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:343    .rodata.aes_128_cbc_info:00000000 aes_128_cbc_info
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:469    .rodata.aes_info:00000000 aes_info
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:354    .rodata.aes_128_ccm_info:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:357    .rodata.aes_128_ccm_info:00000000 aes_128_ccm_info
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:482    .rodata.ccm_aes_info:00000000 ccm_aes_info
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:368    .rodata.aes_128_ecb_info:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:371    .rodata.aes_128_ecb_info:00000000 aes_128_ecb_info
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:382    .rodata.aes_192_cbc_info:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:385    .rodata.aes_192_cbc_info:00000000 aes_192_cbc_info
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:396    .rodata.aes_192_ccm_info:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:399    .rodata.aes_192_ccm_info:00000000 aes_192_ccm_info
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:410    .rodata.aes_192_ecb_info:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:413    .rodata.aes_192_ecb_info:00000000 aes_192_ecb_info
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:424    .rodata.aes_256_cbc_info:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:427    .rodata.aes_256_cbc_info:00000000 aes_256_cbc_info
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:438    .rodata.aes_256_ccm_info:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:441    .rodata.aes_256_ccm_info:00000000 aes_256_ccm_info
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:452    .rodata.aes_256_ecb_info:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:455    .rodata.aes_256_ecb_info:00000000 aes_256_ecb_info
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:466    .rodata.aes_info:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:479    .rodata.ccm_aes_info:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:492    .rodata.mbedtls_cipher_definitions:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s:527    .rodata.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+mbedtls_ccm_free
+mbedtls_free
+mbedtls_ccm_init
+mbedtls_calloc
+mbedtls_ccm_setkey
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccV2AgIx.s 			page 20
+
+
+mbedtls_aes_free
+mbedtls_aes_init
+mbedtls_aes_setkey_dec
+mbedtls_aes_setkey_enc
+mbedtls_aes_crypt_cbc
+mbedtls_aes_crypt_ecb

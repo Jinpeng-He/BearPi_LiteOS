@@ -1,0 +1,265 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"atiny_log.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.atiny_set_log_level,"ax",%progbits
+  18              		.align	1
+  19              		.global	atiny_set_log_level
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	atiny_set_log_level:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log/atiny_log.c"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** #include "log/atiny_log.h"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** 
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** static atiny_log_e g_atiny_log_level = LOG_ERR;
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** 
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** static const char *g_log_names[] =
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** {
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****     "DEBUG",
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****     "INFO",
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****     "WARNING",
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****     "ERR",
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****     "FATAL",
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** };
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** 
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** void atiny_set_log_level(atiny_log_e level)
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** {
+  28              		.loc 1 49 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****     g_atiny_log_level = level;
+  34              		.loc 1 50 0
+  35 0000 014B     		ldr	r3, .L2
+  36 0002 1870     		strb	r0, [r3]
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** }
+  37              		.loc 1 51 0
+  38 0004 7047     		bx	lr
+  39              	.L3:
+  40 0006 00BF     		.align	2
+  41              	.L2:
+  42 0008 00000000 		.word	.LANCHOR0
+  43              		.cfi_endproc
+  44              	.LFE133:
+  46              		.section	.text.atiny_get_log_level,"ax",%progbits
+  47              		.align	1
+  48              		.global	atiny_get_log_level
+  49              		.syntax unified
+  50              		.thumb
+  51              		.thumb_func
+  52              		.fpu fpv4-sp-d16
+  54              	atiny_get_log_level:
+  55              	.LFB134:
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** 
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** atiny_log_e atiny_get_log_level(void)
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** {
+  56              		.loc 1 54 0
+  57              		.cfi_startproc
+  58              		@ args = 0, pretend = 0, frame = 0
+  59              		@ frame_needed = 0, uses_anonymous_args = 0
+  60              		@ link register save eliminated.
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****     return g_atiny_log_level;
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** }
+  61              		.loc 1 56 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s 			page 3
+
+
+  62 0000 014B     		ldr	r3, .L5
+  63 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+  64 0004 7047     		bx	lr
+  65              	.L6:
+  66 0006 00BF     		.align	2
+  67              	.L5:
+  68 0008 00000000 		.word	.LANCHOR0
+  69              		.cfi_endproc
+  70              	.LFE134:
+  72              		.section	.text.atiny_get_log_level_name,"ax",%progbits
+  73              		.align	1
+  74              		.global	atiny_get_log_level_name
+  75              		.syntax unified
+  76              		.thumb
+  77              		.thumb_func
+  78              		.fpu fpv4-sp-d16
+  80              	atiny_get_log_level_name:
+  81              	.LFB135:
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** 
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** const char *atiny_get_log_level_name(atiny_log_e log_level)
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** {
+  82              		.loc 1 59 0
+  83              		.cfi_startproc
+  84              		@ args = 0, pretend = 0, frame = 0
+  85              		@ frame_needed = 0, uses_anonymous_args = 0
+  86              		@ link register save eliminated.
+  87              	.LVL1:
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****     if (log_level >= LOG_MAX)
+  88              		.loc 1 60 0
+  89 0000 0428     		cmp	r0, #4
+  90 0002 03D8     		bhi	.L9
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****     {
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****         return "UNKOWN";
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****     }
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** 
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****     return g_log_names[log_level];
+  91              		.loc 1 65 0
+  92 0004 024B     		ldr	r3, .L10
+  93 0006 53F82000 		ldr	r0, [r3, r0, lsl #2]
+  94              	.LVL2:
+  95 000a 7047     		bx	lr
+  96              	.LVL3:
+  97              	.L9:
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c ****     }
+  98              		.loc 1 62 0
+  99 000c 0148     		ldr	r0, .L10+4
+ 100              	.LVL4:
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/log\atiny_log.c **** }
+ 101              		.loc 1 66 0
+ 102 000e 7047     		bx	lr
+ 103              	.L11:
+ 104              		.align	2
+ 105              	.L10:
+ 106 0010 00000000 		.word	.LANCHOR1
+ 107 0014 00000000 		.word	.LC0
+ 108              		.cfi_endproc
+ 109              	.LFE135:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s 			page 4
+
+
+ 111              		.section	.data.g_atiny_log_level,"aw",%progbits
+ 112              		.set	.LANCHOR0,. + 0
+ 115              	g_atiny_log_level:
+ 116 0000 03       		.byte	3
+ 117              		.section	.rodata.atiny_get_log_level_name.str1.4,"aMS",%progbits,1
+ 118              		.align	2
+ 119              	.LC0:
+ 120 0000 554E4B4F 		.ascii	"UNKOWN\000"
+ 120      574E00
+ 121              		.section	.rodata.g_log_names,"a",%progbits
+ 122              		.align	2
+ 123              		.set	.LANCHOR1,. + 0
+ 126              	g_log_names:
+ 127 0000 00000000 		.word	.LC1
+ 128 0004 08000000 		.word	.LC2
+ 129 0008 10000000 		.word	.LC3
+ 130 000c 18000000 		.word	.LC4
+ 131 0010 1C000000 		.word	.LC5
+ 132              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 133              		.align	2
+ 134              	.LC1:
+ 135 0000 44454255 		.ascii	"DEBUG\000"
+ 135      4700
+ 136 0006 0000     		.space	2
+ 137              	.LC2:
+ 138 0008 494E464F 		.ascii	"INFO\000"
+ 138      00
+ 139 000d 000000   		.space	3
+ 140              	.LC3:
+ 141 0010 5741524E 		.ascii	"WARNING\000"
+ 141      494E4700 
+ 142              	.LC4:
+ 143 0018 45525200 		.ascii	"ERR\000"
+ 144              	.LC5:
+ 145 001c 46415441 		.ascii	"FATAL\000"
+ 145      4C00
+ 146              		.text
+ 147              	.Letext0:
+ 148              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 149              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 150              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 151              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 152              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 153              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 154              		.file 8 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 155              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 156              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 157              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 158              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 159              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 160              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 161              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 162              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 163              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 164              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 165              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 166              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s 			page 5
+
+
+ 167              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/log/atiny_log.h"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 atiny_log.c
+c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s:18     .text.atiny_set_log_level:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s:25     .text.atiny_set_log_level:00000000 atiny_set_log_level
+c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s:42     .text.atiny_set_log_level:00000008 $d
+c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s:47     .text.atiny_get_log_level:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s:54     .text.atiny_get_log_level:00000000 atiny_get_log_level
+c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s:68     .text.atiny_get_log_level:00000008 $d
+c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s:73     .text.atiny_get_log_level_name:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s:80     .text.atiny_get_log_level_name:00000000 atiny_get_log_level_name
+c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s:106    .text.atiny_get_log_level_name:00000010 $d
+c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s:115    .data.g_atiny_log_level:00000000 g_atiny_log_level
+c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s:118    .rodata.atiny_get_log_level_name.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s:122    .rodata.g_log_names:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s:126    .rodata.g_log_names:00000000 g_log_names
+c:\Users\lenovo\AppData\Local\Temp\ccH2baXN.s:133    .rodata.str1.4:00000000 $d
+
+NO UNDEFINED SYMBOLS

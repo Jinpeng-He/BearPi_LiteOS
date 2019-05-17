@@ -1,0 +1,687 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"sota_demo.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.read_ver,"ax",%progbits
+  18              		.align	1
+  19              		.global	read_ver
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	read_ver:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny/sota_demo
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** #ifdef WITH_SOTA
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** #include <stdio.h>
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** #include "los_swtmr.h"
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** #include "osdepends/atiny_osdep.h"
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** #include "sota/sota.h"
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** #include "../../components/ota/sota/sota_hal.h"
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** #include "ota_port.h"
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** #include "board.h"
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** //#include "hal_spi_flash.h"
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** #include "at_frame/at_main.h"
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** 
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** #define DEVICE_VER             "V0.0"
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** #define SOTA_BUF_LEN           (512+16)
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** #define SOTA_MAX_TIME_OUT       5000
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** extern int nb_send_str(const char* buf, int len);
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** 
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** int8_t g_sota_buf[SOTA_BUF_LEN];
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** uint16_t g_sota_timer;
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** int read_ver(char* buf, uint32_t len)
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** {
+  28              		.loc 1 54 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  34 0000 0346     		mov	r3, r0
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     memcpy(buf,DEVICE_VER,strlen(DEVICE_VER));
+  35              		.loc 1 55 0
+  36 0002 024A     		ldr	r2, .L2
+  37 0004 1068     		ldr	r0, [r2]
+  38              	.LVL1:
+  39 0006 1860     		str	r0, [r3]	@ unaligned
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     return 0;
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** }
+  40              		.loc 1 57 0
+  41 0008 0020     		movs	r0, #0
+  42 000a 7047     		bx	lr
+  43              	.L3:
+  44              		.align	2
+  45              	.L2:
+  46 000c 00000000 		.word	.LC0
+  47              		.cfi_endproc
+  48              	.LFE133:
+  50              		.section	.text.sota_cmd_match,"ax",%progbits
+  51              		.align	1
+  52              		.global	sota_cmd_match
+  53              		.syntax unified
+  54              		.thumb
+  55              		.thumb_func
+  56              		.fpu fpv4-sp-d16
+  58              	sota_cmd_match:
+  59              	.LFB134:
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s 			page 3
+
+
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** 
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** int32_t sota_cmd_match(const char *buf, char* featurestr,int len)
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** {
+  60              		.loc 1 61 0
+  61              		.cfi_startproc
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64              	.LVL2:
+  65 0000 38B5     		push	{r3, r4, r5, lr}
+  66              	.LCFI0:
+  67              		.cfi_def_cfa_offset 16
+  68              		.cfi_offset 3, -16
+  69              		.cfi_offset 4, -12
+  70              		.cfi_offset 5, -8
+  71              		.cfi_offset 14, -4
+  72 0002 0446     		mov	r4, r0
+  73 0004 1546     		mov	r5, r2
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     if(strstr(buf,featurestr) != NULL)
+  74              		.loc 1 62 0
+  75 0006 FFF7FEFF 		bl	strstr
+  76              	.LVL3:
+  77 000a 50B1     		cbz	r0, .L6
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     {
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         if (sota_parse((const int8_t *)buf, len, g_sota_buf, SOTA_BUF_LEN) == SOTA_OK)
+  78              		.loc 1 64 0
+  79 000c 4FF40473 		mov	r3, #528
+  80 0010 074A     		ldr	r2, .L10
+  81 0012 2946     		mov	r1, r5
+  82 0014 2046     		mov	r0, r4
+  83 0016 FFF7FEFF 		bl	sota_parse
+  84              	.LVL4:
+  85 001a 0346     		mov	r3, r0
+  86 001c 20B9     		cbnz	r0, .L9
+  87              	.L4:
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         {
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****             return 0;
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         }
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     }
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** 
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     return -1;
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** }
+  88              		.loc 1 71 0
+  89 001e 1846     		mov	r0, r3
+  90 0020 38BD     		pop	{r3, r4, r5, pc}
+  91              	.LVL5:
+  92              	.L6:
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** }
+  93              		.loc 1 70 0
+  94 0022 4FF0FF33 		mov	r3, #-1
+  95 0026 FAE7     		b	.L4
+  96              	.L9:
+  97 0028 4FF0FF33 		mov	r3, #-1
+  98 002c F7E7     		b	.L4
+  99              	.L11:
+ 100 002e 00BF     		.align	2
+ 101              	.L10:
+ 102 0030 00000000 		.word	g_sota_buf
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s 			page 4
+
+
+ 103              		.cfi_endproc
+ 104              	.LFE134:
+ 106              		.section	.text.sota_callback,"ax",%progbits
+ 107              		.align	1
+ 108              		.global	sota_callback
+ 109              		.syntax unified
+ 110              		.thumb
+ 111              		.thumb_func
+ 112              		.fpu fpv4-sp-d16
+ 114              	sota_callback:
+ 115              	.LFB135:
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** 
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** int32_t sota_callback(void *arg, int8_t* buf, int32_t buflen)
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** {
+ 116              		.loc 1 74 0
+ 117              		.cfi_startproc
+ 118              		@ args = 0, pretend = 0, frame = 0
+ 119              		@ frame_needed = 0, uses_anonymous_args = 0
+ 120              	.LVL6:
+ 121 0000 08B5     		push	{r3, lr}
+ 122              	.LCFI1:
+ 123              		.cfi_def_cfa_offset 8
+ 124              		.cfi_offset 3, -8
+ 125              		.cfi_offset 14, -4
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     int ret;
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     ret = sota_process(arg, g_sota_buf, buflen);
+ 126              		.loc 1 76 0
+ 127 0002 0F49     		ldr	r1, .L20
+ 128              	.LVL7:
+ 129 0004 FFF7FEFF 		bl	sota_process
+ 130              	.LVL8:
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** 
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     switch (ret)
+ 131              		.loc 1 78 0
+ 132 0008 0328     		cmp	r0, #3
+ 133 000a 10D0     		beq	.L14
+ 134 000c 06DC     		bgt	.L15
+ 135 000e 0128     		cmp	r0, #1
+ 136 0010 13DB     		blt	.L13
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     {
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         case SOTA_UPDATED:
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         {
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****             LOS_SwtmrStop(g_sota_timer);
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****             atiny_reboot();
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****             break;
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         }
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         case SOTA_DOWNLOADING:
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         case SOTA_UPDATING:
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         {
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****             LOS_SwtmrStart(g_sota_timer);
+ 137              		.loc 1 89 0
+ 138 0012 0C4B     		ldr	r3, .L20+4
+ 139 0014 1888     		ldrh	r0, [r3]
+ 140              	.LVL9:
+ 141 0016 FFF7FEFF 		bl	LOS_SwtmrStart
+ 142              	.LVL10:
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****             break;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s 			page 5
+
+
+ 143              		.loc 1 90 0
+ 144 001a 0EE0     		b	.L13
+ 145              	.LVL11:
+ 146              	.L15:
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     {
+ 147              		.loc 1 78 0
+ 148 001c 6628     		cmp	r0, #102
+ 149 001e 01D0     		beq	.L17
+ 150 0020 6928     		cmp	r0, #105
+ 151 0022 0AD1     		bne	.L13
+ 152              	.L17:
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         }
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         case SOTA_EXIT:
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         case SOTA_WRITE_FLASH_FAILED:
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         {
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****             LOS_SwtmrStop(g_sota_timer);
+ 153              		.loc 1 95 0
+ 154 0024 074B     		ldr	r3, .L20+4
+ 155 0026 1888     		ldrh	r0, [r3]
+ 156              	.LVL12:
+ 157 0028 FFF7FEFF 		bl	LOS_SwtmrStop
+ 158              	.LVL13:
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****             break;
+ 159              		.loc 1 96 0
+ 160 002c 05E0     		b	.L13
+ 161              	.LVL14:
+ 162              	.L14:
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****             atiny_reboot();
+ 163              		.loc 1 82 0
+ 164 002e 054B     		ldr	r3, .L20+4
+ 165 0030 1888     		ldrh	r0, [r3]
+ 166              	.LVL15:
+ 167 0032 FFF7FEFF 		bl	LOS_SwtmrStop
+ 168              	.LVL16:
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****             break;
+ 169              		.loc 1 83 0
+ 170 0036 FFF7FEFF 		bl	atiny_reboot
+ 171              	.LVL17:
+ 172              	.L13:
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         }
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         default:
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         {
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****         }          
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     }
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     return 0;
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** }
+ 173              		.loc 1 103 0
+ 174 003a 0020     		movs	r0, #0
+ 175 003c 08BD     		pop	{r3, pc}
+ 176              	.L21:
+ 177 003e 00BF     		.align	2
+ 178              	.L20:
+ 179 0040 00000000 		.word	g_sota_buf
+ 180 0044 00000000 		.word	g_sota_timer
+ 181              		.cfi_endproc
+ 182              	.LFE135:
+ 184              		.section	.text.sota_log,"ax",%progbits
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s 			page 6
+
+
+ 185              		.align	1
+ 186              		.global	sota_log
+ 187              		.syntax unified
+ 188              		.thumb
+ 189              		.thumb_func
+ 190              		.fpu fpv4-sp-d16
+ 192              	sota_log:
+ 193              	.LFB136:
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** #define LOG_BUF_SIZE (256)
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** int sota_log(const char *fmt, ...)
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** {
+ 194              		.loc 1 106 0
+ 195              		.cfi_startproc
+ 196              		@ args = 4, pretend = 16, frame = 264
+ 197              		@ frame_needed = 0, uses_anonymous_args = 1
+ 198              	.LVL18:
+ 199 0000 0FB4     		push	{r0, r1, r2, r3}
+ 200              	.LCFI2:
+ 201              		.cfi_def_cfa_offset 16
+ 202              		.cfi_offset 0, -16
+ 203              		.cfi_offset 1, -12
+ 204              		.cfi_offset 2, -8
+ 205              		.cfi_offset 3, -4
+ 206 0002 70B5     		push	{r4, r5, r6, lr}
+ 207              	.LCFI3:
+ 208              		.cfi_def_cfa_offset 32
+ 209              		.cfi_offset 4, -32
+ 210              		.cfi_offset 5, -28
+ 211              		.cfi_offset 6, -24
+ 212              		.cfi_offset 14, -20
+ 213 0004 C2B0     		sub	sp, sp, #264
+ 214              	.LCFI4:
+ 215              		.cfi_def_cfa_offset 296
+ 216 0006 46AC     		add	r4, sp, #280
+ 217 0008 54F8046B 		ldr	r6, [r4], #4
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     int ret;
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     char str_buf[LOG_BUF_SIZE] = {0};
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     va_list list;
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** 
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     memset(str_buf, 0, LOG_BUF_SIZE);
+ 218              		.loc 1 111 0
+ 219 000c 4FF48075 		mov	r5, #256
+ 220 0010 2A46     		mov	r2, r5
+ 221 0012 0021     		movs	r1, #0
+ 222 0014 02A8     		add	r0, sp, #8
+ 223 0016 FFF7FEFF 		bl	memset
+ 224              	.LVL19:
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     va_start(list, fmt);
+ 225              		.loc 1 112 0
+ 226 001a 0194     		str	r4, [sp, #4]
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     ret = vsnprintf(str_buf, LOG_BUF_SIZE, fmt, list);
+ 227              		.loc 1 113 0
+ 228 001c 2346     		mov	r3, r4
+ 229 001e 3246     		mov	r2, r6
+ 230 0020 2946     		mov	r1, r5
+ 231 0022 02A8     		add	r0, sp, #8
+ 232 0024 FFF7FEFF 		bl	vsnprintf
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s 			page 7
+
+
+ 233              	.LVL20:
+ 234 0028 0446     		mov	r4, r0
+ 235              	.LVL21:
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     va_end(list);
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** 
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     printf("%s", str_buf);
+ 236              		.loc 1 116 0
+ 237 002a 02A9     		add	r1, sp, #8
+ 238 002c 0448     		ldr	r0, .L24
+ 239              	.LVL22:
+ 240 002e FFF7FEFF 		bl	printf
+ 241              	.LVL23:
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** 
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     return ret;
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** }
+ 242              		.loc 1 119 0
+ 243 0032 2046     		mov	r0, r4
+ 244 0034 42B0     		add	sp, sp, #264
+ 245              	.LCFI5:
+ 246              		.cfi_def_cfa_offset 32
+ 247              		@ sp needed
+ 248 0036 BDE87040 		pop	{r4, r5, r6, lr}
+ 249              	.LCFI6:
+ 250              		.cfi_restore 14
+ 251              		.cfi_restore 6
+ 252              		.cfi_restore 5
+ 253              		.cfi_restore 4
+ 254              		.cfi_def_cfa_offset 16
+ 255              	.LVL24:
+ 256 003a 04B0     		add	sp, sp, #16
+ 257              	.LCFI7:
+ 258              		.cfi_restore 3
+ 259              		.cfi_restore 2
+ 260              		.cfi_restore 1
+ 261              		.cfi_restore 0
+ 262              		.cfi_def_cfa_offset 0
+ 263 003c 7047     		bx	lr
+ 264              	.L25:
+ 265 003e 00BF     		.align	2
+ 266              	.L24:
+ 267 0040 00000000 		.word	.LC1
+ 268              		.cfi_endproc
+ 269              	.LFE136:
+ 271              		.section	.text.nb_sota_demo,"ax",%progbits
+ 272              		.align	1
+ 273              		.global	nb_sota_demo
+ 274              		.syntax unified
+ 275              		.thumb
+ 276              		.thumb_func
+ 277              		.fpu fpv4-sp-d16
+ 279              	nb_sota_demo:
+ 280              	.LFB137:
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** 
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** 
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** void nb_sota_demo(void)
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** {
+ 281              		.loc 1 123 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s 			page 8
+
+
+ 282              		.cfi_startproc
+ 283              		@ args = 0, pretend = 0, frame = 48
+ 284              		@ frame_needed = 0, uses_anonymous_args = 0
+ 285 0000 10B5     		push	{r4, lr}
+ 286              	.LCFI8:
+ 287              		.cfi_def_cfa_offset 8
+ 288              		.cfi_offset 4, -8
+ 289              		.cfi_offset 14, -4
+ 290 0002 90B0     		sub	sp, sp, #64
+ 291              	.LCFI9:
+ 292              		.cfi_def_cfa_offset 72
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     sota_arg_s flash_op =
+ 293              		.loc 1 124 0
+ 294 0004 0024     		movs	r4, #0
+ 295 0006 0A94     		str	r4, [sp, #40]
+ 296 0008 0B94     		str	r4, [sp, #44]
+ 297 000a 0C94     		str	r4, [sp, #48]
+ 298 000c 0D94     		str	r4, [sp, #52]
+ 299 000e 0E94     		str	r4, [sp, #56]
+ 300 0010 0F94     		str	r4, [sp, #60]
+ 301 0012 154B     		ldr	r3, .L28
+ 302 0014 0593     		str	r3, [sp, #20]
+ 303 0016 154B     		ldr	r3, .L28+4
+ 304 0018 0693     		str	r3, [sp, #24]
+ 305 001a 154B     		ldr	r3, .L28+8
+ 306 001c 0793     		str	r3, [sp, #28]
+ 307 001e 154B     		ldr	r3, .L28+12
+ 308 0020 0893     		str	r3, [sp, #32]
+ 309 0022 154B     		ldr	r3, .L28+16
+ 310 0024 0993     		str	r3, [sp, #36]
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     {
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****        .get_ver = read_ver,
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****        .sota_send = nb_send_str,
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****        .sota_malloc = at_malloc,
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****        .sota_printf = sota_log,
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****        .sota_free = at_free,
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     };
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     hal_get_ota_opt(&flash_op.ota_info);
+ 311              		.loc 1 132 0
+ 312 0026 0BA8     		add	r0, sp, #44
+ 313 0028 FFF7FEFF 		bl	hal_get_ota_opt
+ 314              	.LVL25:
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     flash_op.ota_info.key.rsa_N = "C94BECB7BCBFF459B9A71F12C3CC0603B11F0D3A366A226FD3E73D453F96EFBB
+ 315              		.loc 1 133 0
+ 316 002c 134B     		ldr	r3, .L28+20
+ 317 002e 0E93     		str	r3, [sp, #56]
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     flash_op.ota_info.key.rsa_E = "10001";
+ 318              		.loc 1 134 0
+ 319 0030 134B     		ldr	r3, .L28+24
+ 320 0032 0F93     		str	r3, [sp, #60]
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     hal_init_ota();
+ 321              		.loc 1 135 0
+ 322 0034 FFF7FEFF 		bl	hal_init_ota
+ 323              	.LVL26:
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     LOS_SwtmrCreate(SOTA_MAX_TIME_OUT, LOS_SWTMR_MODE_NO_SELFDELETE, (SWTMR_PROC_FUNC)sota_timeout_
+ 324              		.loc 1 136 0
+ 325 0038 0294     		str	r4, [sp, #8]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s 			page 9
+
+
+ 326 003a 0123     		movs	r3, #1
+ 327 003c 0193     		str	r3, [sp, #4]
+ 328 003e 0093     		str	r3, [sp]
+ 329 0040 104B     		ldr	r3, .L28+28
+ 330 0042 114A     		ldr	r2, .L28+32
+ 331 0044 0221     		movs	r1, #2
+ 332 0046 41F28830 		movw	r0, #5000
+ 333 004a FFF7FEFF 		bl	LOS_SwtmrCreate
+ 334              	.LVL27:
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     sota_init(&flash_op);
+ 335              		.loc 1 137 0
+ 336 004e 05A8     		add	r0, sp, #20
+ 337 0050 FFF7FEFF 		bl	sota_init
+ 338              	.LVL28:
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c ****     (void)at.oob_register("+NNMI:", strlen("+NNMI:"), sota_callback, sota_cmd_match);
+ 339              		.loc 1 138 0
+ 340 0054 0D4B     		ldr	r3, .L28+36
+ 341 0056 5C6D     		ldr	r4, [r3, #84]
+ 342 0058 0D4B     		ldr	r3, .L28+40
+ 343 005a 0E4A     		ldr	r2, .L28+44
+ 344 005c 0621     		movs	r1, #6
+ 345 005e 0E48     		ldr	r0, .L28+48
+ 346 0060 A047     		blx	r4
+ 347              	.LVL29:
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/nbiot_without_atiny\sota_demo.c **** }
+ 348              		.loc 1 139 0
+ 349 0062 10B0     		add	sp, sp, #64
+ 350              	.LCFI10:
+ 351              		.cfi_def_cfa_offset 8
+ 352              		@ sp needed
+ 353 0064 10BD     		pop	{r4, pc}
+ 354              	.L29:
+ 355 0066 00BF     		.align	2
+ 356              	.L28:
+ 357 0068 00000000 		.word	read_ver
+ 358 006c 00000000 		.word	nb_send_str
+ 359 0070 00000000 		.word	at_malloc
+ 360 0074 00000000 		.word	at_free
+ 361 0078 00000000 		.word	sota_log
+ 362 007c 00000000 		.word	.LC2
+ 363 0080 04020000 		.word	.LC3
+ 364 0084 00000000 		.word	g_sota_timer
+ 365 0088 00000000 		.word	sota_timeout_handler
+ 366 008c 00000000 		.word	at
+ 367 0090 00000000 		.word	sota_cmd_match
+ 368 0094 00000000 		.word	sota_callback
+ 369 0098 0C020000 		.word	.LC4
+ 370              		.cfi_endproc
+ 371              	.LFE137:
+ 373              		.comm	g_sota_timer,2,2
+ 374              		.comm	g_sota_buf,528,4
+ 375              		.section	.rodata.nb_sota_demo.str1.4,"aMS",%progbits,1
+ 376              		.align	2
+ 377              	.LC2:
+ 378 0000 43393442 		.ascii	"C94BECB7BCBFF459B9A71F12C3CC0603B11F0D3A366A226FD3E"
+ 378      45434237 
+ 378      42434246 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s 			page 10
+
+
+ 378      46343539 
+ 378      42394137 
+ 379 0033 37334434 		.ascii	"73D453F96EFBBCD4DFED6D9F77FD78C3AB1805E1BD3858131AC"
+ 379      35334639 
+ 379      36454642 
+ 379      42434434 
+ 379      44464544 
+ 380 0066 42353330 		.ascii	"B5303F61AF524F43971B4D429CB847905E68935C1748D0096C1"
+ 380      33463631 
+ 380      41463532 
+ 380      34463433 
+ 380      39373142 
+ 381 0099 41303944 		.ascii	"A09DD539CE74857F9FDF0B0EA61574C5D76BD9A67681AC6A9DB"
+ 381      44353339 
+ 381      43453734 
+ 381      38353746 
+ 381      39464446 
+ 382 00cc 31424232 		.ascii	"1BB22F17120B1DBF3E32633DCE34F5446F52DD7335671AC3A1F"
+ 382      32463137 
+ 382      31323042 
+ 382      31444246 
+ 382      33453332 
+ 383 00ff 32314443 		.ascii	"21DC557FA4CE9A4E0E3E99FED33A0BAA1C6F6EE53EDD742284D"
+ 383      35353746 
+ 383      41344345 
+ 383      39413445 
+ 383      30453345 
+ 384 0132 36353832 		.ascii	"6582B51E4BF019787B8C33C2F2A095BEED11D6FE68611BD0082"
+ 384      42353145 
+ 384      34424630 
+ 384      31393738 
+ 384      37423843 
+ 385 0165 35414639 		.ascii	"5AF97DB985C62C3AE0DC69BD7D0118E6D620B52AFD514AD5BFA"
+ 385      37444239 
+ 385      38354336 
+ 385      32433341 
+ 385      45304443 
+ 386 0198 38424142 		.ascii	"8BAB998332213D7DBF5C98DC86CB8D4F98A416802B892B8D6BE"
+ 386      39393833 
+ 386      33323231 
+ 386      33443744 
+ 386      42463543 
+ 387 01cb 45354435 		.ascii	"E5D55B7E688334B281E4BEDDB11BD7B374355C5919BA5A9A1C9"
+ 387      35423745 
+ 387      36383833 
+ 387      33344232 
+ 387      38314534 
+ 388 01fe 314600   		.ascii	"1F\000"
+ 389 0201 000000   		.space	3
+ 390              	.LC3:
+ 391 0204 31303030 		.ascii	"10001\000"
+ 391      3100
+ 392 020a 0000     		.space	2
+ 393              	.LC4:
+ 394 020c 2B4E4E4D 		.ascii	"+NNMI:\000"
+ 394      493A00
+ 395              		.section	.rodata.read_ver.str1.4,"aMS",%progbits,1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s 			page 11
+
+
+ 396              		.align	2
+ 397              	.LC0:
+ 398 0000 56302E30 		.ascii	"V0.0\000"
+ 398      00
+ 399              		.section	.rodata.sota_log.str1.4,"aMS",%progbits,1
+ 400              		.align	2
+ 401              	.LC1:
+ 402 0000 257300   		.ascii	"%s\000"
+ 403              		.text
+ 404              	.Letext0:
+ 405              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 406              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 407              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 408              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 409              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 410              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 411              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 412              		.file 9 "<built-in>"
+ 413              		.file 10 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 414              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 415              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 416              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 417              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 418              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 419              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 420              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 421              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 422              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 423              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 424              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 425              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 426              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 427              		.file 24 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_swtmr.h"
+ 428              		.file 25 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/ota/ota_api.h"
+ 429              		.file 26 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/sota/sota.h"
+ 430              		.file 27 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/at_frame/at_main.h"
+ 431              		.file 28 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/ota_p
+ 432              		.file 29 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/osdepends/atiny_osdep.h"
+ 433              		.file 30 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 sota_demo.c
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:18     .text.read_ver:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:25     .text.read_ver:00000000 read_ver
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:46     .text.read_ver:0000000c $d
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:51     .text.sota_cmd_match:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:58     .text.sota_cmd_match:00000000 sota_cmd_match
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:102    .text.sota_cmd_match:00000030 $d
+                            *COM*:00000210 g_sota_buf
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:107    .text.sota_callback:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:114    .text.sota_callback:00000000 sota_callback
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:179    .text.sota_callback:00000040 $d
+                            *COM*:00000002 g_sota_timer
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:185    .text.sota_log:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:192    .text.sota_log:00000000 sota_log
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:267    .text.sota_log:00000040 $d
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:272    .text.nb_sota_demo:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:279    .text.nb_sota_demo:00000000 nb_sota_demo
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:357    .text.nb_sota_demo:00000068 $d
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:376    .rodata.nb_sota_demo.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:396    .rodata.read_ver.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccRGqfSe.s:400    .rodata.sota_log.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+strstr
+sota_parse
+sota_process
+LOS_SwtmrStart
+LOS_SwtmrStop
+atiny_reboot
+memset
+vsnprintf
+printf
+hal_get_ota_opt
+hal_init_ota
+LOS_SwtmrCreate
+sota_init
+nb_send_str
+at_malloc
+at_free
+sota_timeout_handler
+at

@@ -1,0 +1,46 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccqYGaSh.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"los_memstat.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              	.Letext0:
+  18              		.file 1 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  19              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  20              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  21              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+  22              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  23              		.file 6 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+  24              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  25              		.file 8 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+  26              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/system
+  27              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+  28              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+  29              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+  30              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+  31              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+  32              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+  33              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+  34              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+  35              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+  36              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccqYGaSh.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 los_memstat.c
+
+NO UNDEFINED SYMBOLS

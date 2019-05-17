@@ -1,0 +1,111 @@
+{
+    "compiler": {
+        "type": "GCC",
+        "prefix": "arm-none-eabi",
+        "path": "D:\\Program Files\\LiteOS Studio\\resources\\arm-none-eabi\\bin",
+        "make": {
+            "path": "D:\\Program Files\\LiteOS Studio\\resources\\msys\\1.0\\bin\\make.exe",
+            "script": "Makefile",
+            "args": null
+        },
+        "gcc": {
+            "path": null,
+            "optimze": "O2",
+            "cfiles": null,
+            "define": null,
+            "include": null,
+            "strictC": null,
+            "timeOptimize": null,
+            "C99Mode": true,
+            "ElfPerFunc": null,
+            "args": null
+        },
+        "asm": {
+            "path": null,
+            "asmfiles": null,
+            "define": null,
+            "include": null,
+            "args": null,
+            "readOnly": null,
+            "readWrite": null,
+            "thumbMode": null
+        },
+        "linker": {
+            "path": null,
+            "robase": "0x08000000",
+            "rwbase": "0x20000000",
+            "script": null,
+            "args": null
+        },
+        "gdbPath": "D:\\Program Files\\LiteOS Studio\\resources\\arm-none-eabi\\bin"
+    },
+    "burner": {
+        "path": null,
+        "type": "STLink/V2",
+        "speed": "8000",
+        "interface": "SWD",
+        "loadAddress": "0x08000000",
+        "erase": true,
+        "check": true,
+        "flashAddress": null,
+        "romsize": null
+    },
+    "debugger": {
+        "type": "STLink/V2",
+        "jlink": {
+            "path": null,
+            "port": "USB",
+            "speed": 8000,
+            "interface": "SWD"
+        },
+        "interface": "SWD",
+        "gdbServerPort": "4242",
+        "initType": "reset",
+        "initFile": ".icode\\default.gdbinit",
+        "customFile": ".icode\\default.gdbinit",
+        "compilePath": null,
+        "gdbPath": "D:\\Program Files\\LiteOS Studio\\resources\\arm-none-eabi\\bin",
+        "compileOS": "Windows"
+    },
+    "output": {
+        "name": "Huawei_LiteOS",
+        "path": ".\\build",
+        "files": [
+            "bin",
+            "map",
+            "elf"
+        ],
+        "assmableFile": "",
+        "delineCodeFile": ""
+    },
+    "target": {
+        "UUID": "2efd407e-72da-46f6-9483-a7a785af7fe7",
+        "flag": "0",
+        "factory": "ST",
+        "boardName": "STM32L431RC",
+        "productNumber": "STM32L431RC",
+        "core": "Cortex-M4",
+        "numberCores": 1,
+        "flashSize": "256KB",
+        "romAddress": "0x8000000",
+        "ramSize": "64KB",
+        "ramAddress": "0x20000000",
+        "restartAddress": "null",
+        "featuresAddress": "https://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32-ultra-low-power-mcus/stm32l4-series/stm32l4x1/stm32l431rc.html#samplebuy-scroll",
+        "dataSheetAddress": "https://www.st.com/resource/en/datasheet/stm32l431rc.pdf",
+        "_highlight": true
+    },
+    "general": {
+        "projectName": "GCC",
+        "description": null
+    },
+    "version": "0.3.0",
+    "serialPort": {
+        "port": "COM9",
+        "baudRate": "115200",
+        "dataBit": 8,
+        "stopBit": 1,
+        "parity": "None",
+        "flowControl": "None"
+    }
+}

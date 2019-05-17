@@ -1,0 +1,1154 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"object_connectivity_stat.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.prv_resetCounter,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	prv_resetCounter:
+  25              	.LFB136:
+  26              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * applicable export control laws and regulations.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 2
+
+
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** /*******************************************************************************
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * Copyright (c) 2015 Bosch Software Innovations GmbH Germany.
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * All rights reserved. This program and the accompanying materials
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * are made available under the terms of the Eclipse Public License v1.0
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * The Eclipse Public License is available at
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * The Eclipse Distribution License is available at
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *    http://www.eclipse.org/org/documents/edl-v10.php.
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * Contributors:
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *    Bosch Software Innovations GmbH - Please refer to git log
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *******************************************************************************/
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** /*
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  * This connectivity statistics object is optional and single instance only
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *  Resources:
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *          Name         | ID | Oper. | Inst. | Mand.|  Type   | Range | Units | Description |
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *  SMS Tx Counter       |  0 |   R   | Single|  No  | Integer |       |       |             |
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *  SMS Rx Counter       |  1 |   R   | Single|  No  | Integer |       |       |             |
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *  Tx Data              |  2 |   R   | Single|  No  | Integer |       | kByte |             |
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *  Rx Data              |  3 |   R   | Single|  No  | Integer |       | kByte |             |
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *  Max Message Size     |  4 |   R   | Single|  No  | Integer |       | Byte  |             |
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *  Average Message Size |  5 |   R   | Single|  No  | Integer |       | Byte  |             |
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  *  StartOrReset         |  6 |   E   | Single|  Yes | Integer |       |       |             |
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****  */
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** #include "internals.h"
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** // Resource Id's:
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** #define RES_O_SMS_TX_COUNTER            0
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** #define RES_O_SMS_RX_COUNTER            1
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** #define RES_O_TX_DATA                   2
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** #define RES_O_RX_DATA                   3
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** #define RES_O_MAX_MESSAGE_SIZE          4
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** #define RES_O_AVERAGE_MESSAGE_SIZE      5
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** #define RES_M_START_OR_RESET            6
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** typedef struct
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** {
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     int64_t   smsTxCounter;
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     int64_t   smsRxCounter;
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     int64_t   txDataByte;             // report in kByte!
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     int64_t   rxDataByte;             // report in kByte!
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     int64_t   maxMessageSize;
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     int64_t   avrMessageSize;
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     int64_t   messageCount;           // private for incremental average calc.
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     bool      collectDataStarted;
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** } conn_s_data_t;
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 3
+
+
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** static uint8_t prv_set_tlv(lwm2m_data_t *dataP, conn_s_data_t *connStDataP)
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** {
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     switch (dataP->id)
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     {
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     case RES_O_SMS_TX_COUNTER:
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         lwm2m_data_encode_int(connStDataP->smsTxCounter, dataP);
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_205_CONTENT;
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     case RES_O_SMS_RX_COUNTER:
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         lwm2m_data_encode_int(connStDataP->smsRxCounter, dataP);
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_205_CONTENT;
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     case RES_O_TX_DATA:
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         lwm2m_data_encode_int(connStDataP->txDataByte / 1024, dataP);
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_205_CONTENT;
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     case RES_O_RX_DATA:
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         lwm2m_data_encode_int(connStDataP->rxDataByte / 1024, dataP);
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_205_CONTENT;
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     case RES_O_MAX_MESSAGE_SIZE:
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         lwm2m_data_encode_int(connStDataP->maxMessageSize, dataP);
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_205_CONTENT;
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     case RES_O_AVERAGE_MESSAGE_SIZE:
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         lwm2m_data_encode_int(connStDataP->avrMessageSize, dataP);
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_205_CONTENT;
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     default:
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_404_NOT_FOUND ;
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     }
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** }
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** static uint8_t prv_read(uint16_t instanceId, int *numDataP, lwm2m_data_t **dataArrayP, lwm2m_data_c
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** {
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     uint8_t result;
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     int i;
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     // this is a single instance object
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     if (instanceId != 0)
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     {
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_404_NOT_FOUND ;
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     }
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     // is the server asking for the full object ?
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     if (*numDataP == 0)
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     {
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         uint16_t resList[] =
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         {
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             RES_O_SMS_TX_COUNTER,
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             RES_O_SMS_RX_COUNTER,
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             RES_O_TX_DATA,
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             RES_O_RX_DATA,
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             RES_O_MAX_MESSAGE_SIZE,
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             RES_O_AVERAGE_MESSAGE_SIZE
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         };
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         int nbRes = sizeof(resList) / sizeof(uint16_t);
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         *dataArrayP = lwm2m_data_new(nbRes);
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         if (*dataArrayP == NULL)
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             return COAP_500_INTERNAL_SERVER_ERROR ;
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         *numDataP = nbRes;
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         for (i = 0; i < nbRes; i++)
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 4
+
+
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         {
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             (*dataArrayP)[i].id = resList[i];
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         }
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     }
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     i = 0;
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     do
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     {
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         result = prv_set_tlv((*dataArrayP) + i, (conn_s_data_t *) (objectP->userData));
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         i++;
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     }
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     while (i < *numDataP && result == COAP_205_CONTENT );
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     return result;
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** }
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** static void prv_resetCounter(lwm2m_object_t *objectP, bool start)
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** {
+  27              		.loc 1 164 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  33 0000 30B4     		push	{r4, r5}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 5, -4
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     conn_s_data_t *myData = (conn_s_data_t *) objectP->userData;
+  38              		.loc 1 165 0
+  39 0002 836A     		ldr	r3, [r0, #40]
+  40              	.LVL1:
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     myData->smsTxCounter        = 0;
+  41              		.loc 1 166 0
+  42 0004 0024     		movs	r4, #0
+  43 0006 0025     		movs	r5, #0
+  44 0008 C3E90045 		strd	r4, [r3]
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     myData->smsRxCounter        = 0;
+  45              		.loc 1 167 0
+  46 000c C3E90245 		strd	r4, [r3, #8]
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     myData->txDataByte          = 0;
+  47              		.loc 1 168 0
+  48 0010 C3E90445 		strd	r4, [r3, #16]
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     myData->rxDataByte          = 0;
+  49              		.loc 1 169 0
+  50 0014 C3E90645 		strd	r4, [r3, #24]
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     myData->maxMessageSize      = 0;
+  51              		.loc 1 170 0
+  52 0018 C3E90845 		strd	r4, [r3, #32]
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     myData->avrMessageSize      = 0;
+  53              		.loc 1 171 0
+  54 001c C3E90A45 		strd	r4, [r3, #40]
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     myData->messageCount        = 0;
+  55              		.loc 1 172 0
+  56 0020 C3E90C45 		strd	r4, [r3, #48]
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     myData->collectDataStarted  = start;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 5
+
+
+  57              		.loc 1 173 0
+  58 0024 83F83810 		strb	r1, [r3, #56]
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** }
+  59              		.loc 1 174 0
+  60 0028 30BC     		pop	{r4, r5}
+  61              	.LCFI1:
+  62              		.cfi_restore 5
+  63              		.cfi_restore 4
+  64              		.cfi_def_cfa_offset 0
+  65 002a 7047     		bx	lr
+  66              		.cfi_endproc
+  67              	.LFE136:
+  69              		.section	.text.prv_exec,"ax",%progbits
+  70              		.align	1
+  71              		.syntax unified
+  72              		.thumb
+  73              		.thumb_func
+  74              		.fpu fpv4-sp-d16
+  76              	prv_exec:
+  77              	.LFB137:
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** static uint8_t prv_exec(uint16_t instanceId, uint16_t resourceId,
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****                         uint8_t *buffer, int length, lwm2m_object_t *objectP)
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** {
+  78              		.loc 1 178 0
+  79              		.cfi_startproc
+  80              		@ args = 4, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              	.LVL2:
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     // this is a single instance object
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     if (instanceId != 0)
+  83              		.loc 1 180 0
+  84 0000 58B9     		cbnz	r0, .L6
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     {
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_404_NOT_FOUND;
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     }
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     if (length != 0) return COAP_400_BAD_REQUEST;
+  85              		.loc 1 185 0
+  86 0002 63B9     		cbnz	r3, .L7
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     switch (resourceId)
+  87              		.loc 1 187 0
+  88 0004 0629     		cmp	r1, #6
+  89 0006 01D0     		beq	.L14
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     {
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     case RES_M_START_OR_RESET:
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         prv_resetCounter(objectP, true);
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_204_CHANGED;
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     default:
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_405_METHOD_NOT_ALLOWED;
+  90              		.loc 1 193 0
+  91 0008 8520     		movs	r0, #133
+  92              	.LVL3:
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     }
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** }
+  93              		.loc 1 195 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 6
+
+
+  94 000a 7047     		bx	lr
+  95              	.LVL4:
+  96              	.L14:
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     // this is a single instance object
+  97              		.loc 1 178 0
+  98 000c 08B5     		push	{r3, lr}
+  99              	.LCFI2:
+ 100              		.cfi_def_cfa_offset 8
+ 101              		.cfi_offset 3, -8
+ 102              		.cfi_offset 14, -4
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_204_CHANGED;
+ 103              		.loc 1 190 0
+ 104 000e 0121     		movs	r1, #1
+ 105              	.LVL5:
+ 106 0010 0298     		ldr	r0, [sp, #8]
+ 107              	.LVL6:
+ 108 0012 FFF7FEFF 		bl	prv_resetCounter
+ 109              	.LVL7:
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     default:
+ 110              		.loc 1 191 0
+ 111 0016 4420     		movs	r0, #68
+ 112              		.loc 1 195 0
+ 113 0018 08BD     		pop	{r3, pc}
+ 114              	.LVL8:
+ 115              	.L6:
+ 116              	.LCFI3:
+ 117              		.cfi_def_cfa_offset 0
+ 118              		.cfi_restore 3
+ 119              		.cfi_restore 14
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     }
+ 120              		.loc 1 182 0
+ 121 001a 8420     		movs	r0, #132
+ 122              	.LVL9:
+ 123 001c 7047     		bx	lr
+ 124              	.LVL10:
+ 125              	.L7:
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 126              		.loc 1 185 0
+ 127 001e 8020     		movs	r0, #128
+ 128              	.LVL11:
+ 129 0020 7047     		bx	lr
+ 130              		.cfi_endproc
+ 131              	.LFE137:
+ 133              		.section	.text.prv_set_tlv,"ax",%progbits
+ 134              		.align	1
+ 135              		.syntax unified
+ 136              		.thumb
+ 137              		.thumb_func
+ 138              		.fpu fpv4-sp-d16
+ 140              	prv_set_tlv:
+ 141              	.LFB134:
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     switch (dataP->id)
+ 142              		.loc 1 91 0
+ 143              		.cfi_startproc
+ 144              		@ args = 0, pretend = 0, frame = 0
+ 145              		@ frame_needed = 0, uses_anonymous_args = 0
+ 146              	.LVL12:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 7
+
+
+ 147 0000 38B5     		push	{r3, r4, r5, lr}
+ 148              	.LCFI4:
+ 149              		.cfi_def_cfa_offset 16
+ 150              		.cfi_offset 3, -16
+ 151              		.cfi_offset 4, -12
+ 152              		.cfi_offset 5, -8
+ 153              		.cfi_offset 14, -4
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     {
+ 154              		.loc 1 92 0
+ 155 0002 4388     		ldrh	r3, [r0, #2]
+ 156 0004 052B     		cmp	r3, #5
+ 157 0006 4AD8     		bhi	.L26
+ 158 0008 DFE803F0 		tbb	[pc, r3]
+ 159              	.L18:
+ 160 000c 03       		.byte	(.L17-.L18)/2
+ 161 000d 0A       		.byte	(.L19-.L18)/2
+ 162 000e 11       		.byte	(.L20-.L18)/2
+ 163 000f 26       		.byte	(.L21-.L18)/2
+ 164 0010 3B       		.byte	(.L22-.L18)/2
+ 165 0011 42       		.byte	(.L23-.L18)/2
+ 166              		.p2align 1
+ 167              	.L17:
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_205_CONTENT;
+ 168              		.loc 1 95 0
+ 169 0012 0246     		mov	r2, r0
+ 170 0014 D1E90001 		ldrd	r0, [r1]
+ 171              	.LVL13:
+ 172 0018 FFF7FEFF 		bl	lwm2m_data_encode_int
+ 173              	.LVL14:
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     case RES_O_SMS_RX_COUNTER:
+ 174              		.loc 1 96 0
+ 175 001c 4520     		movs	r0, #69
+ 176              	.L16:
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 177              		.loc 1 115 0
+ 178 001e 38BD     		pop	{r3, r4, r5, pc}
+ 179              	.LVL15:
+ 180              	.L19:
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_205_CONTENT;
+ 181              		.loc 1 98 0
+ 182 0020 0246     		mov	r2, r0
+ 183 0022 D1E90201 		ldrd	r0, [r1, #8]
+ 184              	.LVL16:
+ 185 0026 FFF7FEFF 		bl	lwm2m_data_encode_int
+ 186              	.LVL17:
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     case RES_O_TX_DATA:
+ 187              		.loc 1 99 0
+ 188 002a 4520     		movs	r0, #69
+ 189 002c F7E7     		b	.L16
+ 190              	.LVL18:
+ 191              	.L20:
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_205_CONTENT;
+ 192              		.loc 1 101 0
+ 193 002e D1E90445 		ldrd	r4, [r1, #16]
+ 194 0032 002C     		cmp	r4, #0
+ 195 0034 75F10003 		sbcs	r3, r5, #0
+ 196 0038 08DB     		blt	.L28
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 8
+
+
+ 197              	.L24:
+ 198 003a A30A     		lsrs	r3, r4, #10
+ 199 003c 0246     		mov	r2, r0
+ 200 003e 43EA8550 		orr	r0, r3, r5, lsl #22
+ 201              	.LVL19:
+ 202 0042 A912     		asrs	r1, r5, #10
+ 203              	.LVL20:
+ 204 0044 FFF7FEFF 		bl	lwm2m_data_encode_int
+ 205              	.LVL21:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     case RES_O_RX_DATA:
+ 206              		.loc 1 102 0
+ 207 0048 4520     		movs	r0, #69
+ 208 004a E8E7     		b	.L16
+ 209              	.LVL22:
+ 210              	.L28:
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_205_CONTENT;
+ 211              		.loc 1 101 0
+ 212 004c 40F2FF32 		movw	r2, #1023
+ 213 0050 0023     		movs	r3, #0
+ 214 0052 A418     		adds	r4, r4, r2
+ 215 0054 5D41     		adcs	r5, r5, r3
+ 216 0056 F0E7     		b	.L24
+ 217              	.L21:
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_205_CONTENT;
+ 218              		.loc 1 104 0
+ 219 0058 D1E90645 		ldrd	r4, [r1, #24]
+ 220 005c 002C     		cmp	r4, #0
+ 221 005e 75F10003 		sbcs	r3, r5, #0
+ 222 0062 08DB     		blt	.L29
+ 223              	.L25:
+ 224 0064 A30A     		lsrs	r3, r4, #10
+ 225 0066 0246     		mov	r2, r0
+ 226 0068 43EA8550 		orr	r0, r3, r5, lsl #22
+ 227              	.LVL23:
+ 228 006c A912     		asrs	r1, r5, #10
+ 229              	.LVL24:
+ 230 006e FFF7FEFF 		bl	lwm2m_data_encode_int
+ 231              	.LVL25:
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     case RES_O_MAX_MESSAGE_SIZE:
+ 232              		.loc 1 105 0
+ 233 0072 4520     		movs	r0, #69
+ 234 0074 D3E7     		b	.L16
+ 235              	.LVL26:
+ 236              	.L29:
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_205_CONTENT;
+ 237              		.loc 1 104 0
+ 238 0076 40F2FF32 		movw	r2, #1023
+ 239 007a 0023     		movs	r3, #0
+ 240 007c A418     		adds	r4, r4, r2
+ 241 007e 5D41     		adcs	r5, r5, r3
+ 242 0080 F0E7     		b	.L25
+ 243              	.L22:
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_205_CONTENT;
+ 244              		.loc 1 107 0
+ 245 0082 0246     		mov	r2, r0
+ 246 0084 D1E90801 		ldrd	r0, [r1, #32]
+ 247              	.LVL27:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 9
+
+
+ 248 0088 FFF7FEFF 		bl	lwm2m_data_encode_int
+ 249              	.LVL28:
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     case RES_O_AVERAGE_MESSAGE_SIZE:
+ 250              		.loc 1 108 0
+ 251 008c 4520     		movs	r0, #69
+ 252 008e C6E7     		b	.L16
+ 253              	.LVL29:
+ 254              	.L23:
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         return COAP_205_CONTENT;
+ 255              		.loc 1 110 0
+ 256 0090 0246     		mov	r2, r0
+ 257 0092 D1E90A01 		ldrd	r0, [r1, #40]
+ 258              	.LVL30:
+ 259 0096 FFF7FEFF 		bl	lwm2m_data_encode_int
+ 260              	.LVL31:
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     default:
+ 261              		.loc 1 111 0
+ 262 009a 4520     		movs	r0, #69
+ 263 009c BFE7     		b	.L16
+ 264              	.LVL32:
+ 265              	.L26:
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     }
+ 266              		.loc 1 113 0
+ 267 009e 8420     		movs	r0, #132
+ 268              	.LVL33:
+ 269 00a0 BDE7     		b	.L16
+ 270              		.cfi_endproc
+ 271              	.LFE134:
+ 273              		.section	.text.prv_read,"ax",%progbits
+ 274              		.align	1
+ 275              		.syntax unified
+ 276              		.thumb
+ 277              		.thumb_func
+ 278              		.fpu fpv4-sp-d16
+ 280              	prv_read:
+ 281              	.LFB135:
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     uint8_t result;
+ 282              		.loc 1 118 0
+ 283              		.cfi_startproc
+ 284              		@ args = 4, pretend = 0, frame = 16
+ 285              		@ frame_needed = 0, uses_anonymous_args = 0
+ 286              	.LVL34:
+ 287 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 288              	.LCFI5:
+ 289              		.cfi_def_cfa_offset 20
+ 290              		.cfi_offset 4, -20
+ 291              		.cfi_offset 5, -16
+ 292              		.cfi_offset 6, -12
+ 293              		.cfi_offset 7, -8
+ 294              		.cfi_offset 14, -4
+ 295 0002 85B0     		sub	sp, sp, #20
+ 296              	.LCFI6:
+ 297              		.cfi_def_cfa_offset 40
+ 298 0004 0A9F     		ldr	r7, [sp, #40]
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     {
+ 299              		.loc 1 123 0
+ 300 0006 78BB     		cbnz	r0, .L37
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 10
+
+
+ 301 0008 1546     		mov	r5, r2
+ 302 000a 0E46     		mov	r6, r1
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     {
+ 303              		.loc 1 129 0
+ 304 000c 0C68     		ldr	r4, [r1]
+ 305 000e 74B1     		cbz	r4, .L39
+ 306              	.LVL35:
+ 307              	.L32:
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     uint8_t result;
+ 308              		.loc 1 118 0 discriminator 2
+ 309 0010 0024     		movs	r4, #0
+ 310              	.L36:
+ 311              	.LVL36:
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         i++;
+ 312              		.loc 1 155 0 discriminator 2
+ 313 0012 2868     		ldr	r0, [r5]
+ 314 0014 B96A     		ldr	r1, [r7, #40]
+ 315 0016 00EB0410 		add	r0, r0, r4, lsl #4
+ 316 001a FFF7FEFF 		bl	prv_set_tlv
+ 317              	.LVL37:
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     }
+ 318              		.loc 1 156 0 discriminator 2
+ 319 001e 0134     		adds	r4, r4, #1
+ 320              	.LVL38:
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 321              		.loc 1 158 0 discriminator 2
+ 322 0020 3368     		ldr	r3, [r6]
+ 323 0022 A342     		cmp	r3, r4
+ 324 0024 01DD     		ble	.L31
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 325              		.loc 1 158 0 is_stmt 0 discriminator 1
+ 326 0026 4528     		cmp	r0, #69
+ 327 0028 F3D0     		beq	.L36
+ 328              	.LVL39:
+ 329              	.L31:
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 330              		.loc 1 161 0 is_stmt 1
+ 331 002a 05B0     		add	sp, sp, #20
+ 332              	.LCFI7:
+ 333              		.cfi_remember_state
+ 334              		.cfi_def_cfa_offset 20
+ 335              		@ sp needed
+ 336 002c F0BD     		pop	{r4, r5, r6, r7, pc}
+ 337              	.LVL40:
+ 338              	.L39:
+ 339              	.LCFI8:
+ 340              		.cfi_restore_state
+ 341              	.LBB2:
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         {
+ 342              		.loc 1 131 0
+ 343 002e 0F4B     		ldr	r3, .L41
+ 344              	.LVL41:
+ 345 0030 93E80700 		ldm	r3, {r0, r1, r2}
+ 346              	.LVL42:
+ 347 0034 04AB     		add	r3, sp, #16
+ 348 0036 03E90700 		stmdb	r3, {r0, r1, r2}
+ 349              	.LVL43:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 11
+
+
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         if (*dataArrayP == NULL)
+ 350              		.loc 1 142 0
+ 351 003a 0620     		movs	r0, #6
+ 352 003c FFF7FEFF 		bl	lwm2m_data_new
+ 353              	.LVL44:
+ 354 0040 2860     		str	r0, [r5]
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             return COAP_500_INTERNAL_SERVER_ERROR ;
+ 355              		.loc 1 143 0
+ 356 0042 10B1     		cbz	r0, .L40
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         for (i = 0; i < nbRes; i++)
+ 357              		.loc 1 145 0
+ 358 0044 0623     		movs	r3, #6
+ 359 0046 3360     		str	r3, [r6]
+ 360              	.LVL45:
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         {
+ 361              		.loc 1 146 0
+ 362 0048 0BE0     		b	.L34
+ 363              	.LVL46:
+ 364              	.L40:
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         *numDataP = nbRes;
+ 365              		.loc 1 144 0
+ 366 004a A020     		movs	r0, #160
+ 367 004c EDE7     		b	.L31
+ 368              	.LVL47:
+ 369              	.L35:
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         }
+ 370              		.loc 1 148 0 discriminator 3
+ 371 004e 2B68     		ldr	r3, [r5]
+ 372 0050 03EB0413 		add	r3, r3, r4, lsl #4
+ 373 0054 04AA     		add	r2, sp, #16
+ 374 0056 02EB4402 		add	r2, r2, r4, lsl #1
+ 375 005a 32F80C2C 		ldrh	r2, [r2, #-12]
+ 376 005e 5A80     		strh	r2, [r3, #2]	@ movhi
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         {
+ 377              		.loc 1 146 0 discriminator 3
+ 378 0060 0134     		adds	r4, r4, #1
+ 379              	.LVL48:
+ 380              	.L34:
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         {
+ 381              		.loc 1 146 0 is_stmt 0 discriminator 1
+ 382 0062 052C     		cmp	r4, #5
+ 383 0064 F3DD     		ble	.L35
+ 384 0066 D3E7     		b	.L32
+ 385              	.LVL49:
+ 386              	.L37:
+ 387              	.LBE2:
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     }
+ 388              		.loc 1 125 0 is_stmt 1
+ 389 0068 8420     		movs	r0, #132
+ 390              	.LVL50:
+ 391 006a DEE7     		b	.L31
+ 392              	.L42:
+ 393              		.align	2
+ 394              	.L41:
+ 395 006c 00000000 		.word	.LANCHOR0
+ 396              		.cfi_endproc
+ 397              	.LFE135:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 12
+
+
+ 399              		.global	__aeabi_ldivmod
+ 400              		.section	.text.conn_s_updateTxStatistic,"ax",%progbits
+ 401              		.align	1
+ 402              		.global	conn_s_updateTxStatistic
+ 403              		.syntax unified
+ 404              		.thumb
+ 405              		.thumb_func
+ 406              		.fpu fpv4-sp-d16
+ 408              	conn_s_updateTxStatistic:
+ 409              	.LFB138:
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** void conn_s_updateTxStatistic(lwm2m_object_t *objectP, uint16_t txDataByte, bool smsBased)
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** {
+ 410              		.loc 1 198 0
+ 411              		.cfi_startproc
+ 412              		@ args = 0, pretend = 0, frame = 0
+ 413              		@ frame_needed = 0, uses_anonymous_args = 0
+ 414              	.LVL51:
+ 415 0000 2DE9F04B 		push	{r4, r5, r6, r7, r8, r9, fp, lr}
+ 416              	.LCFI9:
+ 417              		.cfi_def_cfa_offset 32
+ 418              		.cfi_offset 4, -32
+ 419              		.cfi_offset 5, -28
+ 420              		.cfi_offset 6, -24
+ 421              		.cfi_offset 7, -20
+ 422              		.cfi_offset 8, -16
+ 423              		.cfi_offset 9, -12
+ 424              		.cfi_offset 11, -8
+ 425              		.cfi_offset 14, -4
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     conn_s_data_t *myData = (conn_s_data_t *) (objectP->userData);
+ 426              		.loc 1 199 0
+ 427 0004 846A     		ldr	r4, [r0, #40]
+ 428              	.LVL52:
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     if (myData->collectDataStarted)
+ 429              		.loc 1 200 0
+ 430 0006 94F83830 		ldrb	r3, [r4, #56]	@ zero_extendqisi2
+ 431 000a 002B     		cmp	r3, #0
+ 432 000c 2CD0     		beq	.L43
+ 433 000e 1546     		mov	r5, r2
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     {
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         myData->txDataByte += txDataByte;
+ 434              		.loc 1 202 0
+ 435 0010 8EB2     		uxth	r6, r1
+ 436 0012 0027     		movs	r7, #0
+ 437 0014 D4E90489 		ldrd	r8, [r4, #16]
+ 438 0018 18EB060B 		adds	fp, r8, r6
+ 439 001c 49EB070C 		adc	ip, r9, r7
+ 440 0020 C4E904BC 		strd	fp, [r4, #16]
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         myData->messageCount++;
+ 441              		.loc 1 203 0
+ 442 0024 D4E90C23 		ldrd	r2, [r4, #48]
+ 443              	.LVL53:
+ 444 0028 501C     		adds	r0, r2, #1
+ 445              	.LVL54:
+ 446 002a 43F10001 		adc	r1, r3, #0
+ 447              	.LVL55:
+ 448 002e C4E90C01 		strd	r0, [r4, #48]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 13
+
+
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         myData->avrMessageSize = (myData->txDataByte + myData->rxDataByte) /
+ 449              		.loc 1 204 0
+ 450 0032 D4E90689 		ldrd	r8, [r4, #24]
+ 451 0036 0246     		mov	r2, r0
+ 452 0038 0B46     		mov	r3, r1
+ 453 003a 18EB0B00 		adds	r0, r8, fp
+ 454 003e 49EB0C01 		adc	r1, r9, ip
+ 455 0042 FFF7FEFF 		bl	__aeabi_ldivmod
+ 456              	.LVL56:
+ 457 0046 C4E90A01 		strd	r0, [r4, #40]
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****                                  myData->messageCount;
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         if (txDataByte > myData->maxMessageSize)
+ 458              		.loc 1 206 0
+ 459 004a D4E90823 		ldrd	r2, [r4, #32]
+ 460 004e B242     		cmp	r2, r6
+ 461 0050 BB41     		sbcs	r3, r3, r7
+ 462 0052 01DA     		bge	.L45
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             myData->maxMessageSize = txDataByte;
+ 463              		.loc 1 207 0
+ 464 0054 C4E90867 		strd	r6, [r4, #32]
+ 465              	.L45:
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         if (smsBased) myData->smsTxCounter++;
+ 466              		.loc 1 208 0
+ 467 0058 35B1     		cbz	r5, .L43
+ 468              		.loc 1 208 0 is_stmt 0 discriminator 1
+ 469 005a D4E90001 		ldrd	r0, [r4]
+ 470 005e 421C     		adds	r2, r0, #1
+ 471 0060 41F10003 		adc	r3, r1, #0
+ 472 0064 C4E90023 		strd	r2, [r4]
+ 473              	.LVL57:
+ 474              	.L43:
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     }
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** }
+ 475              		.loc 1 210 0 is_stmt 1
+ 476 0068 BDE8F08B 		pop	{r4, r5, r6, r7, r8, r9, fp, pc}
+ 477              		.cfi_endproc
+ 478              	.LFE138:
+ 480              		.section	.text.conn_s_updateRxStatistic,"ax",%progbits
+ 481              		.align	1
+ 482              		.global	conn_s_updateRxStatistic
+ 483              		.syntax unified
+ 484              		.thumb
+ 485              		.thumb_func
+ 486              		.fpu fpv4-sp-d16
+ 488              	conn_s_updateRxStatistic:
+ 489              	.LFB139:
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** void conn_s_updateRxStatistic(lwm2m_object_t *objectP, uint16_t rxDataByte, bool smsBased)
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** {
+ 490              		.loc 1 213 0
+ 491              		.cfi_startproc
+ 492              		@ args = 0, pretend = 0, frame = 0
+ 493              		@ frame_needed = 0, uses_anonymous_args = 0
+ 494              	.LVL58:
+ 495 0000 2DE9F84F 		push	{r3, r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 496              	.LCFI10:
+ 497              		.cfi_def_cfa_offset 40
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 14
+
+
+ 498              		.cfi_offset 3, -40
+ 499              		.cfi_offset 4, -36
+ 500              		.cfi_offset 5, -32
+ 501              		.cfi_offset 6, -28
+ 502              		.cfi_offset 7, -24
+ 503              		.cfi_offset 8, -20
+ 504              		.cfi_offset 9, -16
+ 505              		.cfi_offset 10, -12
+ 506              		.cfi_offset 11, -8
+ 507              		.cfi_offset 14, -4
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     conn_s_data_t *myData = (conn_s_data_t *) (objectP->userData);
+ 508              		.loc 1 214 0
+ 509 0004 846A     		ldr	r4, [r0, #40]
+ 510              	.LVL59:
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     if (myData->collectDataStarted)
+ 511              		.loc 1 215 0
+ 512 0006 94F83830 		ldrb	r3, [r4, #56]	@ zero_extendqisi2
+ 513 000a 002B     		cmp	r3, #0
+ 514 000c 35D0     		beq	.L47
+ 515 000e 1546     		mov	r5, r2
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     {
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         myData->rxDataByte += rxDataByte;
+ 516              		.loc 1 217 0
+ 517 0010 1FFA81FA 		uxth	r10, r1
+ 518 0014 4FF0000B 		mov	fp, #0
+ 519 0018 D4E90601 		ldrd	r0, [r4, #24]
+ 520              	.LVL60:
+ 521 001c 10EB0A06 		adds	r6, r0, r10
+ 522 0020 41EB0B07 		adc	r7, r1, fp
+ 523 0024 C4E90667 		strd	r6, [r4, #24]
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         myData->messageCount++;
+ 524              		.loc 1 218 0
+ 525 0028 D4E90C23 		ldrd	r2, [r4, #48]
+ 526              	.LVL61:
+ 527 002c 501C     		adds	r0, r2, #1
+ 528 002e 43F10001 		adc	r1, r3, #0
+ 529              	.LVL62:
+ 530 0032 C4E90C01 		strd	r0, [r4, #48]
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         myData->avrMessageSize = (myData->txDataByte + myData->rxDataByte) /
+ 531              		.loc 1 219 0
+ 532 0036 D4E90489 		ldrd	r8, [r4, #16]
+ 533 003a 0246     		mov	r2, r0
+ 534 003c 0B46     		mov	r3, r1
+ 535 003e 16EB0800 		adds	r0, r6, r8
+ 536 0042 47EB0901 		adc	r1, r7, r9
+ 537 0046 FFF7FEFF 		bl	__aeabi_ldivmod
+ 538              	.LVL63:
+ 539 004a C4E90A01 		strd	r0, [r4, #40]
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****                                  myData->messageCount;
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         if (rxDataByte > myData->maxMessageSize)
+ 540              		.loc 1 221 0
+ 541 004e D4E90823 		ldrd	r2, [r4, #32]
+ 542 0052 5245     		cmp	r2, r10
+ 543 0054 73EB0B03 		sbcs	r3, r3, fp
+ 544 0058 01DA     		bge	.L49
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             myData->maxMessageSize = rxDataByte;
+ 545              		.loc 1 222 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 15
+
+
+ 546 005a C4E908AB 		strd	r10, [r4, #32]
+ 547              	.L49:
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         myData->txDataByte += rxDataByte;
+ 548              		.loc 1 223 0
+ 549 005e 1AEB0806 		adds	r6, r10, r8
+ 550 0062 4BEB0907 		adc	r7, fp, r9
+ 551 0066 C4E90467 		strd	r6, [r4, #16]
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         if (smsBased) myData->smsRxCounter++;
+ 552              		.loc 1 224 0
+ 553 006a 35B1     		cbz	r5, .L47
+ 554              		.loc 1 224 0 is_stmt 0 discriminator 1
+ 555 006c D4E90201 		ldrd	r0, [r4, #8]
+ 556 0070 421C     		adds	r2, r0, #1
+ 557 0072 41F10003 		adc	r3, r1, #0
+ 558 0076 C4E90223 		strd	r2, [r4, #8]
+ 559              	.LVL64:
+ 560              	.L47:
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     }
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** }
+ 561              		.loc 1 226 0 is_stmt 1
+ 562 007a BDE8F88F 		pop	{r3, r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 563              		.cfi_endproc
+ 564              	.LFE139:
+ 566              		.section	.text.get_object_conn_s,"ax",%progbits
+ 567              		.align	1
+ 568              		.global	get_object_conn_s
+ 569              		.syntax unified
+ 570              		.thumb
+ 571              		.thumb_func
+ 572              		.fpu fpv4-sp-d16
+ 574              	get_object_conn_s:
+ 575              	.LFB140:
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** lwm2m_object_t *get_object_conn_s(void)
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** {
+ 576              		.loc 1 230 0
+ 577              		.cfi_startproc
+ 578              		@ args = 0, pretend = 0, frame = 0
+ 579              		@ frame_needed = 0, uses_anonymous_args = 0
+ 580 0000 10B5     		push	{r4, lr}
+ 581              	.LCFI11:
+ 582              		.cfi_def_cfa_offset 8
+ 583              		.cfi_offset 4, -8
+ 584              		.cfi_offset 14, -4
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     /*
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****      * The get_object_conn_s() function create the object itself and return
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****      * a pointer to the structure that represent it.
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****      */
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     lwm2m_object_t *connObj;
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     connObj = (lwm2m_object_t *) lwm2m_malloc(sizeof(lwm2m_object_t));
+ 585              		.loc 1 237 0
+ 586 0002 2C20     		movs	r0, #44
+ 587 0004 FFF7FEFF 		bl	lwm2m_malloc
+ 588              	.LVL65:
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 16
+
+
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     if (NULL != connObj)
+ 589              		.loc 1 239 0
+ 590 0008 0446     		mov	r4, r0
+ 591 000a D0B1     		cbz	r0, .L51
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     {
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         memset(connObj, 0, sizeof(lwm2m_object_t));
+ 592              		.loc 1 241 0
+ 593 000c 2C22     		movs	r2, #44
+ 594 000e 0021     		movs	r1, #0
+ 595 0010 FFF7FEFF 		bl	memset
+ 596              	.LVL66:
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         /*
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****          * It assign his unique ID
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****          * The 7 is the standard ID for the optional object "Connectivity Statistics".
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****          */
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         connObj->objID = LWM2M_CONN_STATS_OBJECT_ID;
+ 597              		.loc 1 247 0
+ 598 0014 0723     		movs	r3, #7
+ 599 0016 A380     		strh	r3, [r4, #4]	@ movhi
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         connObj->instanceList = lwm2m_malloc(sizeof(lwm2m_list_t));
+ 600              		.loc 1 248 0
+ 601 0018 0820     		movs	r0, #8
+ 602 001a FFF7FEFF 		bl	lwm2m_malloc
+ 603              	.LVL67:
+ 604 001e A060     		str	r0, [r4, #8]
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         if (NULL != connObj->instanceList)
+ 605              		.loc 1 249 0
+ 606 0020 88B1     		cbz	r0, .L53
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         {
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             memset(connObj->instanceList, 0, sizeof(lwm2m_list_t));
+ 607              		.loc 1 251 0
+ 608 0022 0023     		movs	r3, #0
+ 609 0024 0360     		str	r3, [r0]	@ unaligned
+ 610 0026 4360     		str	r3, [r0, #4]	@ unaligned
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         }
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         else
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         {
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             lwm2m_free(connObj);
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             return NULL;
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         }
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         /*
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****          * And the private function that will access the object.
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****          * Those function will be called when a read/execute/close
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****          * query is made by the server or core. In fact the library don't need
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****          * to know the resources of the object, only the server does.
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****          */
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         connObj->readFunc     = prv_read;
+ 611              		.loc 1 265 0
+ 612 0028 0D4B     		ldr	r3, .L59
+ 613 002a E360     		str	r3, [r4, #12]
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         connObj->executeFunc  = prv_exec;
+ 614              		.loc 1 266 0
+ 615 002c 0D4B     		ldr	r3, .L59+4
+ 616 002e 6361     		str	r3, [r4, #20]
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         connObj->userData     = lwm2m_malloc(sizeof(conn_s_data_t));
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 17
+
+
+ 617              		.loc 1 267 0
+ 618 0030 4020     		movs	r0, #64
+ 619 0032 FFF7FEFF 		bl	lwm2m_malloc
+ 620              	.LVL68:
+ 621 0036 A062     		str	r0, [r4, #40]
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         /*
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****          * Also some user data can be stored in the object with a private
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****          * structure containing the needed variables.
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****          */
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         if (NULL != connObj->userData)
+ 622              		.loc 1 273 0
+ 623 0038 50B1     		cbz	r0, .L58
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         {
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             prv_resetCounter(connObj, false);
+ 624              		.loc 1 275 0
+ 625 003a 0021     		movs	r1, #0
+ 626 003c 2046     		mov	r0, r4
+ 627 003e FFF7FEFF 		bl	prv_resetCounter
+ 628              	.LVL69:
+ 629              	.L51:
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         }
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         else
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         {
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             lwm2m_free(connObj->instanceList);
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             lwm2m_free(connObj);
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             connObj = NULL;
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         }
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     }
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     return connObj;
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** }
+ 630              		.loc 1 285 0
+ 631 0042 2046     		mov	r0, r4
+ 632 0044 10BD     		pop	{r4, pc}
+ 633              	.LVL70:
+ 634              	.L53:
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             return NULL;
+ 635              		.loc 1 255 0
+ 636 0046 2046     		mov	r0, r4
+ 637 0048 FFF7FEFF 		bl	lwm2m_free
+ 638              	.LVL71:
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         }
+ 639              		.loc 1 256 0
+ 640 004c 0024     		movs	r4, #0
+ 641              	.LVL72:
+ 642 004e F8E7     		b	.L51
+ 643              	.LVL73:
+ 644              	.L58:
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             lwm2m_free(connObj);
+ 645              		.loc 1 279 0
+ 646 0050 A068     		ldr	r0, [r4, #8]
+ 647 0052 FFF7FEFF 		bl	lwm2m_free
+ 648              	.LVL74:
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****             connObj = NULL;
+ 649              		.loc 1 280 0
+ 650 0056 2046     		mov	r0, r4
+ 651 0058 FFF7FEFF 		bl	lwm2m_free
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 18
+
+
+ 652              	.LVL75:
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****         }
+ 653              		.loc 1 281 0
+ 654 005c 0024     		movs	r4, #0
+ 655 005e F0E7     		b	.L51
+ 656              	.L60:
+ 657              		.align	2
+ 658              	.L59:
+ 659 0060 00000000 		.word	prv_read
+ 660 0064 00000000 		.word	prv_exec
+ 661              		.cfi_endproc
+ 662              	.LFE140:
+ 664              		.section	.text.free_object_conn_s,"ax",%progbits
+ 665              		.align	1
+ 666              		.global	free_object_conn_s
+ 667              		.syntax unified
+ 668              		.thumb
+ 669              		.thumb_func
+ 670              		.fpu fpv4-sp-d16
+ 672              	free_object_conn_s:
+ 673              	.LFB141:
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** 
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** void free_object_conn_s(lwm2m_object_t *objectP)
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** {
+ 674              		.loc 1 288 0
+ 675              		.cfi_startproc
+ 676              		@ args = 0, pretend = 0, frame = 0
+ 677              		@ frame_needed = 0, uses_anonymous_args = 0
+ 678              	.LVL76:
+ 679 0000 10B5     		push	{r4, lr}
+ 680              	.LCFI12:
+ 681              		.cfi_def_cfa_offset 8
+ 682              		.cfi_offset 4, -8
+ 683              		.cfi_offset 14, -4
+ 684 0002 0446     		mov	r4, r0
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     lwm2m_free(objectP->userData);
+ 685              		.loc 1 289 0
+ 686 0004 806A     		ldr	r0, [r0, #40]
+ 687              	.LVL77:
+ 688 0006 FFF7FEFF 		bl	lwm2m_free
+ 689              	.LVL78:
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     lwm2m_list_free(objectP->instanceList);
+ 690              		.loc 1 290 0
+ 691 000a A068     		ldr	r0, [r4, #8]
+ 692 000c FFF7FEFF 		bl	lwm2m_list_free
+ 693              	.LVL79:
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c ****     lwm2m_free(objectP);
+ 694              		.loc 1 291 0
+ 695 0010 2046     		mov	r0, r4
+ 696 0012 FFF7FEFF 		bl	lwm2m_free
+ 697              	.LVL80:
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_connectivity_stat.c **** }
+ 698              		.loc 1 292 0
+ 699 0016 10BD     		pop	{r4, pc}
+ 700              		.cfi_endproc
+ 701              	.LFE141:
+ 703              		.section	.rodata
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 19
+
+
+ 704              		.align	2
+ 705              		.set	.LANCHOR0,. + 0
+ 706              	.LC0:
+ 707 0000 0000     		.short	0
+ 708 0002 0100     		.short	1
+ 709 0004 0200     		.short	2
+ 710 0006 0300     		.short	3
+ 711 0008 0400     		.short	4
+ 712 000a 0500     		.short	5
+ 713              		.text
+ 714              	.Letext0:
+ 715              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 716              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 717              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 718              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 719              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 720              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 721              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 722              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core/
+ 723              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 724              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 725              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 726              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 727              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 728              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 729              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 730              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 731              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 732              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 733              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 734              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 735              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 736              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core
+ 737              		.file 24 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 738              		.file 25 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 739              		.file 26 "<built-in>"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 object_connectivity_stat.c
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:18     .text.prv_resetCounter:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:24     .text.prv_resetCounter:00000000 prv_resetCounter
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:70     .text.prv_exec:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:76     .text.prv_exec:00000000 prv_exec
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:134    .text.prv_set_tlv:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:140    .text.prv_set_tlv:00000000 prv_set_tlv
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:160    .text.prv_set_tlv:0000000c $d
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:166    .text.prv_set_tlv:00000012 $t
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:274    .text.prv_read:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:280    .text.prv_read:00000000 prv_read
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:395    .text.prv_read:0000006c $d
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:401    .text.conn_s_updateTxStatistic:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:408    .text.conn_s_updateTxStatistic:00000000 conn_s_updateTxStatistic
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:481    .text.conn_s_updateRxStatistic:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:488    .text.conn_s_updateRxStatistic:00000000 conn_s_updateRxStatistic
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:567    .text.get_object_conn_s:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:574    .text.get_object_conn_s:00000000 get_object_conn_s
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:659    .text.get_object_conn_s:00000060 $d
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:665    .text.free_object_conn_s:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:672    .text.free_object_conn_s:00000000 free_object_conn_s
+c:\Users\lenovo\AppData\Local\Temp\ccLmsVBh.s:704    .rodata:00000000 $d
+
+UNDEFINED SYMBOLS
+lwm2m_data_encode_int
+lwm2m_data_new
+__aeabi_ldivmod
+lwm2m_malloc
+memset
+lwm2m_free
+lwm2m_list_free

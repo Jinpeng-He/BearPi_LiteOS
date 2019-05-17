@@ -1,0 +1,871 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"los_membox.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.LOS_MemboxInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	LOS_MemboxInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	LOS_MemboxInit:
+  26              	.LFB134:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox/los_membox.c
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #include "los_typedef.h"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #include "los_hwi.h"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #include "los_membox.ph"
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #if (LOSCFG_PLATFORM_EXC == YES)
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #include "los_memcheck.ph"
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #endif
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #ifdef __cplusplus
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #if __cplusplus
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** extern "C" {
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #endif /* __cplusplus */
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #endif /* __cplusplus */
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** /**
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * The address of the static memory pool must be aligned to the boundary of 4.
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  */
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #define OS_BOXMEM_BASE_ALIGN  4
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #define IS_BOXMEM_ALIGNED(value, alignSize)  (0 == (((UINT32)(value)) & ((UINT32)(alignSize - 1))))
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** /**
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * Get the address of the next memory node in the static memory pool.
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  */
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #define OS_MEMBOX_NODE_NEXT(addr, uwBlkSize)  (LOS_MEMBOX_NODE *)((UINT8 *)(addr) + (uwBlkSize))
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** /**
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * The magic word of the memory box.
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  */
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #ifdef LOS_MEMBOX_MAGIC_CHECK
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #define OS_MEMBOX_MAGIC              0xa55a5aa5
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #define OS_MEMBOX_SET_MAGIC(addr)    *((UINT32 *)(addr)) = OS_MEMBOX_MAGIC
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #define OS_MEMBOX_CHECK_MAGIC(addr)  ((*((UINT32 *)(addr)) == OS_MEMBOX_MAGIC) ? LOS_OK: LOS_NOK)
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #else
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #define OS_MEMBOX_SET_MAGIC(addr)
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #define OS_MEMBOX_CHECK_MAGIC(addr)  LOS_OK
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #endif
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** /**
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  * Get the address of memory block according to the magic word information.
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  */
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #define OS_MEMBOX_USER_ADDR(addr)  ((VOID *)((UINT8 *)(addr) + LOS_MEMBOX_MAGIC_SIZE))
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #define OS_MEMBOX_NODE_ADDR(addr)  ((LOS_MEMBOX_NODE *)((UINT8 *)(addr) - LOS_MEMBOX_MAGIC_SIZE))
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** /*****************************************************************************
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Function : osCheckBoxMem
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Description : Check whether the memory block is valid
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Input       : pstBoxInfo  --- Pointer to the memory pool
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****                pstNode     --- Pointer to the memory block that will be checked
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Output      : None
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Return      : LOS_OK - OK, LOS_NOK - Error
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** *****************************************************************************/
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** LITE_OS_SEC_TEXT static INLINE UINT32 osCheckBoxMem(const LOS_MEMBOX_INFO *pstBoxInfo, const VOID *
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 3
+
+
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     UINT32 uwOffSet;
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     if (pstBoxInfo->uwBlkSize == 0)
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         return LOS_NOK;
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     uwOffSet = (UINT32)pstNode - (UINT32)(pstBoxInfo + 1);
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     if ((uwOffSet % pstBoxInfo->uwBlkSize) != 0)
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         return LOS_NOK;
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     if ((uwOffSet / pstBoxInfo->uwBlkSize) >= pstBoxInfo->uwBlkNum)
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         return LOS_NOK;
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     return OS_MEMBOX_CHECK_MAGIC(pstNode);
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** }
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** /*****************************************************************************
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Function : LOS_MemboxInit
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Description : Initialize Static Memory pool
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Input       : pBoxMem    --- Pointer to the memory pool
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****                uwBoxSize  --- Size of the memory pool
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****                uwBlkSize  --- Size of the memory block
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Output      : None
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Return      : LOS_OK - OK, LOS_NOK - Error
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** *****************************************************************************/
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** LITE_OS_SEC_TEXT_INIT UINT32 LOS_MemboxInit(VOID *pBoxMem, UINT32 uwBoxSize, UINT32 uwBlkSize)
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** {
+  28              		.loc 1 120 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     LOS_MEMBOX_NODE *pstNode = NULL;
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     UINT32 i;
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     UINTPTR uvIntSave;
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     if (pBoxMem == NULL || uwBlkSize == 0 || uwBoxSize < sizeof(LOS_MEMBOX_INFO))
+  33              		.loc 1 126 0
+  34 0000 88B3     		cbz	r0, .L6
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+  35              		.loc 1 120 0 discriminator 1
+  36 0002 70B5     		push	{r4, r5, r6, lr}
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 16
+  39              		.cfi_offset 4, -16
+  40              		.cfi_offset 5, -12
+  41              		.cfi_offset 6, -8
+  42              		.cfi_offset 14, -4
+  43 0004 0446     		mov	r4, r0
+  44              		.loc 1 126 0 discriminator 1
+  45 0006 82B3     		cbz	r2, .L7
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 4
+
+
+  46              		.loc 1 126 0 is_stmt 0 discriminator 2
+  47 0008 0F29     		cmp	r1, #15
+  48 000a 30D9     		bls	.L8
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         return LOS_NOK;
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     if (!IS_BOXMEM_ALIGNED(pBoxMem, OS_BOXMEM_BASE_ALIGN))
+  49              		.loc 1 131 0 is_stmt 1
+  50 000c 10F0030F 		tst	r0, #3
+  51 0010 01D0     		beq	.L14
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         return LOS_NOK;
+  52              		.loc 1 133 0
+  53 0012 0120     		movs	r0, #1
+  54              	.LVL1:
+  55 0014 2AE0     		b	.L1
+  56              	.LVL2:
+  57              	.L14:
+  58 0016 1546     		mov	r5, r2
+  59 0018 0E46     		mov	r6, r1
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     uvIntSave = LOS_IntLock();
+  60              		.loc 1 136 0
+  61 001a FFF7FEFF 		bl	LOS_IntLock
+  62              	.LVL3:
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     /*
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****      * The node size is aligned to the next 4 boundary.
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****      * Memory that is not enough for one node size in the memory pool will be ignored.
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****      */
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     pstBoxInfo->uwBlkSize = LOS_MEMBOX_ALIGNED(uwBlkSize + LOS_MEMBOX_MAGIC_SIZE);
+  63              		.loc 1 142 0
+  64 001e EA1D     		adds	r2, r5, #7
+  65 0020 22F00302 		bic	r2, r2, #3
+  66 0024 2260     		str	r2, [r4]
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     pstBoxInfo->uwBlkNum = (uwBoxSize - sizeof(LOS_MEMBOX_INFO)) / pstBoxInfo->uwBlkSize;
+  67              		.loc 1 143 0
+  68 0026 A6F11001 		sub	r1, r6, #16
+  69 002a B1FBF2F2 		udiv	r2, r1, r2
+  70 002e 6260     		str	r2, [r4, #4]
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     pstBoxInfo->uwBlkCnt = 0;
+  71              		.loc 1 144 0
+  72 0030 0023     		movs	r3, #0
+  73 0032 A360     		str	r3, [r4, #8]
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     if (pstBoxInfo->uwBlkNum == 0)
+  74              		.loc 1 146 0
+  75 0034 6AB1     		cbz	r2, .L15
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         LOS_IntRestore(uvIntSave);
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         return LOS_NOK;
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     pstNode = (LOS_MEMBOX_NODE *)(pstBoxInfo + 1);
+  76              		.loc 1 152 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 5
+
+
+  77 0036 04F11002 		add	r2, r4, #16
+  78              	.LVL4:
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     pstBoxInfo->stFreeList.pstNext = pstNode;
+  79              		.loc 1 153 0
+  80 003a E260     		str	r2, [r4, #12]
+  81              	.LVL5:
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     for (i = 0; i < pstBoxInfo->uwBlkNum - 1; ++i)
+  82              		.loc 1 155 0
+  83 003c 0021     		movs	r1, #0
+  84              	.LVL6:
+  85              	.L4:
+  86              		.loc 1 155 0 is_stmt 0 discriminator 1
+  87 003e 6368     		ldr	r3, [r4, #4]
+  88 0040 013B     		subs	r3, r3, #1
+  89 0042 8B42     		cmp	r3, r1
+  90 0044 09D9     		bls	.L16
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         pstNode->pstNext = OS_MEMBOX_NODE_NEXT(pstNode, pstBoxInfo->uwBlkSize);
+  91              		.loc 1 157 0 is_stmt 1 discriminator 3
+  92 0046 2368     		ldr	r3, [r4]
+  93 0048 1344     		add	r3, r3, r2
+  94 004a 1360     		str	r3, [r2]
+  95              	.LVL7:
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+  96              		.loc 1 155 0 discriminator 3
+  97 004c 0131     		adds	r1, r1, #1
+  98              	.LVL8:
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         pstNode = pstNode->pstNext;
+  99              		.loc 1 158 0 discriminator 3
+ 100 004e 1A46     		mov	r2, r3
+ 101 0050 F5E7     		b	.L4
+ 102              	.LVL9:
+ 103              	.L15:
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         return LOS_NOK;
+ 104              		.loc 1 148 0
+ 105 0052 FFF7FEFF 		bl	LOS_IntRestore
+ 106              	.LVL10:
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 107              		.loc 1 149 0
+ 108 0056 0120     		movs	r0, #1
+ 109 0058 08E0     		b	.L1
+ 110              	.LVL11:
+ 111              	.L16:
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     pstNode->pstNext = (LOS_MEMBOX_NODE *)NULL;  /* The last node */
+ 112              		.loc 1 160 0
+ 113 005a 0024     		movs	r4, #0
+ 114              	.LVL12:
+ 115 005c 1460     		str	r4, [r2]
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #if ((LOSCFG_PLATFORM_EXC == YES) && (LOSCFG_SAVE_EXC_INFO == YES))
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     osMemInfoUpdate(pBoxMem, uwBoxSize, MEM_MANG_MEMBOX);
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** #endif
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     (VOID)LOS_IntRestore(uvIntSave);
+ 116              		.loc 1 166 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 6
+
+
+ 117 005e FFF7FEFF 		bl	LOS_IntRestore
+ 118              	.LVL13:
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     return LOS_OK;
+ 119              		.loc 1 168 0
+ 120 0062 2046     		mov	r0, r4
+ 121 0064 02E0     		b	.L1
+ 122              	.LVL14:
+ 123              	.L6:
+ 124              	.LCFI1:
+ 125              		.cfi_def_cfa_offset 0
+ 126              		.cfi_restore 4
+ 127              		.cfi_restore 5
+ 128              		.cfi_restore 6
+ 129              		.cfi_restore 14
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 130              		.loc 1 128 0
+ 131 0066 0120     		movs	r0, #1
+ 132              	.LVL15:
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** }
+ 133              		.loc 1 169 0
+ 134 0068 7047     		bx	lr
+ 135              	.LVL16:
+ 136              	.L7:
+ 137              	.LCFI2:
+ 138              		.cfi_def_cfa_offset 16
+ 139              		.cfi_offset 4, -16
+ 140              		.cfi_offset 5, -12
+ 141              		.cfi_offset 6, -8
+ 142              		.cfi_offset 14, -4
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 143              		.loc 1 128 0
+ 144 006a 0120     		movs	r0, #1
+ 145              	.LVL17:
+ 146              	.L1:
+ 147              		.loc 1 169 0
+ 148 006c 70BD     		pop	{r4, r5, r6, pc}
+ 149              	.LVL18:
+ 150              	.L8:
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 151              		.loc 1 128 0
+ 152 006e 0120     		movs	r0, #1
+ 153              	.LVL19:
+ 154 0070 FCE7     		b	.L1
+ 155              		.cfi_endproc
+ 156              	.LFE134:
+ 158              		.section	.text.LOS_MemboxAlloc,"ax",%progbits
+ 159              		.align	1
+ 160              		.global	LOS_MemboxAlloc
+ 161              		.syntax unified
+ 162              		.thumb
+ 163              		.thumb_func
+ 164              		.fpu fpv4-sp-d16
+ 166              	LOS_MemboxAlloc:
+ 167              	.LFB135:
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** /*****************************************************************************
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 7
+
+
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Function : LOS_MemboxAlloc
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Description : Allocate Memory block from Static Memory pool
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Input       : pBoxMem  --- Pointer to memory pool
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Output      : None
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Return      : Pointer to allocated memory block
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** *****************************************************************************/
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** LITE_OS_SEC_TEXT VOID *LOS_MemboxAlloc(VOID *pBoxMem)
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** {
+ 168              		.loc 1 179 0
+ 169              		.cfi_startproc
+ 170              		@ args = 0, pretend = 0, frame = 0
+ 171              		@ frame_needed = 0, uses_anonymous_args = 0
+ 172              	.LVL20:
+ 173 0000 38B5     		push	{r3, r4, r5, lr}
+ 174              	.LCFI3:
+ 175              		.cfi_def_cfa_offset 16
+ 176              		.cfi_offset 3, -16
+ 177              		.cfi_offset 4, -12
+ 178              		.cfi_offset 5, -8
+ 179              		.cfi_offset 14, -4
+ 180              	.LVL21:
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     LOS_MEMBOX_NODE *pstNode = NULL;
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     LOS_MEMBOX_NODE *pRet = NULL;
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     UINTPTR uvIntSave;
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     if (pBoxMem == NULL)
+ 181              		.loc 1 185 0
+ 182 0002 0546     		mov	r5, r0
+ 183 0004 70B1     		cbz	r0, .L17
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         return NULL;
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     uvIntSave = LOS_IntLock();
+ 184              		.loc 1 190 0
+ 185 0006 FFF7FEFF 		bl	LOS_IntLock
+ 186              	.LVL22:
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     pstNode = &pstBoxInfo->stFreeList;
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     if (pstNode->pstNext != NULL)
+ 187              		.loc 1 193 0
+ 188 000a EC68     		ldr	r4, [r5, #12]
+ 189 000c 5CB1     		cbz	r4, .L21
+ 190              	.LVL23:
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         pRet = pstNode->pstNext;
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         pstNode->pstNext = pRet->pstNext;
+ 191              		.loc 1 196 0
+ 192 000e 2368     		ldr	r3, [r4]
+ 193 0010 EB60     		str	r3, [r5, #12]
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         OS_MEMBOX_SET_MAGIC(pRet);
+ 194              		.loc 1 197 0
+ 195 0012 074B     		ldr	r3, .L24
+ 196 0014 2360     		str	r3, [r4]
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         pstBoxInfo->uwBlkCnt++;
+ 197              		.loc 1 198 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 8
+
+
+ 198 0016 AB68     		ldr	r3, [r5, #8]
+ 199 0018 0133     		adds	r3, r3, #1
+ 200 001a AB60     		str	r3, [r5, #8]
+ 201              	.LVL24:
+ 202              	.L19:
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     (VOID)LOS_IntRestore(uvIntSave);
+ 203              		.loc 1 201 0
+ 204 001c FFF7FEFF 		bl	LOS_IntRestore
+ 205              	.LVL25:
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     return pRet == NULL ? NULL : OS_MEMBOX_USER_ADDR(pRet);
+ 206              		.loc 1 203 0
+ 207 0020 1CB1     		cbz	r4, .L22
+ 208              		.loc 1 203 0 is_stmt 0 discriminator 1
+ 209 0022 201D     		adds	r0, r4, #4
+ 210              	.LVL26:
+ 211              	.L17:
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** }
+ 212              		.loc 1 204 0 is_stmt 1
+ 213 0024 38BD     		pop	{r3, r4, r5, pc}
+ 214              	.LVL27:
+ 215              	.L21:
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     UINTPTR uvIntSave;
+ 216              		.loc 1 182 0
+ 217 0026 0024     		movs	r4, #0
+ 218 0028 F8E7     		b	.L19
+ 219              	.LVL28:
+ 220              	.L22:
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** }
+ 221              		.loc 1 203 0
+ 222 002a 0020     		movs	r0, #0
+ 223 002c FAE7     		b	.L17
+ 224              	.L25:
+ 225 002e 00BF     		.align	2
+ 226              	.L24:
+ 227 0030 A55A5AA5 		.word	-1520805211
+ 228              		.cfi_endproc
+ 229              	.LFE135:
+ 231              		.section	.text.LOS_MemboxFree,"ax",%progbits
+ 232              		.align	1
+ 233              		.global	LOS_MemboxFree
+ 234              		.syntax unified
+ 235              		.thumb
+ 236              		.thumb_func
+ 237              		.fpu fpv4-sp-d16
+ 239              	LOS_MemboxFree:
+ 240              	.LFB136:
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** /*****************************************************************************
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Function : LOS_MemboxFree
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Description : Free Memory block and return it to Static Memory pool
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Input       : pBoxMem  --- Pointer to memory pool
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****                pBox     --- Pointer to memory block to free
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Output      : None
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Return      : LOS_OK - OK, LOS_NOK - Error
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 9
+
+
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** *****************************************************************************/
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** LITE_OS_SEC_TEXT UINT32 LOS_MemboxFree(VOID *pBoxMem, VOID *pBox)
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** {
+ 241              		.loc 1 215 0
+ 242              		.cfi_startproc
+ 243              		@ args = 0, pretend = 0, frame = 0
+ 244              		@ frame_needed = 0, uses_anonymous_args = 0
+ 245              	.LVL29:
+ 246 0000 70B5     		push	{r4, r5, r6, lr}
+ 247              	.LCFI4:
+ 248              		.cfi_def_cfa_offset 16
+ 249              		.cfi_offset 4, -16
+ 250              		.cfi_offset 5, -12
+ 251              		.cfi_offset 6, -8
+ 252              		.cfi_offset 14, -4
+ 253              	.LVL30:
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     UINT32 uwRet = LOS_NOK;
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     UINTPTR uvIntSave;
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     if (pBoxMem == NULL || pBox == NULL)
+ 254              		.loc 1 220 0
+ 255 0002 68B3     		cbz	r0, .L29
+ 256 0004 0546     		mov	r5, r0
+ 257              		.loc 1 220 0 is_stmt 0 discriminator 1
+ 258 0006 69B3     		cbz	r1, .L30
+ 259 0008 0C46     		mov	r4, r1
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         return LOS_NOK;
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     uvIntSave = LOS_IntLock();
+ 260              		.loc 1 225 0 is_stmt 1
+ 261 000a FFF7FEFF 		bl	LOS_IntLock
+ 262              	.LVL31:
+ 263              	.LBB5:
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     do
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         LOS_MEMBOX_NODE *pstNode = OS_MEMBOX_NODE_ADDR(pBox);
+ 264              		.loc 1 229 0
+ 265 000e 261F     		subs	r6, r4, #4
+ 266              	.LVL32:
+ 267              	.LBB6:
+ 268              	.LBB7:
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+ 269              		.loc 1 91 0
+ 270 0010 2A68     		ldr	r2, [r5]
+ 271 0012 D2B1     		cbz	r2, .L31
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     if ((uwOffSet % pstBoxInfo->uwBlkSize) != 0)
+ 272              		.loc 1 96 0
+ 273 0014 05F11003 		add	r3, r5, #16
+ 274 0018 F31A     		subs	r3, r6, r3
+ 275              	.LVL33:
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+ 276              		.loc 1 97 0
+ 277 001a B3FBF2F1 		udiv	r1, r3, r2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 10
+
+
+ 278 001e 02FB1131 		mls	r1, r2, r1, r3
+ 279 0022 B9B9     		cbnz	r1, .L32
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+ 280              		.loc 1 102 0
+ 281 0024 B3FBF2F3 		udiv	r3, r3, r2
+ 282              	.LVL34:
+ 283 0028 6A68     		ldr	r2, [r5, #4]
+ 284 002a 9342     		cmp	r3, r2
+ 285 002c 14D2     		bcs	.L33
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** }
+ 286              		.loc 1 107 0
+ 287 002e 54F8042C 		ldr	r2, [r4, #-4]
+ 288              	.LVL35:
+ 289              	.LBE7:
+ 290              	.LBE6:
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         if (osCheckBoxMem(pstBoxInfo, pstNode) != LOS_OK)
+ 291              		.loc 1 231 0
+ 292 0032 0D4B     		ldr	r3, .L36
+ 293 0034 9A42     		cmp	r2, r3
+ 294 0036 11D1     		bne	.L34
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         {
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****             break;
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         }
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         pstNode->pstNext = pstBoxInfo->stFreeList.pstNext;
+ 295              		.loc 1 236 0
+ 296 0038 EB68     		ldr	r3, [r5, #12]
+ 297 003a 44F8043C 		str	r3, [r4, #-4]
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         pstBoxInfo->stFreeList.pstNext = pstNode;
+ 298              		.loc 1 237 0
+ 299 003e EE60     		str	r6, [r5, #12]
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         pstBoxInfo->uwBlkCnt--;
+ 300              		.loc 1 238 0
+ 301 0040 AB68     		ldr	r3, [r5, #8]
+ 302 0042 013B     		subs	r3, r3, #1
+ 303 0044 AB60     		str	r3, [r5, #8]
+ 304              	.LVL36:
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         uwRet = LOS_OK;
+ 305              		.loc 1 239 0
+ 306 0046 0024     		movs	r4, #0
+ 307              	.LVL37:
+ 308 0048 00E0     		b	.L28
+ 309              	.LVL38:
+ 310              	.L31:
+ 311              	.LBE5:
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     UINTPTR uvIntSave;
+ 312              		.loc 1 217 0
+ 313 004a 0124     		movs	r4, #1
+ 314              	.LVL39:
+ 315              	.L28:
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     } while (0);
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     (VOID)LOS_IntRestore(uvIntSave);
+ 316              		.loc 1 242 0
+ 317 004c FFF7FEFF 		bl	LOS_IntRestore
+ 318              	.LVL40:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 11
+
+
+ 319              	.L26:
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     return uwRet;
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** }
+ 320              		.loc 1 245 0
+ 321 0050 2046     		mov	r0, r4
+ 322 0052 70BD     		pop	{r4, r5, r6, pc}
+ 323              	.LVL41:
+ 324              	.L32:
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     UINTPTR uvIntSave;
+ 325              		.loc 1 217 0
+ 326 0054 0124     		movs	r4, #1
+ 327              	.LVL42:
+ 328 0056 F9E7     		b	.L28
+ 329              	.LVL43:
+ 330              	.L33:
+ 331 0058 0124     		movs	r4, #1
+ 332              	.LVL44:
+ 333 005a F7E7     		b	.L28
+ 334              	.LVL45:
+ 335              	.L34:
+ 336 005c 0124     		movs	r4, #1
+ 337              	.LVL46:
+ 338 005e F5E7     		b	.L28
+ 339              	.LVL47:
+ 340              	.L29:
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 341              		.loc 1 222 0
+ 342 0060 0124     		movs	r4, #1
+ 343 0062 F5E7     		b	.L26
+ 344              	.L30:
+ 345 0064 0124     		movs	r4, #1
+ 346 0066 F3E7     		b	.L26
+ 347              	.L37:
+ 348              		.align	2
+ 349              	.L36:
+ 350 0068 A55A5AA5 		.word	-1520805211
+ 351              		.cfi_endproc
+ 352              	.LFE136:
+ 354              		.section	.text.LOS_MemboxClr,"ax",%progbits
+ 355              		.align	1
+ 356              		.global	LOS_MemboxClr
+ 357              		.syntax unified
+ 358              		.thumb
+ 359              		.thumb_func
+ 360              		.fpu fpv4-sp-d16
+ 362              	LOS_MemboxClr:
+ 363              	.LFB137:
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** /*****************************************************************************
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Function : LOS_MemboxClr
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Description : Clear the memory block
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Input       : pBoxMem  --- Pointer to memory pool
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****                pBox     --- Pointer to memory block to clear
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Output      : None
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Return      : None
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** *****************************************************************************/
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 12
+
+
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** LITE_OS_SEC_TEXT_MINOR VOID LOS_MemboxClr(VOID *pBoxMem, VOID *pBox)
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** {
+ 364              		.loc 1 256 0
+ 365              		.cfi_startproc
+ 366              		@ args = 0, pretend = 0, frame = 0
+ 367              		@ frame_needed = 0, uses_anonymous_args = 0
+ 368              	.LVL48:
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     if (pBoxMem == NULL || pBox == NULL)
+ 369              		.loc 1 259 0
+ 370 0000 48B1     		cbz	r0, .L41
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     LOS_MEMBOX_INFO *pstBoxInfo = (LOS_MEMBOX_INFO *)pBoxMem;
+ 371              		.loc 1 256 0 discriminator 1
+ 372 0002 08B5     		push	{r3, lr}
+ 373              	.LCFI5:
+ 374              		.cfi_def_cfa_offset 8
+ 375              		.cfi_offset 3, -8
+ 376              		.cfi_offset 14, -4
+ 377 0004 0346     		mov	r3, r0
+ 378              		.loc 1 259 0 discriminator 1
+ 379 0006 29B1     		cbz	r1, .L38
+ 380 0008 0846     		mov	r0, r1
+ 381              	.LVL49:
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         return;
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     memset(pBox, 0, pstBoxInfo->uwBlkSize - LOS_MEMBOX_MAGIC_SIZE);
+ 382              		.loc 1 264 0
+ 383 000a 1A68     		ldr	r2, [r3]
+ 384 000c 043A     		subs	r2, r2, #4
+ 385 000e 0021     		movs	r1, #0
+ 386              	.LVL50:
+ 387 0010 FFF7FEFF 		bl	memset
+ 388              	.LVL51:
+ 389              	.L38:
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** }
+ 390              		.loc 1 265 0
+ 391 0014 08BD     		pop	{r3, pc}
+ 392              	.LVL52:
+ 393              	.L41:
+ 394              	.LCFI6:
+ 395              		.cfi_def_cfa_offset 0
+ 396              		.cfi_restore 3
+ 397              		.cfi_restore 14
+ 398 0016 7047     		bx	lr
+ 399              		.cfi_endproc
+ 400              	.LFE137:
+ 402              		.section	.text.LOS_MemboxStatisticsGet,"ax",%progbits
+ 403              		.align	1
+ 404              		.global	LOS_MemboxStatisticsGet
+ 405              		.syntax unified
+ 406              		.thumb
+ 407              		.thumb_func
+ 408              		.fpu fpv4-sp-d16
+ 410              	LOS_MemboxStatisticsGet:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 13
+
+
+ 411              	.LFB138:
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** /*****************************************************************************
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Function : LOS_MemboxStatisticsGet
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Description : Get information about membox
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Input       : pBoxMem     --- Pointer to the calculate membox
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Output      : puwMaxBlk   --- Record the total number of membox
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****                puwBlkCnt   --- Record the number of the allocated blocks of membox
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****                puwBlkSize  --- Record the block size of membox
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****  Return      : LOS_OK - OK, LOS_NOK - Error
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** *****************************************************************************/
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** LITE_OS_SEC_TEXT_MINOR UINT32 LOS_MemboxStatisticsGet(VOID *pBoxMem, UINT32 *puwMaxBlk, UINT32 *puw
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** {
+ 412              		.loc 1 277 0
+ 413              		.cfi_startproc
+ 414              		@ args = 0, pretend = 0, frame = 0
+ 415              		@ frame_needed = 0, uses_anonymous_args = 0
+ 416              		@ link register save eliminated.
+ 417              	.LVL53:
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     if ((NULL == pBoxMem) || (NULL == puwMaxBlk) || (NULL == puwBlkCnt) || (NULL == puwBlkSize))
+ 418              		.loc 1 278 0
+ 419 0000 70B1     		cbz	r0, .L46
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     if ((NULL == pBoxMem) || (NULL == puwMaxBlk) || (NULL == puwBlkCnt) || (NULL == puwBlkSize))
+ 420              		.loc 1 277 0 discriminator 1
+ 421 0002 10B4     		push	{r4}
+ 422              	.LCFI7:
+ 423              		.cfi_def_cfa_offset 4
+ 424              		.cfi_offset 4, -4
+ 425 0004 0446     		mov	r4, r0
+ 426              		.loc 1 278 0 discriminator 1
+ 427 0006 69B1     		cbz	r1, .L47
+ 428              		.loc 1 278 0 is_stmt 0 discriminator 2
+ 429 0008 72B1     		cbz	r2, .L48
+ 430              		.loc 1 278 0 discriminator 3
+ 431 000a 7BB1     		cbz	r3, .L49
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     {
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****         return LOS_NOK;
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     *puwMaxBlk = ((LOS_MEMBOX_INFO *)pBoxMem)->uwBlkNum;    /* Total number of blocks */
+ 432              		.loc 1 283 0 is_stmt 1
+ 433 000c 4068     		ldr	r0, [r0, #4]
+ 434              	.LVL54:
+ 435 000e 0860     		str	r0, [r1]
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     *puwBlkCnt = ((LOS_MEMBOX_INFO *)pBoxMem)->uwBlkCnt;    /* The number of allocated blocks */
+ 436              		.loc 1 284 0
+ 437 0010 A168     		ldr	r1, [r4, #8]
+ 438              	.LVL55:
+ 439 0012 1160     		str	r1, [r2]
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     *puwBlkSize = ((LOS_MEMBOX_INFO *)pBoxMem)->uwBlkSize;  /* Block size */
+ 440              		.loc 1 285 0
+ 441 0014 2268     		ldr	r2, [r4]
+ 442              	.LVL56:
+ 443 0016 1A60     		str	r2, [r3]
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** 
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     return LOS_OK;
+ 444              		.loc 1 287 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 14
+
+
+ 445 0018 0020     		movs	r0, #0
+ 446              	.L44:
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c **** }
+ 447              		.loc 1 288 0
+ 448 001a 5DF8044B 		ldr	r4, [sp], #4
+ 449              	.LCFI8:
+ 450              		.cfi_restore 4
+ 451              		.cfi_def_cfa_offset 0
+ 452              	.LVL57:
+ 453 001e 7047     		bx	lr
+ 454              	.LVL58:
+ 455              	.L46:
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 456              		.loc 1 280 0
+ 457 0020 0120     		movs	r0, #1
+ 458              	.LVL59:
+ 459              		.loc 1 288 0
+ 460 0022 7047     		bx	lr
+ 461              	.LVL60:
+ 462              	.L47:
+ 463              	.LCFI9:
+ 464              		.cfi_def_cfa_offset 4
+ 465              		.cfi_offset 4, -4
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/membox\los_membox.c ****     }
+ 466              		.loc 1 280 0
+ 467 0024 0120     		movs	r0, #1
+ 468              	.LVL61:
+ 469 0026 F8E7     		b	.L44
+ 470              	.LVL62:
+ 471              	.L48:
+ 472 0028 0120     		movs	r0, #1
+ 473              	.LVL63:
+ 474 002a F6E7     		b	.L44
+ 475              	.LVL64:
+ 476              	.L49:
+ 477 002c 0120     		movs	r0, #1
+ 478              	.LVL65:
+ 479 002e F4E7     		b	.L44
+ 480              		.cfi_endproc
+ 481              	.LFE138:
+ 483              		.text
+ 484              	.Letext0:
+ 485              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 486              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 487              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 488              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 489              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 490              		.file 7 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 491              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 492              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 493              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 494              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 495              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 496              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 497              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 498              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 499              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 15
+
+
+ 500              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 501              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 502              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 503              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 504              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_membox.h"
+ 505              		.file 22 "<built-in>"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s 			page 16
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 los_membox.c
+c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s:18     .text.LOS_MemboxInit:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s:25     .text.LOS_MemboxInit:00000000 LOS_MemboxInit
+c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s:159    .text.LOS_MemboxAlloc:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s:166    .text.LOS_MemboxAlloc:00000000 LOS_MemboxAlloc
+c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s:227    .text.LOS_MemboxAlloc:00000030 $d
+c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s:232    .text.LOS_MemboxFree:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s:239    .text.LOS_MemboxFree:00000000 LOS_MemboxFree
+c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s:350    .text.LOS_MemboxFree:00000068 $d
+c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s:355    .text.LOS_MemboxClr:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s:362    .text.LOS_MemboxClr:00000000 LOS_MemboxClr
+c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s:403    .text.LOS_MemboxStatisticsGet:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccSrvh4B.s:410    .text.LOS_MemboxStatisticsGet:00000000 LOS_MemboxStatisticsGet
+
+UNDEFINED SYMBOLS
+LOS_IntLock
+LOS_IntRestore
+memset

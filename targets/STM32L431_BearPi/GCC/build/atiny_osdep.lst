@@ -1,0 +1,1328 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"atiny_osdep.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.atiny_task_mutex_is_valid,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	atiny_task_mutex_is_valid:
+  25              	.LFB147:
+  26              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos/atiny_osdep.c"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  * applicable export control laws and regulations.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 2
+
+
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #include "osdepends/atiny_osdep.h"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #include "los_memory.h"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #include "los_sys.ph"
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #include "los_sem.ph"
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #include "los_tick.ph"
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #include <stdbool.h>
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #include "los_mux.h"
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #define ATINY_CNT_MAX_WAITTIME 0xFFFFFFFF
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #define LOG_BUF_SIZE (256)
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #ifndef OK
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #define OK 0
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #endif
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #ifndef ERR
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #define ERR -1
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #endif
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** static uint64_t osKernelGetTickCount (void)
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     uint64_t ticks;
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     UINTPTR uvIntSave;
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if(OS_INT_ACTIVE)
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         ticks = 0U;
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     else
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         uvIntSave = LOS_IntLock();
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         ticks = g_ullTickCount;
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         LOS_IntRestore(uvIntSave);
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     return ticks;
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** uint64_t atiny_gettime_ms(void)
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     return osKernelGetTickCount() * (OS_SYS_MS_PER_SECOND / LOSCFG_BASE_CORE_TICK_PER_SECOND);
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** void *atiny_malloc(size_t size)
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     return LOS_MemAlloc(m_aucSysMem0, size);
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** void atiny_free(void *ptr)
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     (void)LOS_MemFree(m_aucSysMem0, ptr);
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 3
+
+
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** int atiny_snprintf(char *buf, unsigned int size, const char *format, ...)
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     int     ret;
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     va_list args;
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     va_start(args, format);
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     ret = vsnprintf(buf, size, format, args);
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     va_end(args);
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     return ret;
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** int atiny_printf(const char *format, ...)
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     int ret;
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     char str_buf[LOG_BUF_SIZE] = {0};
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     va_list list;
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     memset(str_buf, 0, LOG_BUF_SIZE);
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     va_start(list, format);
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     ret = vsnprintf(str_buf, LOG_BUF_SIZE, format, list);
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     va_end(list);
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     printf("%s", str_buf);
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     return ret;
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** char *atiny_strdup(const char *ch)
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     char *copy;
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     size_t length;
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if(NULL == ch)
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return NULL;
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     length = strlen(ch);
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     copy = (char *)atiny_malloc(length + 1);
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if(NULL == copy)
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return NULL;
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     strncpy(copy, ch, length);
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     copy[length] = '\0';
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     return copy;
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** void atiny_delay(uint32_t second)
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     (void)LOS_TaskDelay(second * LOSCFG_BASE_CORE_TICK_PER_SECOND);
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #if (LOSCFG_BASE_IPC_SEM == YES)
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** void *atiny_mutex_create(void)
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     uint32_t uwRet;
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     uint32_t uwSemId;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 4
+
+
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (OS_INT_ACTIVE)
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return NULL;
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     uwRet = LOS_BinarySemCreate(1, (UINT32 *)&uwSemId);
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (uwRet == LOS_OK)
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return (void *)(GET_SEM(uwSemId));
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     else
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return NULL;
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** void atiny_mutex_destroy(void *mutex)
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (OS_INT_ACTIVE)
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return;
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (mutex == NULL)
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return;
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     (void)LOS_SemDelete(((SEM_CB_S *)mutex)->usSemID);
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** void atiny_mutex_lock(void *mutex)
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (mutex == NULL)
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return;
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (OS_INT_ACTIVE)
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return;
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     (void)LOS_SemPend(((SEM_CB_S *)mutex)->usSemID, ATINY_CNT_MAX_WAITTIME);
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** void atiny_mutex_unlock(void *mutex)
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (mutex == NULL)
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return;
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     (void)LOS_SemPost(((SEM_CB_S *)mutex)->usSemID);
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 5
+
+
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #else
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** void *atiny_mutex_create(void)
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     return NULL;
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** void atiny_mutex_destroy(void *mutex)
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     ((void)mutex);
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** void atiny_mutex_lock(void *mutex)
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     ((void)mutex);
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** void atiny_mutex_unlock(void *mutex)
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     ((void)mutex);
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #endif /* LOSCFG_BASE_IPC_SEM == YES */
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #if (LOSCFG_BASE_IPC_MUX == YES)
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** static bool atiny_task_mutex_is_valid(const atiny_task_mutex_s *mutex)
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+  27              		.loc 1 232 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     return (mutex != NULL) && (mutex->valid);
+  33              		.loc 1 233 0
+  34 0000 18B1     		cbz	r0, .L3
+  35              		.loc 1 233 0 is_stmt 0 discriminator 1
+  36 0002 4368     		ldr	r3, [r0, #4]
+  37 0004 1BB9     		cbnz	r3, .L4
+  38              		.loc 1 233 0
+  39 0006 0020     		movs	r0, #0
+  40              	.LVL1:
+  41 0008 7047     		bx	lr
+  42              	.LVL2:
+  43              	.L3:
+  44 000a 0020     		movs	r0, #0
+  45              	.LVL3:
+  46 000c 7047     		bx	lr
+  47              	.LVL4:
+  48              	.L4:
+  49 000e 0120     		movs	r0, #1
+  50              	.LVL5:
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+  51              		.loc 1 234 0 is_stmt 1
+  52 0010 7047     		bx	lr
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 6
+
+
+  53              		.cfi_endproc
+  54              	.LFE147:
+  56              		.section	.text.osKernelGetTickCount,"ax",%progbits
+  57              		.align	1
+  58              		.syntax unified
+  59              		.thumb
+  60              		.thumb_func
+  61              		.fpu fpv4-sp-d16
+  63              	osKernelGetTickCount:
+  64              	.LFB135:
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     uint64_t ticks;
+  65              		.loc 1 57 0
+  66              		.cfi_startproc
+  67              		@ args = 0, pretend = 0, frame = 0
+  68              		@ frame_needed = 0, uses_anonymous_args = 0
+  69 0000 38B5     		push	{r3, r4, r5, lr}
+  70              	.LCFI0:
+  71              		.cfi_def_cfa_offset 16
+  72              		.cfi_offset 3, -16
+  73              		.cfi_offset 4, -12
+  74              		.cfi_offset 5, -8
+  75              		.cfi_offset 14, -4
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+  76              		.loc 1 61 0
+  77 0002 FFF7FEFF 		bl	osIntNumGet
+  78              	.LVL6:
+  79 0006 20B1     		cbz	r0, .L9
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+  80              		.loc 1 63 0
+  81 0008 0024     		movs	r4, #0
+  82 000a 0025     		movs	r5, #0
+  83              	.LVL7:
+  84              	.L5:
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+  85              		.loc 1 73 0
+  86 000c 2046     		mov	r0, r4
+  87 000e 2946     		mov	r1, r5
+  88 0010 38BD     		pop	{r3, r4, r5, pc}
+  89              	.L9:
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         ticks = g_ullTickCount;
+  90              		.loc 1 67 0
+  91 0012 FFF7FEFF 		bl	LOS_IntLock
+  92              	.LVL8:
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         LOS_IntRestore(uvIntSave);
+  93              		.loc 1 68 0
+  94 0016 034B     		ldr	r3, .L10
+  95 0018 D3E90045 		ldrd	r4, [r3]
+  96              	.LVL9:
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+  97              		.loc 1 69 0
+  98 001c FFF7FEFF 		bl	LOS_IntRestore
+  99              	.LVL10:
+ 100 0020 F4E7     		b	.L5
+ 101              	.L11:
+ 102 0022 00BF     		.align	2
+ 103              	.L10:
+ 104 0024 00000000 		.word	g_ullTickCount
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 7
+
+
+ 105              		.cfi_endproc
+ 106              	.LFE135:
+ 108              		.section	.text.atiny_gettime_ms,"ax",%progbits
+ 109              		.align	1
+ 110              		.global	atiny_gettime_ms
+ 111              		.syntax unified
+ 112              		.thumb
+ 113              		.thumb_func
+ 114              		.fpu fpv4-sp-d16
+ 116              	atiny_gettime_ms:
+ 117              	.LFB136:
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     return osKernelGetTickCount() * (OS_SYS_MS_PER_SECOND / LOSCFG_BASE_CORE_TICK_PER_SECOND);
+ 118              		.loc 1 76 0
+ 119              		.cfi_startproc
+ 120              		@ args = 0, pretend = 0, frame = 0
+ 121              		@ frame_needed = 0, uses_anonymous_args = 0
+ 122 0000 08B5     		push	{r3, lr}
+ 123              	.LCFI1:
+ 124              		.cfi_def_cfa_offset 8
+ 125              		.cfi_offset 3, -8
+ 126              		.cfi_offset 14, -4
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 127              		.loc 1 77 0
+ 128 0002 FFF7FEFF 		bl	osKernelGetTickCount
+ 129              	.LVL11:
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 130              		.loc 1 78 0
+ 131 0006 08BD     		pop	{r3, pc}
+ 132              		.cfi_endproc
+ 133              	.LFE136:
+ 135              		.section	.text.atiny_malloc,"ax",%progbits
+ 136              		.align	1
+ 137              		.global	atiny_malloc
+ 138              		.syntax unified
+ 139              		.thumb
+ 140              		.thumb_func
+ 141              		.fpu fpv4-sp-d16
+ 143              	atiny_malloc:
+ 144              	.LFB137:
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     return LOS_MemAlloc(m_aucSysMem0, size);
+ 145              		.loc 1 81 0
+ 146              		.cfi_startproc
+ 147              		@ args = 0, pretend = 0, frame = 0
+ 148              		@ frame_needed = 0, uses_anonymous_args = 0
+ 149              	.LVL12:
+ 150 0000 08B5     		push	{r3, lr}
+ 151              	.LCFI2:
+ 152              		.cfi_def_cfa_offset 8
+ 153              		.cfi_offset 3, -8
+ 154              		.cfi_offset 14, -4
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 155              		.loc 1 82 0
+ 156 0002 0146     		mov	r1, r0
+ 157 0004 024B     		ldr	r3, .L16
+ 158 0006 1868     		ldr	r0, [r3]
+ 159              	.LVL13:
+ 160 0008 FFF7FEFF 		bl	LOS_MemAlloc
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 8
+
+
+ 161              	.LVL14:
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 162              		.loc 1 83 0
+ 163 000c 08BD     		pop	{r3, pc}
+ 164              	.L17:
+ 165 000e 00BF     		.align	2
+ 166              	.L16:
+ 167 0010 00000000 		.word	m_aucSysMem0
+ 168              		.cfi_endproc
+ 169              	.LFE137:
+ 171              		.section	.text.atiny_free,"ax",%progbits
+ 172              		.align	1
+ 173              		.global	atiny_free
+ 174              		.syntax unified
+ 175              		.thumb
+ 176              		.thumb_func
+ 177              		.fpu fpv4-sp-d16
+ 179              	atiny_free:
+ 180              	.LFB138:
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     (void)LOS_MemFree(m_aucSysMem0, ptr);
+ 181              		.loc 1 86 0
+ 182              		.cfi_startproc
+ 183              		@ args = 0, pretend = 0, frame = 0
+ 184              		@ frame_needed = 0, uses_anonymous_args = 0
+ 185              	.LVL15:
+ 186 0000 08B5     		push	{r3, lr}
+ 187              	.LCFI3:
+ 188              		.cfi_def_cfa_offset 8
+ 189              		.cfi_offset 3, -8
+ 190              		.cfi_offset 14, -4
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 191              		.loc 1 87 0
+ 192 0002 0146     		mov	r1, r0
+ 193 0004 024B     		ldr	r3, .L20
+ 194 0006 1868     		ldr	r0, [r3]
+ 195              	.LVL16:
+ 196 0008 FFF7FEFF 		bl	LOS_MemFree
+ 197              	.LVL17:
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 198              		.loc 1 88 0
+ 199 000c 08BD     		pop	{r3, pc}
+ 200              	.L21:
+ 201 000e 00BF     		.align	2
+ 202              	.L20:
+ 203 0010 00000000 		.word	m_aucSysMem0
+ 204              		.cfi_endproc
+ 205              	.LFE138:
+ 207              		.section	.text.atiny_snprintf,"ax",%progbits
+ 208              		.align	1
+ 209              		.global	atiny_snprintf
+ 210              		.syntax unified
+ 211              		.thumb
+ 212              		.thumb_func
+ 213              		.fpu fpv4-sp-d16
+ 215              	atiny_snprintf:
+ 216              	.LFB139:
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     int     ret;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 9
+
+
+ 217              		.loc 1 91 0
+ 218              		.cfi_startproc
+ 219              		@ args = 4, pretend = 8, frame = 8
+ 220              		@ frame_needed = 0, uses_anonymous_args = 1
+ 221              	.LVL18:
+ 222 0000 0CB4     		push	{r2, r3}
+ 223              	.LCFI4:
+ 224              		.cfi_def_cfa_offset 8
+ 225              		.cfi_offset 2, -8
+ 226              		.cfi_offset 3, -4
+ 227 0002 00B5     		push	{lr}
+ 228              	.LCFI5:
+ 229              		.cfi_def_cfa_offset 12
+ 230              		.cfi_offset 14, -12
+ 231 0004 83B0     		sub	sp, sp, #12
+ 232              	.LCFI6:
+ 233              		.cfi_def_cfa_offset 24
+ 234 0006 04AB     		add	r3, sp, #16
+ 235 0008 53F8042B 		ldr	r2, [r3], #4
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     ret = vsnprintf(buf, size, format, args);
+ 236              		.loc 1 95 0
+ 237 000c 0193     		str	r3, [sp, #4]
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     va_end(args);
+ 238              		.loc 1 96 0
+ 239 000e FFF7FEFF 		bl	vsnprintf
+ 240              	.LVL19:
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 241              		.loc 1 100 0
+ 242 0012 03B0     		add	sp, sp, #12
+ 243              	.LCFI7:
+ 244              		.cfi_def_cfa_offset 12
+ 245              		@ sp needed
+ 246 0014 5DF804EB 		ldr	lr, [sp], #4
+ 247              	.LCFI8:
+ 248              		.cfi_restore 14
+ 249              		.cfi_def_cfa_offset 8
+ 250 0018 02B0     		add	sp, sp, #8
+ 251              	.LCFI9:
+ 252              		.cfi_restore 3
+ 253              		.cfi_restore 2
+ 254              		.cfi_def_cfa_offset 0
+ 255 001a 7047     		bx	lr
+ 256              		.cfi_endproc
+ 257              	.LFE139:
+ 259              		.section	.text.atiny_printf,"ax",%progbits
+ 260              		.align	1
+ 261              		.global	atiny_printf
+ 262              		.syntax unified
+ 263              		.thumb
+ 264              		.thumb_func
+ 265              		.fpu fpv4-sp-d16
+ 267              	atiny_printf:
+ 268              	.LFB140:
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     int ret;
+ 269              		.loc 1 103 0
+ 270              		.cfi_startproc
+ 271              		@ args = 4, pretend = 16, frame = 264
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 10
+
+
+ 272              		@ frame_needed = 0, uses_anonymous_args = 1
+ 273              	.LVL20:
+ 274 0000 0FB4     		push	{r0, r1, r2, r3}
+ 275              	.LCFI10:
+ 276              		.cfi_def_cfa_offset 16
+ 277              		.cfi_offset 0, -16
+ 278              		.cfi_offset 1, -12
+ 279              		.cfi_offset 2, -8
+ 280              		.cfi_offset 3, -4
+ 281 0002 70B5     		push	{r4, r5, r6, lr}
+ 282              	.LCFI11:
+ 283              		.cfi_def_cfa_offset 32
+ 284              		.cfi_offset 4, -32
+ 285              		.cfi_offset 5, -28
+ 286              		.cfi_offset 6, -24
+ 287              		.cfi_offset 14, -20
+ 288 0004 C2B0     		sub	sp, sp, #264
+ 289              	.LCFI12:
+ 290              		.cfi_def_cfa_offset 296
+ 291 0006 46AC     		add	r4, sp, #280
+ 292 0008 54F8046B 		ldr	r6, [r4], #4
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     va_start(list, format);
+ 293              		.loc 1 108 0
+ 294 000c 4FF48075 		mov	r5, #256
+ 295 0010 2A46     		mov	r2, r5
+ 296 0012 0021     		movs	r1, #0
+ 297 0014 02A8     		add	r0, sp, #8
+ 298 0016 FFF7FEFF 		bl	memset
+ 299              	.LVL21:
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     ret = vsnprintf(str_buf, LOG_BUF_SIZE, format, list);
+ 300              		.loc 1 109 0
+ 301 001a 0194     		str	r4, [sp, #4]
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     va_end(list);
+ 302              		.loc 1 110 0
+ 303 001c 2346     		mov	r3, r4
+ 304 001e 3246     		mov	r2, r6
+ 305 0020 2946     		mov	r1, r5
+ 306 0022 02A8     		add	r0, sp, #8
+ 307 0024 FFF7FEFF 		bl	vsnprintf
+ 308              	.LVL22:
+ 309 0028 0446     		mov	r4, r0
+ 310              	.LVL23:
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 311              		.loc 1 113 0
+ 312 002a 02A9     		add	r1, sp, #8
+ 313 002c 0448     		ldr	r0, .L26
+ 314              	.LVL24:
+ 315 002e FFF7FEFF 		bl	printf
+ 316              	.LVL25:
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 317              		.loc 1 116 0
+ 318 0032 2046     		mov	r0, r4
+ 319 0034 42B0     		add	sp, sp, #264
+ 320              	.LCFI13:
+ 321              		.cfi_def_cfa_offset 32
+ 322              		@ sp needed
+ 323 0036 BDE87040 		pop	{r4, r5, r6, lr}
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 11
+
+
+ 324              	.LCFI14:
+ 325              		.cfi_restore 14
+ 326              		.cfi_restore 6
+ 327              		.cfi_restore 5
+ 328              		.cfi_restore 4
+ 329              		.cfi_def_cfa_offset 16
+ 330              	.LVL26:
+ 331 003a 04B0     		add	sp, sp, #16
+ 332              	.LCFI15:
+ 333              		.cfi_restore 3
+ 334              		.cfi_restore 2
+ 335              		.cfi_restore 1
+ 336              		.cfi_restore 0
+ 337              		.cfi_def_cfa_offset 0
+ 338 003c 7047     		bx	lr
+ 339              	.L27:
+ 340 003e 00BF     		.align	2
+ 341              	.L26:
+ 342 0040 00000000 		.word	.LC0
+ 343              		.cfi_endproc
+ 344              	.LFE140:
+ 346              		.section	.text.atiny_strdup,"ax",%progbits
+ 347              		.align	1
+ 348              		.global	atiny_strdup
+ 349              		.syntax unified
+ 350              		.thumb
+ 351              		.thumb_func
+ 352              		.fpu fpv4-sp-d16
+ 354              	atiny_strdup:
+ 355              	.LFB141:
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     char *copy;
+ 356              		.loc 1 119 0
+ 357              		.cfi_startproc
+ 358              		@ args = 0, pretend = 0, frame = 0
+ 359              		@ frame_needed = 0, uses_anonymous_args = 0
+ 360              	.LVL27:
+ 361 0000 70B5     		push	{r4, r5, r6, lr}
+ 362              	.LCFI16:
+ 363              		.cfi_def_cfa_offset 16
+ 364              		.cfi_offset 4, -16
+ 365              		.cfi_offset 5, -12
+ 366              		.cfi_offset 6, -8
+ 367              		.cfi_offset 14, -4
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return NULL;
+ 368              		.loc 1 123 0
+ 369 0002 80B1     		cbz	r0, .L30
+ 370 0004 0446     		mov	r4, r0
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     copy = (char *)atiny_malloc(length + 1);
+ 371              		.loc 1 126 0
+ 372 0006 FFF7FEFF 		bl	strlen
+ 373              	.LVL28:
+ 374 000a 0646     		mov	r6, r0
+ 375              	.LVL29:
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if(NULL == copy)
+ 376              		.loc 1 127 0
+ 377 000c 0130     		adds	r0, r0, #1
+ 378              	.LVL30:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 12
+
+
+ 379 000e FFF7FEFF 		bl	atiny_malloc
+ 380              	.LVL31:
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return NULL;
+ 381              		.loc 1 128 0
+ 382 0012 0546     		mov	r5, r0
+ 383 0014 28B1     		cbz	r0, .L28
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     copy[length] = '\0';
+ 384              		.loc 1 130 0
+ 385 0016 3246     		mov	r2, r6
+ 386 0018 2146     		mov	r1, r4
+ 387 001a FFF7FEFF 		bl	strncpy
+ 388              	.LVL32:
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 389              		.loc 1 131 0
+ 390 001e 0023     		movs	r3, #0
+ 391 0020 AB55     		strb	r3, [r5, r6]
+ 392              	.LVL33:
+ 393              	.L28:
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 394              		.loc 1 134 0
+ 395 0022 2846     		mov	r0, r5
+ 396 0024 70BD     		pop	{r4, r5, r6, pc}
+ 397              	.LVL34:
+ 398              	.L30:
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 399              		.loc 1 124 0
+ 400 0026 0025     		movs	r5, #0
+ 401 0028 FBE7     		b	.L28
+ 402              		.cfi_endproc
+ 403              	.LFE141:
+ 405              		.section	.text.atiny_delay,"ax",%progbits
+ 406              		.align	1
+ 407              		.global	atiny_delay
+ 408              		.syntax unified
+ 409              		.thumb
+ 410              		.thumb_func
+ 411              		.fpu fpv4-sp-d16
+ 413              	atiny_delay:
+ 414              	.LFB142:
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     (void)LOS_TaskDelay(second * LOSCFG_BASE_CORE_TICK_PER_SECOND);
+ 415              		.loc 1 137 0
+ 416              		.cfi_startproc
+ 417              		@ args = 0, pretend = 0, frame = 0
+ 418              		@ frame_needed = 0, uses_anonymous_args = 0
+ 419              	.LVL35:
+ 420 0000 08B5     		push	{r3, lr}
+ 421              	.LCFI17:
+ 422              		.cfi_def_cfa_offset 8
+ 423              		.cfi_offset 3, -8
+ 424              		.cfi_offset 14, -4
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 425              		.loc 1 138 0
+ 426 0002 4FF47A73 		mov	r3, #1000
+ 427 0006 03FB00F0 		mul	r0, r3, r0
+ 428              	.LVL36:
+ 429 000a FFF7FEFF 		bl	LOS_TaskDelay
+ 430              	.LVL37:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 13
+
+
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 431              		.loc 1 139 0
+ 432 000e 08BD     		pop	{r3, pc}
+ 433              		.cfi_endproc
+ 434              	.LFE142:
+ 436              		.section	.text.atiny_mutex_create,"ax",%progbits
+ 437              		.align	1
+ 438              		.global	atiny_mutex_create
+ 439              		.syntax unified
+ 440              		.thumb
+ 441              		.thumb_func
+ 442              		.fpu fpv4-sp-d16
+ 444              	atiny_mutex_create:
+ 445              	.LFB143:
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     uint32_t uwRet;
+ 446              		.loc 1 144 0
+ 447              		.cfi_startproc
+ 448              		@ args = 0, pretend = 0, frame = 8
+ 449              		@ frame_needed = 0, uses_anonymous_args = 0
+ 450 0000 00B5     		push	{lr}
+ 451              	.LCFI18:
+ 452              		.cfi_def_cfa_offset 4
+ 453              		.cfi_offset 14, -4
+ 454 0002 83B0     		sub	sp, sp, #12
+ 455              	.LCFI19:
+ 456              		.cfi_def_cfa_offset 16
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 457              		.loc 1 148 0
+ 458 0004 FFF7FEFF 		bl	osIntNumGet
+ 459              	.LVL38:
+ 460 0008 60B9     		cbnz	r0, .L36
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 461              		.loc 1 153 0
+ 462 000a 01A9     		add	r1, sp, #4
+ 463 000c 0120     		movs	r0, #1
+ 464 000e FFF7FEFF 		bl	LOS_BinarySemCreate
+ 465              	.LVL39:
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 466              		.loc 1 155 0
+ 467 0012 48B9     		cbnz	r0, .L37
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 468              		.loc 1 157 0
+ 469 0014 054B     		ldr	r3, .L39
+ 470 0016 1868     		ldr	r0, [r3]
+ 471              	.LVL40:
+ 472 0018 019B     		ldr	r3, [sp, #4]
+ 473 001a 00EB0310 		add	r0, r0, r3, lsl #4
+ 474              	.L34:
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 475              		.loc 1 163 0
+ 476 001e 03B0     		add	sp, sp, #12
+ 477              	.LCFI20:
+ 478              		.cfi_remember_state
+ 479              		.cfi_def_cfa_offset 4
+ 480              		@ sp needed
+ 481 0020 5DF804FB 		ldr	pc, [sp], #4
+ 482              	.L36:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 14
+
+
+ 483              	.LCFI21:
+ 484              		.cfi_restore_state
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 485              		.loc 1 150 0
+ 486 0024 0020     		movs	r0, #0
+ 487 0026 FAE7     		b	.L34
+ 488              	.LVL41:
+ 489              	.L37:
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 490              		.loc 1 161 0
+ 491 0028 0020     		movs	r0, #0
+ 492              	.LVL42:
+ 493 002a F8E7     		b	.L34
+ 494              	.L40:
+ 495              		.align	2
+ 496              	.L39:
+ 497 002c 00000000 		.word	g_pstAllSem
+ 498              		.cfi_endproc
+ 499              	.LFE143:
+ 501              		.section	.text.atiny_mutex_destroy,"ax",%progbits
+ 502              		.align	1
+ 503              		.global	atiny_mutex_destroy
+ 504              		.syntax unified
+ 505              		.thumb
+ 506              		.thumb_func
+ 507              		.fpu fpv4-sp-d16
+ 509              	atiny_mutex_destroy:
+ 510              	.LFB144:
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (OS_INT_ACTIVE)
+ 511              		.loc 1 166 0
+ 512              		.cfi_startproc
+ 513              		@ args = 0, pretend = 0, frame = 0
+ 514              		@ frame_needed = 0, uses_anonymous_args = 0
+ 515              	.LVL43:
+ 516 0000 10B5     		push	{r4, lr}
+ 517              	.LCFI22:
+ 518              		.cfi_def_cfa_offset 8
+ 519              		.cfi_offset 4, -8
+ 520              		.cfi_offset 14, -4
+ 521 0002 0446     		mov	r4, r0
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 522              		.loc 1 167 0
+ 523 0004 FFF7FEFF 		bl	osIntNumGet
+ 524              	.LVL44:
+ 525 0008 18B9     		cbnz	r0, .L41
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 526              		.loc 1 172 0
+ 527 000a 14B1     		cbz	r4, .L41
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 528              		.loc 1 177 0
+ 529 000c E088     		ldrh	r0, [r4, #6]
+ 530 000e FFF7FEFF 		bl	LOS_SemDelete
+ 531              	.LVL45:
+ 532              	.L41:
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 533              		.loc 1 178 0
+ 534 0012 10BD     		pop	{r4, pc}
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 15
+
+
+ 535              		.cfi_endproc
+ 536              	.LFE144:
+ 538              		.section	.text.atiny_mutex_lock,"ax",%progbits
+ 539              		.align	1
+ 540              		.global	atiny_mutex_lock
+ 541              		.syntax unified
+ 542              		.thumb
+ 543              		.thumb_func
+ 544              		.fpu fpv4-sp-d16
+ 546              	atiny_mutex_lock:
+ 547              	.LFB145:
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (mutex == NULL)
+ 548              		.loc 1 181 0
+ 549              		.cfi_startproc
+ 550              		@ args = 0, pretend = 0, frame = 0
+ 551              		@ frame_needed = 0, uses_anonymous_args = 0
+ 552              	.LVL46:
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 553              		.loc 1 182 0
+ 554 0000 58B1     		cbz	r0, .L47
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (mutex == NULL)
+ 555              		.loc 1 181 0
+ 556 0002 10B5     		push	{r4, lr}
+ 557              	.LCFI23:
+ 558              		.cfi_def_cfa_offset 8
+ 559              		.cfi_offset 4, -8
+ 560              		.cfi_offset 14, -4
+ 561 0004 0446     		mov	r4, r0
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 562              		.loc 1 187 0
+ 563 0006 FFF7FEFF 		bl	osIntNumGet
+ 564              	.LVL47:
+ 565 000a 00B1     		cbz	r0, .L50
+ 566              	.L44:
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 567              		.loc 1 193 0
+ 568 000c 10BD     		pop	{r4, pc}
+ 569              	.LVL48:
+ 570              	.L50:
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 571              		.loc 1 192 0
+ 572 000e 4FF0FF31 		mov	r1, #-1
+ 573 0012 E088     		ldrh	r0, [r4, #6]
+ 574 0014 FFF7FEFF 		bl	LOS_SemPend
+ 575              	.LVL49:
+ 576 0018 F8E7     		b	.L44
+ 577              	.LVL50:
+ 578              	.L47:
+ 579              	.LCFI24:
+ 580              		.cfi_def_cfa_offset 0
+ 581              		.cfi_restore 4
+ 582              		.cfi_restore 14
+ 583 001a 7047     		bx	lr
+ 584              		.cfi_endproc
+ 585              	.LFE145:
+ 587              		.section	.text.atiny_mutex_unlock,"ax",%progbits
+ 588              		.align	1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 16
+
+
+ 589              		.global	atiny_mutex_unlock
+ 590              		.syntax unified
+ 591              		.thumb
+ 592              		.thumb_func
+ 593              		.fpu fpv4-sp-d16
+ 595              	atiny_mutex_unlock:
+ 596              	.LFB146:
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (mutex == NULL)
+ 597              		.loc 1 196 0
+ 598              		.cfi_startproc
+ 599              		@ args = 0, pretend = 0, frame = 0
+ 600              		@ frame_needed = 0, uses_anonymous_args = 0
+ 601              	.LVL51:
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 602              		.loc 1 197 0
+ 603 0000 20B1     		cbz	r0, .L54
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (mutex == NULL)
+ 604              		.loc 1 196 0
+ 605 0002 08B5     		push	{r3, lr}
+ 606              	.LCFI25:
+ 607              		.cfi_def_cfa_offset 8
+ 608              		.cfi_offset 3, -8
+ 609              		.cfi_offset 14, -4
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 610              		.loc 1 202 0
+ 611 0004 C088     		ldrh	r0, [r0, #6]
+ 612              	.LVL52:
+ 613 0006 FFF7FEFF 		bl	LOS_SemPost
+ 614              	.LVL53:
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 615              		.loc 1 203 0
+ 616 000a 08BD     		pop	{r3, pc}
+ 617              	.LVL54:
+ 618              	.L54:
+ 619              	.LCFI26:
+ 620              		.cfi_def_cfa_offset 0
+ 621              		.cfi_restore 3
+ 622              		.cfi_restore 14
+ 623 000c 7047     		bx	lr
+ 624              		.cfi_endproc
+ 625              	.LFE146:
+ 627              		.section	.text.atiny_task_mutex_create,"ax",%progbits
+ 628              		.align	1
+ 629              		.global	atiny_task_mutex_create
+ 630              		.syntax unified
+ 631              		.thumb
+ 632              		.thumb_func
+ 633              		.fpu fpv4-sp-d16
+ 635              	atiny_task_mutex_create:
+ 636              	.LFB148:
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** int atiny_task_mutex_create(atiny_task_mutex_s *mutex)
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+ 637              		.loc 1 237 0
+ 638              		.cfi_startproc
+ 639              		@ args = 0, pretend = 0, frame = 0
+ 640              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 17
+
+
+ 641              	.LVL55:
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     UINT32 ret;
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (mutex == NULL)
+ 642              		.loc 1 240 0
+ 643 0000 58B1     		cbz	r0, .L60
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     UINT32 ret;
+ 644              		.loc 1 237 0
+ 645 0002 10B5     		push	{r4, lr}
+ 646              	.LCFI27:
+ 647              		.cfi_def_cfa_offset 8
+ 648              		.cfi_offset 4, -8
+ 649              		.cfi_offset 14, -4
+ 650 0004 0446     		mov	r4, r0
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return ERR;
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     memset(mutex, 0, sizeof(*mutex));
+ 651              		.loc 1 245 0
+ 652 0006 0023     		movs	r3, #0
+ 653 0008 0360     		str	r3, [r0]	@ unaligned
+ 654 000a 4360     		str	r3, [r0, #4]	@ unaligned
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     ret = LOS_MuxCreate(&mutex->mutex);
+ 655              		.loc 1 246 0
+ 656 000c FFF7FEFF 		bl	LOS_MuxCreate
+ 657              	.LVL56:
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (ret != LOS_OK)
+ 658              		.loc 1 247 0
+ 659 0010 10B9     		cbnz	r0, .L57
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return ret;
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     mutex->valid = true;
+ 660              		.loc 1 251 0
+ 661 0012 0123     		movs	r3, #1
+ 662 0014 6360     		str	r3, [r4, #4]
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     return LOS_OK;
+ 663              		.loc 1 252 0
+ 664 0016 0020     		movs	r0, #0
+ 665              	.LVL57:
+ 666              	.L57:
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 667              		.loc 1 253 0
+ 668 0018 10BD     		pop	{r4, pc}
+ 669              	.LVL58:
+ 670              	.L60:
+ 671              	.LCFI28:
+ 672              		.cfi_def_cfa_offset 0
+ 673              		.cfi_restore 4
+ 674              		.cfi_restore 14
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 675              		.loc 1 242 0
+ 676 001a 4FF0FF30 		mov	r0, #-1
+ 677              	.LVL59:
+ 678              		.loc 1 253 0
+ 679 001e 7047     		bx	lr
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 18
+
+
+ 680              		.cfi_endproc
+ 681              	.LFE148:
+ 683              		.section	.text.atiny_task_mutex_delete,"ax",%progbits
+ 684              		.align	1
+ 685              		.global	atiny_task_mutex_delete
+ 686              		.syntax unified
+ 687              		.thumb
+ 688              		.thumb_func
+ 689              		.fpu fpv4-sp-d16
+ 691              	atiny_task_mutex_delete:
+ 692              	.LFB149:
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** #define ATINY_DESTROY_MUTEX_WAIT_INTERVAL 100
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** int atiny_task_mutex_delete(atiny_task_mutex_s *mutex)
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+ 693              		.loc 1 257 0
+ 694              		.cfi_startproc
+ 695              		@ args = 0, pretend = 0, frame = 0
+ 696              		@ frame_needed = 0, uses_anonymous_args = 0
+ 697              	.LVL60:
+ 698 0000 10B5     		push	{r4, lr}
+ 699              	.LCFI29:
+ 700              		.cfi_def_cfa_offset 8
+ 701              		.cfi_offset 4, -8
+ 702              		.cfi_offset 14, -4
+ 703 0002 0446     		mov	r4, r0
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     int ret;
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (!atiny_task_mutex_is_valid(mutex))
+ 704              		.loc 1 260 0
+ 705 0004 FFF7FEFF 		bl	atiny_task_mutex_is_valid
+ 706              	.LVL61:
+ 707 0008 68B1     		cbz	r0, .L69
+ 708              	.L68:
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return ERR;
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     do
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         ret = LOS_MuxDelete(mutex->mutex);
+ 709              		.loc 1 267 0
+ 710 000a 2068     		ldr	r0, [r4]
+ 711 000c FFF7FEFF 		bl	LOS_MuxDelete
+ 712              	.LVL62:
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         if (LOS_ERRNO_MUX_PENDED == ret)
+ 713              		.loc 1 268 0
+ 714 0010 064B     		ldr	r3, .L71
+ 715 0012 9842     		cmp	r0, r3
+ 716 0014 03D1     		bne	.L67
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         {
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****             LOS_TaskDelay(ATINY_DESTROY_MUTEX_WAIT_INTERVAL);
+ 717              		.loc 1 270 0
+ 718 0016 6420     		movs	r0, #100
+ 719              	.LVL63:
+ 720 0018 FFF7FEFF 		bl	LOS_TaskDelay
+ 721              	.LVL64:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 19
+
+
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         if (LOS_ERRNO_MUX_PENDED == ret)
+ 722              		.loc 1 267 0
+ 723 001c F5E7     		b	.L68
+ 724              	.LVL65:
+ 725              	.L67:
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         }
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         else
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         {
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****             break;
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         }
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }while (true);
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     memset(mutex, 0, sizeof(*mutex));
+ 726              		.loc 1 278 0
+ 727 001e 0023     		movs	r3, #0
+ 728 0020 2360     		str	r3, [r4]	@ unaligned
+ 729 0022 6360     		str	r3, [r4, #4]	@ unaligned
+ 730              	.LVL66:
+ 731              	.L65:
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** 
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     return ret;
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 732              		.loc 1 281 0
+ 733 0024 10BD     		pop	{r4, pc}
+ 734              	.LVL67:
+ 735              	.L69:
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 736              		.loc 1 262 0
+ 737 0026 4FF0FF30 		mov	r0, #-1
+ 738 002a FBE7     		b	.L65
+ 739              	.L72:
+ 740              		.align	2
+ 741              	.L71:
+ 742 002c 091D0002 		.word	33561865
+ 743              		.cfi_endproc
+ 744              	.LFE149:
+ 746              		.section	.text.atiny_task_mutex_lock,"ax",%progbits
+ 747              		.align	1
+ 748              		.global	atiny_task_mutex_lock
+ 749              		.syntax unified
+ 750              		.thumb
+ 751              		.thumb_func
+ 752              		.fpu fpv4-sp-d16
+ 754              	atiny_task_mutex_lock:
+ 755              	.LFB150:
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** int atiny_task_mutex_lock(atiny_task_mutex_s *mutex)
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+ 756              		.loc 1 283 0
+ 757              		.cfi_startproc
+ 758              		@ args = 0, pretend = 0, frame = 0
+ 759              		@ frame_needed = 0, uses_anonymous_args = 0
+ 760              	.LVL68:
+ 761 0000 10B5     		push	{r4, lr}
+ 762              	.LCFI30:
+ 763              		.cfi_def_cfa_offset 8
+ 764              		.cfi_offset 4, -8
+ 765              		.cfi_offset 14, -4
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 20
+
+
+ 766 0002 0446     		mov	r4, r0
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (!atiny_task_mutex_is_valid(mutex))
+ 767              		.loc 1 284 0
+ 768 0004 FFF7FEFF 		bl	atiny_task_mutex_is_valid
+ 769              	.LVL69:
+ 770 0008 28B1     		cbz	r0, .L75
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return ERR;
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     return LOS_MuxPend(mutex->mutex, ATINY_CNT_MAX_WAITTIME);
+ 771              		.loc 1 288 0
+ 772 000a 4FF0FF31 		mov	r1, #-1
+ 773 000e 2068     		ldr	r0, [r4]
+ 774 0010 FFF7FEFF 		bl	LOS_MuxPend
+ 775              	.LVL70:
+ 776              	.L73:
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 777              		.loc 1 289 0
+ 778 0014 10BD     		pop	{r4, pc}
+ 779              	.LVL71:
+ 780              	.L75:
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 781              		.loc 1 286 0
+ 782 0016 4FF0FF30 		mov	r0, #-1
+ 783 001a FBE7     		b	.L73
+ 784              		.cfi_endproc
+ 785              	.LFE150:
+ 787              		.section	.text.atiny_task_mutex_unlock,"ax",%progbits
+ 788              		.align	1
+ 789              		.global	atiny_task_mutex_unlock
+ 790              		.syntax unified
+ 791              		.thumb
+ 792              		.thumb_func
+ 793              		.fpu fpv4-sp-d16
+ 795              	atiny_task_mutex_unlock:
+ 796              	.LFB151:
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** int atiny_task_mutex_unlock(atiny_task_mutex_s *mutex)
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** {
+ 797              		.loc 1 291 0
+ 798              		.cfi_startproc
+ 799              		@ args = 0, pretend = 0, frame = 0
+ 800              		@ frame_needed = 0, uses_anonymous_args = 0
+ 801              	.LVL72:
+ 802 0000 10B5     		push	{r4, lr}
+ 803              	.LCFI31:
+ 804              		.cfi_def_cfa_offset 8
+ 805              		.cfi_offset 4, -8
+ 806              		.cfi_offset 14, -4
+ 807 0002 0446     		mov	r4, r0
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     if (!atiny_task_mutex_is_valid(mutex))
+ 808              		.loc 1 292 0
+ 809 0004 FFF7FEFF 		bl	atiny_task_mutex_is_valid
+ 810              	.LVL73:
+ 811 0008 18B1     		cbz	r0, .L79
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     {
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****         return ERR;
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 21
+
+
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     return LOS_MuxPost(mutex->mutex);
+ 812              		.loc 1 296 0
+ 813 000a 2068     		ldr	r0, [r4]
+ 814 000c FFF7FEFF 		bl	LOS_MuxPost
+ 815              	.LVL74:
+ 816              	.L77:
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c **** }
+ 817              		.loc 1 297 0
+ 818 0010 10BD     		pop	{r4, pc}
+ 819              	.LVL75:
+ 820              	.L79:
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/osdepends/liteos\atiny_osdep.c ****     }
+ 821              		.loc 1 294 0
+ 822 0012 4FF0FF30 		mov	r0, #-1
+ 823 0016 FBE7     		b	.L77
+ 824              		.cfi_endproc
+ 825              	.LFE151:
+ 827              		.section	.rodata.atiny_printf.str1.4,"aMS",%progbits,1
+ 828              		.align	2
+ 829              	.LC0:
+ 830 0000 257300   		.ascii	"%s\000"
+ 831              		.text
+ 832              	.Letext0:
+ 833              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 834              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 835              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 836              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 837              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 838              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 839              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 840              		.file 9 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 841              		.file 10 "<built-in>"
+ 842              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 843              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 844              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 845              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 846              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 847              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 848              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 849              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 850              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 851              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 852              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 853              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 854              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 855              		.file 24 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/osdepends/atiny_osdep.h"
+ 856              		.file 25 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_memory.h"
+ 857              		.file 26 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_sem.ph"
+ 858              		.file 27 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_tick.ph"
+ 859              		.file 28 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_mux.h"
+ 860              		.file 29 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_sem.h"
+ 861              		.file 30 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 22
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 atiny_osdep.c
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:18     .text.atiny_task_mutex_is_valid:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:24     .text.atiny_task_mutex_is_valid:00000000 atiny_task_mutex_is_valid
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:57     .text.osKernelGetTickCount:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:63     .text.osKernelGetTickCount:00000000 osKernelGetTickCount
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:104    .text.osKernelGetTickCount:00000024 $d
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:109    .text.atiny_gettime_ms:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:116    .text.atiny_gettime_ms:00000000 atiny_gettime_ms
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:136    .text.atiny_malloc:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:143    .text.atiny_malloc:00000000 atiny_malloc
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:167    .text.atiny_malloc:00000010 $d
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:172    .text.atiny_free:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:179    .text.atiny_free:00000000 atiny_free
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:203    .text.atiny_free:00000010 $d
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:208    .text.atiny_snprintf:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:215    .text.atiny_snprintf:00000000 atiny_snprintf
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:260    .text.atiny_printf:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:267    .text.atiny_printf:00000000 atiny_printf
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:342    .text.atiny_printf:00000040 $d
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:347    .text.atiny_strdup:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:354    .text.atiny_strdup:00000000 atiny_strdup
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:406    .text.atiny_delay:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:413    .text.atiny_delay:00000000 atiny_delay
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:437    .text.atiny_mutex_create:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:444    .text.atiny_mutex_create:00000000 atiny_mutex_create
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:497    .text.atiny_mutex_create:0000002c $d
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:502    .text.atiny_mutex_destroy:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:509    .text.atiny_mutex_destroy:00000000 atiny_mutex_destroy
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:539    .text.atiny_mutex_lock:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:546    .text.atiny_mutex_lock:00000000 atiny_mutex_lock
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:588    .text.atiny_mutex_unlock:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:595    .text.atiny_mutex_unlock:00000000 atiny_mutex_unlock
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:628    .text.atiny_task_mutex_create:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:635    .text.atiny_task_mutex_create:00000000 atiny_task_mutex_create
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:684    .text.atiny_task_mutex_delete:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:691    .text.atiny_task_mutex_delete:00000000 atiny_task_mutex_delete
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:742    .text.atiny_task_mutex_delete:0000002c $d
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:747    .text.atiny_task_mutex_lock:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:754    .text.atiny_task_mutex_lock:00000000 atiny_task_mutex_lock
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:788    .text.atiny_task_mutex_unlock:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:795    .text.atiny_task_mutex_unlock:00000000 atiny_task_mutex_unlock
+c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s:828    .rodata.atiny_printf.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+osIntNumGet
+LOS_IntLock
+LOS_IntRestore
+g_ullTickCount
+LOS_MemAlloc
+m_aucSysMem0
+LOS_MemFree
+vsnprintf
+memset
+printf
+strlen
+strncpy
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccmSc52q.s 			page 23
+
+
+LOS_TaskDelay
+LOS_BinarySemCreate
+g_pstAllSem
+LOS_SemDelete
+LOS_SemPend
+LOS_SemPost
+LOS_MuxCreate
+LOS_MuxDelete
+LOS_MuxPend
+LOS_MuxPost

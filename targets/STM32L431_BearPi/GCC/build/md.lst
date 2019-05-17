@@ -1,0 +1,2214 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"md.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.mbedtls_zeroize,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	mbedtls_zeroize:
+  25              	.LFB3:
+  26              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** /**
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  * \file mbedtls_md.c
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  * \brief Generic message digest wrapper for mbed TLS
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  * \author Adriaan de Jong <dejong@fox-it.com>
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *  Copyright (C) 2006-2015, ARM Limited, All Rights Reserved
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *  SPDX-License-Identifier: Apache-2.0
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *  Licensed under the Apache License, Version 2.0 (the "License"); you may
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *  not use this file except in compliance with the License.
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *  You may obtain a copy of the License at
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *  http://www.apache.org/licenses/LICENSE-2.0
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *  Unless required by applicable law or agreed to in writing, software
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *  See the License for the specific language governing permissions and
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *  limitations under the License.
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  *  This file is part of mbed TLS (https://tls.mbed.org)
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  */
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if !defined(MBEDTLS_CONFIG_FILE)
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #include "mbedtls/config.h"
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #else
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #include MBEDTLS_CONFIG_FILE
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_MD_C)
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 2
+
+
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #include "mbedtls/md.h"
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #include "mbedtls/md_internal.h"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_PLATFORM_C)
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #include "mbedtls/platform.h"
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #else
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #include <stdlib.h>
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #define mbedtls_calloc    calloc
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #define mbedtls_free       free
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #include <string.h>
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_FS_IO)
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #include <stdio.h>
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** /* Implementation that should never be optimized out by the compiler */
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** static void mbedtls_zeroize( void *v, size_t n ) {
+  27              		.loc 1 52 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     volatile unsigned char *p = v; while( n-- ) *p++ = 0;
+  33              		.loc 1 53 0
+  34 0000 03E0     		b	.L2
+  35              	.LVL1:
+  36              	.L3:
+  37              		.loc 1 53 0 is_stmt 0 discriminator 3
+  38 0002 0022     		movs	r2, #0
+  39 0004 0270     		strb	r2, [r0]
+  40 0006 0130     		adds	r0, r0, #1
+  41              	.LVL2:
+  42 0008 1946     		mov	r1, r3
+  43              	.LVL3:
+  44              	.L2:
+  45              		.loc 1 53 0 discriminator 1
+  46 000a 4B1E     		subs	r3, r1, #1
+  47              	.LVL4:
+  48 000c 0029     		cmp	r1, #0
+  49 000e F8D1     		bne	.L3
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+  50              		.loc 1 54 0 is_stmt 1
+  51 0010 7047     		bx	lr
+  52              		.cfi_endproc
+  53              	.LFE3:
+  55              		.section	.text.mbedtls_md_list,"ax",%progbits
+  56              		.align	1
+  57              		.global	mbedtls_md_list
+  58              		.syntax unified
+  59              		.thumb
+  60              		.thumb_func
+  61              		.fpu fpv4-sp-d16
+  63              	mbedtls_md_list:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 3
+
+
+  64              	.LFB4:
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** /*
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  * Reminder: update profiles in x509_crt.c when adding a new hash!
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****  */
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** static const int supported_digests[] = {
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_SHA512_C)
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         MBEDTLS_MD_SHA512,
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         MBEDTLS_MD_SHA384,
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_SHA256_C)
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         MBEDTLS_MD_SHA256,
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         MBEDTLS_MD_SHA224,
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_SHA1_C)
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         MBEDTLS_MD_SHA1,
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_RIPEMD160_C)
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         MBEDTLS_MD_RIPEMD160,
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_MD5_C)
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         MBEDTLS_MD_MD5,
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_MD4_C)
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         MBEDTLS_MD_MD4,
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_MD2_C)
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         MBEDTLS_MD_MD2,
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         MBEDTLS_MD_NONE
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** };
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** const int *mbedtls_md_list( void )
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+  65              		.loc 1 95 0
+  66              		.cfi_startproc
+  67              		@ args = 0, pretend = 0, frame = 0
+  68              		@ frame_needed = 0, uses_anonymous_args = 0
+  69              		@ link register save eliminated.
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return( supported_digests );
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+  70              		.loc 1 97 0
+  71 0000 0048     		ldr	r0, .L5
+  72 0002 7047     		bx	lr
+  73              	.L6:
+  74              		.align	2
+  75              	.L5:
+  76 0004 00000000 		.word	.LANCHOR0
+  77              		.cfi_endproc
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 4
+
+
+  78              	.LFE4:
+  80              		.section	.text.mbedtls_md_info_from_type,"ax",%progbits
+  81              		.align	1
+  82              		.global	mbedtls_md_info_from_type
+  83              		.syntax unified
+  84              		.thumb
+  85              		.thumb_func
+  86              		.fpu fpv4-sp-d16
+  88              	mbedtls_md_info_from_type:
+  89              	.LFB6:
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** const mbedtls_md_info_t *mbedtls_md_info_from_string( const char *md_name )
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( NULL == md_name )
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( NULL );
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     /* Get the appropriate digest information */
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_MD2_C)
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( !strcmp( "MD2", md_name ) )
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_MD2 );
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_MD4_C)
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( !strcmp( "MD4", md_name ) )
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_MD4 );
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_MD5_C)
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( !strcmp( "MD5", md_name ) )
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_MD5 );
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_RIPEMD160_C)
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( !strcmp( "RIPEMD160", md_name ) )
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_RIPEMD160 );
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_SHA1_C)
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( !strcmp( "SHA1", md_name ) || !strcmp( "SHA", md_name ) )
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_SHA1 );
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_SHA256_C)
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( !strcmp( "SHA224", md_name ) )
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_SHA224 );
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( !strcmp( "SHA256", md_name ) )
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_SHA256 );
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_SHA512_C)
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( !strcmp( "SHA384", md_name ) )
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_SHA384 );
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( !strcmp( "SHA512", md_name ) )
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_SHA512 );
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return( NULL );
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** const mbedtls_md_info_t *mbedtls_md_info_from_type( mbedtls_md_type_t md_type )
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+  90              		.loc 1 141 0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 5
+
+
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              		@ link register save eliminated.
+  95              	.LVL5:
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     switch( md_type )
+  96              		.loc 1 142 0
+  97 0000 0528     		cmp	r0, #5
+  98 0002 03D0     		beq	.L9
+  99 0004 0628     		cmp	r0, #6
+ 100 0006 03D0     		beq	.L11
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     {
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_MD2_C)
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         case MBEDTLS_MD_MD2:
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****             return( &mbedtls_md2_info );
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_MD4_C)
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         case MBEDTLS_MD_MD4:
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****             return( &mbedtls_md4_info );
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_MD5_C)
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         case MBEDTLS_MD_MD5:
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****             return( &mbedtls_md5_info );
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_RIPEMD160_C)
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         case MBEDTLS_MD_RIPEMD160:
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****             return( &mbedtls_ripemd160_info );
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_SHA1_C)
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         case MBEDTLS_MD_SHA1:
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****             return( &mbedtls_sha1_info );
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_SHA256_C)
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         case MBEDTLS_MD_SHA224:
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****             return( &mbedtls_sha224_info );
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         case MBEDTLS_MD_SHA256:
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****             return( &mbedtls_sha256_info );
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_SHA512_C)
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         case MBEDTLS_MD_SHA384:
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****             return( &mbedtls_sha384_info );
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         case MBEDTLS_MD_SHA512:
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****             return( &mbedtls_sha512_info );
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         default:
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****             return( NULL );
+ 101              		.loc 1 177 0
+ 102 0008 0020     		movs	r0, #0
+ 103              	.LVL6:
+ 104 000a 7047     		bx	lr
+ 105              	.LVL7:
+ 106              	.L9:
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         case MBEDTLS_MD_SHA256:
+ 107              		.loc 1 166 0
+ 108 000c 0148     		ldr	r0, .L13
+ 109              	.LVL8:
+ 110 000e 7047     		bx	lr
+ 111              	.LVL9:
+ 112              	.L11:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 6
+
+
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 113              		.loc 1 168 0
+ 114 0010 0148     		ldr	r0, .L13+4
+ 115              	.LVL10:
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     }
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 116              		.loc 1 179 0
+ 117 0012 7047     		bx	lr
+ 118              	.L14:
+ 119              		.align	2
+ 120              	.L13:
+ 121 0014 00000000 		.word	mbedtls_sha224_info
+ 122 0018 00000000 		.word	mbedtls_sha256_info
+ 123              		.cfi_endproc
+ 124              	.LFE6:
+ 126              		.section	.text.mbedtls_md_info_from_string,"ax",%progbits
+ 127              		.align	1
+ 128              		.global	mbedtls_md_info_from_string
+ 129              		.syntax unified
+ 130              		.thumb
+ 131              		.thumb_func
+ 132              		.fpu fpv4-sp-d16
+ 134              	mbedtls_md_info_from_string:
+ 135              	.LFB5:
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( NULL == md_name )
+ 136              		.loc 1 100 0
+ 137              		.cfi_startproc
+ 138              		@ args = 0, pretend = 0, frame = 0
+ 139              		@ frame_needed = 0, uses_anonymous_args = 0
+ 140              	.LVL11:
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( NULL );
+ 141              		.loc 1 101 0
+ 142 0000 98B1     		cbz	r0, .L18
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( NULL == md_name )
+ 143              		.loc 1 100 0
+ 144 0002 10B5     		push	{r4, lr}
+ 145              	.LCFI0:
+ 146              		.cfi_def_cfa_offset 8
+ 147              		.cfi_offset 4, -8
+ 148              		.cfi_offset 14, -4
+ 149 0004 0446     		mov	r4, r0
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_SHA224 );
+ 150              		.loc 1 126 0
+ 151 0006 0146     		mov	r1, r0
+ 152 0008 0A48     		ldr	r0, .L25
+ 153              	.LVL12:
+ 154 000a FFF7FEFF 		bl	strcmp
+ 155              	.LVL13:
+ 156 000e 40B1     		cbz	r0, .L24
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_SHA256 );
+ 157              		.loc 1 128 0
+ 158 0010 2146     		mov	r1, r4
+ 159 0012 0948     		ldr	r0, .L25+4
+ 160 0014 FFF7FEFF 		bl	strcmp
+ 161              	.LVL14:
+ 162 0018 48B9     		cbnz	r0, .L19
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 7
+
+
+ 163              		.loc 1 129 0
+ 164 001a 0620     		movs	r0, #6
+ 165 001c FFF7FEFF 		bl	mbedtls_md_info_from_type
+ 166              	.LVL15:
+ 167              	.L15:
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 168              		.loc 1 138 0
+ 169 0020 10BD     		pop	{r4, pc}
+ 170              	.LVL16:
+ 171              	.L24:
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( !strcmp( "SHA256", md_name ) )
+ 172              		.loc 1 127 0
+ 173 0022 0520     		movs	r0, #5
+ 174 0024 FFF7FEFF 		bl	mbedtls_md_info_from_type
+ 175              	.LVL17:
+ 176 0028 FAE7     		b	.L15
+ 177              	.LVL18:
+ 178              	.L18:
+ 179              	.LCFI1:
+ 180              		.cfi_def_cfa_offset 0
+ 181              		.cfi_restore 4
+ 182              		.cfi_restore 14
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 183              		.loc 1 102 0
+ 184 002a 0020     		movs	r0, #0
+ 185              	.LVL19:
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 186              		.loc 1 138 0
+ 187 002c 7047     		bx	lr
+ 188              	.LVL20:
+ 189              	.L19:
+ 190              	.LCFI2:
+ 191              		.cfi_def_cfa_offset 8
+ 192              		.cfi_offset 4, -8
+ 193              		.cfi_offset 14, -4
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 194              		.loc 1 137 0
+ 195 002e 0020     		movs	r0, #0
+ 196 0030 F6E7     		b	.L15
+ 197              	.L26:
+ 198 0032 00BF     		.align	2
+ 199              	.L25:
+ 200 0034 00000000 		.word	.LC0
+ 201 0038 08000000 		.word	.LC1
+ 202              		.cfi_endproc
+ 203              	.LFE5:
+ 205              		.section	.text.mbedtls_md_init,"ax",%progbits
+ 206              		.align	1
+ 207              		.global	mbedtls_md_init
+ 208              		.syntax unified
+ 209              		.thumb
+ 210              		.thumb_func
+ 211              		.fpu fpv4-sp-d16
+ 213              	mbedtls_md_init:
+ 214              	.LFB7:
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** void mbedtls_md_init( mbedtls_md_context_t *ctx )
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 8
+
+
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 215              		.loc 1 182 0
+ 216              		.cfi_startproc
+ 217              		@ args = 0, pretend = 0, frame = 0
+ 218              		@ frame_needed = 0, uses_anonymous_args = 0
+ 219              		@ link register save eliminated.
+ 220              	.LVL21:
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     memset( ctx, 0, sizeof( mbedtls_md_context_t ) );
+ 221              		.loc 1 183 0
+ 222 0000 0023     		movs	r3, #0
+ 223 0002 0360     		str	r3, [r0]	@ unaligned
+ 224 0004 4360     		str	r3, [r0, #4]	@ unaligned
+ 225 0006 8360     		str	r3, [r0, #8]	@ unaligned
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 226              		.loc 1 184 0
+ 227 0008 7047     		bx	lr
+ 228              		.cfi_endproc
+ 229              	.LFE7:
+ 231              		.section	.text.mbedtls_md_free,"ax",%progbits
+ 232              		.align	1
+ 233              		.global	mbedtls_md_free
+ 234              		.syntax unified
+ 235              		.thumb
+ 236              		.thumb_func
+ 237              		.fpu fpv4-sp-d16
+ 239              	mbedtls_md_free:
+ 240              	.LFB8:
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** void mbedtls_md_free( mbedtls_md_context_t *ctx )
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 241              		.loc 1 187 0
+ 242              		.cfi_startproc
+ 243              		@ args = 0, pretend = 0, frame = 0
+ 244              		@ frame_needed = 0, uses_anonymous_args = 0
+ 245              	.LVL22:
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL )
+ 246              		.loc 1 188 0
+ 247 0000 B8B1     		cbz	r0, .L33
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL )
+ 248              		.loc 1 187 0 discriminator 1
+ 249 0002 10B5     		push	{r4, lr}
+ 250              	.LCFI3:
+ 251              		.cfi_def_cfa_offset 8
+ 252              		.cfi_offset 4, -8
+ 253              		.cfi_offset 14, -4
+ 254 0004 0446     		mov	r4, r0
+ 255              		.loc 1 188 0 discriminator 1
+ 256 0006 0368     		ldr	r3, [r0]
+ 257 0008 93B1     		cbz	r3, .L28
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return;
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx->md_ctx != NULL )
+ 258              		.loc 1 191 0
+ 259 000a 4068     		ldr	r0, [r0, #4]
+ 260              	.LVL23:
+ 261 000c 08B1     		cbz	r0, .L30
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         ctx->md_info->ctx_free_func( ctx->md_ctx );
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 9
+
+
+ 262              		.loc 1 192 0
+ 263 000e 5B6A     		ldr	r3, [r3, #36]
+ 264 0010 9847     		blx	r3
+ 265              	.LVL24:
+ 266              	.L30:
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx->hmac_ctx != NULL )
+ 267              		.loc 1 194 0
+ 268 0012 A068     		ldr	r0, [r4, #8]
+ 269 0014 40B1     		cbz	r0, .L31
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     {
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         mbedtls_zeroize( ctx->hmac_ctx, 2 * ctx->md_info->block_size );
+ 270              		.loc 1 196 0
+ 271 0016 2368     		ldr	r3, [r4]
+ 272 0018 D968     		ldr	r1, [r3, #12]
+ 273 001a 4900     		lsls	r1, r1, #1
+ 274 001c FFF7FEFF 		bl	mbedtls_zeroize
+ 275              	.LVL25:
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         mbedtls_free( ctx->hmac_ctx );
+ 276              		.loc 1 197 0
+ 277 0020 044B     		ldr	r3, .L36
+ 278 0022 1B68     		ldr	r3, [r3]
+ 279 0024 A068     		ldr	r0, [r4, #8]
+ 280 0026 9847     		blx	r3
+ 281              	.LVL26:
+ 282              	.L31:
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     }
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     mbedtls_zeroize( ctx, sizeof( mbedtls_md_context_t ) );
+ 283              		.loc 1 200 0
+ 284 0028 0C21     		movs	r1, #12
+ 285 002a 2046     		mov	r0, r4
+ 286 002c FFF7FEFF 		bl	mbedtls_zeroize
+ 287              	.LVL27:
+ 288              	.L28:
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 289              		.loc 1 201 0
+ 290 0030 10BD     		pop	{r4, pc}
+ 291              	.LVL28:
+ 292              	.L33:
+ 293              	.LCFI4:
+ 294              		.cfi_def_cfa_offset 0
+ 295              		.cfi_restore 4
+ 296              		.cfi_restore 14
+ 297 0032 7047     		bx	lr
+ 298              	.L37:
+ 299              		.align	2
+ 300              	.L36:
+ 301 0034 00000000 		.word	mbedtls_free
+ 302              		.cfi_endproc
+ 303              	.LFE8:
+ 305              		.section	.text.mbedtls_md_clone,"ax",%progbits
+ 306              		.align	1
+ 307              		.global	mbedtls_md_clone
+ 308              		.syntax unified
+ 309              		.thumb
+ 310              		.thumb_func
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 10
+
+
+ 311              		.fpu fpv4-sp-d16
+ 313              	mbedtls_md_clone:
+ 314              	.LFB9:
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** int mbedtls_md_clone( mbedtls_md_context_t *dst,
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****                       const mbedtls_md_context_t *src )
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 315              		.loc 1 205 0
+ 316              		.cfi_startproc
+ 317              		@ args = 0, pretend = 0, frame = 0
+ 318              		@ frame_needed = 0, uses_anonymous_args = 0
+ 319              	.LVL29:
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( dst == NULL || dst->md_info == NULL ||
+ 320              		.loc 1 206 0
+ 321 0000 70B1     		cbz	r0, .L40
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( dst == NULL || dst->md_info == NULL ||
+ 322              		.loc 1 205 0 discriminator 1
+ 323 0002 08B5     		push	{r3, lr}
+ 324              	.LCFI5:
+ 325              		.cfi_def_cfa_offset 8
+ 326              		.cfi_offset 3, -8
+ 327              		.cfi_offset 14, -4
+ 328 0004 0346     		mov	r3, r0
+ 329              		.loc 1 206 0 discriminator 1
+ 330 0006 0268     		ldr	r2, [r0]
+ 331 0008 62B1     		cbz	r2, .L41
+ 332              		.loc 1 206 0 is_stmt 0 discriminator 2
+ 333 000a 69B1     		cbz	r1, .L42
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         src == NULL || src->md_info == NULL ||
+ 334              		.loc 1 207 0 is_stmt 1
+ 335 000c 0868     		ldr	r0, [r1]
+ 336              	.LVL30:
+ 337 000e 68B1     		cbz	r0, .L43
+ 338              		.loc 1 207 0 is_stmt 0 discriminator 1
+ 339 0010 8242     		cmp	r2, r0
+ 340 0012 0DD1     		bne	.L44
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         dst->md_info != src->md_info )
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     {
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     }
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     dst->md_info->clone_func( dst->md_ctx, src->md_ctx );
+ 341              		.loc 1 213 0 is_stmt 1
+ 342 0014 926A     		ldr	r2, [r2, #40]
+ 343 0016 4968     		ldr	r1, [r1, #4]
+ 344              	.LVL31:
+ 345 0018 5868     		ldr	r0, [r3, #4]
+ 346 001a 9047     		blx	r2
+ 347              	.LVL32:
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return( 0 );
+ 348              		.loc 1 215 0
+ 349 001c 0020     		movs	r0, #0
+ 350              	.L38:
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 351              		.loc 1 216 0
+ 352 001e 08BD     		pop	{r3, pc}
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 11
+
+
+ 353              	.LVL33:
+ 354              	.L40:
+ 355              	.LCFI6:
+ 356              		.cfi_def_cfa_offset 0
+ 357              		.cfi_restore 3
+ 358              		.cfi_restore 14
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     }
+ 359              		.loc 1 210 0
+ 360 0020 0448     		ldr	r0, .L49
+ 361              	.LVL34:
+ 362              		.loc 1 216 0
+ 363 0022 7047     		bx	lr
+ 364              	.LVL35:
+ 365              	.L41:
+ 366              	.LCFI7:
+ 367              		.cfi_def_cfa_offset 8
+ 368              		.cfi_offset 3, -8
+ 369              		.cfi_offset 14, -4
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     }
+ 370              		.loc 1 210 0
+ 371 0024 0348     		ldr	r0, .L49
+ 372              	.LVL36:
+ 373 0026 FAE7     		b	.L38
+ 374              	.LVL37:
+ 375              	.L42:
+ 376 0028 0248     		ldr	r0, .L49
+ 377              	.LVL38:
+ 378 002a F8E7     		b	.L38
+ 379              	.L43:
+ 380 002c 0148     		ldr	r0, .L49
+ 381 002e F6E7     		b	.L38
+ 382              	.L44:
+ 383 0030 0048     		ldr	r0, .L49
+ 384 0032 F4E7     		b	.L38
+ 385              	.L50:
+ 386              		.align	2
+ 387              	.L49:
+ 388 0034 00AFFFFF 		.word	-20736
+ 389              		.cfi_endproc
+ 390              	.LFE9:
+ 392              		.section	.text.mbedtls_md_setup,"ax",%progbits
+ 393              		.align	1
+ 394              		.global	mbedtls_md_setup
+ 395              		.syntax unified
+ 396              		.thumb
+ 397              		.thumb_func
+ 398              		.fpu fpv4-sp-d16
+ 400              	mbedtls_md_setup:
+ 401              	.LFB11:
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if ! defined(MBEDTLS_DEPRECATED_REMOVED)
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** int mbedtls_md_init_ctx( mbedtls_md_context_t *ctx, const mbedtls_md_info_t *md_info )
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return mbedtls_md_setup( ctx, md_info, 1 );
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 12
+
+
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** int mbedtls_md_setup( mbedtls_md_context_t *ctx, const mbedtls_md_info_t *md_info, int hmac )
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 402              		.loc 1 226 0
+ 403              		.cfi_startproc
+ 404              		@ args = 0, pretend = 0, frame = 0
+ 405              		@ frame_needed = 0, uses_anonymous_args = 0
+ 406              	.LVL39:
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( md_info == NULL || ctx == NULL )
+ 407              		.loc 1 227 0
+ 408 0000 C1B1     		cbz	r1, .L54
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( md_info == NULL || ctx == NULL )
+ 409              		.loc 1 226 0 discriminator 1
+ 410 0002 70B5     		push	{r4, r5, r6, lr}
+ 411              	.LCFI8:
+ 412              		.cfi_def_cfa_offset 16
+ 413              		.cfi_offset 4, -16
+ 414              		.cfi_offset 5, -12
+ 415              		.cfi_offset 6, -8
+ 416              		.cfi_offset 14, -4
+ 417 0004 0E46     		mov	r6, r1
+ 418              		.loc 1 227 0 discriminator 1
+ 419 0006 B8B1     		cbz	r0, .L55
+ 420 0008 1546     		mov	r5, r2
+ 421 000a 0446     		mov	r4, r0
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ( ctx->md_ctx = md_info->ctx_alloc_func() ) == NULL )
+ 422              		.loc 1 230 0
+ 423 000c 0B6A     		ldr	r3, [r1, #32]
+ 424 000e 9847     		blx	r3
+ 425              	.LVL40:
+ 426 0010 6060     		str	r0, [r4, #4]
+ 427 0012 98B1     		cbz	r0, .L56
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_ALLOC_FAILED );
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( hmac != 0 )
+ 428              		.loc 1 233 0
+ 429 0014 35B1     		cbz	r5, .L53
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     {
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         ctx->hmac_ctx = mbedtls_calloc( 2, md_info->block_size );
+ 430              		.loc 1 235 0
+ 431 0016 0A4B     		ldr	r3, .L62
+ 432 0018 1B68     		ldr	r3, [r3]
+ 433 001a F168     		ldr	r1, [r6, #12]
+ 434 001c 0220     		movs	r0, #2
+ 435 001e 9847     		blx	r3
+ 436              	.LVL41:
+ 437 0020 A060     		str	r0, [r4, #8]
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         if( ctx->hmac_ctx == NULL )
+ 438              		.loc 1 236 0
+ 439 0022 10B1     		cbz	r0, .L61
+ 440              	.L53:
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         {
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****             md_info->ctx_free_func( ctx->md_ctx );
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****             return( MBEDTLS_ERR_MD_ALLOC_FAILED );
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         }
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 13
+
+
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ctx->md_info = md_info;
+ 441              		.loc 1 243 0
+ 442 0024 2660     		str	r6, [r4]
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return( 0 );
+ 443              		.loc 1 245 0
+ 444 0026 0020     		movs	r0, #0
+ 445              	.LVL42:
+ 446              	.L51:
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 447              		.loc 1 246 0
+ 448 0028 70BD     		pop	{r4, r5, r6, pc}
+ 449              	.LVL43:
+ 450              	.L61:
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****             return( MBEDTLS_ERR_MD_ALLOC_FAILED );
+ 451              		.loc 1 238 0
+ 452 002a 736A     		ldr	r3, [r6, #36]
+ 453 002c 6068     		ldr	r0, [r4, #4]
+ 454 002e 9847     		blx	r3
+ 455              	.LVL44:
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         }
+ 456              		.loc 1 239 0
+ 457 0030 0448     		ldr	r0, .L62+4
+ 458 0032 F9E7     		b	.L51
+ 459              	.LVL45:
+ 460              	.L54:
+ 461              	.LCFI9:
+ 462              		.cfi_def_cfa_offset 0
+ 463              		.cfi_restore 4
+ 464              		.cfi_restore 5
+ 465              		.cfi_restore 6
+ 466              		.cfi_restore 14
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 467              		.loc 1 228 0
+ 468 0034 0448     		ldr	r0, .L62+8
+ 469              	.LVL46:
+ 470              		.loc 1 246 0
+ 471 0036 7047     		bx	lr
+ 472              	.LVL47:
+ 473              	.L55:
+ 474              	.LCFI10:
+ 475              		.cfi_def_cfa_offset 16
+ 476              		.cfi_offset 4, -16
+ 477              		.cfi_offset 5, -12
+ 478              		.cfi_offset 6, -8
+ 479              		.cfi_offset 14, -4
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 480              		.loc 1 228 0
+ 481 0038 0348     		ldr	r0, .L62+8
+ 482              	.LVL48:
+ 483 003a F5E7     		b	.L51
+ 484              	.LVL49:
+ 485              	.L56:
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 486              		.loc 1 231 0
+ 487 003c 0148     		ldr	r0, .L62+4
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 14
+
+
+ 488 003e F3E7     		b	.L51
+ 489              	.L63:
+ 490              		.align	2
+ 491              	.L62:
+ 492 0040 00000000 		.word	mbedtls_calloc
+ 493 0044 80AEFFFF 		.word	-20864
+ 494 0048 00AFFFFF 		.word	-20736
+ 495              		.cfi_endproc
+ 496              	.LFE11:
+ 498              		.section	.text.mbedtls_md_init_ctx,"ax",%progbits
+ 499              		.align	1
+ 500              		.global	mbedtls_md_init_ctx
+ 501              		.syntax unified
+ 502              		.thumb
+ 503              		.thumb_func
+ 504              		.fpu fpv4-sp-d16
+ 506              	mbedtls_md_init_ctx:
+ 507              	.LFB10:
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return mbedtls_md_setup( ctx, md_info, 1 );
+ 508              		.loc 1 220 0
+ 509              		.cfi_startproc
+ 510              		@ args = 0, pretend = 0, frame = 0
+ 511              		@ frame_needed = 0, uses_anonymous_args = 0
+ 512              	.LVL50:
+ 513 0000 08B5     		push	{r3, lr}
+ 514              	.LCFI11:
+ 515              		.cfi_def_cfa_offset 8
+ 516              		.cfi_offset 3, -8
+ 517              		.cfi_offset 14, -4
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 518              		.loc 1 221 0
+ 519 0002 0122     		movs	r2, #1
+ 520 0004 FFF7FEFF 		bl	mbedtls_md_setup
+ 521              	.LVL51:
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif
+ 522              		.loc 1 222 0
+ 523 0008 08BD     		pop	{r3, pc}
+ 524              		.cfi_endproc
+ 525              	.LFE10:
+ 527              		.section	.text.mbedtls_md_starts,"ax",%progbits
+ 528              		.align	1
+ 529              		.global	mbedtls_md_starts
+ 530              		.syntax unified
+ 531              		.thumb
+ 532              		.thumb_func
+ 533              		.fpu fpv4-sp-d16
+ 535              	mbedtls_md_starts:
+ 536              	.LFB12:
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** int mbedtls_md_starts( mbedtls_md_context_t *ctx )
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 537              		.loc 1 249 0
+ 538              		.cfi_startproc
+ 539              		@ args = 0, pretend = 0, frame = 0
+ 540              		@ frame_needed = 0, uses_anonymous_args = 0
+ 541              	.LVL52:
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL )
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 15
+
+
+ 542              		.loc 1 250 0
+ 543 0000 38B1     		cbz	r0, .L68
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL )
+ 544              		.loc 1 249 0 discriminator 1
+ 545 0002 08B5     		push	{r3, lr}
+ 546              	.LCFI12:
+ 547              		.cfi_def_cfa_offset 8
+ 548              		.cfi_offset 3, -8
+ 549              		.cfi_offset 14, -4
+ 550              		.loc 1 250 0 discriminator 1
+ 551 0004 0268     		ldr	r2, [r0]
+ 552 0006 32B1     		cbz	r2, .L69
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ctx->md_info->starts_func( ctx->md_ctx );
+ 553              		.loc 1 253 0
+ 554 0008 1269     		ldr	r2, [r2, #16]
+ 555 000a 4068     		ldr	r0, [r0, #4]
+ 556              	.LVL53:
+ 557 000c 9047     		blx	r2
+ 558              	.LVL54:
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return( 0 );
+ 559              		.loc 1 255 0
+ 560 000e 0020     		movs	r0, #0
+ 561              	.L66:
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 562              		.loc 1 256 0
+ 563 0010 08BD     		pop	{r3, pc}
+ 564              	.LVL55:
+ 565              	.L68:
+ 566              	.LCFI13:
+ 567              		.cfi_def_cfa_offset 0
+ 568              		.cfi_restore 3
+ 569              		.cfi_restore 14
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 570              		.loc 1 251 0
+ 571 0012 0248     		ldr	r0, .L74
+ 572              	.LVL56:
+ 573              		.loc 1 256 0
+ 574 0014 7047     		bx	lr
+ 575              	.LVL57:
+ 576              	.L69:
+ 577              	.LCFI14:
+ 578              		.cfi_def_cfa_offset 8
+ 579              		.cfi_offset 3, -8
+ 580              		.cfi_offset 14, -4
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 581              		.loc 1 251 0
+ 582 0016 0148     		ldr	r0, .L74
+ 583              	.LVL58:
+ 584 0018 FAE7     		b	.L66
+ 585              	.L75:
+ 586 001a 00BF     		.align	2
+ 587              	.L74:
+ 588 001c 00AFFFFF 		.word	-20736
+ 589              		.cfi_endproc
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 16
+
+
+ 590              	.LFE12:
+ 592              		.section	.text.mbedtls_md_update,"ax",%progbits
+ 593              		.align	1
+ 594              		.global	mbedtls_md_update
+ 595              		.syntax unified
+ 596              		.thumb
+ 597              		.thumb_func
+ 598              		.fpu fpv4-sp-d16
+ 600              	mbedtls_md_update:
+ 601              	.LFB13:
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** int mbedtls_md_update( mbedtls_md_context_t *ctx, const unsigned char *input, size_t ilen )
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 602              		.loc 1 259 0
+ 603              		.cfi_startproc
+ 604              		@ args = 0, pretend = 0, frame = 0
+ 605              		@ frame_needed = 0, uses_anonymous_args = 0
+ 606              	.LVL59:
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL )
+ 607              		.loc 1 260 0
+ 608 0000 40B1     		cbz	r0, .L78
+ 609 0002 0346     		mov	r3, r0
+ 610              		.loc 1 260 0 is_stmt 0 discriminator 1
+ 611 0004 0068     		ldr	r0, [r0]
+ 612              	.LVL60:
+ 613 0006 38B1     		cbz	r0, .L79
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL )
+ 614              		.loc 1 259 0 is_stmt 1
+ 615 0008 10B5     		push	{r4, lr}
+ 616              	.LCFI15:
+ 617              		.cfi_def_cfa_offset 8
+ 618              		.cfi_offset 4, -8
+ 619              		.cfi_offset 14, -4
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ctx->md_info->update_func( ctx->md_ctx, input, ilen );
+ 620              		.loc 1 263 0
+ 621 000a 4469     		ldr	r4, [r0, #20]
+ 622 000c 5868     		ldr	r0, [r3, #4]
+ 623 000e A047     		blx	r4
+ 624              	.LVL61:
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return( 0 );
+ 625              		.loc 1 265 0
+ 626 0010 0020     		movs	r0, #0
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 627              		.loc 1 266 0
+ 628 0012 10BD     		pop	{r4, pc}
+ 629              	.LVL62:
+ 630              	.L78:
+ 631              	.LCFI16:
+ 632              		.cfi_def_cfa_offset 0
+ 633              		.cfi_restore 4
+ 634              		.cfi_restore 14
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 635              		.loc 1 261 0
+ 636 0014 0148     		ldr	r0, .L84
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 17
+
+
+ 637              	.LVL63:
+ 638 0016 7047     		bx	lr
+ 639              	.LVL64:
+ 640              	.L79:
+ 641 0018 0048     		ldr	r0, .L84
+ 642              		.loc 1 266 0
+ 643 001a 7047     		bx	lr
+ 644              	.L85:
+ 645              		.align	2
+ 646              	.L84:
+ 647 001c 00AFFFFF 		.word	-20736
+ 648              		.cfi_endproc
+ 649              	.LFE13:
+ 651              		.section	.text.mbedtls_md_finish,"ax",%progbits
+ 652              		.align	1
+ 653              		.global	mbedtls_md_finish
+ 654              		.syntax unified
+ 655              		.thumb
+ 656              		.thumb_func
+ 657              		.fpu fpv4-sp-d16
+ 659              	mbedtls_md_finish:
+ 660              	.LFB14:
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** int mbedtls_md_finish( mbedtls_md_context_t *ctx, unsigned char *output )
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 661              		.loc 1 269 0
+ 662              		.cfi_startproc
+ 663              		@ args = 0, pretend = 0, frame = 0
+ 664              		@ frame_needed = 0, uses_anonymous_args = 0
+ 665              	.LVL65:
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL )
+ 666              		.loc 1 270 0
+ 667 0000 38B1     		cbz	r0, .L88
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL )
+ 668              		.loc 1 269 0 discriminator 1
+ 669 0002 08B5     		push	{r3, lr}
+ 670              	.LCFI17:
+ 671              		.cfi_def_cfa_offset 8
+ 672              		.cfi_offset 3, -8
+ 673              		.cfi_offset 14, -4
+ 674              		.loc 1 270 0 discriminator 1
+ 675 0004 0268     		ldr	r2, [r0]
+ 676 0006 32B1     		cbz	r2, .L89
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ctx->md_info->finish_func( ctx->md_ctx, output );
+ 677              		.loc 1 273 0
+ 678 0008 9269     		ldr	r2, [r2, #24]
+ 679 000a 4068     		ldr	r0, [r0, #4]
+ 680              	.LVL66:
+ 681 000c 9047     		blx	r2
+ 682              	.LVL67:
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return( 0 );
+ 683              		.loc 1 275 0
+ 684 000e 0020     		movs	r0, #0
+ 685              	.L86:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 18
+
+
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 686              		.loc 1 276 0
+ 687 0010 08BD     		pop	{r3, pc}
+ 688              	.LVL68:
+ 689              	.L88:
+ 690              	.LCFI18:
+ 691              		.cfi_def_cfa_offset 0
+ 692              		.cfi_restore 3
+ 693              		.cfi_restore 14
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 694              		.loc 1 271 0
+ 695 0012 0248     		ldr	r0, .L94
+ 696              	.LVL69:
+ 697              		.loc 1 276 0
+ 698 0014 7047     		bx	lr
+ 699              	.LVL70:
+ 700              	.L89:
+ 701              	.LCFI19:
+ 702              		.cfi_def_cfa_offset 8
+ 703              		.cfi_offset 3, -8
+ 704              		.cfi_offset 14, -4
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 705              		.loc 1 271 0
+ 706 0016 0148     		ldr	r0, .L94
+ 707              	.LVL71:
+ 708 0018 FAE7     		b	.L86
+ 709              	.L95:
+ 710 001a 00BF     		.align	2
+ 711              	.L94:
+ 712 001c 00AFFFFF 		.word	-20736
+ 713              		.cfi_endproc
+ 714              	.LFE14:
+ 716              		.section	.text.mbedtls_md,"ax",%progbits
+ 717              		.align	1
+ 718              		.global	mbedtls_md
+ 719              		.syntax unified
+ 720              		.thumb
+ 721              		.thumb_func
+ 722              		.fpu fpv4-sp-d16
+ 724              	mbedtls_md:
+ 725              	.LFB15:
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** int mbedtls_md( const mbedtls_md_info_t *md_info, const unsigned char *input, size_t ilen,
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****             unsigned char *output )
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 726              		.loc 1 280 0
+ 727              		.cfi_startproc
+ 728              		@ args = 0, pretend = 0, frame = 0
+ 729              		@ frame_needed = 0, uses_anonymous_args = 0
+ 730              	.LVL72:
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( md_info == NULL )
+ 731              		.loc 1 281 0
+ 732 0000 48B1     		cbz	r0, .L98
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( md_info == NULL )
+ 733              		.loc 1 280 0
+ 734 0002 38B5     		push	{r3, r4, r5, lr}
+ 735              	.LCFI20:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 19
+
+
+ 736              		.cfi_def_cfa_offset 16
+ 737              		.cfi_offset 3, -16
+ 738              		.cfi_offset 4, -12
+ 739              		.cfi_offset 5, -8
+ 740              		.cfi_offset 14, -4
+ 741 0004 0C46     		mov	r4, r1
+ 742 0006 1146     		mov	r1, r2
+ 743              	.LVL73:
+ 744 0008 0546     		mov	r5, r0
+ 745 000a 1A46     		mov	r2, r3
+ 746              	.LVL74:
+ 747 000c 2046     		mov	r0, r4
+ 748              	.LVL75:
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     md_info->digest_func( input, ilen, output );
+ 749              		.loc 1 284 0
+ 750 000e EB69     		ldr	r3, [r5, #28]
+ 751              	.LVL76:
+ 752 0010 9847     		blx	r3
+ 753              	.LVL77:
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return( 0 );
+ 754              		.loc 1 286 0
+ 755 0012 0020     		movs	r0, #0
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 756              		.loc 1 287 0
+ 757 0014 38BD     		pop	{r3, r4, r5, pc}
+ 758              	.LVL78:
+ 759              	.L98:
+ 760              	.LCFI21:
+ 761              		.cfi_def_cfa_offset 0
+ 762              		.cfi_restore 3
+ 763              		.cfi_restore 4
+ 764              		.cfi_restore 5
+ 765              		.cfi_restore 14
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 766              		.loc 1 282 0
+ 767 0016 0148     		ldr	r0, .L103
+ 768              	.LVL79:
+ 769              		.loc 1 287 0
+ 770 0018 7047     		bx	lr
+ 771              	.L104:
+ 772 001a 00BF     		.align	2
+ 773              	.L103:
+ 774 001c 00AFFFFF 		.word	-20736
+ 775              		.cfi_endproc
+ 776              	.LFE15:
+ 778              		.section	.text.mbedtls_md_hmac_starts,"ax",%progbits
+ 779              		.align	1
+ 780              		.global	mbedtls_md_hmac_starts
+ 781              		.syntax unified
+ 782              		.thumb
+ 783              		.thumb_func
+ 784              		.fpu fpv4-sp-d16
+ 786              	mbedtls_md_hmac_starts:
+ 787              	.LFB16:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 20
+
+
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #if defined(MBEDTLS_FS_IO)
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** int mbedtls_md_file( const mbedtls_md_info_t *md_info, const char *path, unsigned char *output )
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     int ret;
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     FILE *f;
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     size_t n;
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     mbedtls_md_context_t ctx;
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     unsigned char buf[1024];
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( md_info == NULL )
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ( f = fopen( path, "rb" ) ) == NULL )
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_FILE_IO_ERROR );
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     mbedtls_md_init( &ctx );
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 306:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ( ret = mbedtls_md_setup( &ctx, md_info, 0 ) ) != 0 )
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         goto cleanup;
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 309:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     md_info->starts_func( ctx.md_ctx );
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 311:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     while( ( n = fread( buf, 1, sizeof( buf ), f ) ) > 0 )
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         md_info->update_func( ctx.md_ctx, buf, n );
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ferror( f ) != 0 )
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     {
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         ret = MBEDTLS_ERR_MD_FILE_IO_ERROR;
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         goto cleanup;
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     }
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     md_info->finish_func( ctx.md_ctx, output );
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 322:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** cleanup:
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     fclose( f );
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     mbedtls_md_free( &ctx );
+ 325:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 326:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return( ret );
+ 327:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 328:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** #endif /* MBEDTLS_FS_IO */
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** int mbedtls_md_hmac_starts( mbedtls_md_context_t *ctx, const unsigned char *key, size_t keylen )
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 788              		.loc 1 331 0
+ 789              		.cfi_startproc
+ 790              		@ args = 0, pretend = 0, frame = 32
+ 791              		@ frame_needed = 0, uses_anonymous_args = 0
+ 792              	.LVL80:
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     unsigned char sum[MBEDTLS_MD_MAX_SIZE];
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     unsigned char *ipad, *opad;
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     size_t i;
+ 335:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 336:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL || ctx->hmac_ctx == NULL )
+ 793              		.loc 1 336 0
+ 794 0000 0028     		cmp	r0, #0
+ 795 0002 4DD0     		beq	.L110
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 21
+
+
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     unsigned char sum[MBEDTLS_MD_MAX_SIZE];
+ 796              		.loc 1 331 0 discriminator 1
+ 797 0004 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 798              	.LCFI22:
+ 799              		.cfi_def_cfa_offset 24
+ 800              		.cfi_offset 4, -24
+ 801              		.cfi_offset 5, -20
+ 802              		.cfi_offset 6, -16
+ 803              		.cfi_offset 7, -12
+ 804              		.cfi_offset 8, -8
+ 805              		.cfi_offset 14, -4
+ 806 0008 88B0     		sub	sp, sp, #32
+ 807              	.LCFI23:
+ 808              		.cfi_def_cfa_offset 56
+ 809 000a 0C46     		mov	r4, r1
+ 810 000c 9046     		mov	r8, r2
+ 811 000e 0646     		mov	r6, r0
+ 812              		.loc 1 336 0 discriminator 1
+ 813 0010 0368     		ldr	r3, [r0]
+ 814 0012 002B     		cmp	r3, #0
+ 815 0014 46D0     		beq	.L111
+ 816              		.loc 1 336 0 is_stmt 0 discriminator 2
+ 817 0016 8268     		ldr	r2, [r0, #8]
+ 818              	.LVL81:
+ 819 0018 002A     		cmp	r2, #0
+ 820 001a 45D0     		beq	.L112
+ 337:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 338:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 339:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( keylen > (size_t) ctx->md_info->block_size )
+ 821              		.loc 1 339 0 is_stmt 1
+ 822 001c DA68     		ldr	r2, [r3, #12]
+ 823 001e 4245     		cmp	r2, r8
+ 824 0020 11D2     		bcs	.L107
+ 340:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     {
+ 341:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         ctx->md_info->starts_func( ctx->md_ctx );
+ 825              		.loc 1 341 0
+ 826 0022 1B69     		ldr	r3, [r3, #16]
+ 827 0024 4068     		ldr	r0, [r0, #4]
+ 828              	.LVL82:
+ 829 0026 9847     		blx	r3
+ 830              	.LVL83:
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         ctx->md_info->update_func( ctx->md_ctx, key, keylen );
+ 831              		.loc 1 342 0
+ 832 0028 3368     		ldr	r3, [r6]
+ 833 002a 5B69     		ldr	r3, [r3, #20]
+ 834 002c 4246     		mov	r2, r8
+ 835 002e 2146     		mov	r1, r4
+ 836 0030 7068     		ldr	r0, [r6, #4]
+ 837 0032 9847     		blx	r3
+ 838              	.LVL84:
+ 343:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         ctx->md_info->finish_func( ctx->md_ctx, sum );
+ 839              		.loc 1 343 0
+ 840 0034 3368     		ldr	r3, [r6]
+ 841 0036 9B69     		ldr	r3, [r3, #24]
+ 842 0038 6946     		mov	r1, sp
+ 843 003a 7068     		ldr	r0, [r6, #4]
+ 844 003c 9847     		blx	r3
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 22
+
+
+ 845              	.LVL85:
+ 344:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 345:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         keylen = ctx->md_info->size;
+ 846              		.loc 1 345 0
+ 847 003e 3368     		ldr	r3, [r6]
+ 848 0040 D3F80880 		ldr	r8, [r3, #8]
+ 849              	.LVL86:
+ 346:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         key = sum;
+ 850              		.loc 1 346 0
+ 851 0044 6C46     		mov	r4, sp
+ 852              	.LVL87:
+ 853              	.L107:
+ 347:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     }
+ 348:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 349:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ipad = (unsigned char *) ctx->hmac_ctx;
+ 854              		.loc 1 349 0
+ 855 0046 B568     		ldr	r5, [r6, #8]
+ 856              	.LVL88:
+ 350:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     opad = (unsigned char *) ctx->hmac_ctx + ctx->md_info->block_size;
+ 857              		.loc 1 350 0
+ 858 0048 3368     		ldr	r3, [r6]
+ 859 004a DA68     		ldr	r2, [r3, #12]
+ 860 004c AF18     		adds	r7, r5, r2
+ 861              	.LVL89:
+ 351:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 352:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     memset( ipad, 0x36, ctx->md_info->block_size );
+ 862              		.loc 1 352 0
+ 863 004e 3621     		movs	r1, #54
+ 864 0050 2846     		mov	r0, r5
+ 865 0052 FFF7FEFF 		bl	memset
+ 866              	.LVL90:
+ 353:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     memset( opad, 0x5C, ctx->md_info->block_size );
+ 867              		.loc 1 353 0
+ 868 0056 3368     		ldr	r3, [r6]
+ 869 0058 DA68     		ldr	r2, [r3, #12]
+ 870 005a 5C21     		movs	r1, #92
+ 871 005c 3846     		mov	r0, r7
+ 872 005e FFF7FEFF 		bl	memset
+ 873              	.LVL91:
+ 354:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 355:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     for( i = 0; i < keylen; i++ )
+ 874              		.loc 1 355 0
+ 875 0062 0023     		movs	r3, #0
+ 876 0064 08E0     		b	.L108
+ 877              	.LVL92:
+ 878              	.L109:
+ 356:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     {
+ 357:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         ipad[i] = (unsigned char)( ipad[i] ^ key[i] );
+ 879              		.loc 1 357 0 discriminator 3
+ 880 0066 EA5C     		ldrb	r2, [r5, r3]	@ zero_extendqisi2
+ 881 0068 E15C     		ldrb	r1, [r4, r3]	@ zero_extendqisi2
+ 882 006a 4A40     		eors	r2, r2, r1
+ 883 006c EA54     		strb	r2, [r5, r3]
+ 358:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         opad[i] = (unsigned char)( opad[i] ^ key[i] );
+ 884              		.loc 1 358 0 discriminator 3
+ 885 006e FA5C     		ldrb	r2, [r7, r3]	@ zero_extendqisi2
+ 886 0070 E15C     		ldrb	r1, [r4, r3]	@ zero_extendqisi2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 23
+
+
+ 887 0072 4A40     		eors	r2, r2, r1
+ 888 0074 FA54     		strb	r2, [r7, r3]
+ 355:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     {
+ 889              		.loc 1 355 0 discriminator 3
+ 890 0076 0133     		adds	r3, r3, #1
+ 891              	.LVL93:
+ 892              	.L108:
+ 355:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     {
+ 893              		.loc 1 355 0 is_stmt 0 discriminator 1
+ 894 0078 9845     		cmp	r8, r3
+ 895 007a F4D8     		bhi	.L109
+ 359:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     }
+ 360:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 361:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     mbedtls_zeroize( sum, sizeof( sum ) );
+ 896              		.loc 1 361 0 is_stmt 1
+ 897 007c 2021     		movs	r1, #32
+ 898 007e 6846     		mov	r0, sp
+ 899 0080 FFF7FEFF 		bl	mbedtls_zeroize
+ 900              	.LVL94:
+ 362:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 363:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ctx->md_info->starts_func( ctx->md_ctx );
+ 901              		.loc 1 363 0
+ 902 0084 3368     		ldr	r3, [r6]
+ 903 0086 1B69     		ldr	r3, [r3, #16]
+ 904 0088 7068     		ldr	r0, [r6, #4]
+ 905 008a 9847     		blx	r3
+ 906              	.LVL95:
+ 364:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ctx->md_info->update_func( ctx->md_ctx, ipad, ctx->md_info->block_size );
+ 907              		.loc 1 364 0
+ 908 008c 3368     		ldr	r3, [r6]
+ 909 008e 5C69     		ldr	r4, [r3, #20]
+ 910              	.LVL96:
+ 911 0090 DA68     		ldr	r2, [r3, #12]
+ 912 0092 2946     		mov	r1, r5
+ 913 0094 7068     		ldr	r0, [r6, #4]
+ 914 0096 A047     		blx	r4
+ 915              	.LVL97:
+ 365:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 366:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return( 0 );
+ 916              		.loc 1 366 0
+ 917 0098 0020     		movs	r0, #0
+ 918              	.LVL98:
+ 919              	.L105:
+ 367:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 920              		.loc 1 367 0
+ 921 009a 08B0     		add	sp, sp, #32
+ 922              	.LCFI24:
+ 923              		.cfi_def_cfa_offset 24
+ 924              		@ sp needed
+ 925 009c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 926              	.LVL99:
+ 927              	.L110:
+ 928              	.LCFI25:
+ 929              		.cfi_def_cfa_offset 0
+ 930              		.cfi_restore 4
+ 931              		.cfi_restore 5
+ 932              		.cfi_restore 6
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 24
+
+
+ 933              		.cfi_restore 7
+ 934              		.cfi_restore 8
+ 935              		.cfi_restore 14
+ 337:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 936              		.loc 1 337 0
+ 937 00a0 0248     		ldr	r0, .L117
+ 938              	.LVL100:
+ 939              		.loc 1 367 0
+ 940 00a2 7047     		bx	lr
+ 941              	.LVL101:
+ 942              	.L111:
+ 943              	.LCFI26:
+ 944              		.cfi_def_cfa_offset 56
+ 945              		.cfi_offset 4, -24
+ 946              		.cfi_offset 5, -20
+ 947              		.cfi_offset 6, -16
+ 948              		.cfi_offset 7, -12
+ 949              		.cfi_offset 8, -8
+ 950              		.cfi_offset 14, -4
+ 337:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 951              		.loc 1 337 0
+ 952 00a4 0148     		ldr	r0, .L117
+ 953              	.LVL102:
+ 954 00a6 F8E7     		b	.L105
+ 955              	.LVL103:
+ 956              	.L112:
+ 957 00a8 0048     		ldr	r0, .L117
+ 958              	.LVL104:
+ 959 00aa F6E7     		b	.L105
+ 960              	.L118:
+ 961              		.align	2
+ 962              	.L117:
+ 963 00ac 00AFFFFF 		.word	-20736
+ 964              		.cfi_endproc
+ 965              	.LFE16:
+ 967              		.section	.text.mbedtls_md_hmac_update,"ax",%progbits
+ 968              		.align	1
+ 969              		.global	mbedtls_md_hmac_update
+ 970              		.syntax unified
+ 971              		.thumb
+ 972              		.thumb_func
+ 973              		.fpu fpv4-sp-d16
+ 975              	mbedtls_md_hmac_update:
+ 976              	.LFB17:
+ 368:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 369:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** int mbedtls_md_hmac_update( mbedtls_md_context_t *ctx, const unsigned char *input, size_t ilen )
+ 370:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 977              		.loc 1 370 0
+ 978              		.cfi_startproc
+ 979              		@ args = 0, pretend = 0, frame = 0
+ 980              		@ frame_needed = 0, uses_anonymous_args = 0
+ 981              	.LVL105:
+ 371:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL || ctx->hmac_ctx == NULL )
+ 982              		.loc 1 371 0
+ 983 0000 50B1     		cbz	r0, .L121
+ 984 0002 0346     		mov	r3, r0
+ 985              		.loc 1 371 0 is_stmt 0 discriminator 1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 25
+
+
+ 986 0004 0068     		ldr	r0, [r0]
+ 987              	.LVL106:
+ 988 0006 48B1     		cbz	r0, .L122
+ 370:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL || ctx->hmac_ctx == NULL )
+ 989              		.loc 1 370 0 is_stmt 1 discriminator 2
+ 990 0008 10B5     		push	{r4, lr}
+ 991              	.LCFI27:
+ 992              		.cfi_def_cfa_offset 8
+ 993              		.cfi_offset 4, -8
+ 994              		.cfi_offset 14, -4
+ 995              		.loc 1 371 0 discriminator 2
+ 996 000a 9C68     		ldr	r4, [r3, #8]
+ 997 000c 44B1     		cbz	r4, .L123
+ 372:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 373:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ctx->md_info->update_func( ctx->md_ctx, input, ilen );
+ 998              		.loc 1 374 0
+ 999 000e 4469     		ldr	r4, [r0, #20]
+ 1000 0010 5868     		ldr	r0, [r3, #4]
+ 1001 0012 A047     		blx	r4
+ 1002              	.LVL107:
+ 375:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 376:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return( 0 );
+ 1003              		.loc 1 376 0
+ 1004 0014 0020     		movs	r0, #0
+ 1005              	.L119:
+ 377:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 1006              		.loc 1 377 0
+ 1007 0016 10BD     		pop	{r4, pc}
+ 1008              	.LVL108:
+ 1009              	.L121:
+ 1010              	.LCFI28:
+ 1011              		.cfi_def_cfa_offset 0
+ 1012              		.cfi_restore 4
+ 1013              		.cfi_restore 14
+ 372:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 1014              		.loc 1 372 0
+ 1015 0018 0248     		ldr	r0, .L128
+ 1016              	.LVL109:
+ 1017 001a 7047     		bx	lr
+ 1018              	.LVL110:
+ 1019              	.L122:
+ 1020 001c 0148     		ldr	r0, .L128
+ 1021              		.loc 1 377 0
+ 1022 001e 7047     		bx	lr
+ 1023              	.L123:
+ 1024              	.LCFI29:
+ 1025              		.cfi_def_cfa_offset 8
+ 1026              		.cfi_offset 4, -8
+ 1027              		.cfi_offset 14, -4
+ 372:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 1028              		.loc 1 372 0
+ 1029 0020 0048     		ldr	r0, .L128
+ 1030 0022 F8E7     		b	.L119
+ 1031              	.L129:
+ 1032              		.align	2
+ 1033              	.L128:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 26
+
+
+ 1034 0024 00AFFFFF 		.word	-20736
+ 1035              		.cfi_endproc
+ 1036              	.LFE17:
+ 1038              		.section	.text.mbedtls_md_hmac_finish,"ax",%progbits
+ 1039              		.align	1
+ 1040              		.global	mbedtls_md_hmac_finish
+ 1041              		.syntax unified
+ 1042              		.thumb
+ 1043              		.thumb_func
+ 1044              		.fpu fpv4-sp-d16
+ 1046              	mbedtls_md_hmac_finish:
+ 1047              	.LFB18:
+ 378:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 379:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** int mbedtls_md_hmac_finish( mbedtls_md_context_t *ctx, unsigned char *output )
+ 380:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 1048              		.loc 1 380 0
+ 1049              		.cfi_startproc
+ 1050              		@ args = 0, pretend = 0, frame = 32
+ 1051              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1052              	.LVL111:
+ 381:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     unsigned char tmp[MBEDTLS_MD_MAX_SIZE];
+ 382:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     unsigned char *opad;
+ 383:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 384:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL || ctx->hmac_ctx == NULL )
+ 1053              		.loc 1 384 0
+ 1054 0000 28B3     		cbz	r0, .L132
+ 380:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     unsigned char tmp[MBEDTLS_MD_MAX_SIZE];
+ 1055              		.loc 1 380 0 discriminator 1
+ 1056 0002 F0B5     		push	{r4, r5, r6, r7, lr}
+ 1057              	.LCFI30:
+ 1058              		.cfi_def_cfa_offset 20
+ 1059              		.cfi_offset 4, -20
+ 1060              		.cfi_offset 5, -16
+ 1061              		.cfi_offset 6, -12
+ 1062              		.cfi_offset 7, -8
+ 1063              		.cfi_offset 14, -4
+ 1064 0004 89B0     		sub	sp, sp, #36
+ 1065              	.LCFI31:
+ 1066              		.cfi_def_cfa_offset 56
+ 1067 0006 0446     		mov	r4, r0
+ 1068              		.loc 1 384 0 discriminator 1
+ 1069 0008 0368     		ldr	r3, [r0]
+ 1070 000a 13B3     		cbz	r3, .L133
+ 1071              		.loc 1 384 0 is_stmt 0 discriminator 2
+ 1072 000c 8268     		ldr	r2, [r0, #8]
+ 1073 000e 12B3     		cbz	r2, .L134
+ 1074 0010 0E46     		mov	r6, r1
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 386:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 387:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     opad = (unsigned char *) ctx->hmac_ctx + ctx->md_info->block_size;
+ 1075              		.loc 1 387 0 is_stmt 1
+ 1076 0012 DD68     		ldr	r5, [r3, #12]
+ 1077 0014 1544     		add	r5, r5, r2
+ 1078              	.LVL112:
+ 388:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 389:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ctx->md_info->finish_func( ctx->md_ctx, tmp );
+ 1079              		.loc 1 389 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 27
+
+
+ 1080 0016 9B69     		ldr	r3, [r3, #24]
+ 1081 0018 6946     		mov	r1, sp
+ 1082              	.LVL113:
+ 1083 001a 4068     		ldr	r0, [r0, #4]
+ 1084              	.LVL114:
+ 1085 001c 9847     		blx	r3
+ 1086              	.LVL115:
+ 390:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ctx->md_info->starts_func( ctx->md_ctx );
+ 1087              		.loc 1 390 0
+ 1088 001e 2368     		ldr	r3, [r4]
+ 1089 0020 1B69     		ldr	r3, [r3, #16]
+ 1090 0022 6068     		ldr	r0, [r4, #4]
+ 1091 0024 9847     		blx	r3
+ 1092              	.LVL116:
+ 391:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ctx->md_info->update_func( ctx->md_ctx, opad, ctx->md_info->block_size );
+ 1093              		.loc 1 391 0
+ 1094 0026 2368     		ldr	r3, [r4]
+ 1095 0028 5F69     		ldr	r7, [r3, #20]
+ 1096 002a DA68     		ldr	r2, [r3, #12]
+ 1097 002c 2946     		mov	r1, r5
+ 1098 002e 6068     		ldr	r0, [r4, #4]
+ 1099 0030 B847     		blx	r7
+ 1100              	.LVL117:
+ 392:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ctx->md_info->update_func( ctx->md_ctx, tmp, ctx->md_info->size );
+ 1101              		.loc 1 392 0
+ 1102 0032 2368     		ldr	r3, [r4]
+ 1103 0034 5D69     		ldr	r5, [r3, #20]
+ 1104              	.LVL118:
+ 1105 0036 9A68     		ldr	r2, [r3, #8]
+ 1106 0038 6946     		mov	r1, sp
+ 1107 003a 6068     		ldr	r0, [r4, #4]
+ 1108 003c A847     		blx	r5
+ 1109              	.LVL119:
+ 393:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ctx->md_info->finish_func( ctx->md_ctx, output );
+ 1110              		.loc 1 393 0
+ 1111 003e 2368     		ldr	r3, [r4]
+ 1112 0040 9B69     		ldr	r3, [r3, #24]
+ 1113 0042 3146     		mov	r1, r6
+ 1114 0044 6068     		ldr	r0, [r4, #4]
+ 1115 0046 9847     		blx	r3
+ 1116              	.LVL120:
+ 394:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 395:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return( 0 );
+ 1117              		.loc 1 395 0
+ 1118 0048 0020     		movs	r0, #0
+ 1119              	.LVL121:
+ 1120              	.L130:
+ 396:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 1121              		.loc 1 396 0
+ 1122 004a 09B0     		add	sp, sp, #36
+ 1123              	.LCFI32:
+ 1124              		.cfi_def_cfa_offset 20
+ 1125              		@ sp needed
+ 1126 004c F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1127              	.LVL122:
+ 1128              	.L132:
+ 1129              	.LCFI33:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 28
+
+
+ 1130              		.cfi_def_cfa_offset 0
+ 1131              		.cfi_restore 4
+ 1132              		.cfi_restore 5
+ 1133              		.cfi_restore 6
+ 1134              		.cfi_restore 7
+ 1135              		.cfi_restore 14
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 1136              		.loc 1 385 0
+ 1137 004e 0348     		ldr	r0, .L139
+ 1138              	.LVL123:
+ 1139              		.loc 1 396 0
+ 1140 0050 7047     		bx	lr
+ 1141              	.LVL124:
+ 1142              	.L133:
+ 1143              	.LCFI34:
+ 1144              		.cfi_def_cfa_offset 56
+ 1145              		.cfi_offset 4, -20
+ 1146              		.cfi_offset 5, -16
+ 1147              		.cfi_offset 6, -12
+ 1148              		.cfi_offset 7, -8
+ 1149              		.cfi_offset 14, -4
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 1150              		.loc 1 385 0
+ 1151 0052 0248     		ldr	r0, .L139
+ 1152              	.LVL125:
+ 1153 0054 F9E7     		b	.L130
+ 1154              	.LVL126:
+ 1155              	.L134:
+ 1156 0056 0148     		ldr	r0, .L139
+ 1157              	.LVL127:
+ 1158 0058 F7E7     		b	.L130
+ 1159              	.L140:
+ 1160 005a 00BF     		.align	2
+ 1161              	.L139:
+ 1162 005c 00AFFFFF 		.word	-20736
+ 1163              		.cfi_endproc
+ 1164              	.LFE18:
+ 1166              		.section	.text.mbedtls_md_hmac_reset,"ax",%progbits
+ 1167              		.align	1
+ 1168              		.global	mbedtls_md_hmac_reset
+ 1169              		.syntax unified
+ 1170              		.thumb
+ 1171              		.thumb_func
+ 1172              		.fpu fpv4-sp-d16
+ 1174              	mbedtls_md_hmac_reset:
+ 1175              	.LFB19:
+ 397:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 398:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** int mbedtls_md_hmac_reset( mbedtls_md_context_t *ctx )
+ 399:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 1176              		.loc 1 399 0
+ 1177              		.cfi_startproc
+ 1178              		@ args = 0, pretend = 0, frame = 0
+ 1179              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1180              	.LVL128:
+ 400:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     unsigned char *ipad;
+ 401:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 402:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL || ctx->hmac_ctx == NULL )
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 29
+
+
+ 1181              		.loc 1 402 0
+ 1182 0000 80B1     		cbz	r0, .L143
+ 399:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     unsigned char *ipad;
+ 1183              		.loc 1 399 0 discriminator 1
+ 1184 0002 70B5     		push	{r4, r5, r6, lr}
+ 1185              	.LCFI35:
+ 1186              		.cfi_def_cfa_offset 16
+ 1187              		.cfi_offset 4, -16
+ 1188              		.cfi_offset 5, -12
+ 1189              		.cfi_offset 6, -8
+ 1190              		.cfi_offset 14, -4
+ 1191 0004 0446     		mov	r4, r0
+ 1192              		.loc 1 402 0 discriminator 1
+ 1193 0006 0268     		ldr	r2, [r0]
+ 1194 0008 72B1     		cbz	r2, .L144
+ 1195              		.loc 1 402 0 is_stmt 0 discriminator 2
+ 1196 000a 8568     		ldr	r5, [r0, #8]
+ 1197 000c 75B1     		cbz	r5, .L145
+ 1198              	.LVL129:
+ 403:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 404:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 405:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ipad = (unsigned char *) ctx->hmac_ctx;
+ 406:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 407:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ctx->md_info->starts_func( ctx->md_ctx );
+ 1199              		.loc 1 407 0 is_stmt 1
+ 1200 000e 1369     		ldr	r3, [r2, #16]
+ 1201 0010 4068     		ldr	r0, [r0, #4]
+ 1202              	.LVL130:
+ 1203 0012 9847     		blx	r3
+ 1204              	.LVL131:
+ 408:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ctx->md_info->update_func( ctx->md_ctx, ipad, ctx->md_info->block_size );
+ 1205              		.loc 1 408 0
+ 1206 0014 2368     		ldr	r3, [r4]
+ 1207 0016 5E69     		ldr	r6, [r3, #20]
+ 1208 0018 DA68     		ldr	r2, [r3, #12]
+ 1209 001a 2946     		mov	r1, r5
+ 1210 001c 6068     		ldr	r0, [r4, #4]
+ 1211 001e B047     		blx	r6
+ 1212              	.LVL132:
+ 409:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 410:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return( 0 );
+ 1213              		.loc 1 410 0
+ 1214 0020 0020     		movs	r0, #0
+ 1215              	.LVL133:
+ 1216              	.L141:
+ 411:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 1217              		.loc 1 411 0
+ 1218 0022 70BD     		pop	{r4, r5, r6, pc}
+ 1219              	.LVL134:
+ 1220              	.L143:
+ 1221              	.LCFI36:
+ 1222              		.cfi_def_cfa_offset 0
+ 1223              		.cfi_restore 4
+ 1224              		.cfi_restore 5
+ 1225              		.cfi_restore 6
+ 1226              		.cfi_restore 14
+ 403:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 30
+
+
+ 1227              		.loc 1 403 0
+ 1228 0024 0248     		ldr	r0, .L150
+ 1229              	.LVL135:
+ 1230              		.loc 1 411 0
+ 1231 0026 7047     		bx	lr
+ 1232              	.LVL136:
+ 1233              	.L144:
+ 1234              	.LCFI37:
+ 1235              		.cfi_def_cfa_offset 16
+ 1236              		.cfi_offset 4, -16
+ 1237              		.cfi_offset 5, -12
+ 1238              		.cfi_offset 6, -8
+ 1239              		.cfi_offset 14, -4
+ 403:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 1240              		.loc 1 403 0
+ 1241 0028 0148     		ldr	r0, .L150
+ 1242              	.LVL137:
+ 1243 002a FAE7     		b	.L141
+ 1244              	.LVL138:
+ 1245              	.L145:
+ 1246 002c 0048     		ldr	r0, .L150
+ 1247              	.LVL139:
+ 1248 002e F8E7     		b	.L141
+ 1249              	.L151:
+ 1250              		.align	2
+ 1251              	.L150:
+ 1252 0030 00AFFFFF 		.word	-20736
+ 1253              		.cfi_endproc
+ 1254              	.LFE19:
+ 1256              		.section	.text.mbedtls_md_hmac,"ax",%progbits
+ 1257              		.align	1
+ 1258              		.global	mbedtls_md_hmac
+ 1259              		.syntax unified
+ 1260              		.thumb
+ 1261              		.thumb_func
+ 1262              		.fpu fpv4-sp-d16
+ 1264              	mbedtls_md_hmac:
+ 1265              	.LFB20:
+ 412:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 413:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** int mbedtls_md_hmac( const mbedtls_md_info_t *md_info, const unsigned char *key, size_t keylen,
+ 414:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****                 const unsigned char *input, size_t ilen,
+ 415:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****                 unsigned char *output )
+ 416:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 1266              		.loc 1 416 0
+ 1267              		.cfi_startproc
+ 1268              		@ args = 8, pretend = 0, frame = 16
+ 1269              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1270              	.LVL140:
+ 1271 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 1272              	.LCFI38:
+ 1273              		.cfi_def_cfa_offset 20
+ 1274              		.cfi_offset 4, -20
+ 1275              		.cfi_offset 5, -16
+ 1276              		.cfi_offset 6, -12
+ 1277              		.cfi_offset 7, -8
+ 1278              		.cfi_offset 14, -4
+ 1279 0002 85B0     		sub	sp, sp, #20
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 31
+
+
+ 1280              	.LCFI39:
+ 1281              		.cfi_def_cfa_offset 40
+ 417:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     mbedtls_md_context_t ctx;
+ 418:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     int ret;
+ 419:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 420:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( md_info == NULL )
+ 1282              		.loc 1 420 0
+ 1283 0004 10B3     		cbz	r0, .L154
+ 1284 0006 0446     		mov	r4, r0
+ 1285 0008 1D46     		mov	r5, r3
+ 1286 000a 1746     		mov	r7, r2
+ 1287 000c 0E46     		mov	r6, r1
+ 421:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 422:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 423:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     mbedtls_md_init( &ctx );
+ 1288              		.loc 1 423 0
+ 1289 000e 01A8     		add	r0, sp, #4
+ 1290              	.LVL141:
+ 1291 0010 FFF7FEFF 		bl	mbedtls_md_init
+ 1292              	.LVL142:
+ 424:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 425:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ( ret = mbedtls_md_setup( &ctx, md_info, 1 ) ) != 0 )
+ 1293              		.loc 1 425 0
+ 1294 0014 0122     		movs	r2, #1
+ 1295 0016 2146     		mov	r1, r4
+ 1296 0018 01A8     		add	r0, sp, #4
+ 1297 001a FFF7FEFF 		bl	mbedtls_md_setup
+ 1298              	.LVL143:
+ 1299 001e 0446     		mov	r4, r0
+ 1300              	.LVL144:
+ 1301 0020 10B1     		cbz	r0, .L156
+ 1302              	.LVL145:
+ 1303              	.L152:
+ 426:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( ret );
+ 427:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 428:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     mbedtls_md_hmac_starts( &ctx, key, keylen );
+ 429:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     mbedtls_md_hmac_update( &ctx, input, ilen );
+ 430:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     mbedtls_md_hmac_finish( &ctx, output );
+ 431:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 432:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     mbedtls_md_free( &ctx );
+ 433:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 434:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return( 0 );
+ 435:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 1304              		.loc 1 435 0
+ 1305 0022 2046     		mov	r0, r4
+ 1306 0024 05B0     		add	sp, sp, #20
+ 1307              	.LCFI40:
+ 1308              		.cfi_remember_state
+ 1309              		.cfi_def_cfa_offset 20
+ 1310              		@ sp needed
+ 1311 0026 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1312              	.LVL146:
+ 1313              	.L156:
+ 1314              	.LCFI41:
+ 1315              		.cfi_restore_state
+ 428:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     mbedtls_md_hmac_update( &ctx, input, ilen );
+ 1316              		.loc 1 428 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 32
+
+
+ 1317 0028 3A46     		mov	r2, r7
+ 1318 002a 3146     		mov	r1, r6
+ 1319 002c 01A8     		add	r0, sp, #4
+ 1320              	.LVL147:
+ 1321 002e FFF7FEFF 		bl	mbedtls_md_hmac_starts
+ 1322              	.LVL148:
+ 429:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     mbedtls_md_hmac_finish( &ctx, output );
+ 1323              		.loc 1 429 0
+ 1324 0032 0A9A     		ldr	r2, [sp, #40]
+ 1325 0034 2946     		mov	r1, r5
+ 1326 0036 01A8     		add	r0, sp, #4
+ 1327 0038 FFF7FEFF 		bl	mbedtls_md_hmac_update
+ 1328              	.LVL149:
+ 430:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 1329              		.loc 1 430 0
+ 1330 003c 0B99     		ldr	r1, [sp, #44]
+ 1331 003e 01A8     		add	r0, sp, #4
+ 1332 0040 FFF7FEFF 		bl	mbedtls_md_hmac_finish
+ 1333              	.LVL150:
+ 432:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 1334              		.loc 1 432 0
+ 1335 0044 01A8     		add	r0, sp, #4
+ 1336 0046 FFF7FEFF 		bl	mbedtls_md_free
+ 1337              	.LVL151:
+ 434:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 1338              		.loc 1 434 0
+ 1339 004a EAE7     		b	.L152
+ 1340              	.LVL152:
+ 1341              	.L154:
+ 421:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 1342              		.loc 1 421 0
+ 1343 004c 004C     		ldr	r4, .L157
+ 1344 004e E8E7     		b	.L152
+ 1345              	.L158:
+ 1346              		.align	2
+ 1347              	.L157:
+ 1348 0050 00AFFFFF 		.word	-20736
+ 1349              		.cfi_endproc
+ 1350              	.LFE20:
+ 1352              		.section	.text.mbedtls_md_process,"ax",%progbits
+ 1353              		.align	1
+ 1354              		.global	mbedtls_md_process
+ 1355              		.syntax unified
+ 1356              		.thumb
+ 1357              		.thumb_func
+ 1358              		.fpu fpv4-sp-d16
+ 1360              	mbedtls_md_process:
+ 1361              	.LFB21:
+ 436:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 437:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** int mbedtls_md_process( mbedtls_md_context_t *ctx, const unsigned char *data )
+ 438:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 1362              		.loc 1 438 0
+ 1363              		.cfi_startproc
+ 1364              		@ args = 0, pretend = 0, frame = 0
+ 1365              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1366              	.LVL153:
+ 439:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL )
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 33
+
+
+ 1367              		.loc 1 439 0
+ 1368 0000 38B1     		cbz	r0, .L161
+ 438:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL )
+ 1369              		.loc 1 438 0 discriminator 1
+ 1370 0002 08B5     		push	{r3, lr}
+ 1371              	.LCFI42:
+ 1372              		.cfi_def_cfa_offset 8
+ 1373              		.cfi_offset 3, -8
+ 1374              		.cfi_offset 14, -4
+ 1375              		.loc 1 439 0 discriminator 1
+ 1376 0004 0268     		ldr	r2, [r0]
+ 1377 0006 32B1     		cbz	r2, .L162
+ 440:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 441:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 442:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     ctx->md_info->process_func( ctx->md_ctx, data );
+ 1378              		.loc 1 442 0
+ 1379 0008 D26A     		ldr	r2, [r2, #44]
+ 1380 000a 4068     		ldr	r0, [r0, #4]
+ 1381              	.LVL154:
+ 1382 000c 9047     		blx	r2
+ 1383              	.LVL155:
+ 443:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 444:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return( 0 );
+ 1384              		.loc 1 444 0
+ 1385 000e 0020     		movs	r0, #0
+ 1386              	.L159:
+ 445:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 1387              		.loc 1 445 0
+ 1388 0010 08BD     		pop	{r3, pc}
+ 1389              	.LVL156:
+ 1390              	.L161:
+ 1391              	.LCFI43:
+ 1392              		.cfi_def_cfa_offset 0
+ 1393              		.cfi_restore 3
+ 1394              		.cfi_restore 14
+ 440:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 1395              		.loc 1 440 0
+ 1396 0012 0248     		ldr	r0, .L167
+ 1397              	.LVL157:
+ 1398              		.loc 1 445 0
+ 1399 0014 7047     		bx	lr
+ 1400              	.LVL158:
+ 1401              	.L162:
+ 1402              	.LCFI44:
+ 1403              		.cfi_def_cfa_offset 8
+ 1404              		.cfi_offset 3, -8
+ 1405              		.cfi_offset 14, -4
+ 440:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 1406              		.loc 1 440 0
+ 1407 0016 0148     		ldr	r0, .L167
+ 1408              	.LVL159:
+ 1409 0018 FAE7     		b	.L159
+ 1410              	.L168:
+ 1411 001a 00BF     		.align	2
+ 1412              	.L167:
+ 1413 001c 00AFFFFF 		.word	-20736
+ 1414              		.cfi_endproc
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 34
+
+
+ 1415              	.LFE21:
+ 1417              		.section	.text.mbedtls_md_get_size,"ax",%progbits
+ 1418              		.align	1
+ 1419              		.global	mbedtls_md_get_size
+ 1420              		.syntax unified
+ 1421              		.thumb
+ 1422              		.thumb_func
+ 1423              		.fpu fpv4-sp-d16
+ 1425              	mbedtls_md_get_size:
+ 1426              	.LFB22:
+ 446:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 447:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** unsigned char mbedtls_md_get_size( const mbedtls_md_info_t *md_info )
+ 448:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 1427              		.loc 1 448 0
+ 1428              		.cfi_startproc
+ 1429              		@ args = 0, pretend = 0, frame = 0
+ 1430              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1431              		@ link register save eliminated.
+ 1432              	.LVL160:
+ 449:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( md_info == NULL )
+ 1433              		.loc 1 449 0
+ 1434 0000 08B1     		cbz	r0, .L171
+ 450:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( 0 );
+ 451:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 452:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return md_info->size;
+ 1435              		.loc 1 452 0
+ 1436 0002 007A     		ldrb	r0, [r0, #8]	@ zero_extendqisi2
+ 1437              	.LVL161:
+ 1438 0004 7047     		bx	lr
+ 1439              	.LVL162:
+ 1440              	.L171:
+ 450:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( 0 );
+ 1441              		.loc 1 450 0
+ 1442 0006 0020     		movs	r0, #0
+ 1443              	.LVL163:
+ 453:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 1444              		.loc 1 453 0
+ 1445 0008 7047     		bx	lr
+ 1446              		.cfi_endproc
+ 1447              	.LFE22:
+ 1449              		.section	.text.mbedtls_md_get_type,"ax",%progbits
+ 1450              		.align	1
+ 1451              		.global	mbedtls_md_get_type
+ 1452              		.syntax unified
+ 1453              		.thumb
+ 1454              		.thumb_func
+ 1455              		.fpu fpv4-sp-d16
+ 1457              	mbedtls_md_get_type:
+ 1458              	.LFB23:
+ 454:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 455:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** mbedtls_md_type_t mbedtls_md_get_type( const mbedtls_md_info_t *md_info )
+ 456:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 1459              		.loc 1 456 0
+ 1460              		.cfi_startproc
+ 1461              		@ args = 0, pretend = 0, frame = 0
+ 1462              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1463              		@ link register save eliminated.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 35
+
+
+ 1464              	.LVL164:
+ 457:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( md_info == NULL )
+ 1465              		.loc 1 457 0
+ 1466 0000 08B1     		cbz	r0, .L174
+ 458:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_MD_NONE );
+ 459:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 460:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return md_info->type;
+ 1467              		.loc 1 460 0
+ 1468 0002 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
+ 1469              	.LVL165:
+ 1470 0004 7047     		bx	lr
+ 1471              	.LVL166:
+ 1472              	.L174:
+ 458:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( MBEDTLS_MD_NONE );
+ 1473              		.loc 1 458 0
+ 1474 0006 0020     		movs	r0, #0
+ 1475              	.LVL167:
+ 461:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ 1476              		.loc 1 461 0
+ 1477 0008 7047     		bx	lr
+ 1478              		.cfi_endproc
+ 1479              	.LFE23:
+ 1481              		.section	.text.mbedtls_md_get_name,"ax",%progbits
+ 1482              		.align	1
+ 1483              		.global	mbedtls_md_get_name
+ 1484              		.syntax unified
+ 1485              		.thumb
+ 1486              		.thumb_func
+ 1487              		.fpu fpv4-sp-d16
+ 1489              	mbedtls_md_get_name:
+ 1490              	.LFB24:
+ 462:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 463:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** const char *mbedtls_md_get_name( const mbedtls_md_info_t *md_info )
+ 464:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** {
+ 1491              		.loc 1 464 0
+ 1492              		.cfi_startproc
+ 1493              		@ args = 0, pretend = 0, frame = 0
+ 1494              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1495              		@ link register save eliminated.
+ 1496              	.LVL168:
+ 465:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     if( md_info == NULL )
+ 1497              		.loc 1 465 0
+ 1498 0000 08B1     		cbz	r0, .L177
+ 466:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( NULL );
+ 467:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** 
+ 468:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****     return md_info->name;
+ 1499              		.loc 1 468 0
+ 1500 0002 4068     		ldr	r0, [r0, #4]
+ 1501              	.LVL169:
+ 1502 0004 7047     		bx	lr
+ 1503              	.LVL170:
+ 1504              	.L177:
+ 466:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c ****         return( NULL );
+ 1505              		.loc 1 466 0
+ 1506 0006 0020     		movs	r0, #0
+ 1507              	.LVL171:
+ 469:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\md.c **** }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 36
+
+
+ 1508              		.loc 1 469 0
+ 1509 0008 7047     		bx	lr
+ 1510              		.cfi_endproc
+ 1511              	.LFE24:
+ 1513              		.section	.rodata.mbedtls_md_info_from_string.str1.4,"aMS",%progbits,1
+ 1514              		.align	2
+ 1515              	.LC0:
+ 1516 0000 53484132 		.ascii	"SHA224\000"
+ 1516      323400
+ 1517 0007 00       		.space	1
+ 1518              	.LC1:
+ 1519 0008 53484132 		.ascii	"SHA256\000"
+ 1519      353600
+ 1520              		.section	.rodata.supported_digests,"a",%progbits
+ 1521              		.align	2
+ 1522              		.set	.LANCHOR0,. + 0
+ 1525              	supported_digests:
+ 1526 0000 06000000 		.word	6
+ 1527 0004 05000000 		.word	5
+ 1528 0008 00000000 		.word	0
+ 1529              		.text
+ 1530              	.Letext0:
+ 1531              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 1532              		.file 3 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls
+ 1533              		.file 4 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls
+ 1534              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1535              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1536              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1537              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1538              		.file 9 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1539              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtl
+ 1540              		.file 11 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 37
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 md.c
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:18     .text.mbedtls_zeroize:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:24     .text.mbedtls_zeroize:00000000 mbedtls_zeroize
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:56     .text.mbedtls_md_list:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:63     .text.mbedtls_md_list:00000000 mbedtls_md_list
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:76     .text.mbedtls_md_list:00000004 $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:81     .text.mbedtls_md_info_from_type:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:88     .text.mbedtls_md_info_from_type:00000000 mbedtls_md_info_from_type
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:121    .text.mbedtls_md_info_from_type:00000014 $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:127    .text.mbedtls_md_info_from_string:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:134    .text.mbedtls_md_info_from_string:00000000 mbedtls_md_info_from_string
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:200    .text.mbedtls_md_info_from_string:00000034 $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:206    .text.mbedtls_md_init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:213    .text.mbedtls_md_init:00000000 mbedtls_md_init
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:232    .text.mbedtls_md_free:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:239    .text.mbedtls_md_free:00000000 mbedtls_md_free
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:301    .text.mbedtls_md_free:00000034 $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:306    .text.mbedtls_md_clone:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:313    .text.mbedtls_md_clone:00000000 mbedtls_md_clone
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:388    .text.mbedtls_md_clone:00000034 $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:393    .text.mbedtls_md_setup:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:400    .text.mbedtls_md_setup:00000000 mbedtls_md_setup
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:492    .text.mbedtls_md_setup:00000040 $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:499    .text.mbedtls_md_init_ctx:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:506    .text.mbedtls_md_init_ctx:00000000 mbedtls_md_init_ctx
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:528    .text.mbedtls_md_starts:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:535    .text.mbedtls_md_starts:00000000 mbedtls_md_starts
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:588    .text.mbedtls_md_starts:0000001c $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:593    .text.mbedtls_md_update:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:600    .text.mbedtls_md_update:00000000 mbedtls_md_update
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:647    .text.mbedtls_md_update:0000001c $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:652    .text.mbedtls_md_finish:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:659    .text.mbedtls_md_finish:00000000 mbedtls_md_finish
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:712    .text.mbedtls_md_finish:0000001c $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:717    .text.mbedtls_md:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:724    .text.mbedtls_md:00000000 mbedtls_md
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:774    .text.mbedtls_md:0000001c $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:779    .text.mbedtls_md_hmac_starts:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:786    .text.mbedtls_md_hmac_starts:00000000 mbedtls_md_hmac_starts
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:963    .text.mbedtls_md_hmac_starts:000000ac $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:968    .text.mbedtls_md_hmac_update:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:975    .text.mbedtls_md_hmac_update:00000000 mbedtls_md_hmac_update
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1034   .text.mbedtls_md_hmac_update:00000024 $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1039   .text.mbedtls_md_hmac_finish:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1046   .text.mbedtls_md_hmac_finish:00000000 mbedtls_md_hmac_finish
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1162   .text.mbedtls_md_hmac_finish:0000005c $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1167   .text.mbedtls_md_hmac_reset:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1174   .text.mbedtls_md_hmac_reset:00000000 mbedtls_md_hmac_reset
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1252   .text.mbedtls_md_hmac_reset:00000030 $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1257   .text.mbedtls_md_hmac:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1264   .text.mbedtls_md_hmac:00000000 mbedtls_md_hmac
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1348   .text.mbedtls_md_hmac:00000050 $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1353   .text.mbedtls_md_process:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1360   .text.mbedtls_md_process:00000000 mbedtls_md_process
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1413   .text.mbedtls_md_process:0000001c $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1418   .text.mbedtls_md_get_size:00000000 $t
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cci71diP.s 			page 38
+
+
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1425   .text.mbedtls_md_get_size:00000000 mbedtls_md_get_size
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1450   .text.mbedtls_md_get_type:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1457   .text.mbedtls_md_get_type:00000000 mbedtls_md_get_type
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1482   .text.mbedtls_md_get_name:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1489   .text.mbedtls_md_get_name:00000000 mbedtls_md_get_name
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1514   .rodata.mbedtls_md_info_from_string.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1521   .rodata.supported_digests:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cci71diP.s:1525   .rodata.supported_digests:00000000 supported_digests
+
+UNDEFINED SYMBOLS
+mbedtls_sha224_info
+mbedtls_sha256_info
+strcmp
+mbedtls_free
+mbedtls_calloc
+memset

@@ -1,0 +1,316 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceRlYe9.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"BH1750.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.Init_BH1750,"ax",%progbits
+  18              		.align	1
+  19              		.global	Init_BH1750
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	Init_BH1750:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/B
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** /********************************************************************************
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c ****     * 文件名称 ：BH1750.c
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c ****     * 作     者：物联网俱乐部
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c ****     * 版     本：V1.0
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c ****     * 编写日期 ：2018-4-1
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c ****     * 功     能：光照强度扩展板驱动
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** *********************************************************************************
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c ****     * 说    明 ：本例程配套物联网俱乐部开发板使用
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c ****     *
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c ****     * 淘     宝：https://shop128001708.taobao.com/
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c ****     * 论     坛：bbs.iot-club.cn
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** *********************************************************************************/
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** 
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** #include "bh1750.h"
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** #include "stm32l4xx.h"
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** #include "i2c.h"
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** 
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** 
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** float result_lx;
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** uint8_t BUF[2];
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** int result;
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** 
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** 
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** /***************************************************************
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** * 函数名称: Init_BH1750
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** * 说    明: 写命令初始化BH1750
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** * 参    数: 无
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** * 返 回 值: 无
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** ***************************************************************/
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** void Init_BH1750(void)
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceRlYe9.s 			page 2
+
+
+  28              		.loc 1 31 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 00B5     		push	{lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 14, -4
+  36 0002 85B0     		sub	sp, sp, #20
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 24
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c ****     uint8_t t_Data = 0x01;
+  39              		.loc 1 32 0
+  40 0004 0123     		movs	r3, #1
+  41 0006 04AA     		add	r2, sp, #16
+  42 0008 02F8013D 		strb	r3, [r2, #-1]!
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c ****     HAL_I2C_Master_Transmit(&hi2c1,BH1750_Addr,&t_Data,1,0xff);
+  43              		.loc 1 33 0
+  44 000c FF21     		movs	r1, #255
+  45 000e 0091     		str	r1, [sp]
+  46 0010 4621     		movs	r1, #70
+  47 0012 0348     		ldr	r0, .L3
+  48 0014 FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+  49              	.LVL0:
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** }
+  50              		.loc 1 34 0
+  51 0018 05B0     		add	sp, sp, #20
+  52              	.LCFI2:
+  53              		.cfi_def_cfa_offset 4
+  54              		@ sp needed
+  55 001a 5DF804FB 		ldr	pc, [sp], #4
+  56              	.L4:
+  57 001e 00BF     		.align	2
+  58              	.L3:
+  59 0020 00000000 		.word	hi2c1
+  60              		.cfi_endproc
+  61              	.LFE133:
+  63              		.section	.text.Start_BH1750,"ax",%progbits
+  64              		.align	1
+  65              		.global	Start_BH1750
+  66              		.syntax unified
+  67              		.thumb
+  68              		.thumb_func
+  69              		.fpu fpv4-sp-d16
+  71              	Start_BH1750:
+  72              	.LFB134:
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** 
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** /***************************************************************
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** * 函数名称: Start_BH1750
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** * 说    明: 启动BH1750
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** * 参    数: 无
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** * 返 回 值: 无
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** ***************************************************************/
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** void Start_BH1750(void)
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** {
+  73              		.loc 1 43 0
+  74              		.cfi_startproc
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceRlYe9.s 			page 3
+
+
+  75              		@ args = 0, pretend = 0, frame = 8
+  76              		@ frame_needed = 0, uses_anonymous_args = 0
+  77 0000 00B5     		push	{lr}
+  78              	.LCFI3:
+  79              		.cfi_def_cfa_offset 4
+  80              		.cfi_offset 14, -4
+  81 0002 85B0     		sub	sp, sp, #20
+  82              	.LCFI4:
+  83              		.cfi_def_cfa_offset 24
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c ****     uint8_t t_Data = 0x10;
+  84              		.loc 1 44 0
+  85 0004 04AA     		add	r2, sp, #16
+  86 0006 1023     		movs	r3, #16
+  87 0008 02F8013D 		strb	r3, [r2, #-1]!
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c ****     HAL_I2C_Master_Transmit(&hi2c1,BH1750_Addr,&t_Data,1,0xff); 
+  88              		.loc 1 45 0
+  89 000c FF23     		movs	r3, #255
+  90 000e 0093     		str	r3, [sp]
+  91 0010 0123     		movs	r3, #1
+  92 0012 4621     		movs	r1, #70
+  93 0014 0248     		ldr	r0, .L7
+  94 0016 FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+  95              	.LVL1:
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** }
+  96              		.loc 1 46 0
+  97 001a 05B0     		add	sp, sp, #20
+  98              	.LCFI5:
+  99              		.cfi_def_cfa_offset 4
+ 100              		@ sp needed
+ 101 001c 5DF804FB 		ldr	pc, [sp], #4
+ 102              	.L8:
+ 103              		.align	2
+ 104              	.L7:
+ 105 0020 00000000 		.word	hi2c1
+ 106              		.cfi_endproc
+ 107              	.LFE134:
+ 109              		.global	__aeabi_i2d
+ 110              		.global	__aeabi_ddiv
+ 111              		.global	__aeabi_d2f
+ 112              		.section	.text.Convert_BH1750,"ax",%progbits
+ 113              		.align	1
+ 114              		.global	Convert_BH1750
+ 115              		.syntax unified
+ 116              		.thumb
+ 117              		.thumb_func
+ 118              		.fpu fpv4-sp-d16
+ 120              	Convert_BH1750:
+ 121              	.LFB135:
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** 
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** 
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** 
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** /***************************************************************
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** * 函数名称: Convert_BH1750
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** * 说    明: 数值转换
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** * 参    数: 无
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** * 返 回 值: 光强值
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** ***************************************************************/
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceRlYe9.s 			page 4
+
+
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** float Convert_BH1750(void)
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** {
+ 122              		.loc 1 57 0
+ 123              		.cfi_startproc
+ 124              		@ args = 0, pretend = 0, frame = 0
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126 0000 10B5     		push	{r4, lr}
+ 127              	.LCFI6:
+ 128              		.cfi_def_cfa_offset 8
+ 129              		.cfi_offset 4, -8
+ 130              		.cfi_offset 14, -4
+ 131 0002 82B0     		sub	sp, sp, #8
+ 132              	.LCFI7:
+ 133              		.cfi_def_cfa_offset 16
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** 	Start_BH1750();
+ 134              		.loc 1 58 0
+ 135 0004 FFF7FEFF 		bl	Start_BH1750
+ 136              	.LVL2:
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** 	HAL_Delay(180);
+ 137              		.loc 1 59 0
+ 138 0008 B420     		movs	r0, #180
+ 139 000a FFF7FEFF 		bl	HAL_Delay
+ 140              	.LVL3:
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** 	HAL_I2C_Master_Receive(&hi2c1, BH1750_Addr+1,BUF,2,0xff); 
+ 141              		.loc 1 60 0
+ 142 000e 0F4C     		ldr	r4, .L11
+ 143 0010 FF23     		movs	r3, #255
+ 144 0012 0093     		str	r3, [sp]
+ 145 0014 0223     		movs	r3, #2
+ 146 0016 2246     		mov	r2, r4
+ 147 0018 4721     		movs	r1, #71
+ 148 001a 0D48     		ldr	r0, .L11+4
+ 149 001c FFF7FEFF 		bl	HAL_I2C_Master_Receive
+ 150              	.LVL4:
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** 	result=BUF[0];
+ 151              		.loc 1 61 0
+ 152 0020 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** 	result=(result<<8)+BUF[1];  //合成数据，即光照数据	
+ 153              		.loc 1 62 0
+ 154 0022 6078     		ldrb	r0, [r4, #1]	@ zero_extendqisi2
+ 155 0024 00EB0320 		add	r0, r0, r3, lsl #8
+ 156 0028 0A4B     		ldr	r3, .L11+8
+ 157 002a 1860     		str	r0, [r3]
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** 	result_lx=(float)(result/1.2);
+ 158              		.loc 1 63 0
+ 159 002c FFF7FEFF 		bl	__aeabi_i2d
+ 160              	.LVL5:
+ 161 0030 4FF03332 		mov	r2, #858993459
+ 162 0034 084B     		ldr	r3, .L11+12
+ 163 0036 FFF7FEFF 		bl	__aeabi_ddiv
+ 164              	.LVL6:
+ 165 003a FFF7FEFF 		bl	__aeabi_d2f
+ 166              	.LVL7:
+ 167 003e 074B     		ldr	r3, .L11+16
+ 168 0040 1860     		str	r0, [r3]	@ float
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c ****   return result_lx;
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/BH1750\BH1750.c **** }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceRlYe9.s 			page 5
+
+
+ 169              		.loc 1 65 0
+ 170 0042 00EE100A 		vmov	s0, r0
+ 171 0046 02B0     		add	sp, sp, #8
+ 172              	.LCFI8:
+ 173              		.cfi_def_cfa_offset 8
+ 174              		@ sp needed
+ 175 0048 10BD     		pop	{r4, pc}
+ 176              	.L12:
+ 177 004a 00BF     		.align	2
+ 178              	.L11:
+ 179 004c 00000000 		.word	BUF
+ 180 0050 00000000 		.word	hi2c1
+ 181 0054 00000000 		.word	result
+ 182 0058 3333F33F 		.word	1072902963
+ 183 005c 00000000 		.word	result_lx
+ 184              		.cfi_endproc
+ 185              	.LFE135:
+ 187              		.comm	result,4,4
+ 188              		.comm	BUF,2,4
+ 189              		.comm	result_lx,4,4
+ 190              		.text
+ 191              	.Letext0:
+ 192              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 193              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 194              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 195              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 196              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 197              		.file 7 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 198              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 199              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 200              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 201              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/stm32
+ 202              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 203              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 204              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 205              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 206              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 207              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 208              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 209              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 210              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 211              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 212              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 213              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 214              		.file 24 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 215              		.file 25 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/i2c.h
+ 216              		.file 26 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceRlYe9.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 BH1750.c
+c:\Users\lenovo\AppData\Local\Temp\cceRlYe9.s:18     .text.Init_BH1750:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cceRlYe9.s:25     .text.Init_BH1750:00000000 Init_BH1750
+c:\Users\lenovo\AppData\Local\Temp\cceRlYe9.s:59     .text.Init_BH1750:00000020 $d
+c:\Users\lenovo\AppData\Local\Temp\cceRlYe9.s:64     .text.Start_BH1750:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cceRlYe9.s:71     .text.Start_BH1750:00000000 Start_BH1750
+c:\Users\lenovo\AppData\Local\Temp\cceRlYe9.s:105    .text.Start_BH1750:00000020 $d
+c:\Users\lenovo\AppData\Local\Temp\cceRlYe9.s:113    .text.Convert_BH1750:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cceRlYe9.s:120    .text.Convert_BH1750:00000000 Convert_BH1750
+c:\Users\lenovo\AppData\Local\Temp\cceRlYe9.s:179    .text.Convert_BH1750:0000004c $d
+                            *COM*:00000002 BUF
+                            *COM*:00000004 result
+                            *COM*:00000004 result_lx
+
+UNDEFINED SYMBOLS
+HAL_I2C_Master_Transmit
+hi2c1
+__aeabi_i2d
+__aeabi_ddiv
+__aeabi_d2f
+HAL_Delay
+HAL_I2C_Master_Receive

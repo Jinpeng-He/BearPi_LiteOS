@@ -1,0 +1,706 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"upgrade_flag.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.save_flag,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	save_flag:
+  25              	.LFB0:
+  26              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate/upgrade
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  * applicable export control laws and regulations.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s 			page 2
+
+
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** #include <stddef.h>
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** #include "upgrade_flag.h"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** #include "flag_manager.h"
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** #include "ota_crc.h"
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** typedef struct
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** {
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     upgrade_type_e upgrade_type;
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     upgrade_state_e upgrade_state;
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     uint32_t image_size;
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     uint32_t old_image_size;
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     uint32_t recover_verify;
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     uint32_t verify_length;
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     uint32_t crc_flag;
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** } upgrade_flag_s;
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** static upgrade_flag_s g_flag;
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** static int save_flag(void)
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** {
+  27              		.loc 1 54 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 10B5     		push	{r4, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     g_flag.crc_flag = calc_crc32(0, &g_flag, sizeof(upgrade_flag_s) - sizeof(uint32_t));
+  36              		.loc 1 55 0
+  37 0002 064C     		ldr	r4, .L3
+  38 0004 1422     		movs	r2, #20
+  39 0006 2146     		mov	r1, r4
+  40 0008 0020     		movs	r0, #0
+  41 000a FFF7FEFF 		bl	calc_crc32
+  42              	.LVL0:
+  43 000e 6061     		str	r0, [r4, #20]
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     return flag_write(FLAG_BOOTLOADER, &g_flag, sizeof(upgrade_flag_s));
+  44              		.loc 1 57 0
+  45 0010 1822     		movs	r2, #24
+  46 0012 2146     		mov	r1, r4
+  47 0014 0020     		movs	r0, #0
+  48 0016 FFF7FEFF 		bl	flag_write
+  49              	.LVL1:
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** }
+  50              		.loc 1 58 0
+  51 001a 10BD     		pop	{r4, pc}
+  52              	.L4:
+  53              		.align	2
+  54              	.L3:
+  55 001c 00000000 		.word	.LANCHOR0
+  56              		.cfi_endproc
+  57              	.LFE0:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s 			page 3
+
+
+  59              		.section	.text.flag_upgrade_init,"ax",%progbits
+  60              		.align	1
+  61              		.global	flag_upgrade_init
+  62              		.syntax unified
+  63              		.thumb
+  64              		.thumb_func
+  65              		.fpu fpv4-sp-d16
+  67              	flag_upgrade_init:
+  68              	.LFB1:
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** int flag_upgrade_init(void)
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** {
+  69              		.loc 1 61 0
+  70              		.cfi_startproc
+  71              		@ args = 0, pretend = 0, frame = 0
+  72              		@ frame_needed = 0, uses_anonymous_args = 0
+  73 0000 38B5     		push	{r3, r4, r5, lr}
+  74              	.LCFI1:
+  75              		.cfi_def_cfa_offset 16
+  76              		.cfi_offset 3, -16
+  77              		.cfi_offset 4, -12
+  78              		.cfi_offset 5, -8
+  79              		.cfi_offset 14, -4
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     int ret;
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     uint32_t crc;
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     ret = flag_read(FLAG_BOOTLOADER, &g_flag, sizeof(upgrade_flag_s));
+  80              		.loc 1 65 0
+  81 0002 1822     		movs	r2, #24
+  82 0004 0D49     		ldr	r1, .L9
+  83 0006 0020     		movs	r0, #0
+  84 0008 FFF7FEFF 		bl	flag_read
+  85              	.LVL2:
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     if (ret != 0) return ret;
+  86              		.loc 1 66 0
+  87 000c 0446     		mov	r4, r0
+  88 000e 08B1     		cbz	r0, .L8
+  89              	.LVL3:
+  90              	.L5:
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     crc = calc_crc32(0, &g_flag, sizeof(upgrade_flag_s) - sizeof(uint32_t));
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     if (crc != g_flag.crc_flag)
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     {
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         g_flag.upgrade_state = OTA_IDLE;
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         g_flag.upgrade_type = UPGRADE_NONE;
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         g_flag.recover_verify = 0;
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         g_flag.image_size = 0;
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         g_flag.old_image_size = 0;
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         return save_flag();
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     }
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     return 0;
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** }
+  91              		.loc 1 80 0
+  92 0010 2046     		mov	r0, r4
+  93 0012 38BD     		pop	{r3, r4, r5, pc}
+  94              	.LVL4:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s 			page 4
+
+
+  95              	.L8:
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     if (crc != g_flag.crc_flag)
+  96              		.loc 1 68 0
+  97 0014 094D     		ldr	r5, .L9
+  98 0016 1422     		movs	r2, #20
+  99 0018 2946     		mov	r1, r5
+ 100 001a FFF7FEFF 		bl	calc_crc32
+ 101              	.LVL5:
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     {
+ 102              		.loc 1 69 0
+ 103 001e 6B69     		ldr	r3, [r5, #20]
+ 104 0020 8342     		cmp	r3, r0
+ 105 0022 F5D0     		beq	.L5
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         g_flag.upgrade_type = UPGRADE_NONE;
+ 106              		.loc 1 71 0
+ 107 0024 0022     		movs	r2, #0
+ 108 0026 6A70     		strb	r2, [r5, #1]
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         g_flag.recover_verify = 0;
+ 109              		.loc 1 72 0
+ 110 0028 0221     		movs	r1, #2
+ 111 002a 2970     		strb	r1, [r5]
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         g_flag.image_size = 0;
+ 112              		.loc 1 73 0
+ 113 002c EA60     		str	r2, [r5, #12]
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         g_flag.old_image_size = 0;
+ 114              		.loc 1 74 0
+ 115 002e 6A60     		str	r2, [r5, #4]
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         return save_flag();
+ 116              		.loc 1 75 0
+ 117 0030 AA60     		str	r2, [r5, #8]
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     }
+ 118              		.loc 1 76 0
+ 119 0032 FFF7FEFF 		bl	save_flag
+ 120              	.LVL6:
+ 121 0036 0446     		mov	r4, r0
+ 122              	.LVL7:
+ 123 0038 EAE7     		b	.L5
+ 124              	.L10:
+ 125 003a 00BF     		.align	2
+ 126              	.L9:
+ 127 003c 00000000 		.word	.LANCHOR0
+ 128              		.cfi_endproc
+ 129              	.LFE1:
+ 131              		.section	.text.flag_set_info,"ax",%progbits
+ 132              		.align	1
+ 133              		.global	flag_set_info
+ 134              		.syntax unified
+ 135              		.thumb
+ 136              		.thumb_func
+ 137              		.fpu fpv4-sp-d16
+ 139              	flag_set_info:
+ 140              	.LFB2:
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** int flag_set_info(upgrade_type_e upgrade_type, uint32_t image_size)
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** {
+ 141              		.loc 1 83 0
+ 142              		.cfi_startproc
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s 			page 5
+
+
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145              	.LVL8:
+ 146 0000 08B5     		push	{r3, lr}
+ 147              	.LCFI2:
+ 148              		.cfi_def_cfa_offset 8
+ 149              		.cfi_offset 3, -8
+ 150              		.cfi_offset 14, -4
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     g_flag.upgrade_type = upgrade_type;
+ 151              		.loc 1 84 0
+ 152 0002 044B     		ldr	r3, .L13
+ 153 0004 1870     		strb	r0, [r3]
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     g_flag.image_size = image_size;
+ 154              		.loc 1 85 0
+ 155 0006 5960     		str	r1, [r3, #4]
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     g_flag.upgrade_state = OTA_NEED_UPGRADE;
+ 156              		.loc 1 86 0
+ 157 0008 0122     		movs	r2, #1
+ 158 000a 5A70     		strb	r2, [r3, #1]
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     return save_flag();
+ 159              		.loc 1 88 0
+ 160 000c FFF7FEFF 		bl	save_flag
+ 161              	.LVL9:
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** }
+ 162              		.loc 1 89 0
+ 163 0010 08BD     		pop	{r3, pc}
+ 164              	.L14:
+ 165 0012 00BF     		.align	2
+ 166              	.L13:
+ 167 0014 00000000 		.word	.LANCHOR0
+ 168              		.cfi_endproc
+ 169              	.LFE2:
+ 171              		.section	.text.flag_get_info,"ax",%progbits
+ 172              		.align	1
+ 173              		.global	flag_get_info
+ 174              		.syntax unified
+ 175              		.thumb
+ 176              		.thumb_func
+ 177              		.fpu fpv4-sp-d16
+ 179              	flag_get_info:
+ 180              	.LFB3:
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** void flag_get_info(upgrade_type_e *upgrade_type, uint32_t *image_size,
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****                    uint32_t *old_image_size, upgrade_state_e *upgrade_state)
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** {
+ 181              		.loc 1 93 0
+ 182              		.cfi_startproc
+ 183              		@ args = 0, pretend = 0, frame = 0
+ 184              		@ frame_needed = 0, uses_anonymous_args = 0
+ 185              		@ link register save eliminated.
+ 186              	.LVL10:
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     if (NULL != upgrade_type)
+ 187              		.loc 1 94 0
+ 188 0000 98B1     		cbz	r0, .L21
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     if (NULL != upgrade_type)
+ 189              		.loc 1 93 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s 			page 6
+
+
+ 190 0002 10B4     		push	{r4}
+ 191              	.LCFI3:
+ 192              		.cfi_def_cfa_offset 4
+ 193              		.cfi_offset 4, -4
+ 194 0004 0446     		mov	r4, r0
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         *upgrade_type = g_flag.upgrade_type;
+ 195              		.loc 1 95 0
+ 196 0006 1048     		ldr	r0, .L30
+ 197              	.LVL11:
+ 198 0008 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
+ 199 000a 2070     		strb	r0, [r4]
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     if (NULL != image_size)
+ 200              		.loc 1 96 0
+ 201 000c 11B1     		cbz	r1, .L17
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         *image_size = g_flag.image_size;
+ 202              		.loc 1 97 0
+ 203 000e 0E48     		ldr	r0, .L30
+ 204 0010 4068     		ldr	r0, [r0, #4]
+ 205 0012 0860     		str	r0, [r1]
+ 206              	.L17:
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     if (NULL != old_image_size)
+ 207              		.loc 1 98 0
+ 208 0014 12B1     		cbz	r2, .L18
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         *old_image_size = g_flag.old_image_size;
+ 209              		.loc 1 99 0
+ 210 0016 0C49     		ldr	r1, .L30
+ 211              	.LVL12:
+ 212 0018 8968     		ldr	r1, [r1, #8]
+ 213 001a 1160     		str	r1, [r2]
+ 214              	.L18:
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     if (NULL != upgrade_state)
+ 215              		.loc 1 100 0
+ 216 001c 13B1     		cbz	r3, .L15
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         *upgrade_state = g_flag.upgrade_state;
+ 217              		.loc 1 101 0
+ 218 001e 0A4A     		ldr	r2, .L30
+ 219              	.LVL13:
+ 220 0020 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+ 221 0022 1A70     		strb	r2, [r3]
+ 222              	.L15:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** }
+ 223              		.loc 1 102 0
+ 224 0024 5DF8044B 		ldr	r4, [sp], #4
+ 225              	.LCFI4:
+ 226              		.cfi_restore 4
+ 227              		.cfi_def_cfa_offset 0
+ 228              	.LVL14:
+ 229 0028 7047     		bx	lr
+ 230              	.LVL15:
+ 231              	.L21:
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         *image_size = g_flag.image_size;
+ 232              		.loc 1 96 0
+ 233 002a 11B1     		cbz	r1, .L23
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     if (NULL != old_image_size)
+ 234              		.loc 1 97 0
+ 235 002c 0648     		ldr	r0, .L30
+ 236              	.LVL16:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s 			page 7
+
+
+ 237 002e 4068     		ldr	r0, [r0, #4]
+ 238 0030 0860     		str	r0, [r1]
+ 239              	.L23:
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         *old_image_size = g_flag.old_image_size;
+ 240              		.loc 1 98 0
+ 241 0032 12B1     		cbz	r2, .L25
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     if (NULL != upgrade_state)
+ 242              		.loc 1 99 0
+ 243 0034 0449     		ldr	r1, .L30
+ 244              	.LVL17:
+ 245 0036 8968     		ldr	r1, [r1, #8]
+ 246 0038 1160     		str	r1, [r2]
+ 247              	.L25:
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         *upgrade_state = g_flag.upgrade_state;
+ 248              		.loc 1 100 0
+ 249 003a 1BB1     		cbz	r3, .L27
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** }
+ 250              		.loc 1 101 0
+ 251 003c 024A     		ldr	r2, .L30
+ 252              	.LVL18:
+ 253 003e 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+ 254 0040 1A70     		strb	r2, [r3]
+ 255 0042 7047     		bx	lr
+ 256              	.LVL19:
+ 257              	.L27:
+ 258 0044 7047     		bx	lr
+ 259              	.L31:
+ 260 0046 00BF     		.align	2
+ 261              	.L30:
+ 262 0048 00000000 		.word	.LANCHOR0
+ 263              		.cfi_endproc
+ 264              	.LFE3:
+ 266              		.section	.text.flag_upgrade_set_result,"ax",%progbits
+ 267              		.align	1
+ 268              		.global	flag_upgrade_set_result
+ 269              		.syntax unified
+ 270              		.thumb
+ 271              		.thumb_func
+ 272              		.fpu fpv4-sp-d16
+ 274              	flag_upgrade_set_result:
+ 275              	.LFB4:
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** int flag_upgrade_set_result(upgrade_state_e state, uint32_t image_size)
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** {
+ 276              		.loc 1 105 0
+ 277              		.cfi_startproc
+ 278              		@ args = 0, pretend = 0, frame = 0
+ 279              		@ frame_needed = 0, uses_anonymous_args = 0
+ 280              	.LVL20:
+ 281 0000 08B5     		push	{r3, lr}
+ 282              	.LCFI5:
+ 283              		.cfi_def_cfa_offset 8
+ 284              		.cfi_offset 3, -8
+ 285              		.cfi_offset 14, -4
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     g_flag.upgrade_state = state;
+ 286              		.loc 1 106 0
+ 287 0002 034B     		ldr	r3, .L34
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s 			page 8
+
+
+ 288 0004 5870     		strb	r0, [r3, #1]
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     g_flag.image_size = image_size;
+ 289              		.loc 1 107 0
+ 290 0006 5960     		str	r1, [r3, #4]
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     return save_flag();
+ 291              		.loc 1 109 0
+ 292 0008 FFF7FEFF 		bl	save_flag
+ 293              	.LVL21:
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** }
+ 294              		.loc 1 110 0
+ 295 000c 08BD     		pop	{r3, pc}
+ 296              	.L35:
+ 297 000e 00BF     		.align	2
+ 298              	.L34:
+ 299 0010 00000000 		.word	.LANCHOR0
+ 300              		.cfi_endproc
+ 301              	.LFE4:
+ 303              		.section	.text.flag_upgrade_get_result,"ax",%progbits
+ 304              		.align	1
+ 305              		.global	flag_upgrade_get_result
+ 306              		.syntax unified
+ 307              		.thumb
+ 308              		.thumb_func
+ 309              		.fpu fpv4-sp-d16
+ 311              	flag_upgrade_get_result:
+ 312              	.LFB5:
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** int flag_upgrade_get_result(upgrade_state_e *state)
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** {
+ 313              		.loc 1 113 0
+ 314              		.cfi_startproc
+ 315              		@ args = 0, pretend = 0, frame = 0
+ 316              		@ frame_needed = 0, uses_anonymous_args = 0
+ 317              	.LVL22:
+ 318 0000 08B5     		push	{r3, lr}
+ 319              	.LCFI6:
+ 320              		.cfi_def_cfa_offset 8
+ 321              		.cfi_offset 3, -8
+ 322              		.cfi_offset 14, -4
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     if (NULL != state)
+ 323              		.loc 1 114 0
+ 324 0002 10B1     		cbz	r0, .L37
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         *state = g_flag.upgrade_state;
+ 325              		.loc 1 115 0
+ 326 0004 094A     		ldr	r2, .L41
+ 327 0006 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+ 328 0008 0270     		strb	r2, [r0]
+ 329              	.L37:
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     if (g_flag.upgrade_state == OTA_SUCCEED)
+ 330              		.loc 1 116 0
+ 331 000a 084B     		ldr	r3, .L41
+ 332 000c 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 333 000e 022B     		cmp	r3, #2
+ 334 0010 07D0     		beq	.L40
+ 335              	.L38:
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         g_flag.old_image_size = g_flag.image_size;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s 			page 9
+
+
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     g_flag.upgrade_state = OTA_IDLE;
+ 336              		.loc 1 118 0
+ 337 0012 064B     		ldr	r3, .L41
+ 338 0014 0022     		movs	r2, #0
+ 339 0016 5A70     		strb	r2, [r3, #1]
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     g_flag.upgrade_type = UPGRADE_NONE;
+ 340              		.loc 1 119 0
+ 341 0018 0222     		movs	r2, #2
+ 342 001a 1A70     		strb	r2, [r3]
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     return save_flag();
+ 343              		.loc 1 121 0
+ 344 001c FFF7FEFF 		bl	save_flag
+ 345              	.LVL23:
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** }
+ 346              		.loc 1 122 0
+ 347 0020 08BD     		pop	{r3, pc}
+ 348              	.LVL24:
+ 349              	.L40:
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     g_flag.upgrade_state = OTA_IDLE;
+ 350              		.loc 1 117 0
+ 351 0022 024B     		ldr	r3, .L41
+ 352 0024 5A68     		ldr	r2, [r3, #4]
+ 353 0026 9A60     		str	r2, [r3, #8]
+ 354 0028 F3E7     		b	.L38
+ 355              	.L42:
+ 356 002a 00BF     		.align	2
+ 357              	.L41:
+ 358 002c 00000000 		.word	.LANCHOR0
+ 359              		.cfi_endproc
+ 360              	.LFE5:
+ 362              		.section	.text.flag_set_recover_verify,"ax",%progbits
+ 363              		.align	1
+ 364              		.global	flag_set_recover_verify
+ 365              		.syntax unified
+ 366              		.thumb
+ 367              		.thumb_func
+ 368              		.fpu fpv4-sp-d16
+ 370              	flag_set_recover_verify:
+ 371              	.LFB6:
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** int flag_set_recover_verify(uint32_t recover_verify, uint32_t verify_length)
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** {
+ 372              		.loc 1 125 0
+ 373              		.cfi_startproc
+ 374              		@ args = 0, pretend = 0, frame = 0
+ 375              		@ frame_needed = 0, uses_anonymous_args = 0
+ 376              	.LVL25:
+ 377 0000 08B5     		push	{r3, lr}
+ 378              	.LCFI7:
+ 379              		.cfi_def_cfa_offset 8
+ 380              		.cfi_offset 3, -8
+ 381              		.cfi_offset 14, -4
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     g_flag.recover_verify = recover_verify;
+ 382              		.loc 1 126 0
+ 383 0002 034B     		ldr	r3, .L45
+ 384 0004 D860     		str	r0, [r3, #12]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s 			page 10
+
+
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     g_flag.verify_length = verify_length;
+ 385              		.loc 1 127 0
+ 386 0006 1961     		str	r1, [r3, #16]
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     return save_flag();
+ 387              		.loc 1 129 0
+ 388 0008 FFF7FEFF 		bl	save_flag
+ 389              	.LVL26:
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** }
+ 390              		.loc 1 130 0
+ 391 000c 08BD     		pop	{r3, pc}
+ 392              	.L46:
+ 393 000e 00BF     		.align	2
+ 394              	.L45:
+ 395 0010 00000000 		.word	.LANCHOR0
+ 396              		.cfi_endproc
+ 397              	.LFE6:
+ 399              		.section	.text.flag_get_recover_verify,"ax",%progbits
+ 400              		.align	1
+ 401              		.global	flag_get_recover_verify
+ 402              		.syntax unified
+ 403              		.thumb
+ 404              		.thumb_func
+ 405              		.fpu fpv4-sp-d16
+ 407              	flag_get_recover_verify:
+ 408              	.LFB7:
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** void flag_get_recover_verify(uint32_t *recover_verify, uint32_t *verify_length)
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** {
+ 409              		.loc 1 133 0
+ 410              		.cfi_startproc
+ 411              		@ args = 0, pretend = 0, frame = 0
+ 412              		@ frame_needed = 0, uses_anonymous_args = 0
+ 413              		@ link register save eliminated.
+ 414              	.LVL27:
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     if (NULL != recover_verify)
+ 415              		.loc 1 134 0
+ 416 0000 10B1     		cbz	r0, .L48
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         *recover_verify = g_flag.recover_verify;
+ 417              		.loc 1 135 0
+ 418 0002 044A     		ldr	r2, .L50
+ 419 0004 D268     		ldr	r2, [r2, #12]
+ 420 0006 0260     		str	r2, [r0]
+ 421              	.L48:
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     if (NULL != verify_length)
+ 422              		.loc 1 136 0
+ 423 0008 11B1     		cbz	r1, .L47
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****         *verify_length = g_flag.verify_length;
+ 424              		.loc 1 137 0
+ 425 000a 024B     		ldr	r3, .L50
+ 426 000c 1B69     		ldr	r3, [r3, #16]
+ 427 000e 0B60     		str	r3, [r1]
+ 428              	.L47:
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** }
+ 429              		.loc 1 138 0
+ 430 0010 7047     		bx	lr
+ 431              	.L51:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s 			page 11
+
+
+ 432 0012 00BF     		.align	2
+ 433              	.L50:
+ 434 0014 00000000 		.word	.LANCHOR0
+ 435              		.cfi_endproc
+ 436              	.LFE7:
+ 438              		.section	.text.recover_set_update_fail,"ax",%progbits
+ 439              		.align	1
+ 440              		.global	recover_set_update_fail
+ 441              		.syntax unified
+ 442              		.thumb
+ 443              		.thumb_func
+ 444              		.fpu fpv4-sp-d16
+ 446              	recover_set_update_fail:
+ 447              	.LFB8:
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** int recover_set_update_fail(void)
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** {
+ 448              		.loc 1 141 0
+ 449              		.cfi_startproc
+ 450              		@ args = 0, pretend = 0, frame = 0
+ 451              		@ frame_needed = 0, uses_anonymous_args = 0
+ 452 0000 08B5     		push	{r3, lr}
+ 453              	.LCFI8:
+ 454              		.cfi_def_cfa_offset 8
+ 455              		.cfi_offset 3, -8
+ 456              		.cfi_offset 14, -4
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     g_flag.upgrade_state = OTA_FAILED;
+ 457              		.loc 1 142 0
+ 458 0002 034B     		ldr	r3, .L54
+ 459 0004 0322     		movs	r2, #3
+ 460 0006 5A70     		strb	r2, [r3, #1]
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** 
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c ****     return save_flag();
+ 461              		.loc 1 144 0
+ 462 0008 FFF7FEFF 		bl	save_flag
+ 463              	.LVL28:
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate\upgrade_flag.c **** }
+ 464              		.loc 1 145 0
+ 465 000c 08BD     		pop	{r3, pc}
+ 466              	.L55:
+ 467 000e 00BF     		.align	2
+ 468              	.L54:
+ 469 0010 00000000 		.word	.LANCHOR0
+ 470              		.cfi_endproc
+ 471              	.LFE8:
+ 473              		.section	.bss.g_flag,"aw",%nobits
+ 474              		.align	2
+ 475              		.set	.LANCHOR0,. + 0
+ 478              	g_flag:
+ 479 0000 00000000 		.space	24
+ 479      00000000 
+ 479      00000000 
+ 479      00000000 
+ 479      00000000 
+ 480              		.text
+ 481              	.Letext0:
+ 482              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s 			page 12
+
+
+ 483              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 484              		.file 4 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate/upgrade
+ 485              		.file 5 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate/flag_ma
+ 486              		.file 6 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/utility/ota_crc.h"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 upgrade_flag.c
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:18     .text.save_flag:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:24     .text.save_flag:00000000 save_flag
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:55     .text.save_flag:0000001c $d
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:60     .text.flag_upgrade_init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:67     .text.flag_upgrade_init:00000000 flag_upgrade_init
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:127    .text.flag_upgrade_init:0000003c $d
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:132    .text.flag_set_info:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:139    .text.flag_set_info:00000000 flag_set_info
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:167    .text.flag_set_info:00000014 $d
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:172    .text.flag_get_info:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:179    .text.flag_get_info:00000000 flag_get_info
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:262    .text.flag_get_info:00000048 $d
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:267    .text.flag_upgrade_set_result:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:274    .text.flag_upgrade_set_result:00000000 flag_upgrade_set_result
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:299    .text.flag_upgrade_set_result:00000010 $d
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:304    .text.flag_upgrade_get_result:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:311    .text.flag_upgrade_get_result:00000000 flag_upgrade_get_result
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:358    .text.flag_upgrade_get_result:0000002c $d
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:363    .text.flag_set_recover_verify:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:370    .text.flag_set_recover_verify:00000000 flag_set_recover_verify
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:395    .text.flag_set_recover_verify:00000010 $d
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:400    .text.flag_get_recover_verify:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:407    .text.flag_get_recover_verify:00000000 flag_get_recover_verify
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:434    .text.flag_get_recover_verify:00000014 $d
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:439    .text.recover_set_update_fail:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:446    .text.recover_set_update_fail:00000000 recover_set_update_fail
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:469    .text.recover_set_update_fail:00000010 $d
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:474    .bss.g_flag:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cceUEWMa.s:478    .bss.g_flag:00000000 g_flag
+
+UNDEFINED SYMBOLS
+calc_crc32
+flag_write
+flag_read

@@ -1,0 +1,827 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"los_priqueue.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.osPriqueueInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	osPriqueueInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	osPriqueueInit:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core/los_priqueue.c"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** #include "los_priqueue.inc"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** #include "los_base.ph"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** #include "los_task.ph"
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** #include "los_memory.h"
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** #include "los_compiler.h"
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** LITE_OS_SEC_BSS LOS_DL_LIST *g_pstLosPriorityQueueList;
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** static LITE_OS_SEC_BSS UINT32 g_uwPriQueueBitmap = 0;
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** #define PRIQUEUE_PRIOR0_BIT                     (UINT32)0x80000000
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** LITE_OS_SEC_TEXT VOID osPriqueueInit(VOID)
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** {
+  28              		.loc 1 48 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  37              	.LVL0:
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     UINT32 uwPri = 0;
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     UINT32 uwSize = 0;
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     uwSize = OS_PRIORITY_QUEUE_PRIORITYNUM * sizeof(LOS_DL_LIST);
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     g_pstLosPriorityQueueList = (LOS_DL_LIST *)LOS_MemAlloc(m_aucSysMem0, uwSize);
+  38              		.loc 1 53 0
+  39 0002 4FF48071 		mov	r1, #256
+  40 0006 0A4B     		ldr	r3, .L6
+  41 0008 1868     		ldr	r0, [r3]
+  42 000a FFF7FEFF 		bl	LOS_MemAlloc
+  43              	.LVL1:
+  44 000e 094B     		ldr	r3, .L6+4
+  45 0010 1860     		str	r0, [r3]
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     if (NULL == g_pstLosPriorityQueueList)
+  46              		.loc 1 54 0
+  47 0012 58B1     		cbz	r0, .L1
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     {
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****         return;
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     }
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     for (uwPri = 0; uwPri < OS_PRIORITY_QUEUE_PRIORITYNUM; ++uwPri)
+  48              		.loc 1 59 0
+  49 0014 0023     		movs	r3, #0
+  50 0016 07E0     		b	.L3
+  51              	.LVL2:
+  52              	.L4:
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     {
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****         LOS_ListInit(&g_pstLosPriorityQueueList[uwPri]);
+  53              		.loc 1 61 0 discriminator 3
+  54 0018 064A     		ldr	r2, .L6+4
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s 			page 3
+
+
+  55 001a 1168     		ldr	r1, [r2]
+  56 001c 01EBC302 		add	r2, r1, r3, lsl #3
+  57              	.LVL3:
+  58              	.LBB16:
+  59              	.LBB17:
+  60              		.file 2 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  /** @defgroup los_list Doubly linked list
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * @ingroup kernel
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #ifndef _LOS_LIST_H
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #define _LOS_LIST_H
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #include "los_typedef.h"
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #ifdef __cplusplus
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #if __cplusplus
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** extern "C" {
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #endif /* __cplusplus */
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #endif /* __cplusplus */
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s 			page 4
+
+
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *Structure of a node in a doubly linked list.
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** typedef struct LOS_DL_LIST
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     struct LOS_DL_LIST *pstPrev;            /**< Current node's pointer to the previous node*/
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     struct LOS_DL_LIST *pstNext;            /**< Current node's pointer to the next node*/
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** } LOS_DL_LIST;
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Initialize a doubly linked list.
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *This API is used to initialize a doubly linked list.
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>The parameter passed in should be ensured to be a legal pointer.</li>
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstList    [IN] Node in a doubly linked list.
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval None.
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListInit(LOS_DL_LIST *pstList)
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstNext = pstList;
+  61              		.loc 2 82 0 discriminator 3
+  62 0020 5260     		str	r2, [r2, #4]
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstPrev = pstList;
+  63              		.loc 2 83 0 discriminator 3
+  64 0022 41F83320 		str	r2, [r1, r3, lsl #3]
+  65              	.LVL4:
+  66              	.LBE17:
+  67              	.LBE16:
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     {
+  68              		.loc 1 59 0 discriminator 3
+  69 0026 0133     		adds	r3, r3, #1
+  70              	.LVL5:
+  71              	.L3:
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     {
+  72              		.loc 1 59 0 is_stmt 0 discriminator 1
+  73 0028 1F2B     		cmp	r3, #31
+  74 002a F5D9     		bls	.L4
+  75              	.LVL6:
+  76              	.L1:
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     }
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** }
+  77              		.loc 1 63 0 is_stmt 1
+  78 002c 08BD     		pop	{r3, pc}
+  79              	.L7:
+  80 002e 00BF     		.align	2
+  81              	.L6:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s 			page 5
+
+
+  82 0030 00000000 		.word	m_aucSysMem0
+  83 0034 00000000 		.word	g_pstLosPriorityQueueList
+  84              		.cfi_endproc
+  85              	.LFE133:
+  87              		.section	.text.osPriqueueEnqueue,"ax",%progbits
+  88              		.align	1
+  89              		.global	osPriqueueEnqueue
+  90              		.syntax unified
+  91              		.thumb
+  92              		.thumb_func
+  93              		.fpu fpv4-sp-d16
+  95              	osPriqueueEnqueue:
+  96              	.LFB134:
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** LITE_OS_SEC_TEXT VOID osPriqueueEnqueue(LOS_DL_LIST *ptrPQItem, UINT32 uwPri)
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** {
+  97              		.loc 1 66 0
+  98              		.cfi_startproc
+  99              		@ args = 0, pretend = 0, frame = 0
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101              		@ link register save eliminated.
+ 102              	.LVL7:
+ 103 0000 30B4     		push	{r4, r5}
+ 104              	.LCFI1:
+ 105              		.cfi_def_cfa_offset 8
+ 106              		.cfi_offset 4, -8
+ 107              		.cfi_offset 5, -4
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     if (LOS_ListEmpty(&g_pstLosPriorityQueueList[uwPri]))
+ 108              		.loc 1 67 0
+ 109 0002 0D4B     		ldr	r3, .L12
+ 110 0004 1B68     		ldr	r3, [r3]
+ 111 0006 03EBC102 		add	r2, r3, r1, lsl #3
+ 112              	.LVL8:
+ 113              	.LBB18:
+ 114              	.LBB19:
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Point to the next node pointed to by the current node.
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>This API is used to point to the next node pointed to by the current node.</li>
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>None.</li>
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstObject  [IN] Node in the doubly linked list.
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval None.
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s 			page 6
+
+
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #define LOS_DL_LIST_FIRST(pstObject) ((pstObject)->pstNext)
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Insert a new node to a doubly linked list.
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *This API is used to insert a new node to a doubly linked list.
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>The parameters passed in should be ensured to be legal pointers.</li>
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstList    [IN]   Doubly linked list where the new node is inserted.
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstNode    [IN]   New node to be inserted.
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval None
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see LOS_ListDelete
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListAdd(LOS_DL_LIST *pstList, LOS_DL_LIST *pstNode)
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstNext = pstList->pstNext;
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstPrev = pstList;
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstNext->pstPrev = pstNode;
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstNext = pstNode;
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Insert a node to the tail of a doubly linked list.
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *This API is used to insert a new node to the tail of a doubly linked list.
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>The parameters passed in should be ensured to be legal pointers.</li>
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstList     [IN] Doubly linked list where the new node is inserted.
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstNode     [IN] New node to be inserted.
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval None.
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see LOS_ListAdd | LOS_ListHeadInsert
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListTailInsert(LOS_DL_LIST *pstList, LOS_DL_LIST *pst
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     LOS_ListAdd(pstList->pstPrev, pstNode);
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s 			page 7
+
+
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Delete a specified node from a doubly linked list.
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>This API is used to delete a specified node from a doubly linked list.</li>
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>The parameter passed in should be ensured to be a legal pointer.</li>
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstNode    [IN] Node to be deleted.
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval None.
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see LOS_ListAdd
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListDelete(LOS_DL_LIST *pstNode)
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstNext->pstPrev = pstNode->pstPrev;
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstPrev->pstNext = pstNode->pstNext;
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstNext = (LOS_DL_LIST *)NULL;
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstPrev = (LOS_DL_LIST *)NULL;
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Identify whether a specified doubly linked list is empty.
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>This API is used to return whether a doubly linked list is empty.</li>
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>The parameter passed in should be ensured to be a legal pointer.</li>
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstList  [IN] Doubly linked list.
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval TRUE The doubly linked list is empty.
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval FALSE The doubly linked list is not empty.
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE BOOL LOS_ListEmpty(LOS_DL_LIST *pstNode)
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     return (BOOL)(pstNode->pstNext == pstNode);
+ 115              		.loc 2 215 0
+ 116 000a 5468     		ldr	r4, [r2, #4]
+ 117              	.LVL9:
+ 118              	.LBE19:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s 			page 8
+
+
+ 119              	.LBE18:
+ 120              		.loc 1 67 0
+ 121 000c A242     		cmp	r2, r4
+ 122 000e 09D0     		beq	.L11
+ 123              	.L9:
+ 124              	.LVL10:
+ 125              	.LBB20:
+ 126              	.LBB21:
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+ 127              		.loc 2 159 0
+ 128 0010 53F83130 		ldr	r3, [r3, r1, lsl #3]
+ 129              	.LVL11:
+ 130              	.LBB22:
+ 131              	.LBB23:
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstPrev = pstList;
+ 132              		.loc 2 131 0
+ 133 0014 5A68     		ldr	r2, [r3, #4]
+ 134 0016 4260     		str	r2, [r0, #4]
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstNext->pstPrev = pstNode;
+ 135              		.loc 2 132 0
+ 136 0018 0360     		str	r3, [r0]
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstNext = pstNode;
+ 137              		.loc 2 133 0
+ 138 001a 5A68     		ldr	r2, [r3, #4]
+ 139 001c 1060     		str	r0, [r2]
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+ 140              		.loc 2 134 0
+ 141 001e 5860     		str	r0, [r3, #4]
+ 142              	.LVL12:
+ 143              	.LBE23:
+ 144              	.LBE22:
+ 145              	.LBE21:
+ 146              	.LBE20:
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     {
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****         g_uwPriQueueBitmap |= (PRIQUEUE_PRIOR0_BIT >> uwPri);
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     }
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     LOS_ListTailInsert(&g_pstLosPriorityQueueList[uwPri], ptrPQItem);
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** }
+ 147              		.loc 1 73 0
+ 148 0020 30BC     		pop	{r4, r5}
+ 149              	.LCFI2:
+ 150              		.cfi_remember_state
+ 151              		.cfi_restore 5
+ 152              		.cfi_restore 4
+ 153              		.cfi_def_cfa_offset 0
+ 154 0022 7047     		bx	lr
+ 155              	.L11:
+ 156              	.LCFI3:
+ 157              		.cfi_restore_state
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     }
+ 158              		.loc 1 69 0
+ 159 0024 4FF00042 		mov	r2, #-2147483648
+ 160 0028 22FA01F4 		lsr	r4, r2, r1
+ 161 002c 034D     		ldr	r5, .L12+4
+ 162 002e 2A68     		ldr	r2, [r5]
+ 163 0030 2243     		orrs	r2, r2, r4
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s 			page 9
+
+
+ 164 0032 2A60     		str	r2, [r5]
+ 165 0034 ECE7     		b	.L9
+ 166              	.L13:
+ 167 0036 00BF     		.align	2
+ 168              	.L12:
+ 169 0038 00000000 		.word	g_pstLosPriorityQueueList
+ 170 003c 00000000 		.word	.LANCHOR0
+ 171              		.cfi_endproc
+ 172              	.LFE134:
+ 174              		.section	.text.osPriqueueDequeue,"ax",%progbits
+ 175              		.align	1
+ 176              		.global	osPriqueueDequeue
+ 177              		.syntax unified
+ 178              		.thumb
+ 179              		.thumb_func
+ 180              		.fpu fpv4-sp-d16
+ 182              	osPriqueueDequeue:
+ 183              	.LFB135:
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** LITE_OS_SEC_TEXT VOID osPriqueueDequeue(LOS_DL_LIST *ptrPQItem)
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** {
+ 184              		.loc 1 76 0
+ 185              		.cfi_startproc
+ 186              		@ args = 0, pretend = 0, frame = 0
+ 187              		@ frame_needed = 0, uses_anonymous_args = 0
+ 188              		@ link register save eliminated.
+ 189              	.LVL13:
+ 190              	.LBB24:
+ 191              	.LBB25:
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstPrev->pstNext = pstNode->pstNext;
+ 192              		.loc 2 185 0
+ 193 0000 4368     		ldr	r3, [r0, #4]
+ 194 0002 0268     		ldr	r2, [r0]
+ 195 0004 1A60     		str	r2, [r3]
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstNext = (LOS_DL_LIST *)NULL;
+ 196              		.loc 2 186 0
+ 197 0006 0368     		ldr	r3, [r0]
+ 198 0008 4268     		ldr	r2, [r0, #4]
+ 199 000a 5A60     		str	r2, [r3, #4]
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstPrev = (LOS_DL_LIST *)NULL;
+ 200              		.loc 2 187 0
+ 201 000c 0023     		movs	r3, #0
+ 202 000e 4360     		str	r3, [r0, #4]
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+ 203              		.loc 2 188 0
+ 204 0010 0360     		str	r3, [r0]
+ 205              	.LVL14:
+ 206              	.LBE25:
+ 207              	.LBE24:
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     LOS_TASK_CB *pstRunTsk;
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     LOS_ListDelete(ptrPQItem);
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     pstRunTsk = LOS_DL_LIST_ENTRY(ptrPQItem, LOS_TASK_CB, stPendList);  /*lint !e413*/
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     if (LOS_ListEmpty(&g_pstLosPriorityQueueList[pstRunTsk->usPriority]))
+ 208              		.loc 1 81 0
+ 209 0012 30F8222C 		ldrh	r2, [r0, #-34]
+ 210 0016 094B     		ldr	r3, .L17
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s 			page 10
+
+
+ 211 0018 1B68     		ldr	r3, [r3]
+ 212 001a 03EBC203 		add	r3, r3, r2, lsl #3
+ 213              	.LVL15:
+ 214              	.LBB26:
+ 215              	.LBB27:
+ 216              		.loc 2 215 0
+ 217 001e 5968     		ldr	r1, [r3, #4]
+ 218              	.LVL16:
+ 219              	.LBE27:
+ 220              	.LBE26:
+ 221              		.loc 1 81 0
+ 222 0020 8B42     		cmp	r3, r1
+ 223 0022 00D0     		beq	.L16
+ 224              	.L14:
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     {
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****         g_uwPriQueueBitmap &= (~(PRIQUEUE_PRIOR0_BIT >> pstRunTsk->usPriority));
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     }
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** }
+ 225              		.loc 1 85 0
+ 226 0024 7047     		bx	lr
+ 227              	.L16:
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     }
+ 228              		.loc 1 83 0
+ 229 0026 4FF00043 		mov	r3, #-2147483648
+ 230 002a 23FA02F2 		lsr	r2, r3, r2
+ 231 002e 0449     		ldr	r1, .L17+4
+ 232 0030 0B68     		ldr	r3, [r1]
+ 233 0032 23EA0203 		bic	r3, r3, r2
+ 234 0036 0B60     		str	r3, [r1]
+ 235              		.loc 1 85 0
+ 236 0038 F4E7     		b	.L14
+ 237              	.L18:
+ 238 003a 00BF     		.align	2
+ 239              	.L17:
+ 240 003c 00000000 		.word	g_pstLosPriorityQueueList
+ 241 0040 00000000 		.word	.LANCHOR0
+ 242              		.cfi_endproc
+ 243              	.LFE135:
+ 245              		.section	.text.osPriqueueTop,"ax",%progbits
+ 246              		.align	1
+ 247              		.global	osPriqueueTop
+ 248              		.syntax unified
+ 249              		.thumb
+ 250              		.thumb_func
+ 251              		.fpu fpv4-sp-d16
+ 253              	osPriqueueTop:
+ 254              	.LFB136:
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** LITE_OS_SEC_TEXT LOS_DL_LIST *osPriqueueTop(VOID)
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** {
+ 255              		.loc 1 88 0
+ 256              		.cfi_startproc
+ 257              		@ args = 0, pretend = 0, frame = 0
+ 258              		@ frame_needed = 0, uses_anonymous_args = 0
+ 259              		@ link register save eliminated.
+ 260              	.LVL17:
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     UINT32 uwPri = 0;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s 			page 11
+
+
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     if (0 != g_uwPriQueueBitmap)
+ 261              		.loc 1 91 0
+ 262 0000 064B     		ldr	r3, .L22
+ 263 0002 1B68     		ldr	r3, [r3]
+ 264 0004 3BB1     		cbz	r3, .L21
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     {
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****         uwPri = CLZ(g_uwPriQueueBitmap);
+ 265              		.loc 1 93 0
+ 266 0006 B3FA83F3 		clz	r3, r3
+ 267              	.LVL18:
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****         return LOS_DL_LIST_FIRST(&g_pstLosPriorityQueueList[uwPri]);
+ 268              		.loc 1 94 0
+ 269 000a 054A     		ldr	r2, .L22+4
+ 270 000c 1268     		ldr	r2, [r2]
+ 271 000e 02EBC303 		add	r3, r2, r3, lsl #3
+ 272              	.LVL19:
+ 273 0012 5868     		ldr	r0, [r3, #4]
+ 274 0014 7047     		bx	lr
+ 275              	.LVL20:
+ 276              	.L21:
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     }
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     return (LOS_DL_LIST *)NULL;
+ 277              		.loc 1 97 0
+ 278 0016 0020     		movs	r0, #0
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** }
+ 279              		.loc 1 98 0
+ 280 0018 7047     		bx	lr
+ 281              	.L23:
+ 282 001a 00BF     		.align	2
+ 283              	.L22:
+ 284 001c 00000000 		.word	.LANCHOR0
+ 285 0020 00000000 		.word	g_pstLosPriorityQueueList
+ 286              		.cfi_endproc
+ 287              	.LFE136:
+ 289              		.section	.text.osPriqueueSize,"ax",%progbits
+ 290              		.align	1
+ 291              		.global	osPriqueueSize
+ 292              		.syntax unified
+ 293              		.thumb
+ 294              		.thumb_func
+ 295              		.fpu fpv4-sp-d16
+ 297              	osPriqueueSize:
+ 298              	.LFB137:
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** LITE_OS_SEC_TEXT UINT32 osPriqueueSize(UINT32 uwPri)
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** {
+ 299              		.loc 1 101 0
+ 300              		.cfi_startproc
+ 301              		@ args = 0, pretend = 0, frame = 0
+ 302              		@ frame_needed = 0, uses_anonymous_args = 0
+ 303              		@ link register save eliminated.
+ 304              	.LVL21:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     UINT32      uwItemCnt = 0;
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     LOS_DL_LIST *pstCurPQNode = (LOS_DL_LIST *)NULL;
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s 			page 12
+
+
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     LOS_DL_LIST_FOR_EACH(pstCurPQNode, &g_pstLosPriorityQueueList[uwPri])
+ 305              		.loc 1 105 0
+ 306 0000 054B     		ldr	r3, .L27
+ 307 0002 1A68     		ldr	r2, [r3]
+ 308 0004 02EBC002 		add	r2, r2, r0, lsl #3
+ 309 0008 5368     		ldr	r3, [r2, #4]
+ 310              	.LVL22:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     UINT32      uwItemCnt = 0;
+ 311              		.loc 1 102 0
+ 312 000a 0020     		movs	r0, #0
+ 313              	.LVL23:
+ 314              		.loc 1 105 0
+ 315 000c 01E0     		b	.L25
+ 316              	.LVL24:
+ 317              	.L26:
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     {
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****         ++uwItemCnt;
+ 318              		.loc 1 107 0 discriminator 3
+ 319 000e 0130     		adds	r0, r0, #1
+ 320              	.LVL25:
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     {
+ 321              		.loc 1 105 0 discriminator 3
+ 322 0010 5B68     		ldr	r3, [r3, #4]
+ 323              	.LVL26:
+ 324              	.L25:
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     {
+ 325              		.loc 1 105 0 is_stmt 0 discriminator 1
+ 326 0012 9A42     		cmp	r2, r3
+ 327 0014 FBD1     		bne	.L26
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     }
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     return uwItemCnt;
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** }
+ 328              		.loc 1 111 0 is_stmt 1
+ 329 0016 7047     		bx	lr
+ 330              	.L28:
+ 331              		.align	2
+ 332              	.L27:
+ 333 0018 00000000 		.word	g_pstLosPriorityQueueList
+ 334              		.cfi_endproc
+ 335              	.LFE137:
+ 337              		.section	.text.osPriqueueTotalSize,"ax",%progbits
+ 338              		.align	1
+ 339              		.global	osPriqueueTotalSize
+ 340              		.syntax unified
+ 341              		.thumb
+ 342              		.thumb_func
+ 343              		.fpu fpv4-sp-d16
+ 345              	osPriqueueTotalSize:
+ 346              	.LFB138:
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** LITE_OS_SEC_TEXT UINT32 osPriqueueTotalSize(VOID)
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** {
+ 347              		.loc 1 114 0
+ 348              		.cfi_startproc
+ 349              		@ args = 0, pretend = 0, frame = 0
+ 350              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s 			page 13
+
+
+ 351 0000 38B5     		push	{r3, r4, r5, lr}
+ 352              	.LCFI4:
+ 353              		.cfi_def_cfa_offset 16
+ 354              		.cfi_offset 3, -16
+ 355              		.cfi_offset 4, -12
+ 356              		.cfi_offset 5, -8
+ 357              		.cfi_offset 14, -4
+ 358              	.LVL27:
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     UINT32 uwPri = 0;
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     UINT32 uwTotalSize = 0;
+ 359              		.loc 1 116 0
+ 360 0002 0025     		movs	r5, #0
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     for (uwPri = 0; uwPri < OS_PRIORITY_QUEUE_PRIORITYNUM; ++uwPri)
+ 361              		.loc 1 118 0
+ 362 0004 2C46     		mov	r4, r5
+ 363 0006 04E0     		b	.L30
+ 364              	.LVL28:
+ 365              	.L31:
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     {
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****         uwTotalSize += osPriqueueSize(uwPri);
+ 366              		.loc 1 120 0 discriminator 3
+ 367 0008 2046     		mov	r0, r4
+ 368 000a FFF7FEFF 		bl	osPriqueueSize
+ 369              	.LVL29:
+ 370 000e 0544     		add	r5, r5, r0
+ 371              	.LVL30:
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     {
+ 372              		.loc 1 118 0 discriminator 3
+ 373 0010 0134     		adds	r4, r4, #1
+ 374              	.LVL31:
+ 375              	.L30:
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     {
+ 376              		.loc 1 118 0 is_stmt 0 discriminator 1
+ 377 0012 1F2C     		cmp	r4, #31
+ 378 0014 F8D9     		bls	.L31
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     }
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** 
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c ****     return uwTotalSize;
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_priqueue.c **** }
+ 379              		.loc 1 124 0 is_stmt 1
+ 380 0016 2846     		mov	r0, r5
+ 381 0018 38BD     		pop	{r3, r4, r5, pc}
+ 382              		.cfi_endproc
+ 383              	.LFE138:
+ 385              		.comm	g_pstLosPriorityQueueList,4,4
+ 386              		.section	.bss.g_uwPriQueueBitmap,"aw",%nobits
+ 387              		.align	2
+ 388              		.set	.LANCHOR0,. + 0
+ 391              	g_uwPriQueueBitmap:
+ 392 0000 00000000 		.space	4
+ 393              		.text
+ 394              	.Letext0:
+ 395              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 396              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 397              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 398              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s 			page 14
+
+
+ 399              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 400              		.file 8 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 401              		.file 9 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 402              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 403              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 404              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 405              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 406              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 407              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 408              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 409              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 410              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 411              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 412              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 413              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_memory.h"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s 			page 15
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 los_priqueue.c
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:18     .text.osPriqueueInit:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:25     .text.osPriqueueInit:00000000 osPriqueueInit
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:82     .text.osPriqueueInit:00000030 $d
+                            *COM*:00000004 g_pstLosPriorityQueueList
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:88     .text.osPriqueueEnqueue:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:95     .text.osPriqueueEnqueue:00000000 osPriqueueEnqueue
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:169    .text.osPriqueueEnqueue:00000038 $d
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:175    .text.osPriqueueDequeue:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:182    .text.osPriqueueDequeue:00000000 osPriqueueDequeue
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:240    .text.osPriqueueDequeue:0000003c $d
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:246    .text.osPriqueueTop:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:253    .text.osPriqueueTop:00000000 osPriqueueTop
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:284    .text.osPriqueueTop:0000001c $d
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:290    .text.osPriqueueSize:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:297    .text.osPriqueueSize:00000000 osPriqueueSize
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:333    .text.osPriqueueSize:00000018 $d
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:338    .text.osPriqueueTotalSize:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:345    .text.osPriqueueTotalSize:00000000 osPriqueueTotalSize
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:387    .bss.g_uwPriQueueBitmap:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccn4bRPF.s:391    .bss.g_uwPriQueueBitmap:00000000 g_uwPriQueueBitmap
+
+UNDEFINED SYMBOLS
+LOS_MemAlloc
+m_aucSysMem0

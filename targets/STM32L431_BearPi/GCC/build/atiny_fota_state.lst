@@ -1,0 +1,2754 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"atiny_fota_state.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.atiny_fota_state_default_handle,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	atiny_fota_state_default_handle:
+  25              	.LFB142:
+  26              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  * applicable export control laws and regulations.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 2
+
+
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** #include "atiny_fota_state.h"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** #include <string.h>
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** #include "firmware_update.h"
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** //TODO:set the update detail result
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** static int atiny_fota_state_default_handle(struct atiny_fota_state_tag_s *thi)
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** {
+  27              		.loc 1 42 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  32 0000 70B5     		push	{r4, r5, r6, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 16
+  35              		.cfi_offset 4, -16
+  36              		.cfi_offset 5, -12
+  37              		.cfi_offset 6, -8
+  38              		.cfi_offset 14, -4
+  39 0002 82B0     		sub	sp, sp, #8
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 24
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ASSERT_THIS(return ATINY_ERR);
+  42              		.loc 1 43 0
+  43 0004 40B1     		cbz	r0, .L7
+  44 0006 0446     		mov	r4, r0
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ATINY_LOG(LOG_ERR, "err state handle state %d", thi->manager ?
+  45              		.loc 1 45 0
+  46 0008 FFF7FEFF 		bl	atiny_get_log_level
+  47              	.LVL1:
+  48 000c 0328     		cmp	r0, #3
+  49 000e 16D9     		bls	.L8
+  50              	.LVL2:
+  51              	.L3:
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****               atiny_fota_manager_get_state(thi->manager) : -1);
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     return ATINY_ERR;
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+  52              		.loc 1 48 0
+  53 0010 6FF00800 		mvn	r0, #8
+  54 0014 02B0     		add	sp, sp, #8
+  55              	.LCFI2:
+  56              		.cfi_remember_state
+  57              		.cfi_def_cfa_offset 16
+  58              		@ sp needed
+  59 0016 70BD     		pop	{r4, r5, r6, pc}
+  60              	.LVL3:
+  61              	.L7:
+  62              	.LCFI3:
+  63              		.cfi_restore_state
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  64              		.loc 1 43 0 discriminator 1
+  65 0018 FFF7FEFF 		bl	atiny_get_log_level
+  66              	.LVL4:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 3
+
+
+  67 001c 0328     		cmp	r0, #3
+  68 001e F7D8     		bhi	.L3
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  69              		.loc 1 43 0 is_stmt 0 discriminator 2
+  70 0020 0320     		movs	r0, #3
+  71 0022 FFF7FEFF 		bl	atiny_get_log_level_name
+  72              	.LVL5:
+  73 0026 0446     		mov	r4, r0
+  74 0028 FFF7FEFF 		bl	atiny_gettime_ms
+  75              	.LVL6:
+  76 002c 2B23     		movs	r3, #43
+  77 002e 0093     		str	r3, [sp]
+  78 0030 0F4B     		ldr	r3, .L9
+  79 0032 0246     		mov	r2, r0
+  80 0034 2146     		mov	r1, r4
+  81 0036 0F48     		ldr	r0, .L9+4
+  82 0038 FFF7FEFF 		bl	atiny_printf
+  83              	.LVL7:
+  84 003c E8E7     		b	.L3
+  85              	.LVL8:
+  86              	.L8:
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****               atiny_fota_manager_get_state(thi->manager) : -1);
+  87              		.loc 1 45 0 is_stmt 1 discriminator 1
+  88 003e 0320     		movs	r0, #3
+  89 0040 FFF7FEFF 		bl	atiny_get_log_level_name
+  90              	.LVL9:
+  91 0044 0546     		mov	r5, r0
+  92 0046 FFF7FEFF 		bl	atiny_gettime_ms
+  93              	.LVL10:
+  94 004a 0646     		mov	r6, r0
+  95 004c 6069     		ldr	r0, [r4, #20]
+  96 004e 58B1     		cbz	r0, .L5
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****               atiny_fota_manager_get_state(thi->manager) : -1);
+  97              		.loc 1 45 0 is_stmt 0 discriminator 2
+  98 0050 FFF7FEFF 		bl	atiny_fota_manager_get_state
+  99              	.LVL11:
+ 100              	.L4:
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****               atiny_fota_manager_get_state(thi->manager) : -1);
+ 101              		.loc 1 45 0 discriminator 5
+ 102 0054 0190     		str	r0, [sp, #4]
+ 103 0056 2E23     		movs	r3, #46
+ 104 0058 0093     		str	r3, [sp]
+ 105 005a 054B     		ldr	r3, .L9
+ 106 005c 3246     		mov	r2, r6
+ 107 005e 2946     		mov	r1, r5
+ 108 0060 0548     		ldr	r0, .L9+8
+ 109 0062 FFF7FEFF 		bl	atiny_printf
+ 110              	.LVL12:
+ 111 0066 D3E7     		b	.L3
+ 112              	.L5:
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****               atiny_fota_manager_get_state(thi->manager) : -1);
+ 113              		.loc 1 45 0
+ 114 0068 4FF0FF30 		mov	r0, #-1
+ 115 006c F2E7     		b	.L4
+ 116              	.L10:
+ 117 006e 00BF     		.align	2
+ 118              	.L9:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 4
+
+
+ 119 0070 00000000 		.word	.LANCHOR0
+ 120 0074 00000000 		.word	.LC0
+ 121 0078 24000000 		.word	.LC1
+ 122              		.cfi_endproc
+ 123              	.LFE142:
+ 125              		.section	.text.atiny_fota_idle_state_get_result,"ax",%progbits
+ 126              		.align	1
+ 127              		.syntax unified
+ 128              		.thumb
+ 129              		.thumb_func
+ 130              		.fpu fpv4-sp-d16
+ 132              	atiny_fota_idle_state_get_result:
+ 133              	.LFB146:
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** void atiny_fota_state_init(atiny_fota_state_s *thi, atiny_fota_manager_s *manager)
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** {
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->start_download = (int (*)(struct atiny_fota_state_tag_s * thi, const char *uri))atiny_fota
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->execute_update = atiny_fota_state_default_handle;
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->finish_download = (int (*)(struct atiny_fota_state_tag_s * thi, int result))atiny_fota_sta
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->repot_result = atiny_fota_state_default_handle;
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->recv_notify_ack = (int (*)(struct atiny_fota_state_tag_s  * thi, data_send_status_e status
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->manager = manager;
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** static int atiny_fota_start_download(atiny_fota_state_s *thi, const char *uri)
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** {
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ASSERT_THIS(return ATINY_ARG_INVALID);
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_NULL);
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     return atiny_fota_manager_rpt_state(thi->manager, ATINY_FOTA_DOWNLOADING);
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** static int atiny_fota_idle_state_recv_notify_ack(atiny_fota_state_s *thi, data_send_status_e status
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** {
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     int ret;
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_state_e rpt_state;
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(SENT_SUCCESS != status)
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         ATINY_LOG(LOG_ERR, "idle state notify fail %d", status);
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return atiny_fota_manager_set_state(thi->manager, ATINY_FOTA_IDLE);
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     rpt_state = atiny_fota_manager_get_rpt_state(thi->manager) ;
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     //idle and downloaded rpt ack
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if((ATINY_FOTA_IDLE == rpt_state) || (ATINY_FOTA_DOWNLOADED == rpt_state))
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return atiny_fota_manager_set_state(thi->manager, rpt_state);
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     //updating rpt ack
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 5
+
+
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(ATINY_FOTA_UPDATING == rpt_state)
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         ATINY_LOG(LOG_ERR, "idle state recv updaing state ack");
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return ATINY_ERR;
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     //downloading rpt ack
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     //TODO, return then proper result
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ret = start_firmware_download(atiny_fota_manager_get_lwm2m_context(thi->manager), atiny_fota_ma
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****                                   atiny_fota_manager_get_storage_device(thi->manager));
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(ret  == ATINY_OK)
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return atiny_fota_manager_set_state(thi->manager, ATINY_FOTA_DOWNLOADING);
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ATINY_LOG(LOG_ERR, "start_firmware_download fail %d", ret);
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     return atiny_fota_manager_rpt_state(thi->manager, ATINY_FOTA_IDLE);
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** static int atiny_fota_idle_state_get_result(void)
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** {
+ 134              		.loc 1 115 0 is_stmt 1
+ 135              		.cfi_startproc
+ 136              		@ args = 0, pretend = 0, frame = 8
+ 137              		@ frame_needed = 0, uses_anonymous_args = 0
+ 138 0000 10B5     		push	{r4, lr}
+ 139              	.LCFI4:
+ 140              		.cfi_def_cfa_offset 8
+ 141              		.cfi_offset 4, -8
+ 142              		.cfi_offset 14, -4
+ 143 0002 84B0     		sub	sp, sp, #16
+ 144              	.LCFI5:
+ 145              		.cfi_def_cfa_offset 24
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****    upgrade_state_e state;
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****    if(flag_upgrade_get_result(&state) != ATINY_OK)
+ 146              		.loc 1 118 0
+ 147 0004 0DF10F00 		add	r0, sp, #15
+ 148 0008 FFF7FEFF 		bl	flag_upgrade_get_result
+ 149              	.LVL13:
+ 150 000c 38B9     		cbnz	r0, .L17
+ 151 000e 0346     		mov	r3, r0
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****    {
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         ATINY_LOG(LOG_ERR, "ota_check_update_state fail");
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return ATINY_ERR;
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****    }
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****    return (OTA_SUCCEED == state) ? ATINY_OK : ATINY_ERR;
+ 152              		.loc 1 124 0
+ 153 0010 9DF80F20 		ldrb	r2, [sp, #15]	@ zero_extendqisi2
+ 154 0014 022A     		cmp	r2, #2
+ 155 0016 1AD1     		bne	.L18
+ 156              	.L11:
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 157              		.loc 1 125 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 6
+
+
+ 158 0018 1846     		mov	r0, r3
+ 159 001a 04B0     		add	sp, sp, #16
+ 160              	.LCFI6:
+ 161              		.cfi_remember_state
+ 162              		.cfi_def_cfa_offset 8
+ 163              		@ sp needed
+ 164 001c 10BD     		pop	{r4, pc}
+ 165              	.L17:
+ 166              	.LCFI7:
+ 167              		.cfi_restore_state
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return ATINY_ERR;
+ 168              		.loc 1 120 0
+ 169 001e FFF7FEFF 		bl	atiny_get_log_level
+ 170              	.LVL14:
+ 171 0022 0328     		cmp	r0, #3
+ 172 0024 02D9     		bls	.L19
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****    }
+ 173              		.loc 1 121 0
+ 174 0026 6FF00803 		mvn	r3, #8
+ 175 002a F5E7     		b	.L11
+ 176              	.L19:
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return ATINY_ERR;
+ 177              		.loc 1 120 0 discriminator 1
+ 178 002c 0320     		movs	r0, #3
+ 179 002e FFF7FEFF 		bl	atiny_get_log_level_name
+ 180              	.LVL15:
+ 181 0032 0446     		mov	r4, r0
+ 182 0034 FFF7FEFF 		bl	atiny_gettime_ms
+ 183              	.LVL16:
+ 184 0038 7823     		movs	r3, #120
+ 185 003a 0093     		str	r3, [sp]
+ 186 003c 054B     		ldr	r3, .L20
+ 187 003e 0246     		mov	r2, r0
+ 188 0040 2146     		mov	r1, r4
+ 189 0042 0548     		ldr	r0, .L20+4
+ 190 0044 FFF7FEFF 		bl	atiny_printf
+ 191              	.LVL17:
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****    }
+ 192              		.loc 1 121 0 discriminator 1
+ 193 0048 6FF00803 		mvn	r3, #8
+ 194 004c E4E7     		b	.L11
+ 195              	.L18:
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 196              		.loc 1 124 0
+ 197 004e 6FF00803 		mvn	r3, #8
+ 198 0052 E1E7     		b	.L11
+ 199              	.L21:
+ 200              		.align	2
+ 201              	.L20:
+ 202 0054 00000000 		.word	.LANCHOR1
+ 203 0058 00000000 		.word	.LC2
+ 204              		.cfi_endproc
+ 205              	.LFE146:
+ 207              		.section	.text.atiny_fota_downloading_state_recv_notify_ack,"ax",%progbits
+ 208              		.align	1
+ 209              		.syntax unified
+ 210              		.thumb
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 7
+
+
+ 211              		.thumb_func
+ 212              		.fpu fpv4-sp-d16
+ 214              	atiny_fota_downloading_state_recv_notify_ack:
+ 215              	.LFB151:
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** int atiny_fota_idle_state_int_report_result(atiny_fota_idle_state_s *thi)
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** {
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     lwm2m_observe_info_t observe_info;
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     int ret = ATINY_ERR;
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     int result = ATINY_ERR;
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ASSERT_THIS(return ATINY_ARG_INVALID);
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->report_flag = false;
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     memset(&observe_info, 0, sizeof(lwm2m_observe_info_t));
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(flag_read(FLAG_APP, &observe_info, sizeof(observe_info)) != ATINY_OK)
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         ATINY_LOG(LOG_ERR, "flag_write fail");
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         goto EXIT;
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(0 == observe_info.tokenLen)
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return ATINY_OK;
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ret = atiny_fota_idle_state_get_result();
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(ret != ATINY_OK)
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         ATINY_LOG(LOG_ERR, "get_software_result fail");
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     result = ATINY_OK;
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->report_result = ret;
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->report_flag = true;
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     memcpy(&thi->observe_info, &observe_info, sizeof(thi->observe_info));
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ATINY_LOG(LOG_INFO, "need to rpt result %d", ret);
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** EXIT:
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     memset(&observe_info, 0, sizeof(observe_info));
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(flag_write(FLAG_APP, &observe_info, sizeof(observe_info)) != ATINY_OK)
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         ATINY_LOG(LOG_ERR, "flag_write fail");
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     return result;
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** static int atiny_fota_idle_state_report_result(atiny_fota_state_s *thi)
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** {
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     int ret = ATINY_ERR;
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_idle_state_s *idle_stat = (atiny_fota_idle_state_s *)thi;
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     int state;
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     lwm2m_data_cfg_t dataCfg = {0};
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ASSERT_THIS(return ATINY_ARG_INVALID);
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(!idle_stat->report_flag)
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 8
+
+
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return ATINY_OK;
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     idle_stat->report_flag = false;
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     state = ((ATINY_OK == idle_stat->report_result) ?  ATINY_FOTA_IDLE : ATINY_FOTA_DOWNLOADED);
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 		state = ATINY_FOTA_IDLE;/////////////////////////
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_manager_set_update_result(thi->manager, (ATINY_OK == idle_stat->report_result) ? ATI
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_manager_save_rpt_state(thi->manager, state);
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_manager_get_data_cfg(thi->manager, &dataCfg);
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ret = lwm2m_send_notify(atiny_fota_manager_get_lwm2m_context(thi->manager),
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****                             &idle_stat->observe_info, state, &dataCfg);
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ATINY_LOG(LOG_INFO, "lwm2m_send_notify result %d, state %d", ret, state);
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     return ret;
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** void atiny_fota_idle_state_init(atiny_fota_idle_state_s *thi, atiny_fota_manager_s *manager)
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** {
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     memset(thi, 0, sizeof(*thi));
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_state_init(&thi->interface, manager);
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->interface.start_download = atiny_fota_start_download;
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->interface.repot_result = atiny_fota_idle_state_report_result;
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->interface.recv_notify_ack = atiny_fota_idle_state_recv_notify_ack;
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** static int atiny_fota_downloading_state_finish_download(atiny_fota_state_s *thi, int result)
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** {
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ASSERT_THIS(return ATINY_ARG_INVALID);
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(ATINY_OK != result)
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     return atiny_fota_manager_rpt_state(thi->manager, (ATINY_OK == result) ? ATINY_FOTA_DOWNLOADED 
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** static int atiny_fota_downloading_state_recv_notify_ack(atiny_fota_state_s *thi, data_send_status_e
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** {
+ 216              		.loc 1 218 0
+ 217              		.cfi_startproc
+ 218              		@ args = 0, pretend = 0, frame = 0
+ 219              		@ frame_needed = 0, uses_anonymous_args = 0
+ 220              	.LVL18:
+ 221 0000 70B5     		push	{r4, r5, r6, lr}
+ 222              	.LCFI8:
+ 223              		.cfi_def_cfa_offset 16
+ 224              		.cfi_offset 4, -16
+ 225              		.cfi_offset 5, -12
+ 226              		.cfi_offset 6, -8
+ 227              		.cfi_offset 14, -4
+ 228 0002 82B0     		sub	sp, sp, #8
+ 229              	.LCFI9:
+ 230              		.cfi_def_cfa_offset 24
+ 231 0004 0446     		mov	r4, r0
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_state_e rpt_state;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 9
+
+
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(SENT_SUCCESS != status)
+ 232              		.loc 1 221 0
+ 233 0006 0429     		cmp	r1, #4
+ 234 0008 1ED0     		beq	.L23
+ 235 000a 0D46     		mov	r5, r1
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         ATINY_LOG(LOG_ERR, "downloading state notify ack fail %d", status);
+ 236              		.loc 1 223 0
+ 237 000c FFF7FEFF 		bl	atiny_get_log_level
+ 238              	.LVL19:
+ 239 0010 0328     		cmp	r0, #3
+ 240 0012 09D9     		bls	.L30
+ 241              	.L24:
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 242              		.loc 1 224 0
+ 243 0014 0821     		movs	r1, #8
+ 244 0016 6069     		ldr	r0, [r4, #20]
+ 245 0018 FFF7FEFF 		bl	atiny_fota_manager_set_update_result
+ 246              	.LVL20:
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return atiny_fota_manager_set_state(thi->manager, ATINY_FOTA_IDLE);
+ 247              		.loc 1 225 0
+ 248 001c 0021     		movs	r1, #0
+ 249 001e 6069     		ldr	r0, [r4, #20]
+ 250 0020 FFF7FEFF 		bl	atiny_fota_manager_set_state
+ 251              	.LVL21:
+ 252              	.L22:
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     rpt_state = atiny_fota_manager_get_rpt_state(thi->manager);
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if((ATINY_FOTA_IDLE == rpt_state) || (ATINY_FOTA_DOWNLOADED == rpt_state))
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return atiny_fota_manager_set_state(thi->manager, rpt_state);
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     else
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         ATINY_LOG(LOG_ERR, "recv notify ack err  in downloading state, rpt state %d", rpt_state);
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return ATINY_ERR;
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 253              		.loc 1 238 0
+ 254 0024 02B0     		add	sp, sp, #8
+ 255              	.LCFI10:
+ 256              		.cfi_remember_state
+ 257              		.cfi_def_cfa_offset 16
+ 258              		@ sp needed
+ 259 0026 70BD     		pop	{r4, r5, r6, pc}
+ 260              	.LVL22:
+ 261              	.L30:
+ 262              	.LCFI11:
+ 263              		.cfi_restore_state
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 264              		.loc 1 223 0 discriminator 1
+ 265 0028 0320     		movs	r0, #3
+ 266 002a FFF7FEFF 		bl	atiny_get_log_level_name
+ 267              	.LVL23:
+ 268 002e 0646     		mov	r6, r0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 10
+
+
+ 269 0030 FFF7FEFF 		bl	atiny_gettime_ms
+ 270              	.LVL24:
+ 271 0034 0195     		str	r5, [sp, #4]
+ 272 0036 DF23     		movs	r3, #223
+ 273 0038 0093     		str	r3, [sp]
+ 274 003a 164B     		ldr	r3, .L32
+ 275 003c 0246     		mov	r2, r0
+ 276 003e 3146     		mov	r1, r6
+ 277 0040 1548     		ldr	r0, .L32+4
+ 278 0042 FFF7FEFF 		bl	atiny_printf
+ 279              	.LVL25:
+ 280 0046 E5E7     		b	.L24
+ 281              	.LVL26:
+ 282              	.L23:
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if((ATINY_FOTA_IDLE == rpt_state) || (ATINY_FOTA_DOWNLOADED == rpt_state))
+ 283              		.loc 1 228 0
+ 284 0048 4069     		ldr	r0, [r0, #20]
+ 285              	.LVL27:
+ 286 004a FFF7FEFF 		bl	atiny_fota_manager_get_rpt_state
+ 287              	.LVL28:
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 288              		.loc 1 229 0
+ 289 004e 0546     		mov	r5, r0
+ 290 0050 40B1     		cbz	r0, .L26
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 291              		.loc 1 229 0 is_stmt 0 discriminator 1
+ 292 0052 0228     		cmp	r0, #2
+ 293 0054 06D0     		beq	.L26
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return ATINY_ERR;
+ 294              		.loc 1 235 0 is_stmt 1
+ 295 0056 FFF7FEFF 		bl	atiny_get_log_level
+ 296              	.LVL29:
+ 297 005a 0328     		cmp	r0, #3
+ 298 005c 07D9     		bls	.L31
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 299              		.loc 1 236 0
+ 300 005e 6FF00800 		mvn	r0, #8
+ 301 0062 DFE7     		b	.L22
+ 302              	.LVL30:
+ 303              	.L26:
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 304              		.loc 1 231 0
+ 305 0064 2946     		mov	r1, r5
+ 306 0066 6069     		ldr	r0, [r4, #20]
+ 307              	.LVL31:
+ 308 0068 FFF7FEFF 		bl	atiny_fota_manager_set_state
+ 309              	.LVL32:
+ 310 006c DAE7     		b	.L22
+ 311              	.L31:
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return ATINY_ERR;
+ 312              		.loc 1 235 0 discriminator 1
+ 313 006e 0320     		movs	r0, #3
+ 314 0070 FFF7FEFF 		bl	atiny_get_log_level_name
+ 315              	.LVL33:
+ 316 0074 0446     		mov	r4, r0
+ 317              	.LVL34:
+ 318 0076 FFF7FEFF 		bl	atiny_gettime_ms
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 11
+
+
+ 319              	.LVL35:
+ 320 007a 0195     		str	r5, [sp, #4]
+ 321 007c EB23     		movs	r3, #235
+ 322 007e 0093     		str	r3, [sp]
+ 323 0080 044B     		ldr	r3, .L32
+ 324 0082 0246     		mov	r2, r0
+ 325 0084 2146     		mov	r1, r4
+ 326 0086 0548     		ldr	r0, .L32+8
+ 327 0088 FFF7FEFF 		bl	atiny_printf
+ 328              	.LVL36:
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 329              		.loc 1 236 0 discriminator 1
+ 330 008c 6FF00800 		mvn	r0, #8
+ 331 0090 C8E7     		b	.L22
+ 332              	.L33:
+ 333 0092 00BF     		.align	2
+ 334              	.L32:
+ 335 0094 00000000 		.word	.LANCHOR2
+ 336 0098 00000000 		.word	.LC3
+ 337 009c 38000000 		.word	.LC4
+ 338              		.cfi_endproc
+ 339              	.LFE151:
+ 341              		.section	.text.atiny_fota_idle_state_recv_notify_ack,"ax",%progbits
+ 342              		.align	1
+ 343              		.syntax unified
+ 344              		.thumb
+ 345              		.thumb_func
+ 346              		.fpu fpv4-sp-d16
+ 348              	atiny_fota_idle_state_recv_notify_ack:
+ 349              	.LFB145:
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     int ret;
+ 350              		.loc 1 73 0
+ 351              		.cfi_startproc
+ 352              		@ args = 0, pretend = 0, frame = 0
+ 353              		@ frame_needed = 0, uses_anonymous_args = 0
+ 354              	.LVL37:
+ 355 0000 70B5     		push	{r4, r5, r6, lr}
+ 356              	.LCFI12:
+ 357              		.cfi_def_cfa_offset 16
+ 358              		.cfi_offset 4, -16
+ 359              		.cfi_offset 5, -12
+ 360              		.cfi_offset 6, -8
+ 361              		.cfi_offset 14, -4
+ 362 0002 82B0     		sub	sp, sp, #8
+ 363              	.LCFI13:
+ 364              		.cfi_def_cfa_offset 24
+ 365 0004 0446     		mov	r4, r0
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 366              		.loc 1 77 0
+ 367 0006 0429     		cmp	r1, #4
+ 368 0008 1ED0     		beq	.L35
+ 369 000a 0D46     		mov	r5, r1
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 370              		.loc 1 79 0
+ 371 000c FFF7FEFF 		bl	atiny_get_log_level
+ 372              	.LVL38:
+ 373 0010 0328     		cmp	r0, #3
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 12
+
+
+ 374 0012 09D9     		bls	.L45
+ 375              	.L36:
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return atiny_fota_manager_set_state(thi->manager, ATINY_FOTA_IDLE);
+ 376              		.loc 1 80 0
+ 377 0014 0821     		movs	r1, #8
+ 378 0016 6069     		ldr	r0, [r4, #20]
+ 379 0018 FFF7FEFF 		bl	atiny_fota_manager_set_update_result
+ 380              	.LVL39:
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 381              		.loc 1 81 0
+ 382 001c 0021     		movs	r1, #0
+ 383 001e 6069     		ldr	r0, [r4, #20]
+ 384 0020 FFF7FEFF 		bl	atiny_fota_manager_set_state
+ 385              	.LVL40:
+ 386              	.L34:
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 387              		.loc 1 112 0
+ 388 0024 02B0     		add	sp, sp, #8
+ 389              	.LCFI14:
+ 390              		.cfi_remember_state
+ 391              		.cfi_def_cfa_offset 16
+ 392              		@ sp needed
+ 393 0026 70BD     		pop	{r4, r5, r6, pc}
+ 394              	.LVL41:
+ 395              	.L45:
+ 396              	.LCFI15:
+ 397              		.cfi_restore_state
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 398              		.loc 1 79 0 discriminator 1
+ 399 0028 0320     		movs	r0, #3
+ 400 002a FFF7FEFF 		bl	atiny_get_log_level_name
+ 401              	.LVL42:
+ 402 002e 0646     		mov	r6, r0
+ 403 0030 FFF7FEFF 		bl	atiny_gettime_ms
+ 404              	.LVL43:
+ 405 0034 0195     		str	r5, [sp, #4]
+ 406 0036 4F23     		movs	r3, #79
+ 407 0038 0093     		str	r3, [sp]
+ 408 003a 304B     		ldr	r3, .L50
+ 409 003c 0246     		mov	r2, r0
+ 410 003e 3146     		mov	r1, r6
+ 411 0040 2F48     		ldr	r0, .L50+4
+ 412 0042 FFF7FEFF 		bl	atiny_printf
+ 413              	.LVL44:
+ 414 0046 E5E7     		b	.L36
+ 415              	.LVL45:
+ 416              	.L35:
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 417              		.loc 1 84 0
+ 418 0048 4069     		ldr	r0, [r0, #20]
+ 419              	.LVL46:
+ 420 004a FFF7FEFF 		bl	atiny_fota_manager_get_rpt_state
+ 421              	.LVL47:
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 422              		.loc 1 87 0
+ 423 004e 0146     		mov	r1, r0
+ 424 0050 10B3     		cbz	r0, .L38
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 13
+
+
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 425              		.loc 1 87 0 is_stmt 0 discriminator 1
+ 426 0052 0228     		cmp	r0, #2
+ 427 0054 20D0     		beq	.L38
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 428              		.loc 1 93 0 is_stmt 1
+ 429 0056 0328     		cmp	r0, #3
+ 430 0058 22D0     		beq	.L46
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****                                   atiny_fota_manager_get_storage_device(thi->manager));
+ 431              		.loc 1 101 0
+ 432 005a 6069     		ldr	r0, [r4, #20]
+ 433              	.LVL48:
+ 434 005c FFF7FEFF 		bl	atiny_fota_manager_get_lwm2m_context
+ 435              	.LVL49:
+ 436 0060 0546     		mov	r5, r0
+ 437 0062 6069     		ldr	r0, [r4, #20]
+ 438 0064 FFF7FEFF 		bl	atiny_fota_manager_get_pkg_uri
+ 439              	.LVL50:
+ 440 0068 0646     		mov	r6, r0
+ 441 006a 6069     		ldr	r0, [r4, #20]
+ 442 006c FFF7FEFF 		bl	atiny_fota_manager_get_storage_device
+ 443              	.LVL51:
+ 444 0070 0246     		mov	r2, r0
+ 445 0072 3146     		mov	r1, r6
+ 446 0074 2846     		mov	r0, r5
+ 447 0076 FFF7FEFF 		bl	start_firmware_download
+ 448              	.LVL52:
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 449              		.loc 1 103 0
+ 450 007a 0546     		mov	r5, r0
+ 451 007c 40B3     		cbz	r0, .L47
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 452              		.loc 1 108 0
+ 453 007e FFF7FEFF 		bl	atiny_get_log_level
+ 454              	.LVL53:
+ 455 0082 0328     		cmp	r0, #3
+ 456 0084 29D9     		bls	.L48
+ 457              	.L42:
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     return atiny_fota_manager_rpt_state(thi->manager, ATINY_FOTA_IDLE);
+ 458              		.loc 1 109 0
+ 459 0086 0821     		movs	r1, #8
+ 460 0088 6069     		ldr	r0, [r4, #20]
+ 461 008a FFF7FEFF 		bl	atiny_fota_manager_set_update_result
+ 462              	.LVL54:
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 463              		.loc 1 110 0
+ 464 008e 0021     		movs	r1, #0
+ 465 0090 6069     		ldr	r0, [r4, #20]
+ 466 0092 FFF7FEFF 		bl	atiny_fota_manager_rpt_state
+ 467              	.LVL55:
+ 468 0096 C5E7     		b	.L34
+ 469              	.LVL56:
+ 470              	.L38:
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 471              		.loc 1 89 0
+ 472 0098 6069     		ldr	r0, [r4, #20]
+ 473              	.LVL57:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 14
+
+
+ 474 009a FFF7FEFF 		bl	atiny_fota_manager_set_state
+ 475              	.LVL58:
+ 476 009e C1E7     		b	.L34
+ 477              	.LVL59:
+ 478              	.L46:
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return ATINY_ERR;
+ 479              		.loc 1 95 0
+ 480 00a0 FFF7FEFF 		bl	atiny_get_log_level
+ 481              	.LVL60:
+ 482 00a4 0328     		cmp	r0, #3
+ 483 00a6 02D9     		bls	.L49
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 484              		.loc 1 96 0
+ 485 00a8 6FF00800 		mvn	r0, #8
+ 486 00ac BAE7     		b	.L34
+ 487              	.L49:
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return ATINY_ERR;
+ 488              		.loc 1 95 0 discriminator 1
+ 489 00ae 0320     		movs	r0, #3
+ 490 00b0 FFF7FEFF 		bl	atiny_get_log_level_name
+ 491              	.LVL61:
+ 492 00b4 0446     		mov	r4, r0
+ 493              	.LVL62:
+ 494 00b6 FFF7FEFF 		bl	atiny_gettime_ms
+ 495              	.LVL63:
+ 496 00ba 5F23     		movs	r3, #95
+ 497 00bc 0093     		str	r3, [sp]
+ 498 00be 0F4B     		ldr	r3, .L50
+ 499 00c0 0246     		mov	r2, r0
+ 500 00c2 2146     		mov	r1, r4
+ 501 00c4 0F48     		ldr	r0, .L50+8
+ 502 00c6 FFF7FEFF 		bl	atiny_printf
+ 503              	.LVL64:
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 504              		.loc 1 96 0 discriminator 1
+ 505 00ca 6FF00800 		mvn	r0, #8
+ 506 00ce A9E7     		b	.L34
+ 507              	.LVL65:
+ 508              	.L47:
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 509              		.loc 1 105 0
+ 510 00d0 0121     		movs	r1, #1
+ 511 00d2 6069     		ldr	r0, [r4, #20]
+ 512              	.LVL66:
+ 513 00d4 FFF7FEFF 		bl	atiny_fota_manager_set_state
+ 514              	.LVL67:
+ 515 00d8 A4E7     		b	.L34
+ 516              	.L48:
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 517              		.loc 1 108 0 discriminator 1
+ 518 00da 0320     		movs	r0, #3
+ 519 00dc FFF7FEFF 		bl	atiny_get_log_level_name
+ 520              	.LVL68:
+ 521 00e0 0646     		mov	r6, r0
+ 522 00e2 FFF7FEFF 		bl	atiny_gettime_ms
+ 523              	.LVL69:
+ 524 00e6 0195     		str	r5, [sp, #4]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 15
+
+
+ 525 00e8 6C23     		movs	r3, #108
+ 526 00ea 0093     		str	r3, [sp]
+ 527 00ec 034B     		ldr	r3, .L50
+ 528 00ee 0246     		mov	r2, r0
+ 529 00f0 3146     		mov	r1, r6
+ 530 00f2 0548     		ldr	r0, .L50+12
+ 531 00f4 FFF7FEFF 		bl	atiny_printf
+ 532              	.LVL70:
+ 533 00f8 C5E7     		b	.L42
+ 534              	.L51:
+ 535 00fa 00BF     		.align	2
+ 536              	.L50:
+ 537 00fc 00000000 		.word	.LANCHOR3
+ 538 0100 00000000 		.word	.LC5
+ 539 0104 2C000000 		.word	.LC6
+ 540 0108 60000000 		.word	.LC7
+ 541              		.cfi_endproc
+ 542              	.LFE145:
+ 544              		.section	.text.atiny_fota_start_download,"ax",%progbits
+ 545              		.align	1
+ 546              		.syntax unified
+ 547              		.thumb
+ 548              		.thumb_func
+ 549              		.fpu fpv4-sp-d16
+ 551              	atiny_fota_start_download:
+ 552              	.LFB144:
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ASSERT_THIS(return ATINY_ARG_INVALID);
+ 553              		.loc 1 63 0
+ 554              		.cfi_startproc
+ 555              		@ args = 0, pretend = 0, frame = 0
+ 556              		@ frame_needed = 0, uses_anonymous_args = 0
+ 557              	.LVL71:
+ 558 0000 10B5     		push	{r4, lr}
+ 559              	.LCFI16:
+ 560              		.cfi_def_cfa_offset 8
+ 561              		.cfi_offset 4, -8
+ 562              		.cfi_offset 14, -4
+ 563 0002 82B0     		sub	sp, sp, #8
+ 564              	.LCFI17:
+ 565              		.cfi_def_cfa_offset 16
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 566              		.loc 1 64 0
+ 567 0004 50B1     		cbz	r0, .L57
+ 568 0006 0446     		mov	r4, r0
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 569              		.loc 1 66 0
+ 570 0008 0021     		movs	r1, #0
+ 571              	.LVL72:
+ 572 000a 4069     		ldr	r0, [r0, #20]
+ 573              	.LVL73:
+ 574 000c FFF7FEFF 		bl	atiny_fota_manager_set_update_result
+ 575              	.LVL74:
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 576              		.loc 1 69 0
+ 577 0010 0121     		movs	r1, #1
+ 578 0012 6069     		ldr	r0, [r4, #20]
+ 579 0014 FFF7FEFF 		bl	atiny_fota_manager_rpt_state
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 16
+
+
+ 580              	.LVL75:
+ 581              	.L52:
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 582              		.loc 1 70 0
+ 583 0018 02B0     		add	sp, sp, #8
+ 584              	.LCFI18:
+ 585              		.cfi_remember_state
+ 586              		.cfi_def_cfa_offset 8
+ 587              		@ sp needed
+ 588 001a 10BD     		pop	{r4, pc}
+ 589              	.LVL76:
+ 590              	.L57:
+ 591              	.LCFI19:
+ 592              		.cfi_restore_state
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 593              		.loc 1 64 0 discriminator 1
+ 594 001c FFF7FEFF 		bl	atiny_get_log_level
+ 595              	.LVL77:
+ 596 0020 0328     		cmp	r0, #3
+ 597 0022 02D9     		bls	.L58
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 598              		.loc 1 64 0 is_stmt 0
+ 599 0024 4FF0FF30 		mov	r0, #-1
+ 600 0028 F6E7     		b	.L52
+ 601              	.L58:
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 602              		.loc 1 64 0 discriminator 2
+ 603 002a 0320     		movs	r0, #3
+ 604 002c FFF7FEFF 		bl	atiny_get_log_level_name
+ 605              	.LVL78:
+ 606 0030 0446     		mov	r4, r0
+ 607 0032 FFF7FEFF 		bl	atiny_gettime_ms
+ 608              	.LVL79:
+ 609 0036 4023     		movs	r3, #64
+ 610 0038 0093     		str	r3, [sp]
+ 611 003a 044B     		ldr	r3, .L59
+ 612 003c 0246     		mov	r2, r0
+ 613 003e 2146     		mov	r1, r4
+ 614 0040 0348     		ldr	r0, .L59+4
+ 615 0042 FFF7FEFF 		bl	atiny_printf
+ 616              	.LVL80:
+ 617 0046 4FF0FF30 		mov	r0, #-1
+ 618 004a E5E7     		b	.L52
+ 619              	.L60:
+ 620              		.align	2
+ 621              	.L59:
+ 622 004c 00000000 		.word	.LANCHOR4
+ 623 0050 00000000 		.word	.LC0
+ 624              		.cfi_endproc
+ 625              	.LFE144:
+ 627              		.section	.text.atiny_fota_downloading_state_finish_download,"ax",%progbits
+ 628              		.align	1
+ 629              		.syntax unified
+ 630              		.thumb
+ 631              		.thumb_func
+ 632              		.fpu fpv4-sp-d16
+ 634              	atiny_fota_downloading_state_finish_download:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 17
+
+
+ 635              	.LFB150:
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ASSERT_THIS(return ATINY_ARG_INVALID);
+ 636              		.loc 1 206 0 is_stmt 1
+ 637              		.cfi_startproc
+ 638              		@ args = 0, pretend = 0, frame = 0
+ 639              		@ frame_needed = 0, uses_anonymous_args = 0
+ 640              	.LVL81:
+ 641 0000 30B5     		push	{r4, r5, lr}
+ 642              	.LCFI20:
+ 643              		.cfi_def_cfa_offset 12
+ 644              		.cfi_offset 4, -12
+ 645              		.cfi_offset 5, -8
+ 646              		.cfi_offset 14, -4
+ 647 0002 83B0     		sub	sp, sp, #12
+ 648              	.LCFI21:
+ 649              		.cfi_def_cfa_offset 24
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(ATINY_OK != result)
+ 650              		.loc 1 207 0
+ 651 0004 48B1     		cbz	r0, .L69
+ 652 0006 0C46     		mov	r4, r1
+ 653 0008 0546     		mov	r5, r0
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 654              		.loc 1 208 0
+ 655 000a F1B9     		cbnz	r1, .L70
+ 656              	.LVL82:
+ 657              	.L64:
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 658              		.loc 1 213 0
+ 659 000c 6869     		ldr	r0, [r5, #20]
+ 660 000e 0CBB     		cbnz	r4, .L67
+ 661 0010 0221     		movs	r1, #2
+ 662              	.L65:
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 663              		.loc 1 213 0 is_stmt 0 discriminator 4
+ 664 0012 FFF7FEFF 		bl	atiny_fota_manager_rpt_state
+ 665              	.LVL83:
+ 666              	.L61:
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 667              		.loc 1 214 0 is_stmt 1
+ 668 0016 03B0     		add	sp, sp, #12
+ 669              	.LCFI22:
+ 670              		.cfi_remember_state
+ 671              		.cfi_def_cfa_offset 12
+ 672              		@ sp needed
+ 673 0018 30BD     		pop	{r4, r5, pc}
+ 674              	.LVL84:
+ 675              	.L69:
+ 676              	.LCFI23:
+ 677              		.cfi_restore_state
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(ATINY_OK != result)
+ 678              		.loc 1 207 0 discriminator 1
+ 679 001a FFF7FEFF 		bl	atiny_get_log_level
+ 680              	.LVL85:
+ 681 001e 0328     		cmp	r0, #3
+ 682 0020 02D9     		bls	.L71
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(ATINY_OK != result)
+ 683              		.loc 1 207 0 is_stmt 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 18
+
+
+ 684 0022 4FF0FF30 		mov	r0, #-1
+ 685 0026 F6E7     		b	.L61
+ 686              	.L71:
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(ATINY_OK != result)
+ 687              		.loc 1 207 0 discriminator 2
+ 688 0028 0320     		movs	r0, #3
+ 689 002a FFF7FEFF 		bl	atiny_get_log_level_name
+ 690              	.LVL86:
+ 691 002e 0446     		mov	r4, r0
+ 692 0030 FFF7FEFF 		bl	atiny_gettime_ms
+ 693              	.LVL87:
+ 694 0034 CF23     		movs	r3, #207
+ 695 0036 0093     		str	r3, [sp]
+ 696 0038 074B     		ldr	r3, .L72
+ 697 003a 0246     		mov	r2, r0
+ 698 003c 2146     		mov	r1, r4
+ 699 003e 0748     		ldr	r0, .L72+4
+ 700 0040 FFF7FEFF 		bl	atiny_printf
+ 701              	.LVL88:
+ 702 0044 4FF0FF30 		mov	r0, #-1
+ 703 0048 E5E7     		b	.L61
+ 704              	.LVL89:
+ 705              	.L70:
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 706              		.loc 1 210 0 is_stmt 1
+ 707 004a 0821     		movs	r1, #8
+ 708              	.LVL90:
+ 709 004c 4069     		ldr	r0, [r0, #20]
+ 710              	.LVL91:
+ 711 004e FFF7FEFF 		bl	atiny_fota_manager_set_update_result
+ 712              	.LVL92:
+ 713 0052 DBE7     		b	.L64
+ 714              	.L67:
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 715              		.loc 1 213 0
+ 716 0054 0021     		movs	r1, #0
+ 717 0056 DCE7     		b	.L65
+ 718              	.L73:
+ 719              		.align	2
+ 720              	.L72:
+ 721 0058 00000000 		.word	.LANCHOR5
+ 722 005c 00000000 		.word	.LC0
+ 723              		.cfi_endproc
+ 724              	.LFE150:
+ 726              		.section	.text.atiny_fota_idle_state_report_result,"ax",%progbits
+ 727              		.align	1
+ 728              		.syntax unified
+ 729              		.thumb
+ 730              		.thumb_func
+ 731              		.fpu fpv4-sp-d16
+ 733              	atiny_fota_idle_state_report_result:
+ 734              	.LFB148:
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     int ret = ATINY_ERR;
+ 735              		.loc 1 169 0
+ 736              		.cfi_startproc
+ 737              		@ args = 0, pretend = 0, frame = 16
+ 738              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 19
+
+
+ 739              	.LVL93:
+ 740 0000 70B5     		push	{r4, r5, r6, lr}
+ 741              	.LCFI24:
+ 742              		.cfi_def_cfa_offset 16
+ 743              		.cfi_offset 4, -16
+ 744              		.cfi_offset 5, -12
+ 745              		.cfi_offset 6, -8
+ 746              		.cfi_offset 14, -4
+ 747 0002 88B0     		sub	sp, sp, #32
+ 748              	.LCFI25:
+ 749              		.cfi_def_cfa_offset 48
+ 750              	.LVL94:
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 751              		.loc 1 173 0
+ 752 0004 0023     		movs	r3, #0
+ 753 0006 0593     		str	r3, [sp, #20]
+ 754 0008 0693     		str	r3, [sp, #24]
+ 755 000a 0793     		str	r3, [sp, #28]
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 756              		.loc 1 176 0
+ 757 000c 0028     		cmp	r0, #0
+ 758 000e 37D0     		beq	.L82
+ 759 0010 0446     		mov	r4, r0
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 760              		.loc 1 178 0
+ 761 0012 90F83030 		ldrb	r3, [r0, #48]	@ zero_extendqisi2
+ 762 0016 002B     		cmp	r3, #0
+ 763 0018 4CD0     		beq	.L79
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 764              		.loc 1 183 0
+ 765 001a 0023     		movs	r3, #0
+ 766 001c 80F83030 		strb	r3, [r0, #48]
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 		state = ATINY_FOTA_IDLE;/////////////////////////
+ 767              		.loc 1 185 0
+ 768 0020 C36A     		ldr	r3, [r0, #44]
+ 769              	.LVL95:
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_manager_save_rpt_state(thi->manager, state);
+ 770              		.loc 1 187 0
+ 771 0022 4069     		ldr	r0, [r0, #20]
+ 772              	.LVL96:
+ 773 0024 002B     		cmp	r3, #0
+ 774 0026 43D1     		bne	.L80
+ 775 0028 0121     		movs	r1, #1
+ 776              	.L77:
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_manager_save_rpt_state(thi->manager, state);
+ 777              		.loc 1 187 0 is_stmt 0 discriminator 4
+ 778 002a FFF7FEFF 		bl	atiny_fota_manager_set_update_result
+ 779              	.LVL97:
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_manager_get_data_cfg(thi->manager, &dataCfg);
+ 780              		.loc 1 188 0 is_stmt 1 discriminator 4
+ 781 002e 0021     		movs	r1, #0
+ 782 0030 6069     		ldr	r0, [r4, #20]
+ 783 0032 FFF7FEFF 		bl	atiny_fota_manager_save_rpt_state
+ 784              	.LVL98:
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ret = lwm2m_send_notify(atiny_fota_manager_get_lwm2m_context(thi->manager),
+ 785              		.loc 1 189 0 discriminator 4
+ 786 0036 05A9     		add	r1, sp, #20
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 20
+
+
+ 787 0038 6069     		ldr	r0, [r4, #20]
+ 788 003a FFF7FEFF 		bl	atiny_fota_manager_get_data_cfg
+ 789              	.LVL99:
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****                             &idle_stat->observe_info, state, &dataCfg);
+ 790              		.loc 1 190 0 discriminator 4
+ 791 003e 6069     		ldr	r0, [r4, #20]
+ 792 0040 FFF7FEFF 		bl	atiny_fota_manager_get_lwm2m_context
+ 793              	.LVL100:
+ 794 0044 05AB     		add	r3, sp, #20
+ 795 0046 0022     		movs	r2, #0
+ 796 0048 04F11801 		add	r1, r4, #24
+ 797 004c FFF7FEFF 		bl	lwm2m_send_notify
+ 798              	.LVL101:
+ 799 0050 0546     		mov	r5, r0
+ 800 0052 0446     		mov	r4, r0
+ 801              	.LVL102:
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     return ret;
+ 802              		.loc 1 192 0 discriminator 4
+ 803 0054 FFF7FEFF 		bl	atiny_get_log_level
+ 804              	.LVL103:
+ 805 0058 0128     		cmp	r0, #1
+ 806 005a 2CD8     		bhi	.L74
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     return ret;
+ 807              		.loc 1 192 0 is_stmt 0 discriminator 1
+ 808 005c 0120     		movs	r0, #1
+ 809 005e FFF7FEFF 		bl	atiny_get_log_level_name
+ 810              	.LVL104:
+ 811 0062 0646     		mov	r6, r0
+ 812 0064 FFF7FEFF 		bl	atiny_gettime_ms
+ 813              	.LVL105:
+ 814 0068 0023     		movs	r3, #0
+ 815 006a 0293     		str	r3, [sp, #8]
+ 816 006c 0195     		str	r5, [sp, #4]
+ 817 006e C023     		movs	r3, #192
+ 818 0070 0093     		str	r3, [sp]
+ 819 0072 124B     		ldr	r3, .L84
+ 820 0074 0246     		mov	r2, r0
+ 821 0076 3146     		mov	r1, r6
+ 822 0078 1148     		ldr	r0, .L84+4
+ 823 007a FFF7FEFF 		bl	atiny_printf
+ 824              	.LVL106:
+ 825 007e 1AE0     		b	.L74
+ 826              	.LVL107:
+ 827              	.L82:
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 828              		.loc 1 176 0 is_stmt 1 discriminator 1
+ 829 0080 FFF7FEFF 		bl	atiny_get_log_level
+ 830              	.LVL108:
+ 831 0084 0328     		cmp	r0, #3
+ 832 0086 02D9     		bls	.L83
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 833              		.loc 1 176 0 is_stmt 0
+ 834 0088 4FF0FF34 		mov	r4, #-1
+ 835 008c 13E0     		b	.L74
+ 836              	.L83:
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 837              		.loc 1 176 0 discriminator 2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 21
+
+
+ 838 008e 0320     		movs	r0, #3
+ 839 0090 FFF7FEFF 		bl	atiny_get_log_level_name
+ 840              	.LVL109:
+ 841 0094 0446     		mov	r4, r0
+ 842 0096 FFF7FEFF 		bl	atiny_gettime_ms
+ 843              	.LVL110:
+ 844 009a B023     		movs	r3, #176
+ 845 009c 0093     		str	r3, [sp]
+ 846 009e 074B     		ldr	r3, .L84
+ 847 00a0 0246     		mov	r2, r0
+ 848 00a2 2146     		mov	r1, r4
+ 849 00a4 0748     		ldr	r0, .L84+8
+ 850 00a6 FFF7FEFF 		bl	atiny_printf
+ 851              	.LVL111:
+ 852 00aa 4FF0FF34 		mov	r4, #-1
+ 853 00ae 02E0     		b	.L74
+ 854              	.LVL112:
+ 855              	.L80:
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_manager_save_rpt_state(thi->manager, state);
+ 856              		.loc 1 187 0 is_stmt 1
+ 857 00b0 0821     		movs	r1, #8
+ 858 00b2 BAE7     		b	.L77
+ 859              	.LVL113:
+ 860              	.L79:
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 861              		.loc 1 180 0
+ 862 00b4 0024     		movs	r4, #0
+ 863              	.LVL114:
+ 864              	.L74:
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 865              		.loc 1 194 0
+ 866 00b6 2046     		mov	r0, r4
+ 867 00b8 08B0     		add	sp, sp, #32
+ 868              	.LCFI26:
+ 869              		.cfi_def_cfa_offset 16
+ 870              		@ sp needed
+ 871 00ba 70BD     		pop	{r4, r5, r6, pc}
+ 872              	.L85:
+ 873              		.align	2
+ 874              	.L84:
+ 875 00bc 00000000 		.word	.LANCHOR6
+ 876 00c0 00000000 		.word	.LC8
+ 877 00c4 00000000 		.word	.LC0
+ 878              		.cfi_endproc
+ 879              	.LFE148:
+ 881              		.section	.text.atiny_fota_downloaded_state_recv_notify_ack,"ax",%progbits
+ 882              		.align	1
+ 883              		.syntax unified
+ 884              		.thumb
+ 885              		.thumb_func
+ 886              		.fpu fpv4-sp-d16
+ 888              	atiny_fota_downloaded_state_recv_notify_ack:
+ 889              	.LFB154:
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** void atiny_fota_downloading_state_init(atiny_fota_downloading_state_s *thi, atiny_fota_manager_s *m
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** {
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_state_init(&thi->interface, manager);
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->interface.finish_download = atiny_fota_downloading_state_finish_download;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 22
+
+
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->interface.recv_notify_ack = atiny_fota_downloading_state_recv_notify_ack;
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** static int atiny_fota_downloaded_state_execute_update(atiny_fota_state_s *thi)
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** {
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_state_e rpt_state = ATINY_FOTA_UPDATING;
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ASSERT_THIS(return ATINY_ARG_INVALID);
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(atiny_fota_manager_get_update_result(thi->manager) != ATINY_FIRMWARE_UPDATE_NULL)
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         rpt_state = ATINY_FOTA_IDLE;
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     return atiny_fota_manager_rpt_state(thi->manager, rpt_state);
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** static int atiny_fota_downloaded_state_recv_notify_ack(atiny_fota_state_s *thi, data_send_status_e 
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** {
+ 890              		.loc 1 263 0
+ 891              		.cfi_startproc
+ 892              		@ args = 0, pretend = 0, frame = 24
+ 893              		@ frame_needed = 0, uses_anonymous_args = 0
+ 894              	.LVL115:
+ 895 0000 70B5     		push	{r4, r5, r6, lr}
+ 896              	.LCFI27:
+ 897              		.cfi_def_cfa_offset 16
+ 898              		.cfi_offset 4, -16
+ 899              		.cfi_offset 5, -12
+ 900              		.cfi_offset 6, -8
+ 901              		.cfi_offset 14, -4
+ 902 0002 88B0     		sub	sp, sp, #32
+ 903              	.LCFI28:
+ 904              		.cfi_def_cfa_offset 48
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     int ret;
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_state_e rpt_state;
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     lwm2m_observe_info_t observe_info;
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     pack_storage_device_api_s *device;
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ASSERT_THIS(return ATINY_ARG_INVALID);
+ 905              		.loc 1 269 0
+ 906 0004 88B1     		cbz	r0, .L104
+ 907 0006 0D46     		mov	r5, r1
+ 908 0008 0446     		mov	r4, r0
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(SENT_SUCCESS != status)
+ 909              		.loc 1 270 0
+ 910 000a 0429     		cmp	r1, #4
+ 911 000c 37D0     		beq	.L89
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         ATINY_LOG(LOG_ERR, "downloaded state notify fail %d", status);
+ 912              		.loc 1 272 0
+ 913 000e FFF7FEFF 		bl	atiny_get_log_level
+ 914              	.LVL116:
+ 915 0012 0328     		cmp	r0, #3
+ 916 0014 22D9     		bls	.L105
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 23
+
+
+ 917              	.L90:
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 918              		.loc 1 273 0
+ 919 0016 0821     		movs	r1, #8
+ 920 0018 6069     		ldr	r0, [r4, #20]
+ 921 001a FFF7FEFF 		bl	atiny_fota_manager_set_update_result
+ 922              	.LVL117:
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return atiny_fota_manager_set_state(thi->manager, ATINY_FOTA_IDLE);
+ 923              		.loc 1 274 0
+ 924 001e 0021     		movs	r1, #0
+ 925 0020 6069     		ldr	r0, [r4, #20]
+ 926 0022 FFF7FEFF 		bl	atiny_fota_manager_set_state
+ 927              	.LVL118:
+ 928              	.L86:
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     rpt_state = atiny_fota_manager_get_rpt_state(thi->manager);
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     //rpt downloading state ack
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(ATINY_FOTA_DOWNLOADING == rpt_state)
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         ret = start_firmware_download(atiny_fota_manager_get_lwm2m_context(thi->manager), atiny_fot
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****                                       atiny_fota_manager_get_storage_device(thi->manager));
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         if(ret  == ATINY_OK)
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         {
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****             return atiny_fota_manager_set_state(thi->manager, ATINY_FOTA_DOWNLOADING);
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         }
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         ATINY_LOG(LOG_ERR, "start_firmware_download fail %d", ret);
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         (void)atiny_fota_manager_rpt_state(thi->manager, ATINY_FOTA_IDLE);
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return ATINY_ERR;
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     //rpt idle state ack
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(ATINY_FOTA_IDLE == rpt_state)
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return atiny_fota_manager_set_state(thi->manager, rpt_state);
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     //rpt downloaded state ack
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(ATINY_FOTA_DOWNLOADED == rpt_state)
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return ATINY_OK;
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 306:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     //rpt updating state ack
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(lwm2m_get_observe_info(atiny_fota_manager_get_lwm2m_context(thi->manager), &observe_info) !=
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****             || 0 == observe_info.tokenLen)
+ 309:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         ATINY_LOG(LOG_ERR, "lwm2m_get_observe_info fail");
+ 311:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         goto EXIT_DOWNLOADED;
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     device = atiny_fota_manager_get_storage_device(thi->manager);
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if((NULL == device) || (NULL == device->active_software) || (device->active_software(device) !=
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         ATINY_LOG(LOG_ERR, "active_software fail");
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 24
+
+
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         goto EXIT_DOWNLOADED;
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(flag_write(FLAG_APP, &observe_info, sizeof(observe_info)) != ATINY_OK)
+ 322:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         ATINY_LOG(LOG_ERR, "flag_write fail");
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         goto EXIT_DOWNLOADED;
+ 325:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 326:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 327:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_set_reboot_flag();
+ 328:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     return atiny_fota_manager_set_state(thi->manager, ATINY_FOTA_UPDATING);
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** EXIT_DOWNLOADED:
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     (void)atiny_fota_manager_rpt_state(thi->manager, ATINY_FOTA_DOWNLOADED);
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     return ATINY_ERR;
+ 335:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 929              		.loc 1 335 0
+ 930 0026 08B0     		add	sp, sp, #32
+ 931              	.LCFI29:
+ 932              		.cfi_remember_state
+ 933              		.cfi_def_cfa_offset 16
+ 934              		@ sp needed
+ 935 0028 70BD     		pop	{r4, r5, r6, pc}
+ 936              	.LVL119:
+ 937              	.L104:
+ 938              	.LCFI30:
+ 939              		.cfi_restore_state
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(SENT_SUCCESS != status)
+ 940              		.loc 1 269 0 discriminator 1
+ 941 002a FFF7FEFF 		bl	atiny_get_log_level
+ 942              	.LVL120:
+ 943 002e 0328     		cmp	r0, #3
+ 944 0030 02D9     		bls	.L106
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(SENT_SUCCESS != status)
+ 945              		.loc 1 269 0 is_stmt 0
+ 946 0032 4FF0FF30 		mov	r0, #-1
+ 947 0036 F6E7     		b	.L86
+ 948              	.L106:
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(SENT_SUCCESS != status)
+ 949              		.loc 1 269 0 discriminator 2
+ 950 0038 0320     		movs	r0, #3
+ 951 003a FFF7FEFF 		bl	atiny_get_log_level_name
+ 952              	.LVL121:
+ 953 003e 0446     		mov	r4, r0
+ 954 0040 FFF7FEFF 		bl	atiny_gettime_ms
+ 955              	.LVL122:
+ 956 0044 40F20D13 		movw	r3, #269
+ 957 0048 0093     		str	r3, [sp]
+ 958 004a 664B     		ldr	r3, .L112
+ 959 004c 0246     		mov	r2, r0
+ 960 004e 2146     		mov	r1, r4
+ 961 0050 6548     		ldr	r0, .L112+4
+ 962 0052 FFF7FEFF 		bl	atiny_printf
+ 963              	.LVL123:
+ 964 0056 4FF0FF30 		mov	r0, #-1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 25
+
+
+ 965 005a E4E7     		b	.L86
+ 966              	.LVL124:
+ 967              	.L105:
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 968              		.loc 1 272 0 is_stmt 1 discriminator 1
+ 969 005c 0320     		movs	r0, #3
+ 970 005e FFF7FEFF 		bl	atiny_get_log_level_name
+ 971              	.LVL125:
+ 972 0062 0646     		mov	r6, r0
+ 973 0064 FFF7FEFF 		bl	atiny_gettime_ms
+ 974              	.LVL126:
+ 975 0068 0195     		str	r5, [sp, #4]
+ 976 006a 4FF48873 		mov	r3, #272
+ 977 006e 0093     		str	r3, [sp]
+ 978 0070 5C4B     		ldr	r3, .L112
+ 979 0072 0246     		mov	r2, r0
+ 980 0074 3146     		mov	r1, r6
+ 981 0076 5D48     		ldr	r0, .L112+8
+ 982 0078 FFF7FEFF 		bl	atiny_printf
+ 983              	.LVL127:
+ 984 007c CBE7     		b	.L90
+ 985              	.LVL128:
+ 986              	.L89:
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     //rpt downloading state ack
+ 987              		.loc 1 277 0
+ 988 007e 4069     		ldr	r0, [r0, #20]
+ 989              	.LVL129:
+ 990 0080 FFF7FEFF 		bl	atiny_fota_manager_get_rpt_state
+ 991              	.LVL130:
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 992              		.loc 1 279 0
+ 993 0084 0128     		cmp	r0, #1
+ 994 0086 28D0     		beq	.L107
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 995              		.loc 1 295 0
+ 996 0088 0028     		cmp	r0, #0
+ 997 008a 5DD0     		beq	.L108
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 998              		.loc 1 301 0
+ 999 008c 0228     		cmp	r0, #2
+ 1000 008e 00F0A780 		beq	.L102
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****             || 0 == observe_info.tokenLen)
+ 1001              		.loc 1 307 0
+ 1002 0092 6069     		ldr	r0, [r4, #20]
+ 1003              	.LVL131:
+ 1004 0094 FFF7FEFF 		bl	atiny_fota_manager_get_lwm2m_context
+ 1005              	.LVL132:
+ 1006 0098 03A9     		add	r1, sp, #12
+ 1007 009a FFF7FEFF 		bl	lwm2m_get_observe_info
+ 1008              	.LVL133:
+ 1009 009e 0028     		cmp	r0, #0
+ 1010 00a0 57D1     		bne	.L95
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 1011              		.loc 1 308 0
+ 1012 00a2 069B     		ldr	r3, [sp, #24]
+ 1013 00a4 002B     		cmp	r3, #0
+ 1014 00a6 54D0     		beq	.L95
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 26
+
+
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if((NULL == device) || (NULL == device->active_software) || (device->active_software(device) !=
+ 1015              		.loc 1 314 0
+ 1016 00a8 6069     		ldr	r0, [r4, #20]
+ 1017 00aa FFF7FEFF 		bl	atiny_fota_manager_get_storage_device
+ 1018              	.LVL134:
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 1019              		.loc 1 315 0
+ 1020 00ae 0028     		cmp	r0, #0
+ 1021 00b0 6ED0     		beq	.L98
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 1022              		.loc 1 315 0 is_stmt 0 discriminator 1
+ 1023 00b2 8368     		ldr	r3, [r0, #8]
+ 1024 00b4 002B     		cmp	r3, #0
+ 1025 00b6 6BD0     		beq	.L98
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 1026              		.loc 1 315 0 discriminator 2
+ 1027 00b8 9847     		blx	r3
+ 1028              	.LVL135:
+ 1029 00ba 0028     		cmp	r0, #0
+ 1030 00bc 68D1     		bne	.L98
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 1031              		.loc 1 321 0 is_stmt 1
+ 1032 00be 1422     		movs	r2, #20
+ 1033 00c0 03A9     		add	r1, sp, #12
+ 1034 00c2 0120     		movs	r0, #1
+ 1035 00c4 FFF7FEFF 		bl	flag_write
+ 1036              	.LVL136:
+ 1037 00c8 0028     		cmp	r0, #0
+ 1038 00ca 75D1     		bne	.L109
+ 327:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     return atiny_fota_manager_set_state(thi->manager, ATINY_FOTA_UPDATING);
+ 1039              		.loc 1 327 0
+ 1040 00cc FFF7FEFF 		bl	atiny_set_reboot_flag
+ 1041              	.LVL137:
+ 328:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1042              		.loc 1 328 0
+ 1043 00d0 0321     		movs	r1, #3
+ 1044 00d2 6069     		ldr	r0, [r4, #20]
+ 1045 00d4 FFF7FEFF 		bl	atiny_fota_manager_set_state
+ 1046              	.LVL138:
+ 1047 00d8 A5E7     		b	.L86
+ 1048              	.LVL139:
+ 1049              	.L107:
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****                                       atiny_fota_manager_get_storage_device(thi->manager));
+ 1050              		.loc 1 281 0
+ 1051 00da 6069     		ldr	r0, [r4, #20]
+ 1052              	.LVL140:
+ 1053 00dc FFF7FEFF 		bl	atiny_fota_manager_get_lwm2m_context
+ 1054              	.LVL141:
+ 1055 00e0 0546     		mov	r5, r0
+ 1056 00e2 6069     		ldr	r0, [r4, #20]
+ 1057 00e4 FFF7FEFF 		bl	atiny_fota_manager_get_pkg_uri
+ 1058              	.LVL142:
+ 1059 00e8 0646     		mov	r6, r0
+ 1060 00ea 6069     		ldr	r0, [r4, #20]
+ 1061 00ec FFF7FEFF 		bl	atiny_fota_manager_get_storage_device
+ 1062              	.LVL143:
+ 1063 00f0 0246     		mov	r2, r0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 27
+
+
+ 1064 00f2 3146     		mov	r1, r6
+ 1065 00f4 2846     		mov	r0, r5
+ 1066 00f6 FFF7FEFF 		bl	start_firmware_download
+ 1067              	.LVL144:
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         {
+ 1068              		.loc 1 283 0
+ 1069 00fa 0546     		mov	r5, r0
+ 1070 00fc 20B9     		cbnz	r0, .L92
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1071              		.loc 1 285 0
+ 1072 00fe 0121     		movs	r1, #1
+ 1073 0100 6069     		ldr	r0, [r4, #20]
+ 1074              	.LVL145:
+ 1075 0102 FFF7FEFF 		bl	atiny_fota_manager_set_state
+ 1076              	.LVL146:
+ 1077 0106 8EE7     		b	.L86
+ 1078              	.LVL147:
+ 1079              	.L92:
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 1080              		.loc 1 288 0
+ 1081 0108 FFF7FEFF 		bl	atiny_get_log_level
+ 1082              	.LVL148:
+ 1083 010c 0328     		cmp	r0, #3
+ 1084 010e 0AD9     		bls	.L110
+ 1085              	.L93:
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         (void)atiny_fota_manager_rpt_state(thi->manager, ATINY_FOTA_IDLE);
+ 1086              		.loc 1 289 0
+ 1087 0110 0821     		movs	r1, #8
+ 1088 0112 6069     		ldr	r0, [r4, #20]
+ 1089 0114 FFF7FEFF 		bl	atiny_fota_manager_set_update_result
+ 1090              	.LVL149:
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         return ATINY_ERR;
+ 1091              		.loc 1 290 0
+ 1092 0118 0021     		movs	r1, #0
+ 1093 011a 6069     		ldr	r0, [r4, #20]
+ 1094 011c FFF7FEFF 		bl	atiny_fota_manager_rpt_state
+ 1095              	.LVL150:
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 1096              		.loc 1 291 0
+ 1097 0120 6FF00800 		mvn	r0, #8
+ 1098 0124 7FE7     		b	.L86
+ 1099              	.L110:
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 1100              		.loc 1 288 0 discriminator 1
+ 1101 0126 0320     		movs	r0, #3
+ 1102 0128 FFF7FEFF 		bl	atiny_get_log_level_name
+ 1103              	.LVL151:
+ 1104 012c 0646     		mov	r6, r0
+ 1105 012e FFF7FEFF 		bl	atiny_gettime_ms
+ 1106              	.LVL152:
+ 1107 0132 0195     		str	r5, [sp, #4]
+ 1108 0134 4FF49073 		mov	r3, #288
+ 1109 0138 0093     		str	r3, [sp]
+ 1110 013a 2A4B     		ldr	r3, .L112
+ 1111 013c 0246     		mov	r2, r0
+ 1112 013e 3146     		mov	r1, r6
+ 1113 0140 2B48     		ldr	r0, .L112+12
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 28
+
+
+ 1114 0142 FFF7FEFF 		bl	atiny_printf
+ 1115              	.LVL153:
+ 1116 0146 E3E7     		b	.L93
+ 1117              	.LVL154:
+ 1118              	.L108:
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 1119              		.loc 1 297 0
+ 1120 0148 0146     		mov	r1, r0
+ 1121 014a 6069     		ldr	r0, [r4, #20]
+ 1122              	.LVL155:
+ 1123 014c FFF7FEFF 		bl	atiny_fota_manager_set_state
+ 1124              	.LVL156:
+ 1125 0150 69E7     		b	.L86
+ 1126              	.L95:
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         goto EXIT_DOWNLOADED;
+ 1127              		.loc 1 310 0
+ 1128 0152 FFF7FEFF 		bl	atiny_get_log_level
+ 1129              	.LVL157:
+ 1130 0156 0328     		cmp	r0, #3
+ 1131 0158 0AD9     		bls	.L111
+ 1132              	.L97:
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     (void)atiny_fota_manager_rpt_state(thi->manager, ATINY_FOTA_DOWNLOADED);
+ 1133              		.loc 1 332 0
+ 1134 015a 0821     		movs	r1, #8
+ 1135 015c 6069     		ldr	r0, [r4, #20]
+ 1136 015e FFF7FEFF 		bl	atiny_fota_manager_set_update_result
+ 1137              	.LVL158:
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     return ATINY_ERR;
+ 1138              		.loc 1 333 0
+ 1139 0162 0221     		movs	r1, #2
+ 1140 0164 6069     		ldr	r0, [r4, #20]
+ 1141 0166 FFF7FEFF 		bl	atiny_fota_manager_rpt_state
+ 1142              	.LVL159:
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 1143              		.loc 1 334 0
+ 1144 016a 6FF00800 		mvn	r0, #8
+ 1145 016e 5AE7     		b	.L86
+ 1146              	.L111:
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         goto EXIT_DOWNLOADED;
+ 1147              		.loc 1 310 0 discriminator 1
+ 1148 0170 0320     		movs	r0, #3
+ 1149 0172 FFF7FEFF 		bl	atiny_get_log_level_name
+ 1150              	.LVL160:
+ 1151 0176 0546     		mov	r5, r0
+ 1152 0178 FFF7FEFF 		bl	atiny_gettime_ms
+ 1153              	.LVL161:
+ 1154 017c 4FF49B73 		mov	r3, #310
+ 1155 0180 0093     		str	r3, [sp]
+ 1156 0182 184B     		ldr	r3, .L112
+ 1157 0184 0246     		mov	r2, r0
+ 1158 0186 2946     		mov	r1, r5
+ 1159 0188 1A48     		ldr	r0, .L112+16
+ 1160 018a FFF7FEFF 		bl	atiny_printf
+ 1161              	.LVL162:
+ 1162 018e E4E7     		b	.L97
+ 1163              	.L98:
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         goto EXIT_DOWNLOADED;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 29
+
+
+ 1164              		.loc 1 317 0
+ 1165 0190 FFF7FEFF 		bl	atiny_get_log_level
+ 1166              	.LVL163:
+ 1167 0194 0328     		cmp	r0, #3
+ 1168 0196 E0D8     		bhi	.L97
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         goto EXIT_DOWNLOADED;
+ 1169              		.loc 1 317 0 is_stmt 0 discriminator 1
+ 1170 0198 0320     		movs	r0, #3
+ 1171 019a FFF7FEFF 		bl	atiny_get_log_level_name
+ 1172              	.LVL164:
+ 1173 019e 0546     		mov	r5, r0
+ 1174 01a0 FFF7FEFF 		bl	atiny_gettime_ms
+ 1175              	.LVL165:
+ 1176 01a4 40F23D13 		movw	r3, #317
+ 1177 01a8 0093     		str	r3, [sp]
+ 1178 01aa 0E4B     		ldr	r3, .L112
+ 1179 01ac 0246     		mov	r2, r0
+ 1180 01ae 2946     		mov	r1, r5
+ 1181 01b0 1148     		ldr	r0, .L112+20
+ 1182 01b2 FFF7FEFF 		bl	atiny_printf
+ 1183              	.LVL166:
+ 1184 01b6 D0E7     		b	.L97
+ 1185              	.L109:
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         goto EXIT_DOWNLOADED;
+ 1186              		.loc 1 323 0 is_stmt 1
+ 1187 01b8 FFF7FEFF 		bl	atiny_get_log_level
+ 1188              	.LVL167:
+ 1189 01bc 0328     		cmp	r0, #3
+ 1190 01be CCD8     		bhi	.L97
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         goto EXIT_DOWNLOADED;
+ 1191              		.loc 1 323 0 is_stmt 0 discriminator 1
+ 1192 01c0 0320     		movs	r0, #3
+ 1193 01c2 FFF7FEFF 		bl	atiny_get_log_level_name
+ 1194              	.LVL168:
+ 1195 01c6 0546     		mov	r5, r0
+ 1196 01c8 FFF7FEFF 		bl	atiny_gettime_ms
+ 1197              	.LVL169:
+ 1198 01cc 40F24313 		movw	r3, #323
+ 1199 01d0 0093     		str	r3, [sp]
+ 1200 01d2 044B     		ldr	r3, .L112
+ 1201 01d4 0246     		mov	r2, r0
+ 1202 01d6 2946     		mov	r1, r5
+ 1203 01d8 0848     		ldr	r0, .L112+24
+ 1204 01da FFF7FEFF 		bl	atiny_printf
+ 1205              	.LVL170:
+ 1206 01de BCE7     		b	.L97
+ 1207              	.LVL171:
+ 1208              	.L102:
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 1209              		.loc 1 303 0 is_stmt 1
+ 1210 01e0 0020     		movs	r0, #0
+ 1211              	.LVL172:
+ 1212 01e2 20E7     		b	.L86
+ 1213              	.L113:
+ 1214              		.align	2
+ 1215              	.L112:
+ 1216 01e4 00000000 		.word	.LANCHOR7
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 30
+
+
+ 1217 01e8 00000000 		.word	.LC0
+ 1218 01ec 00000000 		.word	.LC9
+ 1219 01f0 60000000 		.word	.LC7
+ 1220 01f4 34000000 		.word	.LC10
+ 1221 01f8 64000000 		.word	.LC11
+ 1222 01fc 8C000000 		.word	.LC12
+ 1223              		.cfi_endproc
+ 1224              	.LFE154:
+ 1226              		.section	.text.atiny_fota_downloaded_state_execute_update,"ax",%progbits
+ 1227              		.align	1
+ 1228              		.syntax unified
+ 1229              		.thumb
+ 1230              		.thumb_func
+ 1231              		.fpu fpv4-sp-d16
+ 1233              	atiny_fota_downloaded_state_execute_update:
+ 1234              	.LFB153:
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_state_e rpt_state = ATINY_FOTA_UPDATING;
+ 1235              		.loc 1 247 0
+ 1236              		.cfi_startproc
+ 1237              		@ args = 0, pretend = 0, frame = 0
+ 1238              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1239              	.LVL173:
+ 1240 0000 10B5     		push	{r4, lr}
+ 1241              	.LCFI31:
+ 1242              		.cfi_def_cfa_offset 8
+ 1243              		.cfi_offset 4, -8
+ 1244              		.cfi_offset 14, -4
+ 1245 0002 82B0     		sub	sp, sp, #8
+ 1246              	.LCFI32:
+ 1247              		.cfi_def_cfa_offset 16
+ 1248              	.LVL174:
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1249              		.loc 1 250 0
+ 1250 0004 50B1     		cbz	r0, .L121
+ 1251 0006 0446     		mov	r4, r0
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 1252              		.loc 1 252 0
+ 1253 0008 4069     		ldr	r0, [r0, #20]
+ 1254              	.LVL175:
+ 1255 000a FFF7FEFF 		bl	atiny_fota_manager_get_update_result
+ 1256              	.LVL176:
+ 1257 000e E8B9     		cbnz	r0, .L122
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1258              		.loc 1 248 0
+ 1259 0010 0321     		movs	r1, #3
+ 1260              	.LVL177:
+ 1261              	.L117:
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 1262              		.loc 1 258 0
+ 1263 0012 6069     		ldr	r0, [r4, #20]
+ 1264 0014 FFF7FEFF 		bl	atiny_fota_manager_rpt_state
+ 1265              	.LVL178:
+ 1266              	.L114:
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1267              		.loc 1 259 0
+ 1268 0018 02B0     		add	sp, sp, #8
+ 1269              	.LCFI33:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 31
+
+
+ 1270              		.cfi_remember_state
+ 1271              		.cfi_def_cfa_offset 8
+ 1272              		@ sp needed
+ 1273 001a 10BD     		pop	{r4, pc}
+ 1274              	.LVL179:
+ 1275              	.L121:
+ 1276              	.LCFI34:
+ 1277              		.cfi_restore_state
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1278              		.loc 1 250 0 discriminator 1
+ 1279 001c FFF7FEFF 		bl	atiny_get_log_level
+ 1280              	.LVL180:
+ 1281 0020 0328     		cmp	r0, #3
+ 1282 0022 02D9     		bls	.L123
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1283              		.loc 1 250 0 is_stmt 0
+ 1284 0024 4FF0FF30 		mov	r0, #-1
+ 1285 0028 F6E7     		b	.L114
+ 1286              	.L123:
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1287              		.loc 1 250 0 discriminator 2
+ 1288 002a 0320     		movs	r0, #3
+ 1289 002c FFF7FEFF 		bl	atiny_get_log_level_name
+ 1290              	.LVL181:
+ 1291 0030 0446     		mov	r4, r0
+ 1292 0032 FFF7FEFF 		bl	atiny_gettime_ms
+ 1293              	.LVL182:
+ 1294 0036 FA23     		movs	r3, #250
+ 1295 0038 0093     		str	r3, [sp]
+ 1296 003a 074B     		ldr	r3, .L124
+ 1297 003c 0246     		mov	r2, r0
+ 1298 003e 2146     		mov	r1, r4
+ 1299 0040 0648     		ldr	r0, .L124+4
+ 1300 0042 FFF7FEFF 		bl	atiny_printf
+ 1301              	.LVL183:
+ 1302 0046 4FF0FF30 		mov	r0, #-1
+ 1303 004a E5E7     		b	.L114
+ 1304              	.LVL184:
+ 1305              	.L122:
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 1306              		.loc 1 255 0 is_stmt 1
+ 1307 004c 0821     		movs	r1, #8
+ 1308 004e 6069     		ldr	r0, [r4, #20]
+ 1309 0050 FFF7FEFF 		bl	atiny_fota_manager_set_update_result
+ 1310              	.LVL185:
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         atiny_fota_manager_set_update_result(thi->manager, ATINY_FIRMWARE_UPDATE_FAIL);
+ 1311              		.loc 1 254 0
+ 1312 0054 0021     		movs	r1, #0
+ 1313 0056 DCE7     		b	.L117
+ 1314              	.L125:
+ 1315              		.align	2
+ 1316              	.L124:
+ 1317 0058 00000000 		.word	.LANCHOR8
+ 1318 005c 00000000 		.word	.LC0
+ 1319              		.cfi_endproc
+ 1320              	.LFE153:
+ 1322              		.section	.text.atiny_fota_state_init,"ax",%progbits
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 32
+
+
+ 1323              		.align	1
+ 1324              		.global	atiny_fota_state_init
+ 1325              		.syntax unified
+ 1326              		.thumb
+ 1327              		.thumb_func
+ 1328              		.fpu fpv4-sp-d16
+ 1330              	atiny_fota_state_init:
+ 1331              	.LFB143:
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->start_download = (int (*)(struct atiny_fota_state_tag_s * thi, const char *uri))atiny_fota
+ 1332              		.loc 1 52 0
+ 1333              		.cfi_startproc
+ 1334              		@ args = 0, pretend = 0, frame = 0
+ 1335              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1336              		@ link register save eliminated.
+ 1337              	.LVL186:
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->execute_update = atiny_fota_state_default_handle;
+ 1338              		.loc 1 53 0
+ 1339 0000 034B     		ldr	r3, .L127
+ 1340 0002 0360     		str	r3, [r0]
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->finish_download = (int (*)(struct atiny_fota_state_tag_s * thi, int result))atiny_fota_sta
+ 1341              		.loc 1 54 0
+ 1342 0004 4360     		str	r3, [r0, #4]
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->repot_result = atiny_fota_state_default_handle;
+ 1343              		.loc 1 55 0
+ 1344 0006 8360     		str	r3, [r0, #8]
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->recv_notify_ack = (int (*)(struct atiny_fota_state_tag_s  * thi, data_send_status_e status
+ 1345              		.loc 1 56 0
+ 1346 0008 C360     		str	r3, [r0, #12]
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->manager = manager;
+ 1347              		.loc 1 57 0
+ 1348 000a 0361     		str	r3, [r0, #16]
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 1349              		.loc 1 58 0
+ 1350 000c 4161     		str	r1, [r0, #20]
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1351              		.loc 1 59 0
+ 1352 000e 7047     		bx	lr
+ 1353              	.L128:
+ 1354              		.align	2
+ 1355              	.L127:
+ 1356 0010 00000000 		.word	atiny_fota_state_default_handle
+ 1357              		.cfi_endproc
+ 1358              	.LFE143:
+ 1360              		.section	.text.atiny_fota_idle_state_int_report_result,"ax",%progbits
+ 1361              		.align	1
+ 1362              		.global	atiny_fota_idle_state_int_report_result
+ 1363              		.syntax unified
+ 1364              		.thumb
+ 1365              		.thumb_func
+ 1366              		.fpu fpv4-sp-d16
+ 1368              	atiny_fota_idle_state_int_report_result:
+ 1369              	.LFB147:
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     lwm2m_observe_info_t observe_info;
+ 1370              		.loc 1 128 0
+ 1371              		.cfi_startproc
+ 1372              		@ args = 0, pretend = 0, frame = 24
+ 1373              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 33
+
+
+ 1374              	.LVL187:
+ 1375 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 1376              	.LCFI35:
+ 1377              		.cfi_def_cfa_offset 24
+ 1378              		.cfi_offset 4, -24
+ 1379              		.cfi_offset 5, -20
+ 1380              		.cfi_offset 6, -16
+ 1381              		.cfi_offset 7, -12
+ 1382              		.cfi_offset 8, -8
+ 1383              		.cfi_offset 14, -4
+ 1384 0004 88B0     		sub	sp, sp, #32
+ 1385              	.LCFI36:
+ 1386              		.cfi_def_cfa_offset 56
+ 1387              	.LVL188:
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1388              		.loc 1 133 0
+ 1389 0006 B0B1     		cbz	r0, .L138
+ 1390 0008 0446     		mov	r4, r0
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     memset(&observe_info, 0, sizeof(lwm2m_observe_info_t));
+ 1391              		.loc 1 135 0
+ 1392 000a 0023     		movs	r3, #0
+ 1393 000c 80F83030 		strb	r3, [r0, #48]
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(flag_read(FLAG_APP, &observe_info, sizeof(observe_info)) != ATINY_OK)
+ 1394              		.loc 1 136 0
+ 1395 0010 0393     		str	r3, [sp, #12]
+ 1396 0012 0493     		str	r3, [sp, #16]
+ 1397 0014 0593     		str	r3, [sp, #20]
+ 1398 0016 0693     		str	r3, [sp, #24]
+ 1399 0018 0793     		str	r3, [sp, #28]
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 1400              		.loc 1 137 0
+ 1401 001a 1422     		movs	r2, #20
+ 1402 001c 03A9     		add	r1, sp, #12
+ 1403 001e 0120     		movs	r0, #1
+ 1404              	.LVL189:
+ 1405 0020 FFF7FEFF 		bl	flag_read
+ 1406              	.LVL190:
+ 1407 0024 0546     		mov	r5, r0
+ 1408 0026 F0B9     		cbnz	r0, .L139
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 1409              		.loc 1 143 0
+ 1410 0028 069B     		ldr	r3, [sp, #24]
+ 1411 002a 002B     		cmp	r3, #0
+ 1412 002c 52D1     		bne	.L140
+ 1413              	.LVL191:
+ 1414              	.L129:
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1415              		.loc 1 166 0
+ 1416 002e 2846     		mov	r0, r5
+ 1417 0030 08B0     		add	sp, sp, #32
+ 1418              	.LCFI37:
+ 1419              		.cfi_remember_state
+ 1420              		.cfi_def_cfa_offset 24
+ 1421              		@ sp needed
+ 1422 0032 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 1423              	.LVL192:
+ 1424              	.L138:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 34
+
+
+ 1425              	.LCFI38:
+ 1426              		.cfi_restore_state
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1427              		.loc 1 133 0 discriminator 1
+ 1428 0036 FFF7FEFF 		bl	atiny_get_log_level
+ 1429              	.LVL193:
+ 1430 003a 0328     		cmp	r0, #3
+ 1431 003c 02D9     		bls	.L141
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1432              		.loc 1 133 0 is_stmt 0
+ 1433 003e 4FF0FF35 		mov	r5, #-1
+ 1434 0042 F4E7     		b	.L129
+ 1435              	.L141:
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1436              		.loc 1 133 0 discriminator 2
+ 1437 0044 0320     		movs	r0, #3
+ 1438 0046 FFF7FEFF 		bl	atiny_get_log_level_name
+ 1439              	.LVL194:
+ 1440 004a 0446     		mov	r4, r0
+ 1441 004c FFF7FEFF 		bl	atiny_gettime_ms
+ 1442              	.LVL195:
+ 1443 0050 8523     		movs	r3, #133
+ 1444 0052 0093     		str	r3, [sp]
+ 1445 0054 3C4B     		ldr	r3, .L144
+ 1446 0056 0246     		mov	r2, r0
+ 1447 0058 2146     		mov	r1, r4
+ 1448 005a 3C48     		ldr	r0, .L144+4
+ 1449 005c FFF7FEFF 		bl	atiny_printf
+ 1450              	.LVL196:
+ 1451 0060 4FF0FF35 		mov	r5, #-1
+ 1452 0064 E3E7     		b	.L129
+ 1453              	.LVL197:
+ 1454              	.L139:
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         goto EXIT;
+ 1455              		.loc 1 139 0 is_stmt 1
+ 1456 0066 FFF7FEFF 		bl	atiny_get_log_level
+ 1457              	.LVL198:
+ 1458 006a 0328     		cmp	r0, #3
+ 1459 006c 21D9     		bls	.L142
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1460              		.loc 1 131 0
+ 1461 006e 6FF00805 		mvn	r5, #8
+ 1462              	.LVL199:
+ 1463              	.L133:
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(flag_write(FLAG_APP, &observe_info, sizeof(observe_info)) != ATINY_OK)
+ 1464              		.loc 1 160 0
+ 1465 0072 0023     		movs	r3, #0
+ 1466 0074 0393     		str	r3, [sp, #12]
+ 1467 0076 0493     		str	r3, [sp, #16]
+ 1468 0078 0593     		str	r3, [sp, #20]
+ 1469 007a 0693     		str	r3, [sp, #24]
+ 1470 007c 0793     		str	r3, [sp, #28]
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ 1471              		.loc 1 161 0
+ 1472 007e 1422     		movs	r2, #20
+ 1473 0080 03A9     		add	r1, sp, #12
+ 1474 0082 0120     		movs	r0, #1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 35
+
+
+ 1475 0084 FFF7FEFF 		bl	flag_write
+ 1476              	.LVL200:
+ 1477 0088 0028     		cmp	r0, #0
+ 1478 008a D0D0     		beq	.L129
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 1479              		.loc 1 163 0
+ 1480 008c FFF7FEFF 		bl	atiny_get_log_level
+ 1481              	.LVL201:
+ 1482 0090 0328     		cmp	r0, #3
+ 1483 0092 CCD8     		bhi	.L129
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 1484              		.loc 1 163 0 is_stmt 0 discriminator 1
+ 1485 0094 0320     		movs	r0, #3
+ 1486 0096 FFF7FEFF 		bl	atiny_get_log_level_name
+ 1487              	.LVL202:
+ 1488 009a 0446     		mov	r4, r0
+ 1489 009c FFF7FEFF 		bl	atiny_gettime_ms
+ 1490              	.LVL203:
+ 1491 00a0 A323     		movs	r3, #163
+ 1492 00a2 0093     		str	r3, [sp]
+ 1493 00a4 284B     		ldr	r3, .L144
+ 1494 00a6 0246     		mov	r2, r0
+ 1495 00a8 2146     		mov	r1, r4
+ 1496 00aa 2948     		ldr	r0, .L144+8
+ 1497 00ac FFF7FEFF 		bl	atiny_printf
+ 1498              	.LVL204:
+ 1499 00b0 BDE7     		b	.L129
+ 1500              	.LVL205:
+ 1501              	.L142:
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****         goto EXIT;
+ 1502              		.loc 1 139 0 is_stmt 1 discriminator 1
+ 1503 00b2 0320     		movs	r0, #3
+ 1504 00b4 FFF7FEFF 		bl	atiny_get_log_level_name
+ 1505              	.LVL206:
+ 1506 00b8 0446     		mov	r4, r0
+ 1507              	.LVL207:
+ 1508 00ba FFF7FEFF 		bl	atiny_gettime_ms
+ 1509              	.LVL208:
+ 1510 00be 8B23     		movs	r3, #139
+ 1511 00c0 0093     		str	r3, [sp]
+ 1512 00c2 214B     		ldr	r3, .L144
+ 1513 00c4 0246     		mov	r2, r0
+ 1514 00c6 2146     		mov	r1, r4
+ 1515 00c8 2148     		ldr	r0, .L144+8
+ 1516 00ca FFF7FEFF 		bl	atiny_printf
+ 1517              	.LVL209:
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1518              		.loc 1 131 0 discriminator 1
+ 1519 00ce 6FF00805 		mvn	r5, #8
+ 1520 00d2 CEE7     		b	.L133
+ 1521              	.LVL210:
+ 1522              	.L140:
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     if(ret != ATINY_OK)
+ 1523              		.loc 1 148 0
+ 1524 00d4 FFF7FEFF 		bl	atiny_fota_idle_state_get_result
+ 1525              	.LVL211:
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 36
+
+
+ 1526              		.loc 1 149 0
+ 1527 00d8 8046     		mov	r8, r0
+ 1528 00da 08BB     		cbnz	r0, .L143
+ 1529              	.LVL212:
+ 1530              	.L134:
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->report_flag = true;
+ 1531              		.loc 1 155 0
+ 1532 00dc C4F82C80 		str	r8, [r4, #44]
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     memcpy(&thi->observe_info, &observe_info, sizeof(thi->observe_info));
+ 1533              		.loc 1 156 0
+ 1534 00e0 0123     		movs	r3, #1
+ 1535 00e2 84F83030 		strb	r3, [r4, #48]
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     ATINY_LOG(LOG_INFO, "need to rpt result %d", ret);
+ 1536              		.loc 1 157 0
+ 1537 00e6 03AE     		add	r6, sp, #12
+ 1538 00e8 0FCE     		ldmia	r6!, {r0, r1, r2, r3}
+ 1539 00ea A061     		str	r0, [r4, #24]	@ unaligned
+ 1540 00ec E161     		str	r1, [r4, #28]	@ unaligned
+ 1541 00ee 2262     		str	r2, [r4, #32]	@ unaligned
+ 1542 00f0 6362     		str	r3, [r4, #36]	@ unaligned
+ 1543 00f2 3068     		ldr	r0, [r6]
+ 1544 00f4 A062     		str	r0, [r4, #40]	@ unaligned
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** EXIT:
+ 1545              		.loc 1 158 0
+ 1546 00f6 FFF7FEFF 		bl	atiny_get_log_level
+ 1547              	.LVL213:
+ 1548 00fa 0128     		cmp	r0, #1
+ 1549 00fc B9D8     		bhi	.L133
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** EXIT:
+ 1550              		.loc 1 158 0 is_stmt 0 discriminator 1
+ 1551 00fe 0120     		movs	r0, #1
+ 1552 0100 FFF7FEFF 		bl	atiny_get_log_level_name
+ 1553              	.LVL214:
+ 1554 0104 0446     		mov	r4, r0
+ 1555              	.LVL215:
+ 1556 0106 FFF7FEFF 		bl	atiny_gettime_ms
+ 1557              	.LVL216:
+ 1558 010a CDF80480 		str	r8, [sp, #4]
+ 1559 010e 9E23     		movs	r3, #158
+ 1560 0110 0093     		str	r3, [sp]
+ 1561 0112 0D4B     		ldr	r3, .L144
+ 1562 0114 0246     		mov	r2, r0
+ 1563 0116 2146     		mov	r1, r4
+ 1564 0118 0E48     		ldr	r0, .L144+12
+ 1565 011a FFF7FEFF 		bl	atiny_printf
+ 1566              	.LVL217:
+ 1567 011e A8E7     		b	.L133
+ 1568              	.LVL218:
+ 1569              	.L143:
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 1570              		.loc 1 151 0 is_stmt 1
+ 1571 0120 FFF7FEFF 		bl	atiny_get_log_level
+ 1572              	.LVL219:
+ 1573 0124 0328     		cmp	r0, #3
+ 1574 0126 D9D8     		bhi	.L134
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     }
+ 1575              		.loc 1 151 0 is_stmt 0 discriminator 1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 37
+
+
+ 1576 0128 0320     		movs	r0, #3
+ 1577 012a FFF7FEFF 		bl	atiny_get_log_level_name
+ 1578              	.LVL220:
+ 1579 012e 0646     		mov	r6, r0
+ 1580 0130 FFF7FEFF 		bl	atiny_gettime_ms
+ 1581              	.LVL221:
+ 1582 0134 9723     		movs	r3, #151
+ 1583 0136 0093     		str	r3, [sp]
+ 1584 0138 034B     		ldr	r3, .L144
+ 1585 013a 0246     		mov	r2, r0
+ 1586 013c 3146     		mov	r1, r6
+ 1587 013e 0648     		ldr	r0, .L144+16
+ 1588 0140 FFF7FEFF 		bl	atiny_printf
+ 1589              	.LVL222:
+ 1590 0144 CAE7     		b	.L134
+ 1591              	.L145:
+ 1592 0146 00BF     		.align	2
+ 1593              	.L144:
+ 1594 0148 00000000 		.word	.LANCHOR9
+ 1595 014c 00000000 		.word	.LC0
+ 1596 0150 8C000000 		.word	.LC12
+ 1597 0154 2C000000 		.word	.LC14
+ 1598 0158 00000000 		.word	.LC13
+ 1599              		.cfi_endproc
+ 1600              	.LFE147:
+ 1602              		.section	.text.atiny_fota_idle_state_init,"ax",%progbits
+ 1603              		.align	1
+ 1604              		.global	atiny_fota_idle_state_init
+ 1605              		.syntax unified
+ 1606              		.thumb
+ 1607              		.thumb_func
+ 1608              		.fpu fpv4-sp-d16
+ 1610              	atiny_fota_idle_state_init:
+ 1611              	.LFB149:
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     memset(thi, 0, sizeof(*thi));
+ 1612              		.loc 1 198 0 is_stmt 1
+ 1613              		.cfi_startproc
+ 1614              		@ args = 0, pretend = 0, frame = 0
+ 1615              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1616              	.LVL223:
+ 1617 0000 38B5     		push	{r3, r4, r5, lr}
+ 1618              	.LCFI39:
+ 1619              		.cfi_def_cfa_offset 16
+ 1620              		.cfi_offset 3, -16
+ 1621              		.cfi_offset 4, -12
+ 1622              		.cfi_offset 5, -8
+ 1623              		.cfi_offset 14, -4
+ 1624 0002 0446     		mov	r4, r0
+ 1625 0004 0D46     		mov	r5, r1
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_state_init(&thi->interface, manager);
+ 1626              		.loc 1 199 0
+ 1627 0006 3422     		movs	r2, #52
+ 1628 0008 0021     		movs	r1, #0
+ 1629              	.LVL224:
+ 1630 000a FFF7FEFF 		bl	memset
+ 1631              	.LVL225:
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->interface.start_download = atiny_fota_start_download;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 38
+
+
+ 1632              		.loc 1 200 0
+ 1633 000e 2946     		mov	r1, r5
+ 1634 0010 2046     		mov	r0, r4
+ 1635 0012 FFF7FEFF 		bl	atiny_fota_state_init
+ 1636              	.LVL226:
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->interface.repot_result = atiny_fota_idle_state_report_result;
+ 1637              		.loc 1 201 0
+ 1638 0016 034B     		ldr	r3, .L148
+ 1639 0018 2360     		str	r3, [r4]
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->interface.recv_notify_ack = atiny_fota_idle_state_recv_notify_ack;
+ 1640              		.loc 1 202 0
+ 1641 001a 034B     		ldr	r3, .L148+4
+ 1642 001c E360     		str	r3, [r4, #12]
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 1643              		.loc 1 203 0
+ 1644 001e 034B     		ldr	r3, .L148+8
+ 1645 0020 2361     		str	r3, [r4, #16]
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** static int atiny_fota_downloading_state_finish_download(atiny_fota_state_s *thi, int result)
+ 1646              		.loc 1 204 0
+ 1647 0022 38BD     		pop	{r3, r4, r5, pc}
+ 1648              	.LVL227:
+ 1649              	.L149:
+ 1650              		.align	2
+ 1651              	.L148:
+ 1652 0024 00000000 		.word	atiny_fota_start_download
+ 1653 0028 00000000 		.word	atiny_fota_idle_state_report_result
+ 1654 002c 00000000 		.word	atiny_fota_idle_state_recv_notify_ack
+ 1655              		.cfi_endproc
+ 1656              	.LFE149:
+ 1658              		.section	.text.atiny_fota_downloading_state_init,"ax",%progbits
+ 1659              		.align	1
+ 1660              		.global	atiny_fota_downloading_state_init
+ 1661              		.syntax unified
+ 1662              		.thumb
+ 1663              		.thumb_func
+ 1664              		.fpu fpv4-sp-d16
+ 1666              	atiny_fota_downloading_state_init:
+ 1667              	.LFB152:
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_state_init(&thi->interface, manager);
+ 1668              		.loc 1 240 0
+ 1669              		.cfi_startproc
+ 1670              		@ args = 0, pretend = 0, frame = 0
+ 1671              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1672              	.LVL228:
+ 1673 0000 10B5     		push	{r4, lr}
+ 1674              	.LCFI40:
+ 1675              		.cfi_def_cfa_offset 8
+ 1676              		.cfi_offset 4, -8
+ 1677              		.cfi_offset 14, -4
+ 1678 0002 0446     		mov	r4, r0
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->interface.finish_download = atiny_fota_downloading_state_finish_download;
+ 1679              		.loc 1 241 0
+ 1680 0004 FFF7FEFF 		bl	atiny_fota_state_init
+ 1681              	.LVL229:
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->interface.recv_notify_ack = atiny_fota_downloading_state_recv_notify_ack;
+ 1682              		.loc 1 242 0
+ 1683 0008 024B     		ldr	r3, .L152
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 39
+
+
+ 1684 000a A360     		str	r3, [r4, #8]
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 1685              		.loc 1 243 0
+ 1686 000c 024B     		ldr	r3, .L152+4
+ 1687 000e 2361     		str	r3, [r4, #16]
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 1688              		.loc 1 244 0
+ 1689 0010 10BD     		pop	{r4, pc}
+ 1690              	.LVL230:
+ 1691              	.L153:
+ 1692 0012 00BF     		.align	2
+ 1693              	.L152:
+ 1694 0014 00000000 		.word	atiny_fota_downloading_state_finish_download
+ 1695 0018 00000000 		.word	atiny_fota_downloading_state_recv_notify_ack
+ 1696              		.cfi_endproc
+ 1697              	.LFE152:
+ 1699              		.section	.text.atiny_fota_downloaded_state_init,"ax",%progbits
+ 1700              		.align	1
+ 1701              		.global	atiny_fota_downloaded_state_init
+ 1702              		.syntax unified
+ 1703              		.thumb
+ 1704              		.thumb_func
+ 1705              		.fpu fpv4-sp-d16
+ 1707              	atiny_fota_downloaded_state_init:
+ 1708              	.LFB155:
+ 336:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 337:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 338:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** void atiny_fota_downloaded_state_init(atiny_fota_downloaded_state_s *thi, atiny_fota_manager_s *man
+ 339:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** {
+ 1709              		.loc 1 339 0
+ 1710              		.cfi_startproc
+ 1711              		@ args = 0, pretend = 0, frame = 0
+ 1712              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1713              	.LVL231:
+ 1714 0000 10B5     		push	{r4, lr}
+ 1715              	.LCFI41:
+ 1716              		.cfi_def_cfa_offset 8
+ 1717              		.cfi_offset 4, -8
+ 1718              		.cfi_offset 14, -4
+ 1719 0002 0446     		mov	r4, r0
+ 340:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_state_init(&thi->interface, manager);
+ 1720              		.loc 1 340 0
+ 1721 0004 FFF7FEFF 		bl	atiny_fota_state_init
+ 1722              	.LVL232:
+ 341:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->interface.start_download = atiny_fota_start_download;
+ 1723              		.loc 1 341 0
+ 1724 0008 034B     		ldr	r3, .L156
+ 1725 000a 2360     		str	r3, [r4]
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->interface.execute_update = atiny_fota_downloaded_state_execute_update;
+ 1726              		.loc 1 342 0
+ 1727 000c 034B     		ldr	r3, .L156+4
+ 1728 000e 6360     		str	r3, [r4, #4]
+ 343:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     thi->interface.recv_notify_ack = atiny_fota_downloaded_state_recv_notify_ack;
+ 1729              		.loc 1 343 0
+ 1730 0010 034B     		ldr	r3, .L156+8
+ 1731 0012 2361     		str	r3, [r4, #16]
+ 344:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 40
+
+
+ 1732              		.loc 1 344 0
+ 1733 0014 10BD     		pop	{r4, pc}
+ 1734              	.LVL233:
+ 1735              	.L157:
+ 1736 0016 00BF     		.align	2
+ 1737              	.L156:
+ 1738 0018 00000000 		.word	atiny_fota_start_download
+ 1739 001c 00000000 		.word	atiny_fota_downloaded_state_execute_update
+ 1740 0020 00000000 		.word	atiny_fota_downloaded_state_recv_notify_ack
+ 1741              		.cfi_endproc
+ 1742              	.LFE155:
+ 1744              		.section	.text.atiny_fota_updating_state_init,"ax",%progbits
+ 1745              		.align	1
+ 1746              		.global	atiny_fota_updating_state_init
+ 1747              		.syntax unified
+ 1748              		.thumb
+ 1749              		.thumb_func
+ 1750              		.fpu fpv4-sp-d16
+ 1752              	atiny_fota_updating_state_init:
+ 1753              	.LFB156:
+ 345:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** 
+ 346:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** void atiny_fota_updating_state_init(atiny_fota_updating_state_s *thi, atiny_fota_manager_s *manager
+ 347:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** {
+ 1754              		.loc 1 347 0
+ 1755              		.cfi_startproc
+ 1756              		@ args = 0, pretend = 0, frame = 0
+ 1757              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1758              	.LVL234:
+ 1759 0000 08B5     		push	{r3, lr}
+ 1760              	.LCFI42:
+ 1761              		.cfi_def_cfa_offset 8
+ 1762              		.cfi_offset 3, -8
+ 1763              		.cfi_offset 14, -4
+ 348:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c ****     atiny_fota_state_init(&thi->interface, manager);
+ 1764              		.loc 1 348 0
+ 1765 0002 FFF7FEFF 		bl	atiny_fota_state_init
+ 1766              	.LVL235:
+ 349:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\atiny_fota_state.c **** }
+ 1767              		.loc 1 349 0
+ 1768 0006 08BD     		pop	{r3, pc}
+ 1769              		.cfi_endproc
+ 1770              	.LFE156:
+ 1772              		.section	.rodata.__FUNCTION__.12140,"a",%progbits
+ 1773              		.align	2
+ 1774              		.set	.LANCHOR0,. + 0
+ 1777              	__FUNCTION__.12140:
+ 1778 0000 6174696E 		.ascii	"atiny_fota_state_default_handle\000"
+ 1778      795F666F 
+ 1778      74615F73 
+ 1778      74617465 
+ 1778      5F646566 
+ 1779              		.section	.rodata.__FUNCTION__.12155,"a",%progbits
+ 1780              		.align	2
+ 1781              		.set	.LANCHOR4,. + 0
+ 1784              	__FUNCTION__.12155:
+ 1785 0000 6174696E 		.ascii	"atiny_fota_start_download\000"
+ 1785      795F666F 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 41
+
+
+ 1785      74615F73 
+ 1785      74617274 
+ 1785      5F646F77 
+ 1786              		.section	.rodata.__FUNCTION__.12162,"a",%progbits
+ 1787              		.align	2
+ 1788              		.set	.LANCHOR3,. + 0
+ 1791              	__FUNCTION__.12162:
+ 1792 0000 6174696E 		.ascii	"atiny_fota_idle_state_recv_notify_ack\000"
+ 1792      795F666F 
+ 1792      74615F69 
+ 1792      646C655F 
+ 1792      73746174 
+ 1793              		.section	.rodata.__FUNCTION__.12167,"a",%progbits
+ 1794              		.align	2
+ 1795              		.set	.LANCHOR1,. + 0
+ 1798              	__FUNCTION__.12167:
+ 1799 0000 6174696E 		.ascii	"atiny_fota_idle_state_get_result\000"
+ 1799      795F666F 
+ 1799      74615F69 
+ 1799      646C655F 
+ 1799      73746174 
+ 1800              		.section	.rodata.__FUNCTION__.12174,"a",%progbits
+ 1801              		.align	2
+ 1802              		.set	.LANCHOR9,. + 0
+ 1805              	__FUNCTION__.12174:
+ 1806 0000 6174696E 		.ascii	"atiny_fota_idle_state_int_report_result\000"
+ 1806      795F666F 
+ 1806      74615F69 
+ 1806      646C655F 
+ 1806      73746174 
+ 1807              		.section	.rodata.__FUNCTION__.12183,"a",%progbits
+ 1808              		.align	2
+ 1809              		.set	.LANCHOR6,. + 0
+ 1812              	__FUNCTION__.12183:
+ 1813 0000 6174696E 		.ascii	"atiny_fota_idle_state_report_result\000"
+ 1813      795F666F 
+ 1813      74615F69 
+ 1813      646C655F 
+ 1813      73746174 
+ 1814              		.section	.rodata.__FUNCTION__.12192,"a",%progbits
+ 1815              		.align	2
+ 1816              		.set	.LANCHOR5,. + 0
+ 1819              	__FUNCTION__.12192:
+ 1820 0000 6174696E 		.ascii	"atiny_fota_downloading_state_finish_download\000"
+ 1820      795F666F 
+ 1820      74615F64 
+ 1820      6F776E6C 
+ 1820      6F616469 
+ 1821              		.section	.rodata.__FUNCTION__.12198,"a",%progbits
+ 1822              		.align	2
+ 1823              		.set	.LANCHOR2,. + 0
+ 1826              	__FUNCTION__.12198:
+ 1827 0000 6174696E 		.ascii	"atiny_fota_downloading_state_recv_notify_ack\000"
+ 1827      795F666F 
+ 1827      74615F64 
+ 1827      6F776E6C 
+ 1827      6F616469 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 42
+
+
+ 1828              		.section	.rodata.__FUNCTION__.12207,"a",%progbits
+ 1829              		.align	2
+ 1830              		.set	.LANCHOR8,. + 0
+ 1833              	__FUNCTION__.12207:
+ 1834 0000 6174696E 		.ascii	"atiny_fota_downloaded_state_execute_update\000"
+ 1834      795F666F 
+ 1834      74615F64 
+ 1834      6F776E6C 
+ 1834      6F616465 
+ 1835              		.section	.rodata.__FUNCTION__.12216,"a",%progbits
+ 1836              		.align	2
+ 1837              		.set	.LANCHOR7,. + 0
+ 1840              	__FUNCTION__.12216:
+ 1841 0000 6174696E 		.ascii	"atiny_fota_downloaded_state_recv_notify_ack\000"
+ 1841      795F666F 
+ 1841      74615F64 
+ 1841      6F776E6C 
+ 1841      6F616465 
+ 1842              		.section	.rodata.atiny_fota_downloaded_state_recv_notify_ack.str1.4,"aMS",%progbits,1
+ 1843              		.align	2
+ 1844              	.LC9:
+ 1845 0000 5B25735D 		.ascii	"[%s][%u][%s:%d] downloaded state notify fail %d\015"
+ 1845      5B25755D 
+ 1845      5B25733A 
+ 1845      25645D20 
+ 1845      646F776E 
+ 1846 0030 0A00     		.ascii	"\012\000"
+ 1847 0032 0000     		.space	2
+ 1848              	.LC10:
+ 1849 0034 5B25735D 		.ascii	"[%s][%u][%s:%d] lwm2m_get_observe_info fail\015\012"
+ 1849      5B25755D 
+ 1849      5B25733A 
+ 1849      25645D20 
+ 1849      6C776D32 
+ 1850 0061 00       		.ascii	"\000"
+ 1851 0062 0000     		.space	2
+ 1852              	.LC11:
+ 1853 0064 5B25735D 		.ascii	"[%s][%u][%s:%d] active_software fail\015\012\000"
+ 1853      5B25755D 
+ 1853      5B25733A 
+ 1853      25645D20 
+ 1853      61637469 
+ 1854 008b 00       		.space	1
+ 1855              	.LC12:
+ 1856 008c 5B25735D 		.ascii	"[%s][%u][%s:%d] flag_write fail\015\012\000"
+ 1856      5B25755D 
+ 1856      5B25733A 
+ 1856      25645D20 
+ 1856      666C6167 
+ 1857              		.section	.rodata.atiny_fota_downloading_state_recv_notify_ack.str1.4,"aMS",%progbits,1
+ 1858              		.align	2
+ 1859              	.LC3:
+ 1860 0000 5B25735D 		.ascii	"[%s][%u][%s:%d] downloading state notify ack fail %"
+ 1860      5B25755D 
+ 1860      5B25733A 
+ 1860      25645D20 
+ 1860      646F776E 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 43
+
+
+ 1861 0033 640D0A00 		.ascii	"d\015\012\000"
+ 1862 0037 00       		.space	1
+ 1863              	.LC4:
+ 1864 0038 5B25735D 		.ascii	"[%s][%u][%s:%d] recv notify ack err  in downloading"
+ 1864      5B25755D 
+ 1864      5B25733A 
+ 1864      25645D20 
+ 1864      72656376 
+ 1865 006b 20737461 		.ascii	" state, rpt state %d\015\012\000"
+ 1865      74652C20 
+ 1865      72707420 
+ 1865      73746174 
+ 1865      65202564 
+ 1866              		.section	.rodata.atiny_fota_idle_state_get_result.str1.4,"aMS",%progbits,1
+ 1867              		.align	2
+ 1868              	.LC2:
+ 1869 0000 5B25735D 		.ascii	"[%s][%u][%s:%d] ota_check_update_state fail\015\012"
+ 1869      5B25755D 
+ 1869      5B25733A 
+ 1869      25645D20 
+ 1869      6F74615F 
+ 1870 002d 00       		.ascii	"\000"
+ 1871              		.section	.rodata.atiny_fota_idle_state_int_report_result.str1.4,"aMS",%progbits,1
+ 1872              		.align	2
+ 1873              	.LC13:
+ 1874 0000 5B25735D 		.ascii	"[%s][%u][%s:%d] get_software_result fail\015\012\000"
+ 1874      5B25755D 
+ 1874      5B25733A 
+ 1874      25645D20 
+ 1874      6765745F 
+ 1875 002b 00       		.space	1
+ 1876              	.LC14:
+ 1877 002c 5B25735D 		.ascii	"[%s][%u][%s:%d] need to rpt result %d\015\012\000"
+ 1877      5B25755D 
+ 1877      5B25733A 
+ 1877      25645D20 
+ 1877      6E656564 
+ 1878              		.section	.rodata.atiny_fota_idle_state_recv_notify_ack.str1.4,"aMS",%progbits,1
+ 1879              		.align	2
+ 1880              	.LC5:
+ 1881 0000 5B25735D 		.ascii	"[%s][%u][%s:%d] idle state notify fail %d\015\012\000"
+ 1881      5B25755D 
+ 1881      5B25733A 
+ 1881      25645D20 
+ 1881      69646C65 
+ 1882              	.LC6:
+ 1883 002c 5B25735D 		.ascii	"[%s][%u][%s:%d] idle state recv updaing state ack\015"
+ 1883      5B25755D 
+ 1883      5B25733A 
+ 1883      25645D20 
+ 1883      69646C65 
+ 1884 005e 0A00     		.ascii	"\012\000"
+ 1885              	.LC7:
+ 1886 0060 5B25735D 		.ascii	"[%s][%u][%s:%d] start_firmware_download fail %d\015"
+ 1886      5B25755D 
+ 1886      5B25733A 
+ 1886      25645D20 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 44
+
+
+ 1886      73746172 
+ 1887 0090 0A00     		.ascii	"\012\000"
+ 1888              		.section	.rodata.atiny_fota_idle_state_report_result.str1.4,"aMS",%progbits,1
+ 1889              		.align	2
+ 1890              	.LC8:
+ 1891 0000 5B25735D 		.ascii	"[%s][%u][%s:%d] lwm2m_send_notify result %d, state "
+ 1891      5B25755D 
+ 1891      5B25733A 
+ 1891      25645D20 
+ 1891      6C776D32 
+ 1892 0033 25640D0A 		.ascii	"%d\015\012\000"
+ 1892      00
+ 1893              		.section	.rodata.atiny_fota_state_default_handle.str1.4,"aMS",%progbits,1
+ 1894              		.align	2
+ 1895              	.LC0:
+ 1896 0000 5B25735D 		.ascii	"[%s][%u][%s:%d] this null pointer\015\012\000"
+ 1896      5B25755D 
+ 1896      5B25733A 
+ 1896      25645D20 
+ 1896      74686973 
+ 1897              	.LC1:
+ 1898 0024 5B25735D 		.ascii	"[%s][%u][%s:%d] err state handle state %d\015\012\000"
+ 1898      5B25755D 
+ 1898      5B25733A 
+ 1898      25645D20 
+ 1898      65727220 
+ 1899              		.text
+ 1900              	.Letext0:
+ 1901              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1902              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1903              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1904              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1905              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 1906              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1907              		.file 8 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 1908              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 1909              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 1910              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 1911              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 1912              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 1913              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 1914              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 1915              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 1916              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 1917              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 1918              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 1919              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 1920              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/atiny_error.h"
+ 1921              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/log/atiny_log.h"
+ 1922              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/atiny_lwm2m/agenttiny.h"
+ 1923              		.file 24 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1924              		.file 25 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core
+ 1925              		.file 26 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core
+ 1926              		.file 27 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/ota/package.h"
+ 1927              		.file 28 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny
+ 1928              		.file 29 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1929              		.file 30 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 45
+
+
+ 1930              		.file 31 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny
+ 1931              		.file 32 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate/flag_m
+ 1932              		.file 33 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate/upgrad
+ 1933              		.file 34 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny
+ 1934              		.file 35 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/osdepends/atiny_osdep.h"
+ 1935              		.file 36 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny
+ 1936              		.file 37 "<built-in>"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 46
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 atiny_fota_state.c
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:18     .text.atiny_fota_state_default_handle:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:24     .text.atiny_fota_state_default_handle:00000000 atiny_fota_state_default_handle
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:119    .text.atiny_fota_state_default_handle:00000070 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:126    .text.atiny_fota_idle_state_get_result:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:132    .text.atiny_fota_idle_state_get_result:00000000 atiny_fota_idle_state_get_result
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:202    .text.atiny_fota_idle_state_get_result:00000054 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:208    .text.atiny_fota_downloading_state_recv_notify_ack:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:214    .text.atiny_fota_downloading_state_recv_notify_ack:00000000 atiny_fota_downloading_state_recv_notify_ack
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:335    .text.atiny_fota_downloading_state_recv_notify_ack:00000094 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:342    .text.atiny_fota_idle_state_recv_notify_ack:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:348    .text.atiny_fota_idle_state_recv_notify_ack:00000000 atiny_fota_idle_state_recv_notify_ack
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:537    .text.atiny_fota_idle_state_recv_notify_ack:000000fc $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:545    .text.atiny_fota_start_download:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:551    .text.atiny_fota_start_download:00000000 atiny_fota_start_download
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:622    .text.atiny_fota_start_download:0000004c $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:628    .text.atiny_fota_downloading_state_finish_download:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:634    .text.atiny_fota_downloading_state_finish_download:00000000 atiny_fota_downloading_state_finish_download
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:721    .text.atiny_fota_downloading_state_finish_download:00000058 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:727    .text.atiny_fota_idle_state_report_result:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:733    .text.atiny_fota_idle_state_report_result:00000000 atiny_fota_idle_state_report_result
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:875    .text.atiny_fota_idle_state_report_result:000000bc $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:882    .text.atiny_fota_downloaded_state_recv_notify_ack:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:888    .text.atiny_fota_downloaded_state_recv_notify_ack:00000000 atiny_fota_downloaded_state_recv_notify_ack
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1216   .text.atiny_fota_downloaded_state_recv_notify_ack:000001e4 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1227   .text.atiny_fota_downloaded_state_execute_update:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1233   .text.atiny_fota_downloaded_state_execute_update:00000000 atiny_fota_downloaded_state_execute_update
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1317   .text.atiny_fota_downloaded_state_execute_update:00000058 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1323   .text.atiny_fota_state_init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1330   .text.atiny_fota_state_init:00000000 atiny_fota_state_init
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1356   .text.atiny_fota_state_init:00000010 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1361   .text.atiny_fota_idle_state_int_report_result:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1368   .text.atiny_fota_idle_state_int_report_result:00000000 atiny_fota_idle_state_int_report_result
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1594   .text.atiny_fota_idle_state_int_report_result:00000148 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1603   .text.atiny_fota_idle_state_init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1610   .text.atiny_fota_idle_state_init:00000000 atiny_fota_idle_state_init
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1652   .text.atiny_fota_idle_state_init:00000024 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1659   .text.atiny_fota_downloading_state_init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1666   .text.atiny_fota_downloading_state_init:00000000 atiny_fota_downloading_state_init
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1694   .text.atiny_fota_downloading_state_init:00000014 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1700   .text.atiny_fota_downloaded_state_init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1707   .text.atiny_fota_downloaded_state_init:00000000 atiny_fota_downloaded_state_init
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1738   .text.atiny_fota_downloaded_state_init:00000018 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1745   .text.atiny_fota_updating_state_init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1752   .text.atiny_fota_updating_state_init:00000000 atiny_fota_updating_state_init
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1773   .rodata.__FUNCTION__.12140:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1777   .rodata.__FUNCTION__.12140:00000000 __FUNCTION__.12140
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1780   .rodata.__FUNCTION__.12155:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1784   .rodata.__FUNCTION__.12155:00000000 __FUNCTION__.12155
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1787   .rodata.__FUNCTION__.12162:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1791   .rodata.__FUNCTION__.12162:00000000 __FUNCTION__.12162
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1794   .rodata.__FUNCTION__.12167:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1798   .rodata.__FUNCTION__.12167:00000000 __FUNCTION__.12167
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1801   .rodata.__FUNCTION__.12174:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1805   .rodata.__FUNCTION__.12174:00000000 __FUNCTION__.12174
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1808   .rodata.__FUNCTION__.12183:00000000 $d
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s 			page 47
+
+
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1812   .rodata.__FUNCTION__.12183:00000000 __FUNCTION__.12183
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1815   .rodata.__FUNCTION__.12192:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1819   .rodata.__FUNCTION__.12192:00000000 __FUNCTION__.12192
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1822   .rodata.__FUNCTION__.12198:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1826   .rodata.__FUNCTION__.12198:00000000 __FUNCTION__.12198
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1829   .rodata.__FUNCTION__.12207:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1833   .rodata.__FUNCTION__.12207:00000000 __FUNCTION__.12207
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1836   .rodata.__FUNCTION__.12216:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1840   .rodata.__FUNCTION__.12216:00000000 __FUNCTION__.12216
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1843   .rodata.atiny_fota_downloaded_state_recv_notify_ack.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1858   .rodata.atiny_fota_downloading_state_recv_notify_ack.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1867   .rodata.atiny_fota_idle_state_get_result.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1872   .rodata.atiny_fota_idle_state_int_report_result.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1879   .rodata.atiny_fota_idle_state_recv_notify_ack.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1889   .rodata.atiny_fota_idle_state_report_result.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccuwOEqD.s:1894   .rodata.atiny_fota_state_default_handle.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+atiny_get_log_level
+atiny_get_log_level_name
+atiny_gettime_ms
+atiny_printf
+atiny_fota_manager_get_state
+flag_upgrade_get_result
+atiny_fota_manager_set_update_result
+atiny_fota_manager_set_state
+atiny_fota_manager_get_rpt_state
+atiny_fota_manager_get_lwm2m_context
+atiny_fota_manager_get_pkg_uri
+atiny_fota_manager_get_storage_device
+start_firmware_download
+atiny_fota_manager_rpt_state
+atiny_fota_manager_save_rpt_state
+atiny_fota_manager_get_data_cfg
+lwm2m_send_notify
+lwm2m_get_observe_info
+flag_write
+atiny_set_reboot_flag
+atiny_fota_manager_get_update_result
+flag_read
+memset

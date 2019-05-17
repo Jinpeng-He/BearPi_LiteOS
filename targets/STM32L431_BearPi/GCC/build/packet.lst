@@ -1,0 +1,1966 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"packet.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.handle_request,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	handle_request:
+  25              	.LFB135:
+  26              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core/
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * applicable export control laws and regulations.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 2
+
+
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** /*******************************************************************************
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * Copyright (c) 2013, 2014 Intel Corporation and others.
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * All rights reserved. This program and the accompanying materials
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * are made available under the terms of the Eclipse Public License v1.0
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * The Eclipse Public License is available at
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * The Eclipse Distribution License is available at
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *    http://www.eclipse.org/org/documents/edl-v10.php.
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * Contributors:
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *    David Navarro, Intel Corporation - initial API and implementation
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *    domedambrosio - Please refer to git log
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *    Fabien Fleutot - Please refer to git log
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *    Fabien Fleutot - Please refer to git log
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *    Simon Bernard - Please refer to git log
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *    Toby Jaffey - Please refer to git log
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *    Pascal Rieux - Please refer to git log
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *    Bosch Software Innovations GmbH - Please refer to git log
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *******************************************************************************/
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** /*
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  Copyright (c) 2013, 2014 Intel Corporation
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  Redistribution and use in source and binary forms, with or without modification,
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  are permitted provided that the following conditions are met:
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****      * Redistributions of source code must retain the above copyright notice,
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****        this list of conditions and the following disclaimer.
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****      * Redistributions in binary form must reproduce the above copyright notice,
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****        this list of conditions and the following disclaimer in the documentation
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****        and/or other materials provided with the distribution.
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****      * Neither the name of Intel Corporation nor the names of its contributors
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****        may be used to endorse or promote products derived from this software
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****        without specific prior written permission.
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  THE POSSIBILITY OF SUCH DAMAGE.
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  David Navarro <david.navarro@intel.com>
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** */
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** /*
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 3
+
+
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** Contains code snippets which are:
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * Copyright (c) 2013, Institute for Pervasive Computing, ETH Zurich
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * All rights reserved.
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * Redistribution and use in source and binary forms, with or without
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * modification, are permitted provided that the following conditions
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * are met:
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * 1. Redistributions of source code must retain the above copyright
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *    notice, this list of conditions and the following disclaimer.
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * 2. Redistributions in binary form must reproduce the above copyright
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *    notice, this list of conditions and the following disclaimer in the
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *    documentation and/or other materials provided with the distribution.
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * 3. Neither the name of the Institute nor the names of its contributors
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *    may be used to endorse or promote products derived from this software
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *    without specific prior written permission.
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  *
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * ARE DISCLAIMED.  IN NO EVENT SHALL THE INSTITUTE OR CONTRIBUTORS BE LIABLE
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * SUCH DAMAGE.
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** */
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #include "internals.h"
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #include <stdlib.h>
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #include <string.h>
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #include <stdio.h>
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #include "commandline.h"
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** static void handle_reset(lwm2m_context_t *contextP,
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                          void *fromSessionH,
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                          coap_packet_t *message)
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** {
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #ifdef LWM2M_CLIENT_MODE
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     LOG("Entering");
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     observe_cancel(contextP, message->mid, fromSessionH);
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #endif
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** }
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** static uint8_t handle_request(lwm2m_context_t *contextP,
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                               void *fromSessionH,
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                               coap_packet_t *message,
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                               coap_packet_t *response)
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** {
+  27              		.loc 1 144 0
+  28              		.cfi_startproc
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 4
+
+
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  32 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 24
+  35              		.cfi_offset 4, -24
+  36              		.cfi_offset 5, -20
+  37              		.cfi_offset 6, -16
+  38              		.cfi_offset 7, -12
+  39              		.cfi_offset 8, -8
+  40              		.cfi_offset 14, -4
+  41 0004 82B0     		sub	sp, sp, #8
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_offset 32
+  44 0006 0446     		mov	r4, r0
+  45 0008 8846     		mov	r8, r1
+  46 000a 1646     		mov	r6, r2
+  47 000c 1F46     		mov	r7, r3
+  48              	.LVL1:
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     lwm2m_uri_t *uriP;
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     uint8_t result = COAP_IGNORE;
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     LOG("Entering");
+  49              		.loc 1 148 0
+  50 000e FFF7FEFF 		bl	lwm2m_gettime
+  51              	.LVL2:
+  52 0012 9423     		movs	r3, #148
+  53 0014 184A     		ldr	r2, .L13
+  54 0016 0146     		mov	r1, r0
+  55 0018 1848     		ldr	r0, .L13+4
+  56 001a FFF7FEFF 		bl	atiny_printf
+  57              	.LVL3:
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #ifdef LWM2M_CLIENT_MODE
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     uriP = uri_decode(contextP->altPath, message->uri_path);
+  58              		.loc 1 151 0
+  59 001e 716C     		ldr	r1, [r6, #68]
+  60 0020 E068     		ldr	r0, [r4, #12]
+  61 0022 FFF7FEFF 		bl	uri_decode
+  62              	.LVL4:
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #else
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     uriP = uri_decode(NULL, message->uri_path);
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #endif
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     if (uriP == NULL) return COAP_400_BAD_REQUEST;
+  63              		.loc 1 156 0
+  64 0026 28B3     		cbz	r0, .L6
+  65 0028 0546     		mov	r5, r0
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     switch(uriP->flag & LWM2M_URI_MASK_TYPE)
+  66              		.loc 1 158 0
+  67 002a 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+  68 002c 13F0700F 		tst	r3, #112
+  69 0030 10D0     		beq	.L12
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     {
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #ifdef LWM2M_CLIENT_MODE
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 5
+
+
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     case LWM2M_URI_FLAG_DM:
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     {
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         lwm2m_server_t *serverP;
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         serverP = utils_findServer(contextP, fromSessionH);
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         if (serverP != NULL)
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         {
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             result = dm_handleRequest(contextP, uriP, serverP, message, response);
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         }
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #ifdef LWM2M_BOOTSTRAP
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         else
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         {
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             serverP = utils_findBootstrapServer(contextP, fromSessionH);
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             if (serverP != NULL)
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 result = bootstrap_handleCommand(contextP, uriP, serverP, message, response);
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         }
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #endif
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     }
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     break;
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #ifdef LWM2M_BOOTSTRAP
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     case LWM2M_URI_FLAG_DELETE_ALL:
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         if (COAP_DELETE != message->code)
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         {
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             result = COAP_400_BAD_REQUEST;
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         }
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         else
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         {
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             result = bootstrap_handleDeleteAll(contextP, fromSessionH);
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         }
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         break;
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     case LWM2M_URI_FLAG_BOOTSTRAP:
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         if (message->code == COAP_POST)
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         {
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             result = bootstrap_handleFinish(contextP, fromSessionH);
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         }
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         break;
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #endif
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #endif
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #ifdef LWM2M_SERVER_MODE
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     case LWM2M_URI_FLAG_REGISTRATION:
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         result = registration_handleRequest(contextP, uriP, fromSessionH, message, response);
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         break;
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #endif
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #ifdef LWM2M_BOOTSTRAP_SERVER_MODE
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     case LWM2M_URI_FLAG_BOOTSTRAP:
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         result = bootstrap_handleRequest(contextP, uriP, fromSessionH, message, response);
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         break;
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #endif
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     default:
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         result = COAP_IGNORE;
+  70              		.loc 1 215 0
+  71 0032 0124     		movs	r4, #1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 6
+
+
+  72              	.LVL5:
+  73              	.L3:
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         break;
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     }
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     coap_set_status_code(response, result);
+  74              		.loc 1 219 0
+  75 0034 2146     		mov	r1, r4
+  76 0036 3846     		mov	r0, r7
+  77 0038 FFF7FEFF 		bl	coap_set_status_code
+  78              	.LVL6:
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     if (COAP_IGNORE < result && result < COAP_400_BAD_REQUEST)
+  79              		.loc 1 221 0
+  80 003c A31E     		subs	r3, r4, #2
+  81 003e DBB2     		uxtb	r3, r3
+  82 0040 7D2B     		cmp	r3, #125
+  83 0042 00D8     		bhi	.L5
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     {
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         result = NO_ERROR;
+  84              		.loc 1 223 0
+  85 0044 0024     		movs	r4, #0
+  86              	.LVL7:
+  87              	.L5:
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     }
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     lwm2m_free(uriP);
+  88              		.loc 1 226 0
+  89 0046 2846     		mov	r0, r5
+  90 0048 FFF7FEFF 		bl	lwm2m_free
+  91              	.LVL8:
+  92              	.L2:
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     return result;
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** }
+  93              		.loc 1 228 0
+  94 004c 2046     		mov	r0, r4
+  95 004e 02B0     		add	sp, sp, #8
+  96              	.LCFI2:
+  97              		.cfi_remember_state
+  98              		.cfi_def_cfa_offset 24
+  99              		@ sp needed
+ 100 0050 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 101              	.LVL9:
+ 102              	.L12:
+ 103              	.LCFI3:
+ 104              		.cfi_restore_state
+ 105              	.LBB2:
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         if (serverP != NULL)
+ 106              		.loc 1 165 0
+ 107 0054 4146     		mov	r1, r8
+ 108 0056 2046     		mov	r0, r4
+ 109              	.LVL10:
+ 110 0058 FFF7FEFF 		bl	utils_findServer
+ 111              	.LVL11:
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         {
+ 112              		.loc 1 166 0
+ 113 005c 0246     		mov	r2, r0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 7
+
+
+ 114 005e 38B1     		cbz	r0, .L8
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         }
+ 115              		.loc 1 168 0
+ 116 0060 0097     		str	r7, [sp]
+ 117 0062 3346     		mov	r3, r6
+ 118 0064 2946     		mov	r1, r5
+ 119 0066 2046     		mov	r0, r4
+ 120              	.LVL12:
+ 121 0068 FFF7FEFF 		bl	dm_handleRequest
+ 122              	.LVL13:
+ 123 006c 0446     		mov	r4, r0
+ 124              	.LVL14:
+ 125 006e E1E7     		b	.L3
+ 126              	.LVL15:
+ 127              	.L8:
+ 128              	.LBE2:
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 129              		.loc 1 146 0
+ 130 0070 0124     		movs	r4, #1
+ 131              	.LVL16:
+ 132 0072 DFE7     		b	.L3
+ 133              	.LVL17:
+ 134              	.L6:
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 135              		.loc 1 156 0
+ 136 0074 8024     		movs	r4, #128
+ 137              	.LVL18:
+ 138 0076 E9E7     		b	.L2
+ 139              	.L14:
+ 140              		.align	2
+ 141              	.L13:
+ 142 0078 00000000 		.word	.LANCHOR0
+ 143 007c 00000000 		.word	.LC0
+ 144              		.cfi_endproc
+ 145              	.LFE135:
+ 147              		.section	.text.handle_reset,"ax",%progbits
+ 148              		.align	1
+ 149              		.syntax unified
+ 150              		.thumb
+ 151              		.thumb_func
+ 152              		.fpu fpv4-sp-d16
+ 154              	handle_reset:
+ 155              	.LFB134:
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #ifdef LWM2M_CLIENT_MODE
+ 156              		.loc 1 133 0
+ 157              		.cfi_startproc
+ 158              		@ args = 0, pretend = 0, frame = 0
+ 159              		@ frame_needed = 0, uses_anonymous_args = 0
+ 160              	.LVL19:
+ 161 0000 70B5     		push	{r4, r5, r6, lr}
+ 162              	.LCFI4:
+ 163              		.cfi_def_cfa_offset 16
+ 164              		.cfi_offset 4, -16
+ 165              		.cfi_offset 5, -12
+ 166              		.cfi_offset 6, -8
+ 167              		.cfi_offset 14, -4
+ 168 0002 0446     		mov	r4, r0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 8
+
+
+ 169 0004 0E46     		mov	r6, r1
+ 170 0006 1546     		mov	r5, r2
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     observe_cancel(contextP, message->mid, fromSessionH);
+ 171              		.loc 1 135 0
+ 172 0008 FFF7FEFF 		bl	lwm2m_gettime
+ 173              	.LVL20:
+ 174 000c 8723     		movs	r3, #135
+ 175 000e 054A     		ldr	r2, .L17
+ 176 0010 0146     		mov	r1, r0
+ 177 0012 0548     		ldr	r0, .L17+4
+ 178 0014 FFF7FEFF 		bl	atiny_printf
+ 179              	.LVL21:
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #endif
+ 180              		.loc 1 136 0
+ 181 0018 3246     		mov	r2, r6
+ 182 001a 2989     		ldrh	r1, [r5, #8]
+ 183 001c 2046     		mov	r0, r4
+ 184 001e FFF7FEFF 		bl	observe_cancel
+ 185              	.LVL22:
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 186              		.loc 1 138 0
+ 187 0022 70BD     		pop	{r4, r5, r6, pc}
+ 188              	.LVL23:
+ 189              	.L18:
+ 190              		.align	2
+ 191              	.L17:
+ 192 0024 00000000 		.word	.LANCHOR1
+ 193 0028 00000000 		.word	.LC0
+ 194              		.cfi_endproc
+ 195              	.LFE134:
+ 197              		.section	.text.message_send,"ax",%progbits
+ 198              		.align	1
+ 199              		.global	message_send
+ 200              		.syntax unified
+ 201              		.thumb
+ 202              		.thumb_func
+ 203              		.fpu fpv4-sp-d16
+ 205              	message_send:
+ 206              	.LFB137:
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** /* This function is an adaptation of function coap_receive() from Erbium's er-coap-13-engine.c.
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * Erbium is Copyright (c) 2013, Institute for Pervasive Computing, ETH Zurich
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  * All rights reserved.
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****  */
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** void lwm2m_handle_packet(lwm2m_context_t *contextP,
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                          uint8_t *buffer,
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                          int length,
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                          void *fromSessionH)
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** {
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     uint8_t coap_error_code = NO_ERROR;
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     static coap_packet_t message[1];
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     static coap_packet_t response[1];
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     LOG("Entering");
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     coap_error_code = coap_parse_message(message, buffer, (uint16_t)length);
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     if (coap_error_code == NO_ERROR)
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 9
+
+
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         LOG_ARG("Parsed: ver %u, type %u, tkl %u, code %u.%.2u, mid %u, Content type: %d",
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 message->version, message->type, message->token_len, message->code >> 5, message->c
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         //LOG_ARG("Payload: %.*s", message->payload_len, message->payload);   //%s can not used for
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         if (message->code >= COAP_GET && message->code <= COAP_DELETE)
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         {
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             uint32_t block_num = 0;
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             uint16_t block_size = REST_MAX_CHUNK_SIZE;
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             uint32_t block_offset = 0;
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             int64_t new_offset = 0;
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             /* prepare response */
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             if (message->type == COAP_TYPE_CON)
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 /* Reliable CON requests are answered with an ACK. */
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 coap_init_message(response, COAP_TYPE_ACK, COAP_205_CONTENT, message->mid);
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             else
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 /* Unreliable NON requests are answered with a NON as well. */
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 coap_init_message(response, COAP_TYPE_NON, COAP_205_CONTENT, contextP->nextMID++);
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             /* mirror token */
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             if (message->token_len)
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 coap_set_header_token(response, message->token, message->token_len);
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             /* get offset for blockwise transfers */
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             if (coap_get_header_block2(message, &block_num, NULL, &block_size, &block_offset))
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 LOG_ARG("Blockwise: block request %u (%u/%u) @ %u bytes", block_num, block_size, RE
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 block_size = MIN(block_size, REST_MAX_CHUNK_SIZE);
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 new_offset = block_offset;
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             /* handle block1 option */
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             if (IS_OPTION(message, COAP_OPTION_BLOCK1))
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #ifdef LWM2M_CLIENT_MODE
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 // get server
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 lwm2m_server_t *serverP;
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 serverP = utils_findServer(contextP, fromSessionH);
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #ifdef LWM2M_BOOTSTRAP
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 if (serverP == NULL)
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 {
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     serverP = utils_findBootstrapServer(contextP, fromSessionH);
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 }
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #endif
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 if (serverP == NULL)
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 {
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     coap_error_code = COAP_500_INTERNAL_SERVER_ERROR;
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 }
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 else
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 {
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     uint32_t block1_num;
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     uint8_t  block1_more;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 10
+
+
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     uint16_t block1_size;
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     uint8_t *complete_buffer = NULL;
+ 306:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     size_t complete_buffer_size;
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     // parse block1 header
+ 309:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     coap_get_header_block1(message, &block1_num, &block1_more, &block1_size, NULL);
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     LOG_ARG("Blockwise: block1 request NUM %u (SZX %u/ SZX Max%u) MORE %u", block1_
+ 311:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     // handle block 1
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     coap_error_code = coap_block1_handler(&serverP->block1Data, message->mid, messa
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     // if payload is complete, replace it in the coap message.
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     if (coap_error_code == NO_ERROR)
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     {
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         message->payload = complete_buffer;
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         message->payload_len = complete_buffer_size;
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     }
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     else if (coap_error_code == COAP_231_CONTINUE)
+ 322:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     {
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         block1_size = MIN(block1_size, REST_MAX_CHUNK_SIZE);
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         coap_set_header_block1(response, block1_num, block1_more, block1_size);
+ 325:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     }
+ 326:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 }
+ 327:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #else
+ 328:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 coap_error_code = COAP_501_NOT_IMPLEMENTED;
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #endif
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             if (coap_error_code == NO_ERROR)
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 coap_error_code = handle_request(contextP, fromSessionH, message, response);
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 335:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             if (coap_error_code == NO_ERROR)
+ 336:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 337:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 if ( IS_OPTION(message, COAP_OPTION_BLOCK2) )
+ 338:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 {
+ 339:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     /* unchanged new_offset indicates that resource is unaware of blockwise transfe
+ 340:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     if (new_offset == block_offset)
+ 341:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     {
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         LOG_ARG("Blockwise: unaware resource with payload length %u/%u", response->
+ 343:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         if (block_offset >= message->payload_len)
+ 344:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         {
+ 345:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                             LOG("handle_incoming_data(): block_offset >= response->payload_len");
+ 346:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 347:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                             response->code = COAP_402_BAD_OPTION;
+ 348:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                             coap_set_payload(response, "BlockOutOfScope", 15); /* a const char str[
+ 349:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         }
+ 350:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         else
+ 351:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         {
+ 352:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                             coap_set_header_block2(response, block_num, response->payload_len - blo
+ 353:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                             coap_set_payload(response, response->payload + block_offset, MIN(respon
+ 354:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         } /* if (valid offset) */
+ 355:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     }
+ 356:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     else
+ 357:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     {
+ 358:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         /* resource provides chunk-wise data */
+ 359:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         LOG_ARG("Blockwise: blockwise resource, new offset %d", (int) new_offset);
+ 360:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         coap_set_header_block2(response, block_num, new_offset != -1 || response->p
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 11
+
+
+ 361:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         if (response->payload_len > block_size) coap_set_payload(response, response
+ 362:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     } /* if (resource aware of blockwise) */
+ 363:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 }
+ 364:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 else if (new_offset != 0)
+ 365:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 {
+ 366:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     LOG_ARG("Blockwise: no block option for blockwise resource, using block size %u
+ 367:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 368:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     coap_set_header_block2(response, 0, new_offset != -1, REST_MAX_CHUNK_SIZE);
+ 369:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     coap_set_payload(response, response->payload, MIN(response->payload_len, REST_M
+ 370:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 } /* if (blockwise request) */
+ 371:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 372:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 coap_error_code = message_send(contextP, response, fromSessionH);
+ 373:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 lwm2m_free(response->payload);
+ 375:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 response->payload = NULL;
+ 376:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 response->payload_len = 0;
+ 377:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 378:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             else if (coap_error_code != COAP_IGNORE)
+ 379:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 380:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 if (1 == coap_set_status_code(response, coap_error_code))
+ 381:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 {
+ 382:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     coap_error_code = message_send(contextP, response, fromSessionH);
+ 383:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 }
+ 384:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         }
+ 386:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         else
+ 387:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         {
+ 388:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             /* Responses */
+ 389:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             switch (message->type)
+ 390:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 391:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             case COAP_TYPE_NON:
+ 392:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             case COAP_TYPE_CON:
+ 393:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 394:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 bool done = transaction_handleResponse(contextP, fromSessionH, message, response);
+ 395:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 396:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #ifdef LWM2M_SERVER_MODE
+ 397:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 if (!done && IS_OPTION(message, COAP_OPTION_OBSERVE) &&
+ 398:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         ((message->code == COAP_204_CHANGED) || (message->code == COAP_205_CONTENT)
+ 399:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 {
+ 400:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     done = observe_handleNotify(contextP, fromSessionH, message, response);
+ 401:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 }
+ 402:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #endif
+ 403:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 if (!done && message->type == COAP_TYPE_CON )
+ 404:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 {
+ 405:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     coap_init_message(response, COAP_TYPE_ACK, 0, message->mid);
+ 406:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     coap_error_code = message_send(contextP, response, fromSessionH);
+ 407:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 }
+ 408:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 409:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             break;
+ 410:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 411:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             case COAP_TYPE_RST:
+ 412:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 /* Cancel possible subscriptions. */
+ 413:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 handle_reset(contextP, fromSessionH, message);
+ 414:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 transaction_handleResponse(contextP, fromSessionH, message, NULL);
+ 415:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 break;
+ 416:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 417:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             case COAP_TYPE_ACK:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 12
+
+
+ 418:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 transaction_handleResponse(contextP, fromSessionH, message, NULL);
+ 419:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 break;
+ 420:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 421:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             default:
+ 422:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 break;
+ 423:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 424:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         } /* Request or Response */
+ 425:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         coap_free_header(message);
+ 426:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     } /* if (parsed correctly) */
+ 427:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     else
+ 428:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     {
+ 429:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         LOG_ARG("Message parsing failed %u.%2u", coap_error_code >> 5, coap_error_code & 0x1F);
+ 430:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     }
+ 431:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 432:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     if (coap_error_code != NO_ERROR && coap_error_code != COAP_IGNORE)
+ 433:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     {
+ 434:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         LOG_ARG("ERROR %u: %s", coap_error_code, coap_error_message);
+ 435:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 436:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         /* Set to sendable error code. */
+ 437:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         if (coap_error_code >= 192)
+ 438:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         {
+ 439:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             coap_error_code = COAP_500_INTERNAL_SERVER_ERROR;
+ 440:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         }
+ 441:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         /* Reuse input buffer for error message. */
+ 442:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         coap_init_message(message, COAP_TYPE_ACK, coap_error_code, message->mid);
+ 443:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         coap_set_payload(message, coap_error_message, strlen(coap_error_message));
+ 444:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         message_send(contextP, message, fromSessionH);
+ 445:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     }
+ 446:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** }
+ 447:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 448:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 449:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** uint8_t message_send(lwm2m_context_t *contextP,
+ 450:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                      coap_packet_t *message,
+ 451:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                      void *sessionH)
+ 452:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** {
+ 207              		.loc 1 452 0
+ 208              		.cfi_startproc
+ 209              		@ args = 0, pretend = 0, frame = 0
+ 210              		@ frame_needed = 0, uses_anonymous_args = 0
+ 211              	.LVL24:
+ 212 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 213              	.LCFI5:
+ 214              		.cfi_def_cfa_offset 24
+ 215              		.cfi_offset 4, -24
+ 216              		.cfi_offset 5, -20
+ 217              		.cfi_offset 6, -16
+ 218              		.cfi_offset 7, -12
+ 219              		.cfi_offset 8, -8
+ 220              		.cfi_offset 14, -4
+ 221 0004 82B0     		sub	sp, sp, #8
+ 222              	.LCFI6:
+ 223              		.cfi_def_cfa_offset 32
+ 224 0006 8046     		mov	r8, r0
+ 225 0008 0E46     		mov	r6, r1
+ 226 000a 1746     		mov	r7, r2
+ 227              	.LVL25:
+ 453:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     uint8_t result = COAP_500_INTERNAL_SERVER_ERROR;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 13
+
+
+ 454:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     uint8_t *pktBuffer;
+ 455:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     size_t pktBufferLen = 0;
+ 456:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     size_t allocLen;
+ 457:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 458:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     LOG("Entering");
+ 228              		.loc 1 458 0
+ 229 000c FFF7FEFF 		bl	lwm2m_gettime
+ 230              	.LVL26:
+ 231 0010 244D     		ldr	r5, .L27
+ 232 0012 4FF4E573 		mov	r3, #458
+ 233 0016 2A46     		mov	r2, r5
+ 234 0018 0146     		mov	r1, r0
+ 235 001a 2348     		ldr	r0, .L27+4
+ 236 001c FFF7FEFF 		bl	atiny_printf
+ 237              	.LVL27:
+ 459:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     allocLen = coap_serialize_get_size(message);
+ 238              		.loc 1 459 0
+ 239 0020 3046     		mov	r0, r6
+ 240 0022 FFF7FEFF 		bl	coap_serialize_get_size
+ 241              	.LVL28:
+ 242 0026 0446     		mov	r4, r0
+ 243              	.LVL29:
+ 460:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     LOG_ARG("Size to allocate: %d", allocLen);
+ 244              		.loc 1 460 0
+ 245 0028 FFF7FEFF 		bl	lwm2m_gettime
+ 246              	.LVL30:
+ 247 002c 0094     		str	r4, [sp]
+ 248 002e 4FF4E673 		mov	r3, #460
+ 249 0032 2A46     		mov	r2, r5
+ 250 0034 0146     		mov	r1, r0
+ 251 0036 1D48     		ldr	r0, .L27+8
+ 252 0038 FFF7FEFF 		bl	atiny_printf
+ 253              	.LVL31:
+ 461:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     if (allocLen == 0) return COAP_500_INTERNAL_SERVER_ERROR;
+ 254              		.loc 1 461 0
+ 255 003c 54B3     		cbz	r4, .L22
+ 462:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 463:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     pktBuffer = (uint8_t *)lwm2m_malloc(allocLen);
+ 256              		.loc 1 463 0
+ 257 003e 2046     		mov	r0, r4
+ 258 0040 FFF7FEFF 		bl	lwm2m_malloc
+ 259              	.LVL32:
+ 464:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     if (pktBuffer != NULL)
+ 260              		.loc 1 464 0
+ 261 0044 0546     		mov	r5, r0
+ 262 0046 50B3     		cbz	r0, .L23
+ 465:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     {
+ 466:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         pktBufferLen = coap_serialize_message(message, pktBuffer);
+ 263              		.loc 1 466 0
+ 264 0048 0146     		mov	r1, r0
+ 265 004a 3046     		mov	r0, r6
+ 266              	.LVL33:
+ 267 004c FFF7FEFF 		bl	coap_serialize_message
+ 268              	.LVL34:
+ 269 0050 0646     		mov	r6, r0
+ 270              	.LVL35:
+ 467:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         LOG_ARG("coap_serialize_message() returned %d", pktBufferLen);
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 14
+
+
+ 271              		.loc 1 467 0
+ 272 0052 FFF7FEFF 		bl	lwm2m_gettime
+ 273              	.LVL36:
+ 274 0056 0096     		str	r6, [sp]
+ 275 0058 40F2D313 		movw	r3, #467
+ 276 005c 114A     		ldr	r2, .L27
+ 277 005e 0146     		mov	r1, r0
+ 278 0060 1348     		ldr	r0, .L27+12
+ 279 0062 FFF7FEFF 		bl	atiny_printf
+ 280              	.LVL37:
+ 468:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         if (0 != pktBufferLen)
+ 281              		.loc 1 468 0
+ 282 0066 26B9     		cbnz	r6, .L26
+ 453:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     uint8_t *pktBuffer;
+ 283              		.loc 1 453 0
+ 284 0068 A024     		movs	r4, #160
+ 285              	.LVL38:
+ 286              	.L21:
+ 469:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         {
+ 470:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             result = lwm2m_buffer_send(sessionH, pktBuffer, pktBufferLen, contextP->userData);
+ 471:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             output_buffer(stderr, (uint8_t *)pktBuffer, pktBufferLen, 0);
+ 472:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         }
+ 473:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         lwm2m_free(pktBuffer);
+ 287              		.loc 1 473 0
+ 288 006a 2846     		mov	r0, r5
+ 289 006c FFF7FEFF 		bl	lwm2m_free
+ 290              	.LVL39:
+ 291 0070 11E0     		b	.L20
+ 292              	.LVL40:
+ 293              	.L26:
+ 470:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             output_buffer(stderr, (uint8_t *)pktBuffer, pktBufferLen, 0);
+ 294              		.loc 1 470 0
+ 295 0072 D8F83430 		ldr	r3, [r8, #52]
+ 296 0076 3246     		mov	r2, r6
+ 297 0078 2946     		mov	r1, r5
+ 298 007a 3846     		mov	r0, r7
+ 299 007c FFF7FEFF 		bl	lwm2m_buffer_send
+ 300              	.LVL41:
+ 301 0080 0446     		mov	r4, r0
+ 302              	.LVL42:
+ 471:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         }
+ 303              		.loc 1 471 0
+ 304 0082 0C4B     		ldr	r3, .L27+16
+ 305 0084 1868     		ldr	r0, [r3]
+ 306 0086 0023     		movs	r3, #0
+ 307 0088 3246     		mov	r2, r6
+ 308 008a 2946     		mov	r1, r5
+ 309 008c C068     		ldr	r0, [r0, #12]
+ 310 008e FFF7FEFF 		bl	output_buffer
+ 311              	.LVL43:
+ 312 0092 EAE7     		b	.L21
+ 313              	.LVL44:
+ 314              	.L22:
+ 461:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 315              		.loc 1 461 0
+ 316 0094 A024     		movs	r4, #160
+ 317              	.LVL45:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 15
+
+
+ 318              	.L20:
+ 474:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     }
+ 475:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 476:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     return result;
+ 477:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** }
+ 319              		.loc 1 477 0
+ 320 0096 2046     		mov	r0, r4
+ 321 0098 02B0     		add	sp, sp, #8
+ 322              	.LCFI7:
+ 323              		.cfi_remember_state
+ 324              		.cfi_def_cfa_offset 24
+ 325              		@ sp needed
+ 326 009a BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 327              	.LVL46:
+ 328              	.L23:
+ 329              	.LCFI8:
+ 330              		.cfi_restore_state
+ 453:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     uint8_t *pktBuffer;
+ 331              		.loc 1 453 0
+ 332 009e A024     		movs	r4, #160
+ 333              	.LVL47:
+ 334 00a0 F9E7     		b	.L20
+ 335              	.L28:
+ 336 00a2 00BF     		.align	2
+ 337              	.L27:
+ 338 00a4 00000000 		.word	.LANCHOR2
+ 339 00a8 00000000 		.word	.LC0
+ 340 00ac 00000000 		.word	.LC1
+ 341 00b0 24000000 		.word	.LC2
+ 342 00b4 00000000 		.word	_impure_ptr
+ 343              		.cfi_endproc
+ 344              	.LFE137:
+ 346              		.section	.text.lwm2m_handle_packet,"ax",%progbits
+ 347              		.align	1
+ 348              		.global	lwm2m_handle_packet
+ 349              		.syntax unified
+ 350              		.thumb
+ 351              		.thumb_func
+ 352              		.fpu fpv4-sp-d16
+ 354              	lwm2m_handle_packet:
+ 355              	.LFB136:
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     uint8_t coap_error_code = NO_ERROR;
+ 356              		.loc 1 238 0
+ 357              		.cfi_startproc
+ 358              		@ args = 0, pretend = 0, frame = 32
+ 359              		@ frame_needed = 0, uses_anonymous_args = 0
+ 360              	.LVL48:
+ 361 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 362              	.LCFI9:
+ 363              		.cfi_def_cfa_offset 28
+ 364              		.cfi_offset 4, -28
+ 365              		.cfi_offset 5, -24
+ 366              		.cfi_offset 6, -20
+ 367              		.cfi_offset 7, -16
+ 368              		.cfi_offset 8, -12
+ 369              		.cfi_offset 9, -8
+ 370              		.cfi_offset 14, -4
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 16
+
+
+ 371 0004 91B0     		sub	sp, sp, #68
+ 372              	.LCFI10:
+ 373              		.cfi_def_cfa_offset 96
+ 374 0006 0646     		mov	r6, r0
+ 375 0008 0C46     		mov	r4, r1
+ 376 000a 1546     		mov	r5, r2
+ 377 000c 1F46     		mov	r7, r3
+ 378              	.LVL49:
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     coap_error_code = coap_parse_message(message, buffer, (uint16_t)length);
+ 379              		.loc 1 243 0
+ 380 000e FFF7FEFF 		bl	lwm2m_gettime
+ 381              	.LVL50:
+ 382 0012 F323     		movs	r3, #243
+ 383 0014 B14A     		ldr	r2, .L68
+ 384 0016 0146     		mov	r1, r0
+ 385 0018 B148     		ldr	r0, .L68+4
+ 386 001a FFF7FEFF 		bl	atiny_printf
+ 387              	.LVL51:
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     if (coap_error_code == NO_ERROR)
+ 388              		.loc 1 244 0
+ 389 001e AAB2     		uxth	r2, r5
+ 390 0020 2146     		mov	r1, r4
+ 391 0022 B048     		ldr	r0, .L68+8
+ 392 0024 FFF7FEFF 		bl	coap_parse_message
+ 393              	.LVL52:
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     {
+ 394              		.loc 1 245 0
+ 395 0028 0446     		mov	r4, r0
+ 396              	.LVL53:
+ 397 002a 0028     		cmp	r0, #0
+ 398 002c 40F01C82 		bne	.L30
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 message->version, message->type, message->token_len, message->code >> 5, message->c
+ 399              		.loc 1 247 0
+ 400 0030 FFF7FEFF 		bl	lwm2m_gettime
+ 401              	.LVL54:
+ 402 0034 AB4D     		ldr	r5, .L68+8
+ 403              	.LVL55:
+ 404 0036 2A79     		ldrb	r2, [r5, #4]	@ zero_extendqisi2
+ 405 0038 6979     		ldrb	r1, [r5, #5]	@ zero_extendqisi2
+ 406 003a 95F84CC0 		ldrb	ip, [r5, #76]	@ zero_extendqisi2
+ 407 003e AB79     		ldrb	r3, [r5, #6]	@ zero_extendqisi2
+ 408 0040 4FEA531E 		lsr	lr, r3, #5
+ 409 0044 03F01F03 		and	r3, r3, #31
+ 410 0048 B5F80880 		ldrh	r8, [r5, #8]
+ 411 004c B5F81090 		ldrh	r9, [r5, #16]
+ 412 0050 CDF81890 		str	r9, [sp, #24]
+ 413 0054 CDF81480 		str	r8, [sp, #20]
+ 414 0058 0493     		str	r3, [sp, #16]
+ 415 005a CDF80CE0 		str	lr, [sp, #12]
+ 416 005e CDF808C0 		str	ip, [sp, #8]
+ 417 0062 0191     		str	r1, [sp, #4]
+ 418 0064 0092     		str	r2, [sp]
+ 419 0066 F823     		movs	r3, #248
+ 420 0068 9C4A     		ldr	r2, .L68
+ 421 006a 0146     		mov	r1, r0
+ 422 006c 9E48     		ldr	r0, .L68+12
+ 423 006e FFF7FEFF 		bl	atiny_printf
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 17
+
+
+ 424              	.LVL56:
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         {
+ 425              		.loc 1 250 0
+ 426 0072 AB79     		ldrb	r3, [r5, #6]	@ zero_extendqisi2
+ 427 0074 013B     		subs	r3, r3, #1
+ 428 0076 DBB2     		uxtb	r3, r3
+ 429 0078 032B     		cmp	r3, #3
+ 430 007a 00F2BB81 		bhi	.L31
+ 431              	.LBB3:
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             uint16_t block_size = REST_MAX_CHUNK_SIZE;
+ 432              		.loc 1 252 0
+ 433 007e 0023     		movs	r3, #0
+ 434 0080 0B93     		str	r3, [sp, #44]
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             uint32_t block_offset = 0;
+ 435              		.loc 1 253 0
+ 436 0082 8022     		movs	r2, #128
+ 437 0084 ADF82820 		strh	r2, [sp, #40]	@ movhi
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             int64_t new_offset = 0;
+ 438              		.loc 1 254 0
+ 439 0088 0C93     		str	r3, [sp, #48]
+ 440              	.LVL57:
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 441              		.loc 1 258 0
+ 442 008a 6B79     		ldrb	r3, [r5, #5]	@ zero_extendqisi2
+ 443 008c 002B     		cmp	r3, #0
+ 444 008e 6BD1     		bne	.L32
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 445              		.loc 1 261 0
+ 446 0090 2B89     		ldrh	r3, [r5, #8]
+ 447 0092 4522     		movs	r2, #69
+ 448 0094 0221     		movs	r1, #2
+ 449 0096 9548     		ldr	r0, .L68+16
+ 450 0098 FFF7FEFF 		bl	coap_init_message
+ 451              	.LVL58:
+ 452              	.L33:
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 453              		.loc 1 270 0
+ 454 009c 914B     		ldr	r3, .L68+8
+ 455 009e 93F84C20 		ldrb	r2, [r3, #76]	@ zero_extendqisi2
+ 456 00a2 002A     		cmp	r2, #0
+ 457 00a4 69D1     		bne	.L61
+ 458              	.L34:
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 459              		.loc 1 276 0
+ 460 00a6 0CAB     		add	r3, sp, #48
+ 461 00a8 0093     		str	r3, [sp]
+ 462 00aa 0AAB     		add	r3, sp, #40
+ 463 00ac 0022     		movs	r2, #0
+ 464 00ae 0BA9     		add	r1, sp, #44
+ 465 00b0 8C48     		ldr	r0, .L68+8
+ 466 00b2 FFF7FEFF 		bl	coap_get_header_block2
+ 467              	.LVL59:
+ 468 00b6 0028     		cmp	r0, #0
+ 469 00b8 65D1     		bne	.L62
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 470              		.loc 1 255 0
+ 471 00ba 4FF00008 		mov	r8, #0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 18
+
+
+ 472 00be 4FF00009 		mov	r9, #0
+ 473              	.LVL60:
+ 474              	.L35:
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 475              		.loc 1 284 0
+ 476 00c2 884B     		ldr	r3, .L68+8
+ 477 00c4 5B7B     		ldrb	r3, [r3, #13]	@ zero_extendqisi2
+ 478 00c6 13F0080F 		tst	r3, #8
+ 479 00ca 7AD1     		bne	.L63
+ 480              	.L36:
+ 481              	.LVL61:
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 482              		.loc 1 331 0
+ 483 00cc 002C     		cmp	r4, #0
+ 484 00ce 00F0D580 		beq	.L64
+ 485              	.LVL62:
+ 486              	.L37:
+ 335:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 487              		.loc 1 335 0
+ 488 00d2 002C     		cmp	r4, #0
+ 489 00d4 40F07D81 		bne	.L40
+ 337:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 {
+ 490              		.loc 1 337 0
+ 491 00d8 824B     		ldr	r3, .L68+8
+ 492 00da 93F90C30 		ldrsb	r3, [r3, #12]
+ 493 00de 002B     		cmp	r3, #0
+ 494 00e0 C0F2D680 		blt	.L65
+ 364:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 {
+ 495              		.loc 1 364 0
+ 496 00e4 58EA0903 		orrs	r3, r8, r9
+ 497 00e8 40F05281 		bne	.L66
+ 498              	.LVL63:
+ 499              	.L44:
+ 372:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 500              		.loc 1 372 0
+ 501 00ec 7F4D     		ldr	r5, .L68+16
+ 502 00ee 3A46     		mov	r2, r7
+ 503 00f0 2946     		mov	r1, r5
+ 504 00f2 3046     		mov	r0, r6
+ 505 00f4 FFF7FEFF 		bl	message_send
+ 506              	.LVL64:
+ 507 00f8 0446     		mov	r4, r0
+ 508              	.LVL65:
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 response->payload = NULL;
+ 509              		.loc 1 374 0
+ 510 00fa D5F88800 		ldr	r0, [r5, #136]
+ 511 00fe FFF7FEFF 		bl	lwm2m_free
+ 512              	.LVL66:
+ 375:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 response->payload_len = 0;
+ 513              		.loc 1 375 0
+ 514 0102 0023     		movs	r3, #0
+ 515 0104 C5F88830 		str	r3, [r5, #136]
+ 376:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 516              		.loc 1 376 0
+ 517 0108 A5F88630 		strh	r3, [r5, #134]	@ movhi
+ 518              	.LVL67:
+ 519              	.L47:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 19
+
+
+ 520              	.LBE3:
+ 425:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     } /* if (parsed correctly) */
+ 521              		.loc 1 425 0
+ 522 010c 7548     		ldr	r0, .L68+8
+ 523 010e FFF7FEFF 		bl	coap_free_header
+ 524              	.LVL68:
+ 525              	.L52:
+ 432:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     {
+ 526              		.loc 1 432 0
+ 527 0112 012C     		cmp	r4, #1
+ 528 0114 25D9     		bls	.L29
+ 434:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 529              		.loc 1 434 0
+ 530 0116 FFF7FEFF 		bl	lwm2m_gettime
+ 531              	.LVL69:
+ 532 011a 754B     		ldr	r3, .L68+20
+ 533 011c 1B68     		ldr	r3, [r3]
+ 534 011e 0193     		str	r3, [sp, #4]
+ 535 0120 0094     		str	r4, [sp]
+ 536 0122 4FF4D973 		mov	r3, #434
+ 537 0126 6D4A     		ldr	r2, .L68
+ 538 0128 0146     		mov	r1, r0
+ 539 012a 7248     		ldr	r0, .L68+24
+ 540 012c FFF7FEFF 		bl	atiny_printf
+ 541              	.LVL70:
+ 437:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         {
+ 542              		.loc 1 437 0
+ 543 0130 BF2C     		cmp	r4, #191
+ 544 0132 00D9     		bls	.L54
+ 439:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         }
+ 545              		.loc 1 439 0
+ 546 0134 A024     		movs	r4, #160
+ 547              	.LVL71:
+ 548              	.L54:
+ 442:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         coap_set_payload(message, coap_error_message, strlen(coap_error_message));
+ 549              		.loc 1 442 0
+ 550 0136 6B4D     		ldr	r5, .L68+8
+ 551 0138 2B89     		ldrh	r3, [r5, #8]
+ 552 013a 2246     		mov	r2, r4
+ 553 013c 0221     		movs	r1, #2
+ 554 013e 2846     		mov	r0, r5
+ 555 0140 FFF7FEFF 		bl	coap_init_message
+ 556              	.LVL72:
+ 443:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****         message_send(contextP, message, fromSessionH);
+ 557              		.loc 1 443 0
+ 558 0144 6A4B     		ldr	r3, .L68+20
+ 559 0146 1C68     		ldr	r4, [r3]
+ 560              	.LVL73:
+ 561 0148 2046     		mov	r0, r4
+ 562 014a FFF7FEFF 		bl	strlen
+ 563              	.LVL74:
+ 564 014e 0246     		mov	r2, r0
+ 565 0150 2146     		mov	r1, r4
+ 566 0152 2846     		mov	r0, r5
+ 567 0154 FFF7FEFF 		bl	coap_set_payload
+ 568              	.LVL75:
+ 444:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 20
+
+
+ 569              		.loc 1 444 0
+ 570 0158 3A46     		mov	r2, r7
+ 571 015a 2946     		mov	r1, r5
+ 572 015c 3046     		mov	r0, r6
+ 573 015e FFF7FEFF 		bl	message_send
+ 574              	.LVL76:
+ 575              	.L29:
+ 446:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 576              		.loc 1 446 0
+ 577 0162 11B0     		add	sp, sp, #68
+ 578              	.LCFI11:
+ 579              		.cfi_remember_state
+ 580              		.cfi_def_cfa_offset 28
+ 581              		@ sp needed
+ 582 0164 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 583              	.LVL77:
+ 584              	.L32:
+ 585              	.LCFI12:
+ 586              		.cfi_restore_state
+ 587              	.LBB7:
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 588              		.loc 1 266 0
+ 589 0168 B38D     		ldrh	r3, [r6, #44]
+ 590 016a 5A1C     		adds	r2, r3, #1
+ 591 016c B285     		strh	r2, [r6, #44]	@ movhi
+ 592 016e 4522     		movs	r2, #69
+ 593 0170 0121     		movs	r1, #1
+ 594 0172 5E48     		ldr	r0, .L68+16
+ 595 0174 FFF7FEFF 		bl	coap_init_message
+ 596              	.LVL78:
+ 597 0178 90E7     		b	.L33
+ 598              	.L61:
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 599              		.loc 1 272 0
+ 600 017a 03F14D01 		add	r1, r3, #77
+ 601 017e 5B48     		ldr	r0, .L68+16
+ 602 0180 FFF7FEFF 		bl	coap_set_header_token
+ 603              	.LVL79:
+ 604 0184 8FE7     		b	.L34
+ 605              	.L62:
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 block_size = MIN(block_size, REST_MAX_CHUNK_SIZE);
+ 606              		.loc 1 278 0
+ 607 0186 FFF7FEFF 		bl	lwm2m_gettime
+ 608              	.LVL80:
+ 609 018a BDF82830 		ldrh	r3, [sp, #40]
+ 610 018e 0C9A     		ldr	r2, [sp, #48]
+ 611 0190 0392     		str	r2, [sp, #12]
+ 612 0192 8022     		movs	r2, #128
+ 613 0194 0292     		str	r2, [sp, #8]
+ 614 0196 0193     		str	r3, [sp, #4]
+ 615 0198 0B9B     		ldr	r3, [sp, #44]
+ 616 019a 0093     		str	r3, [sp]
+ 617 019c 4FF48B73 		mov	r3, #278
+ 618 01a0 4E4A     		ldr	r2, .L68
+ 619 01a2 0146     		mov	r1, r0
+ 620 01a4 5448     		ldr	r0, .L68+28
+ 621 01a6 FFF7FEFF 		bl	atiny_printf
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 21
+
+
+ 622              	.LVL81:
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 new_offset = block_offset;
+ 623              		.loc 1 279 0
+ 624 01aa BDF82830 		ldrh	r3, [sp, #40]
+ 625 01ae 802B     		cmp	r3, #128
+ 626 01b0 28BF     		it	cs
+ 627 01b2 8023     		movcs	r3, #128
+ 628 01b4 ADF82830 		strh	r3, [sp, #40]	@ movhi
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 629              		.loc 1 280 0
+ 630 01b8 0C9A     		ldr	r2, [sp, #48]
+ 631 01ba 9046     		mov	r8, r2
+ 632 01bc 4FF00009 		mov	r9, #0
+ 633              	.LVL82:
+ 634 01c0 7FE7     		b	.L35
+ 635              	.L63:
+ 636              	.LBB4:
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** #ifdef LWM2M_BOOTSTRAP
+ 637              		.loc 1 289 0
+ 638 01c2 3946     		mov	r1, r7
+ 639 01c4 3046     		mov	r0, r6
+ 640 01c6 FFF7FEFF 		bl	utils_findServer
+ 641              	.LVL83:
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 {
+ 642              		.loc 1 296 0
+ 643 01ca 0546     		mov	r5, r0
+ 644 01cc 0028     		cmp	r0, #0
+ 645 01ce 5DD0     		beq	.L56
+ 646              	.LBB5:
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     size_t complete_buffer_size;
+ 647              		.loc 1 305 0
+ 648 01d0 0023     		movs	r3, #0
+ 649 01d2 0E93     		str	r3, [sp, #56]
+ 309:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     LOG_ARG("Blockwise: block1 request NUM %u (SZX %u/ SZX Max%u) MORE %u", block1_
+ 650              		.loc 1 309 0
+ 651 01d4 434C     		ldr	r4, .L68+8
+ 652 01d6 0093     		str	r3, [sp]
+ 653 01d8 0DF12A03 		add	r3, sp, #42
+ 654 01dc 0DF12702 		add	r2, sp, #39
+ 655 01e0 0DA9     		add	r1, sp, #52
+ 656 01e2 2046     		mov	r0, r4
+ 657              	.LVL84:
+ 658 01e4 FFF7FEFF 		bl	coap_get_header_block1
+ 659              	.LVL85:
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 660              		.loc 1 310 0
+ 661 01e8 FFF7FEFF 		bl	lwm2m_gettime
+ 662              	.LVL86:
+ 663 01ec BDF82A30 		ldrh	r3, [sp, #42]
+ 664 01f0 9DF82720 		ldrb	r2, [sp, #39]	@ zero_extendqisi2
+ 665 01f4 0392     		str	r2, [sp, #12]
+ 666 01f6 8022     		movs	r2, #128
+ 667 01f8 0292     		str	r2, [sp, #8]
+ 668 01fa 0193     		str	r3, [sp, #4]
+ 669 01fc 0D9B     		ldr	r3, [sp, #52]
+ 670 01fe 0093     		str	r3, [sp]
+ 671 0200 4FF49B73 		mov	r3, #310
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 22
+
+
+ 672 0204 354A     		ldr	r2, .L68
+ 673 0206 0146     		mov	r1, r0
+ 674 0208 3C48     		ldr	r0, .L68+32
+ 675 020a FFF7FEFF 		bl	atiny_printf
+ 676              	.LVL87:
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 677              		.loc 1 313 0
+ 678 020e 2189     		ldrh	r1, [r4, #8]
+ 679 0210 D4F88820 		ldr	r2, [r4, #136]
+ 680 0214 B4F88630 		ldrh	r3, [r4, #134]
+ 681 0218 BDF82A40 		ldrh	r4, [sp, #42]
+ 682 021c 9DF82700 		ldrb	r0, [sp, #39]	@ zero_extendqisi2
+ 683 0220 0030     		adds	r0, r0, #0
+ 684 0222 18BF     		it	ne
+ 685 0224 0120     		movne	r0, #1
+ 686 0226 0DF13C0C 		add	ip, sp, #60
+ 687 022a CDF810C0 		str	ip, [sp, #16]
+ 688 022e 0DF1380C 		add	ip, sp, #56
+ 689 0232 CDF80CC0 		str	ip, [sp, #12]
+ 690 0236 0290     		str	r0, [sp, #8]
+ 691 0238 0D98     		ldr	r0, [sp, #52]
+ 692 023a 0190     		str	r0, [sp, #4]
+ 693 023c 0094     		str	r4, [sp]
+ 694 023e 05F12C00 		add	r0, r5, #44
+ 695 0242 FFF7FEFF 		bl	coap_block1_handler
+ 696              	.LVL88:
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     {
+ 697              		.loc 1 316 0
+ 698 0246 0446     		mov	r4, r0
+ 699 0248 38B9     		cbnz	r0, .L38
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         message->payload_len = complete_buffer_size;
+ 700              		.loc 1 318 0
+ 701 024a 264B     		ldr	r3, .L68+8
+ 702 024c 0E9A     		ldr	r2, [sp, #56]
+ 703 024e C3F88820 		str	r2, [r3, #136]
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     }
+ 704              		.loc 1 319 0
+ 705 0252 0F9A     		ldr	r2, [sp, #60]
+ 706 0254 A3F88620 		strh	r2, [r3, #134]	@ movhi
+ 707 0258 38E7     		b	.L36
+ 708              	.L38:
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     {
+ 709              		.loc 1 321 0
+ 710 025a 5F28     		cmp	r0, #95
+ 711 025c 7FF436AF 		bne	.L36
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         coap_set_header_block1(response, block1_num, block1_more, block1_size);
+ 712              		.loc 1 323 0
+ 713 0260 BDF82A30 		ldrh	r3, [sp, #42]
+ 714 0264 802B     		cmp	r3, #128
+ 715 0266 28BF     		it	cs
+ 716 0268 8023     		movcs	r3, #128
+ 717 026a ADF82A30 		strh	r3, [sp, #42]	@ movhi
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     }
+ 718              		.loc 1 324 0
+ 719 026e 9DF82720 		ldrb	r2, [sp, #39]	@ zero_extendqisi2
+ 720 0272 0D99     		ldr	r1, [sp, #52]
+ 721 0274 1D48     		ldr	r0, .L68+16
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 23
+
+
+ 722              	.LVL89:
+ 723 0276 FFF7FEFF 		bl	coap_set_header_block1
+ 724              	.LVL90:
+ 725 027a 27E7     		b	.L36
+ 726              	.LVL91:
+ 727              	.L64:
+ 728              	.LBE5:
+ 729              	.LBE4:
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             }
+ 730              		.loc 1 333 0
+ 731 027c 1B4B     		ldr	r3, .L68+16
+ 732 027e 194A     		ldr	r2, .L68+8
+ 733 0280 3946     		mov	r1, r7
+ 734 0282 3046     		mov	r0, r6
+ 735 0284 FFF7FEFF 		bl	handle_request
+ 736              	.LVL92:
+ 737 0288 0446     		mov	r4, r0
+ 738              	.LVL93:
+ 739 028a 22E7     		b	.L37
+ 740              	.LVL94:
+ 741              	.L56:
+ 742              	.LBB6:
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 }
+ 743              		.loc 1 298 0
+ 744 028c A024     		movs	r4, #160
+ 745 028e 20E7     		b	.L37
+ 746              	.LVL95:
+ 747              	.L65:
+ 748              	.LBE6:
+ 340:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     {
+ 749              		.loc 1 340 0
+ 750 0290 0C9A     		ldr	r2, [sp, #48]
+ 751 0292 0023     		movs	r3, #0
+ 752 0294 4B45     		cmp	r3, r9
+ 753 0296 08BF     		it	eq
+ 754 0298 4245     		cmpeq	r2, r8
+ 755 029a 33D0     		beq	.L67
+ 359:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         coap_set_header_block2(response, block_num, new_offset != -1 || response->p
+ 756              		.loc 1 359 0
+ 757 029c FFF7FEFF 		bl	lwm2m_gettime
+ 758              	.LVL96:
+ 759 02a0 CDF80080 		str	r8, [sp]
+ 760 02a4 40F26713 		movw	r3, #359
+ 761 02a8 0C4A     		ldr	r2, .L68
+ 762 02aa 0146     		mov	r1, r0
+ 763 02ac 1448     		ldr	r0, .L68+36
+ 764 02ae FFF7FEFF 		bl	atiny_printf
+ 765              	.LVL97:
+ 360:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         if (response->payload_len > block_size) coap_set_payload(response, response
+ 766              		.loc 1 360 0
+ 767 02b2 0E4C     		ldr	r4, .L68+16
+ 768              	.LVL98:
+ 769 02b4 BDF82830 		ldrh	r3, [sp, #40]
+ 770 02b8 0122     		movs	r2, #1
+ 771 02ba 0B99     		ldr	r1, [sp, #44]
+ 772 02bc 2046     		mov	r0, r4
+ 773 02be FFF7FEFF 		bl	coap_set_header_block2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 24
+
+
+ 774              	.LVL99:
+ 361:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     } /* if (resource aware of blockwise) */
+ 775              		.loc 1 361 0
+ 776 02c2 B4F88630 		ldrh	r3, [r4, #134]
+ 777 02c6 BDF82820 		ldrh	r2, [sp, #40]
+ 778 02ca 9342     		cmp	r3, r2
+ 779 02cc 7FF60EAF 		bls	.L44
+ 361:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     } /* if (resource aware of blockwise) */
+ 780              		.loc 1 361 0 is_stmt 0 discriminator 1
+ 781 02d0 2046     		mov	r0, r4
+ 782 02d2 D4F88810 		ldr	r1, [r4, #136]
+ 783 02d6 FFF7FEFF 		bl	coap_set_payload
+ 784              	.LVL100:
+ 785 02da 07E7     		b	.L44
+ 786              	.L69:
+ 787              		.align	2
+ 788              	.L68:
+ 789 02dc 00000000 		.word	.LANCHOR3
+ 790 02e0 00000000 		.word	.LC0
+ 791 02e4 00000000 		.word	.LANCHOR4
+ 792 02e8 00000000 		.word	.LC3
+ 793 02ec 00000000 		.word	.LANCHOR5
+ 794 02f0 00000000 		.word	coap_error_message
+ 795 02f4 44020000 		.word	.LC12
+ 796 02f8 58000000 		.word	.LC4
+ 797 02fc 98000000 		.word	.LC5
+ 798 0300 84010000 		.word	.LC9
+ 799              	.LVL101:
+ 800              	.L67:
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         if (block_offset >= message->payload_len)
+ 801              		.loc 1 342 0 is_stmt 1
+ 802 0304 FFF7FEFF 		bl	lwm2m_gettime
+ 803              	.LVL102:
+ 804 0308 5F4B     		ldr	r3, .L70
+ 805 030a B3F88630 		ldrh	r3, [r3, #134]
+ 806 030e BDF82820 		ldrh	r2, [sp, #40]
+ 807 0312 0192     		str	r2, [sp, #4]
+ 808 0314 0093     		str	r3, [sp]
+ 809 0316 4FF4AB73 		mov	r3, #342
+ 810 031a 5C4A     		ldr	r2, .L70+4
+ 811 031c 0146     		mov	r1, r0
+ 812 031e 5C48     		ldr	r0, .L70+8
+ 813 0320 FFF7FEFF 		bl	atiny_printf
+ 814              	.LVL103:
+ 343:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         {
+ 815              		.loc 1 343 0
+ 816 0324 5B4B     		ldr	r3, .L70+12
+ 817 0326 B3F88620 		ldrh	r2, [r3, #134]
+ 818 032a 0C9B     		ldr	r3, [sp, #48]
+ 819 032c 9A42     		cmp	r2, r3
+ 820 032e 10D8     		bhi	.L43
+ 345:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 821              		.loc 1 345 0
+ 822 0330 FFF7FEFF 		bl	lwm2m_gettime
+ 823              	.LVL104:
+ 824 0334 40F25913 		movw	r3, #345
+ 825 0338 544A     		ldr	r2, .L70+4
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 25
+
+
+ 826 033a 0146     		mov	r1, r0
+ 827 033c 5648     		ldr	r0, .L70+16
+ 828 033e FFF7FEFF 		bl	atiny_printf
+ 829              	.LVL105:
+ 347:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                             coap_set_payload(response, "BlockOutOfScope", 15); /* a const char str[
+ 830              		.loc 1 347 0
+ 831 0342 5148     		ldr	r0, .L70
+ 832 0344 8223     		movs	r3, #130
+ 833 0346 8371     		strb	r3, [r0, #6]
+ 348:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         }
+ 834              		.loc 1 348 0
+ 835 0348 0F22     		movs	r2, #15
+ 836 034a 5449     		ldr	r1, .L70+20
+ 837 034c FFF7FEFF 		bl	coap_set_payload
+ 838              	.LVL106:
+ 839 0350 CCE6     		b	.L44
+ 840              	.L43:
+ 352:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                             coap_set_payload(response, response->payload + block_offset, MIN(respon
+ 841              		.loc 1 352 0
+ 842 0352 4D4C     		ldr	r4, .L70
+ 843              	.LVL107:
+ 844 0354 B4F88620 		ldrh	r2, [r4, #134]
+ 845 0358 D21A     		subs	r2, r2, r3
+ 846 035a BDF82810 		ldrh	r1, [sp, #40]
+ 847 035e 0B46     		mov	r3, r1
+ 848 0360 8A42     		cmp	r2, r1
+ 849 0362 94BF     		ite	ls
+ 850 0364 0022     		movls	r2, #0
+ 851 0366 0122     		movhi	r2, #1
+ 852 0368 0B99     		ldr	r1, [sp, #44]
+ 853 036a 2046     		mov	r0, r4
+ 854 036c FFF7FEFF 		bl	coap_set_header_block2
+ 855              	.LVL108:
+ 353:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                         } /* if (valid offset) */
+ 856              		.loc 1 353 0
+ 857 0370 D4F88800 		ldr	r0, [r4, #136]
+ 858 0374 0C99     		ldr	r1, [sp, #48]
+ 859 0376 BDF82820 		ldrh	r2, [sp, #40]
+ 860 037a B4F88630 		ldrh	r3, [r4, #134]
+ 861 037e 5B1A     		subs	r3, r3, r1
+ 862 0380 9A42     		cmp	r2, r3
+ 863 0382 28BF     		it	cs
+ 864 0384 1A46     		movcs	r2, r3
+ 865 0386 0144     		add	r1, r1, r0
+ 866 0388 2046     		mov	r0, r4
+ 867 038a FFF7FEFF 		bl	coap_set_payload
+ 868              	.LVL109:
+ 869 038e ADE6     		b	.L44
+ 870              	.LVL110:
+ 871              	.L66:
+ 366:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 872              		.loc 1 366 0
+ 873 0390 FFF7FEFF 		bl	lwm2m_gettime
+ 874              	.LVL111:
+ 875 0394 8025     		movs	r5, #128
+ 876 0396 0095     		str	r5, [sp]
+ 877 0398 4FF4B773 		mov	r3, #366
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 26
+
+
+ 878 039c 3B4A     		ldr	r2, .L70+4
+ 879 039e 0146     		mov	r1, r0
+ 880 03a0 3F48     		ldr	r0, .L70+24
+ 881 03a2 FFF7FEFF 		bl	atiny_printf
+ 882              	.LVL112:
+ 368:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     coap_set_payload(response, response->payload, MIN(response->payload_len, REST_M
+ 883              		.loc 1 368 0
+ 884 03a6 08EA0902 		and	r2, r8, r9
+ 885 03aa 374C     		ldr	r4, .L70
+ 886              	.LVL113:
+ 887 03ac 2B46     		mov	r3, r5
+ 888 03ae 0132     		adds	r2, r2, #1
+ 889 03b0 18BF     		it	ne
+ 890 03b2 0122     		movne	r2, #1
+ 891 03b4 0021     		movs	r1, #0
+ 892 03b6 2046     		mov	r0, r4
+ 893 03b8 FFF7FEFF 		bl	coap_set_header_block2
+ 894              	.LVL114:
+ 369:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 } /* if (blockwise request) */
+ 895              		.loc 1 369 0
+ 896 03bc B4F88620 		ldrh	r2, [r4, #134]
+ 897 03c0 AA42     		cmp	r2, r5
+ 898 03c2 28BF     		it	cs
+ 899 03c4 2A46     		movcs	r2, r5
+ 900 03c6 D4F88810 		ldr	r1, [r4, #136]
+ 901 03ca 2046     		mov	r0, r4
+ 902 03cc FFF7FEFF 		bl	coap_set_payload
+ 903              	.LVL115:
+ 904 03d0 8CE6     		b	.L44
+ 905              	.LVL116:
+ 906              	.L40:
+ 378:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ 907              		.loc 1 378 0
+ 908 03d2 012C     		cmp	r4, #1
+ 909 03d4 3FF49AAE 		beq	.L47
+ 380:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 {
+ 910              		.loc 1 380 0
+ 911 03d8 2146     		mov	r1, r4
+ 912 03da 2B48     		ldr	r0, .L70
+ 913 03dc FFF7FEFF 		bl	coap_set_status_code
+ 914              	.LVL117:
+ 915 03e0 0128     		cmp	r0, #1
+ 916 03e2 7FF493AE 		bne	.L47
+ 382:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 }
+ 917              		.loc 1 382 0
+ 918 03e6 3A46     		mov	r2, r7
+ 919 03e8 2749     		ldr	r1, .L70
+ 920 03ea 3046     		mov	r0, r6
+ 921 03ec FFF7FEFF 		bl	message_send
+ 922              	.LVL118:
+ 923 03f0 0446     		mov	r4, r0
+ 924              	.LVL119:
+ 925 03f2 8BE6     		b	.L47
+ 926              	.LVL120:
+ 927              	.L31:
+ 928              	.LBE7:
+ 389:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****             {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 27
+
+
+ 929              		.loc 1 389 0
+ 930 03f4 274B     		ldr	r3, .L70+12
+ 931 03f6 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 932 03f8 032B     		cmp	r3, #3
+ 933 03fa 3FF687AE 		bhi	.L47
+ 934 03fe DFE803F0 		tbb	[pc, r3]
+ 935              	.L49:
+ 936 0402 02       		.byte	(.L48-.L49)/2
+ 937 0403 02       		.byte	(.L48-.L49)/2
+ 938 0404 2C       		.byte	(.L50-.L49)/2
+ 939 0405 1F       		.byte	(.L51-.L49)/2
+ 940              		.p2align 1
+ 941              	.L48:
+ 942              	.LBB8:
+ 394:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 943              		.loc 1 394 0
+ 944 0406 204B     		ldr	r3, .L70
+ 945 0408 224A     		ldr	r2, .L70+12
+ 946 040a 3946     		mov	r1, r7
+ 947 040c 3046     		mov	r0, r6
+ 948 040e FFF7FEFF 		bl	transaction_handleResponse
+ 949              	.LVL121:
+ 403:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 {
+ 950              		.loc 1 403 0
+ 951 0412 0028     		cmp	r0, #0
+ 952 0414 7FF47AAE 		bne	.L47
+ 403:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 {
+ 953              		.loc 1 403 0 is_stmt 0 discriminator 1
+ 954 0418 1E4B     		ldr	r3, .L70+12
+ 955 041a 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 956 041c 002B     		cmp	r3, #0
+ 957 041e 7FF475AE 		bne	.L47
+ 405:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                     coap_error_code = message_send(contextP, response, fromSessionH);
+ 958              		.loc 1 405 0 is_stmt 1
+ 959 0422 194C     		ldr	r4, .L70
+ 960 0424 1B4B     		ldr	r3, .L70+12
+ 961 0426 1B89     		ldrh	r3, [r3, #8]
+ 962 0428 0022     		movs	r2, #0
+ 963 042a 0221     		movs	r1, #2
+ 964 042c 2046     		mov	r0, r4
+ 965              	.LVL122:
+ 966 042e FFF7FEFF 		bl	coap_init_message
+ 967              	.LVL123:
+ 406:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 }
+ 968              		.loc 1 406 0
+ 969 0432 3A46     		mov	r2, r7
+ 970 0434 2146     		mov	r1, r4
+ 971 0436 3046     		mov	r0, r6
+ 972 0438 FFF7FEFF 		bl	message_send
+ 973              	.LVL124:
+ 974 043c 0446     		mov	r4, r0
+ 975              	.LVL125:
+ 976 043e 65E6     		b	.L47
+ 977              	.LVL126:
+ 978              	.L51:
+ 979              	.LBE8:
+ 413:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 transaction_handleResponse(contextP, fromSessionH, message, NULL);
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 28
+
+
+ 980              		.loc 1 413 0
+ 981 0440 144D     		ldr	r5, .L70+12
+ 982 0442 2A46     		mov	r2, r5
+ 983 0444 3946     		mov	r1, r7
+ 984 0446 3046     		mov	r0, r6
+ 985 0448 FFF7FEFF 		bl	handle_reset
+ 986              	.LVL127:
+ 414:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 break;
+ 987              		.loc 1 414 0
+ 988 044c 0023     		movs	r3, #0
+ 989 044e 2A46     		mov	r2, r5
+ 990 0450 3946     		mov	r1, r7
+ 991 0452 3046     		mov	r0, r6
+ 992 0454 FFF7FEFF 		bl	transaction_handleResponse
+ 993              	.LVL128:
+ 415:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 994              		.loc 1 415 0
+ 995 0458 58E6     		b	.L47
+ 996              	.L50:
+ 418:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****                 break;
+ 997              		.loc 1 418 0
+ 998 045a 0023     		movs	r3, #0
+ 999 045c 0D4A     		ldr	r2, .L70+12
+ 1000 045e 3946     		mov	r1, r7
+ 1001 0460 3046     		mov	r0, r6
+ 1002 0462 FFF7FEFF 		bl	transaction_handleResponse
+ 1003              	.LVL129:
+ 419:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c **** 
+ 1004              		.loc 1 419 0
+ 1005 0466 51E6     		b	.L47
+ 1006              	.LVL130:
+ 1007              	.L30:
+ 429:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\packet.c ****     }
+ 1008              		.loc 1 429 0
+ 1009 0468 FFF7FEFF 		bl	lwm2m_gettime
+ 1010              	.LVL131:
+ 1011 046c C4F34713 		ubfx	r3, r4, #5, #8
+ 1012 0470 04F01F02 		and	r2, r4, #31
+ 1013 0474 0192     		str	r2, [sp, #4]
+ 1014 0476 0093     		str	r3, [sp]
+ 1015 0478 40F2AD13 		movw	r3, #429
+ 1016 047c 034A     		ldr	r2, .L70+4
+ 1017 047e 0146     		mov	r1, r0
+ 1018 0480 0848     		ldr	r0, .L70+28
+ 1019 0482 FFF7FEFF 		bl	atiny_printf
+ 1020              	.LVL132:
+ 1021 0486 44E6     		b	.L52
+ 1022              	.L71:
+ 1023              		.align	2
+ 1024              	.L70:
+ 1025 0488 00000000 		.word	.LANCHOR5
+ 1026 048c 00000000 		.word	.LANCHOR3
+ 1027 0490 E4000000 		.word	.LC6
+ 1028 0494 00000000 		.word	.LANCHOR4
+ 1029 0498 28010000 		.word	.LC7
+ 1030 049c 74010000 		.word	.LC8
+ 1031 04a0 C0010000 		.word	.LC10
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 29
+
+
+ 1032 04a4 18020000 		.word	.LC11
+ 1033              		.cfi_endproc
+ 1034              	.LFE136:
+ 1036              		.section	.bss.message.11644,"aw",%nobits
+ 1037              		.align	2
+ 1038              		.set	.LANCHOR4,. + 0
+ 1041              	message.11644:
+ 1042 0000 00000000 		.space	140
+ 1042      00000000 
+ 1042      00000000 
+ 1042      00000000 
+ 1042      00000000 
+ 1043              		.section	.bss.response.11645,"aw",%nobits
+ 1044              		.align	2
+ 1045              		.set	.LANCHOR5,. + 0
+ 1048              	response.11645:
+ 1049 0000 00000000 		.space	140
+ 1049      00000000 
+ 1049      00000000 
+ 1049      00000000 
+ 1049      00000000 
+ 1050              		.section	.rodata.__func__.11623,"a",%progbits
+ 1051              		.align	2
+ 1052              		.set	.LANCHOR1,. + 0
+ 1055              	__func__.11623:
+ 1056 0000 68616E64 		.ascii	"handle_reset\000"
+ 1056      6C655F72 
+ 1056      65736574 
+ 1056      00
+ 1057              		.section	.rodata.__func__.11632,"a",%progbits
+ 1058              		.align	2
+ 1059              		.set	.LANCHOR0,. + 0
+ 1062              	__func__.11632:
+ 1063 0000 68616E64 		.ascii	"handle_request\000"
+ 1063      6C655F72 
+ 1063      65717565 
+ 1063      737400
+ 1064              		.section	.rodata.__func__.11646,"a",%progbits
+ 1065              		.align	2
+ 1066              		.set	.LANCHOR3,. + 0
+ 1069              	__func__.11646:
+ 1070 0000 6C776D32 		.ascii	"lwm2m_handle_packet\000"
+ 1070      6D5F6861 
+ 1070      6E646C65 
+ 1070      5F706163 
+ 1070      6B657400 
+ 1071              		.section	.rodata.__func__.11673,"a",%progbits
+ 1072              		.align	2
+ 1073              		.set	.LANCHOR2,. + 0
+ 1076              	__func__.11673:
+ 1077 0000 6D657373 		.ascii	"message_send\000"
+ 1077      6167655F 
+ 1077      73656E64 
+ 1077      00
+ 1078              		.section	.rodata.handle_request.str1.4,"aMS",%progbits,1
+ 1079              		.align	2
+ 1080              	.LC0:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 30
+
+
+ 1081 0000 5B25645D 		.ascii	"[%d][%s:%d] Entering\015\012\000"
+ 1081      5B25733A 
+ 1081      25645D20 
+ 1081      456E7465 
+ 1081      72696E67 
+ 1082              		.section	.rodata.lwm2m_handle_packet.str1.4,"aMS",%progbits,1
+ 1083              		.align	2
+ 1084              	.LC3:
+ 1085 0000 5B25645D 		.ascii	"[%d][%s:%d] Parsed: ver %u, type %u, tkl %u, code %"
+ 1085      5B25733A 
+ 1085      25645D20 
+ 1085      50617273 
+ 1085      65643A20 
+ 1086 0033 752E252E 		.ascii	"u.%.2u, mid %u, Content type: %d\015\012\000"
+ 1086      32752C20 
+ 1086      6D696420 
+ 1086      25752C20 
+ 1086      436F6E74 
+ 1087 0056 0000     		.space	2
+ 1088              	.LC4:
+ 1089 0058 5B25645D 		.ascii	"[%d][%s:%d] Blockwise: block request %u (%u/%u) @ %"
+ 1089      5B25733A 
+ 1089      25645D20 
+ 1089      426C6F63 
+ 1089      6B776973 
+ 1090 008b 75206279 		.ascii	"u bytes\015\012\000"
+ 1090      7465730D 
+ 1090      0A00
+ 1091 0095 000000   		.space	3
+ 1092              	.LC5:
+ 1093 0098 5B25645D 		.ascii	"[%d][%s:%d] Blockwise: block1 request NUM %u (SZX %"
+ 1093      5B25733A 
+ 1093      25645D20 
+ 1093      426C6F63 
+ 1093      6B776973 
+ 1094 00cb 752F2053 		.ascii	"u/ SZX Max%u) MORE %u\015\012\000"
+ 1094      5A58204D 
+ 1094      61782575 
+ 1094      29204D4F 
+ 1094      52452025 
+ 1095 00e3 00       		.space	1
+ 1096              	.LC6:
+ 1097 00e4 5B25645D 		.ascii	"[%d][%s:%d] Blockwise: unaware resource with payloa"
+ 1097      5B25733A 
+ 1097      25645D20 
+ 1097      426C6F63 
+ 1097      6B776973 
+ 1098 0117 64206C65 		.ascii	"d length %u/%u\015\012\000"
+ 1098      6E677468 
+ 1098      2025752F 
+ 1098      25750D0A 
+ 1098      00
+ 1099              	.LC7:
+ 1100 0128 5B25645D 		.ascii	"[%d][%s:%d] handle_incoming_data(): block_offset >="
+ 1100      5B25733A 
+ 1100      25645D20 
+ 1100      68616E64 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 31
+
+
+ 1100      6C655F69 
+ 1101 015b 20726573 		.ascii	" response->payload_len\015\012\000"
+ 1101      706F6E73 
+ 1101      652D3E70 
+ 1101      61796C6F 
+ 1101      61645F6C 
+ 1102              	.LC8:
+ 1103 0174 426C6F63 		.ascii	"BlockOutOfScope\000"
+ 1103      6B4F7574 
+ 1103      4F665363 
+ 1103      6F706500 
+ 1104              	.LC9:
+ 1105 0184 5B25645D 		.ascii	"[%d][%s:%d] Blockwise: blockwise resource, new offs"
+ 1105      5B25733A 
+ 1105      25645D20 
+ 1105      426C6F63 
+ 1105      6B776973 
+ 1106 01b7 65742025 		.ascii	"et %d\015\012\000"
+ 1106      640D0A00 
+ 1107 01bf 00       		.space	1
+ 1108              	.LC10:
+ 1109 01c0 5B25645D 		.ascii	"[%d][%s:%d] Blockwise: no block option for blockwis"
+ 1109      5B25733A 
+ 1109      25645D20 
+ 1109      426C6F63 
+ 1109      6B776973 
+ 1110 01f3 65207265 		.ascii	"e resource, using block size %u\015\012\000"
+ 1110      736F7572 
+ 1110      63652C20 
+ 1110      7573696E 
+ 1110      6720626C 
+ 1111 0215 000000   		.space	3
+ 1112              	.LC11:
+ 1113 0218 5B25645D 		.ascii	"[%d][%s:%d] Message parsing failed %u.%2u\015\012\000"
+ 1113      5B25733A 
+ 1113      25645D20 
+ 1113      4D657373 
+ 1113      61676520 
+ 1114              	.LC12:
+ 1115 0244 5B25645D 		.ascii	"[%d][%s:%d] ERROR %u: %s\015\012\000"
+ 1115      5B25733A 
+ 1115      25645D20 
+ 1115      4552524F 
+ 1115      52202575 
+ 1116              		.section	.rodata.message_send.str1.4,"aMS",%progbits,1
+ 1117              		.align	2
+ 1118              	.LC1:
+ 1119 0000 5B25645D 		.ascii	"[%d][%s:%d] Size to allocate: %d\015\012\000"
+ 1119      5B25733A 
+ 1119      25645D20 
+ 1119      53697A65 
+ 1119      20746F20 
+ 1120 0023 00       		.space	1
+ 1121              	.LC2:
+ 1122 0024 5B25645D 		.ascii	"[%d][%s:%d] coap_serialize_message() returned %d\015"
+ 1122      5B25733A 
+ 1122      25645D20 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 32
+
+
+ 1122      636F6170 
+ 1122      5F736572 
+ 1123 0055 0A00     		.ascii	"\012\000"
+ 1124              		.text
+ 1125              	.Letext0:
+ 1126              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1127              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1128              		.file 4 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core/
+ 1129              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 1130              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1131              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1132              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1133              		.file 9 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1134              		.file 10 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1135              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core
+ 1136              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 1137              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 1138              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 1139              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 1140              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 1141              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 1142              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 1143              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 1144              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 1145              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 1146              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 1147              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 1148              		.file 24 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 1149              		.file 25 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core
+ 1150              		.file 26 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1151              		.file 27 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1152              		.file 28 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/osdepends/atiny_osdep.h"
+ 1153              		.file 29 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/exam
+ 1154              		.file 30 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core
+ 1155              		.file 31 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 33
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 packet.c
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:18     .text.handle_request:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:24     .text.handle_request:00000000 handle_request
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:142    .text.handle_request:00000078 $d
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:148    .text.handle_reset:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:154    .text.handle_reset:00000000 handle_reset
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:192    .text.handle_reset:00000024 $d
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:198    .text.message_send:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:205    .text.message_send:00000000 message_send
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:338    .text.message_send:000000a4 $d
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:347    .text.lwm2m_handle_packet:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:354    .text.lwm2m_handle_packet:00000000 lwm2m_handle_packet
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:789    .text.lwm2m_handle_packet:000002dc $d
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:802    .text.lwm2m_handle_packet:00000304 $t
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:936    .text.lwm2m_handle_packet:00000402 $d
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:940    .text.lwm2m_handle_packet:00000406 $t
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1025   .text.lwm2m_handle_packet:00000488 $d
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1037   .bss.message.11644:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1041   .bss.message.11644:00000000 message.11644
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1044   .bss.response.11645:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1048   .bss.response.11645:00000000 response.11645
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1051   .rodata.__func__.11623:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1055   .rodata.__func__.11623:00000000 __func__.11623
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1058   .rodata.__func__.11632:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1062   .rodata.__func__.11632:00000000 __func__.11632
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1065   .rodata.__func__.11646:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1069   .rodata.__func__.11646:00000000 __func__.11646
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1072   .rodata.__func__.11673:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1076   .rodata.__func__.11673:00000000 __func__.11673
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1079   .rodata.handle_request.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1083   .rodata.lwm2m_handle_packet.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s:1117   .rodata.message_send.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+lwm2m_gettime
+atiny_printf
+uri_decode
+coap_set_status_code
+lwm2m_free
+utils_findServer
+dm_handleRequest
+observe_cancel
+coap_serialize_get_size
+lwm2m_malloc
+coap_serialize_message
+lwm2m_buffer_send
+output_buffer
+_impure_ptr
+coap_parse_message
+coap_init_message
+coap_get_header_block2
+coap_free_header
+strlen
+coap_set_payload
+coap_set_header_token
+coap_get_header_block1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccvSI8QP.s 			page 34
+
+
+coap_block1_handler
+coap_set_header_block1
+coap_set_header_block2
+coap_error_message
+transaction_handleResponse

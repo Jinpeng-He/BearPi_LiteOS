@@ -1,0 +1,1506 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32l4xx_hal_gpio.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.HAL_GPIO_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	HAL_GPIO_Init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	HAL_GPIO_Init:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/ST
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /**
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   ******************************************************************************
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @file    stm32l4xx_hal_gpio.c
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @author  MCD Application Team
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @brief   GPIO HAL module driver.
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *          This file provides firmware functions to manage the following
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *          functionalities of the General Purpose Input/Output (GPIO) peripheral:
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *           + Initialization and de-initialization functions
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *           + IO operation functions
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   @verbatim
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   ==============================================================================
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****                     ##### GPIO Peripheral features #####
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   ==============================================================================
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   [..]
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     (+) Each port bit of the general-purpose I/O (GPIO) ports can be individually
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         configured by software in several modes:
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         (++) Input mode
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         (++) Analog mode
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         (++) Output mode
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         (++) Alternate function mode
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         (++) External interrupt/event lines
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     (+) During and just after reset, the alternate functions and external interrupt
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         lines are not active and the I/O ports are configured in input floating mode.
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     (+) All GPIO pins have weak internal pull-up and pull-down resistors, which can be
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         activated or not.
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     (+) In Output or Alternate mode, each IO can be configured on open-drain or push-pull
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         type and the IO speed can be selected depending on the VDD value.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     (+) The microcontroller IO pins are connected to onboard peripherals/modules through a
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         multiplexer that allows only one peripheral alternate function (AF) connected
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****        to an IO pin at a time. In this way, there can be no conflict between peripherals
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****        sharing the same IO pin.
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     (+) All ports have external interrupt/event capability. To use external interrupt
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         lines, the port must be configured in input mode. All available GPIO pins are
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         connected to the 16 external interrupt/event lines from EXTI0 to EXTI15.
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     (+) The external interrupt/event controller consists of up to 39 edge detectors
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         (16 lines are connected to GPIO) for generating event/interrupt requests (each
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         input line can be independently configured to select the type (interrupt or event)
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         and the corresponding trigger event (rising or falling or both). Each line can
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         also be masked independently.
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****                      ##### How to use this driver #####
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   ==============================================================================
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   [..]
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     (#) Enable the GPIO AHB clock using the following function: __HAL_RCC_GPIOx_CLK_ENABLE().
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     (#) Configure the GPIO pin(s) using HAL_GPIO_Init().
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         (++) Configure the IO mode using "Mode" member from GPIO_InitTypeDef structure
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         (++) Activate Pull-up, Pull-down resistor using "Pull" member from GPIO_InitTypeDef
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****              structure.
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         (++) In case of Output or alternate function mode selection: the speed is
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****              configured through "Speed" member from GPIO_InitTypeDef structure.
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         (++) In alternate mode is selection, the alternate function connected to the IO
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****              is configured through "Alternate" member from GPIO_InitTypeDef structure.
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         (++) Analog mode is required when a pin is to be used as ADC channel
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****              or DAC output.
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         (++) In case of external interrupt/event selection the "Mode" member from
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****              GPIO_InitTypeDef structure select the type (interrupt or event) and
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****              the corresponding trigger event (rising or falling or both).
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     (#) In case of external interrupt/event mode selection, configure NVIC IRQ priority
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         mapped to the EXTI line using HAL_NVIC_SetPriority() and enable it using
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         HAL_NVIC_EnableIRQ().
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     (#) To get the level of a pin configured in input mode use HAL_GPIO_ReadPin().
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     (#) To set/reset the level of a pin configured in output mode use
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         HAL_GPIO_WritePin()/HAL_GPIO_TogglePin().
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****    (#) To lock pin configuration until next reset use HAL_GPIO_LockPin().
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     (#) During and just after reset, the alternate functions are not
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         active and the GPIO pins are configured in input floating mode (except JTAG
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         pins).
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     (#) The LSE oscillator pins OSC32_IN and OSC32_OUT can be used as general purpose
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         (PC14 and PC15, respectively) when the LSE oscillator is off. The LSE has
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         priority over the GPIO function.
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     (#) The HSE oscillator pins OSC_IN/OSC_OUT can be used as
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         general purpose PH0 and PH1, respectively, when the HSE oscillator is off.
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         The HSE has priority over the GPIO function.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 3
+
+
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   @endverbatim
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   ******************************************************************************
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @attention
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * are permitted provided that the following conditions are met:
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *      this list of conditions and the following disclaimer.
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *      this list of conditions and the following disclaimer in the documentation
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *      and/or other materials provided with the distribution.
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *      may be used to endorse or promote products derived from this software
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *      without specific prior written permission.
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   ******************************************************************************
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /* Includes ------------------------------------------------------------------*/
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** #include "stm32l4xx_hal.h"
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /** @addtogroup STM32L4xx_HAL_Driver
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @{
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /** @defgroup GPIO GPIO
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @brief GPIO HAL module driver
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @{
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** #ifdef HAL_GPIO_MODULE_ENABLED
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /* Private typedef -----------------------------------------------------------*/
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /* Private defines -----------------------------------------------------------*/
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /** @defgroup GPIO_Private_Defines GPIO Private Defines
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @{
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** #define GPIO_MODE             ((uint32_t)0x00000003)
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** #define ANALOG_MODE           ((uint32_t)0x00000008)
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** #define EXTI_MODE             ((uint32_t)0x10000000)
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** #define GPIO_MODE_IT          ((uint32_t)0x00010000)
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** #define GPIO_MODE_EVT         ((uint32_t)0x00020000)
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** #define RISING_EDGE           ((uint32_t)0x00100000)
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 4
+
+
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** #define FALLING_EDGE          ((uint32_t)0x00200000)
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** #define GPIO_OUTPUT_TYPE      ((uint32_t)0x00000010)
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** #define GPIO_NUMBER           ((uint32_t)16)
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /**
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @}
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /* Private macros ------------------------------------------------------------*/
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /* Private macros ------------------------------------------------------------*/
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /** @defgroup GPIO_Private_Macros GPIO Private Macros
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @{
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /**
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @}
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /* Private variables ---------------------------------------------------------*/
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /* Private function prototypes -----------------------------------------------*/
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /* Exported functions --------------------------------------------------------*/
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /** @defgroup GPIO_Exported_Functions GPIO Exported Functions
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @{
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /** @defgroup GPIO_Exported_Functions_Group1 Initialization/de-initialization functions 
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****  *  @brief    Initialization and Configuration functions
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****  *
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** @verbatim
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****  ===============================================================================
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****               ##### Initialization and de-initialization functions #####
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****  ===============================================================================
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** @endverbatim
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @{
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /**
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @brief  Initialize the GPIOx peripheral according to the specified parameters in the GPIO_Init.
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @param  GPIOx: where x can be (A..H) to select the GPIO peripheral for STM32L4 family
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @param  GPIO_Init: pointer to a GPIO_InitTypeDef structure that contains
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *         the configuration information for the specified GPIO peripheral.
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @retval None
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** void HAL_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GPIO_Init)
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** {
+  28              		.loc 1 190 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  34 0000 F0B4     		push	{r4, r5, r6, r7}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 16
+  37              		.cfi_offset 4, -16
+  38              		.cfi_offset 5, -12
+  39              		.cfi_offset 6, -8
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 5
+
+
+  40              		.cfi_offset 7, -4
+  41 0002 82B0     		sub	sp, sp, #8
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_offset 24
+  44              	.LVL1:
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   uint32_t position = 0x00;
+  45              		.loc 1 191 0
+  46 0004 0023     		movs	r3, #0
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   uint32_t iocurrent = 0x00;
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   uint32_t temp = 0x00;
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* Check the parameters */
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   assert_param(IS_GPIO_PIN(GPIO_Init->Pin));
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   assert_param(IS_GPIO_MODE(GPIO_Init->Mode));
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   assert_param(IS_GPIO_PULL(GPIO_Init->Pull));
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* Configure the port pins */
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   while (((GPIO_Init->Pin) >> position) != RESET)
+  47              		.loc 1 202 0
+  48 0006 36E0     		b	.L2
+  49              	.LVL2:
+  50              	.L21:
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   {
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     /* Get current io position */
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     iocurrent = (GPIO_Init->Pin) & (1U << position);
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     if(iocurrent)
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     {
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /*--------------------- GPIO Mode Configuration ------------------------*/
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /* In case of Alternate function mode selection */
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       if((GPIO_Init->Mode == GPIO_MODE_AF_PP) || (GPIO_Init->Mode == GPIO_MODE_AF_OD))
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       {
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         /* Check the Alternate function parameters */
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         assert_param(IS_GPIO_AF_INSTANCE(GPIOx));
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         assert_param(IS_GPIO_AF(GPIO_Init->Alternate));
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         /* Configure Alternate function mapped with the current IO */
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp = GPIOx->AFR[position >> 3];
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp &= ~((uint32_t)0xF << ((uint32_t)(position & (uint32_t)0x07) * 4)) ;
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp |= ((uint32_t)(GPIO_Init->Alternate) << (((uint32_t)position & (uint32_t)0x07) * 4));
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         GPIOx->AFR[position >> 3] = temp;
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       }
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /* Configure IO Direction mode (Input, Output, Alternate or Analog) */
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       temp = GPIOx->MODER;
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       temp &= ~(GPIO_MODER_MODE0 << (position * 2));
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       temp |= ((GPIO_Init->Mode & GPIO_MODE) << (position * 2));
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       GPIOx->MODER = temp;
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /* In case of Output or Alternate function mode selection */
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       if((GPIO_Init->Mode == GPIO_MODE_OUTPUT_PP) || (GPIO_Init->Mode == GPIO_MODE_AF_PP) ||
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****          (GPIO_Init->Mode == GPIO_MODE_OUTPUT_OD) || (GPIO_Init->Mode == GPIO_MODE_AF_OD))
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       {
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         /* Check the Speed parameter */
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         assert_param(IS_GPIO_SPEED(GPIO_Init->Speed));
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         /* Configure the IO Speed */
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 6
+
+
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp = GPIOx->OSPEEDR;
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp &= ~(GPIO_OSPEEDR_OSPEED0 << (position * 2));
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp |= (GPIO_Init->Speed << (position * 2));
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         GPIOx->OSPEEDR = temp;
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         /* Configure the IO Output Type */
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp = GPIOx->OTYPER;
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp &= ~(GPIO_OTYPER_OT0 << position) ;
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp |= (((GPIO_Init->Mode & GPIO_OUTPUT_TYPE) >> 4) << position);
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         GPIOx->OTYPER = temp;
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       }
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** #if defined(STM32L471xx) || defined(STM32L475xx) || defined(STM32L476xx) || defined(STM32L485xx) ||
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /* In case of Analog mode, check if ADC control mode is selected */
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       if((GPIO_Init->Mode & GPIO_MODE_ANALOG) == GPIO_MODE_ANALOG)
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       {
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         /* Configure the IO Output Type */
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp = GPIOx->ASCR;
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp &= ~(GPIO_ASCR_ASC0 << position) ;
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp |= (((GPIO_Init->Mode & ANALOG_MODE) >> 3) << position);
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         GPIOx->ASCR = temp;
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       }
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** #endif /* STM32L471xx || STM32L475xx || STM32L476xx || STM32L485xx || STM32L486xx */
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /* Activate the Pull-up or Pull down resistor for the current IO */
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       temp = GPIOx->PUPDR;
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       temp &= ~(GPIO_PUPDR_PUPD0 << (position * 2));
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       temp |= ((GPIO_Init->Pull) << (position * 2));
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       GPIOx->PUPDR = temp;
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /*--------------------- EXTI Mode Configuration ------------------------*/
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /* Configure the External Interrupt or event for the current IO */
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       if((GPIO_Init->Mode & EXTI_MODE) == EXTI_MODE)
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       {
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         /* Enable SYSCFG Clock */
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         __HAL_RCC_SYSCFG_CLK_ENABLE();
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp = SYSCFG->EXTICR[position >> 2];
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp &= ~(((uint32_t)0x0F) << (4 * (position & 0x03)));
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp |= (GPIO_GET_INDEX(GPIOx) << (4 * (position & 0x03)));
+  51              		.loc 1 278 0
+  52 0008 0424     		movs	r4, #4
+  53 000a 00E0     		b	.L8
+  54              	.L14:
+  55 000c 0024     		movs	r4, #0
+  56              	.L8:
+  57              		.loc 1 278 0 is_stmt 0 discriminator 20
+  58 000e B440     		lsls	r4, r4, r6
+  59 0010 3C43     		orrs	r4, r4, r7
+  60              	.LVL3:
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         SYSCFG->EXTICR[position >> 2] = temp;
+  61              		.loc 1 279 0 is_stmt 1 discriminator 20
+  62 0012 0235     		adds	r5, r5, #2
+  63 0014 5B4E     		ldr	r6, .L22
+  64 0016 46F82540 		str	r4, [r6, r5, lsl #2]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 7
+
+
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         /* Clear EXTI line configuration */
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp = EXTI->IMR1;
+  65              		.loc 1 282 0 discriminator 20
+  66 001a 5B4C     		ldr	r4, .L22+4
+  67              	.LVL4:
+  68 001c 2568     		ldr	r5, [r4]
+  69              	.LVL5:
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp &= ~((uint32_t)iocurrent);
+  70              		.loc 1 283 0 discriminator 20
+  71 001e D443     		mvns	r4, r2
+  72 0020 04EA0506 		and	r6, r4, r5
+  73              	.LVL6:
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         if((GPIO_Init->Mode & GPIO_MODE_IT) == GPIO_MODE_IT)
+  74              		.loc 1 284 0 discriminator 20
+  75 0024 4F68     		ldr	r7, [r1, #4]
+  76 0026 17F4803F 		tst	r7, #65536
+  77 002a 01D0     		beq	.L9
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         {
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****           temp |= iocurrent;
+  78              		.loc 1 286 0
+  79 002c 42EA0506 		orr	r6, r2, r5
+  80              	.LVL7:
+  81              	.L9:
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         }
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         EXTI->IMR1 = temp;
+  82              		.loc 1 288 0
+  83 0030 554D     		ldr	r5, .L22+4
+  84 0032 2E60     		str	r6, [r5]
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp = EXTI->EMR1;
+  85              		.loc 1 290 0
+  86 0034 6D68     		ldr	r5, [r5, #4]
+  87              	.LVL8:
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp &= ~((uint32_t)iocurrent);
+  88              		.loc 1 291 0
+  89 0036 04EA0506 		and	r6, r4, r5
+  90              	.LVL9:
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         if((GPIO_Init->Mode & GPIO_MODE_EVT) == GPIO_MODE_EVT)
+  91              		.loc 1 292 0
+  92 003a 4F68     		ldr	r7, [r1, #4]
+  93 003c 17F4003F 		tst	r7, #131072
+  94 0040 01D0     		beq	.L10
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         {
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****           temp |= iocurrent;
+  95              		.loc 1 294 0
+  96 0042 42EA0506 		orr	r6, r2, r5
+  97              	.LVL10:
+  98              	.L10:
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         }
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         EXTI->EMR1 = temp;
+  99              		.loc 1 296 0
+ 100 0046 504D     		ldr	r5, .L22+4
+ 101 0048 6E60     		str	r6, [r5, #4]
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         /* Clear Rising Falling edge configuration */
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp = EXTI->RTSR1;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 8
+
+
+ 102              		.loc 1 299 0
+ 103 004a AD68     		ldr	r5, [r5, #8]
+ 104              	.LVL11:
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp &= ~((uint32_t)iocurrent);
+ 105              		.loc 1 300 0
+ 106 004c 04EA0506 		and	r6, r4, r5
+ 107              	.LVL12:
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         if((GPIO_Init->Mode & RISING_EDGE) == RISING_EDGE)
+ 108              		.loc 1 301 0
+ 109 0050 4F68     		ldr	r7, [r1, #4]
+ 110 0052 17F4801F 		tst	r7, #1048576
+ 111 0056 01D0     		beq	.L11
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         {
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****           temp |= iocurrent;
+ 112              		.loc 1 303 0
+ 113 0058 42EA0506 		orr	r6, r2, r5
+ 114              	.LVL13:
+ 115              	.L11:
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         }
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         EXTI->RTSR1 = temp;
+ 116              		.loc 1 305 0
+ 117 005c 4A4D     		ldr	r5, .L22+4
+ 118 005e AE60     		str	r6, [r5, #8]
+ 306:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp = EXTI->FTSR1;
+ 119              		.loc 1 307 0
+ 120 0060 ED68     		ldr	r5, [r5, #12]
+ 121              	.LVL14:
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp &= ~((uint32_t)iocurrent);
+ 122              		.loc 1 308 0
+ 123 0062 2C40     		ands	r4, r4, r5
+ 124              	.LVL15:
+ 309:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         if((GPIO_Init->Mode & FALLING_EDGE) == FALLING_EDGE)
+ 125              		.loc 1 309 0
+ 126 0064 4E68     		ldr	r6, [r1, #4]
+ 127 0066 16F4001F 		tst	r6, #2097152
+ 128 006a 01D0     		beq	.L12
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         {
+ 311:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****           temp |= iocurrent;
+ 129              		.loc 1 311 0
+ 130 006c 42EA0504 		orr	r4, r2, r5
+ 131              	.LVL16:
+ 132              	.L12:
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         }
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         EXTI->FTSR1 = temp;
+ 133              		.loc 1 313 0
+ 134 0070 454A     		ldr	r2, .L22+4
+ 135              	.LVL17:
+ 136 0072 D460     		str	r4, [r2, #12]
+ 137              	.LVL18:
+ 138              	.L3:
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       }
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     }
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     position++;
+ 139              		.loc 1 317 0
+ 140 0074 0133     		adds	r3, r3, #1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 9
+
+
+ 141              	.LVL19:
+ 142              	.L2:
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   {
+ 143              		.loc 1 202 0
+ 144 0076 0A68     		ldr	r2, [r1]
+ 145 0078 32FA03F4 		lsrs	r4, r2, r3
+ 146 007c 7ED0     		beq	.L20
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 147              		.loc 1 205 0
+ 148 007e 0124     		movs	r4, #1
+ 149 0080 9C40     		lsls	r4, r4, r3
+ 150              	.LVL20:
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     {
+ 151              		.loc 1 207 0
+ 152 0082 2240     		ands	r2, r4, r2
+ 153              	.LVL21:
+ 154 0084 F6D0     		beq	.L3
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       {
+ 155              		.loc 1 211 0
+ 156 0086 4D68     		ldr	r5, [r1, #4]
+ 157 0088 022D     		cmp	r5, #2
+ 158 008a 01D0     		beq	.L4
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       {
+ 159              		.loc 1 211 0 is_stmt 0 discriminator 1
+ 160 008c 122D     		cmp	r5, #18
+ 161 008e 10D1     		bne	.L5
+ 162              	.L4:
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp &= ~((uint32_t)0xF << ((uint32_t)(position & (uint32_t)0x07) * 4)) ;
+ 163              		.loc 1 218 0 is_stmt 1
+ 164 0090 DE08     		lsrs	r6, r3, #3
+ 165 0092 0836     		adds	r6, r6, #8
+ 166 0094 50F826C0 		ldr	ip, [r0, r6, lsl #2]
+ 167              	.LVL22:
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp |= ((uint32_t)(GPIO_Init->Alternate) << (((uint32_t)position & (uint32_t)0x07) * 4));
+ 168              		.loc 1 219 0
+ 169 0098 03F00705 		and	r5, r3, #7
+ 170 009c AF00     		lsls	r7, r5, #2
+ 171 009e 0F25     		movs	r5, #15
+ 172 00a0 BD40     		lsls	r5, r5, r7
+ 173 00a2 2CEA050C 		bic	ip, ip, r5
+ 174              	.LVL23:
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         GPIOx->AFR[position >> 3] = temp;
+ 175              		.loc 1 220 0
+ 176 00a6 0D69     		ldr	r5, [r1, #16]
+ 177 00a8 BD40     		lsls	r5, r5, r7
+ 178 00aa 45EA0C05 		orr	r5, r5, ip
+ 179              	.LVL24:
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       }
+ 180              		.loc 1 221 0
+ 181 00ae 40F82650 		str	r5, [r0, r6, lsl #2]
+ 182              	.LVL25:
+ 183              	.L5:
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       temp &= ~(GPIO_MODER_MODE0 << (position * 2));
+ 184              		.loc 1 225 0
+ 185 00b2 0668     		ldr	r6, [r0]
+ 186              	.LVL26:
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       temp |= ((GPIO_Init->Mode & GPIO_MODE) << (position * 2));
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 10
+
+
+ 187              		.loc 1 226 0
+ 188 00b4 5F00     		lsls	r7, r3, #1
+ 189 00b6 0325     		movs	r5, #3
+ 190 00b8 BD40     		lsls	r5, r5, r7
+ 191 00ba ED43     		mvns	r5, r5
+ 192 00bc 05EA060C 		and	ip, r5, r6
+ 193              	.LVL27:
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       GPIOx->MODER = temp;
+ 194              		.loc 1 227 0
+ 195 00c0 4E68     		ldr	r6, [r1, #4]
+ 196 00c2 06F00306 		and	r6, r6, #3
+ 197 00c6 BE40     		lsls	r6, r6, r7
+ 198 00c8 46EA0C06 		orr	r6, r6, ip
+ 199              	.LVL28:
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 200              		.loc 1 228 0
+ 201 00cc 0660     		str	r6, [r0]
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****          (GPIO_Init->Mode == GPIO_MODE_OUTPUT_OD) || (GPIO_Init->Mode == GPIO_MODE_AF_OD))
+ 202              		.loc 1 231 0
+ 203 00ce 4E68     		ldr	r6, [r1, #4]
+ 204              	.LVL29:
+ 205 00d0 06F1FF3C 		add	ip, r6, #-1
+ 206 00d4 BCF1010F 		cmp	ip, #1
+ 207 00d8 03D9     		bls	.L6
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****          (GPIO_Init->Mode == GPIO_MODE_OUTPUT_OD) || (GPIO_Init->Mode == GPIO_MODE_AF_OD))
+ 208              		.loc 1 231 0 is_stmt 0 discriminator 1
+ 209 00da 112E     		cmp	r6, #17
+ 210 00dc 01D0     		beq	.L6
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       {
+ 211              		.loc 1 232 0 is_stmt 1
+ 212 00de 122E     		cmp	r6, #18
+ 213 00e0 10D1     		bne	.L7
+ 214              	.L6:
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp &= ~(GPIO_OSPEEDR_OSPEED0 << (position * 2));
+ 215              		.loc 1 237 0
+ 216 00e2 8668     		ldr	r6, [r0, #8]
+ 217              	.LVL30:
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp |= (GPIO_Init->Speed << (position * 2));
+ 218              		.loc 1 238 0
+ 219 00e4 05EA060C 		and	ip, r5, r6
+ 220              	.LVL31:
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         GPIOx->OSPEEDR = temp;
+ 221              		.loc 1 239 0
+ 222 00e8 CE68     		ldr	r6, [r1, #12]
+ 223 00ea BE40     		lsls	r6, r6, r7
+ 224 00ec 46EA0C06 		orr	r6, r6, ip
+ 225              	.LVL32:
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 226              		.loc 1 240 0
+ 227 00f0 8660     		str	r6, [r0, #8]
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp &= ~(GPIO_OTYPER_OT0 << position) ;
+ 228              		.loc 1 243 0
+ 229 00f2 4668     		ldr	r6, [r0, #4]
+ 230              	.LVL33:
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp |= (((GPIO_Init->Mode & GPIO_OUTPUT_TYPE) >> 4) << position);
+ 231              		.loc 1 244 0
+ 232 00f4 26EA0404 		bic	r4, r6, r4
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 11
+
+
+ 233              	.LVL34:
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         GPIOx->OTYPER = temp;
+ 234              		.loc 1 245 0
+ 235 00f8 4E68     		ldr	r6, [r1, #4]
+ 236 00fa C6F30016 		ubfx	r6, r6, #4, #1
+ 237 00fe 9E40     		lsls	r6, r6, r3
+ 238 0100 2643     		orrs	r6, r6, r4
+ 239              	.LVL35:
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       }
+ 240              		.loc 1 246 0
+ 241 0102 4660     		str	r6, [r0, #4]
+ 242              	.LVL36:
+ 243              	.L7:
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       temp &= ~(GPIO_PUPDR_PUPD0 << (position * 2));
+ 244              		.loc 1 264 0
+ 245 0104 C468     		ldr	r4, [r0, #12]
+ 246              	.LVL37:
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       temp |= ((GPIO_Init->Pull) << (position * 2));
+ 247              		.loc 1 265 0
+ 248 0106 2540     		ands	r5, r5, r4
+ 249              	.LVL38:
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       GPIOx->PUPDR = temp;
+ 250              		.loc 1 266 0
+ 251 0108 8C68     		ldr	r4, [r1, #8]
+ 252 010a BC40     		lsls	r4, r4, r7
+ 253 010c 2C43     		orrs	r4, r4, r5
+ 254              	.LVL39:
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 255              		.loc 1 267 0
+ 256 010e C460     		str	r4, [r0, #12]
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       {
+ 257              		.loc 1 271 0
+ 258 0110 4C68     		ldr	r4, [r1, #4]
+ 259              	.LVL40:
+ 260 0112 14F0805F 		tst	r4, #268435456
+ 261 0116 ADD0     		beq	.L3
+ 262              	.LBB2:
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 263              		.loc 1 274 0
+ 264 0118 1C4C     		ldr	r4, .L22+8
+ 265 011a 256E     		ldr	r5, [r4, #96]
+ 266 011c 45F00105 		orr	r5, r5, #1
+ 267 0120 2566     		str	r5, [r4, #96]
+ 268              	.LVL41:
+ 269 0122 246E     		ldr	r4, [r4, #96]
+ 270 0124 04F00104 		and	r4, r4, #1
+ 271 0128 0194     		str	r4, [sp, #4]
+ 272 012a 019C     		ldr	r4, [sp, #4]
+ 273              	.LBE2:
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp &= ~(((uint32_t)0x0F) << (4 * (position & 0x03)));
+ 274              		.loc 1 276 0
+ 275 012c 9D08     		lsrs	r5, r3, #2
+ 276 012e AE1C     		adds	r6, r5, #2
+ 277 0130 144C     		ldr	r4, .L22
+ 278 0132 54F82670 		ldr	r7, [r4, r6, lsl #2]
+ 279              	.LVL42:
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         temp |= (GPIO_GET_INDEX(GPIOx) << (4 * (position & 0x03)));
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 12
+
+
+ 280              		.loc 1 277 0
+ 281 0136 03F00304 		and	r4, r3, #3
+ 282 013a A600     		lsls	r6, r4, #2
+ 283 013c 0F24     		movs	r4, #15
+ 284 013e B440     		lsls	r4, r4, r6
+ 285 0140 27EA0407 		bic	r7, r7, r4
+ 286              	.LVL43:
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         SYSCFG->EXTICR[position >> 2] = temp;
+ 287              		.loc 1 278 0
+ 288 0144 B0F1904F 		cmp	r0, #1207959552
+ 289 0148 3FF460AF 		beq	.L14
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         SYSCFG->EXTICR[position >> 2] = temp;
+ 290              		.loc 1 278 0 is_stmt 0 discriminator 1
+ 291 014c 104C     		ldr	r4, .L22+12
+ 292 014e A042     		cmp	r0, r4
+ 293 0150 0ED0     		beq	.L15
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         SYSCFG->EXTICR[position >> 2] = temp;
+ 294              		.loc 1 278 0 discriminator 3
+ 295 0152 04F58064 		add	r4, r4, #1024
+ 296 0156 A042     		cmp	r0, r4
+ 297 0158 0CD0     		beq	.L16
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         SYSCFG->EXTICR[position >> 2] = temp;
+ 298              		.loc 1 278 0 discriminator 5
+ 299 015a 04F58064 		add	r4, r4, #1024
+ 300 015e A042     		cmp	r0, r4
+ 301 0160 0AD0     		beq	.L17
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         SYSCFG->EXTICR[position >> 2] = temp;
+ 302              		.loc 1 278 0 discriminator 7
+ 303 0162 04F58064 		add	r4, r4, #1024
+ 304 0166 A042     		cmp	r0, r4
+ 305 0168 3FF44EAF 		beq	.L21
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         SYSCFG->EXTICR[position >> 2] = temp;
+ 306              		.loc 1 278 0
+ 307 016c 0724     		movs	r4, #7
+ 308 016e 4EE7     		b	.L8
+ 309              	.L15:
+ 310 0170 0124     		movs	r4, #1
+ 311 0172 4CE7     		b	.L8
+ 312              	.L16:
+ 313 0174 0224     		movs	r4, #2
+ 314 0176 4AE7     		b	.L8
+ 315              	.L17:
+ 316 0178 0324     		movs	r4, #3
+ 317 017a 48E7     		b	.L8
+ 318              	.LVL44:
+ 319              	.L20:
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   }
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** }
+ 320              		.loc 1 319 0 is_stmt 1
+ 321 017c 02B0     		add	sp, sp, #8
+ 322              	.LCFI2:
+ 323              		.cfi_def_cfa_offset 16
+ 324              		@ sp needed
+ 325 017e F0BC     		pop	{r4, r5, r6, r7}
+ 326              	.LCFI3:
+ 327              		.cfi_restore 7
+ 328              		.cfi_restore 6
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 13
+
+
+ 329              		.cfi_restore 5
+ 330              		.cfi_restore 4
+ 331              		.cfi_def_cfa_offset 0
+ 332 0180 7047     		bx	lr
+ 333              	.L23:
+ 334 0182 00BF     		.align	2
+ 335              	.L22:
+ 336 0184 00000140 		.word	1073807360
+ 337 0188 00040140 		.word	1073808384
+ 338 018c 00100240 		.word	1073876992
+ 339 0190 00040048 		.word	1207960576
+ 340              		.cfi_endproc
+ 341              	.LFE133:
+ 343              		.section	.text.HAL_GPIO_DeInit,"ax",%progbits
+ 344              		.align	1
+ 345              		.global	HAL_GPIO_DeInit
+ 346              		.syntax unified
+ 347              		.thumb
+ 348              		.thumb_func
+ 349              		.fpu fpv4-sp-d16
+ 351              	HAL_GPIO_DeInit:
+ 352              	.LFB134:
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /**
+ 322:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @brief  De-initialize the GPIOx peripheral registers to their default reset values.
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @param  GPIOx: where x can be (A..H) to select the GPIO peripheral for STM32L4 family
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @param  GPIO_Pin: specifies the port bit to be written.
+ 325:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *         This parameter can be one of GPIO_PIN_x where x can be (0..15).
+ 326:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @retval None
+ 327:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 328:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** void HAL_GPIO_DeInit(GPIO_TypeDef  *GPIOx, uint32_t GPIO_Pin)
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** {
+ 353              		.loc 1 329 0
+ 354              		.cfi_startproc
+ 355              		@ args = 0, pretend = 0, frame = 0
+ 356              		@ frame_needed = 0, uses_anonymous_args = 0
+ 357              	.LVL45:
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   uint32_t position = 0x00;
+ 358              		.loc 1 330 0
+ 359 0000 0023     		movs	r3, #0
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   uint32_t iocurrent = 0x00;
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   uint32_t tmp = 0x00;
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* Check the parameters */
+ 335:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
+ 336:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   assert_param(IS_GPIO_PIN(GPIO_Pin));
+ 337:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 338:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* Configure the port pins */
+ 339:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   while ((GPIO_Pin >> position) != RESET)
+ 360              		.loc 1 339 0
+ 361 0002 72E0     		b	.L35
+ 362              	.LVL46:
+ 363              	.L42:
+ 364              	.LCFI4:
+ 365              		.cfi_def_cfa_offset 20
+ 366              		.cfi_offset 4, -20
+ 367              		.cfi_offset 5, -16
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 14
+
+
+ 368              		.cfi_offset 6, -12
+ 369              		.cfi_offset 7, -8
+ 370              		.cfi_offset 14, -4
+ 340:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   {
+ 341:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     /* Get current io position */
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     iocurrent = (GPIO_Pin) & (1U << position);
+ 343:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 344:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     if (iocurrent)
+ 345:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     {
+ 346:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /*------------------------- GPIO Mode Configuration --------------------*/
+ 347:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /* Configure IO in Analog Mode */
+ 348:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       GPIOx->MODER |= (GPIO_MODER_MODE0 << (position * 2));
+ 349:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 350:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /* Configure the default Alternate Function in current IO */
+ 351:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       GPIOx->AFR[position >> 3] &= ~((uint32_t)0xF << ((uint32_t)(position & (uint32_t)0x07) * 4)) 
+ 352:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 353:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /* Configure the default value for IO Speed */
+ 354:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       GPIOx->OSPEEDR &= ~(GPIO_OSPEEDR_OSPEED0 << (position * 2));
+ 355:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 356:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /* Configure the default value IO Output Type */
+ 357:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       GPIOx->OTYPER  &= ~(GPIO_OTYPER_OT0 << position) ;
+ 358:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 359:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /* Deactivate the Pull-up and Pull-down resistor for the current IO */
+ 360:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       GPIOx->PUPDR &= ~(GPIO_PUPDR_PUPD0 << (position * 2));
+ 361:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 362:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** #if defined(STM32L471xx) || defined(STM32L475xx) || defined(STM32L476xx) || defined(STM32L485xx) ||
+ 363:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 364:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /* Deactivate the Control bit of Analog mode for the current IO */
+ 365:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       GPIOx->ASCR &= ~(GPIO_ASCR_ASC0<< position);
+ 366:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 367:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** #endif /* STM32L471xx || STM32L475xx || STM32L476xx || STM32L485xx || STM32L486xx */
+ 368:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 369:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /*------------------------- EXTI Mode Configuration --------------------*/
+ 370:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       /* Clear the External Interrupt or Event for the current IO */
+ 371:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       
+ 372:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       tmp = SYSCFG->EXTICR[position >> 2];
+ 373:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       tmp &= (((uint32_t)0x0F) << (4 * (position & 0x03)));
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       if(tmp == (GPIO_GET_INDEX(GPIOx) << (4 * (position & 0x03))))
+ 371              		.loc 1 374 0
+ 372 0004 0425     		movs	r5, #4
+ 373 0006 00E0     		b	.L27
+ 374              	.L29:
+ 375 0008 0025     		movs	r5, #0
+ 376              	.L27:
+ 377              		.loc 1 374 0 is_stmt 0 discriminator 20
+ 378 000a 05FA02F2 		lsl	r2, r5, r2
+ 379 000e A242     		cmp	r2, r4
+ 380 0010 4DD0     		beq	.L40
+ 381              	.LVL47:
+ 382              	.L26:
+ 375:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       {
+ 376:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         tmp = ((uint32_t)0x0F) << (4 * (position & 0x03));
+ 377:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         SYSCFG->EXTICR[position >> 2] &= ~tmp;
+ 378:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 379:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         /* Clear EXTI line configuration */
+ 380:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         EXTI->IMR1 &= ~((uint32_t)iocurrent);
+ 381:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         EXTI->EMR1 &= ~((uint32_t)iocurrent);
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 15
+
+
+ 382:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 383:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         /* Clear Rising Falling edge configuration */
+ 384:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         EXTI->RTSR1 &= ~((uint32_t)iocurrent);
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         EXTI->FTSR1 &= ~((uint32_t)iocurrent);
+ 386:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       }
+ 387:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     }
+ 388:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     
+ 389:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     position++;
+ 383              		.loc 1 389 0 is_stmt 1
+ 384 0012 0133     		adds	r3, r3, #1
+ 385              	.LVL48:
+ 339:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   {
+ 386              		.loc 1 339 0
+ 387 0014 31FA03F2 		lsrs	r2, r1, r3
+ 388 0018 65D0     		beq	.L41
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 389              		.loc 1 342 0
+ 390 001a 0122     		movs	r2, #1
+ 391 001c 9A40     		lsls	r2, r2, r3
+ 392              	.LVL49:
+ 344:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     {
+ 393              		.loc 1 344 0
+ 394 001e 12EA010C 		ands	ip, r2, r1
+ 395              	.LVL50:
+ 396 0022 F6D0     		beq	.L26
+ 397              	.L36:
+ 348:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 398              		.loc 1 348 0
+ 399 0024 0568     		ldr	r5, [r0]
+ 400 0026 5C00     		lsls	r4, r3, #1
+ 401 0028 0326     		movs	r6, #3
+ 402 002a 06FA04F4 		lsl	r4, r6, r4
+ 403 002e 2543     		orrs	r5, r5, r4
+ 404 0030 0560     		str	r5, [r0]
+ 351:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 405              		.loc 1 351 0
+ 406 0032 23FA06F7 		lsr	r7, r3, r6
+ 407 0036 0837     		adds	r7, r7, #8
+ 408 0038 50F827E0 		ldr	lr, [r0, r7, lsl #2]
+ 409 003c 03F00705 		and	r5, r3, #7
+ 410 0040 AD00     		lsls	r5, r5, #2
+ 411 0042 0F26     		movs	r6, #15
+ 412 0044 06FA05F5 		lsl	r5, r6, r5
+ 413 0048 2EEA0505 		bic	r5, lr, r5
+ 414 004c 40F82750 		str	r5, [r0, r7, lsl #2]
+ 354:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 415              		.loc 1 354 0
+ 416 0050 8568     		ldr	r5, [r0, #8]
+ 417 0052 E443     		mvns	r4, r4
+ 418 0054 2540     		ands	r5, r5, r4
+ 419 0056 8560     		str	r5, [r0, #8]
+ 357:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 420              		.loc 1 357 0
+ 421 0058 4568     		ldr	r5, [r0, #4]
+ 422 005a 25EA0202 		bic	r2, r5, r2
+ 423 005e 4260     		str	r2, [r0, #4]
+ 360:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 16
+
+
+ 424              		.loc 1 360 0
+ 425 0060 C268     		ldr	r2, [r0, #12]
+ 426 0062 1440     		ands	r4, r4, r2
+ 427 0064 C460     		str	r4, [r0, #12]
+ 372:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       tmp &= (((uint32_t)0x0F) << (4 * (position & 0x03)));
+ 428              		.loc 1 372 0
+ 429 0066 9F08     		lsrs	r7, r3, #2
+ 430 0068 BC1C     		adds	r4, r7, #2
+ 431 006a 254A     		ldr	r2, .L45
+ 432 006c 52F82440 		ldr	r4, [r2, r4, lsl #2]
+ 433              	.LVL51:
+ 373:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       if(tmp == (GPIO_GET_INDEX(GPIOx) << (4 * (position & 0x03))))
+ 434              		.loc 1 373 0
+ 435 0070 03F00302 		and	r2, r3, #3
+ 436 0074 9200     		lsls	r2, r2, #2
+ 437 0076 9640     		lsls	r6, r6, r2
+ 438 0078 3440     		ands	r4, r4, r6
+ 439              	.LVL52:
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       {
+ 440              		.loc 1 374 0
+ 441 007a B0F1904F 		cmp	r0, #1207959552
+ 442 007e C3D0     		beq	.L29
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       {
+ 443              		.loc 1 374 0 is_stmt 0 discriminator 1
+ 444 0080 204D     		ldr	r5, .L45+4
+ 445 0082 A842     		cmp	r0, r5
+ 446 0084 0DD0     		beq	.L30
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       {
+ 447              		.loc 1 374 0 discriminator 3
+ 448 0086 05F58065 		add	r5, r5, #1024
+ 449 008a A842     		cmp	r0, r5
+ 450 008c 0BD0     		beq	.L31
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       {
+ 451              		.loc 1 374 0 discriminator 5
+ 452 008e 05F58065 		add	r5, r5, #1024
+ 453 0092 A842     		cmp	r0, r5
+ 454 0094 09D0     		beq	.L32
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       {
+ 455              		.loc 1 374 0 discriminator 7
+ 456 0096 05F58065 		add	r5, r5, #1024
+ 457 009a A842     		cmp	r0, r5
+ 458 009c B2D0     		beq	.L42
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       {
+ 459              		.loc 1 374 0
+ 460 009e 0725     		movs	r5, #7
+ 461 00a0 B3E7     		b	.L27
+ 462              	.L30:
+ 463 00a2 0125     		movs	r5, #1
+ 464 00a4 B1E7     		b	.L27
+ 465              	.L31:
+ 466 00a6 0225     		movs	r5, #2
+ 467 00a8 AFE7     		b	.L27
+ 468              	.L32:
+ 469 00aa 0325     		movs	r5, #3
+ 470 00ac ADE7     		b	.L27
+ 471              	.L40:
+ 472              	.LVL53:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 17
+
+
+ 377:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 473              		.loc 1 377 0 is_stmt 1
+ 474 00ae 144D     		ldr	r5, .L45
+ 475 00b0 BA1C     		adds	r2, r7, #2
+ 476 00b2 55F82240 		ldr	r4, [r5, r2, lsl #2]
+ 477 00b6 24EA0606 		bic	r6, r4, r6
+ 478              	.LVL54:
+ 479 00ba 45F82260 		str	r6, [r5, r2, lsl #2]
+ 380:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         EXTI->EMR1 &= ~((uint32_t)iocurrent);
+ 480              		.loc 1 380 0
+ 481 00be 124C     		ldr	r4, .L45+8
+ 482 00c0 2268     		ldr	r2, [r4]
+ 483 00c2 6FEA0C0C 		mvn	ip, ip
+ 484              	.LVL55:
+ 485 00c6 02EA0C02 		and	r2, r2, ip
+ 486 00ca 2260     		str	r2, [r4]
+ 381:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 487              		.loc 1 381 0
+ 488 00cc 6268     		ldr	r2, [r4, #4]
+ 489 00ce 0CEA0202 		and	r2, ip, r2
+ 490 00d2 6260     		str	r2, [r4, #4]
+ 384:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****         EXTI->FTSR1 &= ~((uint32_t)iocurrent);
+ 491              		.loc 1 384 0
+ 492 00d4 A268     		ldr	r2, [r4, #8]
+ 493 00d6 0CEA0202 		and	r2, ip, r2
+ 494 00da A260     		str	r2, [r4, #8]
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****       }
+ 495              		.loc 1 385 0
+ 496 00dc E268     		ldr	r2, [r4, #12]
+ 497 00de 0CEA0202 		and	r2, ip, r2
+ 498 00e2 E260     		str	r2, [r4, #12]
+ 499 00e4 95E7     		b	.L26
+ 500              	.LVL56:
+ 501              	.L41:
+ 390:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   }
+ 391:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** }
+ 502              		.loc 1 391 0
+ 503 00e6 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 504              	.LVL57:
+ 505              	.L44:
+ 506              	.LCFI5:
+ 507              		.cfi_def_cfa_offset 0
+ 508              		.cfi_restore 4
+ 509              		.cfi_restore 5
+ 510              		.cfi_restore 6
+ 511              		.cfi_restore 7
+ 512              		.cfi_restore 14
+ 389:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   }
+ 513              		.loc 1 389 0
+ 514 00e8 0133     		adds	r3, r3, #1
+ 515              	.LVL58:
+ 516              	.L35:
+ 339:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   {
+ 517              		.loc 1 339 0
+ 518 00ea 31FA03F2 		lsrs	r2, r1, r3
+ 519 00ee 06D0     		beq	.L43
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 18
+
+
+ 520              		.loc 1 342 0
+ 521 00f0 0122     		movs	r2, #1
+ 522 00f2 9A40     		lsls	r2, r2, r3
+ 523              	.LVL59:
+ 344:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     {
+ 524              		.loc 1 344 0
+ 525 00f4 12EA010C 		ands	ip, r2, r1
+ 526              	.LVL60:
+ 527 00f8 F6D0     		beq	.L44
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   uint32_t position = 0x00;
+ 528              		.loc 1 329 0
+ 529 00fa F0B5     		push	{r4, r5, r6, r7, lr}
+ 530              	.LCFI6:
+ 531              		.cfi_def_cfa_offset 20
+ 532              		.cfi_offset 4, -20
+ 533              		.cfi_offset 5, -16
+ 534              		.cfi_offset 6, -12
+ 535              		.cfi_offset 7, -8
+ 536              		.cfi_offset 14, -4
+ 537 00fc 92E7     		b	.L36
+ 538              	.LVL61:
+ 539              	.L43:
+ 540              	.LCFI7:
+ 541              		.cfi_def_cfa_offset 0
+ 542              		.cfi_restore 4
+ 543              		.cfi_restore 5
+ 544              		.cfi_restore 6
+ 545              		.cfi_restore 7
+ 546              		.cfi_restore 14
+ 547 00fe 7047     		bx	lr
+ 548              	.L46:
+ 549              		.align	2
+ 550              	.L45:
+ 551 0100 00000140 		.word	1073807360
+ 552 0104 00040048 		.word	1207960576
+ 553 0108 00040140 		.word	1073808384
+ 554              		.cfi_endproc
+ 555              	.LFE134:
+ 557              		.section	.text.HAL_GPIO_ReadPin,"ax",%progbits
+ 558              		.align	1
+ 559              		.global	HAL_GPIO_ReadPin
+ 560              		.syntax unified
+ 561              		.thumb
+ 562              		.thumb_func
+ 563              		.fpu fpv4-sp-d16
+ 565              	HAL_GPIO_ReadPin:
+ 566              	.LFB135:
+ 392:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 393:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /**
+ 394:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @}
+ 395:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 396:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 397:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /** @defgroup GPIO_Exported_Functions_Group2 IO operation functions 
+ 398:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****  *  @brief GPIO Read, Write, Toggle, Lock and EXTI management functions.
+ 399:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****  *
+ 400:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** @verbatim
+ 401:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****  ===============================================================================
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 19
+
+
+ 402:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****                        ##### IO operation functions #####
+ 403:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****  ===============================================================================
+ 404:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 405:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** @endverbatim
+ 406:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @{
+ 407:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 408:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 409:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /**
+ 410:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @brief  Read the specified input port pin.
+ 411:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @param  GPIOx: where x can be (A..H) to select the GPIO peripheral for STM32L4 family
+ 412:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @param  GPIO_Pin: specifies the port bit to read.
+ 413:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *         This parameter can be GPIO_PIN_x where x can be (0..15).
+ 414:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @retval The input port pin value.
+ 415:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 416:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 417:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** {
+ 567              		.loc 1 417 0
+ 568              		.cfi_startproc
+ 569              		@ args = 0, pretend = 0, frame = 0
+ 570              		@ frame_needed = 0, uses_anonymous_args = 0
+ 571              		@ link register save eliminated.
+ 572              	.LVL62:
+ 418:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   GPIO_PinState bitstatus;
+ 419:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 420:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* Check the parameters */
+ 421:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   assert_param(IS_GPIO_PIN(GPIO_Pin));
+ 422:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 423:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   if((GPIOx->IDR & GPIO_Pin) != (uint32_t)GPIO_PIN_RESET)
+ 573              		.loc 1 423 0
+ 574 0000 0369     		ldr	r3, [r0, #16]
+ 575 0002 1942     		tst	r1, r3
+ 576 0004 01D1     		bne	.L50
+ 424:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   {
+ 425:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     bitstatus = GPIO_PIN_SET;
+ 426:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   }
+ 427:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   else
+ 428:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   {
+ 429:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     bitstatus = GPIO_PIN_RESET;
+ 577              		.loc 1 429 0
+ 578 0006 0020     		movs	r0, #0
+ 579              	.LVL63:
+ 430:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   }
+ 431:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   return bitstatus;
+ 432:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** }
+ 580              		.loc 1 432 0
+ 581 0008 7047     		bx	lr
+ 582              	.LVL64:
+ 583              	.L50:
+ 425:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   }
+ 584              		.loc 1 425 0
+ 585 000a 0120     		movs	r0, #1
+ 586              	.LVL65:
+ 587 000c 7047     		bx	lr
+ 588              		.cfi_endproc
+ 589              	.LFE135:
+ 591              		.section	.text.HAL_GPIO_WritePin,"ax",%progbits
+ 592              		.align	1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 20
+
+
+ 593              		.global	HAL_GPIO_WritePin
+ 594              		.syntax unified
+ 595              		.thumb
+ 596              		.thumb_func
+ 597              		.fpu fpv4-sp-d16
+ 599              	HAL_GPIO_WritePin:
+ 600              	.LFB136:
+ 433:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 434:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /**
+ 435:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @brief  Set or clear the selected data port bit.
+ 436:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *
+ 437:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @note   This function uses GPIOx_BSRR and GPIOx_BRR registers to allow atomic read/modify
+ 438:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *         accesses. In this way, there is no risk of an IRQ occurring between
+ 439:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *         the read and the modify access.
+ 440:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *
+ 441:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @param  GPIOx: where x can be (A..H) to select the GPIO peripheral for STM32L4 family
+ 442:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @param  GPIO_Pin: specifies the port bit to be written.
+ 443:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *         This parameter can be one of GPIO_PIN_x where x can be (0..15).
+ 444:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @param  PinState: specifies the value to be written to the selected bit.
+ 445:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *         This parameter can be one of the GPIO_PinState enum values:
+ 446:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *            @arg GPIO_PIN_RESET: to clear the port pin
+ 447:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *            @arg GPIO_PIN_SET: to set the port pin
+ 448:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @retval None
+ 449:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 450:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** void HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState)
+ 451:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** {
+ 601              		.loc 1 451 0
+ 602              		.cfi_startproc
+ 603              		@ args = 0, pretend = 0, frame = 0
+ 604              		@ frame_needed = 0, uses_anonymous_args = 0
+ 605              		@ link register save eliminated.
+ 606              	.LVL66:
+ 452:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* Check the parameters */
+ 453:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   assert_param(IS_GPIO_PIN(GPIO_Pin));
+ 454:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   assert_param(IS_GPIO_PIN_ACTION(PinState));
+ 455:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 456:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   if(PinState != GPIO_PIN_RESET)
+ 607              		.loc 1 456 0
+ 608 0000 0AB9     		cbnz	r2, .L54
+ 457:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   {
+ 458:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     GPIOx->BSRR = (uint32_t)GPIO_Pin;
+ 459:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   }
+ 460:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   else
+ 461:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   {
+ 462:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     GPIOx->BRR = (uint32_t)GPIO_Pin;
+ 609              		.loc 1 462 0
+ 610 0002 8162     		str	r1, [r0, #40]
+ 463:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   }
+ 464:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** }
+ 611              		.loc 1 464 0
+ 612 0004 7047     		bx	lr
+ 613              	.L54:
+ 458:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   }
+ 614              		.loc 1 458 0
+ 615 0006 8161     		str	r1, [r0, #24]
+ 616 0008 7047     		bx	lr
+ 617              		.cfi_endproc
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 21
+
+
+ 618              	.LFE136:
+ 620              		.section	.text.HAL_GPIO_TogglePin,"ax",%progbits
+ 621              		.align	1
+ 622              		.global	HAL_GPIO_TogglePin
+ 623              		.syntax unified
+ 624              		.thumb
+ 625              		.thumb_func
+ 626              		.fpu fpv4-sp-d16
+ 628              	HAL_GPIO_TogglePin:
+ 629              	.LFB137:
+ 465:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 466:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /**
+ 467:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @brief  Toggle the specified GPIO pin.
+ 468:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @param  GPIOx: where x can be (A..H) to select the GPIO peripheral for STM32L4 family
+ 469:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @param  GPIO_Pin: specifies the pin to be toggled.
+ 470:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @retval None
+ 471:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 472:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** void HAL_GPIO_TogglePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 473:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** {
+ 630              		.loc 1 473 0
+ 631              		.cfi_startproc
+ 632              		@ args = 0, pretend = 0, frame = 0
+ 633              		@ frame_needed = 0, uses_anonymous_args = 0
+ 634              		@ link register save eliminated.
+ 635              	.LVL67:
+ 474:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* Check the parameters */
+ 475:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   assert_param(IS_GPIO_PIN(GPIO_Pin));
+ 476:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 477:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   GPIOx->ODR ^= GPIO_Pin;
+ 636              		.loc 1 477 0
+ 637 0000 4369     		ldr	r3, [r0, #20]
+ 638 0002 5940     		eors	r1, r1, r3
+ 639              	.LVL68:
+ 640 0004 4161     		str	r1, [r0, #20]
+ 478:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** }
+ 641              		.loc 1 478 0
+ 642 0006 7047     		bx	lr
+ 643              		.cfi_endproc
+ 644              	.LFE137:
+ 646              		.section	.text.HAL_GPIO_LockPin,"ax",%progbits
+ 647              		.align	1
+ 648              		.global	HAL_GPIO_LockPin
+ 649              		.syntax unified
+ 650              		.thumb
+ 651              		.thumb_func
+ 652              		.fpu fpv4-sp-d16
+ 654              	HAL_GPIO_LockPin:
+ 655              	.LFB138:
+ 479:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 480:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /**
+ 481:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** * @brief  Lock GPIO Pins configuration registers.
+ 482:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @note   The locked registers are GPIOx_MODER, GPIOx_OTYPER, GPIOx_OSPEEDR,
+ 483:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *         GPIOx_PUPDR, GPIOx_AFRL and GPIOx_AFRH.
+ 484:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @note   The configuration of the locked GPIO pins can no longer be modified
+ 485:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *         until the next reset.
+ 486:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @param  GPIOx: where x can be (A..H) to select the GPIO peripheral for STM32L4 family
+ 487:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @param  GPIO_Pin: specifies the port bits to be locked.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 22
+
+
+ 488:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   *         This parameter can be any combination of GPIO_Pin_x where x can be (0..15).
+ 489:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @retval None
+ 490:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 491:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** HAL_StatusTypeDef HAL_GPIO_LockPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 492:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** {
+ 656              		.loc 1 492 0
+ 657              		.cfi_startproc
+ 658              		@ args = 0, pretend = 0, frame = 8
+ 659              		@ frame_needed = 0, uses_anonymous_args = 0
+ 660              		@ link register save eliminated.
+ 661              	.LVL69:
+ 662 0000 82B0     		sub	sp, sp, #8
+ 663              	.LCFI8:
+ 664              		.cfi_def_cfa_offset 8
+ 493:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   __IO uint32_t tmp = GPIO_LCKR_LCKK;
+ 665              		.loc 1 493 0
+ 666 0002 4FF48033 		mov	r3, #65536
+ 667 0006 0193     		str	r3, [sp, #4]
+ 494:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 495:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* Check the parameters */
+ 496:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   assert_param(IS_GPIO_LOCK_INSTANCE(GPIOx));
+ 497:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   assert_param(IS_GPIO_PIN(GPIO_Pin));
+ 498:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 499:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* Apply lock key write sequence */
+ 500:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   tmp |= GPIO_Pin;
+ 668              		.loc 1 500 0
+ 669 0008 019B     		ldr	r3, [sp, #4]
+ 670 000a 0B43     		orrs	r3, r3, r1
+ 671 000c 0193     		str	r3, [sp, #4]
+ 501:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* Set LCKx bit(s): LCKK='1' + LCK[15-0] */
+ 502:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   GPIOx->LCKR = tmp;
+ 672              		.loc 1 502 0
+ 673 000e 019B     		ldr	r3, [sp, #4]
+ 674 0010 C361     		str	r3, [r0, #28]
+ 503:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* Reset LCKx bit(s): LCKK='0' + LCK[15-0] */
+ 504:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   GPIOx->LCKR = GPIO_Pin;
+ 675              		.loc 1 504 0
+ 676 0012 C161     		str	r1, [r0, #28]
+ 505:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* Set LCKx bit(s): LCKK='1' + LCK[15-0] */
+ 506:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   GPIOx->LCKR = tmp;
+ 677              		.loc 1 506 0
+ 678 0014 019B     		ldr	r3, [sp, #4]
+ 679 0016 C361     		str	r3, [r0, #28]
+ 507:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* Read LCKK bit*/
+ 508:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   tmp = GPIOx->LCKR;
+ 680              		.loc 1 508 0
+ 681 0018 C369     		ldr	r3, [r0, #28]
+ 682 001a 0193     		str	r3, [sp, #4]
+ 509:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 510:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   if((GPIOx->LCKR & GPIO_LCKR_LCKK) != RESET)
+ 683              		.loc 1 510 0
+ 684 001c C369     		ldr	r3, [r0, #28]
+ 685 001e 13F4803F 		tst	r3, #65536
+ 686 0022 02D1     		bne	.L60
+ 511:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   {
+ 512:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     return HAL_OK;
+ 513:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 23
+
+
+ 514:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   else
+ 515:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   {
+ 516:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     return HAL_ERROR;
+ 687              		.loc 1 516 0
+ 688 0024 0120     		movs	r0, #1
+ 689              	.LVL70:
+ 690              	.L57:
+ 517:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   }
+ 518:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** }
+ 691              		.loc 1 518 0
+ 692 0026 02B0     		add	sp, sp, #8
+ 693              	.LCFI9:
+ 694              		.cfi_remember_state
+ 695              		.cfi_def_cfa_offset 0
+ 696              		@ sp needed
+ 697 0028 7047     		bx	lr
+ 698              	.LVL71:
+ 699              	.L60:
+ 700              	.LCFI10:
+ 701              		.cfi_restore_state
+ 512:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   }
+ 702              		.loc 1 512 0
+ 703 002a 0020     		movs	r0, #0
+ 704              	.LVL72:
+ 705 002c FBE7     		b	.L57
+ 706              		.cfi_endproc
+ 707              	.LFE138:
+ 709              		.section	.text.HAL_GPIO_EXTI_Callback,"ax",%progbits
+ 710              		.align	1
+ 711              		.weak	HAL_GPIO_EXTI_Callback
+ 712              		.syntax unified
+ 713              		.thumb
+ 714              		.thumb_func
+ 715              		.fpu fpv4-sp-d16
+ 717              	HAL_GPIO_EXTI_Callback:
+ 718              	.LFB140:
+ 519:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 520:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /**
+ 521:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @brief  Handle EXTI interrupt request.
+ 522:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @param  GPIO_Pin: Specifies the port pin connected to corresponding EXTI line.
+ 523:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @retval None
+ 524:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ 525:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** void HAL_GPIO_EXTI_IRQHandler(uint16_t GPIO_Pin)
+ 526:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** {
+ 527:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* EXTI line interrupt detected */
+ 528:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   if(__HAL_GPIO_EXTI_GET_IT(GPIO_Pin) != RESET)
+ 529:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   {
+ 530:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     __HAL_GPIO_EXTI_CLEAR_IT(GPIO_Pin);
+ 531:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     HAL_GPIO_EXTI_Callback(GPIO_Pin);
+ 532:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   }
+ 533:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** }
+ 534:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 535:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** /**
+ 536:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @brief  EXTI line detection callback.
+ 537:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @param  GPIO_Pin: Specifies the port pin connected to corresponding EXTI line.
+ 538:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   * @retval None
+ 539:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   */
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 24
+
+
+ 540:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** __weak void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+ 541:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** {
+ 719              		.loc 1 541 0
+ 720              		.cfi_startproc
+ 721              		@ args = 0, pretend = 0, frame = 0
+ 722              		@ frame_needed = 0, uses_anonymous_args = 0
+ 723              		@ link register save eliminated.
+ 724              	.LVL73:
+ 542:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* Prevent unused argument(s) compilation warning */
+ 543:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   UNUSED(GPIO_Pin);
+ 544:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 545:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* NOTE: This function should not be modified, when the callback is needed,
+ 546:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****            the HAL_GPIO_EXTI_Callback could be implemented in the user file
+ 547:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****    */
+ 548:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** }
+ 725              		.loc 1 548 0
+ 726 0000 7047     		bx	lr
+ 727              		.cfi_endproc
+ 728              	.LFE140:
+ 730              		.section	.text.HAL_GPIO_EXTI_IRQHandler,"ax",%progbits
+ 731              		.align	1
+ 732              		.global	HAL_GPIO_EXTI_IRQHandler
+ 733              		.syntax unified
+ 734              		.thumb
+ 735              		.thumb_func
+ 736              		.fpu fpv4-sp-d16
+ 738              	HAL_GPIO_EXTI_IRQHandler:
+ 739              	.LFB139:
+ 526:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   /* EXTI line interrupt detected */
+ 740              		.loc 1 526 0
+ 741              		.cfi_startproc
+ 742              		@ args = 0, pretend = 0, frame = 0
+ 743              		@ frame_needed = 0, uses_anonymous_args = 0
+ 744              	.LVL74:
+ 745 0000 08B5     		push	{r3, lr}
+ 746              	.LCFI11:
+ 747              		.cfi_def_cfa_offset 8
+ 748              		.cfi_offset 3, -8
+ 749              		.cfi_offset 14, -4
+ 528:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   {
+ 750              		.loc 1 528 0
+ 751 0002 054B     		ldr	r3, .L66
+ 752 0004 5B69     		ldr	r3, [r3, #20]
+ 753 0006 0342     		tst	r3, r0
+ 754 0008 00D1     		bne	.L65
+ 755              	.LVL75:
+ 756              	.L62:
+ 533:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 757              		.loc 1 533 0
+ 758 000a 08BD     		pop	{r3, pc}
+ 759              	.LVL76:
+ 760              	.L65:
+ 530:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****     HAL_GPIO_EXTI_Callback(GPIO_Pin);
+ 761              		.loc 1 530 0
+ 762 000c 024B     		ldr	r3, .L66
+ 763 000e 5861     		str	r0, [r3, #20]
+ 531:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c ****   }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 25
+
+
+ 764              		.loc 1 531 0
+ 765 0010 FFF7FEFF 		bl	HAL_GPIO_EXTI_Callback
+ 766              	.LVL77:
+ 533:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_gpio.c **** 
+ 767              		.loc 1 533 0
+ 768 0014 F9E7     		b	.L62
+ 769              	.L67:
+ 770 0016 00BF     		.align	2
+ 771              	.L66:
+ 772 0018 00040140 		.word	1073808384
+ 773              		.cfi_endproc
+ 774              	.LFE139:
+ 776              		.text
+ 777              	.Letext0:
+ 778              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 779              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 780              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 781              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 782              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 783              		.file 7 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 784              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 785              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 786              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 787              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/stm32
+ 788              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 789              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 790              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 791              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 792              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 793              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 794              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 795              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 796              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 797              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 798              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/stm32
+ 799              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 800              		.file 24 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s 			page 26
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32l4xx_hal_gpio.c
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:18     .text.HAL_GPIO_Init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:25     .text.HAL_GPIO_Init:00000000 HAL_GPIO_Init
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:336    .text.HAL_GPIO_Init:00000184 $d
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:344    .text.HAL_GPIO_DeInit:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:351    .text.HAL_GPIO_DeInit:00000000 HAL_GPIO_DeInit
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:551    .text.HAL_GPIO_DeInit:00000100 $d
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:558    .text.HAL_GPIO_ReadPin:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:565    .text.HAL_GPIO_ReadPin:00000000 HAL_GPIO_ReadPin
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:592    .text.HAL_GPIO_WritePin:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:599    .text.HAL_GPIO_WritePin:00000000 HAL_GPIO_WritePin
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:621    .text.HAL_GPIO_TogglePin:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:628    .text.HAL_GPIO_TogglePin:00000000 HAL_GPIO_TogglePin
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:647    .text.HAL_GPIO_LockPin:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:654    .text.HAL_GPIO_LockPin:00000000 HAL_GPIO_LockPin
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:710    .text.HAL_GPIO_EXTI_Callback:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:717    .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:731    .text.HAL_GPIO_EXTI_IRQHandler:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:738    .text.HAL_GPIO_EXTI_IRQHandler:00000000 HAL_GPIO_EXTI_IRQHandler
+c:\Users\lenovo\AppData\Local\Temp\ccH3QI0H.s:772    .text.HAL_GPIO_EXTI_IRQHandler:00000018 $d
+
+NO UNDEFINED SYMBOLS

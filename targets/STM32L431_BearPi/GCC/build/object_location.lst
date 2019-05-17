@@ -1,0 +1,979 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"object_location.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	__aeabi_f2d
+  18              		.global	__aeabi_ul2d
+  19              		.section	.text.prv_res2tlv,"ax",%progbits
+  20              		.align	1
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	prv_res2tlv:
+  27              	.LFB142:
+  28              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 2
+
+
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** /*******************************************************************************
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * Copyright (c) 2014 Bosch Software Innovations GmbH, Germany.
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * All rights reserved. This program and the accompanying materials
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * are made available under the terms of the Eclipse Public License v1.0
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * The Eclipse Public License is available at
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * The Eclipse Distribution License is available at
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *    http://www.eclipse.org/org/documents/edl-v10.php.
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * Contributors:
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *    Bosch Software Innovations GmbH - Please refer to git log
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *    Pascal Rieux - Please refer to git log
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  ******************************************************************************/
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** /*! \file
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   LWM2M object "Location" implementation
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   \author Joerg Hubschneider
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** */
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** /*
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *  Object     |      | Multiple  |     | Description                   |
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *  Name       |  ID  | Instances |Mand.|                               |
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *-------------+------+-----------+-----+-------------------------------+
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *  Location   |   6  |    No     |  No |  see TS E.7 page 101          |
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *  Resources:
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *  Name        | ID  | Oper.|Instances|Mand.|  Type   | Range | Units | Description               
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  * -------------+-----+------+---------+-----+---------+-------+-------+---------------------------
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *  Latitude    |  0  |  R   | Single  | Yes | Float   |       |  Deg  | The decimal notation of la
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *  Longitude   |  1  |  R   | Single  | Yes | Float   |       |  Deg  | The decimal notation of lo
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *  Altitude    |  2  |  R   | Single  | No  | Float   |       |   m   | The decimal notation of al
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *  Radius      |  3  |  R   | Single  | No  | Float   |       |   m   | The value in the Radius Re
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *              |     |      |         |     |         |       |       | around a point of geometry
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *  Velocity    |  4  |  R   | Single  | No  | Opaque  |       |   *   | The velocity of the device
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *              |     |      |         |     |         |       |       | This set of values may not
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *              |     |      |         |     |         |       |       | opaque: see OMA_TS 6.3.2  
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *  Timestamp   |  5  |  R   | Single  | Yes | Time    |       |   s   | The timestamp when the loc
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *  Speed       |  6  |  R   | Single  | No  | Float   |       |  m/s  | Speed is the time rate of 
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  *              |     |      |         |     |         |       |       | for direction: the scalar 
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****  */
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** #include "internals.h"
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** #include "object_comm.h"
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** #ifdef LWM2M_CLIENT_MODE
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** // ---- private "object location" specific defines ----
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** // Resource Id's:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 3
+
+
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** #define RES_M_LATITUDE     0
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** #define RES_M_LONGITUDE    1
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** #define RES_O_ALTITUDE     2
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** #define RES_O_RADIUS       3
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** #define RES_O_VELOCITY     4
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** #define RES_M_TIMESTAMP    5
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** #define RES_O_SPEED        6
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** /**
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** implementation for all read-able resources
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** */
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** static uint8_t prv_res2tlv(lwm2m_data_t *dataP)
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** {
+  29              		.loc 1 100 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 40
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              	.LVL0:
+  34 0000 10B5     		push	{r4, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 4, -8
+  38              		.cfi_offset 14, -4
+  39 0002 8AB0     		sub	sp, sp, #40
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 48
+  42 0004 0446     		mov	r4, r0
+  43              	.LVL1:
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     //-------------------------------------------------------------------- JH --
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     uint8_t ret = COAP_205_CONTENT;
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     float get_value;
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     uint64_t timestamp;
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     atiny_velocity_s velocity;
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     switch (dataP->id)     // location resourceId
+  44              		.loc 1 107 0
+  45 0006 4388     		ldrh	r3, [r0, #2]
+  46 0008 062B     		cmp	r3, #6
+  47 000a 00F28380 		bhi	.L11
+  48 000e DFE803F0 		tbb	[pc, r3]
+  49              	.L4:
+  50 0012 04       		.byte	(.L3-.L4)/2
+  51 0013 17       		.byte	(.L5-.L4)/2
+  52 0014 29       		.byte	(.L6-.L4)/2
+  53 0015 3B       		.byte	(.L7-.L4)/2
+  54 0016 4D       		.byte	(.L8-.L4)/2
+  55 0017 5C       		.byte	(.L9-.L4)/2
+  56 0018 6F       		.byte	(.L10-.L4)/2
+  57 0019 00       		.p2align 1
+  58              	.L3:
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     {
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     case RES_M_LATITUDE:
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         if (atiny_cmd_ioctl(ATINY_GET_LATITUDE, (char *)&get_value, sizeof(float)) == ATINY_OK)
+  59              		.loc 1 110 0
+  60 001a 0422     		movs	r2, #4
+  61 001c 09A9     		add	r1, sp, #36
+  62 001e 1C20     		movs	r0, #28
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 4
+
+
+  63              	.LVL2:
+  64 0020 FFF7FEFF 		bl	atiny_cmd_ioctl
+  65              	.LVL3:
+  66 0024 10B1     		cbz	r0, .L20
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             lwm2m_data_encode_float(get_value, dataP);
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         else
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             ret = COAP_400_BAD_REQUEST;
+  67              		.loc 1 116 0
+  68 0026 8020     		movs	r0, #128
+  69              	.L2:
+  70              	.LVL4:
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         break;
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     case RES_M_LONGITUDE:
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         if (atiny_cmd_ioctl(ATINY_GET_LONGITUDE, (char *)&get_value, sizeof(float)) == ATINY_OK)
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             lwm2m_data_encode_float(get_value, dataP);
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         else
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             ret = COAP_400_BAD_REQUEST;
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         break;
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     case RES_O_ALTITUDE:
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         if (atiny_cmd_ioctl(ATINY_GET_ALTITUDE, (char *)&get_value, sizeof(float)) == ATINY_OK)
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             lwm2m_data_encode_float(get_value, dataP);
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         else
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             ret = COAP_400_BAD_REQUEST;
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         break;
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     case RES_O_RADIUS:
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         if (atiny_cmd_ioctl(ATINY_GET_RADIUS, (char *)&get_value, sizeof(float)) == ATINY_OK)
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             lwm2m_data_encode_float(get_value, dataP);
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         else
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             ret = COAP_400_BAD_REQUEST;
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         break;
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     case RES_O_VELOCITY:
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         if (atiny_cmd_ioctl(ATINY_GET_VELOCITY, (char *)&velocity, sizeof(velocity)) == ATINY_OK)
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             lwm2m_data_encode_opaque(velocity.opaque, velocity.length, dataP);
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         else
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             ret = COAP_400_BAD_REQUEST;
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         break;
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     case RES_M_TIMESTAMP:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 5
+
+
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         if (atiny_cmd_ioctl(ATINY_GET_TIMESTAMP, (char *)&timestamp, sizeof(uint64_t)) == ATINY_OK)
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             lwm2m_data_encode_float(timestamp, dataP);
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         else
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             ret = COAP_400_BAD_REQUEST;
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         break;
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     case RES_O_SPEED:
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         if (atiny_cmd_ioctl(ATINY_GET_SPEED, (char *)&get_value, sizeof(float)) == ATINY_OK)
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             lwm2m_data_encode_float(get_value, dataP);
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         else
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             ret = COAP_400_BAD_REQUEST;
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         break;
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     default:
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         ret = COAP_404_NOT_FOUND;
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         break;
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     }
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     return ret;
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** }
+  71              		.loc 1 185 0
+  72 0028 0AB0     		add	sp, sp, #40
+  73              	.LCFI2:
+  74              		.cfi_remember_state
+  75              		.cfi_def_cfa_offset 8
+  76              		@ sp needed
+  77 002a 10BD     		pop	{r4, pc}
+  78              	.LVL5:
+  79              	.L20:
+  80              	.LCFI3:
+  81              		.cfi_restore_state
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+  82              		.loc 1 112 0
+  83 002c 0998     		ldr	r0, [sp, #36]	@ float
+  84 002e FFF7FEFF 		bl	__aeabi_f2d
+  85              	.LVL6:
+  86 0032 41EC100B 		vmov	d0, r0, r1
+  87 0036 2046     		mov	r0, r4
+  88 0038 FFF7FEFF 		bl	lwm2m_data_encode_float
+  89              	.LVL7:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     float get_value;
+  90              		.loc 1 102 0
+  91 003c 4520     		movs	r0, #69
+  92 003e F3E7     		b	.L2
+  93              	.LVL8:
+  94              	.L5:
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+  95              		.loc 1 120 0
+  96 0040 0422     		movs	r2, #4
+  97 0042 09A9     		add	r1, sp, #36
+  98 0044 1D20     		movs	r0, #29
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 6
+
+
+  99              	.LVL9:
+ 100 0046 FFF7FEFF 		bl	atiny_cmd_ioctl
+ 101              	.LVL10:
+ 102 004a 08B1     		cbz	r0, .L21
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 103              		.loc 1 126 0
+ 104 004c 8020     		movs	r0, #128
+ 105 004e EBE7     		b	.L2
+ 106              	.L21:
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 107              		.loc 1 122 0
+ 108 0050 0998     		ldr	r0, [sp, #36]	@ float
+ 109 0052 FFF7FEFF 		bl	__aeabi_f2d
+ 110              	.LVL11:
+ 111 0056 41EC100B 		vmov	d0, r0, r1
+ 112 005a 2046     		mov	r0, r4
+ 113 005c FFF7FEFF 		bl	lwm2m_data_encode_float
+ 114              	.LVL12:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     float get_value;
+ 115              		.loc 1 102 0
+ 116 0060 4520     		movs	r0, #69
+ 117 0062 E1E7     		b	.L2
+ 118              	.LVL13:
+ 119              	.L6:
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 120              		.loc 1 130 0
+ 121 0064 0422     		movs	r2, #4
+ 122 0066 09A9     		add	r1, sp, #36
+ 123 0068 1E20     		movs	r0, #30
+ 124              	.LVL14:
+ 125 006a FFF7FEFF 		bl	atiny_cmd_ioctl
+ 126              	.LVL15:
+ 127 006e 08B1     		cbz	r0, .L22
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 128              		.loc 1 136 0
+ 129 0070 8020     		movs	r0, #128
+ 130 0072 D9E7     		b	.L2
+ 131              	.L22:
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 132              		.loc 1 132 0
+ 133 0074 0998     		ldr	r0, [sp, #36]	@ float
+ 134 0076 FFF7FEFF 		bl	__aeabi_f2d
+ 135              	.LVL16:
+ 136 007a 41EC100B 		vmov	d0, r0, r1
+ 137 007e 2046     		mov	r0, r4
+ 138 0080 FFF7FEFF 		bl	lwm2m_data_encode_float
+ 139              	.LVL17:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     float get_value;
+ 140              		.loc 1 102 0
+ 141 0084 4520     		movs	r0, #69
+ 142 0086 CFE7     		b	.L2
+ 143              	.LVL18:
+ 144              	.L7:
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 145              		.loc 1 140 0
+ 146 0088 0422     		movs	r2, #4
+ 147 008a 09A9     		add	r1, sp, #36
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 7
+
+
+ 148 008c 1F20     		movs	r0, #31
+ 149              	.LVL19:
+ 150 008e FFF7FEFF 		bl	atiny_cmd_ioctl
+ 151              	.LVL20:
+ 152 0092 08B1     		cbz	r0, .L23
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 153              		.loc 1 146 0
+ 154 0094 8020     		movs	r0, #128
+ 155 0096 C7E7     		b	.L2
+ 156              	.L23:
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 157              		.loc 1 142 0
+ 158 0098 0998     		ldr	r0, [sp, #36]	@ float
+ 159 009a FFF7FEFF 		bl	__aeabi_f2d
+ 160              	.LVL21:
+ 161 009e 41EC100B 		vmov	d0, r0, r1
+ 162 00a2 2046     		mov	r0, r4
+ 163 00a4 FFF7FEFF 		bl	lwm2m_data_encode_float
+ 164              	.LVL22:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     float get_value;
+ 165              		.loc 1 102 0
+ 166 00a8 4520     		movs	r0, #69
+ 167 00aa BDE7     		b	.L2
+ 168              	.LVL23:
+ 169              	.L8:
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 170              		.loc 1 150 0
+ 171 00ac 1422     		movs	r2, #20
+ 172 00ae 01A9     		add	r1, sp, #4
+ 173 00b0 2220     		movs	r0, #34
+ 174              	.LVL24:
+ 175 00b2 FFF7FEFF 		bl	atiny_cmd_ioctl
+ 176              	.LVL25:
+ 177 00b6 08B1     		cbz	r0, .L24
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 178              		.loc 1 156 0
+ 179 00b8 8020     		movs	r0, #128
+ 180 00ba B5E7     		b	.L2
+ 181              	.L24:
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 182              		.loc 1 152 0
+ 183 00bc 2246     		mov	r2, r4
+ 184 00be 0599     		ldr	r1, [sp, #20]
+ 185 00c0 01A8     		add	r0, sp, #4
+ 186 00c2 FFF7FEFF 		bl	lwm2m_data_encode_opaque
+ 187              	.LVL26:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     float get_value;
+ 188              		.loc 1 102 0
+ 189 00c6 4520     		movs	r0, #69
+ 190 00c8 AEE7     		b	.L2
+ 191              	.LVL27:
+ 192              	.L9:
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 193              		.loc 1 160 0
+ 194 00ca 0822     		movs	r2, #8
+ 195 00cc 06A9     		add	r1, sp, #24
+ 196 00ce 2120     		movs	r0, #33
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 8
+
+
+ 197              	.LVL28:
+ 198 00d0 FFF7FEFF 		bl	atiny_cmd_ioctl
+ 199              	.LVL29:
+ 200 00d4 08B1     		cbz	r0, .L25
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 201              		.loc 1 166 0
+ 202 00d6 8020     		movs	r0, #128
+ 203 00d8 A6E7     		b	.L2
+ 204              	.L25:
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 205              		.loc 1 162 0
+ 206 00da DDE90601 		ldrd	r0, [sp, #24]
+ 207 00de FFF7FEFF 		bl	__aeabi_ul2d
+ 208              	.LVL30:
+ 209 00e2 41EC100B 		vmov	d0, r0, r1
+ 210 00e6 2046     		mov	r0, r4
+ 211 00e8 FFF7FEFF 		bl	lwm2m_data_encode_float
+ 212              	.LVL31:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     float get_value;
+ 213              		.loc 1 102 0
+ 214 00ec 4520     		movs	r0, #69
+ 215 00ee 9BE7     		b	.L2
+ 216              	.LVL32:
+ 217              	.L10:
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 218              		.loc 1 170 0
+ 219 00f0 0422     		movs	r2, #4
+ 220 00f2 09A9     		add	r1, sp, #36
+ 221 00f4 2020     		movs	r0, #32
+ 222              	.LVL33:
+ 223 00f6 FFF7FEFF 		bl	atiny_cmd_ioctl
+ 224              	.LVL34:
+ 225 00fa 08B1     		cbz	r0, .L26
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 226              		.loc 1 176 0
+ 227 00fc 8020     		movs	r0, #128
+ 228 00fe 93E7     		b	.L2
+ 229              	.L26:
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 230              		.loc 1 172 0
+ 231 0100 0998     		ldr	r0, [sp, #36]	@ float
+ 232 0102 FFF7FEFF 		bl	__aeabi_f2d
+ 233              	.LVL35:
+ 234 0106 41EC100B 		vmov	d0, r0, r1
+ 235 010a 2046     		mov	r0, r4
+ 236 010c FFF7FEFF 		bl	lwm2m_data_encode_float
+ 237              	.LVL36:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     float get_value;
+ 238              		.loc 1 102 0
+ 239 0110 4520     		movs	r0, #69
+ 240 0112 89E7     		b	.L2
+ 241              	.LVL37:
+ 242              	.L11:
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         break;
+ 243              		.loc 1 180 0
+ 244 0114 8420     		movs	r0, #132
+ 245              	.LVL38:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 9
+
+
+ 246 0116 87E7     		b	.L2
+ 247              		.cfi_endproc
+ 248              	.LFE142:
+ 250              		.section	.text.prv_location_read,"ax",%progbits
+ 251              		.align	1
+ 252              		.syntax unified
+ 253              		.thumb
+ 254              		.thumb_func
+ 255              		.fpu fpv4-sp-d16
+ 257              	prv_location_read:
+ 258              	.LFB143:
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** /**
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   * Implementation (callback-) function of reading object resources. For whole
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   * object, single resources or a sequence of resources
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   * see 3GPP TS 23.032 V11.0.0(2012-09) page 23,24.
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   * implemented for: HORIZONTAL_VELOCITY_WITH_UNCERTAINT
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   * @param objInstId    in,     instances ID of the location object to read
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   * @param numDataP     in/out, pointer to the number of resource to read. 0 is the
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   *                             exception for all readable resource of object instance
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   * @param tlvArrayP    in/out, TLV data sequence with initialized resource ID to read
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   * @param objectP      in,     private location data structure
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   */
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** static uint8_t prv_location_read(uint16_t objInstId,
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****                                  int  *numDataP,
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****                                  lwm2m_data_t **tlvArrayP,
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****                                  lwm2m_data_cfg_t *dataCfg,
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****                                  lwm2m_object_t  *objectP)
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** {
+ 259              		.loc 1 204 0
+ 260              		.cfi_startproc
+ 261              		@ args = 4, pretend = 0, frame = 16
+ 262              		@ frame_needed = 0, uses_anonymous_args = 0
+ 263              	.LVL39:
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     //-------------------------------------------------------------------- JH --
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     int     i;
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     uint8_t result = COAP_500_INTERNAL_SERVER_ERROR;
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     // defined as single instance object!
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     if (objInstId != 0) return COAP_404_NOT_FOUND;
+ 264              		.loc 1 210 0
+ 265 0000 78BB     		cbnz	r0, .L34
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     //-------------------------------------------------------------------- JH --
+ 266              		.loc 1 204 0
+ 267 0002 F0B5     		push	{r4, r5, r6, r7, lr}
+ 268              	.LCFI4:
+ 269              		.cfi_def_cfa_offset 20
+ 270              		.cfi_offset 4, -20
+ 271              		.cfi_offset 5, -16
+ 272              		.cfi_offset 6, -12
+ 273              		.cfi_offset 7, -8
+ 274              		.cfi_offset 14, -4
+ 275 0004 85B0     		sub	sp, sp, #20
+ 276              	.LCFI5:
+ 277              		.cfi_def_cfa_offset 40
+ 278 0006 1646     		mov	r6, r2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 10
+
+
+ 279 0008 0D46     		mov	r5, r1
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     if (*numDataP == 0)     // full object, readable resources!
+ 280              		.loc 1 212 0
+ 281 000a 0C68     		ldr	r4, [r1]
+ 282 000c 6CB1     		cbz	r4, .L39
+ 283              	.LVL40:
+ 284              	.L29:
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     //-------------------------------------------------------------------- JH --
+ 285              		.loc 1 204 0 discriminator 1
+ 286 000e A020     		movs	r0, #160
+ 287 0010 0024     		movs	r4, #0
+ 288              	.LVL41:
+ 289              	.L32:
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     {
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         uint16_t readResIds[] =
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             RES_M_LATITUDE,
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             RES_M_LONGITUDE,
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             RES_O_ALTITUDE,
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             RES_O_RADIUS,
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             RES_O_VELOCITY,
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             RES_M_TIMESTAMP,
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             RES_O_SPEED
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }; // readable resources!
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         *numDataP  = sizeof(readResIds) / sizeof(uint16_t);
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         *tlvArrayP = lwm2m_data_new(*numDataP);
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         if (*tlvArrayP == NULL) return COAP_500_INTERNAL_SERVER_ERROR;
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         // init readable resource id's
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         for (i = 0 ; i < *numDataP ; i++)
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             (*tlvArrayP)[i].id = readResIds[i];
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     }
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     for (i = 0 ; i < *numDataP ; i++)
+ 290              		.loc 1 236 0 discriminator 1
+ 291 0012 2B68     		ldr	r3, [r5]
+ 292 0014 A342     		cmp	r3, r4
+ 293 0016 14DD     		ble	.L28
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     {
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         result = prv_res2tlv ((*tlvArrayP) + i);
+ 294              		.loc 1 238 0
+ 295 0018 3068     		ldr	r0, [r6]
+ 296              	.LVL42:
+ 297 001a 00EB0410 		add	r0, r0, r4, lsl #4
+ 298 001e FFF7FEFF 		bl	prv_res2tlv
+ 299              	.LVL43:
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         if (result != COAP_205_CONTENT) break;
+ 300              		.loc 1 239 0
+ 301 0022 4528     		cmp	r0, #69
+ 302 0024 0DD1     		bne	.L28
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     {
+ 303              		.loc 1 236 0 discriminator 2
+ 304 0026 0134     		adds	r4, r4, #1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 11
+
+
+ 305              	.LVL44:
+ 306 0028 F3E7     		b	.L32
+ 307              	.LVL45:
+ 308              	.L39:
+ 309              	.LBB2:
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 310              		.loc 1 214 0
+ 311 002a 0F4B     		ldr	r3, .L40
+ 312              	.LVL46:
+ 313 002c 6F46     		mov	r7, sp
+ 314 002e 0FCB     		ldm	r3, {r0, r1, r2, r3}
+ 315              	.LVL47:
+ 316 0030 07C7     		stmia	r7!, {r0, r1, r2}
+ 317 0032 3B80     		strh	r3, [r7]	@ movhi
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         *tlvArrayP = lwm2m_data_new(*numDataP);
+ 318              		.loc 1 225 0
+ 319 0034 0720     		movs	r0, #7
+ 320 0036 2860     		str	r0, [r5]
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         if (*tlvArrayP == NULL) return COAP_500_INTERNAL_SERVER_ERROR;
+ 321              		.loc 1 226 0
+ 322 0038 FFF7FEFF 		bl	lwm2m_data_new
+ 323              	.LVL48:
+ 324 003c 3060     		str	r0, [r6]
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 325              		.loc 1 227 0
+ 326 003e 60B9     		cbnz	r0, .L30
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 327              		.loc 1 227 0 is_stmt 0 discriminator 1
+ 328 0040 A020     		movs	r0, #160
+ 329              	.LVL49:
+ 330              	.L28:
+ 331              	.LBE2:
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     }
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     return result;
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** }
+ 332              		.loc 1 243 0 is_stmt 1
+ 333 0042 05B0     		add	sp, sp, #20
+ 334              	.LCFI6:
+ 335              		.cfi_remember_state
+ 336              		.cfi_def_cfa_offset 20
+ 337              		@ sp needed
+ 338 0044 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 339              	.LVL50:
+ 340              	.L31:
+ 341              	.LCFI7:
+ 342              		.cfi_restore_state
+ 343              	.LBB3:
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 344              		.loc 1 232 0 discriminator 3
+ 345 0046 3368     		ldr	r3, [r6]
+ 346 0048 03EB0413 		add	r3, r3, r4, lsl #4
+ 347 004c 04AA     		add	r2, sp, #16
+ 348 004e 02EB4402 		add	r2, r2, r4, lsl #1
+ 349 0052 32F8102C 		ldrh	r2, [r2, #-16]
+ 350 0056 5A80     		strh	r2, [r3, #2]	@ movhi
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 12
+
+
+ 351              		.loc 1 230 0 discriminator 3
+ 352 0058 0134     		adds	r4, r4, #1
+ 353              	.LVL51:
+ 354              	.L30:
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 355              		.loc 1 230 0 is_stmt 0 discriminator 1
+ 356 005a 2B68     		ldr	r3, [r5]
+ 357 005c A342     		cmp	r3, r4
+ 358 005e F2DC     		bgt	.L31
+ 359 0060 D5E7     		b	.L29
+ 360              	.LVL52:
+ 361              	.L34:
+ 362              	.LCFI8:
+ 363              		.cfi_def_cfa_offset 0
+ 364              		.cfi_restore 4
+ 365              		.cfi_restore 5
+ 366              		.cfi_restore 6
+ 367              		.cfi_restore 7
+ 368              		.cfi_restore 14
+ 369              	.LBE3:
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 370              		.loc 1 210 0 is_stmt 1
+ 371 0062 8420     		movs	r0, #132
+ 372              	.LVL53:
+ 373              		.loc 1 243 0
+ 374 0064 7047     		bx	lr
+ 375              	.L41:
+ 376 0066 00BF     		.align	2
+ 377              	.L40:
+ 378 0068 00000000 		.word	.LANCHOR0
+ 379              		.cfi_endproc
+ 380              	.LFE143:
+ 382              		.section	.text.display_location_object,"ax",%progbits
+ 383              		.align	1
+ 384              		.global	display_location_object
+ 385              		.syntax unified
+ 386              		.thumb
+ 387              		.thumb_func
+ 388              		.fpu fpv4-sp-d16
+ 390              	display_location_object:
+ 391              	.LFB144:
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** void display_location_object(lwm2m_object_t *object)
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** {
+ 392              		.loc 1 246 0
+ 393              		.cfi_startproc
+ 394              		@ args = 0, pretend = 0, frame = 0
+ 395              		@ frame_needed = 0, uses_anonymous_args = 0
+ 396              		@ link register save eliminated.
+ 397              	.LVL54:
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** #ifdef WITH_LOGS
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     float latitude = 0.0f;
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     float longitude = 0.0f;
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     float altitude = 0.0f;
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     float radius = 0.0f;
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     float speed = 0.0f;
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     uint64_t timestamp = 0U;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 13
+
+
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     (void)atiny_cmd_ioctl(ATINY_GET_LATITUDE, &latitude, sizeof(float));
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     (void)atiny_cmd_ioctl(ATINY_GET_LONGITUDE, &longitude, sizeof(float));
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     (void)atiny_cmd_ioctl(ATINY_GET_ALTITUDE, &altitude, sizeof(float));
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     (void)atiny_cmd_ioctl(ATINY_GET_RADIUS, &radius, sizeof(float));
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     (void)atiny_cmd_ioctl(ATINY_GET_SPEED, &speed, sizeof(float));
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     (void)atiny_cmd_ioctl(ATINY_GET_TIMESTAMP, &timestamp, sizeof(uint64_t));
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     fprintf(stdout, "  /%u: Location object:\r\n", object->objID);
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     fprintf(stdout, "    latitude: %.6f, longitude: %.6f, altitude: %.6f, radius: %.6f, timestamp: 
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             latitude, longitude, altitude, radius, timestamp, speed);
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** #endif
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** }
+ 398              		.loc 1 267 0
+ 399 0000 7047     		bx	lr
+ 400              		.cfi_endproc
+ 401              	.LFE144:
+ 403              		.section	.text.get_object_location,"ax",%progbits
+ 404              		.align	1
+ 405              		.global	get_object_location
+ 406              		.syntax unified
+ 407              		.thumb
+ 408              		.thumb_func
+ 409              		.fpu fpv4-sp-d16
+ 411              	get_object_location:
+ 412              	.LFB145:
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** /**
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   * This function creates the LWM2M Location.
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   * @return gives back allocated LWM2M data object structure pointer. On error,
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   * NULL value is returned.
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****   */
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** lwm2m_object_t *get_object_location(void)
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** {
+ 413              		.loc 1 275 0
+ 414              		.cfi_startproc
+ 415              		@ args = 0, pretend = 0, frame = 0
+ 416              		@ frame_needed = 0, uses_anonymous_args = 0
+ 417 0000 10B5     		push	{r4, lr}
+ 418              	.LCFI9:
+ 419              		.cfi_def_cfa_offset 8
+ 420              		.cfi_offset 4, -8
+ 421              		.cfi_offset 14, -4
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     //-------------------------------------------------------------------- JH --
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     lwm2m_object_t *locationObj;
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     locationObj = (lwm2m_object_t *)lwm2m_malloc(sizeof(lwm2m_object_t));
+ 422              		.loc 1 279 0
+ 423 0002 2C20     		movs	r0, #44
+ 424 0004 FFF7FEFF 		bl	lwm2m_malloc
+ 425              	.LVL55:
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     if (NULL != locationObj)
+ 426              		.loc 1 280 0
+ 427 0008 0446     		mov	r4, r0
+ 428 000a 78B1     		cbz	r0, .L43
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 14
+
+
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         memset(locationObj, 0, sizeof(lwm2m_object_t));
+ 429              		.loc 1 282 0
+ 430 000c 2C22     		movs	r2, #44
+ 431 000e 0021     		movs	r1, #0
+ 432 0010 FFF7FEFF 		bl	memset
+ 433              	.LVL56:
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         // It assigns its unique ID
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         // The 6 is the standard ID for the optional object "Location".
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         locationObj->objID = LWM2M_LOCATION_OBJECT_ID;
+ 434              		.loc 1 286 0
+ 435 0014 0623     		movs	r3, #6
+ 436 0016 A380     		strh	r3, [r4, #4]	@ movhi
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         // and its unique instance
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         locationObj->instanceList = (lwm2m_list_t *)lwm2m_malloc(sizeof(lwm2m_list_t));
+ 437              		.loc 1 289 0
+ 438 0018 0820     		movs	r0, #8
+ 439 001a FFF7FEFF 		bl	lwm2m_malloc
+ 440              	.LVL57:
+ 441 001e A060     		str	r0, [r4, #8]
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         if (NULL != locationObj->instanceList)
+ 442              		.loc 1 290 0
+ 443 0020 30B1     		cbz	r0, .L45
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             memset(locationObj->instanceList, 0, sizeof(lwm2m_list_t));
+ 444              		.loc 1 292 0
+ 445 0022 0023     		movs	r3, #0
+ 446 0024 0360     		str	r3, [r0]	@ unaligned
+ 447 0026 4360     		str	r3, [r0, #4]	@ unaligned
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         else
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         {
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             lwm2m_free(locationObj);
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             return NULL;
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         // And the private function that will access the object.
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         // Those function will be called when a read query is made by the server.
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         // In fact the library don't need to know the resources of the object, only the server does
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         //
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         locationObj->readFunc    = prv_location_read;
+ 448              		.loc 1 304 0
+ 449 0028 044B     		ldr	r3, .L47
+ 450 002a E360     		str	r3, [r4, #12]
+ 451              	.LVL58:
+ 452              	.L43:
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     }
+ 306:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     return locationObj;
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** }
+ 453              		.loc 1 308 0
+ 454 002c 2046     		mov	r0, r4
+ 455 002e 10BD     		pop	{r4, pc}
+ 456              	.LVL59:
+ 457              	.L45:
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****             return NULL;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 15
+
+
+ 458              		.loc 1 296 0
+ 459 0030 2046     		mov	r0, r4
+ 460 0032 FFF7FEFF 		bl	lwm2m_free
+ 461              	.LVL60:
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****         }
+ 462              		.loc 1 297 0
+ 463 0036 0024     		movs	r4, #0
+ 464              	.LVL61:
+ 465 0038 F8E7     		b	.L43
+ 466              	.L48:
+ 467 003a 00BF     		.align	2
+ 468              	.L47:
+ 469 003c 00000000 		.word	prv_location_read
+ 470              		.cfi_endproc
+ 471              	.LFE145:
+ 473              		.section	.text.free_object_location,"ax",%progbits
+ 474              		.align	1
+ 475              		.global	free_object_location
+ 476              		.syntax unified
+ 477              		.thumb
+ 478              		.thumb_func
+ 479              		.fpu fpv4-sp-d16
+ 481              	free_object_location:
+ 482              	.LFB146:
+ 309:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** 
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** void free_object_location(lwm2m_object_t *object)
+ 311:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** {
+ 483              		.loc 1 311 0
+ 484              		.cfi_startproc
+ 485              		@ args = 0, pretend = 0, frame = 0
+ 486              		@ frame_needed = 0, uses_anonymous_args = 0
+ 487              	.LVL62:
+ 488 0000 10B5     		push	{r4, lr}
+ 489              	.LCFI10:
+ 490              		.cfi_def_cfa_offset 8
+ 491              		.cfi_offset 4, -8
+ 492              		.cfi_offset 14, -4
+ 493 0002 0446     		mov	r4, r0
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     lwm2m_list_free(object->instanceList);
+ 494              		.loc 1 312 0
+ 495 0004 8068     		ldr	r0, [r0, #8]
+ 496              	.LVL63:
+ 497 0006 FFF7FEFF 		bl	lwm2m_list_free
+ 498              	.LVL64:
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     lwm2m_free(object->userData);
+ 499              		.loc 1 313 0
+ 500 000a A06A     		ldr	r0, [r4, #40]
+ 501 000c FFF7FEFF 		bl	lwm2m_free
+ 502              	.LVL65:
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c ****     lwm2m_free(object);
+ 503              		.loc 1 314 0
+ 504 0010 2046     		mov	r0, r4
+ 505 0012 FFF7FEFF 		bl	lwm2m_free
+ 506              	.LVL66:
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\object_location.c **** }
+ 507              		.loc 1 315 0
+ 508 0016 10BD     		pop	{r4, pc}
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 16
+
+
+ 509              		.cfi_endproc
+ 510              	.LFE146:
+ 512              		.section	.rodata
+ 513              		.align	2
+ 514              		.set	.LANCHOR0,. + 0
+ 515              	.LC0:
+ 516 0000 0000     		.short	0
+ 517 0002 0100     		.short	1
+ 518 0004 0200     		.short	2
+ 519 0006 0300     		.short	3
+ 520 0008 0400     		.short	4
+ 521 000a 0500     		.short	5
+ 522 000c 0600     		.short	6
+ 523              		.text
+ 524              	.Letext0:
+ 525              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 526              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 527              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 528              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 529              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 530              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 531              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 532              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core/
+ 533              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 534              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 535              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 536              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 537              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 538              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 539              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 540              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 541              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 542              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 543              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 544              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 545              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 546              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core
+ 547              		.file 24 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 548              		.file 25 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 549              		.file 26 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/atiny_error.h"
+ 550              		.file 27 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/atiny_lwm2m/agenttiny.h"
+ 551              		.file 28 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny
+ 552              		.file 29 "<built-in>"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s 			page 17
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 object_location.c
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:20     .text.prv_res2tlv:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:26     .text.prv_res2tlv:00000000 prv_res2tlv
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:50     .text.prv_res2tlv:00000012 $d
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:251    .text.prv_location_read:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:257    .text.prv_location_read:00000000 prv_location_read
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:378    .text.prv_location_read:00000068 $d
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:383    .text.display_location_object:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:390    .text.display_location_object:00000000 display_location_object
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:404    .text.get_object_location:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:411    .text.get_object_location:00000000 get_object_location
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:469    .text.get_object_location:0000003c $d
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:474    .text.free_object_location:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:481    .text.free_object_location:00000000 free_object_location
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:513    .rodata:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:57     .text.prv_res2tlv:00000019 $d
+c:\Users\lenovo\AppData\Local\Temp\ccrOyp5R.s:57     .text.prv_res2tlv:0000001a $t
+
+UNDEFINED SYMBOLS
+__aeabi_f2d
+__aeabi_ul2d
+atiny_cmd_ioctl
+lwm2m_data_encode_float
+lwm2m_data_encode_opaque
+lwm2m_data_new
+lwm2m_malloc
+memset
+lwm2m_free
+lwm2m_list_free

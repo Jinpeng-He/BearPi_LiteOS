@@ -1,0 +1,324 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIMWkbi.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"timing_alt.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.mbedtls_timing_get_timer,"ax",%progbits
+  18              		.align	1
+  19              		.global	mbedtls_timing_get_timer
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	mbedtls_timing_get_timer:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIMWkbi.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** #if !defined(MBEDTLS_CONFIG_FILE)
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** #include "mbedtls/config.h"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** #else
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** #include MBEDTLS_CONFIG_FILE
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** #endif
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** 
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** 
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** #include "timing_alt.h"
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** #include "osdepends/atiny_osdep.h"
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** 
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** unsigned long mbedtls_timing_get_timer(struct mbedtls_timing_hr_time *val, int reset)
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** {
+  28              		.loc 1 46 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 38B5     		push	{r3, r4, r5, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 16
+  36              		.cfi_offset 3, -16
+  37              		.cfi_offset 4, -12
+  38              		.cfi_offset 5, -8
+  39              		.cfi_offset 14, -4
+  40 0002 0446     		mov	r4, r0
+  41 0004 0D46     		mov	r5, r1
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     struct mbedtls_timing_hr_time now;
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     now.timer_ms = atiny_gettime_ms();
+  42              		.loc 1 48 0
+  43 0006 FFF7FEFF 		bl	atiny_gettime_ms
+  44              	.LVL1:
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** 
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     if (reset)
+  45              		.loc 1 50 0
+  46 000a 0DB1     		cbz	r5, .L2
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     {
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****         val->timer_ms = now.timer_ms;
+  47              		.loc 1 52 0
+  48 000c 2060     		str	r0, [r4]
+  49 000e 6160     		str	r1, [r4, #4]
+  50              	.L2:
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     }
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** 
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     return (unsigned long)(now.timer_ms - val->timer_ms);
+  51              		.loc 1 55 0
+  52 0010 2368     		ldr	r3, [r4]
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** }
+  53              		.loc 1 56 0
+  54 0012 C01A     		subs	r0, r0, r3
+  55 0014 38BD     		pop	{r3, r4, r5, pc}
+  56              		.cfi_endproc
+  57              	.LFE133:
+  59              		.section	.text.mbedtls_timing_set_delay,"ax",%progbits
+  60              		.align	1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIMWkbi.s 			page 3
+
+
+  61              		.global	mbedtls_timing_set_delay
+  62              		.syntax unified
+  63              		.thumb
+  64              		.thumb_func
+  65              		.fpu fpv4-sp-d16
+  67              	mbedtls_timing_set_delay:
+  68              	.LFB134:
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** 
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** /*
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * Set delays to watch
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  */
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** void mbedtls_timing_set_delay(void *data, uint32_t int_ms, uint32_t fin_ms)
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** {
+  69              		.loc 1 62 0
+  70              		.cfi_startproc
+  71              		@ args = 0, pretend = 0, frame = 0
+  72              		@ frame_needed = 0, uses_anonymous_args = 0
+  73              	.LVL2:
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     mbedtls_timing_delay_context *ctx = (mbedtls_timing_delay_context *) data;
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** 
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     ctx->int_ms = int_ms;
+  74              		.loc 1 65 0
+  75 0000 8160     		str	r1, [r0, #8]
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     ctx->fin_ms = fin_ms;
+  76              		.loc 1 66 0
+  77 0002 C260     		str	r2, [r0, #12]
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** 
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     if (fin_ms != 0)
+  78              		.loc 1 68 0
+  79 0004 02B9     		cbnz	r2, .L10
+  80 0006 7047     		bx	lr
+  81              	.L10:
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     mbedtls_timing_delay_context *ctx = (mbedtls_timing_delay_context *) data;
+  82              		.loc 1 62 0
+  83 0008 08B5     		push	{r3, lr}
+  84              	.LCFI1:
+  85              		.cfi_def_cfa_offset 8
+  86              		.cfi_offset 3, -8
+  87              		.cfi_offset 14, -4
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     {
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****         (void)mbedtls_timing_get_timer(&ctx->timer, 1);
+  88              		.loc 1 70 0
+  89 000a 0121     		movs	r1, #1
+  90              	.LVL3:
+  91 000c FFF7FEFF 		bl	mbedtls_timing_get_timer
+  92              	.LVL4:
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     }
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** }
+  93              		.loc 1 72 0
+  94 0010 08BD     		pop	{r3, pc}
+  95              		.cfi_endproc
+  96              	.LFE134:
+  98              		.section	.text.mbedtls_timing_get_delay,"ax",%progbits
+  99              		.align	1
+ 100              		.global	mbedtls_timing_get_delay
+ 101              		.syntax unified
+ 102              		.thumb
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIMWkbi.s 			page 4
+
+
+ 103              		.thumb_func
+ 104              		.fpu fpv4-sp-d16
+ 106              	mbedtls_timing_get_delay:
+ 107              	.LFB135:
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** 
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** /*
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  * Get number of delays expired
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****  */
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** int mbedtls_timing_get_delay(void *data)
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** {
+ 108              		.loc 1 78 0
+ 109              		.cfi_startproc
+ 110              		@ args = 0, pretend = 0, frame = 0
+ 111              		@ frame_needed = 0, uses_anonymous_args = 0
+ 112              	.LVL5:
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     mbedtls_timing_delay_context *ctx = (mbedtls_timing_delay_context *)data;
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     unsigned long elapsed_ms;
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** 
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     if (ctx->fin_ms == 0)
+ 113              		.loc 1 82 0
+ 114 0000 C368     		ldr	r3, [r0, #12]
+ 115 0002 73B1     		cbz	r3, .L13
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     mbedtls_timing_delay_context *ctx = (mbedtls_timing_delay_context *)data;
+ 116              		.loc 1 78 0
+ 117 0004 10B5     		push	{r4, lr}
+ 118              	.LCFI2:
+ 119              		.cfi_def_cfa_offset 8
+ 120              		.cfi_offset 4, -8
+ 121              		.cfi_offset 14, -4
+ 122 0006 0446     		mov	r4, r0
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     {
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****         return -1;
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     }
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** 
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     elapsed_ms = mbedtls_timing_get_timer(&ctx->timer, 0);
+ 123              		.loc 1 87 0
+ 124 0008 0021     		movs	r1, #0
+ 125 000a FFF7FEFF 		bl	mbedtls_timing_get_timer
+ 126              	.LVL6:
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** 
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     if (elapsed_ms >= ctx->fin_ms)
+ 127              		.loc 1 89 0
+ 128 000e E368     		ldr	r3, [r4, #12]
+ 129 0010 8342     		cmp	r3, r0
+ 130 0012 09D9     		bls	.L14
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     {
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****         return 2;
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     }
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** 
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     if (elapsed_ms >= ctx->int_ms)
+ 131              		.loc 1 94 0
+ 132 0014 A368     		ldr	r3, [r4, #8]
+ 133 0016 8342     		cmp	r3, r0
+ 134 0018 01D9     		bls	.L20
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     {
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****         return 1;
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIMWkbi.s 			page 5
+
+
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** 
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     return 0;
+ 135              		.loc 1 99 0
+ 136 001a 0020     		movs	r0, #0
+ 137              	.LVL7:
+ 138              	.L11:
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c **** }
+ 139              		.loc 1 100 0
+ 140 001c 10BD     		pop	{r4, pc}
+ 141              	.LVL8:
+ 142              	.L20:
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     }
+ 143              		.loc 1 96 0
+ 144 001e 0120     		movs	r0, #1
+ 145              	.LVL9:
+ 146 0020 FCE7     		b	.L11
+ 147              	.LVL10:
+ 148              	.L13:
+ 149              	.LCFI3:
+ 150              		.cfi_def_cfa_offset 0
+ 151              		.cfi_restore 4
+ 152              		.cfi_restore 14
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     }
+ 153              		.loc 1 84 0
+ 154 0022 4FF0FF30 		mov	r0, #-1
+ 155              	.LVL11:
+ 156              		.loc 1 100 0
+ 157 0026 7047     		bx	lr
+ 158              	.LVL12:
+ 159              	.L14:
+ 160              	.LCFI4:
+ 161              		.cfi_def_cfa_offset 8
+ 162              		.cfi_offset 4, -8
+ 163              		.cfi_offset 14, -4
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\timing_alt.c ****     }
+ 164              		.loc 1 91 0
+ 165 0028 0220     		movs	r0, #2
+ 166              	.LVL13:
+ 167 002a F7E7     		b	.L11
+ 168              		.cfi_endproc
+ 169              	.LFE135:
+ 171              		.text
+ 172              	.Letext0:
+ 173              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 174              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 175              		.file 4 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls
+ 176              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 177              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 178              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 179              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 180              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 181              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 182              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 183              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 184              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 185              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 186              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIMWkbi.s 			page 6
+
+
+ 187              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 188              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 189              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 190              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 191              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 192              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 193              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/osdepends/atiny_osdep.h"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIMWkbi.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 timing_alt.c
+c:\Users\lenovo\AppData\Local\Temp\ccIMWkbi.s:18     .text.mbedtls_timing_get_timer:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccIMWkbi.s:25     .text.mbedtls_timing_get_timer:00000000 mbedtls_timing_get_timer
+c:\Users\lenovo\AppData\Local\Temp\ccIMWkbi.s:60     .text.mbedtls_timing_set_delay:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccIMWkbi.s:67     .text.mbedtls_timing_set_delay:00000000 mbedtls_timing_set_delay
+c:\Users\lenovo\AppData\Local\Temp\ccIMWkbi.s:99     .text.mbedtls_timing_get_delay:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccIMWkbi.s:106    .text.mbedtls_timing_get_delay:00000000 mbedtls_timing_get_delay
+
+UNDEFINED SYMBOLS
+atiny_gettime_ms

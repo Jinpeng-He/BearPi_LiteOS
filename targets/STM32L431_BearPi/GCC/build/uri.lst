@@ -1,0 +1,1828 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"uri.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.prv_parseNumber,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	prv_parseNumber:
+  25              	.LFB134:
+  26              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core/
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** /*******************************************************************************
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  *
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  * Copyright (c) 2013, 2014 Intel Corporation and others.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  * All rights reserved. This program and the accompanying materials
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  * are made available under the terms of the Eclipse Public License v1.0
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  *
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  * The Eclipse Public License is available at
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  * The Eclipse Distribution License is available at
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  *    http://www.eclipse.org/org/documents/edl-v10.php.
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  *
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  * Contributors:
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  *    David Navarro, Intel Corporation - initial API and implementation
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  *    Fabien Fleutot - Please refer to git log
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  *    Toby Jaffey - Please refer to git log
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  *    Bosch Software Innovations GmbH - Please refer to git log
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  *    Pascal Rieux - Please refer to git log
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  *
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  *******************************************************************************/
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** /*
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  Copyright (c) 2013, 2014 Intel Corporation
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  Redistribution and use in source and binary forms, with or without modification,
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  are permitted provided that the following conditions are met:
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****      * Redistributions of source code must retain the above copyright notice,
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****        this list of conditions and the following disclaimer.
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****      * Redistributions in binary form must reproduce the above copyright notice,
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****        this list of conditions and the following disclaimer in the documentation
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****        and/or other materials provided with the distribution.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 2
+
+
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****      * Neither the name of Intel Corporation nor the names of its contributors
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****        may be used to endorse or promote products derived from this software
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****        without specific prior written permission.
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  THE POSSIBILITY OF SUCH DAMAGE.
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****  David Navarro <david.navarro@intel.com>
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** */
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** #include "internals.h"
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** #include <stdlib.h>
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** #include <string.h>
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** #include <ctype.h>
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** static int prv_parseNumber(uint8_t *uriString,
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                            size_t uriLength,
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                            size_t *headP)
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** {
+  27              		.loc 1 60 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     int result = 0;
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (uriString[*headP] == '/')
+  33              		.loc 1 63 0
+  34 0000 1368     		ldr	r3, [r2]
+  35 0002 C35C     		ldrb	r3, [r0, r3]	@ zero_extendqisi2
+  36 0004 2F2B     		cmp	r3, #47
+  37 0006 1CD0     		beq	.L6
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     int result = 0;
+  38              		.loc 1 60 0
+  39 0008 70B4     		push	{r4, r5, r6}
+  40              	.LCFI0:
+  41              		.cfi_def_cfa_offset 12
+  42              		.cfi_offset 4, -12
+  43              		.cfi_offset 5, -8
+  44              		.cfi_offset 6, -4
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     int result = 0;
+  45              		.loc 1 61 0
+  46 000a 0025     		movs	r5, #0
+  47              	.LVL1:
+  48              	.L3:
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         // empty Object Instance ID with resource ID is not allowed
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 3
+
+
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         return -1;
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     while (*headP < uriLength && uriString[*headP] != '/')
+  49              		.loc 1 68 0
+  50 000c 1468     		ldr	r4, [r2]
+  51 000e 8C42     		cmp	r4, r1
+  52 0010 0FD2     		bcs	.L4
+  53              		.loc 1 68 0 is_stmt 0 discriminator 1
+  54 0012 035D     		ldrb	r3, [r0, r4]	@ zero_extendqisi2
+  55 0014 2F2B     		cmp	r3, #47
+  56 0016 0CD0     		beq	.L4
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if ('0' <= uriString[*headP] && uriString[*headP] <= '9')
+  57              		.loc 1 70 0 is_stmt 1
+  58 0018 A3F13006 		sub	r6, r3, #48
+  59 001c F6B2     		uxtb	r6, r6
+  60 001e 092E     		cmp	r6, #9
+  61 0020 12D8     		bhi	.L7
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         {
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             result += uriString[*headP] - '0';
+  62              		.loc 1 72 0
+  63 0022 303B     		subs	r3, r3, #48
+  64 0024 2B44     		add	r3, r3, r5
+  65              	.LVL2:
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             result *= 10;
+  66              		.loc 1 73 0
+  67 0026 03EB8303 		add	r3, r3, r3, lsl #2
+  68              	.LVL3:
+  69 002a 5D00     		lsls	r5, r3, #1
+  70              	.LVL4:
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         }
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         else
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         {
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             return -1;
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         }
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         *headP += 1;
+  71              		.loc 1 79 0
+  72 002c 0134     		adds	r4, r4, #1
+  73 002e 1460     		str	r4, [r2]
+  74 0030 ECE7     		b	.L3
+  75              	.L4:
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     result /= 10;
+  76              		.loc 1 82 0
+  77 0032 0748     		ldr	r0, .L12
+  78              	.LVL5:
+  79 0034 80FB0530 		smull	r3, r0, r0, r5
+  80 0038 ED17     		asrs	r5, r5, #31
+  81              	.LVL6:
+  82 003a C5EBA000 		rsb	r0, r5, r0, asr #2
+  83              	.LVL7:
+  84              	.L1:
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     return result;
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** }
+  85              		.loc 1 84 0
+  86 003e 70BC     		pop	{r4, r5, r6}
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 4
+
+
+  87              	.LCFI1:
+  88              		.cfi_restore 6
+  89              		.cfi_restore 5
+  90              		.cfi_restore 4
+  91              		.cfi_def_cfa_offset 0
+  92 0040 7047     		bx	lr
+  93              	.LVL8:
+  94              	.L6:
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+  95              		.loc 1 66 0
+  96 0042 4FF0FF30 		mov	r0, #-1
+  97              	.LVL9:
+  98              		.loc 1 84 0
+  99 0046 7047     		bx	lr
+ 100              	.LVL10:
+ 101              	.L7:
+ 102              	.LCFI2:
+ 103              		.cfi_def_cfa_offset 12
+ 104              		.cfi_offset 4, -12
+ 105              		.cfi_offset 5, -8
+ 106              		.cfi_offset 6, -4
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         }
+ 107              		.loc 1 77 0
+ 108 0048 4FF0FF30 		mov	r0, #-1
+ 109              	.LVL11:
+ 110 004c F7E7     		b	.L1
+ 111              	.L13:
+ 112 004e 00BF     		.align	2
+ 113              	.L12:
+ 114 0050 67666666 		.word	1717986919
+ 115              		.cfi_endproc
+ 116              	.LFE134:
+ 118              		.section	.text.uri_getNumber,"ax",%progbits
+ 119              		.align	1
+ 120              		.global	uri_getNumber
+ 121              		.syntax unified
+ 122              		.thumb
+ 123              		.thumb_func
+ 124              		.fpu fpv4-sp-d16
+ 126              	uri_getNumber:
+ 127              	.LFB135:
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** int uri_getNumber(uint8_t *uriString,
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                   size_t uriLength)
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** {
+ 128              		.loc 1 89 0
+ 129              		.cfi_startproc
+ 130              		@ args = 0, pretend = 0, frame = 8
+ 131              		@ frame_needed = 0, uses_anonymous_args = 0
+ 132              	.LVL12:
+ 133 0000 00B5     		push	{lr}
+ 134              	.LCFI3:
+ 135              		.cfi_def_cfa_offset 4
+ 136              		.cfi_offset 14, -4
+ 137 0002 83B0     		sub	sp, sp, #12
+ 138              	.LCFI4:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 5
+
+
+ 139              		.cfi_def_cfa_offset 16
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     size_t index = 0;
+ 140              		.loc 1 90 0
+ 141 0004 02AA     		add	r2, sp, #8
+ 142 0006 0023     		movs	r3, #0
+ 143 0008 42F8043D 		str	r3, [r2, #-4]!
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     return prv_parseNumber(uriString, uriLength, &index);
+ 144              		.loc 1 92 0
+ 145 000c FFF7FEFF 		bl	prv_parseNumber
+ 146              	.LVL13:
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** }
+ 147              		.loc 1 93 0
+ 148 0010 03B0     		add	sp, sp, #12
+ 149              	.LCFI5:
+ 150              		.cfi_def_cfa_offset 4
+ 151              		@ sp needed
+ 152 0012 5DF804FB 		ldr	pc, [sp], #4
+ 153              		.cfi_endproc
+ 154              	.LFE135:
+ 156              		.section	.text.uri_decode,"ax",%progbits
+ 157              		.align	1
+ 158              		.global	uri_decode
+ 159              		.syntax unified
+ 160              		.thumb
+ 161              		.thumb_func
+ 162              		.fpu fpv4-sp-d16
+ 164              	uri_decode:
+ 165              	.LFB136:
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** lwm2m_uri_t *uri_decode(char *altPath,
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                         multi_option_t *uriPath)
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** {
+ 166              		.loc 1 98 0
+ 167              		.cfi_startproc
+ 168              		@ args = 0, pretend = 0, frame = 0
+ 169              		@ frame_needed = 0, uses_anonymous_args = 0
+ 170              	.LVL14:
+ 171 0000 70B5     		push	{r4, r5, r6, lr}
+ 172              	.LCFI6:
+ 173              		.cfi_def_cfa_offset 16
+ 174              		.cfi_offset 4, -16
+ 175              		.cfi_offset 5, -12
+ 176              		.cfi_offset 6, -8
+ 177              		.cfi_offset 14, -4
+ 178 0002 82B0     		sub	sp, sp, #8
+ 179              	.LCFI7:
+ 180              		.cfi_def_cfa_offset 24
+ 181 0004 0C46     		mov	r4, r1
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     lwm2m_uri_t *uriP;
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     int readNum;
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if(altPath != NULL)
+ 182              		.loc 1 101 0
+ 183 0006 0646     		mov	r6, r0
+ 184 0008 78B3     		cbz	r0, .L17
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 6
+
+
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         LOG_ARG("altPath: \"%s\"", altPath);
+ 185              		.loc 1 103 0
+ 186 000a FFF7FEFF 		bl	lwm2m_gettime
+ 187              	.LVL15:
+ 188 000e 0096     		str	r6, [sp]
+ 189 0010 6723     		movs	r3, #103
+ 190 0012 644A     		ldr	r2, .L45
+ 191 0014 0146     		mov	r1, r0
+ 192 0016 6448     		ldr	r0, .L45+4
+ 193 0018 FFF7FEFF 		bl	atiny_printf
+ 194              	.LVL16:
+ 195              	.L18:
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     else
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****          LOG("altPath: NULL");
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     uriP = (lwm2m_uri_t *)lwm2m_malloc(sizeof(lwm2m_uri_t));
+ 196              		.loc 1 110 0
+ 197 001c 0820     		movs	r0, #8
+ 198 001e FFF7FEFF 		bl	lwm2m_malloc
+ 199              	.LVL17:
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (NULL == uriP) return NULL;
+ 200              		.loc 1 111 0
+ 201 0022 0546     		mov	r5, r0
+ 202 0024 0028     		cmp	r0, #0
+ 203 0026 00F09480 		beq	.L16
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     memset(uriP, 0, sizeof(lwm2m_uri_t));
+ 204              		.loc 1 113 0
+ 205 002a 0023     		movs	r3, #0
+ 206 002c 0360     		str	r3, [r0]	@ unaligned
+ 207 002e 4360     		str	r3, [r0, #4]	@ unaligned
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     // Read object ID
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (NULL != uriPath
+ 208              		.loc 1 116 0
+ 209 0030 14B1     		cbz	r4, .L20
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             && URI_REGISTRATION_SEGMENT_LEN == uriPath->len
+ 210              		.loc 1 117 0
+ 211 0032 6279     		ldrb	r2, [r4, #5]	@ zero_extendqisi2
+ 212 0034 022A     		cmp	r2, #2
+ 213 0036 21D0     		beq	.L36
+ 214              	.LVL18:
+ 215              	.L20:
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             && 0 == strncmp(URI_REGISTRATION_SEGMENT, (char *)uriPath->data, uriPath->len))
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         uriP->flag |= LWM2M_URI_FLAG_REGISTRATION;
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         uriPath = uriPath->next;
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (uriPath == NULL) return uriP;
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     else if (NULL != uriPath
+ 216              		.loc 1 124 0
+ 217 0038 14B1     		cbz	r4, .L21
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****              && URI_BOOTSTRAP_SEGMENT_LEN == uriPath->len
+ 218              		.loc 1 125 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 7
+
+
+ 219 003a 6279     		ldrb	r2, [r4, #5]	@ zero_extendqisi2
+ 220 003c 022A     		cmp	r2, #2
+ 221 003e 2BD0     		beq	.L37
+ 222              	.L21:
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****              && 0 == strncmp(URI_BOOTSTRAP_SEGMENT, (char *)uriPath->data, uriPath->len))
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         uriP->flag |= LWM2M_URI_FLAG_BOOTSTRAP;
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         uriPath = uriPath->next;
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (uriPath != NULL) goto error;
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         return uriP;
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if ((uriP->flag & LWM2M_URI_MASK_TYPE) != LWM2M_URI_FLAG_REGISTRATION)
+ 223              		.loc 1 134 0
+ 224 0040 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
+ 225 0042 00F07003 		and	r3, r0, #112
+ 226 0046 202B     		cmp	r3, #32
+ 227 0048 44D0     		beq	.L23
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         // Read altPath if any
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (altPath != NULL)
+ 228              		.loc 1 137 0
+ 229 004a 002E     		cmp	r6, #0
+ 230 004c 3DD0     		beq	.L24
+ 231              	.LBB2:
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         {
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             int i;
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             if (NULL == uriPath)
+ 232              		.loc 1 140 0
+ 233 004e 002C     		cmp	r4, #0
+ 234 0050 30D0     		beq	.L38
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             {
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                 lwm2m_free(uriP);
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                 return NULL;
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             }
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             for (i = 0 ; i < uriPath->len ; i++)
+ 235              		.loc 1 145 0
+ 236 0052 0023     		movs	r3, #0
+ 237              	.L25:
+ 238              	.LVL19:
+ 239              		.loc 1 145 0 is_stmt 0 discriminator 1
+ 240 0054 6279     		ldrb	r2, [r4, #5]	@ zero_extendqisi2
+ 241 0056 9A42     		cmp	r2, r3
+ 242 0058 36DD     		ble	.L39
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             {
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                 if (uriPath->data[i] != altPath[i + 1])
+ 243              		.loc 1 147 0 is_stmt 1
+ 244 005a A268     		ldr	r2, [r4, #8]
+ 245 005c D15C     		ldrb	r1, [r2, r3]	@ zero_extendqisi2
+ 246 005e F218     		adds	r2, r6, r3
+ 247 0060 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+ 248 0062 9142     		cmp	r1, r2
+ 249 0064 2BD1     		bne	.L40
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             {
+ 250              		.loc 1 145 0 discriminator 2
+ 251 0066 0133     		adds	r3, r3, #1
+ 252              	.LVL20:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 8
+
+
+ 253 0068 F4E7     		b	.L25
+ 254              	.LVL21:
+ 255              	.L17:
+ 256              	.LBE2:
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 257              		.loc 1 107 0
+ 258 006a FFF7FEFF 		bl	lwm2m_gettime
+ 259              	.LVL22:
+ 260 006e 6B23     		movs	r3, #107
+ 261 0070 4C4A     		ldr	r2, .L45
+ 262 0072 0146     		mov	r1, r0
+ 263 0074 4D48     		ldr	r0, .L45+8
+ 264 0076 FFF7FEFF 		bl	atiny_printf
+ 265              	.LVL23:
+ 266 007a CFE7     		b	.L18
+ 267              	.LVL24:
+ 268              	.L36:
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ 269              		.loc 1 118 0
+ 270 007c A168     		ldr	r1, [r4, #8]
+ 271 007e 4C48     		ldr	r0, .L45+12
+ 272              	.LVL25:
+ 273 0080 FFF7FEFF 		bl	strncmp
+ 274              	.LVL26:
+ 275 0084 0028     		cmp	r0, #0
+ 276 0086 D7D1     		bne	.L20
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         uriPath = uriPath->next;
+ 277              		.loc 1 120 0
+ 278 0088 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 279 008a 43F02003 		orr	r3, r3, #32
+ 280 008e 2B70     		strb	r3, [r5]
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (uriPath == NULL) return uriP;
+ 281              		.loc 1 121 0
+ 282 0090 2468     		ldr	r4, [r4]
+ 283              	.LVL27:
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 284              		.loc 1 122 0
+ 285 0092 002C     		cmp	r4, #0
+ 286 0094 D4D1     		bne	.L21
+ 287 0096 5CE0     		b	.L16
+ 288              	.L37:
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ 289              		.loc 1 126 0
+ 290 0098 A168     		ldr	r1, [r4, #8]
+ 291 009a 4648     		ldr	r0, .L45+16
+ 292 009c FFF7FEFF 		bl	strncmp
+ 293              	.LVL28:
+ 294 00a0 0028     		cmp	r0, #0
+ 295 00a2 CDD1     		bne	.L21
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         uriPath = uriPath->next;
+ 296              		.loc 1 128 0
+ 297 00a4 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 298 00a6 43F04003 		orr	r3, r3, #64
+ 299 00aa 2B70     		strb	r3, [r5]
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (uriPath != NULL) goto error;
+ 300              		.loc 1 129 0
+ 301 00ac 2368     		ldr	r3, [r4]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 9
+
+
+ 302              	.LVL29:
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         return uriP;
+ 303              		.loc 1 130 0
+ 304 00ae 002B     		cmp	r3, #0
+ 305 00b0 4FD0     		beq	.L16
+ 306 00b2 53E0     		b	.L22
+ 307              	.LVL30:
+ 308              	.L38:
+ 309              	.LBB3:
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                 return NULL;
+ 310              		.loc 1 142 0
+ 311 00b4 2846     		mov	r0, r5
+ 312 00b6 FFF7FEFF 		bl	lwm2m_free
+ 313              	.LVL31:
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             }
+ 314              		.loc 1 143 0
+ 315 00ba 0025     		movs	r5, #0
+ 316              	.LVL32:
+ 317 00bc 49E0     		b	.L16
+ 318              	.LVL33:
+ 319              	.L40:
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                 {
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                     lwm2m_free(uriP);
+ 320              		.loc 1 149 0
+ 321 00be 2846     		mov	r0, r5
+ 322 00c0 FFF7FEFF 		bl	lwm2m_free
+ 323              	.LVL34:
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                     return NULL;
+ 324              		.loc 1 150 0
+ 325 00c4 0025     		movs	r5, #0
+ 326              	.LVL35:
+ 327 00c6 44E0     		b	.L16
+ 328              	.LVL36:
+ 329              	.L39:
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                 }
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             }
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             uriPath = uriPath->next;
+ 330              		.loc 1 153 0
+ 331 00c8 2468     		ldr	r4, [r4]
+ 332              	.LVL37:
+ 333              	.L24:
+ 334              	.LBE3:
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         }
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (NULL == uriPath || uriPath->len == 0)
+ 335              		.loc 1 155 0
+ 336 00ca 002C     		cmp	r4, #0
+ 337 00cc 3ED0     		beq	.L28
+ 338              		.loc 1 155 0 is_stmt 0 discriminator 1
+ 339 00ce 6379     		ldrb	r3, [r4, #5]	@ zero_extendqisi2
+ 340 00d0 002B     		cmp	r3, #0
+ 341 00d2 3BD0     		beq	.L28
+ 342              	.L23:
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         {
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             uriP->flag |= LWM2M_URI_FLAG_DELETE_ALL;
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             return uriP;
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         }
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 10
+
+
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     readNum = uri_getNumber(uriPath->data, uriPath->len);
+ 343              		.loc 1 162 0 is_stmt 1
+ 344 00d4 6179     		ldrb	r1, [r4, #5]	@ zero_extendqisi2
+ 345 00d6 A068     		ldr	r0, [r4, #8]
+ 346 00d8 FFF7FEFF 		bl	uri_getNumber
+ 347              	.LVL38:
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (readNum < 0 || readNum > LWM2M_MAX_ID) goto error;
+ 348              		.loc 1 163 0
+ 349 00dc B0F5803F 		cmp	r0, #65536
+ 350 00e0 3CD2     		bcs	.L22
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     uriP->objectId = (uint16_t)readNum;
+ 351              		.loc 1 164 0
+ 352 00e2 6880     		strh	r0, [r5, #2]	@ movhi
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     uriP->flag |= LWM2M_URI_FLAG_OBJECT_ID;
+ 353              		.loc 1 165 0
+ 354 00e4 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 355 00e6 43F00403 		orr	r3, r3, #4
+ 356 00ea 2B70     		strb	r3, [r5]
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     uriPath = uriPath->next;
+ 357              		.loc 1 166 0
+ 358 00ec 2468     		ldr	r4, [r4]
+ 359              	.LVL39:
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if ((uriP->flag & LWM2M_URI_MASK_TYPE) == LWM2M_URI_FLAG_REGISTRATION)
+ 360              		.loc 1 168 0
+ 361 00ee 03F07003 		and	r3, r3, #112
+ 362 00f2 202B     		cmp	r3, #32
+ 363 00f4 30D0     		beq	.L41
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (uriPath != NULL) goto error;
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         return uriP;
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     uriP->flag |= LWM2M_URI_FLAG_DM;
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (uriPath == NULL) return uriP;
+ 364              		.loc 1 175 0
+ 365 00f6 64B3     		cbz	r4, .L16
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     // Read object instance
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (uriPath->len != 0)
+ 366              		.loc 1 178 0
+ 367 00f8 6179     		ldrb	r1, [r4, #5]	@ zero_extendqisi2
+ 368 00fa 0029     		cmp	r1, #0
+ 369 00fc 3BD1     		bne	.L42
+ 370              	.L30:
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         readNum = uri_getNumber(uriPath->data, uriPath->len);
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (readNum < 0 || readNum >= LWM2M_MAX_ID) goto error;
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         uriP->instanceId = (uint16_t)readNum;
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         uriP->flag |= LWM2M_URI_FLAG_INSTANCE_ID;
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     uriPath = uriPath->next;
+ 371              		.loc 1 185 0
+ 372 00fe 2468     		ldr	r4, [r4]
+ 373              	.LVL40:
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 11
+
+
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (uriPath == NULL) return uriP;
+ 374              		.loc 1 187 0
+ 375 0100 3CB3     		cbz	r4, .L16
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     // Read resource ID
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (uriPath->len != 0)
+ 376              		.loc 1 190 0
+ 377 0102 6179     		ldrb	r1, [r4, #5]	@ zero_extendqisi2
+ 378 0104 71B1     		cbz	r1, .L31
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         // resource ID without an instance ID is not allowed
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if ((uriP->flag & LWM2M_URI_FLAG_INSTANCE_ID) == 0) goto error;
+ 379              		.loc 1 193 0
+ 380 0106 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 381 0108 13F0020F 		tst	r3, #2
+ 382 010c 26D0     		beq	.L22
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         readNum = uri_getNumber(uriPath->data, uriPath->len);
+ 383              		.loc 1 195 0
+ 384 010e A068     		ldr	r0, [r4, #8]
+ 385              	.LVL41:
+ 386 0110 FFF7FEFF 		bl	uri_getNumber
+ 387              	.LVL42:
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (readNum < 0 || readNum > LWM2M_MAX_ID) goto error;
+ 388              		.loc 1 196 0
+ 389 0114 B0F5803F 		cmp	r0, #65536
+ 390 0118 20D2     		bcs	.L22
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         uriP->resourceId = (uint16_t)readNum;
+ 391              		.loc 1 197 0
+ 392 011a E880     		strh	r0, [r5, #6]	@ movhi
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         uriP->flag |= LWM2M_URI_FLAG_RESOURCE_ID;
+ 393              		.loc 1 198 0
+ 394 011c 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 395 011e 43F00103 		orr	r3, r3, #1
+ 396 0122 2B70     		strb	r3, [r5]
+ 397              	.L31:
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     // must be the last segment
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (NULL == uriPath->next)
+ 398              		.loc 1 202 0
+ 399 0124 2368     		ldr	r3, [r4]
+ 400 0126 CBB9     		cbnz	r3, .L22
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         LOG_URI(uriP);
+ 401              		.loc 1 204 0 discriminator 2
+ 402 0128 6B88     		ldrh	r3, [r5, #2]
+ 403 012a CC22     		movs	r2, #204
+ 404 012c 1D49     		ldr	r1, .L45
+ 405 012e 2248     		ldr	r0, .L45+20
+ 406              	.LVL43:
+ 407 0130 FFF7FEFF 		bl	atiny_printf
+ 408              	.LVL44:
+ 409 0134 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 410 0136 13F0020F 		tst	r3, #2
+ 411 013a 29D1     		bne	.L43
+ 412              	.L32:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 12
+
+
+ 413              		.loc 1 204 0 is_stmt 0 discriminator 5
+ 414 013c 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 415 013e 13F0010F 		tst	r3, #1
+ 416 0142 2AD1     		bne	.L44
+ 417              	.L33:
+ 418              		.loc 1 204 0 discriminator 8
+ 419 0144 1D48     		ldr	r0, .L45+24
+ 420 0146 FFF7FEFF 		bl	atiny_printf
+ 421              	.LVL45:
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         return uriP;
+ 422              		.loc 1 205 0 is_stmt 1 discriminator 8
+ 423 014a 02E0     		b	.L16
+ 424              	.L28:
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             return uriP;
+ 425              		.loc 1 157 0
+ 426 014c 40F01000 		orr	r0, r0, #16
+ 427 0150 2870     		strb	r0, [r5]
+ 428              	.LVL46:
+ 429              	.L16:
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** error:
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     LOG("Exiting on error");
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     lwm2m_free(uriP);
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     return NULL;
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** }
+ 430              		.loc 1 212 0
+ 431 0152 2846     		mov	r0, r5
+ 432 0154 02B0     		add	sp, sp, #8
+ 433              	.LCFI8:
+ 434              		.cfi_remember_state
+ 435              		.cfi_def_cfa_offset 16
+ 436              		@ sp needed
+ 437 0156 70BD     		pop	{r4, r5, r6, pc}
+ 438              	.LVL47:
+ 439              	.L41:
+ 440              	.LCFI9:
+ 441              		.cfi_restore_state
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         return uriP;
+ 442              		.loc 1 170 0
+ 443 0158 002C     		cmp	r4, #0
+ 444 015a FAD0     		beq	.L16
+ 445              	.LVL48:
+ 446              	.L22:
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     lwm2m_free(uriP);
+ 447              		.loc 1 209 0
+ 448 015c FFF7FEFF 		bl	lwm2m_gettime
+ 449              	.LVL49:
+ 450 0160 D123     		movs	r3, #209
+ 451 0162 104A     		ldr	r2, .L45
+ 452 0164 0146     		mov	r1, r0
+ 453 0166 1648     		ldr	r0, .L45+28
+ 454 0168 FFF7FEFF 		bl	atiny_printf
+ 455              	.LVL50:
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     return NULL;
+ 456              		.loc 1 210 0
+ 457 016c 2846     		mov	r0, r5
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 13
+
+
+ 458 016e FFF7FEFF 		bl	lwm2m_free
+ 459              	.LVL51:
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** }
+ 460              		.loc 1 211 0
+ 461 0172 0025     		movs	r5, #0
+ 462              	.LVL52:
+ 463 0174 EDE7     		b	.L16
+ 464              	.LVL53:
+ 465              	.L42:
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (readNum < 0 || readNum >= LWM2M_MAX_ID) goto error;
+ 466              		.loc 1 180 0
+ 467 0176 A068     		ldr	r0, [r4, #8]
+ 468              	.LVL54:
+ 469 0178 FFF7FEFF 		bl	uri_getNumber
+ 470              	.LVL55:
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         uriP->instanceId = (uint16_t)readNum;
+ 471              		.loc 1 181 0
+ 472 017c 4FF6FE73 		movw	r3, #65534
+ 473 0180 9842     		cmp	r0, r3
+ 474 0182 EBD8     		bhi	.L22
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         uriP->flag |= LWM2M_URI_FLAG_INSTANCE_ID;
+ 475              		.loc 1 182 0
+ 476 0184 A880     		strh	r0, [r5, #4]	@ movhi
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 477              		.loc 1 183 0
+ 478 0186 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 479 0188 43F00203 		orr	r3, r3, #2
+ 480 018c 2B70     		strb	r3, [r5]
+ 481 018e B6E7     		b	.L30
+ 482              	.LVL56:
+ 483              	.L43:
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         return uriP;
+ 484              		.loc 1 204 0 discriminator 3
+ 485 0190 A988     		ldrh	r1, [r5, #4]
+ 486 0192 0C48     		ldr	r0, .L45+32
+ 487 0194 FFF7FEFF 		bl	atiny_printf
+ 488              	.LVL57:
+ 489 0198 D0E7     		b	.L32
+ 490              	.L44:
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         return uriP;
+ 491              		.loc 1 204 0 is_stmt 0 discriminator 6
+ 492 019a E988     		ldrh	r1, [r5, #6]
+ 493 019c 0948     		ldr	r0, .L45+32
+ 494 019e FFF7FEFF 		bl	atiny_printf
+ 495              	.LVL58:
+ 496 01a2 CFE7     		b	.L33
+ 497              	.L46:
+ 498              		.align	2
+ 499              	.L45:
+ 500 01a4 00000000 		.word	.LANCHOR0
+ 501 01a8 00000000 		.word	.LC0
+ 502 01ac 1C000000 		.word	.LC1
+ 503 01b0 38000000 		.word	.LC2
+ 504 01b4 3C000000 		.word	.LC3
+ 505 01b8 40000000 		.word	.LC4
+ 506 01bc 50000000 		.word	.LC6
+ 507 01c0 54000000 		.word	.LC7
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 14
+
+
+ 508 01c4 4C000000 		.word	.LC5
+ 509              		.cfi_endproc
+ 510              	.LFE136:
+ 512              		.section	.text.lwm2m_stringToUri,"ax",%progbits
+ 513              		.align	1
+ 514              		.global	lwm2m_stringToUri
+ 515              		.syntax unified
+ 516              		.thumb
+ 517              		.thumb_func
+ 518              		.fpu fpv4-sp-d16
+ 520              	lwm2m_stringToUri:
+ 521              	.LFB137:
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** int lwm2m_stringToUri(const char *buffer,
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                       size_t buffer_len,
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                       lwm2m_uri_t *uriP)
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** {
+ 522              		.loc 1 217 0 is_stmt 1
+ 523              		.cfi_startproc
+ 524              		@ args = 0, pretend = 0, frame = 8
+ 525              		@ frame_needed = 0, uses_anonymous_args = 0
+ 526              	.LVL59:
+ 527 0000 70B5     		push	{r4, r5, r6, lr}
+ 528              	.LCFI10:
+ 529              		.cfi_def_cfa_offset 16
+ 530              		.cfi_offset 4, -16
+ 531              		.cfi_offset 5, -12
+ 532              		.cfi_offset 6, -8
+ 533              		.cfi_offset 14, -4
+ 534 0002 86B0     		sub	sp, sp, #24
+ 535              	.LCFI11:
+ 536              		.cfi_def_cfa_offset 40
+ 537 0004 0546     		mov	r5, r0
+ 538 0006 0C46     		mov	r4, r1
+ 539 0008 1646     		mov	r6, r2
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     size_t head;
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     int readNum;
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     LOG_ARG("buffer_len: %u, buffer: \"%.*s\"", buffer_len, buffer_len, buffer);
+ 540              		.loc 1 221 0
+ 541 000a FFF7FEFF 		bl	lwm2m_gettime
+ 542              	.LVL60:
+ 543 000e 0295     		str	r5, [sp, #8]
+ 544 0010 0194     		str	r4, [sp, #4]
+ 545 0012 0094     		str	r4, [sp]
+ 546 0014 DD23     		movs	r3, #221
+ 547 0016 7F4A     		ldr	r2, .L81
+ 548 0018 0146     		mov	r1, r0
+ 549 001a 7F48     		ldr	r0, .L81+4
+ 550 001c FFF7FEFF 		bl	atiny_printf
+ 551              	.LVL61:
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (buffer == NULL || buffer_len == 0 || uriP == NULL) return 0;
+ 552              		.loc 1 223 0
+ 553 0020 002D     		cmp	r5, #0
+ 554 0022 00F0E580 		beq	.L62
+ 555              		.loc 1 223 0 is_stmt 0 discriminator 2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 15
+
+
+ 556 0026 002C     		cmp	r4, #0
+ 557 0028 00F0E480 		beq	.L63
+ 558              		.loc 1 223 0 discriminator 4
+ 559 002c 002E     		cmp	r6, #0
+ 560 002e 00F0E480 		beq	.L64
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     memset(uriP, 0, sizeof(lwm2m_uri_t));
+ 561              		.loc 1 225 0 is_stmt 1
+ 562 0032 0023     		movs	r3, #0
+ 563 0034 3360     		str	r3, [r6]	@ unaligned
+ 564 0036 7360     		str	r3, [r6, #4]	@ unaligned
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     // Skip any white space
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     head = 0;
+ 565              		.loc 1 228 0
+ 566 0038 0593     		str	r3, [sp, #20]
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     while (head < buffer_len && isspace(buffer[head] & 0xFF))
+ 567              		.loc 1 229 0
+ 568 003a 01E0     		b	.L49
+ 569              	.L51:
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         head++;
+ 570              		.loc 1 231 0
+ 571 003c 0133     		adds	r3, r3, #1
+ 572 003e 0593     		str	r3, [sp, #20]
+ 573              	.L49:
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     while (head < buffer_len && isspace(buffer[head] & 0xFF))
+ 574              		.loc 1 229 0
+ 575 0040 059B     		ldr	r3, [sp, #20]
+ 576 0042 A342     		cmp	r3, r4
+ 577 0044 08D2     		bcs	.L50
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     while (head < buffer_len && isspace(buffer[head] & 0xFF))
+ 578              		.loc 1 229 0 is_stmt 0 discriminator 1
+ 579 0046 FFF7FEFF 		bl	__locale_ctype_ptr
+ 580              	.LVL62:
+ 581 004a 059B     		ldr	r3, [sp, #20]
+ 582 004c EA5C     		ldrb	r2, [r5, r3]	@ zero_extendqisi2
+ 583 004e 1044     		add	r0, r0, r2
+ 584 0050 4278     		ldrb	r2, [r0, #1]	@ zero_extendqisi2
+ 585 0052 12F0080F 		tst	r2, #8
+ 586 0056 F1D1     		bne	.L51
+ 587              	.L50:
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (head == buffer_len) return 0;
+ 588              		.loc 1 233 0 is_stmt 1
+ 589 0058 059B     		ldr	r3, [sp, #20]
+ 590 005a A342     		cmp	r3, r4
+ 591 005c 00F0CF80 		beq	.L65
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     // Check the URI start with a '/'
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (buffer[head] != '/') return 0;
+ 592              		.loc 1 236 0
+ 593 0060 EA5C     		ldrb	r2, [r5, r3]	@ zero_extendqisi2
+ 594 0062 2F2A     		cmp	r2, #47
+ 595 0064 01D0     		beq	.L73
+ 596 0066 0020     		movs	r0, #0
+ 597 0068 C5E0     		b	.L47
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 16
+
+
+ 598              	.L73:
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     head++;
+ 599              		.loc 1 237 0
+ 600 006a 0133     		adds	r3, r3, #1
+ 601 006c 0593     		str	r3, [sp, #20]
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (head == buffer_len) return 0;
+ 602              		.loc 1 238 0
+ 603 006e A342     		cmp	r3, r4
+ 604 0070 00F0C780 		beq	.L67
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     // Read object ID
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     readNum = prv_parseNumber((uint8_t *)buffer, buffer_len, &head);
+ 605              		.loc 1 241 0
+ 606 0074 05AA     		add	r2, sp, #20
+ 607 0076 2146     		mov	r1, r4
+ 608 0078 2846     		mov	r0, r5
+ 609 007a FFF7FEFF 		bl	prv_parseNumber
+ 610              	.LVL63:
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (readNum < 0 || readNum > LWM2M_MAX_ID) return 0;
+ 611              		.loc 1 242 0
+ 612 007e B0F5803F 		cmp	r0, #65536
+ 613 0082 80F0C080 		bcs	.L68
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     uriP->objectId = (uint16_t)readNum;
+ 614              		.loc 1 243 0
+ 615 0086 7080     		strh	r0, [r6, #2]	@ movhi
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     uriP->flag |= LWM2M_URI_FLAG_OBJECT_ID;
+ 616              		.loc 1 244 0
+ 617 0088 3378     		ldrb	r3, [r6]	@ zero_extendqisi2
+ 618 008a 43F00403 		orr	r3, r3, #4
+ 619 008e 3370     		strb	r3, [r6]
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (buffer[head] == '/') head += 1;
+ 620              		.loc 1 246 0
+ 621 0090 059B     		ldr	r3, [sp, #20]
+ 622 0092 EA5C     		ldrb	r2, [r5, r3]	@ zero_extendqisi2
+ 623 0094 2F2A     		cmp	r2, #47
+ 624 0096 20D0     		beq	.L74
+ 625              	.L52:
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (head >= buffer_len)
+ 626              		.loc 1 247 0
+ 627 0098 059B     		ldr	r3, [sp, #20]
+ 628 009a A342     		cmp	r3, r4
+ 629 009c 2AD3     		bcc	.L53
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         LOG_ARG("Parsed characters: %u", head);
+ 630              		.loc 1 249 0
+ 631 009e FFF7FEFF 		bl	lwm2m_gettime
+ 632              	.LVL64:
+ 633 00a2 5C4C     		ldr	r4, .L81
+ 634              	.LVL65:
+ 635 00a4 059B     		ldr	r3, [sp, #20]
+ 636 00a6 0093     		str	r3, [sp]
+ 637 00a8 F923     		movs	r3, #249
+ 638 00aa 2246     		mov	r2, r4
+ 639 00ac 0146     		mov	r1, r0
+ 640 00ae 5B48     		ldr	r0, .L81+8
+ 641 00b0 FFF7FEFF 		bl	atiny_printf
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 17
+
+
+ 642              	.LVL66:
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         LOG_URI(uriP);
+ 643              		.loc 1 250 0
+ 644 00b4 7388     		ldrh	r3, [r6, #2]
+ 645 00b6 FA22     		movs	r2, #250
+ 646 00b8 2146     		mov	r1, r4
+ 647 00ba 5948     		ldr	r0, .L81+12
+ 648 00bc FFF7FEFF 		bl	atiny_printf
+ 649              	.LVL67:
+ 650 00c0 3378     		ldrb	r3, [r6]	@ zero_extendqisi2
+ 651 00c2 13F0020F 		tst	r3, #2
+ 652 00c6 0BD1     		bne	.L75
+ 653              	.L54:
+ 654              		.loc 1 250 0 is_stmt 0 discriminator 5
+ 655 00c8 3378     		ldrb	r3, [r6]	@ zero_extendqisi2
+ 656 00ca 13F0010F 		tst	r3, #1
+ 657 00ce 0CD1     		bne	.L76
+ 658              	.L55:
+ 659              		.loc 1 250 0 discriminator 8
+ 660 00d0 5448     		ldr	r0, .L81+16
+ 661 00d2 FFF7FEFF 		bl	atiny_printf
+ 662              	.LVL68:
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         return head;
+ 663              		.loc 1 251 0 is_stmt 1 discriminator 8
+ 664 00d6 0598     		ldr	r0, [sp, #20]
+ 665 00d8 8DE0     		b	.L47
+ 666              	.LVL69:
+ 667              	.L74:
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (head >= buffer_len)
+ 668              		.loc 1 246 0 discriminator 1
+ 669 00da 0133     		adds	r3, r3, #1
+ 670 00dc 0593     		str	r3, [sp, #20]
+ 671 00de DBE7     		b	.L52
+ 672              	.LVL70:
+ 673              	.L75:
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         LOG_URI(uriP);
+ 674              		.loc 1 250 0 discriminator 3
+ 675 00e0 B188     		ldrh	r1, [r6, #4]
+ 676 00e2 5148     		ldr	r0, .L81+20
+ 677 00e4 FFF7FEFF 		bl	atiny_printf
+ 678              	.LVL71:
+ 679 00e8 EEE7     		b	.L54
+ 680              	.L76:
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         LOG_URI(uriP);
+ 681              		.loc 1 250 0 is_stmt 0 discriminator 6
+ 682 00ea F188     		ldrh	r1, [r6, #6]
+ 683 00ec 4E48     		ldr	r0, .L81+20
+ 684 00ee FFF7FEFF 		bl	atiny_printf
+ 685              	.LVL72:
+ 686 00f2 EDE7     		b	.L55
+ 687              	.LVL73:
+ 688              	.L53:
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     readNum = prv_parseNumber((uint8_t *)buffer, buffer_len, &head);
+ 689              		.loc 1 254 0 is_stmt 1
+ 690 00f4 05AA     		add	r2, sp, #20
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 18
+
+
+ 691 00f6 2146     		mov	r1, r4
+ 692 00f8 2846     		mov	r0, r5
+ 693              	.LVL74:
+ 694 00fa FFF7FEFF 		bl	prv_parseNumber
+ 695              	.LVL75:
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (readNum < 0 || readNum >= LWM2M_MAX_ID) return 0;
+ 696              		.loc 1 255 0
+ 697 00fe 4FF6FE73 		movw	r3, #65534
+ 698 0102 9842     		cmp	r0, r3
+ 699 0104 00F28180 		bhi	.L69
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     uriP->instanceId = (uint16_t)readNum;
+ 700              		.loc 1 256 0
+ 701 0108 B080     		strh	r0, [r6, #4]	@ movhi
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     uriP->flag |= LWM2M_URI_FLAG_INSTANCE_ID;
+ 702              		.loc 1 257 0
+ 703 010a 3378     		ldrb	r3, [r6]	@ zero_extendqisi2
+ 704 010c 43F00203 		orr	r3, r3, #2
+ 705 0110 3370     		strb	r3, [r6]
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (buffer[head] == '/') head += 1;
+ 706              		.loc 1 259 0
+ 707 0112 059B     		ldr	r3, [sp, #20]
+ 708 0114 EA5C     		ldrb	r2, [r5, r3]	@ zero_extendqisi2
+ 709 0116 2F2A     		cmp	r2, #47
+ 710 0118 22D0     		beq	.L77
+ 711              	.L56:
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (head >= buffer_len)
+ 712              		.loc 1 260 0
+ 713 011a 059B     		ldr	r3, [sp, #20]
+ 714 011c A342     		cmp	r3, r4
+ 715 011e 2CD3     		bcc	.L57
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         LOG_ARG("Parsed characters: %u", head);
+ 716              		.loc 1 262 0
+ 717 0120 FFF7FEFF 		bl	lwm2m_gettime
+ 718              	.LVL76:
+ 719 0124 3B4C     		ldr	r4, .L81
+ 720              	.LVL77:
+ 721 0126 059B     		ldr	r3, [sp, #20]
+ 722 0128 0093     		str	r3, [sp]
+ 723 012a 4FF48373 		mov	r3, #262
+ 724 012e 2246     		mov	r2, r4
+ 725 0130 0146     		mov	r1, r0
+ 726 0132 3A48     		ldr	r0, .L81+8
+ 727 0134 FFF7FEFF 		bl	atiny_printf
+ 728              	.LVL78:
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         LOG_URI(uriP);
+ 729              		.loc 1 263 0
+ 730 0138 7388     		ldrh	r3, [r6, #2]
+ 731 013a 40F20712 		movw	r2, #263
+ 732 013e 2146     		mov	r1, r4
+ 733 0140 3748     		ldr	r0, .L81+12
+ 734 0142 FFF7FEFF 		bl	atiny_printf
+ 735              	.LVL79:
+ 736 0146 3378     		ldrb	r3, [r6]	@ zero_extendqisi2
+ 737 0148 13F0020F 		tst	r3, #2
+ 738 014c 0BD1     		bne	.L78
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 19
+
+
+ 739              	.L58:
+ 740              		.loc 1 263 0 is_stmt 0 discriminator 5
+ 741 014e 3378     		ldrb	r3, [r6]	@ zero_extendqisi2
+ 742 0150 13F0010F 		tst	r3, #1
+ 743 0154 0CD1     		bne	.L79
+ 744              	.L59:
+ 745              		.loc 1 263 0 discriminator 8
+ 746 0156 3348     		ldr	r0, .L81+16
+ 747 0158 FFF7FEFF 		bl	atiny_printf
+ 748              	.LVL80:
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         return head;
+ 749              		.loc 1 264 0 is_stmt 1 discriminator 8
+ 750 015c 0598     		ldr	r0, [sp, #20]
+ 751 015e 4AE0     		b	.L47
+ 752              	.LVL81:
+ 753              	.L77:
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (head >= buffer_len)
+ 754              		.loc 1 259 0 discriminator 1
+ 755 0160 0133     		adds	r3, r3, #1
+ 756 0162 0593     		str	r3, [sp, #20]
+ 757 0164 D9E7     		b	.L56
+ 758              	.LVL82:
+ 759              	.L78:
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         LOG_URI(uriP);
+ 760              		.loc 1 263 0 discriminator 3
+ 761 0166 B188     		ldrh	r1, [r6, #4]
+ 762 0168 2F48     		ldr	r0, .L81+20
+ 763 016a FFF7FEFF 		bl	atiny_printf
+ 764              	.LVL83:
+ 765 016e EEE7     		b	.L58
+ 766              	.L79:
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         LOG_URI(uriP);
+ 767              		.loc 1 263 0 is_stmt 0 discriminator 6
+ 768 0170 F188     		ldrh	r1, [r6, #6]
+ 769 0172 2D48     		ldr	r0, .L81+20
+ 770 0174 FFF7FEFF 		bl	atiny_printf
+ 771              	.LVL84:
+ 772 0178 EDE7     		b	.L59
+ 773              	.LVL85:
+ 774              	.L57:
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     readNum = prv_parseNumber((uint8_t *)buffer, buffer_len, &head);
+ 775              		.loc 1 267 0 is_stmt 1
+ 776 017a 05AA     		add	r2, sp, #20
+ 777 017c 2146     		mov	r1, r4
+ 778 017e 2846     		mov	r0, r5
+ 779              	.LVL86:
+ 780 0180 FFF7FEFF 		bl	prv_parseNumber
+ 781              	.LVL87:
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (readNum < 0 || readNum >= LWM2M_MAX_ID) return 0;
+ 782              		.loc 1 268 0
+ 783 0184 4FF6FE73 		movw	r3, #65534
+ 784 0188 9842     		cmp	r0, r3
+ 785 018a 40D8     		bhi	.L70
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     uriP->resourceId = (uint16_t)readNum;
+ 786              		.loc 1 269 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 20
+
+
+ 787 018c F080     		strh	r0, [r6, #6]	@ movhi
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     uriP->flag |= LWM2M_URI_FLAG_RESOURCE_ID;
+ 788              		.loc 1 270 0
+ 789 018e 3378     		ldrb	r3, [r6]	@ zero_extendqisi2
+ 790 0190 43F00103 		orr	r3, r3, #1
+ 791 0194 3370     		strb	r3, [r6]
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (head != buffer_len) return 0;
+ 792              		.loc 1 272 0
+ 793 0196 059B     		ldr	r3, [sp, #20]
+ 794 0198 A342     		cmp	r3, r4
+ 795 019a 01D0     		beq	.L80
+ 796 019c 0020     		movs	r0, #0
+ 797              	.LVL88:
+ 798 019e 2AE0     		b	.L47
+ 799              	.LVL89:
+ 800              	.L80:
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     LOG_ARG("Parsed characters: %u", head);
+ 801              		.loc 1 274 0
+ 802 01a0 FFF7FEFF 		bl	lwm2m_gettime
+ 803              	.LVL90:
+ 804 01a4 1B4C     		ldr	r4, .L81
+ 805              	.LVL91:
+ 806 01a6 059B     		ldr	r3, [sp, #20]
+ 807 01a8 0093     		str	r3, [sp]
+ 808 01aa 4FF48973 		mov	r3, #274
+ 809 01ae 2246     		mov	r2, r4
+ 810 01b0 0146     		mov	r1, r0
+ 811 01b2 1A48     		ldr	r0, .L81+8
+ 812 01b4 FFF7FEFF 		bl	atiny_printf
+ 813              	.LVL92:
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     LOG_URI(uriP);
+ 814              		.loc 1 275 0
+ 815 01b8 7388     		ldrh	r3, [r6, #2]
+ 816 01ba 40F21312 		movw	r2, #275
+ 817 01be 2146     		mov	r1, r4
+ 818 01c0 1748     		ldr	r0, .L81+12
+ 819 01c2 FFF7FEFF 		bl	atiny_printf
+ 820              	.LVL93:
+ 821 01c6 3378     		ldrb	r3, [r6]	@ zero_extendqisi2
+ 822 01c8 13F0020F 		tst	r3, #2
+ 823 01cc 03D0     		beq	.L60
+ 824              		.loc 1 275 0 is_stmt 0 discriminator 3
+ 825 01ce B188     		ldrh	r1, [r6, #4]
+ 826 01d0 1548     		ldr	r0, .L81+20
+ 827 01d2 FFF7FEFF 		bl	atiny_printf
+ 828              	.LVL94:
+ 829              	.L60:
+ 830              		.loc 1 275 0 discriminator 5
+ 831 01d6 3378     		ldrb	r3, [r6]	@ zero_extendqisi2
+ 832 01d8 13F0010F 		tst	r3, #1
+ 833 01dc 03D0     		beq	.L61
+ 834              		.loc 1 275 0 discriminator 6
+ 835 01de F188     		ldrh	r1, [r6, #6]
+ 836 01e0 1148     		ldr	r0, .L81+20
+ 837 01e2 FFF7FEFF 		bl	atiny_printf
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 21
+
+
+ 838              	.LVL95:
+ 839              	.L61:
+ 840              		.loc 1 275 0 discriminator 8
+ 841 01e6 0F48     		ldr	r0, .L81+16
+ 842 01e8 FFF7FEFF 		bl	atiny_printf
+ 843              	.LVL96:
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     return head;
+ 844              		.loc 1 277 0 is_stmt 1 discriminator 8
+ 845 01ec 0598     		ldr	r0, [sp, #20]
+ 846 01ee 02E0     		b	.L47
+ 847              	.LVL97:
+ 848              	.L62:
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 849              		.loc 1 223 0
+ 850 01f0 0020     		movs	r0, #0
+ 851 01f2 00E0     		b	.L47
+ 852              	.L63:
+ 853 01f4 0020     		movs	r0, #0
+ 854              	.LVL98:
+ 855              	.L47:
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** }
+ 856              		.loc 1 278 0
+ 857 01f6 06B0     		add	sp, sp, #24
+ 858              	.LCFI12:
+ 859              		.cfi_remember_state
+ 860              		.cfi_def_cfa_offset 16
+ 861              		@ sp needed
+ 862 01f8 70BD     		pop	{r4, r5, r6, pc}
+ 863              	.LVL99:
+ 864              	.L64:
+ 865              	.LCFI13:
+ 866              		.cfi_restore_state
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 867              		.loc 1 223 0
+ 868 01fa 0020     		movs	r0, #0
+ 869 01fc FBE7     		b	.L47
+ 870              	.L65:
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 871              		.loc 1 233 0
+ 872 01fe 0020     		movs	r0, #0
+ 873 0200 F9E7     		b	.L47
+ 874              	.L67:
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 875              		.loc 1 238 0
+ 876 0202 0020     		movs	r0, #0
+ 877 0204 F7E7     		b	.L47
+ 878              	.LVL100:
+ 879              	.L68:
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     uriP->objectId = (uint16_t)readNum;
+ 880              		.loc 1 242 0
+ 881 0206 0020     		movs	r0, #0
+ 882              	.LVL101:
+ 883 0208 F5E7     		b	.L47
+ 884              	.LVL102:
+ 885              	.L69:
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     uriP->instanceId = (uint16_t)readNum;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 22
+
+
+ 886              		.loc 1 255 0
+ 887 020a 0020     		movs	r0, #0
+ 888              	.LVL103:
+ 889 020c F3E7     		b	.L47
+ 890              	.LVL104:
+ 891              	.L70:
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     uriP->resourceId = (uint16_t)readNum;
+ 892              		.loc 1 268 0
+ 893 020e 0020     		movs	r0, #0
+ 894              	.LVL105:
+ 895 0210 F1E7     		b	.L47
+ 896              	.L82:
+ 897 0212 00BF     		.align	2
+ 898              	.L81:
+ 899 0214 00000000 		.word	.LANCHOR1
+ 900 0218 00000000 		.word	.LC8
+ 901 021c 30000000 		.word	.LC9
+ 902 0220 40000000 		.word	.LC4
+ 903 0224 50000000 		.word	.LC6
+ 904 0228 4C000000 		.word	.LC5
+ 905              		.cfi_endproc
+ 906              	.LFE137:
+ 908              		.section	.text.uri_toString,"ax",%progbits
+ 909              		.align	1
+ 910              		.global	uri_toString
+ 911              		.syntax unified
+ 912              		.thumb
+ 913              		.thumb_func
+ 914              		.fpu fpv4-sp-d16
+ 916              	uri_toString:
+ 917              	.LFB138:
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** int uri_toString(lwm2m_uri_t *uriP,
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                  uint8_t *buffer,
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                  size_t bufferLen,
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****                  uri_depth_t *depthP)
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** {
+ 918              		.loc 1 284 0
+ 919              		.cfi_startproc
+ 920              		@ args = 0, pretend = 0, frame = 0
+ 921              		@ frame_needed = 0, uses_anonymous_args = 0
+ 922              	.LVL106:
+ 923 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 924              	.LCFI14:
+ 925              		.cfi_def_cfa_offset 28
+ 926              		.cfi_offset 4, -28
+ 927              		.cfi_offset 5, -24
+ 928              		.cfi_offset 6, -20
+ 929              		.cfi_offset 7, -16
+ 930              		.cfi_offset 8, -12
+ 931              		.cfi_offset 9, -8
+ 932              		.cfi_offset 14, -4
+ 933 0004 85B0     		sub	sp, sp, #20
+ 934              	.LCFI15:
+ 935              		.cfi_def_cfa_offset 48
+ 936 0006 0446     		mov	r4, r0
+ 937 0008 0D46     		mov	r5, r1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 23
+
+
+ 938 000a 1746     		mov	r7, r2
+ 939 000c 1E46     		mov	r6, r3
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     size_t head;
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     int res;
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     LOG_ARG("bufferLen: %u", bufferLen);
+ 940              		.loc 1 288 0
+ 941 000e FFF7FEFF 		bl	lwm2m_gettime
+ 942              	.LVL107:
+ 943 0012 0097     		str	r7, [sp]
+ 944 0014 4FF49073 		mov	r3, #288
+ 945 0018 4E4A     		ldr	r2, .L106
+ 946 001a 0146     		mov	r1, r0
+ 947 001c 4E48     		ldr	r0, .L106+4
+ 948 001e FFF7FEFF 		bl	atiny_printf
+ 949              	.LVL108:
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     LOG_URI(uriP);
+ 950              		.loc 1 289 0
+ 951 0022 002C     		cmp	r4, #0
+ 952 0024 55D0     		beq	.L101
+ 953              		.loc 1 289 0 is_stmt 0 discriminator 2
+ 954 0026 6388     		ldrh	r3, [r4, #2]
+ 955 0028 40F22112 		movw	r2, #289
+ 956 002c 4949     		ldr	r1, .L106
+ 957 002e 4B48     		ldr	r0, .L106+8
+ 958 0030 FFF7FEFF 		bl	atiny_printf
+ 959              	.LVL109:
+ 960 0034 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 961 0036 13F0020F 		tst	r3, #2
+ 962 003a 51D1     		bne	.L102
+ 963              	.L86:
+ 964              		.loc 1 289 0 discriminator 5
+ 965 003c 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 966 003e 13F0010F 		tst	r3, #1
+ 967 0042 52D1     		bne	.L103
+ 968              	.L87:
+ 969              		.loc 1 289 0 discriminator 8
+ 970 0044 4648     		ldr	r0, .L106+12
+ 971 0046 FFF7FEFF 		bl	atiny_printf
+ 972              	.LVL110:
+ 973              	.L85:
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     buffer[0] = '/';
+ 974              		.loc 1 291 0 is_stmt 1
+ 975 004a 2F23     		movs	r3, #47
+ 976 004c 2B70     		strb	r3, [r5]
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (uriP == NULL)
+ 977              		.loc 1 293 0
+ 978 004e 002C     		cmp	r4, #0
+ 979 0050 50D0     		beq	.L104
+ 980              	.LVL111:
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (depthP) *depthP = URI_DEPTH_OBJECT;
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         return 1;
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 24
+
+
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     head = 1;
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     res = utils_intToText(uriP->objectId, buffer + head, bufferLen - head);
+ 981              		.loc 1 301 0
+ 982 0052 07F1FF39 		add	r9, r7, #-1
+ 983 0056 4B46     		mov	r3, r9
+ 984 0058 6A1C     		adds	r2, r5, #1
+ 985 005a 6088     		ldrh	r0, [r4, #2]
+ 986 005c 0021     		movs	r1, #0
+ 987 005e FFF7FEFF 		bl	utils_intToText
+ 988              	.LVL112:
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (res <= 0) return -1;
+ 989              		.loc 1 302 0
+ 990 0062 0028     		cmp	r0, #0
+ 991 0064 64DD     		ble	.L94
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     head += res;
+ 992              		.loc 1 303 0
+ 993 0066 431C     		adds	r3, r0, #1
+ 994              	.LVL113:
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (head >= bufferLen - 1) return -1;
+ 995              		.loc 1 304 0
+ 996 0068 9945     		cmp	r9, r3
+ 997 006a 64D9     		bls	.L95
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (depthP) *depthP = URI_DEPTH_OBJECT_INSTANCE;
+ 998              		.loc 1 305 0
+ 999 006c 0EB1     		cbz	r6, .L90
+ 1000              		.loc 1 305 0 is_stmt 0 discriminator 1
+ 1001 006e 0122     		movs	r2, #1
+ 1002 0070 3270     		strb	r2, [r6]
+ 1003              	.L90:
+ 306:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (LWM2M_URI_IS_SET_INSTANCE(uriP))
+ 1004              		.loc 1 307 0 is_stmt 1
+ 1005 0072 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
+ 1006 0074 12F0020F 		tst	r2, #2
+ 1007 0078 18D0     		beq	.L91
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     {
+ 309:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         buffer[head] = '/';
+ 1008              		.loc 1 309 0
+ 1009 007a 2F22     		movs	r2, #47
+ 1010 007c EA54     		strb	r2, [r5, r3]
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         head++;
+ 1011              		.loc 1 310 0
+ 1012 007e 00F10208 		add	r8, r0, #2
+ 1013              	.LVL114:
+ 311:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         res = utils_intToText(uriP->instanceId, buffer + head, bufferLen - head);
+ 1014              		.loc 1 311 0
+ 1015 0082 A7EB0803 		sub	r3, r7, r8
+ 1016 0086 05EB0802 		add	r2, r5, r8
+ 1017 008a A088     		ldrh	r0, [r4, #4]
+ 1018              	.LVL115:
+ 1019 008c 0021     		movs	r1, #0
+ 1020 008e FFF7FEFF 		bl	utils_intToText
+ 1021              	.LVL116:
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (res <= 0) return -1;
+ 1022              		.loc 1 312 0
+ 1023 0092 0028     		cmp	r0, #0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 25
+
+
+ 1024 0094 52DD     		ble	.L96
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         head += res;
+ 1025              		.loc 1 313 0
+ 1026 0096 00EB0803 		add	r3, r0, r8
+ 1027              	.LVL117:
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (head >= bufferLen - 1) return -1;
+ 1028              		.loc 1 314 0
+ 1029 009a 9945     		cmp	r9, r3
+ 1030 009c 51D9     		bls	.L97
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (depthP) *depthP = URI_DEPTH_RESOURCE;
+ 1031              		.loc 1 315 0
+ 1032 009e 0EB1     		cbz	r6, .L92
+ 1033              		.loc 1 315 0 is_stmt 0 discriminator 1
+ 1034 00a0 0222     		movs	r2, #2
+ 1035 00a2 3270     		strb	r2, [r6]
+ 1036              	.L92:
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (LWM2M_URI_IS_SET_RESOURCE(uriP))
+ 1037              		.loc 1 316 0 is_stmt 1
+ 1038 00a4 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
+ 1039 00a6 12F0010F 		tst	r2, #1
+ 1040 00aa 28D1     		bne	.L105
+ 1041              	.L91:
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         {
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             buffer[head] = '/';
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             head++;
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             res = utils_intToText(uriP->resourceId, buffer + head, bufferLen - head);
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             if (res <= 0) return -1;
+ 322:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             head += res;
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             if (head >= bufferLen - 1) return -1;
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             if (depthP) *depthP = URI_DEPTH_RESOURCE_INSTANCE;
+ 325:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         }
+ 326:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 327:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 328:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     buffer[head] = '/';
+ 1042              		.loc 1 328 0
+ 1043 00ac 2F22     		movs	r2, #47
+ 1044 00ae EA54     		strb	r2, [r5, r3]
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     head++;
+ 1045              		.loc 1 329 0
+ 1046 00b0 5C1C     		adds	r4, r3, #1
+ 1047              	.LVL118:
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     LOG_ARG("length: %u, buffer: \"%.*s\"", head, head, buffer);
+ 1048              		.loc 1 331 0
+ 1049 00b2 FFF7FEFF 		bl	lwm2m_gettime
+ 1050              	.LVL119:
+ 1051 00b6 0295     		str	r5, [sp, #8]
+ 1052 00b8 0194     		str	r4, [sp, #4]
+ 1053 00ba 0094     		str	r4, [sp]
+ 1054 00bc 40F24B13 		movw	r3, #331
+ 1055 00c0 244A     		ldr	r2, .L106
+ 1056 00c2 0146     		mov	r1, r0
+ 1057 00c4 2748     		ldr	r0, .L106+16
+ 1058 00c6 FFF7FEFF 		bl	atiny_printf
+ 1059              	.LVL120:
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     return head;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 26
+
+
+ 1060              		.loc 1 333 0
+ 1061 00ca 2046     		mov	r0, r4
+ 1062              	.LVL121:
+ 1063              	.L83:
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** }
+ 1064              		.loc 1 334 0
+ 1065 00cc 05B0     		add	sp, sp, #20
+ 1066              	.LCFI16:
+ 1067              		.cfi_remember_state
+ 1068              		.cfi_def_cfa_offset 28
+ 1069              		@ sp needed
+ 1070 00ce BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 1071              	.LVL122:
+ 1072              	.L101:
+ 1073              	.LCFI17:
+ 1074              		.cfi_restore_state
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 1075              		.loc 1 289 0 discriminator 1
+ 1076 00d2 40F22112 		movw	r2, #289
+ 1077 00d6 1F49     		ldr	r1, .L106
+ 1078 00d8 2348     		ldr	r0, .L106+20
+ 1079 00da FFF7FEFF 		bl	atiny_printf
+ 1080              	.LVL123:
+ 1081 00de B4E7     		b	.L85
+ 1082              	.L102:
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 1083              		.loc 1 289 0 is_stmt 0 discriminator 3
+ 1084 00e0 A188     		ldrh	r1, [r4, #4]
+ 1085 00e2 2248     		ldr	r0, .L106+24
+ 1086 00e4 FFF7FEFF 		bl	atiny_printf
+ 1087              	.LVL124:
+ 1088 00e8 A8E7     		b	.L86
+ 1089              	.L103:
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c **** 
+ 1090              		.loc 1 289 0 discriminator 6
+ 1091 00ea E188     		ldrh	r1, [r4, #6]
+ 1092 00ec 1F48     		ldr	r0, .L106+24
+ 1093 00ee FFF7FEFF 		bl	atiny_printf
+ 1094              	.LVL125:
+ 1095 00f2 A7E7     		b	.L87
+ 1096              	.L104:
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         return 1;
+ 1097              		.loc 1 295 0 is_stmt 1
+ 1098 00f4 D6B1     		cbz	r6, .L93
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         return 1;
+ 1099              		.loc 1 295 0 is_stmt 0 discriminator 1
+ 1100 00f6 0023     		movs	r3, #0
+ 1101 00f8 3370     		strb	r3, [r6]
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 1102              		.loc 1 296 0 is_stmt 1 discriminator 1
+ 1103 00fa 0120     		movs	r0, #1
+ 1104 00fc E6E7     		b	.L83
+ 1105              	.LVL126:
+ 1106              	.L105:
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             head++;
+ 1107              		.loc 1 318 0
+ 1108 00fe 2F22     		movs	r2, #47
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 27
+
+
+ 1109 0100 EA54     		strb	r2, [r5, r3]
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             res = utils_intToText(uriP->resourceId, buffer + head, bufferLen - head);
+ 1110              		.loc 1 319 0
+ 1111 0102 03F10108 		add	r8, r3, #1
+ 1112              	.LVL127:
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             if (res <= 0) return -1;
+ 1113              		.loc 1 320 0
+ 1114 0106 A7EB0803 		sub	r3, r7, r8
+ 1115 010a 05EB0802 		add	r2, r5, r8
+ 1116 010e E088     		ldrh	r0, [r4, #6]
+ 1117              	.LVL128:
+ 1118 0110 0021     		movs	r1, #0
+ 1119 0112 FFF7FEFF 		bl	utils_intToText
+ 1120              	.LVL129:
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             head += res;
+ 1121              		.loc 1 321 0
+ 1122 0116 0028     		cmp	r0, #0
+ 1123 0118 16DD     		ble	.L98
+ 322:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             if (head >= bufferLen - 1) return -1;
+ 1124              		.loc 1 322 0
+ 1125 011a 00EB0803 		add	r3, r0, r8
+ 1126              	.LVL130:
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             if (depthP) *depthP = URI_DEPTH_RESOURCE_INSTANCE;
+ 1127              		.loc 1 323 0
+ 1128 011e 9945     		cmp	r9, r3
+ 1129 0120 15D9     		bls	.L99
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         }
+ 1130              		.loc 1 324 0
+ 1131 0122 002E     		cmp	r6, #0
+ 1132 0124 C2D0     		beq	.L91
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         }
+ 1133              		.loc 1 324 0 is_stmt 0 discriminator 1
+ 1134 0126 0322     		movs	r2, #3
+ 1135 0128 3270     		strb	r2, [r6]
+ 1136 012a BFE7     		b	.L91
+ 1137              	.LVL131:
+ 1138              	.L93:
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     }
+ 1139              		.loc 1 296 0 is_stmt 1
+ 1140 012c 0120     		movs	r0, #1
+ 1141 012e CDE7     		b	.L83
+ 1142              	.LVL132:
+ 1143              	.L94:
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     head += res;
+ 1144              		.loc 1 302 0
+ 1145 0130 4FF0FF30 		mov	r0, #-1
+ 1146              	.LVL133:
+ 1147 0134 CAE7     		b	.L83
+ 1148              	.LVL134:
+ 1149              	.L95:
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****     if (depthP) *depthP = URI_DEPTH_OBJECT_INSTANCE;
+ 1150              		.loc 1 304 0
+ 1151 0136 4FF0FF30 		mov	r0, #-1
+ 1152              	.LVL135:
+ 1153 013a C7E7     		b	.L83
+ 1154              	.LVL136:
+ 1155              	.L96:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 28
+
+
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         head += res;
+ 1156              		.loc 1 312 0
+ 1157 013c 4FF0FF30 		mov	r0, #-1
+ 1158              	.LVL137:
+ 1159 0140 C4E7     		b	.L83
+ 1160              	.LVL138:
+ 1161              	.L97:
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****         if (depthP) *depthP = URI_DEPTH_RESOURCE;
+ 1162              		.loc 1 314 0
+ 1163 0142 4FF0FF30 		mov	r0, #-1
+ 1164              	.LVL139:
+ 1165 0146 C1E7     		b	.L83
+ 1166              	.LVL140:
+ 1167              	.L98:
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             head += res;
+ 1168              		.loc 1 321 0
+ 1169 0148 4FF0FF30 		mov	r0, #-1
+ 1170              	.LVL141:
+ 1171 014c BEE7     		b	.L83
+ 1172              	.LVL142:
+ 1173              	.L99:
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\uri.c ****             if (depthP) *depthP = URI_DEPTH_RESOURCE_INSTANCE;
+ 1174              		.loc 1 323 0
+ 1175 014e 4FF0FF30 		mov	r0, #-1
+ 1176              	.LVL143:
+ 1177 0152 BBE7     		b	.L83
+ 1178              	.L107:
+ 1179              		.align	2
+ 1180              	.L106:
+ 1181 0154 00000000 		.word	.LANCHOR2
+ 1182 0158 00000000 		.word	.LC10
+ 1183 015c 40000000 		.word	.LC4
+ 1184 0160 50000000 		.word	.LC6
+ 1185 0164 2C000000 		.word	.LC12
+ 1186 0168 1C000000 		.word	.LC11
+ 1187 016c 4C000000 		.word	.LC5
+ 1188              		.cfi_endproc
+ 1189              	.LFE138:
+ 1191              		.section	.rodata.__func__.11590,"a",%progbits
+ 1192              		.align	2
+ 1193              		.set	.LANCHOR0,. + 0
+ 1196              	__func__.11590:
+ 1197 0000 7572695F 		.ascii	"uri_decode\000"
+ 1197      6465636F 
+ 1197      646500
+ 1198              		.section	.rodata.__func__.11603,"a",%progbits
+ 1199              		.align	2
+ 1200              		.set	.LANCHOR1,. + 0
+ 1203              	__func__.11603:
+ 1204 0000 6C776D32 		.ascii	"lwm2m_stringToUri\000"
+ 1204      6D5F7374 
+ 1204      72696E67 
+ 1204      546F5572 
+ 1204      6900
+ 1205              		.section	.rodata.__func__.11615,"a",%progbits
+ 1206              		.align	2
+ 1207              		.set	.LANCHOR2,. + 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 29
+
+
+ 1210              	__func__.11615:
+ 1211 0000 7572695F 		.ascii	"uri_toString\000"
+ 1211      746F5374 
+ 1211      72696E67 
+ 1211      00
+ 1212              		.section	.rodata.lwm2m_stringToUri.str1.4,"aMS",%progbits,1
+ 1213              		.align	2
+ 1214              	.LC8:
+ 1215 0000 5B25645D 		.ascii	"[%d][%s:%d] buffer_len: %u, buffer: \"%.*s\"\015\012"
+ 1215      5B25733A 
+ 1215      25645D20 
+ 1215      62756666 
+ 1215      65725F6C 
+ 1216 002c 00       		.ascii	"\000"
+ 1217 002d 000000   		.space	3
+ 1218              	.LC9:
+ 1219 0030 5B25645D 		.ascii	"[%d][%s:%d] Parsed characters: %u\015\012\000"
+ 1219      5B25733A 
+ 1219      25645D20 
+ 1219      50617273 
+ 1219      65642063 
+ 1220              		.section	.rodata.uri_decode.str1.4,"aMS",%progbits,1
+ 1221              		.align	2
+ 1222              	.LC0:
+ 1223 0000 5B25645D 		.ascii	"[%d][%s:%d] altPath: \"%s\"\015\012\000"
+ 1223      5B25733A 
+ 1223      25645D20 
+ 1223      616C7450 
+ 1223      6174683A 
+ 1224              	.LC1:
+ 1225 001c 5B25645D 		.ascii	"[%d][%s:%d] altPath: NULL\015\012\000"
+ 1225      5B25733A 
+ 1225      25645D20 
+ 1225      616C7450 
+ 1225      6174683A 
+ 1226              	.LC2:
+ 1227 0038 726400   		.ascii	"rd\000"
+ 1228 003b 00       		.space	1
+ 1229              	.LC3:
+ 1230 003c 627300   		.ascii	"bs\000"
+ 1231 003f 00       		.space	1
+ 1232              	.LC4:
+ 1233 0040 5B25733A 		.ascii	"[%s:%d] /%d\000"
+ 1233      25645D20 
+ 1233      2F256400 
+ 1234              	.LC5:
+ 1235 004c 2F256400 		.ascii	"/%d\000"
+ 1236              	.LC6:
+ 1237 0050 0D0A00   		.ascii	"\015\012\000"
+ 1238 0053 00       		.space	1
+ 1239              	.LC7:
+ 1240 0054 5B25645D 		.ascii	"[%d][%s:%d] Exiting on error\015\012\000"
+ 1240      5B25733A 
+ 1240      25645D20 
+ 1240      45786974 
+ 1240      696E6720 
+ 1241              		.section	.rodata.uri_toString.str1.4,"aMS",%progbits,1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 30
+
+
+ 1242              		.align	2
+ 1243              	.LC10:
+ 1244 0000 5B25645D 		.ascii	"[%d][%s:%d] bufferLen: %u\015\012\000"
+ 1244      5B25733A 
+ 1244      25645D20 
+ 1244      62756666 
+ 1244      65724C65 
+ 1245              	.LC11:
+ 1246 001c 5B25733A 		.ascii	"[%s:%d] NULL\015\012\000"
+ 1246      25645D20 
+ 1246      4E554C4C 
+ 1246      0D0A00
+ 1247 002b 00       		.space	1
+ 1248              	.LC12:
+ 1249 002c 5B25645D 		.ascii	"[%d][%s:%d] length: %u, buffer: \"%.*s\"\015\012\000"
+ 1249      5B25733A 
+ 1249      25645D20 
+ 1249      6C656E67 
+ 1249      74683A20 
+ 1250              		.text
+ 1251              	.Letext0:
+ 1252              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1253              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1254              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 1255              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1256              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1257              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1258              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1259              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core/
+ 1260              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 1261              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 1262              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 1263              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 1264              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 1265              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 1266              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 1267              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 1268              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 1269              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 1270              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 1271              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 1272              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 1273              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core
+ 1274              		.file 24 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1275              		.file 25 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1276              		.file 26 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core
+ 1277              		.file 27 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/osdepends/atiny_osdep.h"
+ 1278              		.file 28 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s 			page 31
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 uri.c
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:18     .text.prv_parseNumber:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:24     .text.prv_parseNumber:00000000 prv_parseNumber
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:114    .text.prv_parseNumber:00000050 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:119    .text.uri_getNumber:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:126    .text.uri_getNumber:00000000 uri_getNumber
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:157    .text.uri_decode:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:164    .text.uri_decode:00000000 uri_decode
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:500    .text.uri_decode:000001a4 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:513    .text.lwm2m_stringToUri:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:520    .text.lwm2m_stringToUri:00000000 lwm2m_stringToUri
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:899    .text.lwm2m_stringToUri:00000214 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:909    .text.uri_toString:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:916    .text.uri_toString:00000000 uri_toString
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:1181   .text.uri_toString:00000154 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:1192   .rodata.__func__.11590:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:1196   .rodata.__func__.11590:00000000 __func__.11590
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:1199   .rodata.__func__.11603:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:1203   .rodata.__func__.11603:00000000 __func__.11603
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:1206   .rodata.__func__.11615:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:1210   .rodata.__func__.11615:00000000 __func__.11615
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:1213   .rodata.lwm2m_stringToUri.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:1221   .rodata.uri_decode.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4WXz6c.s:1242   .rodata.uri_toString.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+lwm2m_gettime
+atiny_printf
+lwm2m_malloc
+strncmp
+lwm2m_free
+__locale_ctype_ptr
+utils_intToText

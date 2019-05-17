@@ -1,0 +1,157 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccjL3ebM.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"entropy_hardware_poll.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.mbedtls_hardware_poll,"ax",%progbits
+  18              		.align	1
+  19              		.global	mbedtls_hardware_poll
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	mbedtls_hardware_poll:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccjL3ebM.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c **** #include "osdepends/atiny_osdep.h"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c **** #include "mbedtls/entropy.h"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c **** 
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c **** int mbedtls_hardware_poll(void *data,
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****                           unsigned char *output, size_t len, size_t *olen);
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c **** int mbedtls_hardware_poll(void *data,
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****                           unsigned char *output, size_t len, size_t *olen)
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c **** {
+  28              		.loc 1 42 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 38B5     		push	{r3, r4, r5, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 16
+  36              		.cfi_offset 3, -16
+  37              		.cfi_offset 4, -12
+  38              		.cfi_offset 5, -8
+  39              		.cfi_offset 14, -4
+  40 0002 0846     		mov	r0, r1
+  41              	.LVL1:
+  42 0004 1546     		mov	r5, r2
+  43 0006 1C46     		mov	r4, r3
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****     ((void)data);
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****     *olen = 0;
+  44              		.loc 1 44 0
+  45 0008 0023     		movs	r3, #0
+  46              	.LVL2:
+  47 000a 2360     		str	r3, [r4]
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****     if (0 != atiny_random(output, len))
+  48              		.loc 1 45 0
+  49 000c 1146     		mov	r1, r2
+  50              	.LVL3:
+  51 000e FFF7FEFF 		bl	atiny_random
+  52              	.LVL4:
+  53 0012 18B9     		cbnz	r0, .L3
+  54 0014 0346     		mov	r3, r0
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****         return MBEDTLS_ERR_ENTROPY_SOURCE_FAILED;
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****     *olen = len;
+  55              		.loc 1 47 0
+  56 0016 2560     		str	r5, [r4]
+  57              	.L1:
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****     return 0;
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c **** }
+  58              		.loc 1 49 0
+  59 0018 1846     		mov	r0, r3
+  60 001a 38BD     		pop	{r3, r4, r5, pc}
+  61              	.LVL5:
+  62              	.L3:
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\entropy_hardware_poll.c ****         return MBEDTLS_ERR_ENTROPY_SOURCE_FAILED;
+  63              		.loc 1 46 0
+  64 001c 6FF03B03 		mvn	r3, #59
+  65 0020 FAE7     		b	.L1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccjL3ebM.s 			page 3
+
+
+  66              		.cfi_endproc
+  67              	.LFE133:
+  69              		.text
+  70              	.Letext0:
+  71              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  72              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  73              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+  74              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  75              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  76              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  77              		.file 8 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+  78              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+  79              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+  80              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+  81              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+  82              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+  83              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+  84              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+  85              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+  86              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+  87              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+  88              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+  89              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+  90              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/osdepends/atiny_osdep.h"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccjL3ebM.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 entropy_hardware_poll.c
+c:\Users\lenovo\AppData\Local\Temp\ccjL3ebM.s:18     .text.mbedtls_hardware_poll:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccjL3ebM.s:25     .text.mbedtls_hardware_poll:00000000 mbedtls_hardware_poll
+
+UNDEFINED SYMBOLS
+atiny_random

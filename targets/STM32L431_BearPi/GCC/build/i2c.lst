@@ -1,0 +1,1034 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"i2c.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.MX_I2C1_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	MX_I2C1_Init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	MX_I2C1_Init:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src/i2c.c"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** /**
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   ******************************************************************************
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * File Name          : I2C.c
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * Description        : This file provides code for the configuration
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   *                      of the I2C instances.
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   ******************************************************************************
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   ** This notice applies to any and all portions of this file
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * that are not between comment pairs USER CODE BEGIN and
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * USER CODE END. Other portions of this file, whether 
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * inserted by the user or by software development tools
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * are owned by their respective copyright owners.
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   *
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * COPYRIGHT(c) 2019 STMicroelectronics
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   *
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * are permitted provided that the following conditions are met:
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   *      this list of conditions and the following disclaimer.
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   *      this list of conditions and the following disclaimer in the documentation
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   *      and/or other materials provided with the distribution.
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   *      may be used to endorse or promote products derived from this software
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   *      without specific prior written permission.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   *
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   *
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   ******************************************************************************
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   */
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** /* Includes ------------------------------------------------------------------*/
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** #include "i2c.h"
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** #include "gpio.h"
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** /* USER CODE BEGIN 0 */
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** /* USER CODE END 0 */
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** I2C_HandleTypeDef hi2c1;
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** I2C_HandleTypeDef hi2c2;
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** I2C_HandleTypeDef hi2c3;
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** /* I2C1 init function */
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** void MX_I2C1_Init(void)
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** {
+  28              		.loc 1 55 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c1.Instance = I2C1;
+  37              		.loc 1 57 0
+  38 0002 1548     		ldr	r0, .L9
+  39 0004 154B     		ldr	r3, .L9+4
+  40 0006 0360     		str	r3, [r0]
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c1.Init.Timing = 0x10909CEC;
+  41              		.loc 1 58 0
+  42 0008 154B     		ldr	r3, .L9+8
+  43 000a 4360     		str	r3, [r0, #4]
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c1.Init.OwnAddress1 = 0;
+  44              		.loc 1 59 0
+  45 000c 0023     		movs	r3, #0
+  46 000e 8360     		str	r3, [r0, #8]
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  47              		.loc 1 60 0
+  48 0010 0122     		movs	r2, #1
+  49 0012 C260     		str	r2, [r0, #12]
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  50              		.loc 1 61 0
+  51 0014 0361     		str	r3, [r0, #16]
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c1.Init.OwnAddress2 = 0;
+  52              		.loc 1 62 0
+  53 0016 4361     		str	r3, [r0, #20]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 3
+
+
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c1.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+  54              		.loc 1 63 0
+  55 0018 8361     		str	r3, [r0, #24]
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  56              		.loc 1 64 0
+  57 001a C361     		str	r3, [r0, #28]
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  58              		.loc 1 65 0
+  59 001c 0362     		str	r3, [r0, #32]
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+  60              		.loc 1 66 0
+  61 001e FFF7FEFF 		bl	HAL_I2C_Init
+  62              	.LVL0:
+  63 0022 50B9     		cbnz	r0, .L6
+  64              	.L2:
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   {
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /**Configure Analogue filter 
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     */
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+  65              		.loc 1 73 0
+  66 0024 0021     		movs	r1, #0
+  67 0026 0C48     		ldr	r0, .L9
+  68 0028 FFF7FEFF 		bl	HAL_I2CEx_ConfigAnalogFilter
+  69              	.LVL1:
+  70 002c 50B9     		cbnz	r0, .L7
+  71              	.L3:
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   {
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /**Configure Digital filter 
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     */
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
+  72              		.loc 1 80 0
+  73 002e 0021     		movs	r1, #0
+  74 0030 0948     		ldr	r0, .L9
+  75 0032 FFF7FEFF 		bl	HAL_I2CEx_ConfigDigitalFilter
+  76              	.LVL2:
+  77 0036 50B9     		cbnz	r0, .L8
+  78              	.L1:
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   {
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** }
+  79              		.loc 1 85 0
+  80 0038 08BD     		pop	{r3, pc}
+  81              	.L6:
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+  82              		.loc 1 68 0
+  83 003a 4421     		movs	r1, #68
+  84 003c 0948     		ldr	r0, .L9+12
+  85 003e FFF7FEFF 		bl	_Error_Handler
+  86              	.LVL3:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 4
+
+
+  87 0042 EFE7     		b	.L2
+  88              	.L7:
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+  89              		.loc 1 75 0
+  90 0044 4B21     		movs	r1, #75
+  91 0046 0748     		ldr	r0, .L9+12
+  92 0048 FFF7FEFF 		bl	_Error_Handler
+  93              	.LVL4:
+  94 004c EFE7     		b	.L3
+  95              	.L8:
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+  96              		.loc 1 82 0
+  97 004e 5221     		movs	r1, #82
+  98 0050 0448     		ldr	r0, .L9+12
+  99 0052 FFF7FEFF 		bl	_Error_Handler
+ 100              	.LVL5:
+ 101              		.loc 1 85 0
+ 102 0056 EFE7     		b	.L1
+ 103              	.L10:
+ 104              		.align	2
+ 105              	.L9:
+ 106 0058 00000000 		.word	hi2c1
+ 107 005c 00540040 		.word	1073763328
+ 108 0060 EC9C9010 		.word	277912812
+ 109 0064 00000000 		.word	.LC0
+ 110              		.cfi_endproc
+ 111              	.LFE133:
+ 113              		.section	.text.MX_I2C2_Init,"ax",%progbits
+ 114              		.align	1
+ 115              		.global	MX_I2C2_Init
+ 116              		.syntax unified
+ 117              		.thumb
+ 118              		.thumb_func
+ 119              		.fpu fpv4-sp-d16
+ 121              	MX_I2C2_Init:
+ 122              	.LFB134:
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** /* I2C2 init function */
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** void MX_I2C2_Init(void)
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** {
+ 123              		.loc 1 88 0
+ 124              		.cfi_startproc
+ 125              		@ args = 0, pretend = 0, frame = 0
+ 126              		@ frame_needed = 0, uses_anonymous_args = 0
+ 127 0000 08B5     		push	{r3, lr}
+ 128              	.LCFI1:
+ 129              		.cfi_def_cfa_offset 8
+ 130              		.cfi_offset 3, -8
+ 131              		.cfi_offset 14, -4
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c2.Instance = I2C2;
+ 132              		.loc 1 90 0
+ 133 0002 1548     		ldr	r0, .L19
+ 134 0004 154B     		ldr	r3, .L19+4
+ 135 0006 0360     		str	r3, [r0]
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c2.Init.Timing = 0x10909CEC;
+ 136              		.loc 1 91 0
+ 137 0008 154B     		ldr	r3, .L19+8
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 5
+
+
+ 138 000a 4360     		str	r3, [r0, #4]
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c2.Init.OwnAddress1 = 0;
+ 139              		.loc 1 92 0
+ 140 000c 0023     		movs	r3, #0
+ 141 000e 8360     		str	r3, [r0, #8]
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c2.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+ 142              		.loc 1 93 0
+ 143 0010 0122     		movs	r2, #1
+ 144 0012 C260     		str	r2, [r0, #12]
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c2.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+ 145              		.loc 1 94 0
+ 146 0014 0361     		str	r3, [r0, #16]
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c2.Init.OwnAddress2 = 0;
+ 147              		.loc 1 95 0
+ 148 0016 4361     		str	r3, [r0, #20]
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c2.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+ 149              		.loc 1 96 0
+ 150 0018 8361     		str	r3, [r0, #24]
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c2.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+ 151              		.loc 1 97 0
+ 152 001a C361     		str	r3, [r0, #28]
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c2.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+ 153              		.loc 1 98 0
+ 154 001c 0362     		str	r3, [r0, #32]
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   if (HAL_I2C_Init(&hi2c2) != HAL_OK)
+ 155              		.loc 1 99 0
+ 156 001e FFF7FEFF 		bl	HAL_I2C_Init
+ 157              	.LVL6:
+ 158 0022 50B9     		cbnz	r0, .L16
+ 159              	.L12:
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   {
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /**Configure Analogue filter 
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     */
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   if (HAL_I2CEx_ConfigAnalogFilter(&hi2c2, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+ 160              		.loc 1 106 0
+ 161 0024 0021     		movs	r1, #0
+ 162 0026 0C48     		ldr	r0, .L19
+ 163 0028 FFF7FEFF 		bl	HAL_I2CEx_ConfigAnalogFilter
+ 164              	.LVL7:
+ 165 002c 50B9     		cbnz	r0, .L17
+ 166              	.L13:
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   {
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /**Configure Digital filter 
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     */
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   if (HAL_I2CEx_ConfigDigitalFilter(&hi2c2, 0) != HAL_OK)
+ 167              		.loc 1 113 0
+ 168 002e 0021     		movs	r1, #0
+ 169 0030 0948     		ldr	r0, .L19
+ 170 0032 FFF7FEFF 		bl	HAL_I2CEx_ConfigDigitalFilter
+ 171              	.LVL8:
+ 172 0036 50B9     		cbnz	r0, .L18
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 6
+
+
+ 173              	.L11:
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   {
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** }
+ 174              		.loc 1 118 0
+ 175 0038 08BD     		pop	{r3, pc}
+ 176              	.L16:
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 177              		.loc 1 101 0
+ 178 003a 6521     		movs	r1, #101
+ 179 003c 0948     		ldr	r0, .L19+12
+ 180 003e FFF7FEFF 		bl	_Error_Handler
+ 181              	.LVL9:
+ 182 0042 EFE7     		b	.L12
+ 183              	.L17:
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 184              		.loc 1 108 0
+ 185 0044 6C21     		movs	r1, #108
+ 186 0046 0748     		ldr	r0, .L19+12
+ 187 0048 FFF7FEFF 		bl	_Error_Handler
+ 188              	.LVL10:
+ 189 004c EFE7     		b	.L13
+ 190              	.L18:
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 191              		.loc 1 115 0
+ 192 004e 7321     		movs	r1, #115
+ 193 0050 0448     		ldr	r0, .L19+12
+ 194 0052 FFF7FEFF 		bl	_Error_Handler
+ 195              	.LVL11:
+ 196              		.loc 1 118 0
+ 197 0056 EFE7     		b	.L11
+ 198              	.L20:
+ 199              		.align	2
+ 200              	.L19:
+ 201 0058 00000000 		.word	hi2c2
+ 202 005c 00580040 		.word	1073764352
+ 203 0060 EC9C9010 		.word	277912812
+ 204 0064 00000000 		.word	.LC0
+ 205              		.cfi_endproc
+ 206              	.LFE134:
+ 208              		.section	.text.MX_I2C3_Init,"ax",%progbits
+ 209              		.align	1
+ 210              		.global	MX_I2C3_Init
+ 211              		.syntax unified
+ 212              		.thumb
+ 213              		.thumb_func
+ 214              		.fpu fpv4-sp-d16
+ 216              	MX_I2C3_Init:
+ 217              	.LFB135:
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** /* I2C3 init function */
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** void MX_I2C3_Init(void)
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** {
+ 218              		.loc 1 121 0
+ 219              		.cfi_startproc
+ 220              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 7
+
+
+ 221              		@ frame_needed = 0, uses_anonymous_args = 0
+ 222 0000 08B5     		push	{r3, lr}
+ 223              	.LCFI2:
+ 224              		.cfi_def_cfa_offset 8
+ 225              		.cfi_offset 3, -8
+ 226              		.cfi_offset 14, -4
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c3.Instance = I2C3;
+ 227              		.loc 1 123 0
+ 228 0002 1548     		ldr	r0, .L29
+ 229 0004 154B     		ldr	r3, .L29+4
+ 230 0006 0360     		str	r3, [r0]
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c3.Init.Timing = 0x10909CEC;
+ 231              		.loc 1 124 0
+ 232 0008 154B     		ldr	r3, .L29+8
+ 233 000a 4360     		str	r3, [r0, #4]
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c3.Init.OwnAddress1 = 0;
+ 234              		.loc 1 125 0
+ 235 000c 0023     		movs	r3, #0
+ 236 000e 8360     		str	r3, [r0, #8]
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c3.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+ 237              		.loc 1 126 0
+ 238 0010 0122     		movs	r2, #1
+ 239 0012 C260     		str	r2, [r0, #12]
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c3.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+ 240              		.loc 1 127 0
+ 241 0014 0361     		str	r3, [r0, #16]
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c3.Init.OwnAddress2 = 0;
+ 242              		.loc 1 128 0
+ 243 0016 4361     		str	r3, [r0, #20]
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c3.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+ 244              		.loc 1 129 0
+ 245 0018 8361     		str	r3, [r0, #24]
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c3.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+ 246              		.loc 1 130 0
+ 247 001a C361     		str	r3, [r0, #28]
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   hi2c3.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+ 248              		.loc 1 131 0
+ 249 001c 0362     		str	r3, [r0, #32]
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   if (HAL_I2C_Init(&hi2c3) != HAL_OK)
+ 250              		.loc 1 132 0
+ 251 001e FFF7FEFF 		bl	HAL_I2C_Init
+ 252              	.LVL12:
+ 253 0022 50B9     		cbnz	r0, .L26
+ 254              	.L22:
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   {
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /**Configure Analogue filter 
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     */
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   if (HAL_I2CEx_ConfigAnalogFilter(&hi2c3, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+ 255              		.loc 1 139 0
+ 256 0024 0021     		movs	r1, #0
+ 257 0026 0C48     		ldr	r0, .L29
+ 258 0028 FFF7FEFF 		bl	HAL_I2CEx_ConfigAnalogFilter
+ 259              	.LVL13:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 8
+
+
+ 260 002c 50B9     		cbnz	r0, .L27
+ 261              	.L23:
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   {
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /**Configure Digital filter 
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     */
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   if (HAL_I2CEx_ConfigDigitalFilter(&hi2c3, 0) != HAL_OK)
+ 262              		.loc 1 146 0
+ 263 002e 0021     		movs	r1, #0
+ 264 0030 0948     		ldr	r0, .L29
+ 265 0032 FFF7FEFF 		bl	HAL_I2CEx_ConfigDigitalFilter
+ 266              	.LVL14:
+ 267 0036 50B9     		cbnz	r0, .L28
+ 268              	.L21:
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   {
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** }
+ 269              		.loc 1 151 0
+ 270 0038 08BD     		pop	{r3, pc}
+ 271              	.L26:
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 272              		.loc 1 134 0
+ 273 003a 8621     		movs	r1, #134
+ 274 003c 0948     		ldr	r0, .L29+12
+ 275 003e FFF7FEFF 		bl	_Error_Handler
+ 276              	.LVL15:
+ 277 0042 EFE7     		b	.L22
+ 278              	.L27:
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 279              		.loc 1 141 0
+ 280 0044 8D21     		movs	r1, #141
+ 281 0046 0748     		ldr	r0, .L29+12
+ 282 0048 FFF7FEFF 		bl	_Error_Handler
+ 283              	.LVL16:
+ 284 004c EFE7     		b	.L23
+ 285              	.L28:
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 286              		.loc 1 148 0
+ 287 004e 9421     		movs	r1, #148
+ 288 0050 0448     		ldr	r0, .L29+12
+ 289 0052 FFF7FEFF 		bl	_Error_Handler
+ 290              	.LVL17:
+ 291              		.loc 1 151 0
+ 292 0056 EFE7     		b	.L21
+ 293              	.L30:
+ 294              		.align	2
+ 295              	.L29:
+ 296 0058 00000000 		.word	hi2c3
+ 297 005c 005C0040 		.word	1073765376
+ 298 0060 EC9C9010 		.word	277912812
+ 299 0064 00000000 		.word	.LC0
+ 300              		.cfi_endproc
+ 301              	.LFE135:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 9
+
+
+ 303              		.section	.text.HAL_I2C_MspInit,"ax",%progbits
+ 304              		.align	1
+ 305              		.global	HAL_I2C_MspInit
+ 306              		.syntax unified
+ 307              		.thumb
+ 308              		.thumb_func
+ 309              		.fpu fpv4-sp-d16
+ 311              	HAL_I2C_MspInit:
+ 312              	.LFB136:
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** {
+ 313              		.loc 1 154 0
+ 314              		.cfi_startproc
+ 315              		@ args = 0, pretend = 0, frame = 32
+ 316              		@ frame_needed = 0, uses_anonymous_args = 0
+ 317              	.LVL18:
+ 318 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 319              	.LCFI3:
+ 320              		.cfi_def_cfa_offset 20
+ 321              		.cfi_offset 4, -20
+ 322              		.cfi_offset 5, -16
+ 323              		.cfi_offset 6, -12
+ 324              		.cfi_offset 7, -8
+ 325              		.cfi_offset 14, -4
+ 326 0002 89B0     		sub	sp, sp, #36
+ 327              	.LCFI4:
+ 328              		.cfi_def_cfa_offset 56
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   GPIO_InitTypeDef GPIO_InitStruct;
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   if(i2cHandle->Instance==I2C1)
+ 329              		.loc 1 157 0
+ 330 0004 0368     		ldr	r3, [r0]
+ 331 0006 314A     		ldr	r2, .L39
+ 332 0008 9342     		cmp	r3, r2
+ 333 000a 07D0     		beq	.L36
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   {
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE BEGIN I2C1_MspInit 0 */
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE END I2C1_MspInit 0 */
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /**I2C1 GPIO Configuration    
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     PB6     ------> I2C1_SCL
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     PB7     ------> I2C1_SDA 
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     */
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7;
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /* I2C1 clock enable */
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     __HAL_RCC_I2C1_CLK_ENABLE();
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE BEGIN I2C1_MspInit 1 */
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE END I2C1_MspInit 1 */
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 10
+
+
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   else if(i2cHandle->Instance==I2C2)
+ 334              		.loc 1 180 0
+ 335 000c 304A     		ldr	r2, .L39+4
+ 336 000e 9342     		cmp	r3, r2
+ 337 0010 1DD0     		beq	.L37
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   {
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspInit 0 */
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE END I2C2_MspInit 0 */
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /**I2C2 GPIO Configuration    
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     PB10     ------> I2C2_SCL
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     PB14     ------> I2C2_SDA 
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     */
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_14;
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C2;
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /* I2C2 clock enable */
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     __HAL_RCC_I2C2_CLK_ENABLE();
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspInit 1 */
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE END I2C2_MspInit 1 */
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   else if(i2cHandle->Instance==I2C3)
+ 338              		.loc 1 203 0
+ 339 0012 304A     		ldr	r2, .L39+8
+ 340 0014 9342     		cmp	r3, r2
+ 341 0016 34D0     		beq	.L38
+ 342              	.LVL19:
+ 343              	.L31:
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   {
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspInit 0 */
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE END I2C3_MspInit 0 */
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /**I2C3 GPIO Configuration    
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     PA7     ------> I2C3_SCL
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     PB4 (NJTRST)     ------> I2C3_SDA 
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     */
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Pin = GPIO_PIN_7;
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C3;
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Pin = GPIO_PIN_4;
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C3;
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 11
+
+
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /* I2C3 clock enable */
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     __HAL_RCC_I2C3_CLK_ENABLE();
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspInit 1 */
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE END I2C3_MspInit 1 */
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** }
+ 344              		.loc 1 233 0
+ 345 0018 09B0     		add	sp, sp, #36
+ 346              	.LCFI5:
+ 347              		.cfi_remember_state
+ 348              		.cfi_def_cfa_offset 20
+ 349              		@ sp needed
+ 350 001a F0BD     		pop	{r4, r5, r6, r7, pc}
+ 351              	.LVL20:
+ 352              	.L36:
+ 353              	.LCFI6:
+ 354              		.cfi_restore_state
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 355              		.loc 1 167 0
+ 356 001c C023     		movs	r3, #192
+ 357 001e 0393     		str	r3, [sp, #12]
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 358              		.loc 1 168 0
+ 359 0020 1223     		movs	r3, #18
+ 360 0022 0493     		str	r3, [sp, #16]
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 361              		.loc 1 169 0
+ 362 0024 0123     		movs	r3, #1
+ 363 0026 0593     		str	r3, [sp, #20]
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
+ 364              		.loc 1 170 0
+ 365 0028 0323     		movs	r3, #3
+ 366 002a 0693     		str	r3, [sp, #24]
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 367              		.loc 1 171 0
+ 368 002c 0423     		movs	r3, #4
+ 369 002e 0793     		str	r3, [sp, #28]
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 370              		.loc 1 172 0
+ 371 0030 03A9     		add	r1, sp, #12
+ 372 0032 2948     		ldr	r0, .L39+12
+ 373              	.LVL21:
+ 374 0034 FFF7FEFF 		bl	HAL_GPIO_Init
+ 375              	.LVL22:
+ 376              	.LBB2:
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE BEGIN I2C1_MspInit 1 */
+ 377              		.loc 1 175 0
+ 378 0038 284B     		ldr	r3, .L39+16
+ 379 003a 9A6D     		ldr	r2, [r3, #88]
+ 380 003c 42F40012 		orr	r2, r2, #2097152
+ 381 0040 9A65     		str	r2, [r3, #88]
+ 382 0042 9B6D     		ldr	r3, [r3, #88]
+ 383 0044 03F40013 		and	r3, r3, #2097152
+ 384 0048 0093     		str	r3, [sp]
+ 385 004a 009B     		ldr	r3, [sp]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 12
+
+
+ 386              	.LBE2:
+ 387 004c E4E7     		b	.L31
+ 388              	.LVL23:
+ 389              	.L37:
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 390              		.loc 1 190 0
+ 391 004e 4FF48843 		mov	r3, #17408
+ 392 0052 0393     		str	r3, [sp, #12]
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 393              		.loc 1 191 0
+ 394 0054 1223     		movs	r3, #18
+ 395 0056 0493     		str	r3, [sp, #16]
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 396              		.loc 1 192 0
+ 397 0058 0123     		movs	r3, #1
+ 398 005a 0593     		str	r3, [sp, #20]
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C2;
+ 399              		.loc 1 193 0
+ 400 005c 0323     		movs	r3, #3
+ 401 005e 0693     		str	r3, [sp, #24]
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 402              		.loc 1 194 0
+ 403 0060 0423     		movs	r3, #4
+ 404 0062 0793     		str	r3, [sp, #28]
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 405              		.loc 1 195 0
+ 406 0064 03A9     		add	r1, sp, #12
+ 407 0066 1C48     		ldr	r0, .L39+12
+ 408              	.LVL24:
+ 409 0068 FFF7FEFF 		bl	HAL_GPIO_Init
+ 410              	.LVL25:
+ 411              	.LBB3:
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspInit 1 */
+ 412              		.loc 1 198 0
+ 413 006c 1B4B     		ldr	r3, .L39+16
+ 414 006e 9A6D     		ldr	r2, [r3, #88]
+ 415 0070 42F48002 		orr	r2, r2, #4194304
+ 416 0074 9A65     		str	r2, [r3, #88]
+ 417 0076 9B6D     		ldr	r3, [r3, #88]
+ 418 0078 03F48003 		and	r3, r3, #4194304
+ 419 007c 0193     		str	r3, [sp, #4]
+ 420 007e 019B     		ldr	r3, [sp, #4]
+ 421              	.LBE3:
+ 422 0080 CAE7     		b	.L31
+ 423              	.LVL26:
+ 424              	.L38:
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 425              		.loc 1 213 0
+ 426 0082 8023     		movs	r3, #128
+ 427 0084 0393     		str	r3, [sp, #12]
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 428              		.loc 1 214 0
+ 429 0086 1227     		movs	r7, #18
+ 430 0088 0497     		str	r7, [sp, #16]
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 431              		.loc 1 215 0
+ 432 008a 0126     		movs	r6, #1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 13
+
+
+ 433 008c 0596     		str	r6, [sp, #20]
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C3;
+ 434              		.loc 1 216 0
+ 435 008e 0325     		movs	r5, #3
+ 436 0090 0695     		str	r5, [sp, #24]
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 437              		.loc 1 217 0
+ 438 0092 0424     		movs	r4, #4
+ 439 0094 0794     		str	r4, [sp, #28]
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 440              		.loc 1 218 0
+ 441 0096 03A9     		add	r1, sp, #12
+ 442 0098 4FF09040 		mov	r0, #1207959552
+ 443              	.LVL27:
+ 444 009c FFF7FEFF 		bl	HAL_GPIO_Init
+ 445              	.LVL28:
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 446              		.loc 1 220 0
+ 447 00a0 1023     		movs	r3, #16
+ 448 00a2 0393     		str	r3, [sp, #12]
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 449              		.loc 1 221 0
+ 450 00a4 0497     		str	r7, [sp, #16]
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 451              		.loc 1 222 0
+ 452 00a6 0596     		str	r6, [sp, #20]
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C3;
+ 453              		.loc 1 223 0
+ 454 00a8 0695     		str	r5, [sp, #24]
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 455              		.loc 1 224 0
+ 456 00aa 0794     		str	r4, [sp, #28]
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 457              		.loc 1 225 0
+ 458 00ac 03A9     		add	r1, sp, #12
+ 459 00ae 0A48     		ldr	r0, .L39+12
+ 460 00b0 FFF7FEFF 		bl	HAL_GPIO_Init
+ 461              	.LVL29:
+ 462              	.LBB4:
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspInit 1 */
+ 463              		.loc 1 228 0
+ 464 00b4 094B     		ldr	r3, .L39+16
+ 465 00b6 9A6D     		ldr	r2, [r3, #88]
+ 466 00b8 42F40002 		orr	r2, r2, #8388608
+ 467 00bc 9A65     		str	r2, [r3, #88]
+ 468 00be 9B6D     		ldr	r3, [r3, #88]
+ 469 00c0 03F40003 		and	r3, r3, #8388608
+ 470 00c4 0293     		str	r3, [sp, #8]
+ 471 00c6 029B     		ldr	r3, [sp, #8]
+ 472              	.LBE4:
+ 473              		.loc 1 233 0
+ 474 00c8 A6E7     		b	.L31
+ 475              	.L40:
+ 476 00ca 00BF     		.align	2
+ 477              	.L39:
+ 478 00cc 00540040 		.word	1073763328
+ 479 00d0 00580040 		.word	1073764352
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 14
+
+
+ 480 00d4 005C0040 		.word	1073765376
+ 481 00d8 00040048 		.word	1207960576
+ 482 00dc 00100240 		.word	1073876992
+ 483              		.cfi_endproc
+ 484              	.LFE136:
+ 486              		.section	.text.HAL_I2C_MspDeInit,"ax",%progbits
+ 487              		.align	1
+ 488              		.global	HAL_I2C_MspDeInit
+ 489              		.syntax unified
+ 490              		.thumb
+ 491              		.thumb_func
+ 492              		.fpu fpv4-sp-d16
+ 494              	HAL_I2C_MspDeInit:
+ 495              	.LFB137:
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** {
+ 496              		.loc 1 236 0
+ 497              		.cfi_startproc
+ 498              		@ args = 0, pretend = 0, frame = 0
+ 499              		@ frame_needed = 0, uses_anonymous_args = 0
+ 500              	.LVL30:
+ 501 0000 08B5     		push	{r3, lr}
+ 502              	.LCFI7:
+ 503              		.cfi_def_cfa_offset 8
+ 504              		.cfi_offset 3, -8
+ 505              		.cfi_offset 14, -4
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   if(i2cHandle->Instance==I2C1)
+ 506              		.loc 1 238 0
+ 507 0002 0368     		ldr	r3, [r0]
+ 508 0004 184A     		ldr	r2, .L49
+ 509 0006 9342     		cmp	r3, r2
+ 510 0008 06D0     		beq	.L46
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   {
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE BEGIN I2C1_MspDeInit 0 */
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE END I2C1_MspDeInit 0 */
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /* Peripheral clock disable */
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     __HAL_RCC_I2C1_CLK_DISABLE();
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /**I2C1 GPIO Configuration    
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     PB6     ------> I2C1_SCL
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     PB7     ------> I2C1_SDA 
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     */
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_6|GPIO_PIN_7);
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE BEGIN I2C1_MspDeInit 1 */
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE END I2C1_MspDeInit 1 */
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   else if(i2cHandle->Instance==I2C2)
+ 511              		.loc 1 256 0
+ 512 000a 184A     		ldr	r2, .L49+4
+ 513 000c 9342     		cmp	r3, r2
+ 514 000e 0ED0     		beq	.L47
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 15
+
+
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspDeInit 0 */
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE END I2C2_MspDeInit 0 */
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /* Peripheral clock disable */
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     __HAL_RCC_I2C2_CLK_DISABLE();
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /**I2C2 GPIO Configuration    
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     PB10     ------> I2C2_SCL
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     PB14     ------> I2C2_SDA 
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     */
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_10|GPIO_PIN_14);
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspDeInit 1 */
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE END I2C2_MspDeInit 1 */
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   else if(i2cHandle->Instance==I2C3)
+ 515              		.loc 1 274 0
+ 516 0010 174A     		ldr	r2, .L49+8
+ 517 0012 9342     		cmp	r3, r2
+ 518 0014 17D0     		beq	.L48
+ 519              	.LVL31:
+ 520              	.L41:
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   {
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspDeInit 0 */
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE END I2C3_MspDeInit 0 */
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /* Peripheral clock disable */
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     __HAL_RCC_I2C3_CLK_DISABLE();
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     /**I2C3 GPIO Configuration    
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     PA7     ------> I2C3_SCL
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     PB4 (NJTRST)     ------> I2C3_SDA 
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     */
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_7);
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_4);
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspDeInit 1 */
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   /* USER CODE END I2C3_MspDeInit 1 */
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   }
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** } 
+ 521              		.loc 1 294 0
+ 522 0016 08BD     		pop	{r3, pc}
+ 523              	.LVL32:
+ 524              	.L46:
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   
+ 525              		.loc 1 244 0
+ 526 0018 02F5DE32 		add	r2, r2, #113664
+ 527 001c 936D     		ldr	r3, [r2, #88]
+ 528 001e 23F40013 		bic	r3, r3, #2097152
+ 529 0022 9365     		str	r3, [r2, #88]
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 530              		.loc 1 250 0
+ 531 0024 C021     		movs	r1, #192
+ 532 0026 1348     		ldr	r0, .L49+12
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 16
+
+
+ 533              	.LVL33:
+ 534 0028 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 535              	.LVL34:
+ 536 002c F3E7     		b	.L41
+ 537              	.LVL35:
+ 538              	.L47:
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   
+ 539              		.loc 1 262 0
+ 540 002e 02F5DC32 		add	r2, r2, #112640
+ 541 0032 936D     		ldr	r3, [r2, #88]
+ 542 0034 23F48003 		bic	r3, r3, #4194304
+ 543 0038 9365     		str	r3, [r2, #88]
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 544              		.loc 1 268 0
+ 545 003a 4FF48841 		mov	r1, #17408
+ 546 003e 0D48     		ldr	r0, .L49+12
+ 547              	.LVL36:
+ 548 0040 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 549              	.LVL37:
+ 550 0044 E7E7     		b	.L41
+ 551              	.LVL38:
+ 552              	.L48:
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c ****   
+ 553              		.loc 1 280 0
+ 554 0046 02F5DA32 		add	r2, r2, #111616
+ 555 004a 936D     		ldr	r3, [r2, #88]
+ 556 004c 23F40003 		bic	r3, r3, #8388608
+ 557 0050 9365     		str	r3, [r2, #88]
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 558              		.loc 1 286 0
+ 559 0052 8021     		movs	r1, #128
+ 560 0054 4FF09040 		mov	r0, #1207959552
+ 561              	.LVL39:
+ 562 0058 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 563              	.LVL40:
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\i2c.c **** 
+ 564              		.loc 1 288 0
+ 565 005c 1021     		movs	r1, #16
+ 566 005e 0548     		ldr	r0, .L49+12
+ 567 0060 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 568              	.LVL41:
+ 569              		.loc 1 294 0
+ 570 0064 D7E7     		b	.L41
+ 571              	.L50:
+ 572 0066 00BF     		.align	2
+ 573              	.L49:
+ 574 0068 00540040 		.word	1073763328
+ 575 006c 00580040 		.word	1073764352
+ 576 0070 005C0040 		.word	1073765376
+ 577 0074 00040048 		.word	1207960576
+ 578              		.cfi_endproc
+ 579              	.LFE137:
+ 581              		.comm	hi2c3,76,4
+ 582              		.comm	hi2c2,76,4
+ 583              		.comm	hi2c1,76,4
+ 584              		.section	.rodata.MX_I2C1_Init.str1.4,"aMS",%progbits,1
+ 585              		.align	2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 17
+
+
+ 586              	.LC0:
+ 587 0000 433A2F55 		.ascii	"C:/Users/lenovo/Desktop/liteos/Project2/BearPi_Lite"
+ 587      73657273 
+ 587      2F6C656E 
+ 587      6F766F2F 
+ 587      4465736B 
+ 588 0033 4F532F74 		.ascii	"OS/targets/STM32L431_BearPi/Src/i2c.c\000"
+ 588      61726765 
+ 588      74732F53 
+ 588      544D3332 
+ 588      4C343331 
+ 589              		.text
+ 590              	.Letext0:
+ 591              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 592              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 593              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 594              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 595              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 596              		.file 7 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 597              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 598              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 599              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 600              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/stm32
+ 601              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 602              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 603              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 604              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 605              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 606              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 607              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 608              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 609              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 610              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 611              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 612              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 613              		.file 24 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 614              		.file 25 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 615              		.file 26 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/i2c.h
+ 616              		.file 27 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s 			page 18
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 i2c.c
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:18     .text.MX_I2C1_Init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:25     .text.MX_I2C1_Init:00000000 MX_I2C1_Init
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:106    .text.MX_I2C1_Init:00000058 $d
+                            *COM*:0000004c hi2c1
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:114    .text.MX_I2C2_Init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:121    .text.MX_I2C2_Init:00000000 MX_I2C2_Init
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:201    .text.MX_I2C2_Init:00000058 $d
+                            *COM*:0000004c hi2c2
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:209    .text.MX_I2C3_Init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:216    .text.MX_I2C3_Init:00000000 MX_I2C3_Init
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:296    .text.MX_I2C3_Init:00000058 $d
+                            *COM*:0000004c hi2c3
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:304    .text.HAL_I2C_MspInit:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:311    .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:478    .text.HAL_I2C_MspInit:000000cc $d
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:487    .text.HAL_I2C_MspDeInit:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:494    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:574    .text.HAL_I2C_MspDeInit:00000068 $d
+c:\Users\lenovo\AppData\Local\Temp\ccCaN2Gj.s:585    .rodata.MX_I2C1_Init.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_I2C_Init
+HAL_I2CEx_ConfigAnalogFilter
+HAL_I2CEx_ConfigDigitalFilter
+_Error_Handler
+HAL_GPIO_Init
+HAL_GPIO_DeInit

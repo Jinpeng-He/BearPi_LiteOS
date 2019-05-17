@@ -1,0 +1,2618 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"transaction.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.prv_checkFinished,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	prv_checkFinished:
+  25              	.LFB134:
+  26              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core/
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * applicable export control laws and regulations.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 2
+
+
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** /*******************************************************************************
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * Copyright (c) 2013, 2014 Intel Corporation and others.
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * All rights reserved. This program and the accompanying materials
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * are made available under the terms of the Eclipse Public License v1.0
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * The Eclipse Public License is available at
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * The Eclipse Distribution License is available at
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *    http://www.eclipse.org/org/documents/edl-v10.php.
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * Contributors:
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *    David Navarro, Intel Corporation - initial API and implementation
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *    Simon Bernard - Please refer to git log
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *    Toby Jaffey - Please refer to git log
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *    Pascal Rieux - Please refer to git log
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *    Bosch Software Innovations GmbH - Please refer to git log
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *******************************************************************************/
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** /*
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  Copyright (c) 2013, 2014 Intel Corporation
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  Redistribution and use in source and binary forms, with or without modification,
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  are permitted provided that the following conditions are met:
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****      * Redistributions of source code must retain the above copyright notice,
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****        this list of conditions and the following disclaimer.
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****      * Redistributions in binary form must reproduce the above copyright notice,
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****        this list of conditions and the following disclaimer in the documentation
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****        and/or other materials provided with the distribution.
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****      * Neither the name of Intel Corporation nor the names of its contributors
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****        may be used to endorse or promote products derived from this software
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****        without specific prior written permission.
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  THE POSSIBILITY OF SUCH DAMAGE.
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  David Navarro <david.navarro@intel.com>
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** */
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** /*
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** Contains code snippets which are:
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * Copyright (c) 2013, Institute for Pervasive Computing, ETH Zurich
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 3
+
+
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * All rights reserved.
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * Redistribution and use in source and binary forms, with or without
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * modification, are permitted provided that the following conditions
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * are met:
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * 1. Redistributions of source code must retain the above copyright
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *    notice, this list of conditions and the following disclaimer.
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * 2. Redistributions in binary form must reproduce the above copyright
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *    notice, this list of conditions and the following disclaimer in the
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *    documentation and/or other materials provided with the distribution.
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * 3. Neither the name of the Institute nor the names of its contributors
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *    may be used to endorse or promote products derived from this software
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *    without specific prior written permission.
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * ARE DISCLAIMED.  IN NO EVENT SHALL THE INSTITUTE OR CONTRIBUTORS BE LIABLE
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * SUCH DAMAGE.
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** */
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** /************************************************************************
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *  Function for communications transactions.
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *  Basic specification: rfc7252
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *  Transaction implements processing of piggybacked and separate response communication
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *  dialogs specified in section 2.2 of the above specification.
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *  The caller registers a callback function, which is called, when either the result is
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *  received or a timeout occurs.
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *  Supported dialogs:
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *  Requests (GET - DELETE):
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *  - CON with mid, without token => regular finished with corresponding ACK.MID
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *  - CON with mid, with token => regular finished with corresponding ACK.MID and response containi
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *                  the token. Supports both versions, with piggybacked ACK and separate ACK/respon
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *                  Though the ACK.MID may be lost in the separate version, a matching response may
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *                  finish the transaction even without the ACK.MID.
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *  - NON without token => no transaction, no result expected!
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *  - NON with token => regular finished with response containing the token.
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *  Responses (COAP_201_CREATED - ?):
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  *  - CON with mid => regular finished with corresponding ACK.MID
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  */
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** #include "internals.h"
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** //#include "pdu.h"
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** #include "commandline.h"
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** /*
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 4
+
+
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * Modulo mask (+1 and +0.5 for rounding) for a random number to get the tick number for the random
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  * retransmission time between COAP_RESPONSE_TIMEOUT and COAP_RESPONSE_TIMEOUT*COAP_RESPONSE_RANDOM
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****  */
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** #define COAP_RESPONSE_TIMEOUT_TICKS         (CLOCK_SECOND * COAP_RESPONSE_TIMEOUT)
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** #define COAP_RESPONSE_TIMEOUT_BACKOFF_MASK  ((CLOCK_SECOND * COAP_RESPONSE_TIMEOUT * (COAP_RESPONSE
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** static int prv_checkFinished(lwm2m_transaction_t *transacP,
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                              coap_packet_t *receivedMessage)
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** {
+  27              		.loc 1 155 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  32 0000 70B5     		push	{r4, r5, r6, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 16
+  35              		.cfi_offset 4, -16
+  36              		.cfi_offset 5, -12
+  37              		.cfi_offset 6, -8
+  38              		.cfi_offset 14, -4
+  39 0002 84B0     		sub	sp, sp, #16
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 32
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     int len;
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     const uint8_t *token;
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     coap_packet_t *transactionMessage = transacP->message;
+  42              		.loc 1 158 0
+  43 0004 846A     		ldr	r4, [r0, #40]
+  44              	.LVL1:
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if (COAP_DELETE < transactionMessage->code)
+  45              		.loc 1 160 0
+  46 0006 A379     		ldrb	r3, [r4, #6]	@ zero_extendqisi2
+  47 0008 042B     		cmp	r3, #4
+  48 000a 08D8     		bhi	.L12
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         // response
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         return transacP->ack_received ? 1 : 0;
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if (!IS_OPTION(transactionMessage, COAP_OPTION_TOKEN))
+  49              		.loc 1 165 0
+  50 000c 237B     		ldrb	r3, [r4, #12]	@ zero_extendqisi2
+  51 000e 13F0080F 		tst	r3, #8
+  52 0012 0AD1     		bne	.L4
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         // request without token
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         return transacP->ack_received ? 1 : 0;
+  53              		.loc 1 168 0
+  54 0014 007B     		ldrb	r0, [r0, #12]	@ zero_extendqisi2
+  55              	.LVL2:
+  56 0016 0030     		adds	r0, r0, #0
+  57 0018 18BF     		it	ne
+  58 001a 0120     		movne	r0, #1
+  59 001c 03E0     		b	.L1
+  60              	.LVL3:
+  61              	.L12:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 5
+
+
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+  62              		.loc 1 163 0
+  63 001e 007B     		ldrb	r0, [r0, #12]	@ zero_extendqisi2
+  64              	.LVL4:
+  65 0020 0030     		adds	r0, r0, #0
+  66 0022 18BF     		it	ne
+  67 0024 0120     		movne	r0, #1
+  68              	.LVL5:
+  69              	.L1:
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     len = coap_get_header_token(receivedMessage, &token);
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if (transactionMessage->token_len == len)
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (memcmp(transactionMessage->token, token, len) == 0) return 1;
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG_ARG("transactionMessage->token_len is %d, len is %d\n", transactionMessage->token_len, len)
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     int i = 0;
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     for(i = 0; i < transactionMessage->token_len; i++ )
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         LOG_ARG("%d\n", transactionMessage->token[i]);
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG("\n\n");
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     for(i = 0; i < len; i++)
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         LOG_ARG("%d\n", token[i]);
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG("prv_checkFinished not finish!!!\n");
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     return 0;
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** }
+  70              		.loc 1 185 0
+  71 0026 04B0     		add	sp, sp, #16
+  72              	.LCFI2:
+  73              		.cfi_remember_state
+  74              		.cfi_def_cfa_offset 16
+  75              		@ sp needed
+  76 0028 70BD     		pop	{r4, r5, r6, pc}
+  77              	.LVL6:
+  78              	.L4:
+  79              	.LCFI3:
+  80              		.cfi_restore_state
+  81 002a 0846     		mov	r0, r1
+  82              	.LVL7:
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if (transactionMessage->token_len == len)
+  83              		.loc 1 171 0
+  84 002c 03A9     		add	r1, sp, #12
+  85              	.LVL8:
+  86 002e FFF7FEFF 		bl	coap_get_header_token
+  87              	.LVL9:
+  88 0032 0646     		mov	r6, r0
+  89              	.LVL10:
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+  90              		.loc 1 172 0
+  91 0034 94F84C30 		ldrb	r3, [r4, #76]	@ zero_extendqisi2
+  92 0038 8342     		cmp	r3, r0
+  93 003a 07D1     		bne	.L5
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+  94              		.loc 1 174 0
+  95 003c 0246     		mov	r2, r0
+  96 003e 0399     		ldr	r1, [sp, #12]
+  97 0040 04F14D00 		add	r0, r4, #77
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 6
+
+
+  98              	.LVL11:
+  99 0044 FFF7FEFF 		bl	memcmp
+ 100              	.LVL12:
+ 101 0048 0028     		cmp	r0, #0
+ 102 004a 40D0     		beq	.L10
+ 103              	.L5:
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     int i = 0;
+ 104              		.loc 1 176 0
+ 105 004c FFF7FEFF 		bl	lwm2m_gettime
+ 106              	.LVL13:
+ 107 0050 94F84C30 		ldrb	r3, [r4, #76]	@ zero_extendqisi2
+ 108 0054 0196     		str	r6, [sp, #4]
+ 109 0056 0093     		str	r3, [sp]
+ 110 0058 B023     		movs	r3, #176
+ 111 005a 1E4A     		ldr	r2, .L13
+ 112 005c 0146     		mov	r1, r0
+ 113 005e 1E48     		ldr	r0, .L13+4
+ 114 0060 FFF7FEFF 		bl	atiny_printf
+ 115              	.LVL14:
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         LOG_ARG("%d\n", transactionMessage->token[i]);
+ 116              		.loc 1 178 0
+ 117 0064 0025     		movs	r5, #0
+ 118 0066 0CE0     		b	.L6
+ 119              	.LVL15:
+ 120              	.L7:
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG("\n\n");
+ 121              		.loc 1 179 0 discriminator 3
+ 122 0068 FFF7FEFF 		bl	lwm2m_gettime
+ 123              	.LVL16:
+ 124 006c 6319     		adds	r3, r4, r5
+ 125 006e 93F84D30 		ldrb	r3, [r3, #77]	@ zero_extendqisi2
+ 126 0072 0093     		str	r3, [sp]
+ 127 0074 B323     		movs	r3, #179
+ 128 0076 174A     		ldr	r2, .L13
+ 129 0078 0146     		mov	r1, r0
+ 130 007a 1848     		ldr	r0, .L13+8
+ 131 007c FFF7FEFF 		bl	atiny_printf
+ 132              	.LVL17:
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         LOG_ARG("%d\n", transactionMessage->token[i]);
+ 133              		.loc 1 178 0 discriminator 3
+ 134 0080 0135     		adds	r5, r5, #1
+ 135              	.LVL18:
+ 136              	.L6:
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         LOG_ARG("%d\n", transactionMessage->token[i]);
+ 137              		.loc 1 178 0 is_stmt 0 discriminator 1
+ 138 0082 94F84C30 		ldrb	r3, [r4, #76]	@ zero_extendqisi2
+ 139 0086 AB42     		cmp	r3, r5
+ 140 0088 EEDC     		bgt	.L7
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     for(i = 0; i < len; i++)
+ 141              		.loc 1 180 0 is_stmt 1
+ 142 008a FFF7FEFF 		bl	lwm2m_gettime
+ 143              	.LVL19:
+ 144 008e B423     		movs	r3, #180
+ 145 0090 104A     		ldr	r2, .L13
+ 146 0092 0146     		mov	r1, r0
+ 147 0094 1248     		ldr	r0, .L13+12
+ 148 0096 FFF7FEFF 		bl	atiny_printf
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 7
+
+
+ 149              	.LVL20:
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         LOG_ARG("%d\n", token[i]);
+ 150              		.loc 1 181 0
+ 151 009a 0024     		movs	r4, #0
+ 152              	.LVL21:
+ 153 009c 0BE0     		b	.L8
+ 154              	.LVL22:
+ 155              	.L9:
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG("prv_checkFinished not finish!!!\n");
+ 156              		.loc 1 182 0 discriminator 3
+ 157 009e FFF7FEFF 		bl	lwm2m_gettime
+ 158              	.LVL23:
+ 159 00a2 039B     		ldr	r3, [sp, #12]
+ 160 00a4 1B5D     		ldrb	r3, [r3, r4]	@ zero_extendqisi2
+ 161 00a6 0093     		str	r3, [sp]
+ 162 00a8 B623     		movs	r3, #182
+ 163 00aa 0A4A     		ldr	r2, .L13
+ 164 00ac 0146     		mov	r1, r0
+ 165 00ae 0B48     		ldr	r0, .L13+8
+ 166 00b0 FFF7FEFF 		bl	atiny_printf
+ 167              	.LVL24:
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         LOG_ARG("%d\n", token[i]);
+ 168              		.loc 1 181 0 discriminator 3
+ 169 00b4 0134     		adds	r4, r4, #1
+ 170              	.LVL25:
+ 171              	.L8:
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         LOG_ARG("%d\n", token[i]);
+ 172              		.loc 1 181 0 is_stmt 0 discriminator 1
+ 173 00b6 B442     		cmp	r4, r6
+ 174 00b8 F1DB     		blt	.L9
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     return 0;
+ 175              		.loc 1 183 0 is_stmt 1
+ 176 00ba FFF7FEFF 		bl	lwm2m_gettime
+ 177              	.LVL26:
+ 178 00be B723     		movs	r3, #183
+ 179 00c0 044A     		ldr	r2, .L13
+ 180 00c2 0146     		mov	r1, r0
+ 181 00c4 0748     		ldr	r0, .L13+16
+ 182 00c6 FFF7FEFF 		bl	atiny_printf
+ 183              	.LVL27:
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** }
+ 184              		.loc 1 184 0
+ 185 00ca 0020     		movs	r0, #0
+ 186 00cc ABE7     		b	.L1
+ 187              	.LVL28:
+ 188              	.L10:
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 189              		.loc 1 174 0
+ 190 00ce 0120     		movs	r0, #1
+ 191 00d0 A9E7     		b	.L1
+ 192              	.L14:
+ 193 00d2 00BF     		.align	2
+ 194              	.L13:
+ 195 00d4 00000000 		.word	.LANCHOR0
+ 196 00d8 00000000 		.word	.LC0
+ 197 00dc 40000000 		.word	.LC1
+ 198 00e0 54000000 		.word	.LC2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 8
+
+
+ 199 00e4 68000000 		.word	.LC3
+ 200              		.cfi_endproc
+ 201              	.LFE134:
+ 203              		.section	.text.transaction_new,"ax",%progbits
+ 204              		.align	1
+ 205              		.global	transaction_new
+ 206              		.syntax unified
+ 207              		.thumb
+ 208              		.thumb_func
+ 209              		.fpu fpv4-sp-d16
+ 211              	transaction_new:
+ 212              	.LFB135:
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** //transaction_new(server->sessionH, COAP_POST, NULL, NULL, contextP->nextMID++, 4, NULL)
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** lwm2m_transaction_t *transaction_new(void *sessionH,
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                                      unsigned char method,
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                                      char *altPath,
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                                      lwm2m_uri_t *uriP,
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                                      uint16_t mID,
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                                      uint8_t token_len,
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                                      uint8_t *token)
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** {
+ 213              		.loc 1 194 0
+ 214              		.cfi_startproc
+ 215              		@ args = 12, pretend = 0, frame = 8
+ 216              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217              	.LVL29:
+ 218 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 219              	.LCFI4:
+ 220              		.cfi_def_cfa_offset 32
+ 221              		.cfi_offset 4, -32
+ 222              		.cfi_offset 5, -28
+ 223              		.cfi_offset 6, -24
+ 224              		.cfi_offset 7, -20
+ 225              		.cfi_offset 8, -16
+ 226              		.cfi_offset 9, -12
+ 227              		.cfi_offset 10, -8
+ 228              		.cfi_offset 14, -4
+ 229 0004 86B0     		sub	sp, sp, #24
+ 230              	.LCFI5:
+ 231              		.cfi_def_cfa_offset 56
+ 232 0006 8146     		mov	r9, r0
+ 233 0008 8A46     		mov	r10, r1
+ 234 000a 1D46     		mov	r5, r3
+ 235 000c BDF83860 		ldrh	r6, [sp, #56]
+ 236 0010 9DF83C70 		ldrb	r7, [sp, #60]	@ zero_extendqisi2
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     lwm2m_transaction_t *transacP;
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     int result;
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if(altPath != NULL){
+ 237              		.loc 1 197 0
+ 238 0014 9046     		mov	r8, r2
+ 239 0016 002A     		cmp	r2, #0
+ 240 0018 7AD0     		beq	.L16
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         LOG_ARG("method: %d, altPath: \"%s\", mID: %d, token_len: %d",
+ 241              		.loc 1 198 0
+ 242 001a FFF7FEFF 		bl	lwm2m_gettime
+ 243              	.LVL30:
+ 244 001e 0397     		str	r7, [sp, #12]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 9
+
+
+ 245 0020 0296     		str	r6, [sp, #8]
+ 246 0022 CDF80480 		str	r8, [sp, #4]
+ 247 0026 CDF800A0 		str	r10, [sp]
+ 248 002a C723     		movs	r3, #199
+ 249 002c 794A     		ldr	r2, .L42
+ 250 002e 0146     		mov	r1, r0
+ 251 0030 7948     		ldr	r0, .L42+4
+ 252 0032 FFF7FEFF 		bl	atiny_printf
+ 253              	.LVL31:
+ 254              	.L17:
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             method, altPath, mID, token_len);
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     else
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         LOG_ARG("method: %d, altPath: NULL, mID: %d, token_len: %d",
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             method, mID, token_len);  
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG_URI(uriP);
+ 255              		.loc 1 206 0
+ 256 0036 002D     		cmp	r5, #0
+ 257 0038 77D0     		beq	.L36
+ 258              		.loc 1 206 0 is_stmt 0 discriminator 2
+ 259 003a 6B88     		ldrh	r3, [r5, #2]
+ 260 003c CE22     		movs	r2, #206
+ 261 003e 7549     		ldr	r1, .L42
+ 262 0040 7648     		ldr	r0, .L42+8
+ 263 0042 FFF7FEFF 		bl	atiny_printf
+ 264              	.LVL32:
+ 265 0046 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 266 0048 13F0020F 		tst	r3, #2
+ 267 004c 73D1     		bne	.L37
+ 268              	.L20:
+ 269              		.loc 1 206 0 discriminator 5
+ 270 004e 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 271 0050 13F0010F 		tst	r3, #1
+ 272 0054 74D1     		bne	.L38
+ 273              	.L21:
+ 274              		.loc 1 206 0 discriminator 8
+ 275 0056 7248     		ldr	r0, .L42+12
+ 276 0058 FFF7FEFF 		bl	atiny_printf
+ 277              	.LVL33:
+ 278              	.L19:
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     // no transactions without peer
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if (NULL == sessionH) return NULL;
+ 279              		.loc 1 209 0 is_stmt 1
+ 280 005c B9F1000F 		cmp	r9, #0
+ 281 0060 00F0D680 		beq	.L34
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     transacP = (lwm2m_transaction_t *)lwm2m_malloc(sizeof(lwm2m_transaction_t));
+ 282              		.loc 1 211 0
+ 283 0064 4820     		movs	r0, #72
+ 284 0066 FFF7FEFF 		bl	lwm2m_malloc
+ 285              	.LVL34:
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if (NULL == transacP) return NULL;
+ 286              		.loc 1 213 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 10
+
+
+ 287 006a 0446     		mov	r4, r0
+ 288 006c 0028     		cmp	r0, #0
+ 289 006e 4BD0     		beq	.L15
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     memset(transacP, 0, sizeof(lwm2m_transaction_t));
+ 290              		.loc 1 214 0
+ 291 0070 4822     		movs	r2, #72
+ 292 0072 0021     		movs	r1, #0
+ 293 0074 FFF7FEFF 		bl	memset
+ 294              	.LVL35:
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     transacP->message = lwm2m_malloc(sizeof(coap_packet_t));
+ 295              		.loc 1 216 0
+ 296 0078 8C20     		movs	r0, #140
+ 297 007a FFF7FEFF 		bl	lwm2m_malloc
+ 298              	.LVL36:
+ 299 007e A062     		str	r0, [r4, #40]
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if (NULL == transacP->message) goto error;
+ 300              		.loc 1 217 0
+ 301 0080 0028     		cmp	r0, #0
+ 302 0082 00F0B780 		beq	.L23
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     coap_init_message(transacP->message, COAP_TYPE_CON, method, mID);
+ 303              		.loc 1 219 0
+ 304 0086 3346     		mov	r3, r6
+ 305 0088 5246     		mov	r2, r10
+ 306 008a 0021     		movs	r1, #0
+ 307 008c FFF7FEFF 		bl	coap_init_message
+ 308              	.LVL37:
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     transacP->peerH = sessionH;
+ 309              		.loc 1 221 0
+ 310 0090 C4F80890 		str	r9, [r4, #8]
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     transacP->mID = mID;
+ 311              		.loc 1 223 0
+ 312 0094 A680     		strh	r6, [r4, #4]	@ movhi
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if (altPath != NULL)
+ 313              		.loc 1 225 0
+ 314 0096 B8F1000F 		cmp	r8, #0
+ 315 009a 04D0     		beq	.L24
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         // TODO: Support multi-segment alternative path
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         coap_set_header_uri_path_segment(transacP->message, altPath + 1);
+ 316              		.loc 1 228 0
+ 317 009c 08F10101 		add	r1, r8, #1
+ 318 00a0 A06A     		ldr	r0, [r4, #40]
+ 319 00a2 FFF7FEFF 		bl	coap_set_header_uri_path_segment
+ 320              	.LVL38:
+ 321              	.L24:
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if (NULL != uriP)
+ 322              		.loc 1 230 0
+ 323 00a6 EDB1     		cbz	r5, .L25
+ 324              	.LBB2:
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         char stringID[LWM2M_STRING_ID_MAX_LEN];
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 11
+
+
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         result = utils_intToText(uriP->objectId, (uint8_t *)stringID, LWM2M_STRING_ID_MAX_LEN);
+ 325              		.loc 1 234 0
+ 326 00a8 0623     		movs	r3, #6
+ 327 00aa 04AA     		add	r2, sp, #16
+ 328 00ac 6888     		ldrh	r0, [r5, #2]
+ 329 00ae 0021     		movs	r1, #0
+ 330 00b0 FFF7FEFF 		bl	utils_intToText
+ 331              	.LVL39:
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (result == 0) goto error;
+ 332              		.loc 1 235 0
+ 333 00b4 0346     		mov	r3, r0
+ 334 00b6 0028     		cmp	r0, #0
+ 335 00b8 00F09C80 		beq	.L23
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         stringID[result] = 0;
+ 336              		.loc 1 236 0
+ 337 00bc 06AA     		add	r2, sp, #24
+ 338 00be 1344     		add	r3, r3, r2
+ 339 00c0 0022     		movs	r2, #0
+ 340 00c2 03F8082C 		strb	r2, [r3, #-8]
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         coap_set_header_uri_path_segment(transacP->message, stringID);
+ 341              		.loc 1 237 0
+ 342 00c6 04A9     		add	r1, sp, #16
+ 343 00c8 A06A     		ldr	r0, [r4, #40]
+ 344              	.LVL40:
+ 345 00ca FFF7FEFF 		bl	coap_set_header_uri_path_segment
+ 346              	.LVL41:
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (LWM2M_URI_IS_SET_INSTANCE(uriP))
+ 347              		.loc 1 239 0
+ 348 00ce 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 349 00d0 13F0020F 		tst	r3, #2
+ 350 00d4 39D1     		bne	.L39
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             result = utils_intToText(uriP->instanceId, (uint8_t *)stringID, LWM2M_STRING_ID_MAX_LEN
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             if (result == 0) goto error;
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             stringID[result] = 0;
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             coap_set_header_uri_path_segment(transacP->message, stringID);
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         else
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             if (LWM2M_URI_IS_SET_RESOURCE(uriP))
+ 351              		.loc 1 248 0
+ 352 00d6 13F0010F 		tst	r3, #1
+ 353 00da 49D1     		bne	.L40
+ 354              	.L28:
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             {
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 coap_set_header_uri_path_segment(transacP->message, NULL);
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (LWM2M_URI_IS_SET_RESOURCE(uriP))
+ 355              		.loc 1 253 0
+ 356 00dc 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 357 00de 13F0010F 		tst	r3, #1
+ 358 00e2 4AD1     		bne	.L41
+ 359              	.L25:
+ 360              	.LBE2:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 12
+
+
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             result = utils_intToText(uriP->resourceId, (uint8_t *)stringID, LWM2M_STRING_ID_MAX_LEN
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             if (result == 0) goto error;
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             stringID[result] = 0;
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             coap_set_header_uri_path_segment(transacP->message, stringID);
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if (0 < token_len)
+ 361              		.loc 1 261 0
+ 362 00e4 3FB1     		cbz	r7, .L30
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (NULL != token)
+ 363              		.loc 1 263 0
+ 364 00e6 109B     		ldr	r3, [sp, #64]
+ 365 00e8 002B     		cmp	r3, #0
+ 366 00ea 58D0     		beq	.L31
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             coap_set_header_token(transacP->message, token, token_len);
+ 367              		.loc 1 265 0
+ 368 00ec 3A46     		mov	r2, r7
+ 369 00ee 1946     		mov	r1, r3
+ 370 00f0 A06A     		ldr	r0, [r4, #40]
+ 371 00f2 FFF7FEFF 		bl	coap_set_header_token
+ 372              	.LVL42:
+ 373              	.L30:
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         else
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             // generate a token
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             uint8_t temp_token[COAP_TOKEN_LEN];
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             time_t tv_sec = lwm2m_gettime();
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             // initialize first 6 bytes, leave the last 2 random
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             temp_token[0] = mID;
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             temp_token[1] = mID >> 8;
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             temp_token[2] = tv_sec;
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             temp_token[3] = tv_sec >> 8;
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             temp_token[4] = tv_sec >> 16;
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             temp_token[5] = tv_sec >> 24;
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             // use just the provided amount of bytes
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             coap_set_header_token(transacP->message, temp_token, token_len);
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             int i;
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             for(i = 0; i < token_len; i++)
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 LOG_ARG("send token is %d\n", temp_token[i]);
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG("Exiting on success");
+ 374              		.loc 1 288 0
+ 375 00f6 FFF7FEFF 		bl	lwm2m_gettime
+ 376              	.LVL43:
+ 377 00fa 4FF49073 		mov	r3, #288
+ 378 00fe 454A     		ldr	r2, .L42
+ 379 0100 0146     		mov	r1, r0
+ 380 0102 4848     		ldr	r0, .L42+16
+ 381 0104 FFF7FEFF 		bl	atiny_printf
+ 382              	.LVL44:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 13
+
+
+ 383              	.L15:
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     return transacP;
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** error:
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG("Exiting on failure");
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     lwm2m_free(transacP);
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     return NULL;
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** }
+ 384              		.loc 1 295 0
+ 385 0108 2046     		mov	r0, r4
+ 386 010a 06B0     		add	sp, sp, #24
+ 387              	.LCFI6:
+ 388              		.cfi_remember_state
+ 389              		.cfi_def_cfa_offset 32
+ 390              		@ sp needed
+ 391 010c BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 392              	.LVL45:
+ 393              	.L16:
+ 394              	.LCFI7:
+ 395              		.cfi_restore_state
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             method, mID, token_len);  
+ 396              		.loc 1 203 0
+ 397 0110 FFF7FEFF 		bl	lwm2m_gettime
+ 398              	.LVL46:
+ 399 0114 0297     		str	r7, [sp, #8]
+ 400 0116 0196     		str	r6, [sp, #4]
+ 401 0118 CDF800A0 		str	r10, [sp]
+ 402 011c CC23     		movs	r3, #204
+ 403 011e 3D4A     		ldr	r2, .L42
+ 404 0120 0146     		mov	r1, r0
+ 405 0122 4148     		ldr	r0, .L42+20
+ 406 0124 FFF7FEFF 		bl	atiny_printf
+ 407              	.LVL47:
+ 408 0128 85E7     		b	.L17
+ 409              	.L36:
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 410              		.loc 1 206 0 discriminator 1
+ 411 012a CE22     		movs	r2, #206
+ 412 012c 3949     		ldr	r1, .L42
+ 413 012e 3F48     		ldr	r0, .L42+24
+ 414 0130 FFF7FEFF 		bl	atiny_printf
+ 415              	.LVL48:
+ 416 0134 92E7     		b	.L19
+ 417              	.L37:
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 418              		.loc 1 206 0 is_stmt 0 discriminator 3
+ 419 0136 A988     		ldrh	r1, [r5, #4]
+ 420 0138 3D48     		ldr	r0, .L42+28
+ 421 013a FFF7FEFF 		bl	atiny_printf
+ 422              	.LVL49:
+ 423 013e 86E7     		b	.L20
+ 424              	.L38:
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 425              		.loc 1 206 0 discriminator 6
+ 426 0140 E988     		ldrh	r1, [r5, #6]
+ 427 0142 3B48     		ldr	r0, .L42+28
+ 428 0144 FFF7FEFF 		bl	atiny_printf
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 14
+
+
+ 429              	.LVL50:
+ 430 0148 85E7     		b	.L21
+ 431              	.LVL51:
+ 432              	.L39:
+ 433              	.LBB3:
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             if (result == 0) goto error;
+ 434              		.loc 1 241 0 is_stmt 1
+ 435 014a 0623     		movs	r3, #6
+ 436 014c 04AA     		add	r2, sp, #16
+ 437 014e A888     		ldrh	r0, [r5, #4]
+ 438 0150 0021     		movs	r1, #0
+ 439 0152 FFF7FEFF 		bl	utils_intToText
+ 440              	.LVL52:
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             stringID[result] = 0;
+ 441              		.loc 1 242 0
+ 442 0156 0346     		mov	r3, r0
+ 443 0158 0028     		cmp	r0, #0
+ 444 015a 4BD0     		beq	.L23
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             coap_set_header_uri_path_segment(transacP->message, stringID);
+ 445              		.loc 1 243 0
+ 446 015c 06AA     		add	r2, sp, #24
+ 447 015e 1344     		add	r3, r3, r2
+ 448 0160 0022     		movs	r2, #0
+ 449 0162 03F8082C 		strb	r2, [r3, #-8]
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 450              		.loc 1 244 0
+ 451 0166 04A9     		add	r1, sp, #16
+ 452 0168 A06A     		ldr	r0, [r4, #40]
+ 453              	.LVL53:
+ 454 016a FFF7FEFF 		bl	coap_set_header_uri_path_segment
+ 455              	.LVL54:
+ 456 016e B5E7     		b	.L28
+ 457              	.L40:
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 458              		.loc 1 250 0
+ 459 0170 0021     		movs	r1, #0
+ 460 0172 A06A     		ldr	r0, [r4, #40]
+ 461 0174 FFF7FEFF 		bl	coap_set_header_uri_path_segment
+ 462              	.LVL55:
+ 463 0178 B0E7     		b	.L28
+ 464              	.L41:
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             if (result == 0) goto error;
+ 465              		.loc 1 255 0
+ 466 017a 0623     		movs	r3, #6
+ 467 017c 04AA     		add	r2, sp, #16
+ 468 017e E888     		ldrh	r0, [r5, #6]
+ 469 0180 0021     		movs	r1, #0
+ 470 0182 FFF7FEFF 		bl	utils_intToText
+ 471              	.LVL56:
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             stringID[result] = 0;
+ 472              		.loc 1 256 0
+ 473 0186 0346     		mov	r3, r0
+ 474 0188 A0B3     		cbz	r0, .L23
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             coap_set_header_uri_path_segment(transacP->message, stringID);
+ 475              		.loc 1 257 0
+ 476 018a 06AA     		add	r2, sp, #24
+ 477 018c 1344     		add	r3, r3, r2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 15
+
+
+ 478 018e 0022     		movs	r2, #0
+ 479 0190 03F8082C 		strb	r2, [r3, #-8]
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 480              		.loc 1 258 0
+ 481 0194 04A9     		add	r1, sp, #16
+ 482 0196 A06A     		ldr	r0, [r4, #40]
+ 483              	.LVL57:
+ 484 0198 FFF7FEFF 		bl	coap_set_header_uri_path_segment
+ 485              	.LVL58:
+ 486 019c A2E7     		b	.L25
+ 487              	.L31:
+ 488              	.LBE3:
+ 489              	.LBB4:
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 490              		.loc 1 271 0
+ 491 019e FFF7FEFF 		bl	lwm2m_gettime
+ 492              	.LVL59:
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             temp_token[1] = mID >> 8;
+ 493              		.loc 1 274 0
+ 494 01a2 8DF81060 		strb	r6, [sp, #16]
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             temp_token[2] = tv_sec;
+ 495              		.loc 1 275 0
+ 496 01a6 360A     		lsrs	r6, r6, #8
+ 497 01a8 8DF81160 		strb	r6, [sp, #17]
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             temp_token[3] = tv_sec >> 8;
+ 498              		.loc 1 276 0
+ 499 01ac 8DF81200 		strb	r0, [sp, #18]
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             temp_token[4] = tv_sec >> 16;
+ 500              		.loc 1 277 0
+ 501 01b0 030A     		lsrs	r3, r0, #8
+ 502 01b2 8DF81330 		strb	r3, [sp, #19]
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             temp_token[5] = tv_sec >> 24;
+ 503              		.loc 1 278 0
+ 504 01b6 030C     		lsrs	r3, r0, #16
+ 505 01b8 8DF81430 		strb	r3, [sp, #20]
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             // use just the provided amount of bytes
+ 506              		.loc 1 279 0
+ 507 01bc 000E     		lsrs	r0, r0, #24
+ 508              	.LVL60:
+ 509 01be 8DF81500 		strb	r0, [sp, #21]
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             int i;
+ 510              		.loc 1 281 0
+ 511 01c2 3A46     		mov	r2, r7
+ 512 01c4 04A9     		add	r1, sp, #16
+ 513 01c6 A06A     		ldr	r0, [r4, #40]
+ 514 01c8 FFF7FEFF 		bl	coap_set_header_token
+ 515              	.LVL61:
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 LOG_ARG("send token is %d\n", temp_token[i]);
+ 516              		.loc 1 283 0
+ 517 01cc 0025     		movs	r5, #0
+ 518              	.LVL62:
+ 519 01ce 0EE0     		b	.L32
+ 520              	.LVL63:
+ 521              	.L33:
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 522              		.loc 1 284 0 discriminator 3
+ 523 01d0 FFF7FEFF 		bl	lwm2m_gettime
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 16
+
+
+ 524              	.LVL64:
+ 525 01d4 06AB     		add	r3, sp, #24
+ 526 01d6 2B44     		add	r3, r3, r5
+ 527 01d8 13F8083C 		ldrb	r3, [r3, #-8]	@ zero_extendqisi2
+ 528 01dc 0093     		str	r3, [sp]
+ 529 01de 4FF48E73 		mov	r3, #284
+ 530 01e2 0C4A     		ldr	r2, .L42
+ 531 01e4 0146     		mov	r1, r0
+ 532 01e6 1348     		ldr	r0, .L42+32
+ 533 01e8 FFF7FEFF 		bl	atiny_printf
+ 534              	.LVL65:
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 LOG_ARG("send token is %d\n", temp_token[i]);
+ 535              		.loc 1 283 0 discriminator 3
+ 536 01ec 0135     		adds	r5, r5, #1
+ 537              	.LVL66:
+ 538              	.L32:
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 LOG_ARG("send token is %d\n", temp_token[i]);
+ 539              		.loc 1 283 0 is_stmt 0 discriminator 1
+ 540 01ee AF42     		cmp	r7, r5
+ 541 01f0 EEDC     		bgt	.L33
+ 542 01f2 80E7     		b	.L30
+ 543              	.LVL67:
+ 544              	.L23:
+ 545              	.LBE4:
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     lwm2m_free(transacP);
+ 546              		.loc 1 292 0 is_stmt 1
+ 547 01f4 FFF7FEFF 		bl	lwm2m_gettime
+ 548              	.LVL68:
+ 549 01f8 4FF49273 		mov	r3, #292
+ 550 01fc 054A     		ldr	r2, .L42
+ 551 01fe 0146     		mov	r1, r0
+ 552 0200 0D48     		ldr	r0, .L42+36
+ 553 0202 FFF7FEFF 		bl	atiny_printf
+ 554              	.LVL69:
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     return NULL;
+ 555              		.loc 1 293 0
+ 556 0206 2046     		mov	r0, r4
+ 557 0208 FFF7FEFF 		bl	lwm2m_free
+ 558              	.LVL70:
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** }
+ 559              		.loc 1 294 0
+ 560 020c 0024     		movs	r4, #0
+ 561              	.LVL71:
+ 562 020e 7BE7     		b	.L15
+ 563              	.L34:
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 564              		.loc 1 209 0
+ 565 0210 0024     		movs	r4, #0
+ 566 0212 79E7     		b	.L15
+ 567              	.L43:
+ 568              		.align	2
+ 569              	.L42:
+ 570 0214 00000000 		.word	.LANCHOR1
+ 571 0218 00000000 		.word	.LC4
+ 572 021c 90000000 		.word	.LC7
+ 573 0220 A0000000 		.word	.LC9
+ 574 0224 C4000000 		.word	.LC11
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 17
+
+
+ 575 0228 40000000 		.word	.LC5
+ 576 022c 80000000 		.word	.LC6
+ 577 0230 9C000000 		.word	.LC8
+ 578 0234 A4000000 		.word	.LC10
+ 579 0238 E8000000 		.word	.LC12
+ 580              		.cfi_endproc
+ 581              	.LFE135:
+ 583              		.section	.text.transaction_free,"ax",%progbits
+ 584              		.align	1
+ 585              		.global	transaction_free
+ 586              		.syntax unified
+ 587              		.thumb
+ 588              		.thumb_func
+ 589              		.fpu fpv4-sp-d16
+ 591              	transaction_free:
+ 592              	.LFB136:
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** void transaction_free(lwm2m_transaction_t *transacP)
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** {
+ 593              		.loc 1 298 0
+ 594              		.cfi_startproc
+ 595              		@ args = 0, pretend = 0, frame = 0
+ 596              		@ frame_needed = 0, uses_anonymous_args = 0
+ 597              	.LVL72:
+ 598 0000 10B5     		push	{r4, lr}
+ 599              	.LCFI8:
+ 600              		.cfi_def_cfa_offset 8
+ 601              		.cfi_offset 4, -8
+ 602              		.cfi_offset 14, -4
+ 603 0002 0446     		mov	r4, r0
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG("Entering");
+ 604              		.loc 1 299 0
+ 605 0004 FFF7FEFF 		bl	lwm2m_gettime
+ 606              	.LVL73:
+ 607 0008 40F22B13 		movw	r3, #299
+ 608 000c 094A     		ldr	r2, .L48
+ 609 000e 0146     		mov	r1, r0
+ 610 0010 0948     		ldr	r0, .L48+4
+ 611 0012 FFF7FEFF 		bl	atiny_printf
+ 612              	.LVL74:
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if (transacP->message)
+ 613              		.loc 1 300 0
+ 614 0016 A06A     		ldr	r0, [r4, #40]
+ 615 0018 20B1     		cbz	r0, .L45
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         coap_free_header(transacP->message);
+ 616              		.loc 1 302 0
+ 617 001a FFF7FEFF 		bl	coap_free_header
+ 618              	.LVL75:
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         lwm2m_free(transacP->message);
+ 619              		.loc 1 303 0
+ 620 001e A06A     		ldr	r0, [r4, #40]
+ 621 0020 FFF7FEFF 		bl	lwm2m_free
+ 622              	.LVL76:
+ 623              	.L45:
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 18
+
+
+ 306:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if (transacP->buffer) lwm2m_free(transacP->buffer);
+ 624              		.loc 1 306 0
+ 625 0024 206B     		ldr	r0, [r4, #48]
+ 626 0026 08B1     		cbz	r0, .L46
+ 627              		.loc 1 306 0 is_stmt 0 discriminator 1
+ 628 0028 FFF7FEFF 		bl	lwm2m_free
+ 629              	.LVL77:
+ 630              	.L46:
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     lwm2m_free(transacP);
+ 631              		.loc 1 307 0 is_stmt 1
+ 632 002c 2046     		mov	r0, r4
+ 633 002e FFF7FEFF 		bl	lwm2m_free
+ 634              	.LVL78:
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** }
+ 635              		.loc 1 308 0
+ 636 0032 10BD     		pop	{r4, pc}
+ 637              	.LVL79:
+ 638              	.L49:
+ 639              		.align	2
+ 640              	.L48:
+ 641 0034 00000000 		.word	.LANCHOR2
+ 642 0038 00000000 		.word	.LC13
+ 643              		.cfi_endproc
+ 644              	.LFE136:
+ 646              		.section	.text.transaction_remove,"ax",%progbits
+ 647              		.align	1
+ 648              		.global	transaction_remove
+ 649              		.syntax unified
+ 650              		.thumb
+ 651              		.thumb_func
+ 652              		.fpu fpv4-sp-d16
+ 654              	transaction_remove:
+ 655              	.LFB137:
+ 309:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** void transaction_remove(lwm2m_context_t *contextP,
+ 311:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         lwm2m_transaction_t *transacP)
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** {
+ 656              		.loc 1 312 0
+ 657              		.cfi_startproc
+ 658              		@ args = 0, pretend = 0, frame = 0
+ 659              		@ frame_needed = 0, uses_anonymous_args = 0
+ 660              	.LVL80:
+ 661 0000 38B5     		push	{r3, r4, r5, lr}
+ 662              	.LCFI9:
+ 663              		.cfi_def_cfa_offset 16
+ 664              		.cfi_offset 3, -16
+ 665              		.cfi_offset 4, -12
+ 666              		.cfi_offset 5, -8
+ 667              		.cfi_offset 14, -4
+ 668 0002 0546     		mov	r5, r0
+ 669 0004 0C46     		mov	r4, r1
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG("Entering");
+ 670              		.loc 1 313 0
+ 671 0006 FFF7FEFF 		bl	lwm2m_gettime
+ 672              	.LVL81:
+ 673 000a 40F23913 		movw	r3, #313
+ 674 000e 074A     		ldr	r2, .L52
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 19
+
+
+ 675 0010 0146     		mov	r1, r0
+ 676 0012 0748     		ldr	r0, .L52+4
+ 677 0014 FFF7FEFF 		bl	atiny_printf
+ 678              	.LVL82:
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     contextP->transactionList = (lwm2m_transaction_t *) LWM2M_LIST_RM(contextP->transactionList, tr
+ 679              		.loc 1 314 0
+ 680 0018 0022     		movs	r2, #0
+ 681 001a A188     		ldrh	r1, [r4, #4]
+ 682 001c 286B     		ldr	r0, [r5, #48]
+ 683 001e FFF7FEFF 		bl	lwm2m_list_remove
+ 684              	.LVL83:
+ 685 0022 2863     		str	r0, [r5, #48]
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     transaction_free(transacP);
+ 686              		.loc 1 315 0
+ 687 0024 2046     		mov	r0, r4
+ 688 0026 FFF7FEFF 		bl	transaction_free
+ 689              	.LVL84:
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** }
+ 690              		.loc 1 316 0
+ 691 002a 38BD     		pop	{r3, r4, r5, pc}
+ 692              	.LVL85:
+ 693              	.L53:
+ 694              		.align	2
+ 695              	.L52:
+ 696 002c 00000000 		.word	.LANCHOR3
+ 697 0030 00000000 		.word	.LC13
+ 698              		.cfi_endproc
+ 699              	.LFE137:
+ 701              		.section	.text.transaction_handleResponse,"ax",%progbits
+ 702              		.align	1
+ 703              		.global	transaction_handleResponse
+ 704              		.syntax unified
+ 705              		.thumb
+ 706              		.thumb_func
+ 707              		.fpu fpv4-sp-d16
+ 709              	transaction_handleResponse:
+ 710              	.LFB138:
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** bool transaction_handleResponse(lwm2m_context_t *contextP,
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                                 void *fromSessionH,
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                                 coap_packet_t *message,
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                                 coap_packet_t *response)
+ 322:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** {
+ 711              		.loc 1 322 0
+ 712              		.cfi_startproc
+ 713              		@ args = 0, pretend = 0, frame = 0
+ 714              		@ frame_needed = 0, uses_anonymous_args = 0
+ 715              	.LVL86:
+ 716 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 717              	.LCFI10:
+ 718              		.cfi_def_cfa_offset 36
+ 719              		.cfi_offset 4, -36
+ 720              		.cfi_offset 5, -32
+ 721              		.cfi_offset 6, -28
+ 722              		.cfi_offset 7, -24
+ 723              		.cfi_offset 8, -20
+ 724              		.cfi_offset 9, -16
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 20
+
+
+ 725              		.cfi_offset 10, -12
+ 726              		.cfi_offset 11, -8
+ 727              		.cfi_offset 14, -4
+ 728 0004 83B0     		sub	sp, sp, #12
+ 729              	.LCFI11:
+ 730              		.cfi_def_cfa_offset 48
+ 731 0006 0746     		mov	r7, r0
+ 732 0008 0D46     		mov	r5, r1
+ 733 000a 1646     		mov	r6, r2
+ 734 000c 9B46     		mov	fp, r3
+ 735              	.LVL87:
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     bool found = false;
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     bool reset = false;
+ 325:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     lwm2m_transaction_t *transacP;
+ 326:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 327:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG_ARG("Entering,message->code: %d", message->code);
+ 736              		.loc 1 327 0
+ 737 000e FFF7FEFF 		bl	lwm2m_gettime
+ 738              	.LVL88:
+ 739 0012 B379     		ldrb	r3, [r6, #6]	@ zero_extendqisi2
+ 740 0014 0093     		str	r3, [sp]
+ 741 0016 40F24713 		movw	r3, #327
+ 742 001a 5B4A     		ldr	r2, .L73
+ 743 001c 0146     		mov	r1, r0
+ 744 001e 5B48     		ldr	r0, .L73+4
+ 745 0020 FFF7FEFF 		bl	atiny_printf
+ 746              	.LVL89:
+ 328:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     transacP = contextP->transactionList;
+ 747              		.loc 1 328 0
+ 748 0024 3C6B     		ldr	r4, [r7, #48]
+ 749              	.LVL90:
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     lwm2m_transaction_t *transacP;
+ 750              		.loc 1 324 0
+ 751 0026 4FF00009 		mov	r9, #0
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     bool found = false;
+ 752              		.loc 1 323 0
+ 753 002a CA46     		mov	r10, r9
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     while (NULL != transacP)
+ 754              		.loc 1 330 0
+ 755 002c 0BE0     		b	.L55
+ 756              	.LVL91:
+ 757              	.L57:
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (lwm2m_session_is_equal(fromSessionH, transacP->peerH, contextP->userData) == true)
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             if (!transacP->ack_received)
+ 335:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             {
+ 336:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 if ((COAP_TYPE_ACK == message->type) || (COAP_TYPE_RST == message->type))
+ 337:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 {
+ 338:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     if (transacP->mID == message->mid)
+ 339:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     {
+ 340:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         found = true;
+ 341:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         transacP->ack_received = true;
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         reset = COAP_TYPE_RST == message->type;
+ 343:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     }
+ 344:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 21
+
+
+ 345:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 346:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 347:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             if (reset || prv_checkFinished(transacP, message))
+ 758              		.loc 1 347 0
+ 759 002e B9F1000F 		cmp	r9, #0
+ 760 0032 2CD1     		bne	.L58
+ 761              		.loc 1 347 0 is_stmt 0 discriminator 1
+ 762 0034 3146     		mov	r1, r6
+ 763 0036 2046     		mov	r0, r4
+ 764 0038 FFF7FEFF 		bl	prv_checkFinished
+ 765              	.LVL92:
+ 766 003c 38BB     		cbnz	r0, .L58
+ 348:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             {
+ 349:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 // HACK: If a message is sent from the monitor callback,
+ 350:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 // it will arrive before the registration ACK.
+ 351:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 // So we resend transaction that were denied for authentication reason.
+ 352:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 if (!reset)
+ 353:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 {
+ 354:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     if (COAP_TYPE_CON == message->type && NULL != response)
+ 355:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     {
+ 356:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         coap_init_message(response, COAP_TYPE_ACK, 0, message->mid);
+ 357:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         message_send(contextP, response, fromSessionH);
+ 358:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     }
+ 359:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 360:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     if ((COAP_401_UNAUTHORIZED == message->code) && (COAP_MAX_RETRANSMIT > transacP
+ 361:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     {
+ 362:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         transacP->ack_received = false;
+ 363:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         transacP->retrans_time += COAP_RESPONSE_TIMEOUT;
+ 364:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         LOG("timeout in transaction_handleResponse\n");
+ 365:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         return true;
+ 366:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     }
+ 367:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 }
+ 368:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 if (transacP->callback != NULL)
+ 369:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 {
+ 370:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     transacP->callback(transacP, message);
+ 371:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 }
+ 372:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 transaction_remove(contextP, transacP);
+ 373:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 return true;
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 375:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             // if we found our guy, exit
+ 376:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             if (found)
+ 767              		.loc 1 376 0 is_stmt 1
+ 768 003e BAF1000F 		cmp	r10, #0
+ 769 0042 5DD1     		bne	.L70
+ 770              	.L64:
+ 377:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             {
+ 378:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 time_t tv_sec = lwm2m_gettime();
+ 379:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 if (tv_sec)
+ 380:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 {
+ 381:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     transacP->retrans_time = tv_sec;
+ 382:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 }
+ 383:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 if (transacP->response_timeout)
+ 384:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 {
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     transacP->retrans_time += transacP->response_timeout;
+ 386:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 }
+ 387:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 else
+ 388:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 22
+
+
+ 389:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     transacP->retrans_time += COAP_RESPONSE_TIMEOUT * transacP->retrans_counter;
+ 390:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 }
+ 391:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 LOG_ARG("only true25,fromSessionH is %p, transacP->peerH is %p\n", fromSessionH, tr
+ 392:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 return true;
+ 393:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 394:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 395:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         else
+ 396:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 397:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             LOG_ARG("error25,fromSessionH is %p, transacP->peerH is %p\n", fromSessionH, transacP->
+ 398:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 399:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         transacP = transacP->next;
+ 771              		.loc 1 399 0
+ 772 0044 2468     		ldr	r4, [r4]
+ 773              	.LVL93:
+ 774              	.L55:
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+ 775              		.loc 1 330 0
+ 776 0046 002C     		cmp	r4, #0
+ 777 0048 00F09280 		beq	.L71
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 778              		.loc 1 332 0
+ 779 004c 7A6B     		ldr	r2, [r7, #52]
+ 780 004e A168     		ldr	r1, [r4, #8]
+ 781 0050 2846     		mov	r0, r5
+ 782 0052 FFF7FEFF 		bl	lwm2m_session_is_equal
+ 783              	.LVL94:
+ 784 0056 8046     		mov	r8, r0
+ 785 0058 0028     		cmp	r0, #0
+ 786 005a 7CD0     		beq	.L56
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             {
+ 787              		.loc 1 334 0
+ 788 005c 237B     		ldrb	r3, [r4, #12]	@ zero_extendqisi2
+ 789 005e 002B     		cmp	r3, #0
+ 790 0060 E5D1     		bne	.L57
+ 336:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 {
+ 791              		.loc 1 336 0
+ 792 0062 7379     		ldrb	r3, [r6, #5]	@ zero_extendqisi2
+ 793 0064 023B     		subs	r3, r3, #2
+ 794 0066 DBB2     		uxtb	r3, r3
+ 795 0068 012B     		cmp	r3, #1
+ 796 006a E0D8     		bhi	.L57
+ 338:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     {
+ 797              		.loc 1 338 0
+ 798 006c A288     		ldrh	r2, [r4, #4]
+ 799 006e 3389     		ldrh	r3, [r6, #8]
+ 800 0070 9A42     		cmp	r2, r3
+ 801 0072 DCD1     		bne	.L57
+ 802              	.LVL95:
+ 341:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         reset = COAP_TYPE_RST == message->type;
+ 803              		.loc 1 341 0
+ 804 0074 0123     		movs	r3, #1
+ 805 0076 2373     		strb	r3, [r4, #12]
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     }
+ 806              		.loc 1 342 0
+ 807 0078 96F80590 		ldrb	r9, [r6, #5]	@ zero_extendqisi2
+ 808              	.LVL96:
+ 809 007c B9F1030F 		cmp	r9, #3
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 23
+
+
+ 810 0080 14BF     		ite	ne
+ 811 0082 4FF00009 		movne	r9, #0
+ 812 0086 4FF00109 		moveq	r9, #1
+ 813              	.LVL97:
+ 340:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         transacP->ack_received = true;
+ 814              		.loc 1 340 0
+ 815 008a 8246     		mov	r10, r0
+ 816 008c CFE7     		b	.L57
+ 817              	.LVL98:
+ 818              	.L58:
+ 352:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 {
+ 819              		.loc 1 352 0
+ 820 008e B9F1000F 		cmp	r9, #0
+ 821 0092 12D1     		bne	.L60
+ 354:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     {
+ 822              		.loc 1 354 0
+ 823 0094 7379     		ldrb	r3, [r6, #5]	@ zero_extendqisi2
+ 824 0096 6BB9     		cbnz	r3, .L61
+ 354:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     {
+ 825              		.loc 1 354 0 is_stmt 0 discriminator 1
+ 826 0098 BBF1000F 		cmp	fp, #0
+ 827 009c 0AD0     		beq	.L61
+ 356:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         message_send(contextP, response, fromSessionH);
+ 828              		.loc 1 356 0 is_stmt 1
+ 829 009e 3389     		ldrh	r3, [r6, #8]
+ 830 00a0 0022     		movs	r2, #0
+ 831 00a2 0221     		movs	r1, #2
+ 832 00a4 5846     		mov	r0, fp
+ 833 00a6 FFF7FEFF 		bl	coap_init_message
+ 834              	.LVL99:
+ 357:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     }
+ 835              		.loc 1 357 0
+ 836 00aa 2A46     		mov	r2, r5
+ 837 00ac 5946     		mov	r1, fp
+ 838 00ae 3846     		mov	r0, r7
+ 839 00b0 FFF7FEFF 		bl	message_send
+ 840              	.LVL100:
+ 841              	.L61:
+ 360:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     {
+ 842              		.loc 1 360 0
+ 843 00b4 B379     		ldrb	r3, [r6, #6]	@ zero_extendqisi2
+ 844 00b6 812B     		cmp	r3, #129
+ 845 00b8 0CD0     		beq	.L72
+ 846              	.L60:
+ 368:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 {
+ 847              		.loc 1 368 0
+ 848 00ba 236C     		ldr	r3, [r4, #64]
+ 849 00bc 13B1     		cbz	r3, .L63
+ 370:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 }
+ 850              		.loc 1 370 0
+ 851 00be 3146     		mov	r1, r6
+ 852 00c0 2046     		mov	r0, r4
+ 853 00c2 9847     		blx	r3
+ 854              	.LVL101:
+ 855              	.L63:
+ 372:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 return true;
+ 856              		.loc 1 372 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 24
+
+
+ 857 00c4 2146     		mov	r1, r4
+ 858 00c6 3846     		mov	r0, r7
+ 859 00c8 FFF7FEFF 		bl	transaction_remove
+ 860              	.LVL102:
+ 861              	.L62:
+ 400:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 401:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG("error25,return false in transaction_handleResponse\n");
+ 402:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     return false;
+ 403:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** }
+ 862              		.loc 1 403 0
+ 863 00cc 4046     		mov	r0, r8
+ 864 00ce 03B0     		add	sp, sp, #12
+ 865              	.LCFI12:
+ 866              		.cfi_remember_state
+ 867              		.cfi_def_cfa_offset 36
+ 868              		@ sp needed
+ 869 00d0 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 870              	.LVL103:
+ 871              	.L72:
+ 872              	.LCFI13:
+ 873              		.cfi_restore_state
+ 360:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     {
+ 874              		.loc 1 360 0 discriminator 1
+ 875 00d4 237E     		ldrb	r3, [r4, #24]	@ zero_extendqisi2
+ 876 00d6 032B     		cmp	r3, #3
+ 877 00d8 EFD8     		bhi	.L60
+ 362:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         transacP->retrans_time += COAP_RESPONSE_TIMEOUT;
+ 878              		.loc 1 362 0
+ 879 00da 0023     		movs	r3, #0
+ 880 00dc 2373     		strb	r3, [r4, #12]
+ 363:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         LOG("timeout in transaction_handleResponse\n");
+ 881              		.loc 1 363 0
+ 882 00de D4E90823 		ldrd	r2, [r4, #32]
+ 883 00e2 101D     		adds	r0, r2, #4
+ 884 00e4 43F10001 		adc	r1, r3, #0
+ 885 00e8 C4E90801 		strd	r0, [r4, #32]
+ 364:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                         return true;
+ 886              		.loc 1 364 0
+ 887 00ec FFF7FEFF 		bl	lwm2m_gettime
+ 888              	.LVL104:
+ 889 00f0 4FF4B673 		mov	r3, #364
+ 890 00f4 244A     		ldr	r2, .L73
+ 891 00f6 0146     		mov	r1, r0
+ 892 00f8 2548     		ldr	r0, .L73+8
+ 893 00fa FFF7FEFF 		bl	atiny_printf
+ 894              	.LVL105:
+ 365:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                     }
+ 895              		.loc 1 365 0
+ 896 00fe E5E7     		b	.L62
+ 897              	.L70:
+ 898              	.LBB5:
+ 378:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 if (tv_sec)
+ 899              		.loc 1 378 0
+ 900 0100 FFF7FEFF 		bl	lwm2m_gettime
+ 901              	.LVL106:
+ 379:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 {
+ 902              		.loc 1 379 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 25
+
+
+ 903 0104 50EA0103 		orrs	r3, r0, r1
+ 904 0108 01D0     		beq	.L65
+ 381:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 }
+ 905              		.loc 1 381 0
+ 906 010a C4E90801 		strd	r0, [r4, #32]
+ 907              	.L65:
+ 383:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 {
+ 908              		.loc 1 383 0
+ 909 010e D4E90401 		ldrd	r0, [r4, #16]
+ 910              	.LVL107:
+ 911 0112 50EA0103 		orrs	r3, r0, r1
+ 912 0116 14D0     		beq	.L66
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 }
+ 913              		.loc 1 385 0
+ 914 0118 D4E90823 		ldrd	r2, [r4, #32]
+ 915 011c 1618     		adds	r6, r2, r0
+ 916              	.LVL108:
+ 917 011e 43EB0107 		adc	r7, r3, r1
+ 918              	.LVL109:
+ 919 0122 C4E90867 		strd	r6, [r4, #32]
+ 920              	.L67:
+ 391:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 return true;
+ 921              		.loc 1 391 0
+ 922 0126 FFF7FEFF 		bl	lwm2m_gettime
+ 923              	.LVL110:
+ 924 012a A368     		ldr	r3, [r4, #8]
+ 925 012c 0193     		str	r3, [sp, #4]
+ 926 012e 0095     		str	r5, [sp]
+ 927 0130 40F28713 		movw	r3, #391
+ 928 0134 144A     		ldr	r2, .L73
+ 929 0136 0146     		mov	r1, r0
+ 930 0138 1648     		ldr	r0, .L73+12
+ 931 013a FFF7FEFF 		bl	atiny_printf
+ 932              	.LVL111:
+ 392:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 933              		.loc 1 392 0
+ 934 013e D046     		mov	r8, r10
+ 935 0140 C4E7     		b	.L62
+ 936              	.LVL112:
+ 937              	.L66:
+ 389:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 }
+ 938              		.loc 1 389 0
+ 939 0142 217E     		ldrb	r1, [r4, #24]	@ zero_extendqisi2
+ 940 0144 8900     		lsls	r1, r1, #2
+ 941 0146 D4E90823 		ldrd	r2, [r4, #32]
+ 942 014a 5618     		adds	r6, r2, r1
+ 943              	.LVL113:
+ 944 014c 43EBE177 		adc	r7, r3, r1, asr #31
+ 945              	.LVL114:
+ 946 0150 C4E90867 		strd	r6, [r4, #32]
+ 947 0154 E7E7     		b	.L67
+ 948              	.LVL115:
+ 949              	.L56:
+ 950              	.LBE5:
+ 397:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 951              		.loc 1 397 0
+ 952 0156 FFF7FEFF 		bl	lwm2m_gettime
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 26
+
+
+ 953              	.LVL116:
+ 954 015a A368     		ldr	r3, [r4, #8]
+ 955 015c 0193     		str	r3, [sp, #4]
+ 956 015e 0095     		str	r5, [sp]
+ 957 0160 40F28D13 		movw	r3, #397
+ 958 0164 084A     		ldr	r2, .L73
+ 959 0166 0146     		mov	r1, r0
+ 960 0168 0B48     		ldr	r0, .L73+16
+ 961 016a FFF7FEFF 		bl	atiny_printf
+ 962              	.LVL117:
+ 963 016e 69E7     		b	.L64
+ 964              	.L71:
+ 401:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     return false;
+ 965              		.loc 1 401 0
+ 966 0170 FFF7FEFF 		bl	lwm2m_gettime
+ 967              	.LVL118:
+ 968 0174 40F29113 		movw	r3, #401
+ 969 0178 034A     		ldr	r2, .L73
+ 970 017a 0146     		mov	r1, r0
+ 971 017c 0748     		ldr	r0, .L73+20
+ 972 017e FFF7FEFF 		bl	atiny_printf
+ 973              	.LVL119:
+ 402:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** }
+ 974              		.loc 1 402 0
+ 975 0182 4FF00008 		mov	r8, #0
+ 976 0186 A1E7     		b	.L62
+ 977              	.L74:
+ 978              		.align	2
+ 979              	.L73:
+ 980 0188 00000000 		.word	.LANCHOR4
+ 981 018c 00000000 		.word	.LC14
+ 982 0190 2C000000 		.word	.LC15
+ 983 0194 64000000 		.word	.LC16
+ 984 0198 AC000000 		.word	.LC17
+ 985 019c F0000000 		.word	.LC18
+ 986              		.cfi_endproc
+ 987              	.LFE138:
+ 989              		.section	.text.transaction_send,"ax",%progbits
+ 990              		.align	1
+ 991              		.global	transaction_send
+ 992              		.syntax unified
+ 993              		.thumb
+ 994              		.thumb_func
+ 995              		.fpu fpv4-sp-d16
+ 997              	transaction_send:
+ 998              	.LFB139:
+ 404:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** //transacP中对象，除buffer外已经赋值
+ 405:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** int transaction_send(lwm2m_context_t *contextP,
+ 406:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                      lwm2m_transaction_t *transacP)
+ 407:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** {
+ 999              		.loc 1 407 0
+ 1000              		.cfi_startproc
+ 1001              		@ args = 0, pretend = 0, frame = 0
+ 1002              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1003              	.LVL120:
+ 1004 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 1005              	.LCFI14:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 27
+
+
+ 1006              		.cfi_def_cfa_offset 28
+ 1007              		.cfi_offset 4, -28
+ 1008              		.cfi_offset 5, -24
+ 1009              		.cfi_offset 6, -20
+ 1010              		.cfi_offset 7, -16
+ 1011              		.cfi_offset 8, -12
+ 1012              		.cfi_offset 9, -8
+ 1013              		.cfi_offset 14, -4
+ 1014 0004 89B0     		sub	sp, sp, #36
+ 1015              	.LCFI15:
+ 1016              		.cfi_def_cfa_offset 64
+ 1017 0006 0746     		mov	r7, r0
+ 1018 0008 0C46     		mov	r4, r1
+ 1019              	.LVL121:
+ 408:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     bool maxRetriesReached = false;
+ 409:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     coap_packet_t *message = transacP->message;
+ 1020              		.loc 1 409 0
+ 1021 000a 8D6A     		ldr	r5, [r1, #40]
+ 1022              	.LVL122:
+ 410:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     int ret;
+ 411:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 412:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG("Entering");
+ 1023              		.loc 1 412 0
+ 1024 000c FFF7FEFF 		bl	lwm2m_gettime
+ 1025              	.LVL123:
+ 1026 0010 764E     		ldr	r6, .L96
+ 1027 0012 4FF4CE73 		mov	r3, #412
+ 1028 0016 3246     		mov	r2, r6
+ 1029 0018 0146     		mov	r1, r0
+ 1030 001a 7548     		ldr	r0, .L96+4
+ 1031 001c FFF7FEFF 		bl	atiny_printf
+ 1032              	.LVL124:
+ 413:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 414:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG_ARG("transaction_send: ver %u, type %u, tkl %u, code %u.%.2u, mid %u, Content type: %d",
+ 1033              		.loc 1 414 0
+ 1034 0020 FFF7FEFF 		bl	lwm2m_gettime
+ 1035              	.LVL125:
+ 1036 0024 2A79     		ldrb	r2, [r5, #4]	@ zero_extendqisi2
+ 1037 0026 6979     		ldrb	r1, [r5, #5]	@ zero_extendqisi2
+ 1038 0028 95F84CC0 		ldrb	ip, [r5, #76]	@ zero_extendqisi2
+ 1039 002c AB79     		ldrb	r3, [r5, #6]	@ zero_extendqisi2
+ 1040 002e 4FEA531E 		lsr	lr, r3, #5
+ 1041 0032 03F01F03 		and	r3, r3, #31
+ 1042 0036 B5F80880 		ldrh	r8, [r5, #8]
+ 1043 003a B5F81090 		ldrh	r9, [r5, #16]
+ 1044 003e CDF81890 		str	r9, [sp, #24]
+ 1045 0042 CDF81480 		str	r8, [sp, #20]
+ 1046 0046 0493     		str	r3, [sp, #16]
+ 1047 0048 CDF80CE0 		str	lr, [sp, #12]
+ 1048 004c CDF808C0 		str	ip, [sp, #8]
+ 1049 0050 0191     		str	r1, [sp, #4]
+ 1050 0052 0092     		str	r2, [sp]
+ 1051 0054 40F29F13 		movw	r3, #415
+ 1052 0058 3246     		mov	r2, r6
+ 1053 005a 0146     		mov	r1, r0
+ 1054 005c 6548     		ldr	r0, .L96+8
+ 1055 005e FFF7FEFF 		bl	atiny_printf
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 28
+
+
+ 1056              	.LVL126:
+ 415:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             message->version, message->type, message->token_len, message->code >> 5, message->code 
+ 416:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG_ARG("time:%llu", atiny_gettime_ms());
+ 1057              		.loc 1 416 0
+ 1058 0062 FFF7FEFF 		bl	lwm2m_gettime
+ 1059              	.LVL127:
+ 1060 0066 8046     		mov	r8, r0
+ 1061 0068 FFF7FEFF 		bl	atiny_gettime_ms
+ 1062              	.LVL128:
+ 1063 006c CDE90001 		strd	r0, [sp]
+ 1064 0070 4FF4D073 		mov	r3, #416
+ 1065 0074 3246     		mov	r2, r6
+ 1066 0076 4146     		mov	r1, r8
+ 1067 0078 5F48     		ldr	r0, .L96+12
+ 1068 007a FFF7FEFF 		bl	atiny_printf
+ 1069              	.LVL129:
+ 417:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if (transacP->buffer == NULL)
+ 1070              		.loc 1 417 0
+ 1071 007e 236B     		ldr	r3, [r4, #48]
+ 1072 0080 6BB1     		cbz	r3, .L91
+ 1073              	.L76:
+ 418:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+ 419:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         transacP->buffer_len = coap_serialize_get_size(message);
+ 420:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (transacP->buffer_len == 0)
+ 421:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 422:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             transaction_remove(contextP, transacP);
+ 423:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             LOG("remove");
+ 424:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             return COAP_500_INTERNAL_SERVER_ERROR;
+ 425:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 426:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 427:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         transacP->buffer = (uint8_t *)lwm2m_malloc(transacP->buffer_len);
+ 428:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (transacP->buffer == NULL)
+ 429:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 430:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             transaction_remove(contextP, transacP);
+ 431:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             LOG("remove");
+ 432:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             return COAP_500_INTERNAL_SERVER_ERROR;
+ 433:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 434:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 435:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         transacP->buffer_len = coap_serialize_message(message, transacP->buffer);
+ 436:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (transacP->buffer_len == 0)
+ 437:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 438:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             lwm2m_free(transacP->buffer);
+ 439:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             transacP->buffer = NULL;
+ 440:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             transaction_remove(contextP, transacP);
+ 441:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             LOG("remove");
+ 442:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             return COAP_500_INTERNAL_SERVER_ERROR;
+ 443:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 444:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 445:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 446:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if (!transacP->ack_received)
+ 1074              		.loc 1 446 0
+ 1075 0082 237B     		ldrb	r3, [r4, #12]	@ zero_extendqisi2
+ 1076 0084 002B     		cmp	r3, #0
+ 1077 0086 40F09080 		bne	.L85
+ 1078              	.LVL130:
+ 1079              	.LBB6:
+ 447:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 29
+
+
+ 448:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         long unsigned timeout = 0;
+ 449:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 450:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (0 == transacP->retrans_counter)
+ 1080              		.loc 1 450 0
+ 1081 008a 237E     		ldrb	r3, [r4, #24]	@ zero_extendqisi2
+ 1082 008c 002B     		cmp	r3, #0
+ 1083 008e 4AD0     		beq	.L92
+ 451:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 452:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             time_t tv_sec = lwm2m_gettime();
+ 453:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             if (tv_sec)
+ 454:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             {
+ 455:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 transacP->retrans_time = tv_sec + COAP_RESPONSE_TIMEOUT;
+ 456:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 transacP->retrans_counter = 1;
+ 457:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 timeout = 0;
+ 458:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 459:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             else
+ 460:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             {
+ 461:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 maxRetriesReached = true;
+ 462:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 463:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 464:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         else
+ 465:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 466:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             if(transacP->retrans_counter <= 4 )
+ 1084              		.loc 1 466 0
+ 1085 0090 042B     		cmp	r3, #4
+ 1086 0092 5CD8     		bhi	.L87
+ 467:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 timeout = COAP_RESPONSE_TIMEOUT << (transacP->retrans_counter - 1);
+ 1087              		.loc 1 467 0
+ 1088 0094 013B     		subs	r3, r3, #1
+ 1089 0096 0426     		movs	r6, #4
+ 1090 0098 9E40     		lsls	r6, r6, r3
+ 1091              	.LVL131:
+ 1092              	.LBE6:
+ 408:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     coap_packet_t *message = transacP->message;
+ 1093              		.loc 1 408 0
+ 1094 009a 0025     		movs	r5, #0
+ 1095              	.LVL132:
+ 1096              	.LBB10:
+ 1097 009c 59E0     		b	.L82
+ 1098              	.LVL133:
+ 1099              	.L91:
+ 1100              	.LBE10:
+ 419:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (transacP->buffer_len == 0)
+ 1101              		.loc 1 419 0
+ 1102 009e 2846     		mov	r0, r5
+ 1103 00a0 FFF7FEFF 		bl	coap_serialize_get_size
+ 1104              	.LVL134:
+ 1105 00a4 80B2     		uxth	r0, r0
+ 1106 00a6 A085     		strh	r0, [r4, #44]	@ movhi
+ 420:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 1107              		.loc 1 420 0
+ 1108 00a8 F8B1     		cbz	r0, .L93
+ 427:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (transacP->buffer == NULL)
+ 1109              		.loc 1 427 0
+ 1110 00aa FFF7FEFF 		bl	lwm2m_malloc
+ 1111              	.LVL135:
+ 1112 00ae 2063     		str	r0, [r4, #48]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 30
+
+
+ 428:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 1113              		.loc 1 428 0
+ 1114 00b0 50B3     		cbz	r0, .L94
+ 435:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (transacP->buffer_len == 0)
+ 1115              		.loc 1 435 0
+ 1116 00b2 0146     		mov	r1, r0
+ 1117 00b4 2846     		mov	r0, r5
+ 1118 00b6 FFF7FEFF 		bl	coap_serialize_message
+ 1119              	.LVL136:
+ 1120 00ba 80B2     		uxth	r0, r0
+ 1121 00bc A085     		strh	r0, [r4, #44]	@ movhi
+ 436:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 1122              		.loc 1 436 0
+ 1123 00be 0028     		cmp	r0, #0
+ 1124 00c0 DFD1     		bne	.L76
+ 438:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             transacP->buffer = NULL;
+ 1125              		.loc 1 438 0
+ 1126 00c2 206B     		ldr	r0, [r4, #48]
+ 1127 00c4 FFF7FEFF 		bl	lwm2m_free
+ 1128              	.LVL137:
+ 439:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             transaction_remove(contextP, transacP);
+ 1129              		.loc 1 439 0
+ 1130 00c8 0023     		movs	r3, #0
+ 1131 00ca 2363     		str	r3, [r4, #48]
+ 440:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             LOG("remove");
+ 1132              		.loc 1 440 0
+ 1133 00cc 2146     		mov	r1, r4
+ 1134 00ce 3846     		mov	r0, r7
+ 1135 00d0 FFF7FEFF 		bl	transaction_remove
+ 1136              	.LVL138:
+ 441:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             return COAP_500_INTERNAL_SERVER_ERROR;
+ 1137              		.loc 1 441 0
+ 1138 00d4 FFF7FEFF 		bl	lwm2m_gettime
+ 1139              	.LVL139:
+ 1140 00d8 40F2B913 		movw	r3, #441
+ 1141 00dc 434A     		ldr	r2, .L96
+ 1142 00de 0146     		mov	r1, r0
+ 1143 00e0 4648     		ldr	r0, .L96+16
+ 1144 00e2 FFF7FEFF 		bl	atiny_printf
+ 1145              	.LVL140:
+ 442:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 1146              		.loc 1 442 0
+ 1147 00e6 A020     		movs	r0, #160
+ 1148 00e8 64E0     		b	.L75
+ 1149              	.L93:
+ 422:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             LOG("remove");
+ 1150              		.loc 1 422 0
+ 1151 00ea 2146     		mov	r1, r4
+ 1152 00ec 3846     		mov	r0, r7
+ 1153 00ee FFF7FEFF 		bl	transaction_remove
+ 1154              	.LVL141:
+ 423:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             return COAP_500_INTERNAL_SERVER_ERROR;
+ 1155              		.loc 1 423 0
+ 1156 00f2 FFF7FEFF 		bl	lwm2m_gettime
+ 1157              	.LVL142:
+ 1158 00f6 40F2A713 		movw	r3, #423
+ 1159 00fa 3246     		mov	r2, r6
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 31
+
+
+ 1160 00fc 0146     		mov	r1, r0
+ 1161 00fe 3F48     		ldr	r0, .L96+16
+ 1162 0100 FFF7FEFF 		bl	atiny_printf
+ 1163              	.LVL143:
+ 424:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 1164              		.loc 1 424 0
+ 1165 0104 A020     		movs	r0, #160
+ 1166 0106 55E0     		b	.L75
+ 1167              	.L94:
+ 430:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             LOG("remove");
+ 1168              		.loc 1 430 0
+ 1169 0108 2146     		mov	r1, r4
+ 1170 010a 3846     		mov	r0, r7
+ 1171 010c FFF7FEFF 		bl	transaction_remove
+ 1172              	.LVL144:
+ 431:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             return COAP_500_INTERNAL_SERVER_ERROR;
+ 1173              		.loc 1 431 0
+ 1174 0110 FFF7FEFF 		bl	lwm2m_gettime
+ 1175              	.LVL145:
+ 1176 0114 40F2AF13 		movw	r3, #431
+ 1177 0118 344A     		ldr	r2, .L96
+ 1178 011a 0146     		mov	r1, r0
+ 1179 011c 3748     		ldr	r0, .L96+16
+ 1180 011e FFF7FEFF 		bl	atiny_printf
+ 1181              	.LVL146:
+ 432:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 1182              		.loc 1 432 0
+ 1183 0122 A020     		movs	r0, #160
+ 1184 0124 46E0     		b	.L75
+ 1185              	.LVL147:
+ 1186              	.L92:
+ 1187              	.LBB11:
+ 1188              	.LBB7:
+ 452:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             if (tv_sec)
+ 1189              		.loc 1 452 0
+ 1190 0126 FFF7FEFF 		bl	lwm2m_gettime
+ 1191              	.LVL148:
+ 1192 012a 0546     		mov	r5, r0
+ 1193              	.LVL149:
+ 1194 012c 0E46     		mov	r6, r1
+ 1195              	.LVL150:
+ 453:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             {
+ 1196              		.loc 1 453 0
+ 1197 012e 55EA0603 		orrs	r3, r5, r6
+ 1198 0132 09D0     		beq	.L86
+ 455:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 transacP->retrans_counter = 1;
+ 1199              		.loc 1 455 0
+ 1200 0134 0430     		adds	r0, r0, #4
+ 1201 0136 41F10001 		adc	r1, r1, #0
+ 1202 013a C4E90801 		strd	r0, [r4, #32]
+ 456:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 timeout = 0;
+ 1203              		.loc 1 456 0
+ 1204 013e 0123     		movs	r3, #1
+ 1205 0140 2376     		strb	r3, [r4, #24]
+ 457:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 1206              		.loc 1 457 0
+ 1207 0142 0026     		movs	r6, #0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 32
+
+
+ 1208              	.LBE7:
+ 1209              	.LBE11:
+ 408:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     coap_packet_t *message = transacP->message;
+ 1210              		.loc 1 408 0
+ 1211 0144 3546     		mov	r5, r6
+ 1212              	.LVL151:
+ 1213              	.LBB12:
+ 1214              	.LBB8:
+ 1215 0146 04E0     		b	.L82
+ 1216              	.LVL152:
+ 1217              	.L86:
+ 1218              	.LBE8:
+ 448:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 1219              		.loc 1 448 0
+ 1220 0148 0026     		movs	r6, #0
+ 1221              	.LBB9:
+ 461:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 1222              		.loc 1 461 0
+ 1223 014a 0125     		movs	r5, #1
+ 1224              	.LVL153:
+ 1225 014c 01E0     		b	.L82
+ 1226              	.LVL154:
+ 1227              	.L87:
+ 1228              	.LBE9:
+ 468:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             else
+ 469:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 timeout = COAP_RESPONSE_TIMEOUT << (4 - 1);
+ 1229              		.loc 1 469 0
+ 1230 014e 2026     		movs	r6, #32
+ 1231              	.LBE12:
+ 408:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     coap_packet_t *message = transacP->message;
+ 1232              		.loc 1 408 0
+ 1233 0150 0025     		movs	r5, #0
+ 1234              	.LVL155:
+ 1235              	.L82:
+ 1236              	.LBB13:
+ 470:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 471:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 472:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (COAP_MAX_RETRANSMIT + 1 >= transacP->retrans_counter)
+ 1237              		.loc 1 472 0
+ 1238 0152 237E     		ldrb	r3, [r4, #24]	@ zero_extendqisi2
+ 1239 0154 052B     		cmp	r3, #5
+ 1240 0156 01D9     		bls	.L95
+ 473:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 474:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             ret = lwm2m_buffer_send(transacP->peerH, transacP->buffer, transacP->buffer_len, contex
+ 475:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             output_buffer(stderr, (uint8_t *)(transacP->buffer), transacP->buffer_len, 0);
+ 476:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             transacP->retrans_time += timeout;
+ 477:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             LOG_ARG("send result is %d, retrans_counter:%d", ret, transacP->retrans_counter);
+ 478:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             transacP->retrans_counter += 1;
+ 479:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 480:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             UNUSEX(ret);
+ 481:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 482:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         else
+ 483:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 484:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             maxRetriesReached = true;
+ 1241              		.loc 1 484 0
+ 1242 0158 0125     		movs	r5, #1
+ 1243              	.LVL156:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 33
+
+
+ 1244 015a 27E0     		b	.L80
+ 1245              	.LVL157:
+ 1246              	.L95:
+ 474:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             output_buffer(stderr, (uint8_t *)(transacP->buffer), transacP->buffer_len, 0);
+ 1247              		.loc 1 474 0
+ 1248 015c 7B6B     		ldr	r3, [r7, #52]
+ 1249 015e A28D     		ldrh	r2, [r4, #44]
+ 1250 0160 216B     		ldr	r1, [r4, #48]
+ 1251 0162 A068     		ldr	r0, [r4, #8]
+ 1252 0164 FFF7FEFF 		bl	lwm2m_buffer_send
+ 1253              	.LVL158:
+ 1254 0168 8046     		mov	r8, r0
+ 1255              	.LVL159:
+ 475:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             transacP->retrans_time += timeout;
+ 1256              		.loc 1 475 0
+ 1257 016a 254B     		ldr	r3, .L96+20
+ 1258 016c 1868     		ldr	r0, [r3]
+ 1259              	.LVL160:
+ 1260 016e 0023     		movs	r3, #0
+ 1261 0170 A28D     		ldrh	r2, [r4, #44]
+ 1262 0172 216B     		ldr	r1, [r4, #48]
+ 1263 0174 C068     		ldr	r0, [r0, #12]
+ 1264 0176 FFF7FEFF 		bl	output_buffer
+ 1265              	.LVL161:
+ 476:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             LOG_ARG("send result is %d, retrans_counter:%d", ret, transacP->retrans_counter);
+ 1266              		.loc 1 476 0
+ 1267 017a D4E90823 		ldrd	r2, [r4, #32]
+ 1268 017e 9019     		adds	r0, r2, r6
+ 1269 0180 43F10001 		adc	r1, r3, #0
+ 1270 0184 C4E90801 		strd	r0, [r4, #32]
+ 477:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             transacP->retrans_counter += 1;
+ 1271              		.loc 1 477 0
+ 1272 0188 FFF7FEFF 		bl	lwm2m_gettime
+ 1273              	.LVL162:
+ 1274 018c 237E     		ldrb	r3, [r4, #24]	@ zero_extendqisi2
+ 1275 018e 0193     		str	r3, [sp, #4]
+ 1276 0190 CDF80080 		str	r8, [sp]
+ 1277 0194 40F2DD13 		movw	r3, #477
+ 1278 0198 144A     		ldr	r2, .L96
+ 1279 019a 0146     		mov	r1, r0
+ 1280 019c 1948     		ldr	r0, .L96+24
+ 1281 019e FFF7FEFF 		bl	atiny_printf
+ 1282              	.LVL163:
+ 478:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 1283              		.loc 1 478 0
+ 1284 01a2 237E     		ldrb	r3, [r4, #24]	@ zero_extendqisi2
+ 1285 01a4 0133     		adds	r3, r3, #1
+ 1286 01a6 2376     		strb	r3, [r4, #24]
+ 1287 01a8 00E0     		b	.L80
+ 1288              	.LVL164:
+ 1289              	.L85:
+ 1290              	.LBE13:
+ 408:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     coap_packet_t *message = transacP->message;
+ 1291              		.loc 1 408 0
+ 1292 01aa 0025     		movs	r5, #0
+ 1293              	.LVL165:
+ 1294              	.L80:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 34
+
+
+ 485:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 486:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 487:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 488:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     if (transacP->ack_received || maxRetriesReached)
+ 1295              		.loc 1 488 0
+ 1296 01ac 237B     		ldrb	r3, [r4, #12]	@ zero_extendqisi2
+ 1297 01ae 23B9     		cbnz	r3, .L83
+ 1298              		.loc 1 488 0 is_stmt 0 discriminator 1
+ 1299 01b0 1DB9     		cbnz	r5, .L83
+ 489:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+ 490:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (transacP->callback)
+ 491:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 492:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             transacP->callback(transacP, NULL);
+ 493:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 494:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         transaction_remove(contextP, transacP);
+ 495:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         LOG_ARG("remove, ACK:%d, timeout: %d", transacP->ack_received, maxRetriesReached);
+ 496:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         return -1;
+ 497:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 498:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 499:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     return 0;
+ 1300              		.loc 1 499 0 is_stmt 1
+ 1301 01b2 0020     		movs	r0, #0
+ 1302              	.LVL166:
+ 1303              	.L75:
+ 500:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** }
+ 1304              		.loc 1 500 0
+ 1305 01b4 09B0     		add	sp, sp, #36
+ 1306              	.LCFI16:
+ 1307              		.cfi_remember_state
+ 1308              		.cfi_def_cfa_offset 28
+ 1309              		@ sp needed
+ 1310 01b6 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 1311              	.LVL167:
+ 1312              	.L83:
+ 1313              	.LCFI17:
+ 1314              		.cfi_restore_state
+ 490:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 1315              		.loc 1 490 0
+ 1316 01ba 236C     		ldr	r3, [r4, #64]
+ 1317 01bc 13B1     		cbz	r3, .L84
+ 492:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 1318              		.loc 1 492 0
+ 1319 01be 0021     		movs	r1, #0
+ 1320 01c0 2046     		mov	r0, r4
+ 1321 01c2 9847     		blx	r3
+ 1322              	.LVL168:
+ 1323              	.L84:
+ 494:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         LOG_ARG("remove, ACK:%d, timeout: %d", transacP->ack_received, maxRetriesReached);
+ 1324              		.loc 1 494 0
+ 1325 01c4 2146     		mov	r1, r4
+ 1326 01c6 3846     		mov	r0, r7
+ 1327 01c8 FFF7FEFF 		bl	transaction_remove
+ 1328              	.LVL169:
+ 495:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         return -1;
+ 1329              		.loc 1 495 0
+ 1330 01cc FFF7FEFF 		bl	lwm2m_gettime
+ 1331              	.LVL170:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 35
+
+
+ 1332 01d0 237B     		ldrb	r3, [r4, #12]	@ zero_extendqisi2
+ 1333 01d2 0195     		str	r5, [sp, #4]
+ 1334 01d4 0093     		str	r3, [sp]
+ 1335 01d6 40F2EF13 		movw	r3, #495
+ 1336 01da 044A     		ldr	r2, .L96
+ 1337 01dc 0146     		mov	r1, r0
+ 1338 01de 0A48     		ldr	r0, .L96+28
+ 1339 01e0 FFF7FEFF 		bl	atiny_printf
+ 1340              	.LVL171:
+ 496:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 1341              		.loc 1 496 0
+ 1342 01e4 4FF0FF30 		mov	r0, #-1
+ 1343 01e8 E4E7     		b	.L75
+ 1344              	.L97:
+ 1345 01ea 00BF     		.align	2
+ 1346              	.L96:
+ 1347 01ec 00000000 		.word	.LANCHOR5
+ 1348 01f0 00000000 		.word	.LC13
+ 1349 01f4 00000000 		.word	.LC19
+ 1350 01f8 60000000 		.word	.LC20
+ 1351 01fc 78000000 		.word	.LC21
+ 1352 0200 00000000 		.word	_impure_ptr
+ 1353 0204 90000000 		.word	.LC22
+ 1354 0208 C4000000 		.word	.LC23
+ 1355              		.cfi_endproc
+ 1356              	.LFE139:
+ 1358              		.section	.text.transaction_step,"ax",%progbits
+ 1359              		.align	1
+ 1360              		.global	transaction_step
+ 1361              		.syntax unified
+ 1362              		.thumb
+ 1363              		.thumb_func
+ 1364              		.fpu fpv4-sp-d16
+ 1366              	transaction_step:
+ 1367              	.LFB140:
+ 501:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 502:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** void transaction_step(lwm2m_context_t *contextP,
+ 503:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                       time_t currentTime,
+ 504:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                       time_t *timeoutP)
+ 505:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** {
+ 1368              		.loc 1 505 0
+ 1369              		.cfi_startproc
+ 1370              		@ args = 4, pretend = 0, frame = 0
+ 1371              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1372              	.LVL172:
+ 1373 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 1374              	.LCFI18:
+ 1375              		.cfi_def_cfa_offset 32
+ 1376              		.cfi_offset 3, -32
+ 1377              		.cfi_offset 4, -28
+ 1378              		.cfi_offset 5, -24
+ 1379              		.cfi_offset 6, -20
+ 1380              		.cfi_offset 7, -16
+ 1381              		.cfi_offset 8, -12
+ 1382              		.cfi_offset 9, -8
+ 1383              		.cfi_offset 14, -4
+ 1384 0004 8146     		mov	r9, r0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 36
+
+
+ 1385 0006 1646     		mov	r6, r2
+ 1386 0008 1F46     		mov	r7, r3
+ 1387 000a DDF82080 		ldr	r8, [sp, #32]
+ 506:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     lwm2m_transaction_t *transacP;
+ 507:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 508:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     LOG("Entering");
+ 1388              		.loc 1 508 0
+ 1389 000e FFF7FEFF 		bl	lwm2m_gettime
+ 1390              	.LVL173:
+ 1391 0012 4FF4FE73 		mov	r3, #508
+ 1392 0016 184A     		ldr	r2, .L109
+ 1393 0018 0146     		mov	r1, r0
+ 1394 001a 1848     		ldr	r0, .L109+4
+ 1395 001c FFF7FEFF 		bl	atiny_printf
+ 1396              	.LVL174:
+ 509:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     transacP = contextP->transactionList;
+ 1397              		.loc 1 509 0
+ 1398 0020 D9F83040 		ldr	r4, [r9, #48]
+ 1399              	.LVL175:
+ 510:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     while (transacP != NULL)
+ 1400              		.loc 1 510 0
+ 1401 0024 09E0     		b	.L99
+ 1402              	.LVL176:
+ 1403              	.L108:
+ 1404              	.LBB14:
+ 511:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+ 512:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         // transaction_send() may remove transaction from the linked list
+ 513:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         lwm2m_transaction_t *nextP = transacP->next;
+ 514:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         int removed = 0;
+ 515:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 516:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (transacP->retrans_time <= currentTime)
+ 517:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 518:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             removed = transaction_send(contextP, transacP);
+ 1405              		.loc 1 518 0
+ 1406 0026 2146     		mov	r1, r4
+ 1407 0028 4846     		mov	r0, r9
+ 1408 002a FFF7FEFF 		bl	transaction_send
+ 1409              	.LVL177:
+ 519:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 520:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 521:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         if (0 == removed)
+ 1410              		.loc 1 521 0
+ 1411 002e 60B1     		cbz	r0, .L100
+ 522:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 523:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             time_t interval;
+ 524:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 525:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             if (transacP->retrans_time > currentTime)
+ 526:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             {
+ 527:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 interval = transacP->retrans_time - currentTime;
+ 528:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 529:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             else
+ 530:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             {
+ 531:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 interval = 1;
+ 532:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 533:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 534:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             if (*timeoutP > interval)
+ 535:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 37
+
+
+ 536:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****                 *timeoutP = interval;
+ 537:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 538:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 539:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         else
+ 540:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 541:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             *timeoutP = 1;
+ 1412              		.loc 1 541 0
+ 1413 0030 0122     		movs	r2, #1
+ 1414 0032 0023     		movs	r3, #0
+ 1415 0034 C8E90023 		strd	r2, [r8]
+ 1416              	.LVL178:
+ 1417              	.L103:
+ 1418              	.LBB15:
+ 531:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 1419              		.loc 1 531 0
+ 1420 0038 2C46     		mov	r4, r5
+ 1421              	.LVL179:
+ 1422              	.L99:
+ 1423              	.LBE15:
+ 1424              	.LBE14:
+ 510:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     {
+ 1425              		.loc 1 510 0
+ 1426 003a DCB1     		cbz	r4, .L107
+ 1427              	.LBB17:
+ 513:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         int removed = 0;
+ 1428              		.loc 1 513 0
+ 1429 003c 2568     		ldr	r5, [r4]
+ 1430              	.LVL180:
+ 516:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         {
+ 1431              		.loc 1 516 0
+ 1432 003e D4E90823 		ldrd	r2, [r4, #32]
+ 1433 0042 9642     		cmp	r6, r2
+ 1434 0044 77EB0303 		sbcs	r3, r7, r3
+ 1435 0048 EDDA     		bge	.L108
+ 1436              	.LVL181:
+ 1437              	.L100:
+ 1438              	.LBB16:
+ 525:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             {
+ 1439              		.loc 1 525 0
+ 1440 004a D4E90801 		ldrd	r0, [r4, #32]
+ 1441 004e 8642     		cmp	r6, r0
+ 1442 0050 77EB0103 		sbcs	r3, r7, r1
+ 1443 0054 0BDA     		bge	.L105
+ 527:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 1444              		.loc 1 527 0
+ 1445 0056 821B     		subs	r2, r0, r6
+ 1446 0058 61EB0703 		sbc	r3, r1, r7
+ 1447              	.LVL182:
+ 1448              	.L102:
+ 534:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             {
+ 1449              		.loc 1 534 0
+ 1450 005c D8E90001 		ldrd	r0, [r8]
+ 1451 0060 8242     		cmp	r2, r0
+ 1452 0062 73EB0101 		sbcs	r1, r3, r1
+ 1453 0066 E7DA     		bge	.L103
+ 536:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 1454              		.loc 1 536 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 38
+
+
+ 1455 0068 C8E90023 		strd	r2, [r8]
+ 1456 006c E4E7     		b	.L103
+ 1457              	.LVL183:
+ 1458              	.L105:
+ 531:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****             }
+ 1459              		.loc 1 531 0
+ 1460 006e 0122     		movs	r2, #1
+ 1461 0070 0023     		movs	r3, #0
+ 1462 0072 F3E7     		b	.L102
+ 1463              	.LVL184:
+ 1464              	.L107:
+ 1465              	.LBE16:
+ 1466              	.LBE17:
+ 542:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         }
+ 543:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** 
+ 544:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****         transacP = nextP;
+ 545:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c ****     }
+ 546:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\transaction.c **** }
+ 1467              		.loc 1 546 0
+ 1468 0074 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 1469              	.LVL185:
+ 1470              	.L110:
+ 1471              		.align	2
+ 1472              	.L109:
+ 1473 0078 00000000 		.word	.LANCHOR6
+ 1474 007c 00000000 		.word	.LC13
+ 1475              		.cfi_endproc
+ 1476              	.LFE140:
+ 1478              		.section	.rodata.__func__.11625,"a",%progbits
+ 1479              		.align	2
+ 1480              		.set	.LANCHOR0,. + 0
+ 1483              	__func__.11625:
+ 1484 0000 7072765F 		.ascii	"prv_checkFinished\000"
+ 1484      63686563 
+ 1484      6B46696E 
+ 1484      69736865 
+ 1484      6400
+ 1485              		.section	.rodata.__func__.11644,"a",%progbits
+ 1486              		.align	2
+ 1487              		.set	.LANCHOR1,. + 0
+ 1490              	__func__.11644:
+ 1491 0000 7472616E 		.ascii	"transaction_new\000"
+ 1491      73616374 
+ 1491      696F6E5F 
+ 1491      6E657700 
+ 1492              		.section	.rodata.__func__.11656,"a",%progbits
+ 1493              		.align	2
+ 1494              		.set	.LANCHOR2,. + 0
+ 1497              	__func__.11656:
+ 1498 0000 7472616E 		.ascii	"transaction_free\000"
+ 1498      73616374 
+ 1498      696F6E5F 
+ 1498      66726565 
+ 1498      00
+ 1499              		.section	.rodata.__func__.11661,"a",%progbits
+ 1500              		.align	2
+ 1501              		.set	.LANCHOR3,. + 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 39
+
+
+ 1504              	__func__.11661:
+ 1505 0000 7472616E 		.ascii	"transaction_remove\000"
+ 1505      73616374 
+ 1505      696F6E5F 
+ 1505      72656D6F 
+ 1505      766500
+ 1506              		.section	.rodata.__func__.11671,"a",%progbits
+ 1507              		.align	2
+ 1508              		.set	.LANCHOR4,. + 0
+ 1511              	__func__.11671:
+ 1512 0000 7472616E 		.ascii	"transaction_handleResponse\000"
+ 1512      73616374 
+ 1512      696F6E5F 
+ 1512      68616E64 
+ 1512      6C655265 
+ 1513              		.section	.rodata.__func__.11683,"a",%progbits
+ 1514              		.align	2
+ 1515              		.set	.LANCHOR5,. + 0
+ 1518              	__func__.11683:
+ 1519 0000 7472616E 		.ascii	"transaction_send\000"
+ 1519      73616374 
+ 1519      696F6E5F 
+ 1519      73656E64 
+ 1519      00
+ 1520              		.section	.rodata.__func__.11692,"a",%progbits
+ 1521              		.align	2
+ 1522              		.set	.LANCHOR6,. + 0
+ 1525              	__func__.11692:
+ 1526 0000 7472616E 		.ascii	"transaction_step\000"
+ 1526      73616374 
+ 1526      696F6E5F 
+ 1526      73746570 
+ 1526      00
+ 1527              		.section	.rodata.prv_checkFinished.str1.4,"aMS",%progbits,1
+ 1528              		.align	2
+ 1529              	.LC0:
+ 1530 0000 5B25645D 		.ascii	"[%d][%s:%d] transactionMessage->token_len is %d, le"
+ 1530      5B25733A 
+ 1530      25645D20 
+ 1530      7472616E 
+ 1530      73616374 
+ 1531 0033 6E206973 		.ascii	"n is %d\012\015\012\000"
+ 1531      2025640A 
+ 1531      0D0A00
+ 1532 003e 0000     		.space	2
+ 1533              	.LC1:
+ 1534 0040 5B25645D 		.ascii	"[%d][%s:%d] %d\012\015\012\000"
+ 1534      5B25733A 
+ 1534      25645D20 
+ 1534      25640A0D 
+ 1534      0A00
+ 1535 0052 0000     		.space	2
+ 1536              	.LC2:
+ 1537 0054 5B25645D 		.ascii	"[%d][%s:%d] \012\012\015\012\000"
+ 1537      5B25733A 
+ 1537      25645D20 
+ 1537      0A0A0D0A 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 40
+
+
+ 1537      00
+ 1538 0065 000000   		.space	3
+ 1539              	.LC3:
+ 1540 0068 5B25645D 		.ascii	"[%d][%s:%d] prv_checkFinished not finish!!!\012\015"
+ 1540      5B25733A 
+ 1540      25645D20 
+ 1540      7072765F 
+ 1540      63686563 
+ 1541 0095 0A00     		.ascii	"\012\000"
+ 1542              		.section	.rodata.transaction_free.str1.4,"aMS",%progbits,1
+ 1543              		.align	2
+ 1544              	.LC13:
+ 1545 0000 5B25645D 		.ascii	"[%d][%s:%d] Entering\015\012\000"
+ 1545      5B25733A 
+ 1545      25645D20 
+ 1545      456E7465 
+ 1545      72696E67 
+ 1546              		.section	.rodata.transaction_handleResponse.str1.4,"aMS",%progbits,1
+ 1547              		.align	2
+ 1548              	.LC14:
+ 1549 0000 5B25645D 		.ascii	"[%d][%s:%d] Entering,message->code: %d\015\012\000"
+ 1549      5B25733A 
+ 1549      25645D20 
+ 1549      456E7465 
+ 1549      72696E67 
+ 1550 0029 000000   		.space	3
+ 1551              	.LC15:
+ 1552 002c 5B25645D 		.ascii	"[%d][%s:%d] timeout in transaction_handleResponse\012"
+ 1552      5B25733A 
+ 1552      25645D20 
+ 1552      74696D65 
+ 1552      6F757420 
+ 1553 005e 0D0A00   		.ascii	"\015\012\000"
+ 1554 0061 000000   		.space	3
+ 1555              	.LC16:
+ 1556 0064 5B25645D 		.ascii	"[%d][%s:%d] only true25,fromSessionH is %p, transac"
+ 1556      5B25733A 
+ 1556      25645D20 
+ 1556      6F6E6C79 
+ 1556      20747275 
+ 1557 0097 502D3E70 		.ascii	"P->peerH is %p\012\015\012\000"
+ 1557      65657248 
+ 1557      20697320 
+ 1557      25700A0D 
+ 1557      0A00
+ 1558 00a9 000000   		.space	3
+ 1559              	.LC17:
+ 1560 00ac 5B25645D 		.ascii	"[%d][%s:%d] error25,fromSessionH is %p, transacP->p"
+ 1560      5B25733A 
+ 1560      25645D20 
+ 1560      6572726F 
+ 1560      7232352C 
+ 1561 00df 65657248 		.ascii	"eerH is %p\012\015\012\000"
+ 1561      20697320 
+ 1561      25700A0D 
+ 1561      0A00
+ 1562 00ed 000000   		.space	3
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 41
+
+
+ 1563              	.LC18:
+ 1564 00f0 5B25645D 		.ascii	"[%d][%s:%d] error25,return false in transaction_han"
+ 1564      5B25733A 
+ 1564      25645D20 
+ 1564      6572726F 
+ 1564      7232352C 
+ 1565 0123 646C6552 		.ascii	"dleResponse\012\015\012\000"
+ 1565      6573706F 
+ 1565      6E73650A 
+ 1565      0D0A00
+ 1566              		.section	.rodata.transaction_new.str1.4,"aMS",%progbits,1
+ 1567              		.align	2
+ 1568              	.LC4:
+ 1569 0000 5B25645D 		.ascii	"[%d][%s:%d] method: %d, altPath: \"%s\", mID: %d, t"
+ 1569      5B25733A 
+ 1569      25645D20 
+ 1569      6D657468 
+ 1569      6F643A20 
+ 1570 0031 6F6B656E 		.ascii	"oken_len: %d\015\012\000"
+ 1570      5F6C656E 
+ 1570      3A202564 
+ 1570      0D0A00
+ 1571              	.LC5:
+ 1572 0040 5B25645D 		.ascii	"[%d][%s:%d] method: %d, altPath: NULL, mID: %d, tok"
+ 1572      5B25733A 
+ 1572      25645D20 
+ 1572      6D657468 
+ 1572      6F643A20 
+ 1573 0073 656E5F6C 		.ascii	"en_len: %d\015\012\000"
+ 1573      656E3A20 
+ 1573      25640D0A 
+ 1573      00
+ 1574              	.LC6:
+ 1575 0080 5B25733A 		.ascii	"[%s:%d] NULL\015\012\000"
+ 1575      25645D20 
+ 1575      4E554C4C 
+ 1575      0D0A00
+ 1576 008f 00       		.space	1
+ 1577              	.LC7:
+ 1578 0090 5B25733A 		.ascii	"[%s:%d] /%d\000"
+ 1578      25645D20 
+ 1578      2F256400 
+ 1579              	.LC8:
+ 1580 009c 2F256400 		.ascii	"/%d\000"
+ 1581              	.LC9:
+ 1582 00a0 0D0A00   		.ascii	"\015\012\000"
+ 1583 00a3 00       		.space	1
+ 1584              	.LC10:
+ 1585 00a4 5B25645D 		.ascii	"[%d][%s:%d] send token is %d\012\015\012\000"
+ 1585      5B25733A 
+ 1585      25645D20 
+ 1585      73656E64 
+ 1585      20746F6B 
+ 1586              	.LC11:
+ 1587 00c4 5B25645D 		.ascii	"[%d][%s:%d] Exiting on success\015\012\000"
+ 1587      5B25733A 
+ 1587      25645D20 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 42
+
+
+ 1587      45786974 
+ 1587      696E6720 
+ 1588 00e5 000000   		.space	3
+ 1589              	.LC12:
+ 1590 00e8 5B25645D 		.ascii	"[%d][%s:%d] Exiting on failure\015\012\000"
+ 1590      5B25733A 
+ 1590      25645D20 
+ 1590      45786974 
+ 1590      696E6720 
+ 1591              		.section	.rodata.transaction_send.str1.4,"aMS",%progbits,1
+ 1592              		.align	2
+ 1593              	.LC19:
+ 1594 0000 5B25645D 		.ascii	"[%d][%s:%d] transaction_send: ver %u, type %u, tkl "
+ 1594      5B25733A 
+ 1594      25645D20 
+ 1594      7472616E 
+ 1594      73616374 
+ 1595 0033 25752C20 		.ascii	"%u, code %u.%.2u, mid %u, Content type: %d\015\012\000"
+ 1595      636F6465 
+ 1595      2025752E 
+ 1595      252E3275 
+ 1595      2C206D69 
+ 1596              	.LC20:
+ 1597 0060 5B25645D 		.ascii	"[%d][%s:%d] time:%llu\015\012\000"
+ 1597      5B25733A 
+ 1597      25645D20 
+ 1597      74696D65 
+ 1597      3A256C6C 
+ 1598              	.LC21:
+ 1599 0078 5B25645D 		.ascii	"[%d][%s:%d] remove\015\012\000"
+ 1599      5B25733A 
+ 1599      25645D20 
+ 1599      72656D6F 
+ 1599      76650D0A 
+ 1600 008d 000000   		.space	3
+ 1601              	.LC22:
+ 1602 0090 5B25645D 		.ascii	"[%d][%s:%d] send result is %d, retrans_counter:%d\015"
+ 1602      5B25733A 
+ 1602      25645D20 
+ 1602      73656E64 
+ 1602      20726573 
+ 1603 00c2 0A00     		.ascii	"\012\000"
+ 1604              	.LC23:
+ 1605 00c4 5B25645D 		.ascii	"[%d][%s:%d] remove, ACK:%d, timeout: %d\015\012\000"
+ 1605      5B25733A 
+ 1605      25645D20 
+ 1605      72656D6F 
+ 1605      76652C20 
+ 1606              		.text
+ 1607              	.Letext0:
+ 1608              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1609              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1610              		.file 4 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core/
+ 1611              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 1612              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1613              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1614              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 43
+
+
+ 1615              		.file 9 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1616              		.file 10 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1617              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core
+ 1618              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 1619              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 1620              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 1621              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 1622              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 1623              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 1624              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 1625              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 1626              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 1627              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 1628              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 1629              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 1630              		.file 24 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 1631              		.file 25 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core
+ 1632              		.file 26 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1633              		.file 27 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1634              		.file 28 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/osdepends/atiny_osdep.h"
+ 1635              		.file 29 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/exam
+ 1636              		.file 30 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core
+ 1637              		.file 31 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1638              		.file 32 "<built-in>"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 44
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 transaction.c
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:18     .text.prv_checkFinished:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:24     .text.prv_checkFinished:00000000 prv_checkFinished
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:195    .text.prv_checkFinished:000000d4 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:204    .text.transaction_new:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:211    .text.transaction_new:00000000 transaction_new
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:570    .text.transaction_new:00000214 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:584    .text.transaction_free:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:591    .text.transaction_free:00000000 transaction_free
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:641    .text.transaction_free:00000034 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:647    .text.transaction_remove:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:654    .text.transaction_remove:00000000 transaction_remove
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:696    .text.transaction_remove:0000002c $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:702    .text.transaction_handleResponse:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:709    .text.transaction_handleResponse:00000000 transaction_handleResponse
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:980    .text.transaction_handleResponse:00000188 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:990    .text.transaction_send:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:997    .text.transaction_send:00000000 transaction_send
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1347   .text.transaction_send:000001ec $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1359   .text.transaction_step:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1366   .text.transaction_step:00000000 transaction_step
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1473   .text.transaction_step:00000078 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1479   .rodata.__func__.11625:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1483   .rodata.__func__.11625:00000000 __func__.11625
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1486   .rodata.__func__.11644:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1490   .rodata.__func__.11644:00000000 __func__.11644
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1493   .rodata.__func__.11656:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1497   .rodata.__func__.11656:00000000 __func__.11656
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1500   .rodata.__func__.11661:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1504   .rodata.__func__.11661:00000000 __func__.11661
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1507   .rodata.__func__.11671:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1511   .rodata.__func__.11671:00000000 __func__.11671
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1514   .rodata.__func__.11683:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1518   .rodata.__func__.11683:00000000 __func__.11683
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1521   .rodata.__func__.11692:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1525   .rodata.__func__.11692:00000000 __func__.11692
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1528   .rodata.prv_checkFinished.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1543   .rodata.transaction_free.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1547   .rodata.transaction_handleResponse.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1567   .rodata.transaction_new.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s:1592   .rodata.transaction_send.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+coap_get_header_token
+memcmp
+lwm2m_gettime
+atiny_printf
+lwm2m_malloc
+memset
+coap_init_message
+coap_set_header_uri_path_segment
+utils_intToText
+coap_set_header_token
+lwm2m_free
+coap_free_header
+lwm2m_list_remove
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccyhfryx.s 			page 45
+
+
+lwm2m_session_is_equal
+message_send
+atiny_gettime_ms
+coap_serialize_get_size
+coap_serialize_message
+lwm2m_buffer_send
+output_buffer
+_impure_ptr

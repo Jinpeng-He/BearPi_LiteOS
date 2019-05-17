@@ -1,0 +1,181 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccj0UjeX.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"los_err.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.LOS_ErrHandle,"ax",%progbits
+  18              		.align	1
+  19              		.global	LOS_ErrHandle
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	LOS_ErrHandle:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om/los_err.c"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccj0UjeX.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** #include "los_err.inc"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** 
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** #ifdef __cplusplus
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** #if __cplusplus
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** extern "C" {
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** #endif /* __cplusplus */
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** #endif /* __cplusplus */
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** 
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** LITE_OS_SEC_BSS USER_ERR_FUNC_S      g_stUserErrFunc;
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** 
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** /*****************************************************************************
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** Function   : LOS_ErrHandle
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** Description: Error handle
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** Input   : pcFileName
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****           uwLineNo    -- error line number
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****           uwErrorNo   -- user defined error number
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****           uwParaLen   -- length of pPara
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****           pPara       -- user description of error
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** Output  :
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** Return  : uwErrorNo   -- user defined error number
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** Other   : None
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** *****************************************************************************/
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** LITE_OS_SEC_TEXT_INIT UINT32 LOS_ErrHandle( CHAR *pcFileName,
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****                                      UINT32 uwLineNo,
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****                                      UINT32 uwErrorNo,
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****                                      UINT32 uwParaLen,
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****                                      VOID  *pPara)
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** {
+  28              		.loc 1 62 0
+  29              		.cfi_startproc
+  30              		@ args = 4, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 30B5     		push	{r4, r5, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 12
+  36              		.cfi_offset 4, -12
+  37              		.cfi_offset 5, -8
+  38              		.cfi_offset 14, -4
+  39 0002 83B0     		sub	sp, sp, #12
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 24
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** 
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****     if (NULL != g_stUserErrFunc.pfnHook)
+  42              		.loc 1 64 0
+  43 0004 044C     		ldr	r4, .L4
+  44 0006 2468     		ldr	r4, [r4]
+  45 0008 14B1     		cbz	r4, .L2
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****     {
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****         g_stUserErrFunc.pfnHook(pcFileName, uwLineNo, uwErrorNo, uwParaLen, pPara);
+  46              		.loc 1 66 0
+  47 000a 069D     		ldr	r5, [sp, #24]
+  48 000c 0095     		str	r5, [sp]
+  49 000e A047     		blx	r4
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccj0UjeX.s 			page 3
+
+
+  50              	.LVL1:
+  51              	.L2:
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****     }
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** 
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****     if (OS_ERR_MAGIC_WORD != uwLineNo)
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****     {
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****         return LOS_OK;
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****     }
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** 
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c ****     return LOS_OK;
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/om\los_err.c **** }
+  52              		.loc 1 75 0
+  53 0010 0020     		movs	r0, #0
+  54 0012 03B0     		add	sp, sp, #12
+  55              	.LCFI2:
+  56              		.cfi_def_cfa_offset 12
+  57              		@ sp needed
+  58 0014 30BD     		pop	{r4, r5, pc}
+  59              	.LVL2:
+  60              	.L5:
+  61 0016 00BF     		.align	2
+  62              	.L4:
+  63 0018 00000000 		.word	g_stUserErrFunc
+  64              		.cfi_endproc
+  65              	.LFE133:
+  67              		.comm	g_stUserErrFunc,4,4
+  68              		.text
+  69              	.Letext0:
+  70              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  71              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  72              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  73              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+  74              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  75              		.file 7 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+  76              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  77              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+  78              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+  79              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+  80              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+  81              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+  82              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+  83              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+  84              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+  85              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+  86              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+  87              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+  88              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccj0UjeX.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 los_err.c
+c:\Users\lenovo\AppData\Local\Temp\ccj0UjeX.s:18     .text.LOS_ErrHandle:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccj0UjeX.s:25     .text.LOS_ErrHandle:00000000 LOS_ErrHandle
+c:\Users\lenovo\AppData\Local\Temp\ccj0UjeX.s:63     .text.LOS_ErrHandle:00000018 $d
+                            *COM*:00000004 g_stUserErrFunc
+
+NO UNDEFINED SYMBOLS

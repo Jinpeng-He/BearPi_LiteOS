@@ -1,0 +1,1830 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"package.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.pack_init_pack_device,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	pack_init_pack_device:
+  25              	.LFB7:
+  26              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package/package.c"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  * applicable export control laws and regulations.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 2
+
+
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** #include "ota/package.h"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** #include "package_device.h"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** #if (PACK_CHECKSUM != PACK_NO_CHECKSUM)
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** #include "mbedtls/platform.h"
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** #endif
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** static inline pack_storage_device_s *pack_storage_get_storage_device(pack_storage_device_api_s *thi
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** {
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     return (pack_storage_device_s *)this;
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** static int pack_storage_write_software_end(pack_storage_device_api_s *this, pack_download_result_e 
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** {
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device;
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     int ret = PACK_OK;
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if(NULL == this)
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         PACK_LOG("null pointer");
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device = pack_storage_get_storage_device(this);
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     do
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         if(pack_wr_write_end(&device->writer) != PACK_OK)
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         {
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****             ret = PACK_ERR;
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****             break;
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         }
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         if(result != PACK_DOWNLOAD_OK)
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         {
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****             break;
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         }
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         if(pack_head_check(&device->head, total_len) != PACK_OK)
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         {
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****             ret = PACK_ERR;
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****             PACK_LOG("check err,len %u", total_len);
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****             break;
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         }
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     while(0);
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device->total_len = total_len;
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     //current download finish, clear the save data
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if(PACK_DOWNLOAD_OK == result)
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         pack_head_destroy(&device->head);
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         pack_wr_destroy(&device->writer);
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 3
+
+
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     return ret;
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** static int pack_storage_write_software(pack_storage_device_api_s *this,
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         uint32_t offset, const uint8_t *buffer, uint32_t len)
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** {
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device;
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     uint16_t used_len = 0;
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     int ret;
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if(NULL == this)
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         PACK_LOG("null pointer");
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if(0 == len || buffer == NULL)
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         PACK_LOG("write 0 len");
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device = pack_storage_get_storage_device(this);
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     ret = pack_head_parse(&device->head, offset, buffer, (uint16_t)len, &used_len);
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if(ret != PACK_OK)
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         PACK_LOG("pack_head_parse fail %d", ret);
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return ret;
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if(used_len == len)
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_OK;
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     len -= used_len;
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     offset += used_len;
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     buffer += used_len;
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     ret = pack_wr_write(&device->writer, offset - pack_head_get_head_len(&device->head), buffer, le
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if(ret != PACK_OK)
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         PACK_LOG("pack_wr_write fail %d", ret);
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return ret;
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if (pack_head_get_checksum(&device->head))
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         ret = pack_checksum_update_data(pack_head_get_checksum(&device->head), offset,
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****                                              buffer, len, &device->hardware);
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         if(ret != PACK_OK)
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         {
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****             PACK_LOG("pack_checksum_update_data fail %d", ret);
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 4
+
+
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         }
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     return PACK_OK;
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** int pack_storage_active_software(pack_storage_device_api_s *thi)
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** {
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device = pack_storage_get_storage_device(thi);
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if(NULL == thi)
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         PACK_LOG("null err");
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     return flag_set_info((OTA_FULL_SOFTWARE == device->type) ? UPGRADE_FULL : UPGRADE_DIFF,
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****                         device->total_len);
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** static void pack_init_pack_device(pack_storage_device_s *device)
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** {
+  27              		.loc 1 169 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if(device->init_flag)
+  32              		.loc 1 170 0
+  33 0000 D0F88430 		ldr	r3, [r0, #132]
+  34 0004 03B1     		cbz	r3, .L7
+  35 0006 7047     		bx	lr
+  36              	.L7:
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if(device->init_flag)
+  37              		.loc 1 169 0
+  38 0008 10B5     		push	{r4, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 8
+  41              		.cfi_offset 4, -8
+  42              		.cfi_offset 14, -4
+  43 000a 0446     		mov	r4, r0
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return;
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     (void)memset(device, 0, sizeof(*device));
+  44              		.loc 1 175 0
+  45 000c 8822     		movs	r2, #136
+  46 000e 0021     		movs	r1, #0
+  47 0010 FFF7FEFF 		bl	memset
+  48              	.LVL1:
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_wr_init(&device->writer);
+  49              		.loc 1 176 0
+  50 0014 04F16800 		add	r0, r4, #104
+  51 0018 FFF7FEFF 		bl	pack_wr_init
+  52              	.LVL2:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 5
+
+
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_head_init(&device->head);
+  53              		.loc 1 177 0
+  54 001c 04F14000 		add	r0, r4, #64
+  55 0020 FFF7FEFF 		bl	pack_head_init
+  56              	.LVL3:
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device->interface.write_software = pack_storage_write_software;
+  57              		.loc 1 179 0
+  58 0024 044B     		ldr	r3, .L8
+  59 0026 2360     		str	r3, [r4]
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device->interface.write_software_end = pack_storage_write_software_end;
+  60              		.loc 1 180 0
+  61 0028 044B     		ldr	r3, .L8+4
+  62 002a 6360     		str	r3, [r4, #4]
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device->interface.active_software = pack_storage_active_software;
+  63              		.loc 1 181 0
+  64 002c 044B     		ldr	r3, .L8+8
+  65 002e A360     		str	r3, [r4, #8]
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device->init_flag = true;
+  66              		.loc 1 182 0
+  67 0030 0123     		movs	r3, #1
+  68 0032 C4F88430 		str	r3, [r4, #132]
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+  69              		.loc 1 183 0
+  70 0036 10BD     		pop	{r4, pc}
+  71              	.LVL4:
+  72              	.L9:
+  73              		.align	2
+  74              	.L8:
+  75 0038 00000000 		.word	pack_storage_write_software
+  76 003c 00000000 		.word	pack_storage_write_software_end
+  77 0040 00000000 		.word	pack_storage_active_software
+  78              		.cfi_endproc
+  79              	.LFE7:
+  81              		.section	.text.pack_get_device,"ax",%progbits
+  82              		.align	1
+  83              		.global	pack_get_device
+  84              		.syntax unified
+  85              		.thumb
+  86              		.thumb_func
+  87              		.fpu fpv4-sp-d16
+  89              	pack_get_device:
+  90              	.LFB8:
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** static pack_storage_device_s g_pack_storage_device;
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** pack_storage_device_api_s *pack_get_device(void)
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** {
+  91              		.loc 1 189 0
+  92              		.cfi_startproc
+  93              		@ args = 0, pretend = 0, frame = 0
+  94              		@ frame_needed = 0, uses_anonymous_args = 0
+  95 0000 10B5     		push	{r4, lr}
+  96              	.LCFI1:
+  97              		.cfi_def_cfa_offset 8
+  98              		.cfi_offset 4, -8
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 6
+
+
+  99              		.cfi_offset 14, -4
+ 100              	.LVL5:
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device  = &g_pack_storage_device;
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_init_pack_device(device);
+ 101              		.loc 1 192 0
+ 102 0002 034C     		ldr	r4, .L12
+ 103 0004 2046     		mov	r0, r4
+ 104 0006 FFF7FEFF 		bl	pack_init_pack_device
+ 105              	.LVL6:
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     return &device->interface;
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 106              		.loc 1 194 0
+ 107 000a 2046     		mov	r0, r4
+ 108 000c 10BD     		pop	{r4, pc}
+ 109              	.L13:
+ 110 000e 00BF     		.align	2
+ 111              	.L12:
+ 112 0010 00000000 		.word	.LANCHOR0
+ 113              		.cfi_endproc
+ 114              	.LFE8:
+ 116              		.section	.text.pack_get_block_size,"ax",%progbits
+ 117              		.align	1
+ 118              		.syntax unified
+ 119              		.thumb
+ 120              		.thumb_func
+ 121              		.fpu fpv4-sp-d16
+ 123              	pack_get_block_size:
+ 124              	.LFB12:
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** static int pack_read_software(struct pack_hardware_tag_s *thi, uint32_t offset, uint8_t *buffer, ui
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** {
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device = (pack_storage_device_s *)pack_get_device();
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     (void)thi;
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if (device->params.ota_opt.read_flash)
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return device->params.ota_opt.read_flash(device->type, buffer, len, offset);
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     PACK_LOG("read_flash null");
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     return PACK_ERR;
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** static int pack_write_software(struct pack_hardware_tag_s *thi, uint32_t offset, const uint8_t *buf
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** {
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device = (pack_storage_device_s *)pack_get_device();
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     (void)thi;
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if (device->params.ota_opt.write_flash)
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return device->params.ota_opt.write_flash(device->type, buffer, len, offset);
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     PACK_LOG("write_flash null");
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     return PACK_ERR;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 7
+
+
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** static void pack_set_flash_type(struct pack_hardware_tag_s *thi, ota_flash_type_e type)
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** {
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device = (pack_storage_device_s *)pack_get_device();
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device->type = type;
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     PACK_LOG("pack_set_flash_type type %d", type);
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** static uint32_t pack_get_block_size(struct pack_hardware_tag_s *thi)
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** {
+ 125              		.loc 1 234 0
+ 126              		.cfi_startproc
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
+ 129              	.LVL7:
+ 130 0000 08B5     		push	{r3, lr}
+ 131              	.LCFI2:
+ 132              		.cfi_def_cfa_offset 8
+ 133              		.cfi_offset 3, -8
+ 134              		.cfi_offset 14, -4
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device = (pack_storage_device_s *)pack_get_device();
+ 135              		.loc 1 235 0
+ 136 0002 FFF7FEFF 		bl	pack_get_device
+ 137              	.LVL8:
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     return device->params.ota_opt.flash_block_size;
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 138              		.loc 1 237 0
+ 139 0006 806A     		ldr	r0, [r0, #40]
+ 140              	.LVL9:
+ 141 0008 08BD     		pop	{r3, pc}
+ 142              		.cfi_endproc
+ 143              	.LFE12:
+ 145              		.section	.text.pack_get_params,"ax",%progbits
+ 146              		.align	1
+ 147              		.global	pack_get_params
+ 148              		.syntax unified
+ 149              		.thumb
+ 150              		.thumb_func
+ 151              		.fpu fpv4-sp-d16
+ 153              	pack_get_params:
+ 154              	.LFB15:
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** static void* local_calloc(size_t n, size_t size)
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** {
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     void *p = pack_malloc(n * size);
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if (NULL != p)
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         memset(p, 0, n * size);
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     return p;
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** int pack_init_device(const pack_params_s *params)
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** {
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device = (pack_storage_device_s *)pack_get_device();
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 8
+
+
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_device_info_s device_info;
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if ((params == NULL) || (params->malloc == NULL)
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         || (params->free == NULL))
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         PACK_LOG("params null");
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     memcpy(&device->params, params, sizeof(device->params));
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device->hardware.read_software = pack_read_software;
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device->hardware.write_software = pack_write_software;
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device->hardware.set_flash_type = pack_set_flash_type;
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device->hardware.get_block_size = pack_get_block_size;
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device_info.hardware = &device->hardware;
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     memcpy(&device_info.key, &device->params.ota_opt.key, sizeof(device_info.key));
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if(pack_head_set_head_info(&device->head,  &device_info) != PACK_OK)
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_wr_set_device(&device->writer, device_info.hardware);
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** #if (PACK_CHECKSUM != PACK_NO_CHECKSUM)
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     (void)mbedtls_platform_set_calloc_free(local_calloc, params->free);
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** #endif
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     return PACK_OK;
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** pack_params_s * pack_get_params(void)
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** {
+ 155              		.loc 1 286 0
+ 156              		.cfi_startproc
+ 157              		@ args = 0, pretend = 0, frame = 0
+ 158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 159 0000 08B5     		push	{r3, lr}
+ 160              	.LCFI3:
+ 161              		.cfi_def_cfa_offset 8
+ 162              		.cfi_offset 3, -8
+ 163              		.cfi_offset 14, -4
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device = (pack_storage_device_s *)pack_get_device();
+ 164              		.loc 1 287 0
+ 165 0002 FFF7FEFF 		bl	pack_get_device
+ 166              	.LVL10:
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     return &device->params;
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 167              		.loc 1 289 0
+ 168 0006 2030     		adds	r0, r0, #32
+ 169              	.LVL11:
+ 170 0008 08BD     		pop	{r3, pc}
+ 171              		.cfi_endproc
+ 172              	.LFE15:
+ 174              		.section	.text.pack_storage_active_software,"ax",%progbits
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 9
+
+
+ 175              		.align	1
+ 176              		.global	pack_storage_active_software
+ 177              		.syntax unified
+ 178              		.thumb
+ 179              		.thumb_func
+ 180              		.fpu fpv4-sp-d16
+ 182              	pack_storage_active_software:
+ 183              	.LFB6:
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device = pack_storage_get_storage_device(thi);
+ 184              		.loc 1 155 0
+ 185              		.cfi_startproc
+ 186              		@ args = 0, pretend = 0, frame = 0
+ 187              		@ frame_needed = 0, uses_anonymous_args = 0
+ 188              	.LVL12:
+ 189 0000 08B5     		push	{r3, lr}
+ 190              	.LCFI4:
+ 191              		.cfi_def_cfa_offset 8
+ 192              		.cfi_offset 3, -8
+ 193              		.cfi_offset 14, -4
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 194              		.loc 1 158 0
+ 195 0002 48B1     		cbz	r0, .L23
+ 196 0004 0346     		mov	r3, r0
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****                         device->total_len);
+ 197              		.loc 1 164 0
+ 198 0006 90F88000 		ldrb	r0, [r0, #128]	@ zero_extendqisi2
+ 199              	.LVL13:
+ 200 000a D96F     		ldr	r1, [r3, #124]
+ 201 000c 0030     		adds	r0, r0, #0
+ 202 000e 18BF     		it	ne
+ 203 0010 0120     		movne	r0, #1
+ 204 0012 FFF7FEFF 		bl	flag_set_info
+ 205              	.LVL14:
+ 206              	.L18:
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 207              		.loc 1 166 0
+ 208 0016 08BD     		pop	{r3, pc}
+ 209              	.LVL15:
+ 210              	.L23:
+ 211              	.LBB16:
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+ 212              		.loc 1 160 0
+ 213 0018 FFF7FEFF 		bl	pack_get_params
+ 214              	.LVL16:
+ 215 001c C369     		ldr	r3, [r0, #28]
+ 216 001e 2BB1     		cbz	r3, .L21
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+ 217              		.loc 1 160 0 is_stmt 0 discriminator 1
+ 218 0020 A022     		movs	r2, #160
+ 219 0022 0349     		ldr	r1, .L24
+ 220 0024 0348     		ldr	r0, .L24+4
+ 221              	.LVL17:
+ 222 0026 9847     		blx	r3
+ 223              	.LVL18:
+ 224              	.LBE16:
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 225              		.loc 1 161 0 is_stmt 1 discriminator 1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 10
+
+
+ 226 0028 0120     		movs	r0, #1
+ 227 002a F4E7     		b	.L18
+ 228              	.LVL19:
+ 229              	.L21:
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 230              		.loc 1 161 0 is_stmt 0
+ 231 002c 0120     		movs	r0, #1
+ 232              	.LVL20:
+ 233 002e F2E7     		b	.L18
+ 234              	.L25:
+ 235              		.align	2
+ 236              	.L24:
+ 237 0030 00000000 		.word	.LANCHOR1
+ 238 0034 00000000 		.word	.LC0
+ 239              		.cfi_endproc
+ 240              	.LFE6:
+ 242              		.section	.text.pack_storage_write_software_end,"ax",%progbits
+ 243              		.align	1
+ 244              		.syntax unified
+ 245              		.thumb
+ 246              		.thumb_func
+ 247              		.fpu fpv4-sp-d16
+ 249              	pack_storage_write_software_end:
+ 250              	.LFB4:
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device;
+ 251              		.loc 1 47 0 is_stmt 1
+ 252              		.cfi_startproc
+ 253              		@ args = 0, pretend = 0, frame = 0
+ 254              		@ frame_needed = 0, uses_anonymous_args = 0
+ 255              	.LVL21:
+ 256 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 257              	.LCFI5:
+ 258              		.cfi_def_cfa_offset 24
+ 259              		.cfi_offset 4, -24
+ 260              		.cfi_offset 5, -20
+ 261              		.cfi_offset 6, -16
+ 262              		.cfi_offset 7, -12
+ 263              		.cfi_offset 8, -8
+ 264              		.cfi_offset 14, -4
+ 265              	.LVL22:
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 266              		.loc 1 51 0
+ 267 0004 E0B1     		cbz	r0, .L34
+ 268 0006 0E46     		mov	r6, r1
+ 269 0008 1746     		mov	r7, r2
+ 270 000a 0446     		mov	r4, r0
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         {
+ 271              		.loc 1 62 0
+ 272 000c 00F16808 		add	r8, r0, #104
+ 273 0010 4046     		mov	r0, r8
+ 274              	.LVL23:
+ 275 0012 FFF7FEFF 		bl	pack_wr_write_end
+ 276              	.LVL24:
+ 277 0016 0546     		mov	r5, r0
+ 278 0018 E0B9     		cbnz	r0, .L31
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         {
+ 279              		.loc 1 68 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 11
+
+
+ 280 001a E6B9     		cbnz	r6, .L29
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         {
+ 281              		.loc 1 73 0
+ 282 001c 3946     		mov	r1, r7
+ 283 001e 04F14000 		add	r0, r4, #64
+ 284 0022 FFF7FEFF 		bl	pack_head_check
+ 285              	.LVL25:
+ 286 0026 0546     		mov	r5, r0
+ 287 0028 A8B1     		cbz	r0, .L29
+ 288              	.LVL26:
+ 289              	.LBB17:
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****             break;
+ 290              		.loc 1 76 0
+ 291 002a FFF7FEFF 		bl	pack_get_params
+ 292              	.LVL27:
+ 293 002e C569     		ldr	r5, [r0, #28]
+ 294 0030 B5B1     		cbz	r5, .L32
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****             break;
+ 295              		.loc 1 76 0 is_stmt 0 discriminator 1
+ 296 0032 3B46     		mov	r3, r7
+ 297 0034 4C22     		movs	r2, #76
+ 298 0036 1049     		ldr	r1, .L36
+ 299 0038 1048     		ldr	r0, .L36+4
+ 300              	.LVL28:
+ 301 003a A847     		blx	r5
+ 302              	.LVL29:
+ 303              	.LBE17:
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****             PACK_LOG("check err,len %u", total_len);
+ 304              		.loc 1 75 0 is_stmt 1 discriminator 1
+ 305 003c 0125     		movs	r5, #1
+ 306 003e 0AE0     		b	.L29
+ 307              	.LVL30:
+ 308              	.L34:
+ 309              	.LBB18:
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+ 310              		.loc 1 53 0
+ 311 0040 FFF7FEFF 		bl	pack_get_params
+ 312              	.LVL31:
+ 313 0044 C369     		ldr	r3, [r0, #28]
+ 314 0046 ABB1     		cbz	r3, .L30
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+ 315              		.loc 1 53 0 is_stmt 0 discriminator 1
+ 316 0048 3522     		movs	r2, #53
+ 317 004a 0B49     		ldr	r1, .L36
+ 318 004c 0C48     		ldr	r0, .L36+8
+ 319              	.LVL32:
+ 320 004e 9847     		blx	r3
+ 321              	.LVL33:
+ 322              	.LBE18:
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 323              		.loc 1 54 0 is_stmt 1 discriminator 1
+ 324 0050 0125     		movs	r5, #1
+ 325 0052 02E0     		b	.L26
+ 326              	.LVL34:
+ 327              	.L31:
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****             break;
+ 328              		.loc 1 64 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 12
+
+
+ 329 0054 0125     		movs	r5, #1
+ 330              	.LVL35:
+ 331              	.L29:
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 332              		.loc 1 83 0
+ 333 0056 E767     		str	r7, [r4, #124]
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 334              		.loc 1 86 0
+ 335 0058 26B1     		cbz	r6, .L35
+ 336              	.LVL36:
+ 337              	.L26:
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 338              		.loc 1 93 0
+ 339 005a 2846     		mov	r0, r5
+ 340 005c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 341              	.LVL37:
+ 342              	.L32:
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****             PACK_LOG("check err,len %u", total_len);
+ 343              		.loc 1 75 0
+ 344 0060 0125     		movs	r5, #1
+ 345 0062 F8E7     		b	.L29
+ 346              	.LVL38:
+ 347              	.L35:
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         pack_wr_destroy(&device->writer);
+ 348              		.loc 1 88 0
+ 349 0064 04F14000 		add	r0, r4, #64
+ 350 0068 FFF7FEFF 		bl	pack_head_destroy
+ 351              	.LVL39:
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 352              		.loc 1 89 0
+ 353 006c 4046     		mov	r0, r8
+ 354 006e FFF7FEFF 		bl	pack_wr_destroy
+ 355              	.LVL40:
+ 356 0072 F2E7     		b	.L26
+ 357              	.LVL41:
+ 358              	.L30:
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 359              		.loc 1 54 0
+ 360 0074 0125     		movs	r5, #1
+ 361 0076 F0E7     		b	.L26
+ 362              	.L37:
+ 363              		.align	2
+ 364              	.L36:
+ 365 0078 00000000 		.word	.LANCHOR2
+ 366 007c 18000000 		.word	.LC2
+ 367 0080 00000000 		.word	.LC1
+ 368              		.cfi_endproc
+ 369              	.LFE4:
+ 371              		.section	.text.pack_storage_write_software,"ax",%progbits
+ 372              		.align	1
+ 373              		.syntax unified
+ 374              		.thumb
+ 375              		.thumb_func
+ 376              		.fpu fpv4-sp-d16
+ 378              	pack_storage_write_software:
+ 379              	.LFB5:
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 13
+
+
+ 380              		.loc 1 98 0
+ 381              		.cfi_startproc
+ 382              		@ args = 0, pretend = 0, frame = 8
+ 383              		@ frame_needed = 0, uses_anonymous_args = 0
+ 384              	.LVL42:
+ 385 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 386              	.LCFI6:
+ 387              		.cfi_def_cfa_offset 28
+ 388              		.cfi_offset 4, -28
+ 389              		.cfi_offset 5, -24
+ 390              		.cfi_offset 6, -20
+ 391              		.cfi_offset 7, -16
+ 392              		.cfi_offset 8, -12
+ 393              		.cfi_offset 9, -8
+ 394              		.cfi_offset 14, -4
+ 395 0004 85B0     		sub	sp, sp, #20
+ 396              	.LCFI7:
+ 397              		.cfi_def_cfa_offset 48
+ 398 0006 1C46     		mov	r4, r3
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     int ret;
+ 399              		.loc 1 100 0
+ 400 0008 0023     		movs	r3, #0
+ 401              	.LVL43:
+ 402 000a ADF80E30 		strh	r3, [sp, #14]	@ movhi
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 403              		.loc 1 103 0
+ 404 000e 0028     		cmp	r0, #0
+ 405 0010 32D0     		beq	.L49
+ 406 0012 0F46     		mov	r7, r1
+ 407 0014 1646     		mov	r6, r2
+ 408 0016 8046     		mov	r8, r0
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 409              		.loc 1 108 0
+ 410 0018 002C     		cmp	r4, #0
+ 411 001a 38D0     		beq	.L41
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 412              		.loc 1 108 0 is_stmt 0 discriminator 1
+ 413 001c 002A     		cmp	r2, #0
+ 414 001e 36D0     		beq	.L41
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if(ret != PACK_OK)
+ 415              		.loc 1 117 0 is_stmt 1
+ 416 0020 00F14009 		add	r9, r0, #64
+ 417 0024 0DF10E03 		add	r3, sp, #14
+ 418 0028 0093     		str	r3, [sp]
+ 419 002a A3B2     		uxth	r3, r4
+ 420 002c 4846     		mov	r0, r9
+ 421              	.LVL44:
+ 422 002e FFF7FEFF 		bl	pack_head_parse
+ 423              	.LVL45:
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 424              		.loc 1 118 0
+ 425 0032 0546     		mov	r5, r0
+ 426 0034 0028     		cmp	r0, #0
+ 427 0036 38D1     		bne	.L50
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 428              		.loc 1 124 0
+ 429 0038 BDF80E20 		ldrh	r2, [sp, #14]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 14
+
+
+ 430 003c A242     		cmp	r2, r4
+ 431 003e 30D0     		beq	.L38
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     offset += used_len;
+ 432              		.loc 1 129 0
+ 433 0040 A41A     		subs	r4, r4, r2
+ 434              	.LVL46:
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     buffer += used_len;
+ 435              		.loc 1 130 0
+ 436 0042 1744     		add	r7, r7, r2
+ 437              	.LVL47:
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 438              		.loc 1 131 0
+ 439 0044 1644     		add	r6, r6, r2
+ 440              	.LVL48:
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if(ret != PACK_OK)
+ 441              		.loc 1 133 0
+ 442 0046 08F16805 		add	r5, r8, #104
+ 443 004a 4846     		mov	r0, r9
+ 444              	.LVL49:
+ 445 004c FFF7FEFF 		bl	pack_head_get_head_len
+ 446              	.LVL50:
+ 447 0050 A4B2     		uxth	r4, r4
+ 448              	.LVL51:
+ 449 0052 2346     		mov	r3, r4
+ 450 0054 3246     		mov	r2, r6
+ 451 0056 391A     		subs	r1, r7, r0
+ 452 0058 2846     		mov	r0, r5
+ 453 005a FFF7FEFF 		bl	pack_wr_write
+ 454              	.LVL52:
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 455              		.loc 1 134 0
+ 456 005e 0546     		mov	r5, r0
+ 457 0060 0028     		cmp	r0, #0
+ 458 0062 2DD0     		beq	.L44
+ 459              	.LBB19:
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return ret;
+ 460              		.loc 1 136 0
+ 461 0064 FFF7FEFF 		bl	pack_get_params
+ 462              	.LVL53:
+ 463 0068 C469     		ldr	r4, [r0, #28]
+ 464 006a D4B1     		cbz	r4, .L38
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return ret;
+ 465              		.loc 1 136 0 is_stmt 0 discriminator 1
+ 466 006c 2B46     		mov	r3, r5
+ 467 006e 8822     		movs	r2, #136
+ 468 0070 2549     		ldr	r1, .L52
+ 469 0072 2648     		ldr	r0, .L52+4
+ 470              	.LVL54:
+ 471 0074 A047     		blx	r4
+ 472              	.LVL55:
+ 473 0076 14E0     		b	.L38
+ 474              	.LVL56:
+ 475              	.L49:
+ 476              	.LBE19:
+ 477              	.LBB20:
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+ 478              		.loc 1 105 0 is_stmt 1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 15
+
+
+ 479 0078 FFF7FEFF 		bl	pack_get_params
+ 480              	.LVL57:
+ 481 007c C369     		ldr	r3, [r0, #28]
+ 482 007e 002B     		cmp	r3, #0
+ 483 0080 3DD0     		beq	.L45
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+ 484              		.loc 1 105 0 is_stmt 0 discriminator 1
+ 485 0082 6922     		movs	r2, #105
+ 486 0084 2049     		ldr	r1, .L52
+ 487 0086 2248     		ldr	r0, .L52+8
+ 488              	.LVL58:
+ 489 0088 9847     		blx	r3
+ 490              	.LVL59:
+ 491              	.LBE20:
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 492              		.loc 1 106 0 is_stmt 1 discriminator 1
+ 493 008a 0125     		movs	r5, #1
+ 494 008c 09E0     		b	.L38
+ 495              	.LVL60:
+ 496              	.L41:
+ 497              	.LBB21:
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+ 498              		.loc 1 110 0
+ 499 008e FFF7FEFF 		bl	pack_get_params
+ 500              	.LVL61:
+ 501 0092 C369     		ldr	r3, [r0, #28]
+ 502 0094 002B     		cmp	r3, #0
+ 503 0096 34D0     		beq	.L46
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+ 504              		.loc 1 110 0 is_stmt 0 discriminator 1
+ 505 0098 6E22     		movs	r2, #110
+ 506 009a 1B49     		ldr	r1, .L52
+ 507 009c 1D48     		ldr	r0, .L52+12
+ 508              	.LVL62:
+ 509 009e 9847     		blx	r3
+ 510              	.LVL63:
+ 511              	.LBE21:
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 512              		.loc 1 111 0 is_stmt 1 discriminator 1
+ 513 00a0 0125     		movs	r5, #1
+ 514              	.LVL64:
+ 515              	.L38:
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 516              		.loc 1 152 0
+ 517 00a2 2846     		mov	r0, r5
+ 518 00a4 05B0     		add	sp, sp, #20
+ 519              	.LCFI8:
+ 520              		.cfi_remember_state
+ 521              		.cfi_def_cfa_offset 28
+ 522              		@ sp needed
+ 523 00a6 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 524              	.LVL65:
+ 525              	.L50:
+ 526              	.LCFI9:
+ 527              		.cfi_restore_state
+ 528              	.LBB22:
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return ret;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 16
+
+
+ 529              		.loc 1 120 0
+ 530 00aa FFF7FEFF 		bl	pack_get_params
+ 531              	.LVL66:
+ 532 00ae C469     		ldr	r4, [r0, #28]
+ 533              	.LVL67:
+ 534 00b0 002C     		cmp	r4, #0
+ 535 00b2 F6D0     		beq	.L38
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return ret;
+ 536              		.loc 1 120 0 is_stmt 0 discriminator 1
+ 537 00b4 2B46     		mov	r3, r5
+ 538 00b6 7822     		movs	r2, #120
+ 539 00b8 1349     		ldr	r1, .L52
+ 540 00ba 1748     		ldr	r0, .L52+16
+ 541              	.LVL68:
+ 542 00bc A047     		blx	r4
+ 543              	.LVL69:
+ 544 00be F0E7     		b	.L38
+ 545              	.LVL70:
+ 546              	.L44:
+ 547              	.LBE22:
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 548              		.loc 1 140 0 is_stmt 1
+ 549 00c0 4846     		mov	r0, r9
+ 550              	.LVL71:
+ 551 00c2 FFF7FEFF 		bl	pack_head_get_checksum
+ 552              	.LVL72:
+ 553 00c6 0028     		cmp	r0, #0
+ 554 00c8 EBD0     		beq	.L38
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****                                              buffer, len, &device->hardware);
+ 555              		.loc 1 142 0
+ 556 00ca 4846     		mov	r0, r9
+ 557 00cc FFF7FEFF 		bl	pack_head_get_checksum
+ 558              	.LVL73:
+ 559 00d0 08F10C03 		add	r3, r8, #12
+ 560 00d4 0093     		str	r3, [sp]
+ 561 00d6 2346     		mov	r3, r4
+ 562 00d8 3246     		mov	r2, r6
+ 563 00da 3946     		mov	r1, r7
+ 564 00dc FFF7FEFF 		bl	pack_checksum_update_data
+ 565              	.LVL74:
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         {
+ 566              		.loc 1 144 0
+ 567 00e0 0446     		mov	r4, r0
+ 568 00e2 08B9     		cbnz	r0, .L51
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 569              		.loc 1 150 0
+ 570 00e4 0546     		mov	r5, r0
+ 571 00e6 DCE7     		b	.L38
+ 572              	.L51:
+ 573              	.LBB23:
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         }
+ 574              		.loc 1 146 0
+ 575 00e8 FFF7FEFF 		bl	pack_get_params
+ 576              	.LVL75:
+ 577 00ec C669     		ldr	r6, [r0, #28]
+ 578              	.LVL76:
+ 579 00ee 002E     		cmp	r6, #0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 17
+
+
+ 580 00f0 D7D0     		beq	.L38
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         }
+ 581              		.loc 1 146 0 is_stmt 0 discriminator 1
+ 582 00f2 2346     		mov	r3, r4
+ 583 00f4 9222     		movs	r2, #146
+ 584 00f6 0449     		ldr	r1, .L52
+ 585 00f8 0848     		ldr	r0, .L52+20
+ 586              	.LVL77:
+ 587 00fa B047     		blx	r6
+ 588              	.LVL78:
+ 589 00fc D1E7     		b	.L38
+ 590              	.LVL79:
+ 591              	.L45:
+ 592              	.LBE23:
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 593              		.loc 1 106 0 is_stmt 1
+ 594 00fe 0125     		movs	r5, #1
+ 595 0100 CFE7     		b	.L38
+ 596              	.LVL80:
+ 597              	.L46:
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 598              		.loc 1 111 0
+ 599 0102 0125     		movs	r5, #1
+ 600 0104 CDE7     		b	.L38
+ 601              	.L53:
+ 602 0106 00BF     		.align	2
+ 603              	.L52:
+ 604 0108 00000000 		.word	.LANCHOR3
+ 605 010c 3C000000 		.word	.LC5
+ 606 0110 00000000 		.word	.LC1
+ 607 0114 00000000 		.word	.LC3
+ 608 0118 18000000 		.word	.LC4
+ 609 011c 5C000000 		.word	.LC6
+ 610              		.cfi_endproc
+ 611              	.LFE5:
+ 613              		.section	.text.pack_init_device,"ax",%progbits
+ 614              		.align	1
+ 615              		.global	pack_init_device
+ 616              		.syntax unified
+ 617              		.thumb
+ 618              		.thumb_func
+ 619              		.fpu fpv4-sp-d16
+ 621              	pack_init_device:
+ 622              	.LFB14:
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device = (pack_storage_device_s *)pack_get_device();
+ 623              		.loc 1 250 0
+ 624              		.cfi_startproc
+ 625              		@ args = 0, pretend = 0, frame = 16
+ 626              		@ frame_needed = 0, uses_anonymous_args = 0
+ 627              	.LVL81:
+ 628 0000 70B5     		push	{r4, r5, r6, lr}
+ 629              	.LCFI10:
+ 630              		.cfi_def_cfa_offset 16
+ 631              		.cfi_offset 4, -16
+ 632              		.cfi_offset 5, -12
+ 633              		.cfi_offset 6, -8
+ 634              		.cfi_offset 14, -4
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 18
+
+
+ 635 0002 84B0     		sub	sp, sp, #16
+ 636              	.LCFI11:
+ 637              		.cfi_def_cfa_offset 32
+ 638 0004 0446     		mov	r4, r0
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_device_info_s device_info;
+ 639              		.loc 1 251 0
+ 640 0006 FFF7FEFF 		bl	pack_get_device
+ 641              	.LVL82:
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         || (params->free == NULL))
+ 642              		.loc 1 254 0
+ 643 000a 84B3     		cbz	r4, .L55
+ 644 000c 0546     		mov	r5, r0
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         || (params->free == NULL))
+ 645              		.loc 1 254 0 is_stmt 0 discriminator 1
+ 646 000e 6369     		ldr	r3, [r4, #20]
+ 647 0010 6BB3     		cbz	r3, .L55
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 648              		.loc 1 255 0 is_stmt 1
+ 649 0012 A369     		ldr	r3, [r4, #24]
+ 650 0014 5BB3     		cbz	r3, .L55
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 651              		.loc 1 261 0
+ 652 0016 2668     		ldr	r6, [r4]	@ unaligned
+ 653 0018 6068     		ldr	r0, [r4, #4]	@ unaligned
+ 654              	.LVL83:
+ 655 001a A168     		ldr	r1, [r4, #8]	@ unaligned
+ 656 001c E268     		ldr	r2, [r4, #12]	@ unaligned
+ 657 001e 2E62     		str	r6, [r5, #32]	@ unaligned
+ 658 0020 6862     		str	r0, [r5, #36]	@ unaligned
+ 659 0022 A962     		str	r1, [r5, #40]	@ unaligned
+ 660 0024 EA62     		str	r2, [r5, #44]	@ unaligned
+ 661 0026 2669     		ldr	r6, [r4, #16]	@ unaligned
+ 662 0028 6069     		ldr	r0, [r4, #20]	@ unaligned
+ 663 002a A169     		ldr	r1, [r4, #24]	@ unaligned
+ 664 002c E269     		ldr	r2, [r4, #28]	@ unaligned
+ 665 002e 2E63     		str	r6, [r5, #48]	@ unaligned
+ 666 0030 6863     		str	r0, [r5, #52]	@ unaligned
+ 667 0032 A963     		str	r1, [r5, #56]	@ unaligned
+ 668 0034 EA63     		str	r2, [r5, #60]	@ unaligned
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device->hardware.write_software = pack_write_software;
+ 669              		.loc 1 263 0
+ 670 0036 1A4B     		ldr	r3, .L62
+ 671 0038 EB60     		str	r3, [r5, #12]
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device->hardware.set_flash_type = pack_set_flash_type;
+ 672              		.loc 1 264 0
+ 673 003a 1A4B     		ldr	r3, .L62+4
+ 674 003c 2B61     		str	r3, [r5, #16]
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     device->hardware.get_block_size = pack_get_block_size;
+ 675              		.loc 1 265 0
+ 676 003e 1A4B     		ldr	r3, .L62+8
+ 677 0040 6B61     		str	r3, [r5, #20]
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 678              		.loc 1 266 0
+ 679 0042 1A4B     		ldr	r3, .L62+12
+ 680 0044 AB61     		str	r3, [r5, #24]
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     memcpy(&device_info.key, &device->params.ota_opt.key, sizeof(device_info.key));
+ 681              		.loc 1 268 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 19
+
+
+ 682 0046 05F10C03 		add	r3, r5, #12
+ 683 004a 04AA     		add	r2, sp, #16
+ 684 004c 42F80C3D 		str	r3, [r2, #-12]!
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 685              		.loc 1 269 0
+ 686 0050 2946     		mov	r1, r5
+ 687 0052 02AB     		add	r3, sp, #8
+ 688 0054 51F82C0F 		ldr	r0, [r1, #44]!	@ unaligned
+ 689 0058 4968     		ldr	r1, [r1, #4]	@ unaligned
+ 690 005a 03C3     		stmia	r3!, {r0, r1}
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 691              		.loc 1 271 0
+ 692 005c 1146     		mov	r1, r2
+ 693 005e 05F14000 		add	r0, r5, #64
+ 694 0062 FFF7FEFF 		bl	pack_head_set_head_info
+ 695              	.LVL84:
+ 696 0066 0646     		mov	r6, r0
+ 697 0068 70B1     		cbz	r0, .L61
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 698              		.loc 1 273 0
+ 699 006a 0126     		movs	r6, #1
+ 700 006c 09E0     		b	.L54
+ 701              	.LVL85:
+ 702              	.L55:
+ 703              	.LBB24:
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+ 704              		.loc 1 257 0
+ 705 006e FFF7FEFF 		bl	pack_get_params
+ 706              	.LVL86:
+ 707 0072 C369     		ldr	r3, [r0, #28]
+ 708 0074 93B1     		cbz	r3, .L58
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         return PACK_ERR;
+ 709              		.loc 1 257 0 is_stmt 0 discriminator 1
+ 710 0076 40F20112 		movw	r2, #257
+ 711 007a 0D49     		ldr	r1, .L62+16
+ 712 007c 0D48     		ldr	r0, .L62+20
+ 713              	.LVL87:
+ 714 007e 9847     		blx	r3
+ 715              	.LVL88:
+ 716              	.LBE24:
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 717              		.loc 1 258 0 is_stmt 1 discriminator 1
+ 718 0080 0126     		movs	r6, #1
+ 719              	.L54:
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 720              		.loc 1 283 0
+ 721 0082 3046     		mov	r0, r6
+ 722 0084 04B0     		add	sp, sp, #16
+ 723              	.LCFI12:
+ 724              		.cfi_remember_state
+ 725              		.cfi_def_cfa_offset 16
+ 726              		@ sp needed
+ 727 0086 70BD     		pop	{r4, r5, r6, pc}
+ 728              	.LVL89:
+ 729              	.L61:
+ 730              	.LCFI13:
+ 731              		.cfi_restore_state
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 20
+
+
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 732              		.loc 1 276 0
+ 733 0088 0199     		ldr	r1, [sp, #4]
+ 734 008a 05F16800 		add	r0, r5, #104
+ 735 008e FFF7FEFF 		bl	pack_wr_set_device
+ 736              	.LVL90:
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** #endif
+ 737              		.loc 1 279 0
+ 738 0092 A169     		ldr	r1, [r4, #24]
+ 739 0094 0848     		ldr	r0, .L62+24
+ 740 0096 FFF7FEFF 		bl	mbedtls_platform_set_calloc_free
+ 741              	.LVL91:
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 742              		.loc 1 282 0
+ 743 009a F2E7     		b	.L54
+ 744              	.LVL92:
+ 745              	.L58:
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 746              		.loc 1 258 0
+ 747 009c 0126     		movs	r6, #1
+ 748 009e F0E7     		b	.L54
+ 749              	.L63:
+ 750              		.align	2
+ 751              	.L62:
+ 752 00a0 00000000 		.word	pack_read_software
+ 753 00a4 00000000 		.word	pack_write_software
+ 754 00a8 00000000 		.word	pack_set_flash_type
+ 755 00ac 00000000 		.word	pack_get_block_size
+ 756 00b0 00000000 		.word	.LANCHOR4
+ 757 00b4 00000000 		.word	.LC7
+ 758 00b8 00000000 		.word	local_calloc
+ 759              		.cfi_endproc
+ 760              	.LFE14:
+ 762              		.section	.text.pack_set_flash_type,"ax",%progbits
+ 763              		.align	1
+ 764              		.syntax unified
+ 765              		.thumb
+ 766              		.thumb_func
+ 767              		.fpu fpv4-sp-d16
+ 769              	pack_set_flash_type:
+ 770              	.LFB11:
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device = (pack_storage_device_s *)pack_get_device();
+ 771              		.loc 1 226 0
+ 772              		.cfi_startproc
+ 773              		@ args = 0, pretend = 0, frame = 0
+ 774              		@ frame_needed = 0, uses_anonymous_args = 0
+ 775              	.LVL93:
+ 776 0000 38B5     		push	{r3, r4, r5, lr}
+ 777              	.LCFI14:
+ 778              		.cfi_def_cfa_offset 16
+ 779              		.cfi_offset 3, -16
+ 780              		.cfi_offset 4, -12
+ 781              		.cfi_offset 5, -8
+ 782              		.cfi_offset 14, -4
+ 783 0002 0D46     		mov	r5, r1
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 784              		.loc 1 227 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 21
+
+
+ 785 0004 FFF7FEFF 		bl	pack_get_device
+ 786              	.LVL94:
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     PACK_LOG("pack_set_flash_type type %d", type);
+ 787              		.loc 1 229 0
+ 788 0008 80F88050 		strb	r5, [r0, #128]
+ 789              	.LBB25:
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 790              		.loc 1 230 0
+ 791 000c FFF7FEFF 		bl	pack_get_params
+ 792              	.LVL95:
+ 793 0010 C469     		ldr	r4, [r0, #28]
+ 794 0012 24B1     		cbz	r4, .L64
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 795              		.loc 1 230 0 is_stmt 0 discriminator 1
+ 796 0014 2B46     		mov	r3, r5
+ 797 0016 E622     		movs	r2, #230
+ 798 0018 0149     		ldr	r1, .L67
+ 799 001a 0248     		ldr	r0, .L67+4
+ 800              	.LVL96:
+ 801 001c A047     		blx	r4
+ 802              	.LVL97:
+ 803              	.L64:
+ 804              	.LBE25:
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 805              		.loc 1 231 0 is_stmt 1
+ 806 001e 38BD     		pop	{r3, r4, r5, pc}
+ 807              	.L68:
+ 808              		.align	2
+ 809              	.L67:
+ 810 0020 00000000 		.word	.LANCHOR5
+ 811 0024 00000000 		.word	.LC8
+ 812              		.cfi_endproc
+ 813              	.LFE11:
+ 815              		.section	.text.pack_write_software,"ax",%progbits
+ 816              		.align	1
+ 817              		.syntax unified
+ 818              		.thumb
+ 819              		.thumb_func
+ 820              		.fpu fpv4-sp-d16
+ 822              	pack_write_software:
+ 823              	.LFB10:
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device = (pack_storage_device_s *)pack_get_device();
+ 824              		.loc 1 212 0
+ 825              		.cfi_startproc
+ 826              		@ args = 0, pretend = 0, frame = 0
+ 827              		@ frame_needed = 0, uses_anonymous_args = 0
+ 828              	.LVL98:
+ 829 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 830              	.LCFI15:
+ 831              		.cfi_def_cfa_offset 24
+ 832              		.cfi_offset 3, -24
+ 833              		.cfi_offset 4, -20
+ 834              		.cfi_offset 5, -16
+ 835              		.cfi_offset 6, -12
+ 836              		.cfi_offset 7, -8
+ 837              		.cfi_offset 14, -4
+ 838 0002 0F46     		mov	r7, r1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 22
+
+
+ 839 0004 1546     		mov	r5, r2
+ 840 0006 1E46     		mov	r6, r3
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 841              		.loc 1 213 0
+ 842 0008 FFF7FEFF 		bl	pack_get_device
+ 843              	.LVL99:
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 844              		.loc 1 216 0
+ 845 000c 446A     		ldr	r4, [r0, #36]
+ 846 000e 34B1     		cbz	r4, .L70
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 847              		.loc 1 218 0
+ 848 0010 3B46     		mov	r3, r7
+ 849 0012 3246     		mov	r2, r6
+ 850 0014 2946     		mov	r1, r5
+ 851 0016 90F88000 		ldrb	r0, [r0, #128]	@ zero_extendqisi2
+ 852              	.LVL100:
+ 853 001a A047     		blx	r4
+ 854              	.LVL101:
+ 855              	.L69:
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 856              		.loc 1 223 0
+ 857 001c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 858              	.LVL102:
+ 859              	.L70:
+ 860              	.LBB26:
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 861              		.loc 1 220 0
+ 862 001e FFF7FEFF 		bl	pack_get_params
+ 863              	.LVL103:
+ 864 0022 C369     		ldr	r3, [r0, #28]
+ 865 0024 2BB1     		cbz	r3, .L72
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 866              		.loc 1 220 0 is_stmt 0 discriminator 1
+ 867 0026 DC22     		movs	r2, #220
+ 868 0028 0349     		ldr	r1, .L74
+ 869 002a 0448     		ldr	r0, .L74+4
+ 870              	.LVL104:
+ 871 002c 9847     		blx	r3
+ 872              	.LVL105:
+ 873              	.LBE26:
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 874              		.loc 1 222 0 is_stmt 1 discriminator 1
+ 875 002e 0120     		movs	r0, #1
+ 876 0030 F4E7     		b	.L69
+ 877              	.LVL106:
+ 878              	.L72:
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 879              		.loc 1 222 0 is_stmt 0
+ 880 0032 0120     		movs	r0, #1
+ 881              	.LVL107:
+ 882 0034 F2E7     		b	.L69
+ 883              	.L75:
+ 884 0036 00BF     		.align	2
+ 885              	.L74:
+ 886 0038 00000000 		.word	.LANCHOR6
+ 887 003c 00000000 		.word	.LC9
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 23
+
+
+ 888              		.cfi_endproc
+ 889              	.LFE10:
+ 891              		.section	.text.pack_read_software,"ax",%progbits
+ 892              		.align	1
+ 893              		.syntax unified
+ 894              		.thumb
+ 895              		.thumb_func
+ 896              		.fpu fpv4-sp-d16
+ 898              	pack_read_software:
+ 899              	.LFB9:
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_storage_device_s *device = (pack_storage_device_s *)pack_get_device();
+ 900              		.loc 1 198 0 is_stmt 1
+ 901              		.cfi_startproc
+ 902              		@ args = 0, pretend = 0, frame = 0
+ 903              		@ frame_needed = 0, uses_anonymous_args = 0
+ 904              	.LVL108:
+ 905 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 906              	.LCFI16:
+ 907              		.cfi_def_cfa_offset 24
+ 908              		.cfi_offset 3, -24
+ 909              		.cfi_offset 4, -20
+ 910              		.cfi_offset 5, -16
+ 911              		.cfi_offset 6, -12
+ 912              		.cfi_offset 7, -8
+ 913              		.cfi_offset 14, -4
+ 914 0002 0F46     		mov	r7, r1
+ 915 0004 1546     		mov	r5, r2
+ 916 0006 1E46     		mov	r6, r3
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 917              		.loc 1 199 0
+ 918 0008 FFF7FEFF 		bl	pack_get_device
+ 919              	.LVL109:
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 920              		.loc 1 202 0
+ 921 000c 046A     		ldr	r4, [r0, #32]
+ 922 000e 34B1     		cbz	r4, .L77
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 923              		.loc 1 204 0
+ 924 0010 3B46     		mov	r3, r7
+ 925 0012 3246     		mov	r2, r6
+ 926 0014 2946     		mov	r1, r5
+ 927 0016 90F88000 		ldrb	r0, [r0, #128]	@ zero_extendqisi2
+ 928              	.LVL110:
+ 929 001a A047     		blx	r4
+ 930              	.LVL111:
+ 931              	.L76:
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 932              		.loc 1 209 0
+ 933 001c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 934              	.LVL112:
+ 935              	.L77:
+ 936              	.LBB27:
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 937              		.loc 1 206 0
+ 938 001e FFF7FEFF 		bl	pack_get_params
+ 939              	.LVL113:
+ 940 0022 C369     		ldr	r3, [r0, #28]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 24
+
+
+ 941 0024 2BB1     		cbz	r3, .L79
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 942              		.loc 1 206 0 is_stmt 0 discriminator 1
+ 943 0026 CE22     		movs	r2, #206
+ 944 0028 0349     		ldr	r1, .L81
+ 945 002a 0448     		ldr	r0, .L81+4
+ 946              	.LVL114:
+ 947 002c 9847     		blx	r3
+ 948              	.LVL115:
+ 949              	.LBE27:
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 950              		.loc 1 208 0 is_stmt 1 discriminator 1
+ 951 002e 0120     		movs	r0, #1
+ 952 0030 F4E7     		b	.L76
+ 953              	.LVL116:
+ 954              	.L79:
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 955              		.loc 1 208 0 is_stmt 0
+ 956 0032 0120     		movs	r0, #1
+ 957              	.LVL117:
+ 958 0034 F2E7     		b	.L76
+ 959              	.L82:
+ 960 0036 00BF     		.align	2
+ 961              	.L81:
+ 962 0038 00000000 		.word	.LANCHOR7
+ 963 003c 00000000 		.word	.LC10
+ 964              		.cfi_endproc
+ 965              	.LFE9:
+ 967              		.section	.text.pack_malloc,"ax",%progbits
+ 968              		.align	1
+ 969              		.global	pack_malloc
+ 970              		.syntax unified
+ 971              		.thumb
+ 972              		.thumb_func
+ 973              		.fpu fpv4-sp-d16
+ 975              	pack_malloc:
+ 976              	.LFB16:
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** void * pack_malloc(size_t size)
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** {
+ 977              		.loc 1 292 0 is_stmt 1
+ 978              		.cfi_startproc
+ 979              		@ args = 0, pretend = 0, frame = 0
+ 980              		@ frame_needed = 0, uses_anonymous_args = 0
+ 981              	.LVL118:
+ 982 0000 10B5     		push	{r4, lr}
+ 983              	.LCFI17:
+ 984              		.cfi_def_cfa_offset 8
+ 985              		.cfi_offset 4, -8
+ 986              		.cfi_offset 14, -4
+ 987 0002 0446     		mov	r4, r0
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_params_s *params = pack_get_params();
+ 988              		.loc 1 293 0
+ 989 0004 FFF7FEFF 		bl	pack_get_params
+ 990              	.LVL119:
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     return (params->malloc == NULL) ? NULL : params->malloc(size);
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 25
+
+
+ 991              		.loc 1 295 0
+ 992 0008 4369     		ldr	r3, [r0, #20]
+ 993 000a 13B1     		cbz	r3, .L85
+ 994              		.loc 1 295 0 is_stmt 0 discriminator 1
+ 995 000c 2046     		mov	r0, r4
+ 996              	.LVL120:
+ 997 000e 9847     		blx	r3
+ 998              	.LVL121:
+ 999              	.L83:
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 1000              		.loc 1 296 0 is_stmt 1
+ 1001 0010 10BD     		pop	{r4, pc}
+ 1002              	.LVL122:
+ 1003              	.L85:
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 1004              		.loc 1 295 0
+ 1005 0012 0020     		movs	r0, #0
+ 1006              	.LVL123:
+ 1007 0014 FCE7     		b	.L83
+ 1008              		.cfi_endproc
+ 1009              	.LFE16:
+ 1011              		.section	.text.local_calloc,"ax",%progbits
+ 1012              		.align	1
+ 1013              		.syntax unified
+ 1014              		.thumb
+ 1015              		.thumb_func
+ 1016              		.fpu fpv4-sp-d16
+ 1018              	local_calloc:
+ 1019              	.LFB13:
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     void *p = pack_malloc(n * size);
+ 1020              		.loc 1 240 0
+ 1021              		.cfi_startproc
+ 1022              		@ args = 0, pretend = 0, frame = 0
+ 1023              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1024              	.LVL124:
+ 1025 0000 38B5     		push	{r3, r4, r5, lr}
+ 1026              	.LCFI18:
+ 1027              		.cfi_def_cfa_offset 16
+ 1028              		.cfi_offset 3, -16
+ 1029              		.cfi_offset 4, -12
+ 1030              		.cfi_offset 5, -8
+ 1031              		.cfi_offset 14, -4
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if (NULL != p)
+ 1032              		.loc 1 241 0
+ 1033 0002 01FB00F5 		mul	r5, r1, r0
+ 1034 0006 2846     		mov	r0, r5
+ 1035              	.LVL125:
+ 1036 0008 FFF7FEFF 		bl	pack_malloc
+ 1037              	.LVL126:
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 1038              		.loc 1 242 0
+ 1039 000c 0446     		mov	r4, r0
+ 1040 000e 18B1     		cbz	r0, .L87
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 1041              		.loc 1 244 0
+ 1042 0010 2A46     		mov	r2, r5
+ 1043 0012 0021     		movs	r1, #0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 26
+
+
+ 1044 0014 FFF7FEFF 		bl	memset
+ 1045              	.LVL127:
+ 1046              	.L87:
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 1047              		.loc 1 247 0
+ 1048 0018 2046     		mov	r0, r4
+ 1049 001a 38BD     		pop	{r3, r4, r5, pc}
+ 1050              		.cfi_endproc
+ 1051              	.LFE13:
+ 1053              		.section	.text.pack_free,"ax",%progbits
+ 1054              		.align	1
+ 1055              		.global	pack_free
+ 1056              		.syntax unified
+ 1057              		.thumb
+ 1058              		.thumb_func
+ 1059              		.fpu fpv4-sp-d16
+ 1061              	pack_free:
+ 1062              	.LFB17:
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** 
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** void pack_free(void *ptr)
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** {
+ 1063              		.loc 1 299 0
+ 1064              		.cfi_startproc
+ 1065              		@ args = 0, pretend = 0, frame = 0
+ 1066              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1067              	.LVL128:
+ 1068 0000 10B5     		push	{r4, lr}
+ 1069              	.LCFI19:
+ 1070              		.cfi_def_cfa_offset 8
+ 1071              		.cfi_offset 4, -8
+ 1072              		.cfi_offset 14, -4
+ 1073 0002 0446     		mov	r4, r0
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     pack_params_s *params = pack_get_params();
+ 1074              		.loc 1 300 0
+ 1075 0004 FFF7FEFF 		bl	pack_get_params
+ 1076              	.LVL129:
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     if(params->free != NULL)
+ 1077              		.loc 1 301 0
+ 1078 0008 8369     		ldr	r3, [r0, #24]
+ 1079 000a 0BB1     		cbz	r3, .L90
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     {
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****         params->free(ptr);
+ 1080              		.loc 1 303 0
+ 1081 000c 2046     		mov	r0, r4
+ 1082              	.LVL130:
+ 1083 000e 9847     		blx	r3
+ 1084              	.LVL131:
+ 1085              	.L90:
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c ****     }
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package\package.c **** }
+ 1086              		.loc 1 305 0
+ 1087 0010 10BD     		pop	{r4, pc}
+ 1088              		.cfi_endproc
+ 1089              	.LFE17:
+ 1091              		.section	.bss.g_pack_storage_device,"aw",%nobits
+ 1092              		.align	2
+ 1093              		.set	.LANCHOR0,. + 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 27
+
+
+ 1096              	g_pack_storage_device:
+ 1097 0000 00000000 		.space	136
+ 1097      00000000 
+ 1097      00000000 
+ 1097      00000000 
+ 1097      00000000 
+ 1098              		.section	.rodata.__FUNCTION__.7402,"a",%progbits
+ 1099              		.align	2
+ 1100              		.set	.LANCHOR2,. + 0
+ 1103              	__FUNCTION__.7402:
+ 1104 0000 7061636B 		.ascii	"pack_storage_write_software_end\000"
+ 1104      5F73746F 
+ 1104      72616765 
+ 1104      5F777269 
+ 1104      74655F73 
+ 1105              		.section	.rodata.__FUNCTION__.7415,"a",%progbits
+ 1106              		.align	2
+ 1107              		.set	.LANCHOR3,. + 0
+ 1110              	__FUNCTION__.7415:
+ 1111 0000 7061636B 		.ascii	"pack_storage_write_software\000"
+ 1111      5F73746F 
+ 1111      72616765 
+ 1111      5F777269 
+ 1111      74655F73 
+ 1112              		.section	.rodata.__FUNCTION__.7425,"a",%progbits
+ 1113              		.align	2
+ 1114              		.set	.LANCHOR1,. + 0
+ 1117              	__FUNCTION__.7425:
+ 1118 0000 7061636B 		.ascii	"pack_storage_active_software\000"
+ 1118      5F73746F 
+ 1118      72616765 
+ 1118      5F616374 
+ 1118      6976655F 
+ 1119              		.section	.rodata.__FUNCTION__.7442,"a",%progbits
+ 1120              		.align	2
+ 1121              		.set	.LANCHOR7,. + 0
+ 1124              	__FUNCTION__.7442:
+ 1125 0000 7061636B 		.ascii	"pack_read_software\000"
+ 1125      5F726561 
+ 1125      645F736F 
+ 1125      66747761 
+ 1125      726500
+ 1126              		.section	.rodata.__FUNCTION__.7451,"a",%progbits
+ 1127              		.align	2
+ 1128              		.set	.LANCHOR6,. + 0
+ 1131              	__FUNCTION__.7451:
+ 1132 0000 7061636B 		.ascii	"pack_write_software\000"
+ 1132      5F777269 
+ 1132      74655F73 
+ 1132      6F667477 
+ 1132      61726500 
+ 1133              		.section	.rodata.__FUNCTION__.7458,"a",%progbits
+ 1134              		.align	2
+ 1135              		.set	.LANCHOR5,. + 0
+ 1138              	__FUNCTION__.7458:
+ 1139 0000 7061636B 		.ascii	"pack_set_flash_type\000"
+ 1139      5F736574 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 28
+
+
+ 1139      5F666C61 
+ 1139      73685F74 
+ 1139      79706500 
+ 1140              		.section	.rodata.__FUNCTION__.7474,"a",%progbits
+ 1141              		.align	2
+ 1142              		.set	.LANCHOR4,. + 0
+ 1145              	__FUNCTION__.7474:
+ 1146 0000 7061636B 		.ascii	"pack_init_device\000"
+ 1146      5F696E69 
+ 1146      745F6465 
+ 1146      76696365 
+ 1146      00
+ 1147              		.section	.rodata.pack_init_device.str1.4,"aMS",%progbits,1
+ 1148              		.align	2
+ 1149              	.LC7:
+ 1150 0000 5B25733A 		.ascii	"[%s:%d]params null\015\012\000"
+ 1150      25645D70 
+ 1150      6172616D 
+ 1150      73206E75 
+ 1150      6C6C0D0A 
+ 1151              		.section	.rodata.pack_read_software.str1.4,"aMS",%progbits,1
+ 1152              		.align	2
+ 1153              	.LC10:
+ 1154 0000 5B25733A 		.ascii	"[%s:%d]read_flash null\015\012\000"
+ 1154      25645D72 
+ 1154      6561645F 
+ 1154      666C6173 
+ 1154      68206E75 
+ 1155              		.section	.rodata.pack_set_flash_type.str1.4,"aMS",%progbits,1
+ 1156              		.align	2
+ 1157              	.LC8:
+ 1158 0000 5B25733A 		.ascii	"[%s:%d]pack_set_flash_type type %d\015\012\000"
+ 1158      25645D70 
+ 1158      61636B5F 
+ 1158      7365745F 
+ 1158      666C6173 
+ 1159              		.section	.rodata.pack_storage_active_software.str1.4,"aMS",%progbits,1
+ 1160              		.align	2
+ 1161              	.LC0:
+ 1162 0000 5B25733A 		.ascii	"[%s:%d]null err\015\012\000"
+ 1162      25645D6E 
+ 1162      756C6C20 
+ 1162      6572720D 
+ 1162      0A00
+ 1163              		.section	.rodata.pack_storage_write_software.str1.4,"aMS",%progbits,1
+ 1164              		.align	2
+ 1165              	.LC3:
+ 1166 0000 5B25733A 		.ascii	"[%s:%d]write 0 len\015\012\000"
+ 1166      25645D77 
+ 1166      72697465 
+ 1166      2030206C 
+ 1166      656E0D0A 
+ 1167 0015 000000   		.space	3
+ 1168              	.LC4:
+ 1169 0018 5B25733A 		.ascii	"[%s:%d]pack_head_parse fail %d\015\012\000"
+ 1169      25645D70 
+ 1169      61636B5F 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 29
+
+
+ 1169      68656164 
+ 1169      5F706172 
+ 1170 0039 000000   		.space	3
+ 1171              	.LC5:
+ 1172 003c 5B25733A 		.ascii	"[%s:%d]pack_wr_write fail %d\015\012\000"
+ 1172      25645D70 
+ 1172      61636B5F 
+ 1172      77725F77 
+ 1172      72697465 
+ 1173 005b 00       		.space	1
+ 1174              	.LC6:
+ 1175 005c 5B25733A 		.ascii	"[%s:%d]pack_checksum_update_data fail %d\015\012\000"
+ 1175      25645D70 
+ 1175      61636B5F 
+ 1175      63686563 
+ 1175      6B73756D 
+ 1176              		.section	.rodata.pack_storage_write_software_end.str1.4,"aMS",%progbits,1
+ 1177              		.align	2
+ 1178              	.LC1:
+ 1179 0000 5B25733A 		.ascii	"[%s:%d]null pointer\015\012\000"
+ 1179      25645D6E 
+ 1179      756C6C20 
+ 1179      706F696E 
+ 1179      7465720D 
+ 1180 0016 0000     		.space	2
+ 1181              	.LC2:
+ 1182 0018 5B25733A 		.ascii	"[%s:%d]check err,len %u\015\012\000"
+ 1182      25645D63 
+ 1182      6865636B 
+ 1182      20657272 
+ 1182      2C6C656E 
+ 1183              		.section	.rodata.pack_write_software.str1.4,"aMS",%progbits,1
+ 1184              		.align	2
+ 1185              	.LC9:
+ 1186 0000 5B25733A 		.ascii	"[%s:%d]write_flash null\015\012\000"
+ 1186      25645D77 
+ 1186      72697465 
+ 1186      5F666C61 
+ 1186      7368206E 
+ 1187              		.text
+ 1188              	.Letext0:
+ 1189              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1190              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1191              		.file 4 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/ota/ota_api.h"
+ 1192              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 1193              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1194              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1195              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1196              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/ota/package.h"
+ 1197              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package/package_che
+ 1198              		.file 11 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1199              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/flag_operate/upgrad
+ 1200              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package/package_hea
+ 1201              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package/package_wri
+ 1202              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/package/package_dev
+ 1203              		.file 16 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1204              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtl
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 30
+
+
+ 1205              		.file 18 "<built-in>"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 31
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 package.c
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:18     .text.pack_init_pack_device:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:24     .text.pack_init_pack_device:00000000 pack_init_pack_device
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:75     .text.pack_init_pack_device:00000038 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:378    .text.pack_storage_write_software:00000000 pack_storage_write_software
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:249    .text.pack_storage_write_software_end:00000000 pack_storage_write_software_end
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:182    .text.pack_storage_active_software:00000000 pack_storage_active_software
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:82     .text.pack_get_device:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:89     .text.pack_get_device:00000000 pack_get_device
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:112    .text.pack_get_device:00000010 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:117    .text.pack_get_block_size:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:123    .text.pack_get_block_size:00000000 pack_get_block_size
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:146    .text.pack_get_params:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:153    .text.pack_get_params:00000000 pack_get_params
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:175    .text.pack_storage_active_software:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:237    .text.pack_storage_active_software:00000030 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:243    .text.pack_storage_write_software_end:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:365    .text.pack_storage_write_software_end:00000078 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:372    .text.pack_storage_write_software:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:604    .text.pack_storage_write_software:00000108 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:614    .text.pack_init_device:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:621    .text.pack_init_device:00000000 pack_init_device
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:752    .text.pack_init_device:000000a0 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:898    .text.pack_read_software:00000000 pack_read_software
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:822    .text.pack_write_software:00000000 pack_write_software
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:769    .text.pack_set_flash_type:00000000 pack_set_flash_type
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1018   .text.local_calloc:00000000 local_calloc
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:763    .text.pack_set_flash_type:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:810    .text.pack_set_flash_type:00000020 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:816    .text.pack_write_software:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:886    .text.pack_write_software:00000038 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:892    .text.pack_read_software:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:962    .text.pack_read_software:00000038 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:968    .text.pack_malloc:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:975    .text.pack_malloc:00000000 pack_malloc
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1012   .text.local_calloc:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1054   .text.pack_free:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1061   .text.pack_free:00000000 pack_free
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1092   .bss.g_pack_storage_device:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1096   .bss.g_pack_storage_device:00000000 g_pack_storage_device
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1099   .rodata.__FUNCTION__.7402:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1103   .rodata.__FUNCTION__.7402:00000000 __FUNCTION__.7402
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1106   .rodata.__FUNCTION__.7415:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1110   .rodata.__FUNCTION__.7415:00000000 __FUNCTION__.7415
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1113   .rodata.__FUNCTION__.7425:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1117   .rodata.__FUNCTION__.7425:00000000 __FUNCTION__.7425
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1120   .rodata.__FUNCTION__.7442:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1124   .rodata.__FUNCTION__.7442:00000000 __FUNCTION__.7442
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1127   .rodata.__FUNCTION__.7451:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1131   .rodata.__FUNCTION__.7451:00000000 __FUNCTION__.7451
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1134   .rodata.__FUNCTION__.7458:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1138   .rodata.__FUNCTION__.7458:00000000 __FUNCTION__.7458
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1141   .rodata.__FUNCTION__.7474:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1145   .rodata.__FUNCTION__.7474:00000000 __FUNCTION__.7474
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1148   .rodata.pack_init_device.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1152   .rodata.pack_read_software.str1.4:00000000 $d
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s 			page 32
+
+
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1156   .rodata.pack_set_flash_type.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1160   .rodata.pack_storage_active_software.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1164   .rodata.pack_storage_write_software.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1177   .rodata.pack_storage_write_software_end.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccOFPBPf.s:1184   .rodata.pack_write_software.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+memset
+pack_wr_init
+pack_head_init
+flag_set_info
+pack_wr_write_end
+pack_head_check
+pack_head_destroy
+pack_wr_destroy
+pack_head_parse
+pack_head_get_head_len
+pack_wr_write
+pack_head_get_checksum
+pack_checksum_update_data
+pack_head_set_head_info
+pack_wr_set_device
+mbedtls_platform_set_calloc_free

@@ -1,0 +1,301 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"dwt.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.dwt_delay_init,"ax",%progbits
+  18              		.align	1
+  19              		.global	dwt_delay_init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	dwt_delay_init:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src/dwt.c"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** #include "dwt.h"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** 
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** static uint32_t cpuclkfeq;
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** 
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** void dwt_delay_init(uint32_t clk)
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** {
+  28              		.loc 1 40 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     cpuclkfeq = clk;
+  34              		.loc 1 41 0
+  35 0000 064B     		ldr	r3, .L2
+  36 0002 1860     		str	r0, [r3]
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     DEM_CR         |=  DEM_CR_TRCENA;
+  37              		.loc 1 42 0
+  38 0004 064A     		ldr	r2, .L2+4
+  39 0006 1368     		ldr	r3, [r2]
+  40 0008 43F08073 		orr	r3, r3, #16777216
+  41 000c 1360     		str	r3, [r2]
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     //DWT_CYCCNT      = 0u;
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     DWT_CR         |= DWT_CR_CYCCNTENA;
+  42              		.loc 1 44 0
+  43 000e 054A     		ldr	r2, .L2+8
+  44 0010 1368     		ldr	r3, [r2]
+  45 0012 43F00103 		orr	r3, r3, #1
+  46 0016 1360     		str	r3, [r2]
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** }
+  47              		.loc 1 45 0
+  48 0018 7047     		bx	lr
+  49              	.L3:
+  50 001a 00BF     		.align	2
+  51              	.L2:
+  52 001c 00000000 		.word	.LANCHOR0
+  53 0020 FCED00E0 		.word	-536809988
+  54 0024 001000E0 		.word	-536866816
+  55              		.cfi_endproc
+  56              	.LFE133:
+  58              		.section	.text.delayus,"ax",%progbits
+  59              		.align	1
+  60              		.global	delayus
+  61              		.syntax unified
+  62              		.thumb
+  63              		.thumb_func
+  64              		.fpu fpv4-sp-d16
+  66              	delayus:
+  67              	.LFB134:
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** 
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** void delayus(uint32_t usec)
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** 
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** {
+  68              		.loc 1 49 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s 			page 3
+
+
+  69              		.cfi_startproc
+  70              		@ args = 0, pretend = 0, frame = 0
+  71              		@ frame_needed = 0, uses_anonymous_args = 0
+  72              	.LVL1:
+  73 0000 38B5     		push	{r3, r4, r5, lr}
+  74              	.LCFI0:
+  75              		.cfi_def_cfa_offset 16
+  76              		.cfi_offset 3, -16
+  77              		.cfi_offset 4, -12
+  78              		.cfi_offset 5, -8
+  79              		.cfi_offset 14, -4
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     uint32_t startts, endts, ts;
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     UINT32 uwIntSave;
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     startts = DWT_CYCCNT;
+  80              		.loc 1 52 0
+  81 0002 0F4B     		ldr	r3, .L10
+  82 0004 1D68     		ldr	r5, [r3]
+  83              	.LVL2:
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** 
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     ts =  usec * (cpuclkfeq / (1000 * 1000));
+  84              		.loc 1 54 0
+  85 0006 0F4B     		ldr	r3, .L10+4
+  86 0008 1C68     		ldr	r4, [r3]
+  87 000a 0F4B     		ldr	r3, .L10+8
+  88 000c A3FB0434 		umull	r3, r4, r3, r4
+  89 0010 A40C     		lsrs	r4, r4, #18
+  90              	.LVL3:
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     endts = startts + ts;
+  91              		.loc 1 55 0
+  92 0012 00FB0454 		mla	r4, r0, r4, r5
+  93              	.LVL4:
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     uwIntSave = LOS_IntLock();
+  94              		.loc 1 56 0
+  95 0016 FFF7FEFF 		bl	LOS_IntLock
+  96              	.LVL5:
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     if(endts > startts)
+  97              		.loc 1 57 0
+  98 001a A542     		cmp	r5, r4
+  99 001c 06D2     		bcs	.L5
+ 100              	.L6:
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     {
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****         while(DWT_CYCCNT < endts);
+ 101              		.loc 1 59 0 discriminator 1
+ 102 001e 084B     		ldr	r3, .L10
+ 103 0020 1B68     		ldr	r3, [r3]
+ 104 0022 A342     		cmp	r3, r4
+ 105 0024 FBD3     		bcc	.L6
+ 106              	.L7:
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     }
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     else
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     {
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****         while(DWT_CYCCNT > endts);
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****         while(DWT_CYCCNT < endts);
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     }
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     (VOID)LOS_IntRestore(uwIntSave);
+ 107              		.loc 1 66 0
+ 108 0026 FFF7FEFF 		bl	LOS_IntRestore
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s 			page 4
+
+
+ 109              	.LVL6:
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** }
+ 110              		.loc 1 67 0
+ 111 002a 38BD     		pop	{r3, r4, r5, pc}
+ 112              	.LVL7:
+ 113              	.L5:
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****         while(DWT_CYCCNT < endts);
+ 114              		.loc 1 63 0 discriminator 1
+ 115 002c 044B     		ldr	r3, .L10
+ 116 002e 1B68     		ldr	r3, [r3]
+ 117 0030 A342     		cmp	r3, r4
+ 118 0032 FBD8     		bhi	.L5
+ 119              	.L8:
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     }
+ 120              		.loc 1 64 0 discriminator 1
+ 121 0034 024B     		ldr	r3, .L10
+ 122 0036 1B68     		ldr	r3, [r3]
+ 123 0038 A342     		cmp	r3, r4
+ 124 003a FBD3     		bcc	.L8
+ 125 003c F3E7     		b	.L7
+ 126              	.L11:
+ 127 003e 00BF     		.align	2
+ 128              	.L10:
+ 129 0040 041000E0 		.word	-536866812
+ 130 0044 00000000 		.word	.LANCHOR0
+ 131 0048 83DE1B43 		.word	1125899907
+ 132              		.cfi_endproc
+ 133              	.LFE134:
+ 135              		.section	.text.delay10ms,"ax",%progbits
+ 136              		.align	1
+ 137              		.global	delay10ms
+ 138              		.syntax unified
+ 139              		.thumb
+ 140              		.thumb_func
+ 141              		.fpu fpv4-sp-d16
+ 143              	delay10ms:
+ 144              	.LFB135:
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** 
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** void delay10ms(__IO uint32_t nTime)
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** {
+ 145              		.loc 1 70 0
+ 146              		.cfi_startproc
+ 147              		@ args = 0, pretend = 0, frame = 8
+ 148              		@ frame_needed = 0, uses_anonymous_args = 0
+ 149              	.LVL8:
+ 150 0000 00B5     		push	{lr}
+ 151              	.LCFI1:
+ 152              		.cfi_def_cfa_offset 4
+ 153              		.cfi_offset 14, -4
+ 154 0002 83B0     		sub	sp, sp, #12
+ 155              	.LCFI2:
+ 156              		.cfi_def_cfa_offset 16
+ 157 0004 0190     		str	r0, [sp, #4]
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c ****     delayus(1000 * nTime);
+ 158              		.loc 1 71 0
+ 159 0006 019B     		ldr	r3, [sp, #4]
+ 160 0008 4FF47A70 		mov	r0, #1000
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s 			page 5
+
+
+ 161              	.LVL9:
+ 162 000c 00FB03F0 		mul	r0, r0, r3
+ 163 0010 FFF7FEFF 		bl	delayus
+ 164              	.LVL10:
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\dwt.c **** }
+ 165              		.loc 1 72 0
+ 166 0014 03B0     		add	sp, sp, #12
+ 167              	.LCFI3:
+ 168              		.cfi_def_cfa_offset 4
+ 169              		@ sp needed
+ 170 0016 5DF804FB 		ldr	pc, [sp], #4
+ 171              		.cfi_endproc
+ 172              	.LFE135:
+ 174              		.section	.bss.cpuclkfeq,"aw",%nobits
+ 175              		.align	2
+ 176              		.set	.LANCHOR0,. + 0
+ 179              	cpuclkfeq:
+ 180 0000 00000000 		.space	4
+ 181              		.text
+ 182              	.Letext0:
+ 183              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 184              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 185              		.file 4 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 186              		.file 5 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/system
+ 187              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 188              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 189              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 190              		.file 9 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 191              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 192              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 193              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 194              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 195              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 196              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 197              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 198              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 199              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 200              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 201              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 dwt.c
+c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s:18     .text.dwt_delay_init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s:25     .text.dwt_delay_init:00000000 dwt_delay_init
+c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s:52     .text.dwt_delay_init:0000001c $d
+c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s:59     .text.delayus:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s:66     .text.delayus:00000000 delayus
+c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s:129    .text.delayus:00000040 $d
+c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s:136    .text.delay10ms:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s:143    .text.delay10ms:00000000 delay10ms
+c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s:175    .bss.cpuclkfeq:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccJiuUT7.s:179    .bss.cpuclkfeq:00000000 cpuclkfeq
+
+UNDEFINED SYMBOLS
+LOS_IntLock
+LOS_IntRestore

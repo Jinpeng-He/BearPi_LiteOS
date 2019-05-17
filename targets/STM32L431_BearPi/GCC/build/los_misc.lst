@@ -1,0 +1,230 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccbCD1Fn.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"los_misc.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.LOS_Align,"ax",%progbits
+  18              		.align	1
+  19              		.global	LOS_Align
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	LOS_Align:
+  26              	.LFB135:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc/los_misc.c"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccbCD1Fn.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** #include "los_base.ph"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** #include "los_sys.ph"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** #include "los_task.ph"
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** #include "los_hwi.h"
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** 
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** LITE_OS_SEC_TEXT UINT32 LOS_Align(UINT32 uwAddr, UINT32 uwBoundary)
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** {
+  28              		.loc 1 41 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****     if (uwAddr + uwBoundary - 1 > uwAddr) {
+  34              		.loc 1 42 0
+  35 0000 4318     		adds	r3, r0, r1
+  36 0002 013B     		subs	r3, r3, #1
+  37 0004 8342     		cmp	r3, r0
+  38 0006 02D8     		bhi	.L4
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****         return (uwAddr + uwBoundary - 1) & ~(uwBoundary - 1);
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****     } else {
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****         return uwAddr & ~(uwBoundary - 1);
+  39              		.loc 1 45 0
+  40 0008 4942     		negs	r1, r1
+  41              	.LVL1:
+  42 000a 0840     		ands	r0, r0, r1
+  43              	.LVL2:
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****     }
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** }
+  44              		.loc 1 47 0
+  45 000c 7047     		bx	lr
+  46              	.LVL3:
+  47              	.L4:
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****         return (uwAddr + uwBoundary - 1) & ~(uwBoundary - 1);
+  48              		.loc 1 43 0
+  49 000e 4942     		negs	r1, r1
+  50              	.LVL4:
+  51 0010 03EA0100 		and	r0, r3, r1
+  52              	.LVL5:
+  53 0014 7047     		bx	lr
+  54              		.cfi_endproc
+  55              	.LFE135:
+  57              		.section	.text.LOS_Msleep,"ax",%progbits
+  58              		.align	1
+  59              		.global	LOS_Msleep
+  60              		.syntax unified
+  61              		.thumb
+  62              		.thumb_func
+  63              		.fpu fpv4-sp-d16
+  65              	LOS_Msleep:
+  66              	.LFB136:
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** 
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** LITE_OS_SEC_TEXT_MINOR VOID LOS_Msleep(UINT32 uwMsecs)
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccbCD1Fn.s 			page 3
+
+
+  67              		.loc 1 50 0
+  68              		.cfi_startproc
+  69              		@ args = 0, pretend = 0, frame = 0
+  70              		@ frame_needed = 0, uses_anonymous_args = 0
+  71              	.LVL6:
+  72 0000 10B5     		push	{r4, lr}
+  73              	.LCFI0:
+  74              		.cfi_def_cfa_offset 8
+  75              		.cfi_offset 4, -8
+  76              		.cfi_offset 14, -4
+  77 0002 0446     		mov	r4, r0
+  78              	.LVL7:
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****     UINT32 uwInterval = 0;
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** 
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****     if (OS_INT_ACTIVE)
+  79              		.loc 1 53 0
+  80 0004 FFF7FEFF 		bl	osIntNumGet
+  81              	.LVL8:
+  82 0008 18B9     		cbnz	r0, .L5
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****     {
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****         return;
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****     }
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** 
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****     if (uwMsecs == 0)
+  83              		.loc 1 58 0
+  84 000a 1CB9     		cbnz	r4, .L10
+  85              	.LVL9:
+  86              	.L7:
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****     {
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****         uwInterval = 0;
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****     }
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****     else
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****     {
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****         uwInterval = LOS_MS2Tick(uwMsecs);
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****         if (uwInterval == 0)
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****         {
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****              uwInterval = 1;
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****         }
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****     }
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** 
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****     (VOID)LOS_TaskDelay(uwInterval);
+  87              		.loc 1 71 0
+  88 000c 2046     		mov	r0, r4
+  89 000e FFF7FEFF 		bl	LOS_TaskDelay
+  90              	.LVL10:
+  91              	.L5:
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c **** }
+  92              		.loc 1 72 0
+  93 0012 10BD     		pop	{r4, pc}
+  94              	.LVL11:
+  95              	.L10:
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****         if (uwInterval == 0)
+  96              		.loc 1 64 0
+  97 0014 2046     		mov	r0, r4
+  98 0016 FFF7FEFF 		bl	LOS_MS2Tick
+  99              	.LVL12:
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****         {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccbCD1Fn.s 			page 4
+
+
+ 100              		.loc 1 65 0
+ 101 001a 0446     		mov	r4, r0
+ 102              	.LVL13:
+ 103 001c 0028     		cmp	r0, #0
+ 104 001e F5D1     		bne	.L7
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/misc\los_misc.c ****         }
+ 105              		.loc 1 67 0
+ 106 0020 0124     		movs	r4, #1
+ 107 0022 F3E7     		b	.L7
+ 108              		.cfi_endproc
+ 109              	.LFE136:
+ 111              		.text
+ 112              	.Letext0:
+ 113              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 114              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 115              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 116              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 117              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 118              		.file 7 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 119              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 120              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 121              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 122              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 123              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 124              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 125              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 126              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 127              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 128              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 129              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 130              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 131              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 132              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_sys.h"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccbCD1Fn.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 los_misc.c
+c:\Users\lenovo\AppData\Local\Temp\ccbCD1Fn.s:18     .text.LOS_Align:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccbCD1Fn.s:25     .text.LOS_Align:00000000 LOS_Align
+c:\Users\lenovo\AppData\Local\Temp\ccbCD1Fn.s:58     .text.LOS_Msleep:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccbCD1Fn.s:65     .text.LOS_Msleep:00000000 LOS_Msleep
+
+UNDEFINED SYMBOLS
+osIntNumGet
+LOS_TaskDelay
+LOS_MS2Tick

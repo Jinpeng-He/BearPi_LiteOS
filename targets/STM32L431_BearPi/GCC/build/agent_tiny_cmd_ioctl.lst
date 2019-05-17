@@ -1,0 +1,3074 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"agent_tiny_cmd_ioctl.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.atiny_str_to_hex,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	atiny_str_to_hex:
+  25              	.LFB133:
+  26              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m/agent_tiny_cm
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  * applicable export control laws and regulations.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 2
+
+
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #include "agent_tiny_cmd_ioctl.h"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #include "atiny_lwm2m/agenttiny.h"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #include "osdepends/atiny_osdep.h"
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #ifdef CONFIG_FEATURE_FOTA
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #include "ota/ota_api.h"
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #include "ota_port.h"
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #endif
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #if defined(WITH_AT_FRAMEWORK) && defined(USE_NB_NEUL95)
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #include "at_device/bc95.h"
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #endif
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_POWER_VOLTAGE     3800
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_BATTERY_LEVEL     90
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_MEMORY_FREE       50
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_NETWORK_BEARER    5
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_SIGNAL_STRENGTH   90
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_CELL_ID           21103
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_LINK_QUALITY      98
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_LINK_UTRILIZATION 10
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_POWER_SOURCE      1
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_POWER_CURRENT     125
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_LATITUDE          27.986065f
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_LONGITUDE         86.922623f
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_ALTITUDE          8495.0000f
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_RADIUS            0.0f
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_SPEED             0.0f
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define ATINY_TIME_CODE         1367491215
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** static int atiny_str_to_hex(const char *bufin, int len, char *bufout)
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+  27              		.loc 1 66 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     int i = 0;
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     if (NULL == bufin || len <= 0 || NULL == bufout)
+  32              		.loc 1 68 0
+  33 0000 98B1     		cbz	r0, .L5
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     int i = 0;
+  34              		.loc 1 66 0 discriminator 1
+  35 0002 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 24
+  38              		.cfi_offset 3, -24
+  39              		.cfi_offset 4, -20
+  40              		.cfi_offset 5, -16
+  41              		.cfi_offset 6, -12
+  42              		.cfi_offset 7, -8
+  43              		.cfi_offset 14, -4
+  44 0004 0746     		mov	r7, r0
+  45              		.loc 1 68 0 discriminator 1
+  46 0006 0029     		cmp	r1, #0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 3
+
+
+  47 0008 12DD     		ble	.L6
+  48              		.loc 1 68 0 is_stmt 0 discriminator 2
+  49 000a A2B1     		cbz	r2, .L7
+  50 000c 1646     		mov	r6, r2
+  51 000e 0D46     		mov	r5, r1
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     {
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         return -1;
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     }
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     for(i = 0; i < len; i++)
+  52              		.loc 1 72 0 is_stmt 1
+  53 0010 0024     		movs	r4, #0
+  54 0012 06E0     		b	.L3
+  55              	.LVL1:
+  56              	.L4:
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     {
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         sprintf(bufout+i*2, "%02X", bufin[i]);
+  57              		.loc 1 74 0 discriminator 3
+  58 0014 3A5D     		ldrb	r2, [r7, r4]	@ zero_extendqisi2
+  59 0016 0949     		ldr	r1, .L12
+  60 0018 06EB4400 		add	r0, r6, r4, lsl #1
+  61 001c FFF7FEFF 		bl	sprintf
+  62              	.LVL2:
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     {
+  63              		.loc 1 72 0 discriminator 3
+  64 0020 0134     		adds	r4, r4, #1
+  65              	.LVL3:
+  66              	.L3:
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     {
+  67              		.loc 1 72 0 is_stmt 0 discriminator 1
+  68 0022 AC42     		cmp	r4, r5
+  69 0024 F6DB     		blt	.L4
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     }
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return 0;
+  70              		.loc 1 76 0 is_stmt 1
+  71 0026 0020     		movs	r0, #0
+  72              	.LVL4:
+  73              	.L1:
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+  74              		.loc 1 77 0
+  75 0028 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+  76              	.LVL5:
+  77              	.L5:
+  78              	.LCFI1:
+  79              		.cfi_def_cfa_offset 0
+  80              		.cfi_restore 3
+  81              		.cfi_restore 4
+  82              		.cfi_restore 5
+  83              		.cfi_restore 6
+  84              		.cfi_restore 7
+  85              		.cfi_restore 14
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     }
+  86              		.loc 1 70 0
+  87 002a 4FF0FF30 		mov	r0, #-1
+  88              	.LVL6:
+  89              		.loc 1 77 0
+  90 002e 7047     		bx	lr
+  91              	.LVL7:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 4
+
+
+  92              	.L6:
+  93              	.LCFI2:
+  94              		.cfi_def_cfa_offset 24
+  95              		.cfi_offset 3, -24
+  96              		.cfi_offset 4, -20
+  97              		.cfi_offset 5, -16
+  98              		.cfi_offset 6, -12
+  99              		.cfi_offset 7, -8
+ 100              		.cfi_offset 14, -4
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     }
+ 101              		.loc 1 70 0
+ 102 0030 4FF0FF30 		mov	r0, #-1
+ 103              	.LVL8:
+ 104 0034 F8E7     		b	.L1
+ 105              	.LVL9:
+ 106              	.L7:
+ 107 0036 4FF0FF30 		mov	r0, #-1
+ 108              	.LVL10:
+ 109 003a F5E7     		b	.L1
+ 110              	.L13:
+ 111              		.align	2
+ 112              	.L12:
+ 113 003c 00000000 		.word	.LC0
+ 114              		.cfi_endproc
+ 115              	.LFE133:
+ 117              		.section	.text.atiny_get_manufacturer,"ax",%progbits
+ 118              		.align	1
+ 119              		.global	atiny_get_manufacturer
+ 120              		.syntax unified
+ 121              		.thumb
+ 122              		.thumb_func
+ 123              		.fpu fpv4-sp-d16
+ 125              	atiny_get_manufacturer:
+ 126              	.LFB134:
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_manufacturer(char *manu, int len)
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 127              		.loc 1 80 0
+ 128              		.cfi_startproc
+ 129              		@ args = 0, pretend = 0, frame = 0
+ 130              		@ frame_needed = 0, uses_anonymous_args = 0
+ 131              	.LVL11:
+ 132 0000 08B5     		push	{r3, lr}
+ 133              	.LCFI3:
+ 134              		.cfi_def_cfa_offset 8
+ 135              		.cfi_offset 3, -8
+ 136              		.cfi_offset 14, -4
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     (void)atiny_snprintf(manu, len, "Open Mobile Alliance");
+ 137              		.loc 1 81 0
+ 138 0002 024A     		ldr	r2, .L16
+ 139 0004 FFF7FEFF 		bl	atiny_snprintf
+ 140              	.LVL12:
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 141              		.loc 1 83 0
+ 142 0008 0020     		movs	r0, #0
+ 143 000a 08BD     		pop	{r3, pc}
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 5
+
+
+ 144              	.L17:
+ 145              		.align	2
+ 146              	.L16:
+ 147 000c 00000000 		.word	.LC1
+ 148              		.cfi_endproc
+ 149              	.LFE134:
+ 151              		.section	.text.atiny_get_model_number,"ax",%progbits
+ 152              		.align	1
+ 153              		.global	atiny_get_model_number
+ 154              		.syntax unified
+ 155              		.thumb
+ 156              		.thumb_func
+ 157              		.fpu fpv4-sp-d16
+ 159              	atiny_get_model_number:
+ 160              	.LFB135:
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_model_number(char *mode, int len)
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 161              		.loc 1 86 0
+ 162              		.cfi_startproc
+ 163              		@ args = 0, pretend = 0, frame = 0
+ 164              		@ frame_needed = 0, uses_anonymous_args = 0
+ 165              	.LVL13:
+ 166 0000 08B5     		push	{r3, lr}
+ 167              	.LCFI4:
+ 168              		.cfi_def_cfa_offset 8
+ 169              		.cfi_offset 3, -8
+ 170              		.cfi_offset 14, -4
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     (void)atiny_snprintf(mode, len, "Lightweight M2M Client");
+ 171              		.loc 1 87 0
+ 172 0002 024A     		ldr	r2, .L20
+ 173 0004 FFF7FEFF 		bl	atiny_snprintf
+ 174              	.LVL14:
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 175              		.loc 1 89 0
+ 176 0008 0020     		movs	r0, #0
+ 177 000a 08BD     		pop	{r3, pc}
+ 178              	.L21:
+ 179              		.align	2
+ 180              	.L20:
+ 181 000c 00000000 		.word	.LC2
+ 182              		.cfi_endproc
+ 183              	.LFE135:
+ 185              		.section	.text.atiny_get_serial_number,"ax",%progbits
+ 186              		.align	1
+ 187              		.global	atiny_get_serial_number
+ 188              		.syntax unified
+ 189              		.thumb
+ 190              		.thumb_func
+ 191              		.fpu fpv4-sp-d16
+ 193              	atiny_get_serial_number:
+ 194              	.LFB136:
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_serial_number(char *num, int len)
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 195              		.loc 1 92 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 6
+
+
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 0
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199              	.LVL15:
+ 200 0000 08B5     		push	{r3, lr}
+ 201              	.LCFI5:
+ 202              		.cfi_def_cfa_offset 8
+ 203              		.cfi_offset 3, -8
+ 204              		.cfi_offset 14, -4
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     (void)atiny_snprintf(num, len, "345000123");
+ 205              		.loc 1 93 0
+ 206 0002 024A     		ldr	r2, .L24
+ 207 0004 FFF7FEFF 		bl	atiny_snprintf
+ 208              	.LVL16:
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 209              		.loc 1 95 0
+ 210 0008 0020     		movs	r0, #0
+ 211 000a 08BD     		pop	{r3, pc}
+ 212              	.L25:
+ 213              		.align	2
+ 214              	.L24:
+ 215 000c 00000000 		.word	.LC3
+ 216              		.cfi_endproc
+ 217              	.LFE136:
+ 219              		.section	.text.atiny_get_firmware_ver,"ax",%progbits
+ 220              		.align	1
+ 221              		.global	atiny_get_firmware_ver
+ 222              		.syntax unified
+ 223              		.thumb
+ 224              		.thumb_func
+ 225              		.fpu fpv4-sp-d16
+ 227              	atiny_get_firmware_ver:
+ 228              	.LFB137:
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_firmware_ver(char *version, int len)
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 229              		.loc 1 98 0
+ 230              		.cfi_startproc
+ 231              		@ args = 0, pretend = 0, frame = 0
+ 232              		@ frame_needed = 0, uses_anonymous_args = 0
+ 233              	.LVL17:
+ 234 0000 08B5     		push	{r3, lr}
+ 235              	.LCFI6:
+ 236              		.cfi_def_cfa_offset 8
+ 237              		.cfi_offset 3, -8
+ 238              		.cfi_offset 14, -4
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     (void)atiny_snprintf(version, len, "example_ver001");
+ 239              		.loc 1 99 0
+ 240 0002 024A     		ldr	r2, .L28
+ 241 0004 FFF7FEFF 		bl	atiny_snprintf
+ 242              	.LVL18:
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 243              		.loc 1 101 0
+ 244 0008 0020     		movs	r0, #0
+ 245 000a 08BD     		pop	{r3, pc}
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 7
+
+
+ 246              	.L29:
+ 247              		.align	2
+ 248              	.L28:
+ 249 000c 00000000 		.word	.LC4
+ 250              		.cfi_endproc
+ 251              	.LFE137:
+ 253              		.section	.text.atiny_do_dev_reboot,"ax",%progbits
+ 254              		.align	1
+ 255              		.global	atiny_do_dev_reboot
+ 256              		.syntax unified
+ 257              		.thumb
+ 258              		.thumb_func
+ 259              		.fpu fpv4-sp-d16
+ 261              	atiny_do_dev_reboot:
+ 262              	.LFB138:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_do_dev_reboot(void)
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 263              		.loc 1 104 0
+ 264              		.cfi_startproc
+ 265              		@ args = 0, pretend = 0, frame = 0
+ 266              		@ frame_needed = 0, uses_anonymous_args = 0
+ 267 0000 08B5     		push	{r3, lr}
+ 268              	.LCFI7:
+ 269              		.cfi_def_cfa_offset 8
+ 270              		.cfi_offset 3, -8
+ 271              		.cfi_offset 14, -4
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     (void)atiny_printf("device is rebooting......\r\n");
+ 272              		.loc 1 105 0
+ 273 0002 0348     		ldr	r0, .L32
+ 274 0004 FFF7FEFF 		bl	atiny_printf
+ 275              	.LVL19:
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     //LOS_TaskDelay(1000);
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     atiny_reboot();
+ 276              		.loc 1 107 0
+ 277 0008 FFF7FEFF 		bl	atiny_reboot
+ 278              	.LVL20:
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 279              		.loc 1 109 0
+ 280 000c 0020     		movs	r0, #0
+ 281 000e 08BD     		pop	{r3, pc}
+ 282              	.L33:
+ 283              		.align	2
+ 284              	.L32:
+ 285 0010 00000000 		.word	.LC5
+ 286              		.cfi_endproc
+ 287              	.LFE138:
+ 289              		.section	.text.atiny_do_factory_reset,"ax",%progbits
+ 290              		.align	1
+ 291              		.global	atiny_do_factory_reset
+ 292              		.syntax unified
+ 293              		.thumb
+ 294              		.thumb_func
+ 295              		.fpu fpv4-sp-d16
+ 297              	atiny_do_factory_reset:
+ 298              	.LFB139:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 8
+
+
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_do_factory_reset(void)
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 299              		.loc 1 112 0
+ 300              		.cfi_startproc
+ 301              		@ args = 0, pretend = 0, frame = 0
+ 302              		@ frame_needed = 0, uses_anonymous_args = 0
+ 303 0000 08B5     		push	{r3, lr}
+ 304              	.LCFI8:
+ 305              		.cfi_def_cfa_offset 8
+ 306              		.cfi_offset 3, -8
+ 307              		.cfi_offset 14, -4
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     (void)atiny_printf("\n\t FACTORY RESET\r\n\n");
+ 308              		.loc 1 113 0
+ 309 0002 0248     		ldr	r0, .L36
+ 310 0004 FFF7FEFF 		bl	atiny_printf
+ 311              	.LVL21:
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 312              		.loc 1 115 0
+ 313 0008 0020     		movs	r0, #0
+ 314 000a 08BD     		pop	{r3, pc}
+ 315              	.L37:
+ 316              		.align	2
+ 317              	.L36:
+ 318 000c 00000000 		.word	.LC6
+ 319              		.cfi_endproc
+ 320              	.LFE139:
+ 322              		.section	.text.atiny_get_power_source,"ax",%progbits
+ 323              		.align	1
+ 324              		.global	atiny_get_power_source
+ 325              		.syntax unified
+ 326              		.thumb
+ 327              		.thumb_func
+ 328              		.fpu fpv4-sp-d16
+ 330              	atiny_get_power_source:
+ 331              	.LFB140:
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_power_source(int *arg)
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 332              		.loc 1 118 0
+ 333              		.cfi_startproc
+ 334              		@ args = 0, pretend = 0, frame = 0
+ 335              		@ frame_needed = 0, uses_anonymous_args = 0
+ 336              		@ link register save eliminated.
+ 337              	.LVL22:
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *arg = ATINY_POWER_SOURCE;
+ 338              		.loc 1 119 0
+ 339 0000 0123     		movs	r3, #1
+ 340 0002 0360     		str	r3, [r0]
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 341              		.loc 1 121 0
+ 342 0004 0020     		movs	r0, #0
+ 343              	.LVL23:
+ 344 0006 7047     		bx	lr
+ 345              		.cfi_endproc
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 9
+
+
+ 346              	.LFE140:
+ 348              		.section	.text.atiny_get_source_voltage,"ax",%progbits
+ 349              		.align	1
+ 350              		.global	atiny_get_source_voltage
+ 351              		.syntax unified
+ 352              		.thumb
+ 353              		.thumb_func
+ 354              		.fpu fpv4-sp-d16
+ 356              	atiny_get_source_voltage:
+ 357              	.LFB141:
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_source_voltage(int *voltage)
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 358              		.loc 1 124 0
+ 359              		.cfi_startproc
+ 360              		@ args = 0, pretend = 0, frame = 0
+ 361              		@ frame_needed = 0, uses_anonymous_args = 0
+ 362              		@ link register save eliminated.
+ 363              	.LVL24:
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *voltage = ATINY_POWER_VOLTAGE;
+ 364              		.loc 1 125 0
+ 365 0000 40F6D863 		movw	r3, #3800
+ 366 0004 0360     		str	r3, [r0]
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 367              		.loc 1 127 0
+ 368 0006 0020     		movs	r0, #0
+ 369              	.LVL25:
+ 370 0008 7047     		bx	lr
+ 371              		.cfi_endproc
+ 372              	.LFE141:
+ 374              		.section	.text.atiny_get_power_current,"ax",%progbits
+ 375              		.align	1
+ 376              		.global	atiny_get_power_current
+ 377              		.syntax unified
+ 378              		.thumb
+ 379              		.thumb_func
+ 380              		.fpu fpv4-sp-d16
+ 382              	atiny_get_power_current:
+ 383              	.LFB142:
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_power_current(int *arg)
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 384              		.loc 1 130 0
+ 385              		.cfi_startproc
+ 386              		@ args = 0, pretend = 0, frame = 0
+ 387              		@ frame_needed = 0, uses_anonymous_args = 0
+ 388              		@ link register save eliminated.
+ 389              	.LVL26:
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *arg = ATINY_POWER_CURRENT;
+ 390              		.loc 1 131 0
+ 391 0000 7D23     		movs	r3, #125
+ 392 0002 0360     		str	r3, [r0]
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 393              		.loc 1 133 0
+ 394 0004 0020     		movs	r0, #0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 10
+
+
+ 395              	.LVL27:
+ 396 0006 7047     		bx	lr
+ 397              		.cfi_endproc
+ 398              	.LFE142:
+ 400              		.section	.text.atiny_get_baterry_level,"ax",%progbits
+ 401              		.align	1
+ 402              		.global	atiny_get_baterry_level
+ 403              		.syntax unified
+ 404              		.thumb
+ 405              		.thumb_func
+ 406              		.fpu fpv4-sp-d16
+ 408              	atiny_get_baterry_level:
+ 409              	.LFB143:
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_baterry_level(int *voltage)
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 410              		.loc 1 136 0
+ 411              		.cfi_startproc
+ 412              		@ args = 0, pretend = 0, frame = 0
+ 413              		@ frame_needed = 0, uses_anonymous_args = 0
+ 414              		@ link register save eliminated.
+ 415              	.LVL28:
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *voltage = ATINY_BATTERY_LEVEL;
+ 416              		.loc 1 137 0
+ 417 0000 5A23     		movs	r3, #90
+ 418 0002 0360     		str	r3, [r0]
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 419              		.loc 1 139 0
+ 420 0004 0020     		movs	r0, #0
+ 421              	.LVL29:
+ 422 0006 7047     		bx	lr
+ 423              		.cfi_endproc
+ 424              	.LFE143:
+ 426              		.section	.text.atiny_get_memory_free,"ax",%progbits
+ 427              		.align	1
+ 428              		.global	atiny_get_memory_free
+ 429              		.syntax unified
+ 430              		.thumb
+ 431              		.thumb_func
+ 432              		.fpu fpv4-sp-d16
+ 434              	atiny_get_memory_free:
+ 435              	.LFB144:
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_memory_free(int *voltage)
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 436              		.loc 1 142 0
+ 437              		.cfi_startproc
+ 438              		@ args = 0, pretend = 0, frame = 8
+ 439              		@ frame_needed = 0, uses_anonymous_args = 0
+ 440              	.LVL30:
+ 441 0000 10B5     		push	{r4, lr}
+ 442              	.LCFI9:
+ 443              		.cfi_def_cfa_offset 8
+ 444              		.cfi_offset 4, -8
+ 445              		.cfi_offset 14, -4
+ 446 0002 82B0     		sub	sp, sp, #8
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 11
+
+
+ 447              	.LCFI10:
+ 448              		.cfi_def_cfa_offset 16
+ 449 0004 0446     		mov	r4, r0
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     int tmp;
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     (void)atiny_random(&tmp, sizeof(tmp));
+ 450              		.loc 1 144 0
+ 451 0006 0421     		movs	r1, #4
+ 452 0008 0DEB0100 		add	r0, sp, r1
+ 453              	.LVL31:
+ 454 000c FFF7FEFF 		bl	atiny_random
+ 455              	.LVL32:
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     tmp %= 30;
+ 456              		.loc 1 145 0
+ 457 0010 0199     		ldr	r1, [sp, #4]
+ 458 0012 084B     		ldr	r3, .L44
+ 459 0014 83FB0123 		smull	r2, r3, r3, r1
+ 460 0018 5A18     		adds	r2, r3, r1
+ 461 001a CB17     		asrs	r3, r1, #31
+ 462 001c C3EB2213 		rsb	r3, r3, r2, asr #4
+ 463 0020 C3EB0313 		rsb	r3, r3, r3, lsl #4
+ 464 0024 5A00     		lsls	r2, r3, #1
+ 465 0026 8B1A     		subs	r3, r1, r2
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *voltage = ATINY_MEMORY_FREE + tmp;
+ 466              		.loc 1 146 0
+ 467 0028 3233     		adds	r3, r3, #50
+ 468 002a 2360     		str	r3, [r4]
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 469              		.loc 1 148 0
+ 470 002c 0020     		movs	r0, #0
+ 471 002e 02B0     		add	sp, sp, #8
+ 472              	.LCFI11:
+ 473              		.cfi_def_cfa_offset 8
+ 474              		@ sp needed
+ 475 0030 10BD     		pop	{r4, pc}
+ 476              	.LVL33:
+ 477              	.L45:
+ 478 0032 00BF     		.align	2
+ 479              	.L44:
+ 480 0034 89888888 		.word	-2004318071
+ 481              		.cfi_endproc
+ 482              	.LFE144:
+ 484              		.section	.text.atiny_get_dev_err,"ax",%progbits
+ 485              		.align	1
+ 486              		.global	atiny_get_dev_err
+ 487              		.syntax unified
+ 488              		.thumb
+ 489              		.thumb_func
+ 490              		.fpu fpv4-sp-d16
+ 492              	atiny_get_dev_err:
+ 493              	.LFB145:
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** static int err_code = ATINY_OK;
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_dev_err(int *arg)
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 494              		.loc 1 153 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 12
+
+
+ 495              		.cfi_startproc
+ 496              		@ args = 0, pretend = 0, frame = 0
+ 497              		@ frame_needed = 0, uses_anonymous_args = 0
+ 498              		@ link register save eliminated.
+ 499              	.LVL34:
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *arg = err_code;
+ 500              		.loc 1 154 0
+ 501 0000 024B     		ldr	r3, .L47
+ 502 0002 1B68     		ldr	r3, [r3]
+ 503 0004 0360     		str	r3, [r0]
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 504              		.loc 1 156 0
+ 505 0006 0020     		movs	r0, #0
+ 506              	.LVL35:
+ 507 0008 7047     		bx	lr
+ 508              	.L48:
+ 509 000a 00BF     		.align	2
+ 510              	.L47:
+ 511 000c 00000000 		.word	.LANCHOR0
+ 512              		.cfi_endproc
+ 513              	.LFE145:
+ 515              		.section	.text.atiny_do_reset_dev_err,"ax",%progbits
+ 516              		.align	1
+ 517              		.global	atiny_do_reset_dev_err
+ 518              		.syntax unified
+ 519              		.thumb
+ 520              		.thumb_func
+ 521              		.fpu fpv4-sp-d16
+ 523              	atiny_do_reset_dev_err:
+ 524              	.LFB146:
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_do_reset_dev_err(void)
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 525              		.loc 1 159 0
+ 526              		.cfi_startproc
+ 527              		@ args = 0, pretend = 0, frame = 0
+ 528              		@ frame_needed = 0, uses_anonymous_args = 0
+ 529              		@ link register save eliminated.
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     err_code = ATINY_OK;
+ 530              		.loc 1 160 0
+ 531 0000 0020     		movs	r0, #0
+ 532 0002 014B     		ldr	r3, .L50
+ 533 0004 1860     		str	r0, [r3]
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 534              		.loc 1 162 0
+ 535 0006 7047     		bx	lr
+ 536              	.L51:
+ 537              		.align	2
+ 538              	.L50:
+ 539 0008 00000000 		.word	.LANCHOR0
+ 540              		.cfi_endproc
+ 541              	.LFE146:
+ 543              		.global	__aeabi_ldivmod
+ 544              		.section	.text.atiny_get_current_time,"ax",%progbits
+ 545              		.align	1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 13
+
+
+ 546              		.global	atiny_get_current_time
+ 547              		.syntax unified
+ 548              		.thumb
+ 549              		.thumb_func
+ 550              		.fpu fpv4-sp-d16
+ 552              	atiny_get_current_time:
+ 553              	.LFB147:
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** static int64_t g_current_time = ATINY_TIME_CODE;
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_current_time(int64_t *arg)
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 554              		.loc 1 167 0
+ 555              		.cfi_startproc
+ 556              		@ args = 0, pretend = 0, frame = 0
+ 557              		@ frame_needed = 0, uses_anonymous_args = 0
+ 558              	.LVL36:
+ 559 0000 2DE91848 		push	{r3, r4, fp, lr}
+ 560              	.LCFI12:
+ 561              		.cfi_def_cfa_offset 16
+ 562              		.cfi_offset 3, -16
+ 563              		.cfi_offset 4, -12
+ 564              		.cfi_offset 11, -8
+ 565              		.cfi_offset 14, -4
+ 566 0004 0446     		mov	r4, r0
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *arg = g_current_time + (int64_t)atiny_gettime_ms() / 1000;
+ 567              		.loc 1 168 0
+ 568 0006 FFF7FEFF 		bl	atiny_gettime_ms
+ 569              	.LVL37:
+ 570 000a 4FF47A72 		mov	r2, #1000
+ 571 000e 0023     		movs	r3, #0
+ 572 0010 FFF7FEFF 		bl	__aeabi_ldivmod
+ 573              	.LVL38:
+ 574 0014 054B     		ldr	r3, .L54
+ 575 0016 D3E90023 		ldrd	r2, [r3]
+ 576 001a 10EB020B 		adds	fp, r0, r2
+ 577 001e 41EB030C 		adc	ip, r1, r3
+ 578 0022 C4E900BC 		strd	fp, [r4]
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 579              		.loc 1 170 0
+ 580 0026 0020     		movs	r0, #0
+ 581 0028 BDE81888 		pop	{r3, r4, fp, pc}
+ 582              	.LVL39:
+ 583              	.L55:
+ 584              		.align	2
+ 585              	.L54:
+ 586 002c 00000000 		.word	.LANCHOR1
+ 587              		.cfi_endproc
+ 588              	.LFE147:
+ 590              		.section	.text.atiny_set_current_time,"ax",%progbits
+ 591              		.align	1
+ 592              		.global	atiny_set_current_time
+ 593              		.syntax unified
+ 594              		.thumb
+ 595              		.thumb_func
+ 596              		.fpu fpv4-sp-d16
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 14
+
+
+ 598              	atiny_set_current_time:
+ 599              	.LFB148:
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_set_current_time(const int64_t *arg)
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 600              		.loc 1 173 0
+ 601              		.cfi_startproc
+ 602              		@ args = 0, pretend = 0, frame = 0
+ 603              		@ frame_needed = 0, uses_anonymous_args = 0
+ 604              	.LVL40:
+ 605 0000 2DE93048 		push	{r4, r5, fp, lr}
+ 606              	.LCFI13:
+ 607              		.cfi_def_cfa_offset 16
+ 608              		.cfi_offset 4, -16
+ 609              		.cfi_offset 5, -12
+ 610              		.cfi_offset 11, -8
+ 611              		.cfi_offset 14, -4
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     g_current_time = *arg - (int64_t)atiny_gettime_ms() / 1000;
+ 612              		.loc 1 174 0
+ 613 0004 D0E90045 		ldrd	r4, [r0]
+ 614 0008 FFF7FEFF 		bl	atiny_gettime_ms
+ 615              	.LVL41:
+ 616 000c 074A     		ldr	r2, .L58
+ 617 000e 4FF0FF33 		mov	r3, #-1
+ 618 0012 FFF7FEFF 		bl	__aeabi_ldivmod
+ 619              	.LVL42:
+ 620 0016 10EB040B 		adds	fp, r0, r4
+ 621 001a 41EB050C 		adc	ip, r1, r5
+ 622 001e 044B     		ldr	r3, .L58+4
+ 623 0020 C3E900BC 		strd	fp, [r3]
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 624              		.loc 1 176 0
+ 625 0024 0020     		movs	r0, #0
+ 626 0026 BDE83088 		pop	{r4, r5, fp, pc}
+ 627              	.L59:
+ 628 002a 00BF     		.align	2
+ 629              	.L58:
+ 630 002c 18FCFFFF 		.word	-1000
+ 631 0030 00000000 		.word	.LANCHOR1
+ 632              		.cfi_endproc
+ 633              	.LFE148:
+ 635              		.section	.text.atiny_get_UTC_offset,"ax",%progbits
+ 636              		.align	1
+ 637              		.global	atiny_get_UTC_offset
+ 638              		.syntax unified
+ 639              		.thumb
+ 640              		.thumb_func
+ 641              		.fpu fpv4-sp-d16
+ 643              	atiny_get_UTC_offset:
+ 644              	.LFB149:
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define UTC_OFFSET_MAX_LEN 7
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** static char g_UTC_offset[UTC_OFFSET_MAX_LEN] = "+01:00";
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_UTC_offset(char *offset, int len)
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 15
+
+
+ 645              		.loc 1 182 0
+ 646              		.cfi_startproc
+ 647              		@ args = 0, pretend = 0, frame = 0
+ 648              		@ frame_needed = 0, uses_anonymous_args = 0
+ 649              	.LVL43:
+ 650 0000 38B5     		push	{r3, r4, r5, lr}
+ 651              	.LCFI14:
+ 652              		.cfi_def_cfa_offset 16
+ 653              		.cfi_offset 3, -16
+ 654              		.cfi_offset 4, -12
+ 655              		.cfi_offset 5, -8
+ 656              		.cfi_offset 14, -4
+ 657 0002 0546     		mov	r5, r0
+ 658 0004 0C46     		mov	r4, r1
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     if(len > strlen(g_UTC_offset) + 1)
+ 659              		.loc 1 183 0
+ 660 0006 0748     		ldr	r0, .L64
+ 661              	.LVL44:
+ 662 0008 FFF7FEFF 		bl	strlen
+ 663              	.LVL45:
+ 664 000c 0130     		adds	r0, r0, #1
+ 665 000e A042     		cmp	r0, r4
+ 666 0010 01D3     		bcc	.L63
+ 667              	.L61:
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     {
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         (void)atiny_snprintf(offset, len, g_UTC_offset);
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     }
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 668              		.loc 1 188 0
+ 669 0012 0020     		movs	r0, #0
+ 670 0014 38BD     		pop	{r3, r4, r5, pc}
+ 671              	.LVL46:
+ 672              	.L63:
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     }
+ 673              		.loc 1 185 0
+ 674 0016 034A     		ldr	r2, .L64
+ 675 0018 2146     		mov	r1, r4
+ 676 001a 2846     		mov	r0, r5
+ 677 001c FFF7FEFF 		bl	atiny_snprintf
+ 678              	.LVL47:
+ 679 0020 F7E7     		b	.L61
+ 680              	.L65:
+ 681 0022 00BF     		.align	2
+ 682              	.L64:
+ 683 0024 00000000 		.word	.LANCHOR2
+ 684              		.cfi_endproc
+ 685              	.LFE149:
+ 687              		.section	.text.atiny_set_UTC_offset,"ax",%progbits
+ 688              		.align	1
+ 689              		.global	atiny_set_UTC_offset
+ 690              		.syntax unified
+ 691              		.thumb
+ 692              		.thumb_func
+ 693              		.fpu fpv4-sp-d16
+ 695              	atiny_set_UTC_offset:
+ 696              	.LFB150:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 16
+
+
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_set_UTC_offset(const char *offset, int len)
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 697              		.loc 1 191 0
+ 698              		.cfi_startproc
+ 699              		@ args = 0, pretend = 0, frame = 0
+ 700              		@ frame_needed = 0, uses_anonymous_args = 0
+ 701              	.LVL48:
+ 702 0000 08B5     		push	{r3, lr}
+ 703              	.LCFI15:
+ 704              		.cfi_def_cfa_offset 8
+ 705              		.cfi_offset 3, -8
+ 706              		.cfi_offset 14, -4
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     (void)atiny_snprintf(g_UTC_offset, len + 1, offset);
+ 707              		.loc 1 192 0
+ 708 0002 0246     		mov	r2, r0
+ 709 0004 0131     		adds	r1, r1, #1
+ 710              	.LVL49:
+ 711 0006 0248     		ldr	r0, .L68
+ 712              	.LVL50:
+ 713 0008 FFF7FEFF 		bl	atiny_snprintf
+ 714              	.LVL51:
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 715              		.loc 1 194 0
+ 716 000c 0020     		movs	r0, #0
+ 717 000e 08BD     		pop	{r3, pc}
+ 718              	.L69:
+ 719              		.align	2
+ 720              	.L68:
+ 721 0010 00000000 		.word	.LANCHOR2
+ 722              		.cfi_endproc
+ 723              	.LFE150:
+ 725              		.section	.text.atiny_get_timezone,"ax",%progbits
+ 726              		.align	1
+ 727              		.global	atiny_get_timezone
+ 728              		.syntax unified
+ 729              		.thumb
+ 730              		.thumb_func
+ 731              		.fpu fpv4-sp-d16
+ 733              	atiny_get_timezone:
+ 734              	.LFB151:
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define TIMEZONE_MAXLEN 25
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** static char g_timezone[TIMEZONE_MAXLEN] = "Europe/Berlin";
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_timezone(char *timezone, int len)
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 735              		.loc 1 200 0
+ 736              		.cfi_startproc
+ 737              		@ args = 0, pretend = 0, frame = 0
+ 738              		@ frame_needed = 0, uses_anonymous_args = 0
+ 739              	.LVL52:
+ 740 0000 38B5     		push	{r3, r4, r5, lr}
+ 741              	.LCFI16:
+ 742              		.cfi_def_cfa_offset 16
+ 743              		.cfi_offset 3, -16
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 17
+
+
+ 744              		.cfi_offset 4, -12
+ 745              		.cfi_offset 5, -8
+ 746              		.cfi_offset 14, -4
+ 747 0002 0546     		mov	r5, r0
+ 748 0004 0C46     		mov	r4, r1
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     if(len > strlen(g_timezone) + 1)
+ 749              		.loc 1 201 0
+ 750 0006 0748     		ldr	r0, .L74
+ 751              	.LVL53:
+ 752 0008 FFF7FEFF 		bl	strlen
+ 753              	.LVL54:
+ 754 000c 0130     		adds	r0, r0, #1
+ 755 000e A042     		cmp	r0, r4
+ 756 0010 01D3     		bcc	.L73
+ 757              	.L71:
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     {
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         (void)atiny_snprintf(timezone, len, g_timezone);
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     }
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 758              		.loc 1 206 0
+ 759 0012 0020     		movs	r0, #0
+ 760 0014 38BD     		pop	{r3, r4, r5, pc}
+ 761              	.LVL55:
+ 762              	.L73:
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     }
+ 763              		.loc 1 203 0
+ 764 0016 034A     		ldr	r2, .L74
+ 765 0018 2146     		mov	r1, r4
+ 766 001a 2846     		mov	r0, r5
+ 767 001c FFF7FEFF 		bl	atiny_snprintf
+ 768              	.LVL56:
+ 769 0020 F7E7     		b	.L71
+ 770              	.L75:
+ 771 0022 00BF     		.align	2
+ 772              	.L74:
+ 773 0024 00000000 		.word	.LANCHOR3
+ 774              		.cfi_endproc
+ 775              	.LFE151:
+ 777              		.section	.text.atiny_set_timezone,"ax",%progbits
+ 778              		.align	1
+ 779              		.global	atiny_set_timezone
+ 780              		.syntax unified
+ 781              		.thumb
+ 782              		.thumb_func
+ 783              		.fpu fpv4-sp-d16
+ 785              	atiny_set_timezone:
+ 786              	.LFB152:
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_set_timezone(const char *timezone, int len)
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 787              		.loc 1 209 0
+ 788              		.cfi_startproc
+ 789              		@ args = 0, pretend = 0, frame = 0
+ 790              		@ frame_needed = 0, uses_anonymous_args = 0
+ 791              	.LVL57:
+ 792 0000 08B5     		push	{r3, lr}
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 18
+
+
+ 793              	.LCFI17:
+ 794              		.cfi_def_cfa_offset 8
+ 795              		.cfi_offset 3, -8
+ 796              		.cfi_offset 14, -4
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     (void)atiny_snprintf(g_timezone, len + 1, timezone);
+ 797              		.loc 1 210 0
+ 798 0002 0246     		mov	r2, r0
+ 799 0004 0131     		adds	r1, r1, #1
+ 800              	.LVL58:
+ 801 0006 0248     		ldr	r0, .L78
+ 802              	.LVL59:
+ 803 0008 FFF7FEFF 		bl	atiny_snprintf
+ 804              	.LVL60:
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 805              		.loc 1 212 0
+ 806 000c 0020     		movs	r0, #0
+ 807 000e 08BD     		pop	{r3, pc}
+ 808              	.L79:
+ 809              		.align	2
+ 810              	.L78:
+ 811 0010 00000000 		.word	.LANCHOR3
+ 812              		.cfi_endproc
+ 813              	.LFE152:
+ 815              		.section	.text.atiny_get_bind_mode,"ax",%progbits
+ 816              		.align	1
+ 817              		.global	atiny_get_bind_mode
+ 818              		.syntax unified
+ 819              		.thumb
+ 820              		.thumb_func
+ 821              		.fpu fpv4-sp-d16
+ 823              	atiny_get_bind_mode:
+ 824              	.LFB153:
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_bind_mode(char *mode, int len)
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 825              		.loc 1 215 0
+ 826              		.cfi_startproc
+ 827              		@ args = 0, pretend = 0, frame = 0
+ 828              		@ frame_needed = 0, uses_anonymous_args = 0
+ 829              	.LVL61:
+ 830 0000 38B5     		push	{r3, r4, r5, lr}
+ 831              	.LCFI18:
+ 832              		.cfi_def_cfa_offset 16
+ 833              		.cfi_offset 3, -16
+ 834              		.cfi_offset 4, -12
+ 835              		.cfi_offset 5, -8
+ 836              		.cfi_offset 14, -4
+ 837 0002 0446     		mov	r4, r0
+ 838 0004 0D46     		mov	r5, r1
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     (void)atiny_printf("bind type is UQ......\r\n");
+ 839              		.loc 1 216 0
+ 840 0006 0548     		ldr	r0, .L82
+ 841              	.LVL62:
+ 842 0008 FFF7FEFF 		bl	atiny_printf
+ 843              	.LVL63:
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     (void)atiny_snprintf(mode, len, "UQ");
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 19
+
+
+ 844              		.loc 1 217 0
+ 845 000c 044A     		ldr	r2, .L82+4
+ 846 000e 2946     		mov	r1, r5
+ 847 0010 2046     		mov	r0, r4
+ 848 0012 FFF7FEFF 		bl	atiny_snprintf
+ 849              	.LVL64:
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 850              		.loc 1 219 0
+ 851 0016 0020     		movs	r0, #0
+ 852 0018 38BD     		pop	{r3, r4, r5, pc}
+ 853              	.LVL65:
+ 854              	.L83:
+ 855 001a 00BF     		.align	2
+ 856              	.L82:
+ 857 001c 00000000 		.word	.LC7
+ 858 0020 18000000 		.word	.LC8
+ 859              		.cfi_endproc
+ 860              	.LFE153:
+ 862              		.section	.text.atiny_trig_firmware_update,"ax",%progbits
+ 863              		.align	1
+ 864              		.global	atiny_trig_firmware_update
+ 865              		.syntax unified
+ 866              		.thumb
+ 867              		.thumb_func
+ 868              		.fpu fpv4-sp-d16
+ 870              	atiny_trig_firmware_update:
+ 871              	.LFB154:
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_trig_firmware_update(void)
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 872              		.loc 1 222 0
+ 873              		.cfi_startproc
+ 874              		@ args = 0, pretend = 0, frame = 0
+ 875              		@ frame_needed = 0, uses_anonymous_args = 0
+ 876 0000 08B5     		push	{r3, lr}
+ 877              	.LCFI19:
+ 878              		.cfi_def_cfa_offset 8
+ 879              		.cfi_offset 3, -8
+ 880              		.cfi_offset 14, -4
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     (void)atiny_printf("firmware is updating......\r\n");
+ 881              		.loc 1 223 0
+ 882 0002 0248     		ldr	r0, .L86
+ 883 0004 FFF7FEFF 		bl	atiny_printf
+ 884              	.LVL66:
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 885              		.loc 1 225 0
+ 886 0008 0020     		movs	r0, #0
+ 887 000a 08BD     		pop	{r3, pc}
+ 888              	.L87:
+ 889              		.align	2
+ 890              	.L86:
+ 891 000c 00000000 		.word	.LC9
+ 892              		.cfi_endproc
+ 893              	.LFE154:
+ 895              		.section	.text.atiny_get_firmware_result,"ax",%progbits
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 20
+
+
+ 896              		.align	1
+ 897              		.global	atiny_get_firmware_result
+ 898              		.syntax unified
+ 899              		.thumb
+ 900              		.thumb_func
+ 901              		.fpu fpv4-sp-d16
+ 903              	atiny_get_firmware_result:
+ 904              	.LFB155:
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_firmware_result(int *result)
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 905              		.loc 1 228 0
+ 906              		.cfi_startproc
+ 907              		@ args = 0, pretend = 0, frame = 0
+ 908              		@ frame_needed = 0, uses_anonymous_args = 0
+ 909              		@ link register save eliminated.
+ 910              	.LVL67:
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *result = 0;
+ 911              		.loc 1 229 0
+ 912 0000 0023     		movs	r3, #0
+ 913 0002 0360     		str	r3, [r0]
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 914              		.loc 1 231 0
+ 915 0004 1846     		mov	r0, r3
+ 916              	.LVL68:
+ 917 0006 7047     		bx	lr
+ 918              		.cfi_endproc
+ 919              	.LFE155:
+ 921              		.section	.text.atiny_get_firmware_state,"ax",%progbits
+ 922              		.align	1
+ 923              		.global	atiny_get_firmware_state
+ 924              		.syntax unified
+ 925              		.thumb
+ 926              		.thumb_func
+ 927              		.fpu fpv4-sp-d16
+ 929              	atiny_get_firmware_state:
+ 930              	.LFB156:
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_firmware_state(int *state)
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 931              		.loc 1 234 0
+ 932              		.cfi_startproc
+ 933              		@ args = 0, pretend = 0, frame = 0
+ 934              		@ frame_needed = 0, uses_anonymous_args = 0
+ 935              		@ link register save eliminated.
+ 936              	.LVL69:
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *state = 0;
+ 937              		.loc 1 235 0
+ 938 0000 0023     		movs	r3, #0
+ 939 0002 0360     		str	r3, [r0]
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 940              		.loc 1 237 0
+ 941 0004 1846     		mov	r0, r3
+ 942              	.LVL70:
+ 943 0006 7047     		bx	lr
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 21
+
+
+ 944              		.cfi_endproc
+ 945              	.LFE156:
+ 947              		.section	.text.atiny_get_network_bearer,"ax",%progbits
+ 948              		.align	1
+ 949              		.global	atiny_get_network_bearer
+ 950              		.syntax unified
+ 951              		.thumb
+ 952              		.thumb_func
+ 953              		.fpu fpv4-sp-d16
+ 955              	atiny_get_network_bearer:
+ 956              	.LFB157:
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_network_bearer(int *network_brearer)
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 957              		.loc 1 240 0
+ 958              		.cfi_startproc
+ 959              		@ args = 0, pretend = 0, frame = 0
+ 960              		@ frame_needed = 0, uses_anonymous_args = 0
+ 961              		@ link register save eliminated.
+ 962              	.LVL71:
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *network_brearer = ATINY_NETWORK_BEARER;
+ 963              		.loc 1 241 0
+ 964 0000 0523     		movs	r3, #5
+ 965 0002 0360     		str	r3, [r0]
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 966              		.loc 1 243 0
+ 967 0004 0020     		movs	r0, #0
+ 968              	.LVL72:
+ 969 0006 7047     		bx	lr
+ 970              		.cfi_endproc
+ 971              	.LFE157:
+ 973              		.section	.text.atiny_get_signal_strength,"ax",%progbits
+ 974              		.align	1
+ 975              		.global	atiny_get_signal_strength
+ 976              		.syntax unified
+ 977              		.thumb
+ 978              		.thumb_func
+ 979              		.fpu fpv4-sp-d16
+ 981              	atiny_get_signal_strength:
+ 982              	.LFB158:
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_signal_strength(int *singal_strength)
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 983              		.loc 1 246 0
+ 984              		.cfi_startproc
+ 985              		@ args = 0, pretend = 0, frame = 0
+ 986              		@ frame_needed = 0, uses_anonymous_args = 0
+ 987              		@ link register save eliminated.
+ 988              	.LVL73:
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *singal_strength = ATINY_SIGNAL_STRENGTH;
+ 989              		.loc 1 247 0
+ 990 0000 5A23     		movs	r3, #90
+ 991 0002 0360     		str	r3, [r0]
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 992              		.loc 1 249 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 22
+
+
+ 993 0004 0020     		movs	r0, #0
+ 994              	.LVL74:
+ 995 0006 7047     		bx	lr
+ 996              		.cfi_endproc
+ 997              	.LFE158:
+ 999              		.section	.text.atiny_get_cell_id,"ax",%progbits
+ 1000              		.align	1
+ 1001              		.global	atiny_get_cell_id
+ 1002              		.syntax unified
+ 1003              		.thumb
+ 1004              		.thumb_func
+ 1005              		.fpu fpv4-sp-d16
+ 1007              	atiny_get_cell_id:
+ 1008              	.LFB159:
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_cell_id(long *cell_id)
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 1009              		.loc 1 252 0
+ 1010              		.cfi_startproc
+ 1011              		@ args = 0, pretend = 0, frame = 0
+ 1012              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1013              		@ link register save eliminated.
+ 1014              	.LVL75:
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *cell_id = ATINY_CELL_ID;
+ 1015              		.loc 1 253 0
+ 1016 0000 45F26F23 		movw	r3, #21103
+ 1017 0004 0360     		str	r3, [r0]
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 1018              		.loc 1 255 0
+ 1019 0006 0020     		movs	r0, #0
+ 1020              	.LVL76:
+ 1021 0008 7047     		bx	lr
+ 1022              		.cfi_endproc
+ 1023              	.LFE159:
+ 1025              		.section	.text.atiny_get_link_quality,"ax",%progbits
+ 1026              		.align	1
+ 1027              		.global	atiny_get_link_quality
+ 1028              		.syntax unified
+ 1029              		.thumb
+ 1030              		.thumb_func
+ 1031              		.fpu fpv4-sp-d16
+ 1033              	atiny_get_link_quality:
+ 1034              	.LFB160:
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_link_quality(int *quality)
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 1035              		.loc 1 258 0
+ 1036              		.cfi_startproc
+ 1037              		@ args = 0, pretend = 0, frame = 0
+ 1038              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1039              		@ link register save eliminated.
+ 1040              	.LVL77:
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *quality = ATINY_LINK_QUALITY;
+ 1041              		.loc 1 259 0
+ 1042 0000 6223     		movs	r3, #98
+ 1043 0002 0360     		str	r3, [r0]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 23
+
+
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 1044              		.loc 1 261 0
+ 1045 0004 0020     		movs	r0, #0
+ 1046              	.LVL78:
+ 1047 0006 7047     		bx	lr
+ 1048              		.cfi_endproc
+ 1049              	.LFE160:
+ 1051              		.section	.text.atiny_get_link_utilization,"ax",%progbits
+ 1052              		.align	1
+ 1053              		.global	atiny_get_link_utilization
+ 1054              		.syntax unified
+ 1055              		.thumb
+ 1056              		.thumb_func
+ 1057              		.fpu fpv4-sp-d16
+ 1059              	atiny_get_link_utilization:
+ 1060              	.LFB161:
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_link_utilization(int *utilization)
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 1061              		.loc 1 264 0
+ 1062              		.cfi_startproc
+ 1063              		@ args = 0, pretend = 0, frame = 0
+ 1064              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1065              		@ link register save eliminated.
+ 1066              	.LVL79:
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *utilization = ATINY_LINK_UTRILIZATION;
+ 1067              		.loc 1 265 0
+ 1068 0000 0A23     		movs	r3, #10
+ 1069 0002 0360     		str	r3, [r0]
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 1070              		.loc 1 267 0
+ 1071 0004 0020     		movs	r0, #0
+ 1072              	.LVL80:
+ 1073 0006 7047     		bx	lr
+ 1074              		.cfi_endproc
+ 1075              	.LFE161:
+ 1077              		.section	.text.atiny_write_app_write,"ax",%progbits
+ 1078              		.align	1
+ 1079              		.global	atiny_write_app_write
+ 1080              		.syntax unified
+ 1081              		.thumb
+ 1082              		.thumb_func
+ 1083              		.fpu fpv4-sp-d16
+ 1085              	atiny_write_app_write:
+ 1086              	.LFB162:
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_write_app_write(void *user_data, int len)
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 1087              		.loc 1 270 0
+ 1088              		.cfi_startproc
+ 1089              		@ args = 0, pretend = 0, frame = 1064
+ 1090              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1091              	.LVL81:
+ 1092 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 1093              	.LCFI20:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 24
+
+
+ 1094              		.cfi_def_cfa_offset 20
+ 1095              		.cfi_offset 4, -20
+ 1096              		.cfi_offset 5, -16
+ 1097              		.cfi_offset 6, -12
+ 1098              		.cfi_offset 7, -8
+ 1099              		.cfi_offset 14, -4
+ 1100 0002 ADF22C4D 		subw	sp, sp, #1068
+ 1101              	.LCFI21:
+ 1102              		.cfi_def_cfa_offset 1088
+ 1103 0006 00AF     		add	r7, sp, #0
+ 1104              	.LCFI22:
+ 1105              		.cfi_def_cfa_register 7
+ 1106 0008 0646     		mov	r6, r0
+ 1107 000a 0C46     		mov	r4, r1
+ 1108              	.LVL82:
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 	char  cmd_data[len];
+ 1109              		.loc 1 272 0
+ 1110 000c CB1D     		adds	r3, r1, #7
+ 1111 000e 23F00703 		bic	r3, r3, #7
+ 1112 0012 ADEB030D 		sub	sp, sp, r3
+ 1113 0016 6D46     		mov	r5, sp
+ 1114              	.LVL83:
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 	char tmpbuf[1064] = {0};
+ 1115              		.loc 1 273 0
+ 1116 0018 4FF48562 		mov	r2, #1064
+ 1117 001c 0021     		movs	r1, #0
+ 1118              	.LVL84:
+ 1119 001e 3846     		mov	r0, r7
+ 1120              	.LVL85:
+ 1121 0020 FFF7FEFF 		bl	memset
+ 1122              	.LVL86:
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 	char recvmid[4] = {0};
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 	memcpy(cmd_data,user_data,len);
+ 1123              		.loc 1 275 0
+ 1124 0024 2246     		mov	r2, r4
+ 1125 0026 3146     		mov	r1, r6
+ 1126 0028 6846     		mov	r0, sp
+ 1127 002a FFF7FEFF 		bl	memcpy
+ 1128              	.LVL87:
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 	atiny_str_to_hex(cmd_data,len,tmpbuf);
+ 1129              		.loc 1 276 0
+ 1130 002e 3A46     		mov	r2, r7
+ 1131 0030 2146     		mov	r1, r4
+ 1132 0032 6846     		mov	r0, sp
+ 1133 0034 FFF7FEFF 		bl	atiny_str_to_hex
+ 1134              	.LVL88:
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 	memcpy(recvmid,tmpbuf + 2, 4);
+ 1135              		.loc 1 277 0
+ 1136 0038 D7F80240 		ldr	r4, [r7, #2]	@ unaligned
+ 1137              	.LVL89:
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 			if(cmd_data[3]==0x4F && cmd_data[4]==0x4E) //??
+ 1138              		.loc 1 279 0
+ 1139 003c 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
+ 1140 0040 4F2B     		cmp	r3, #79
+ 1141 0042 0AD0     		beq	.L99
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 25
+
+
+ 1142              	.L96:
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				{	
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				HAL_GPIO_WritePin(Light_GPIO_Port,Light_Pin,GPIO_PIN_SET);  				
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				char* respmsgid = "02";
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				memcpy(s_resp_buf, respmsgid, 2);
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				memcpy(s_resp_buf + 2, recvmid, 4);
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				char* reply = "0001";
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				memcpy(s_resp_buf + 6, reply, 4);
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				LOS_SemPost(reply_sem);
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				}
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 			 if (cmd_data[3]==0x4F && cmd_data[4]==0x46 && cmd_data[5]==0x46) 
+ 1143              		.loc 1 290 0
+ 1144 0044 EB78     		ldrb	r3, [r5, #3]	@ zero_extendqisi2
+ 1145 0046 4F2B     		cmp	r3, #79
+ 1146 0048 1ED0     		beq	.L100
+ 1147              	.L97:
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				{	
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				HAL_GPIO_WritePin(Light_GPIO_Port,Light_Pin,GPIO_PIN_RESET); 
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				char* respmsgid = "02";
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				memcpy(s_resp_buf, respmsgid, 2);
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				memcpy(s_resp_buf + 2, recvmid, 4);
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				char* reply = "0000";
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				memcpy(s_resp_buf + 6, reply, 4);
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				LOS_SemPost(reply_sem);
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				}
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 	
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 	(void)atiny_printf("write num19 object success\r\n");
+ 1148              		.loc 1 302 0
+ 1149 004a 1D48     		ldr	r0, .L101
+ 1150 004c FFF7FEFF 		bl	atiny_printf
+ 1151              	.LVL90:
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 1152              		.loc 1 304 0
+ 1153 0050 0020     		movs	r0, #0
+ 1154 0052 07F22C47 		addw	r7, r7, #1068
+ 1155              	.LCFI23:
+ 1156              		.cfi_remember_state
+ 1157              		.cfi_def_cfa_offset 20
+ 1158 0056 BD46     		mov	sp, r7
+ 1159              	.LCFI24:
+ 1160              		.cfi_def_cfa_register 13
+ 1161              		@ sp needed
+ 1162 0058 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1163              	.LVL91:
+ 1164              	.L99:
+ 1165              	.LCFI25:
+ 1166              		.cfi_restore_state
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				{	
+ 1167              		.loc 1 279 0 discriminator 1
+ 1168 005a 2B79     		ldrb	r3, [r5, #4]	@ zero_extendqisi2
+ 1169 005c 4E2B     		cmp	r3, #78
+ 1170 005e F1D1     		bne	.L96
+ 1171              	.LBB2:
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 26
+
+
+ 1172              		.loc 1 281 0
+ 1173 0060 0122     		movs	r2, #1
+ 1174 0062 4FF40071 		mov	r1, #512
+ 1175 0066 1748     		ldr	r0, .L101+4
+ 1176 0068 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1177              	.LVL92:
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				memcpy(s_resp_buf + 2, recvmid, 4);
+ 1178              		.loc 1 284 0
+ 1179 006c 164B     		ldr	r3, .L101+8
+ 1180 006e 43F23022 		movw	r2, 12848	@ movhi
+ 1181 0072 1A80     		strh	r2, [r3]	@ unaligned
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				char* reply = "0001";
+ 1182              		.loc 1 285 0
+ 1183 0074 C3F80240 		str	r4, [r3, #2]	@ unaligned
+ 1184              	.LVL93:
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				LOS_SemPost(reply_sem);
+ 1185              		.loc 1 287 0
+ 1186 0078 144A     		ldr	r2, .L101+12
+ 1187 007a C3F80620 		str	r2, [r3, #6]	@ unaligned
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				}
+ 1188              		.loc 1 288 0
+ 1189 007e 144B     		ldr	r3, .L101+16
+ 1190 0080 1868     		ldr	r0, [r3]
+ 1191 0082 FFF7FEFF 		bl	LOS_SemPost
+ 1192              	.LVL94:
+ 1193 0086 DDE7     		b	.L96
+ 1194              	.LVL95:
+ 1195              	.L100:
+ 1196              	.LBE2:
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				{	
+ 1197              		.loc 1 290 0 discriminator 1
+ 1198 0088 2B79     		ldrb	r3, [r5, #4]	@ zero_extendqisi2
+ 1199 008a 462B     		cmp	r3, #70
+ 1200 008c DDD1     		bne	.L97
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				{	
+ 1201              		.loc 1 290 0 is_stmt 0 discriminator 2
+ 1202 008e 6B79     		ldrb	r3, [r5, #5]	@ zero_extendqisi2
+ 1203 0090 462B     		cmp	r3, #70
+ 1204 0092 DAD1     		bne	.L97
+ 1205              	.LBB3:
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 1206              		.loc 1 292 0 is_stmt 1
+ 1207 0094 0022     		movs	r2, #0
+ 1208 0096 4FF40071 		mov	r1, #512
+ 1209 009a 0A48     		ldr	r0, .L101+4
+ 1210 009c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1211              	.LVL96:
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				memcpy(s_resp_buf + 2, recvmid, 4);
+ 1212              		.loc 1 295 0
+ 1213 00a0 094B     		ldr	r3, .L101+8
+ 1214 00a2 43F23022 		movw	r2, 12848	@ movhi
+ 1215 00a6 1A80     		strh	r2, [r3]	@ unaligned
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				char* reply = "0000";
+ 1216              		.loc 1 296 0
+ 1217 00a8 C3F80240 		str	r4, [r3, #2]	@ unaligned
+ 1218              	.LVL97:
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				LOS_SemPost(reply_sem);
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 27
+
+
+ 1219              		.loc 1 298 0
+ 1220 00ac 4FF03032 		mov	r2, #808464432
+ 1221 00b0 C3F80620 		str	r2, [r3, #6]	@ unaligned
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 				}
+ 1222              		.loc 1 299 0
+ 1223 00b4 064B     		ldr	r3, .L101+16
+ 1224 00b6 1868     		ldr	r0, [r3]
+ 1225 00b8 FFF7FEFF 		bl	LOS_SemPost
+ 1226              	.LVL98:
+ 1227 00bc C5E7     		b	.L97
+ 1228              	.L102:
+ 1229 00be 00BF     		.align	2
+ 1230              	.L101:
+ 1231 00c0 00000000 		.word	.LC10
+ 1232 00c4 00040048 		.word	1207960576
+ 1233 00c8 00000000 		.word	s_resp_buf
+ 1234 00cc 30303031 		.word	825241648
+ 1235 00d0 00000000 		.word	reply_sem
+ 1236              	.LBE3:
+ 1237              		.cfi_endproc
+ 1238              	.LFE162:
+ 1240              		.section	.text.atiny_update_psk,"ax",%progbits
+ 1241              		.align	1
+ 1242              		.global	atiny_update_psk
+ 1243              		.syntax unified
+ 1244              		.thumb
+ 1245              		.thumb_func
+ 1246              		.fpu fpv4-sp-d16
+ 1248              	atiny_update_psk:
+ 1249              	.LFB163:
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 306:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_update_psk(char *psk_id, int len)
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 1250              		.loc 1 307 0
+ 1251              		.cfi_startproc
+ 1252              		@ args = 0, pretend = 0, frame = 0
+ 1253              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1254              	.LVL99:
+ 1255 0000 08B5     		push	{r3, lr}
+ 1256              	.LCFI26:
+ 1257              		.cfi_def_cfa_offset 8
+ 1258              		.cfi_offset 3, -8
+ 1259              		.cfi_offset 14, -4
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     //memcpy_s(g_psk_value,psk_id,len,16);
+ 309:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     (void)atiny_printf("update psk success\r\n");
+ 1260              		.loc 1 309 0
+ 1261 0002 0248     		ldr	r0, .L105
+ 1262              	.LVL100:
+ 1263 0004 FFF7FEFF 		bl	atiny_printf
+ 1264              	.LVL101:
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 311:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 1265              		.loc 1 311 0
+ 1266 0008 0020     		movs	r0, #0
+ 1267 000a 08BD     		pop	{r3, pc}
+ 1268              	.L106:
+ 1269              		.align	2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 28
+
+
+ 1270              	.L105:
+ 1271 000c 00000000 		.word	.LC11
+ 1272              		.cfi_endproc
+ 1273              	.LFE163:
+ 1275              		.section	.text.atiny_get_latitude,"ax",%progbits
+ 1276              		.align	1
+ 1277              		.global	atiny_get_latitude
+ 1278              		.syntax unified
+ 1279              		.thumb
+ 1280              		.thumb_func
+ 1281              		.fpu fpv4-sp-d16
+ 1283              	atiny_get_latitude:
+ 1284              	.LFB164:
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_latitude(float *latitude)
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 1285              		.loc 1 314 0
+ 1286              		.cfi_startproc
+ 1287              		@ args = 0, pretend = 0, frame = 0
+ 1288              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1289              		@ link register save eliminated.
+ 1290              	.LVL102:
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *latitude = ATINY_LATITUDE;
+ 1291              		.loc 1 315 0
+ 1292 0000 014B     		ldr	r3, .L108
+ 1293 0002 0360     		str	r3, [r0]	@ float
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 1294              		.loc 1 317 0
+ 1295 0004 0020     		movs	r0, #0
+ 1296              	.LVL103:
+ 1297 0006 7047     		bx	lr
+ 1298              	.L109:
+ 1299              		.align	2
+ 1300              	.L108:
+ 1301 0008 76E3DF41 		.word	1105191798
+ 1302              		.cfi_endproc
+ 1303              	.LFE164:
+ 1305              		.section	.text.atiny_get_longitude,"ax",%progbits
+ 1306              		.align	1
+ 1307              		.global	atiny_get_longitude
+ 1308              		.syntax unified
+ 1309              		.thumb
+ 1310              		.thumb_func
+ 1311              		.fpu fpv4-sp-d16
+ 1313              	atiny_get_longitude:
+ 1314              	.LFB165:
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_longitude(float *longitude)
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 1315              		.loc 1 320 0
+ 1316              		.cfi_startproc
+ 1317              		@ args = 0, pretend = 0, frame = 0
+ 1318              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1319              		@ link register save eliminated.
+ 1320              	.LVL104:
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *longitude = ATINY_LONGITUDE;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 29
+
+
+ 1321              		.loc 1 321 0
+ 1322 0000 014B     		ldr	r3, .L111
+ 1323 0002 0360     		str	r3, [r0]	@ float
+ 322:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 1324              		.loc 1 323 0
+ 1325 0004 0020     		movs	r0, #0
+ 1326              	.LVL105:
+ 1327 0006 7047     		bx	lr
+ 1328              	.L112:
+ 1329              		.align	2
+ 1330              	.L111:
+ 1331 0008 62D8AD42 		.word	1118689378
+ 1332              		.cfi_endproc
+ 1333              	.LFE165:
+ 1335              		.section	.text.atiny_get_altitude,"ax",%progbits
+ 1336              		.align	1
+ 1337              		.global	atiny_get_altitude
+ 1338              		.syntax unified
+ 1339              		.thumb
+ 1340              		.thumb_func
+ 1341              		.fpu fpv4-sp-d16
+ 1343              	atiny_get_altitude:
+ 1344              	.LFB166:
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 325:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_altitude(float *altitude)
+ 326:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 1345              		.loc 1 326 0
+ 1346              		.cfi_startproc
+ 1347              		@ args = 0, pretend = 0, frame = 0
+ 1348              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1349              		@ link register save eliminated.
+ 1350              	.LVL106:
+ 327:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *altitude = ATINY_ALTITUDE;
+ 1351              		.loc 1 327 0
+ 1352 0000 014B     		ldr	r3, .L114
+ 1353 0002 0360     		str	r3, [r0]	@ float
+ 328:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 1354              		.loc 1 329 0
+ 1355 0004 0020     		movs	r0, #0
+ 1356              	.LVL107:
+ 1357 0006 7047     		bx	lr
+ 1358              	.L115:
+ 1359              		.align	2
+ 1360              	.L114:
+ 1361 0008 00BC0446 		.word	1174715392
+ 1362              		.cfi_endproc
+ 1363              	.LFE166:
+ 1365              		.section	.text.atiny_get_radius,"ax",%progbits
+ 1366              		.align	1
+ 1367              		.global	atiny_get_radius
+ 1368              		.syntax unified
+ 1369              		.thumb
+ 1370              		.thumb_func
+ 1371              		.fpu fpv4-sp-d16
+ 1373              	atiny_get_radius:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 30
+
+
+ 1374              	.LFB167:
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_radius(float *radius)
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 1375              		.loc 1 332 0
+ 1376              		.cfi_startproc
+ 1377              		@ args = 0, pretend = 0, frame = 0
+ 1378              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1379              		@ link register save eliminated.
+ 1380              	.LVL108:
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *radius = ATINY_RADIUS;
+ 1381              		.loc 1 333 0
+ 1382 0000 0023     		movs	r3, #0
+ 1383 0002 0360     		str	r3, [r0]	@ float
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 335:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 1384              		.loc 1 335 0
+ 1385 0004 0020     		movs	r0, #0
+ 1386              	.LVL109:
+ 1387 0006 7047     		bx	lr
+ 1388              		.cfi_endproc
+ 1389              	.LFE167:
+ 1391              		.section	.text.atiny_get_speed,"ax",%progbits
+ 1392              		.align	1
+ 1393              		.global	atiny_get_speed
+ 1394              		.syntax unified
+ 1395              		.thumb
+ 1396              		.thumb_func
+ 1397              		.fpu fpv4-sp-d16
+ 1399              	atiny_get_speed:
+ 1400              	.LFB168:
+ 336:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 337:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_speed(float *speed)
+ 338:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 1401              		.loc 1 338 0
+ 1402              		.cfi_startproc
+ 1403              		@ args = 0, pretend = 0, frame = 0
+ 1404              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1405              		@ link register save eliminated.
+ 1406              	.LVL110:
+ 339:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *speed = ATINY_SPEED;
+ 1407              		.loc 1 339 0
+ 1408 0000 0023     		movs	r3, #0
+ 1409 0002 0360     		str	r3, [r0]	@ float
+ 340:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 341:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 1410              		.loc 1 341 0
+ 1411 0004 0020     		movs	r0, #0
+ 1412              	.LVL111:
+ 1413 0006 7047     		bx	lr
+ 1414              		.cfi_endproc
+ 1415              	.LFE168:
+ 1417              		.global	__aeabi_uldivmod
+ 1418              		.section	.text.atiny_get_timestamp,"ax",%progbits
+ 1419              		.align	1
+ 1420              		.global	atiny_get_timestamp
+ 1421              		.syntax unified
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 31
+
+
+ 1422              		.thumb
+ 1423              		.thumb_func
+ 1424              		.fpu fpv4-sp-d16
+ 1426              	atiny_get_timestamp:
+ 1427              	.LFB169:
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 343:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_timestamp(uint64_t *timestamp)
+ 344:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 1428              		.loc 1 344 0
+ 1429              		.cfi_startproc
+ 1430              		@ args = 0, pretend = 0, frame = 0
+ 1431              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1432              	.LVL112:
+ 1433 0000 2DE91848 		push	{r3, r4, fp, lr}
+ 1434              	.LCFI27:
+ 1435              		.cfi_def_cfa_offset 16
+ 1436              		.cfi_offset 3, -16
+ 1437              		.cfi_offset 4, -12
+ 1438              		.cfi_offset 11, -8
+ 1439              		.cfi_offset 14, -4
+ 1440 0004 0446     		mov	r4, r0
+ 345:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     *timestamp = atiny_gettime_ms() / 1000 + ATINY_TIME_CODE;
+ 1441              		.loc 1 345 0
+ 1442 0006 FFF7FEFF 		bl	atiny_gettime_ms
+ 1443              	.LVL113:
+ 1444 000a 4FF47A72 		mov	r2, #1000
+ 1445 000e 0023     		movs	r3, #0
+ 1446 0010 FFF7FEFF 		bl	__aeabi_uldivmod
+ 1447              	.LVL114:
+ 1448 0014 06A3     		adr	r3, .L120
+ 1449 0016 D3E90023 		ldrd	r2, [r3]
+ 1450 001a 10EB020B 		adds	fp, r0, r2
+ 1451 001e 41EB030C 		adc	ip, r1, r3
+ 1452 0022 C4E900BC 		strd	fp, [r4]
+ 346:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 347:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 1453              		.loc 1 347 0
+ 1454 0026 0020     		movs	r0, #0
+ 1455 0028 BDE81888 		pop	{r3, r4, fp, pc}
+ 1456              	.LVL115:
+ 1457              	.L121:
+ 1458 002c AFF30080 		.align	3
+ 1459              	.L120:
+ 1460 0030 8F428251 		.word	1367491215
+ 1461 0034 00000000 		.word	0
+ 1462              		.cfi_endproc
+ 1463              	.LFE169:
+ 1465              		.section	.text.location_get_velocity,"ax",%progbits
+ 1466              		.align	1
+ 1467              		.global	location_get_velocity
+ 1468              		.syntax unified
+ 1469              		.thumb
+ 1470              		.thumb_func
+ 1471              		.fpu fpv4-sp-d16
+ 1473              	location_get_velocity:
+ 1474              	.LFB170:
+ 348:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 32
+
+
+ 349:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** //-----  3GPP TS 23.032 V11.0.0(2012-09) ---------
+ 350:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define HORIZONTAL_VELOCITY                  0
+ 351:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define HORIZONTAL_VELOCITY_VERTICAL         1
+ 352:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define HORIZONTAL_VELOCITY_WITH_UNCERTAINTY 2
+ 353:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 354:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #define VELOCITY_OCTETS                      5
+ 355:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 356:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** void location_get_velocity(atiny_velocity_s *velocity,
+ 357:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****                            uint16_t bearing,
+ 358:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****                            uint16_t horizontal_speed,
+ 359:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****                            uint8_t speed_uncertainty)
+ 360:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 1475              		.loc 1 360 0
+ 1476              		.cfi_startproc
+ 1477              		@ args = 0, pretend = 0, frame = 8
+ 1478              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1479              		@ link register save eliminated.
+ 1480              	.LVL116:
+ 1481 0000 10B4     		push	{r4}
+ 1482              	.LCFI28:
+ 1483              		.cfi_def_cfa_offset 4
+ 1484              		.cfi_offset 4, -4
+ 1485 0002 83B0     		sub	sp, sp, #12
+ 1486              	.LCFI29:
+ 1487              		.cfi_def_cfa_offset 16
+ 1488 0004 0446     		mov	r4, r0
+ 361:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     uint8_t tmp[VELOCITY_OCTETS];
+ 362:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     int copy_len;
+ 363:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 364:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     tmp[0] = HORIZONTAL_VELOCITY_WITH_UNCERTAINTY << 4;
+ 365:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     tmp[0] |= (bearing & 0x100) >> 8;
+ 1489              		.loc 1 365 0
+ 1490 0006 C1F30020 		ubfx	r0, r1, #8, #1
+ 1491              	.LVL117:
+ 1492 000a 40F02000 		orr	r0, r0, #32
+ 1493 000e 8DF80000 		strb	r0, [sp]
+ 366:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     tmp[1] = (bearing & 0xff);
+ 1494              		.loc 1 366 0
+ 1495 0012 8DF80110 		strb	r1, [sp, #1]
+ 367:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     tmp[2] = horizontal_speed >> 8;
+ 1496              		.loc 1 367 0
+ 1497 0016 110A     		lsrs	r1, r2, #8
+ 1498              	.LVL118:
+ 1499 0018 8DF80210 		strb	r1, [sp, #2]
+ 368:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     tmp[3] = horizontal_speed & 0xff;
+ 1500              		.loc 1 368 0
+ 1501 001c 8DF80320 		strb	r2, [sp, #3]
+ 1502              	.LVL119:
+ 369:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     tmp[4] = speed_uncertainty;
+ 370:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 371:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     copy_len = MAX_VELOCITY_LEN > sizeof(tmp) ? sizeof(tmp) : MAX_VELOCITY_LEN;
+ 372:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     memcpy(velocity->opaque, tmp, copy_len);
+ 1503              		.loc 1 372 0
+ 1504 0020 0098     		ldr	r0, [sp]
+ 1505 0022 2060     		str	r0, [r4]	@ unaligned
+ 1506 0024 2371     		strb	r3, [r4, #4]
+ 373:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     velocity->length = copy_len;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 33
+
+
+ 1507              		.loc 1 373 0
+ 1508 0026 0523     		movs	r3, #5
+ 1509              	.LVL120:
+ 1510 0028 2361     		str	r3, [r4, #16]
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 1511              		.loc 1 374 0
+ 1512 002a 03B0     		add	sp, sp, #12
+ 1513              	.LCFI30:
+ 1514              		.cfi_def_cfa_offset 4
+ 1515              		@ sp needed
+ 1516 002c 5DF8044B 		ldr	r4, [sp], #4
+ 1517              	.LCFI31:
+ 1518              		.cfi_restore 4
+ 1519              		.cfi_def_cfa_offset 0
+ 1520              	.LVL121:
+ 1521 0030 7047     		bx	lr
+ 1522              		.cfi_endproc
+ 1523              	.LFE170:
+ 1525              		.section	.text.atiny_get_velocity,"ax",%progbits
+ 1526              		.align	1
+ 1527              		.global	atiny_get_velocity
+ 1528              		.syntax unified
+ 1529              		.thumb
+ 1530              		.thumb_func
+ 1531              		.fpu fpv4-sp-d16
+ 1533              	atiny_get_velocity:
+ 1534              	.LFB171:
+ 375:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 376:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_get_velocity(atiny_velocity_s *velocity)
+ 377:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 1535              		.loc 1 377 0
+ 1536              		.cfi_startproc
+ 1537              		@ args = 0, pretend = 0, frame = 0
+ 1538              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1539              	.LVL122:
+ 1540 0000 08B5     		push	{r3, lr}
+ 1541              	.LCFI32:
+ 1542              		.cfi_def_cfa_offset 8
+ 1543              		.cfi_offset 3, -8
+ 1544              		.cfi_offset 14, -4
+ 378:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     location_get_velocity(velocity, 0, 0, 255);
+ 1545              		.loc 1 378 0
+ 1546 0002 FF23     		movs	r3, #255
+ 1547 0004 0022     		movs	r2, #0
+ 1548 0006 1146     		mov	r1, r2
+ 1549 0008 FFF7FEFF 		bl	location_get_velocity
+ 1550              	.LVL123:
+ 379:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return ATINY_OK;
+ 380:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 1551              		.loc 1 380 0
+ 1552 000c 0020     		movs	r0, #0
+ 1553 000e 08BD     		pop	{r3, pc}
+ 1554              		.cfi_endproc
+ 1555              	.LFE171:
+ 1557              		.section	.text.atiny_cmd_ioctl,"ax",%progbits
+ 1558              		.align	1
+ 1559              		.global	atiny_cmd_ioctl
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 34
+
+
+ 1560              		.syntax unified
+ 1561              		.thumb
+ 1562              		.thumb_func
+ 1563              		.fpu fpv4-sp-d16
+ 1565              	atiny_cmd_ioctl:
+ 1566              	.LFB172:
+ 381:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 382:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** int atiny_cmd_ioctl(atiny_cmd_e cmd, char *arg, int len)
+ 383:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 1567              		.loc 1 383 0
+ 1568              		.cfi_startproc
+ 1569              		@ args = 0, pretend = 0, frame = 0
+ 1570              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1571              	.LVL124:
+ 1572 0000 10B5     		push	{r4, lr}
+ 1573              	.LCFI33:
+ 1574              		.cfi_def_cfa_offset 8
+ 1575              		.cfi_offset 4, -8
+ 1576              		.cfi_offset 14, -4
+ 1577 0002 0C46     		mov	r4, r1
+ 1578              	.LVL125:
+ 384:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     int result = ATINY_OK;
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     switch(cmd)
+ 1579              		.loc 1 385 0
+ 1580 0004 2328     		cmp	r0, #35
+ 1581 0006 00F2B180 		bhi	.L165
+ 1582 000a DFE800F0 		tbb	[pc, r0]
+ 1583              	.L129:
+ 1584 000e 12       		.byte	(.L128-.L129)/2
+ 1585 000f 17       		.byte	(.L130-.L129)/2
+ 1586 0010 1C       		.byte	(.L131-.L129)/2
+ 1587 0011 21       		.byte	(.L132-.L129)/2
+ 1588 0012 26       		.byte	(.L133-.L129)/2
+ 1589 0013 29       		.byte	(.L134-.L129)/2
+ 1590 0014 2C       		.byte	(.L135-.L129)/2
+ 1591 0015 30       		.byte	(.L136-.L129)/2
+ 1592 0016 34       		.byte	(.L137-.L129)/2
+ 1593 0017 38       		.byte	(.L138-.L129)/2
+ 1594 0018 3C       		.byte	(.L139-.L129)/2
+ 1595 0019 40       		.byte	(.L140-.L129)/2
+ 1596 001a 44       		.byte	(.L141-.L129)/2
+ 1597 001b 47       		.byte	(.L142-.L129)/2
+ 1598 001c 4B       		.byte	(.L143-.L129)/2
+ 1599 001d 4F       		.byte	(.L144-.L129)/2
+ 1600 001e 54       		.byte	(.L145-.L129)/2
+ 1601 001f 59       		.byte	(.L146-.L129)/2
+ 1602 0020 5E       		.byte	(.L147-.L129)/2
+ 1603 0021 63       		.byte	(.L148-.L129)/2
+ 1604 0022 68       		.byte	(.L149-.L129)/2
+ 1605 0023 6C       		.byte	(.L150-.L129)/2
+ 1606 0024 70       		.byte	(.L151-.L129)/2
+ 1607 0025 74       		.byte	(.L152-.L129)/2
+ 1608 0026 78       		.byte	(.L153-.L129)/2
+ 1609 0027 7C       		.byte	(.L154-.L129)/2
+ 1610 0028 80       		.byte	(.L155-.L129)/2
+ 1611 0029 85       		.byte	(.L156-.L129)/2
+ 1612 002a 8A       		.byte	(.L157-.L129)/2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 35
+
+
+ 1613 002b 8E       		.byte	(.L158-.L129)/2
+ 1614 002c 92       		.byte	(.L159-.L129)/2
+ 1615 002d 96       		.byte	(.L160-.L129)/2
+ 1616 002e 9A       		.byte	(.L161-.L129)/2
+ 1617 002f 9E       		.byte	(.L162-.L129)/2
+ 1618 0030 A2       		.byte	(.L163-.L129)/2
+ 1619 0031 A6       		.byte	(.L164-.L129)/2
+ 1620              		.p2align 1
+ 1621              	.L128:
+ 386:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     {
+ 387:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_MANUFACTURER:
+ 388:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_manufacturer(arg, len);
+ 1622              		.loc 1 388 0
+ 1623 0032 1146     		mov	r1, r2
+ 1624              	.LVL126:
+ 1625 0034 2046     		mov	r0, r4
+ 1626              	.LVL127:
+ 1627 0036 FFF7FEFF 		bl	atiny_get_manufacturer
+ 1628              	.LVL128:
+ 1629              	.L126:
+ 389:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 390:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_MODEL_NUMBER:
+ 391:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_model_number(arg, len);
+ 392:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 393:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_SERIAL_NUMBER:
+ 394:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_serial_number(arg, len);
+ 395:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 396:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_FIRMWARE_VER:
+ 397:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_firmware_ver(arg, len);
+ 398:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 399:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_DO_DEV_REBOOT:
+ 400:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_do_dev_reboot();
+ 401:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 402:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_DO_FACTORY_RESET:
+ 403:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_do_factory_reset();
+ 404:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 405:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_POWER_SOURCE:
+ 406:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_power_source((int *)arg);
+ 407:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 408:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_SOURCE_VOLTAGE:
+ 409:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_source_voltage((int *)arg);
+ 410:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 411:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_POWER_CURRENT:
+ 412:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_power_current((int *)arg);
+ 413:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 414:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_BATERRY_LEVEL:
+ 415:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_baterry_level((int *)arg);
+ 416:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 417:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_MEMORY_FREE:
+ 418:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_memory_free((int *)arg);
+ 419:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 420:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_DEV_ERR:
+ 421:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_dev_err((int *)arg);
+ 422:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 423:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_DO_RESET_DEV_ERR:
+ 424:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_do_reset_dev_err();
+ 425:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 36
+
+
+ 426:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_CURRENT_TIME:
+ 427:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_current_time((int64_t *)arg);
+ 428:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 429:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_SET_CURRENT_TIME:
+ 430:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_set_current_time((const int64_t *)arg);
+ 431:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 432:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_UTC_OFFSET:
+ 433:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_UTC_offset(arg, len);
+ 434:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 435:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_SET_UTC_OFFSET:
+ 436:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_set_UTC_offset(arg, len);
+ 437:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 438:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_TIMEZONE:
+ 439:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_timezone(arg, len);
+ 440:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 441:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_SET_TIMEZONE:
+ 442:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_set_timezone(arg, len);
+ 443:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 444:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_BINDING_MODES:
+ 445:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_bind_mode(arg, len);
+ 446:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 447:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_FIRMWARE_STATE:
+ 448:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_firmware_state((int *)arg);
+ 449:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 450:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_NETWORK_BEARER:
+ 451:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_network_bearer((int *)arg);
+ 452:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 453:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_SIGNAL_STRENGTH:
+ 454:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_signal_strength((int *)arg);
+ 455:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 456:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_CELL_ID:
+ 457:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_cell_id((long *)arg);
+ 458:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 459:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_LINK_QUALITY:
+ 460:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_link_quality((int *)arg);
+ 461:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 462:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_LINK_UTILIZATION:
+ 463:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_link_utilization((int *)arg);
+ 464:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 465:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_WRITE_APP_DATA:
+ 466:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_write_app_write((int *)arg, len);
+ 467:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 468:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_UPDATE_PSK:
+ 469:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_update_psk(arg, len);
+ 470:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 471:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_LATITUDE:
+ 472:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_latitude((float *)arg);
+ 473:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 474:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_LONGITUDE:
+ 475:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_longitude((float *)arg);
+ 476:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 477:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_ALTITUDE:
+ 478:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_altitude((float *)arg);
+ 479:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 480:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_RADIUS:
+ 481:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_radius((float *)arg);
+ 482:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 37
+
+
+ 483:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_SPEED:
+ 484:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_speed((float *)arg);
+ 485:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 486:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_TIMESTAMP:
+ 487:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_timestamp((uint64_t *)arg);
+ 488:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 489:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_VELOCITY:
+ 490:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = atiny_get_velocity((atiny_velocity_s *)arg);
+ 491:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 492:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 493:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #ifdef CONFIG_FEATURE_FOTA
+ 494:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_OTA_OPT:
+ 495:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     {
+ 496:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         ota_opt_s *opt = (ota_opt_s *)arg;
+ 497:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         hal_get_ota_opt(opt);
+ 498:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         opt->key.rsa_N = "C94BECB7BCBFF459B9A71F12C3CC0603B11F0D3A366A226FD3E73D453F96EFBBCD4DFED6D
+ 499:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         opt->key.rsa_E = "10001";
+ 500:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = ATINY_OK;
+ 501:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 502:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     }
+ 503:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #endif
+ 504:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 505:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #if defined(WITH_AT_FRAMEWORK) && defined(USE_NB_NEUL95)
+ 506:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_TRIGER_SERVER_INITIATED_BS:
+ 507:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         nb_reattach();
+ 508:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = ATINY_OK;
+ 509:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 510:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** #endif
+ 511:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 512:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     default:
+ 513:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 514:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     }
+ 515:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     return result;
+ 516:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 1630              		.loc 1 516 0
+ 1631 003a 10BD     		pop	{r4, pc}
+ 1632              	.LVL129:
+ 1633              	.L130:
+ 391:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1634              		.loc 1 391 0
+ 1635 003c 1146     		mov	r1, r2
+ 1636              	.LVL130:
+ 1637 003e 2046     		mov	r0, r4
+ 1638              	.LVL131:
+ 1639 0040 FFF7FEFF 		bl	atiny_get_model_number
+ 1640              	.LVL132:
+ 392:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_SERIAL_NUMBER:
+ 1641              		.loc 1 392 0
+ 1642 0044 F9E7     		b	.L126
+ 1643              	.LVL133:
+ 1644              	.L131:
+ 394:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1645              		.loc 1 394 0
+ 1646 0046 1146     		mov	r1, r2
+ 1647              	.LVL134:
+ 1648 0048 2046     		mov	r0, r4
+ 1649              	.LVL135:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 38
+
+
+ 1650 004a FFF7FEFF 		bl	atiny_get_serial_number
+ 1651              	.LVL136:
+ 395:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_FIRMWARE_VER:
+ 1652              		.loc 1 395 0
+ 1653 004e F4E7     		b	.L126
+ 1654              	.LVL137:
+ 1655              	.L132:
+ 397:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1656              		.loc 1 397 0
+ 1657 0050 1146     		mov	r1, r2
+ 1658              	.LVL138:
+ 1659 0052 2046     		mov	r0, r4
+ 1660              	.LVL139:
+ 1661 0054 FFF7FEFF 		bl	atiny_get_firmware_ver
+ 1662              	.LVL140:
+ 398:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_DO_DEV_REBOOT:
+ 1663              		.loc 1 398 0
+ 1664 0058 EFE7     		b	.L126
+ 1665              	.LVL141:
+ 1666              	.L133:
+ 400:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1667              		.loc 1 400 0
+ 1668 005a FFF7FEFF 		bl	atiny_do_dev_reboot
+ 1669              	.LVL142:
+ 401:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_DO_FACTORY_RESET:
+ 1670              		.loc 1 401 0
+ 1671 005e ECE7     		b	.L126
+ 1672              	.LVL143:
+ 1673              	.L134:
+ 403:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1674              		.loc 1 403 0
+ 1675 0060 FFF7FEFF 		bl	atiny_do_factory_reset
+ 1676              	.LVL144:
+ 404:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_POWER_SOURCE:
+ 1677              		.loc 1 404 0
+ 1678 0064 E9E7     		b	.L126
+ 1679              	.LVL145:
+ 1680              	.L135:
+ 406:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1681              		.loc 1 406 0
+ 1682 0066 0846     		mov	r0, r1
+ 1683              	.LVL146:
+ 1684 0068 FFF7FEFF 		bl	atiny_get_power_source
+ 1685              	.LVL147:
+ 407:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_SOURCE_VOLTAGE:
+ 1686              		.loc 1 407 0
+ 1687 006c E5E7     		b	.L126
+ 1688              	.LVL148:
+ 1689              	.L136:
+ 409:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1690              		.loc 1 409 0
+ 1691 006e 0846     		mov	r0, r1
+ 1692              	.LVL149:
+ 1693 0070 FFF7FEFF 		bl	atiny_get_source_voltage
+ 1694              	.LVL150:
+ 410:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_POWER_CURRENT:
+ 1695              		.loc 1 410 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 39
+
+
+ 1696 0074 E1E7     		b	.L126
+ 1697              	.LVL151:
+ 1698              	.L137:
+ 412:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1699              		.loc 1 412 0
+ 1700 0076 0846     		mov	r0, r1
+ 1701              	.LVL152:
+ 1702 0078 FFF7FEFF 		bl	atiny_get_power_current
+ 1703              	.LVL153:
+ 413:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_BATERRY_LEVEL:
+ 1704              		.loc 1 413 0
+ 1705 007c DDE7     		b	.L126
+ 1706              	.LVL154:
+ 1707              	.L138:
+ 415:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1708              		.loc 1 415 0
+ 1709 007e 0846     		mov	r0, r1
+ 1710              	.LVL155:
+ 1711 0080 FFF7FEFF 		bl	atiny_get_baterry_level
+ 1712              	.LVL156:
+ 416:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_MEMORY_FREE:
+ 1713              		.loc 1 416 0
+ 1714 0084 D9E7     		b	.L126
+ 1715              	.LVL157:
+ 1716              	.L139:
+ 418:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1717              		.loc 1 418 0
+ 1718 0086 0846     		mov	r0, r1
+ 1719              	.LVL158:
+ 1720 0088 FFF7FEFF 		bl	atiny_get_memory_free
+ 1721              	.LVL159:
+ 419:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_DEV_ERR:
+ 1722              		.loc 1 419 0
+ 1723 008c D5E7     		b	.L126
+ 1724              	.LVL160:
+ 1725              	.L140:
+ 421:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1726              		.loc 1 421 0
+ 1727 008e 0846     		mov	r0, r1
+ 1728              	.LVL161:
+ 1729 0090 FFF7FEFF 		bl	atiny_get_dev_err
+ 1730              	.LVL162:
+ 422:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_DO_RESET_DEV_ERR:
+ 1731              		.loc 1 422 0
+ 1732 0094 D1E7     		b	.L126
+ 1733              	.LVL163:
+ 1734              	.L141:
+ 424:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1735              		.loc 1 424 0
+ 1736 0096 FFF7FEFF 		bl	atiny_do_reset_dev_err
+ 1737              	.LVL164:
+ 425:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_CURRENT_TIME:
+ 1738              		.loc 1 425 0
+ 1739 009a CEE7     		b	.L126
+ 1740              	.LVL165:
+ 1741              	.L142:
+ 427:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 40
+
+
+ 1742              		.loc 1 427 0
+ 1743 009c 0846     		mov	r0, r1
+ 1744              	.LVL166:
+ 1745 009e FFF7FEFF 		bl	atiny_get_current_time
+ 1746              	.LVL167:
+ 428:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_SET_CURRENT_TIME:
+ 1747              		.loc 1 428 0
+ 1748 00a2 CAE7     		b	.L126
+ 1749              	.LVL168:
+ 1750              	.L143:
+ 430:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1751              		.loc 1 430 0
+ 1752 00a4 0846     		mov	r0, r1
+ 1753              	.LVL169:
+ 1754 00a6 FFF7FEFF 		bl	atiny_set_current_time
+ 1755              	.LVL170:
+ 431:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_UTC_OFFSET:
+ 1756              		.loc 1 431 0
+ 1757 00aa C6E7     		b	.L126
+ 1758              	.LVL171:
+ 1759              	.L144:
+ 433:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1760              		.loc 1 433 0
+ 1761 00ac 1146     		mov	r1, r2
+ 1762              	.LVL172:
+ 1763 00ae 2046     		mov	r0, r4
+ 1764              	.LVL173:
+ 1765 00b0 FFF7FEFF 		bl	atiny_get_UTC_offset
+ 1766              	.LVL174:
+ 434:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_SET_UTC_OFFSET:
+ 1767              		.loc 1 434 0
+ 1768 00b4 C1E7     		b	.L126
+ 1769              	.LVL175:
+ 1770              	.L145:
+ 436:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1771              		.loc 1 436 0
+ 1772 00b6 1146     		mov	r1, r2
+ 1773              	.LVL176:
+ 1774 00b8 2046     		mov	r0, r4
+ 1775              	.LVL177:
+ 1776 00ba FFF7FEFF 		bl	atiny_set_UTC_offset
+ 1777              	.LVL178:
+ 437:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_TIMEZONE:
+ 1778              		.loc 1 437 0
+ 1779 00be BCE7     		b	.L126
+ 1780              	.LVL179:
+ 1781              	.L146:
+ 439:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1782              		.loc 1 439 0
+ 1783 00c0 1146     		mov	r1, r2
+ 1784              	.LVL180:
+ 1785 00c2 2046     		mov	r0, r4
+ 1786              	.LVL181:
+ 1787 00c4 FFF7FEFF 		bl	atiny_get_timezone
+ 1788              	.LVL182:
+ 440:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_SET_TIMEZONE:
+ 1789              		.loc 1 440 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 41
+
+
+ 1790 00c8 B7E7     		b	.L126
+ 1791              	.LVL183:
+ 1792              	.L147:
+ 442:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1793              		.loc 1 442 0
+ 1794 00ca 1146     		mov	r1, r2
+ 1795              	.LVL184:
+ 1796 00cc 2046     		mov	r0, r4
+ 1797              	.LVL185:
+ 1798 00ce FFF7FEFF 		bl	atiny_set_timezone
+ 1799              	.LVL186:
+ 443:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_BINDING_MODES:
+ 1800              		.loc 1 443 0
+ 1801 00d2 B2E7     		b	.L126
+ 1802              	.LVL187:
+ 1803              	.L148:
+ 445:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1804              		.loc 1 445 0
+ 1805 00d4 1146     		mov	r1, r2
+ 1806              	.LVL188:
+ 1807 00d6 2046     		mov	r0, r4
+ 1808              	.LVL189:
+ 1809 00d8 FFF7FEFF 		bl	atiny_get_bind_mode
+ 1810              	.LVL190:
+ 446:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_FIRMWARE_STATE:
+ 1811              		.loc 1 446 0
+ 1812 00dc ADE7     		b	.L126
+ 1813              	.LVL191:
+ 1814              	.L149:
+ 448:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1815              		.loc 1 448 0
+ 1816 00de 0846     		mov	r0, r1
+ 1817              	.LVL192:
+ 1818 00e0 FFF7FEFF 		bl	atiny_get_firmware_state
+ 1819              	.LVL193:
+ 449:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_NETWORK_BEARER:
+ 1820              		.loc 1 449 0
+ 1821 00e4 A9E7     		b	.L126
+ 1822              	.LVL194:
+ 1823              	.L150:
+ 451:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1824              		.loc 1 451 0
+ 1825 00e6 0846     		mov	r0, r1
+ 1826              	.LVL195:
+ 1827 00e8 FFF7FEFF 		bl	atiny_get_network_bearer
+ 1828              	.LVL196:
+ 452:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_SIGNAL_STRENGTH:
+ 1829              		.loc 1 452 0
+ 1830 00ec A5E7     		b	.L126
+ 1831              	.LVL197:
+ 1832              	.L151:
+ 454:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1833              		.loc 1 454 0
+ 1834 00ee 0846     		mov	r0, r1
+ 1835              	.LVL198:
+ 1836 00f0 FFF7FEFF 		bl	atiny_get_signal_strength
+ 1837              	.LVL199:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 42
+
+
+ 455:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_CELL_ID:
+ 1838              		.loc 1 455 0
+ 1839 00f4 A1E7     		b	.L126
+ 1840              	.LVL200:
+ 1841              	.L152:
+ 457:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1842              		.loc 1 457 0
+ 1843 00f6 0846     		mov	r0, r1
+ 1844              	.LVL201:
+ 1845 00f8 FFF7FEFF 		bl	atiny_get_cell_id
+ 1846              	.LVL202:
+ 458:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_LINK_QUALITY:
+ 1847              		.loc 1 458 0
+ 1848 00fc 9DE7     		b	.L126
+ 1849              	.LVL203:
+ 1850              	.L153:
+ 460:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1851              		.loc 1 460 0
+ 1852 00fe 0846     		mov	r0, r1
+ 1853              	.LVL204:
+ 1854 0100 FFF7FEFF 		bl	atiny_get_link_quality
+ 1855              	.LVL205:
+ 461:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_LINK_UTILIZATION:
+ 1856              		.loc 1 461 0
+ 1857 0104 99E7     		b	.L126
+ 1858              	.LVL206:
+ 1859              	.L154:
+ 463:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1860              		.loc 1 463 0
+ 1861 0106 0846     		mov	r0, r1
+ 1862              	.LVL207:
+ 1863 0108 FFF7FEFF 		bl	atiny_get_link_utilization
+ 1864              	.LVL208:
+ 464:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_WRITE_APP_DATA:
+ 1865              		.loc 1 464 0
+ 1866 010c 95E7     		b	.L126
+ 1867              	.LVL209:
+ 1868              	.L155:
+ 466:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1869              		.loc 1 466 0
+ 1870 010e 1146     		mov	r1, r2
+ 1871              	.LVL210:
+ 1872 0110 2046     		mov	r0, r4
+ 1873              	.LVL211:
+ 1874 0112 FFF7FEFF 		bl	atiny_write_app_write
+ 1875              	.LVL212:
+ 467:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_UPDATE_PSK:
+ 1876              		.loc 1 467 0
+ 1877 0116 90E7     		b	.L126
+ 1878              	.LVL213:
+ 1879              	.L156:
+ 469:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1880              		.loc 1 469 0
+ 1881 0118 1146     		mov	r1, r2
+ 1882              	.LVL214:
+ 1883 011a 2046     		mov	r0, r4
+ 1884              	.LVL215:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 43
+
+
+ 1885 011c FFF7FEFF 		bl	atiny_update_psk
+ 1886              	.LVL216:
+ 470:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_LATITUDE:
+ 1887              		.loc 1 470 0
+ 1888 0120 8BE7     		b	.L126
+ 1889              	.LVL217:
+ 1890              	.L157:
+ 472:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1891              		.loc 1 472 0
+ 1892 0122 0846     		mov	r0, r1
+ 1893              	.LVL218:
+ 1894 0124 FFF7FEFF 		bl	atiny_get_latitude
+ 1895              	.LVL219:
+ 473:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_LONGITUDE:
+ 1896              		.loc 1 473 0
+ 1897 0128 87E7     		b	.L126
+ 1898              	.LVL220:
+ 1899              	.L158:
+ 475:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1900              		.loc 1 475 0
+ 1901 012a 0846     		mov	r0, r1
+ 1902              	.LVL221:
+ 1903 012c FFF7FEFF 		bl	atiny_get_longitude
+ 1904              	.LVL222:
+ 476:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_ALTITUDE:
+ 1905              		.loc 1 476 0
+ 1906 0130 83E7     		b	.L126
+ 1907              	.LVL223:
+ 1908              	.L159:
+ 478:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1909              		.loc 1 478 0
+ 1910 0132 0846     		mov	r0, r1
+ 1911              	.LVL224:
+ 1912 0134 FFF7FEFF 		bl	atiny_get_altitude
+ 1913              	.LVL225:
+ 479:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_RADIUS:
+ 1914              		.loc 1 479 0
+ 1915 0138 7FE7     		b	.L126
+ 1916              	.LVL226:
+ 1917              	.L160:
+ 481:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1918              		.loc 1 481 0
+ 1919 013a 0846     		mov	r0, r1
+ 1920              	.LVL227:
+ 1921 013c FFF7FEFF 		bl	atiny_get_radius
+ 1922              	.LVL228:
+ 482:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_SPEED:
+ 1923              		.loc 1 482 0
+ 1924 0140 7BE7     		b	.L126
+ 1925              	.LVL229:
+ 1926              	.L161:
+ 484:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1927              		.loc 1 484 0
+ 1928 0142 0846     		mov	r0, r1
+ 1929              	.LVL230:
+ 1930 0144 FFF7FEFF 		bl	atiny_get_speed
+ 1931              	.LVL231:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 44
+
+
+ 485:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_TIMESTAMP:
+ 1932              		.loc 1 485 0
+ 1933 0148 77E7     		b	.L126
+ 1934              	.LVL232:
+ 1935              	.L162:
+ 487:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1936              		.loc 1 487 0
+ 1937 014a 0846     		mov	r0, r1
+ 1938              	.LVL233:
+ 1939 014c FFF7FEFF 		bl	atiny_get_timestamp
+ 1940              	.LVL234:
+ 488:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     case ATINY_GET_VELOCITY:
+ 1941              		.loc 1 488 0
+ 1942 0150 73E7     		b	.L126
+ 1943              	.LVL235:
+ 1944              	.L163:
+ 490:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1945              		.loc 1 490 0
+ 1946 0152 0846     		mov	r0, r1
+ 1947              	.LVL236:
+ 1948 0154 FFF7FEFF 		bl	atiny_get_velocity
+ 1949              	.LVL237:
+ 491:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 1950              		.loc 1 491 0
+ 1951 0158 6FE7     		b	.L126
+ 1952              	.LVL238:
+ 1953              	.L164:
+ 1954              	.LBB4:
+ 497:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         opt->key.rsa_N = "C94BECB7BCBFF459B9A71F12C3CC0603B11F0D3A366A226FD3E73D453F96EFBBCD4DFED6D
+ 1955              		.loc 1 497 0
+ 1956 015a 0846     		mov	r0, r1
+ 1957              	.LVL239:
+ 1958 015c FFF7FEFF 		bl	hal_get_ota_opt
+ 1959              	.LVL240:
+ 498:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         opt->key.rsa_E = "10001";
+ 1960              		.loc 1 498 0
+ 1961 0160 034B     		ldr	r3, .L167
+ 1962 0162 E360     		str	r3, [r4, #12]
+ 499:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         result = ATINY_OK;
+ 1963              		.loc 1 499 0
+ 1964 0164 034B     		ldr	r3, .L167+4
+ 1965 0166 2361     		str	r3, [r4, #16]
+ 500:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****         break;
+ 1966              		.loc 1 500 0
+ 1967 0168 0020     		movs	r0, #0
+ 501:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     }
+ 1968              		.loc 1 501 0
+ 1969 016a 66E7     		b	.L126
+ 1970              	.LVL241:
+ 1971              	.L165:
+ 1972              	.LBE4:
+ 384:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     switch(cmd)
+ 1973              		.loc 1 384 0
+ 1974 016c 0020     		movs	r0, #0
+ 1975              	.LVL242:
+ 515:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 1976              		.loc 1 515 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 45
+
+
+ 1977 016e 64E7     		b	.L126
+ 1978              	.L168:
+ 1979              		.align	2
+ 1980              	.L167:
+ 1981 0170 00000000 		.word	.LC12
+ 1982 0174 04020000 		.word	.LC13
+ 1983              		.cfi_endproc
+ 1984              	.LFE172:
+ 1986              		.section	.text.atiny_event_notify,"ax",%progbits
+ 1987              		.align	1
+ 1988              		.global	atiny_event_notify
+ 1989              		.syntax unified
+ 1990              		.thumb
+ 1991              		.thumb_func
+ 1992              		.fpu fpv4-sp-d16
+ 1994              	atiny_event_notify:
+ 1995              	.LFB173:
+ 517:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** 
+ 518:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** void atiny_event_notify(atiny_event_e event, const char *arg, int len)
+ 519:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** {
+ 1996              		.loc 1 519 0
+ 1997              		.cfi_startproc
+ 1998              		@ args = 0, pretend = 0, frame = 0
+ 1999              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2000              	.LVL243:
+ 2001 0000 08B5     		push	{r3, lr}
+ 2002              	.LCFI34:
+ 2003              		.cfi_def_cfa_offset 8
+ 2004              		.cfi_offset 3, -8
+ 2005              		.cfi_offset 14, -4
+ 520:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c ****     (void)atiny_printf("notify:stat:%d\r\n", event);
+ 2006              		.loc 1 520 0
+ 2007 0002 0146     		mov	r1, r0
+ 2008              	.LVL244:
+ 2009 0004 0148     		ldr	r0, .L171
+ 2010              	.LVL245:
+ 2011 0006 FFF7FEFF 		bl	atiny_printf
+ 2012              	.LVL246:
+ 521:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/demos/agenttiny_lwm2m\agent_tiny_cmd_ioctl.c **** }
+ 2013              		.loc 1 521 0
+ 2014 000a 08BD     		pop	{r3, pc}
+ 2015              	.L172:
+ 2016              		.align	2
+ 2017              	.L171:
+ 2018 000c 00000000 		.word	.LC14
+ 2019              		.cfi_endproc
+ 2020              	.LFE173:
+ 2022              		.section	.bss.err_code,"aw",%nobits
+ 2023              		.align	2
+ 2024              		.set	.LANCHOR0,. + 0
+ 2027              	err_code:
+ 2028 0000 00000000 		.space	4
+ 2029              		.section	.data.g_UTC_offset,"aw",%progbits
+ 2030              		.align	2
+ 2031              		.set	.LANCHOR2,. + 0
+ 2034              	g_UTC_offset:
+ 2035 0000 2B30313A 		.ascii	"+01:00\000"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 46
+
+
+ 2035      303000
+ 2036              		.section	.data.g_current_time,"aw",%progbits
+ 2037              		.align	3
+ 2038              		.set	.LANCHOR1,. + 0
+ 2041              	g_current_time:
+ 2042 0000 8F428251 		.word	1367491215
+ 2043 0004 00000000 		.word	0
+ 2044              		.section	.data.g_timezone,"aw",%progbits
+ 2045              		.align	2
+ 2046              		.set	.LANCHOR3,. + 0
+ 2049              	g_timezone:
+ 2050 0000 4575726F 		.ascii	"Europe/Berlin\000"
+ 2050      70652F42 
+ 2050      65726C69 
+ 2050      6E00
+ 2051 000e 00000000 		.space	11
+ 2051      00000000 
+ 2051      000000
+ 2052              		.section	.rodata.atiny_cmd_ioctl.str1.4,"aMS",%progbits,1
+ 2053              		.align	2
+ 2054              	.LC12:
+ 2055 0000 43393442 		.ascii	"C94BECB7BCBFF459B9A71F12C3CC0603B11F0D3A366A226FD3E"
+ 2055      45434237 
+ 2055      42434246 
+ 2055      46343539 
+ 2055      42394137 
+ 2056 0033 37334434 		.ascii	"73D453F96EFBBCD4DFED6D9F77FD78C3AB1805E1BD3858131AC"
+ 2056      35334639 
+ 2056      36454642 
+ 2056      42434434 
+ 2056      44464544 
+ 2057 0066 42353330 		.ascii	"B5303F61AF524F43971B4D429CB847905E68935C1748D0096C1"
+ 2057      33463631 
+ 2057      41463532 
+ 2057      34463433 
+ 2057      39373142 
+ 2058 0099 41303944 		.ascii	"A09DD539CE74857F9FDF0B0EA61574C5D76BD9A67681AC6A9DB"
+ 2058      44353339 
+ 2058      43453734 
+ 2058      38353746 
+ 2058      39464446 
+ 2059 00cc 31424232 		.ascii	"1BB22F17120B1DBF3E32633DCE34F5446F52DD7335671AC3A1F"
+ 2059      32463137 
+ 2059      31323042 
+ 2059      31444246 
+ 2059      33453332 
+ 2060 00ff 32314443 		.ascii	"21DC557FA4CE9A4E0E3E99FED33A0BAA1C6F6EE53EDD742284D"
+ 2060      35353746 
+ 2060      41344345 
+ 2060      39413445 
+ 2060      30453345 
+ 2061 0132 36353832 		.ascii	"6582B51E4BF019787B8C33C2F2A095BEED11D6FE68611BD0082"
+ 2061      42353145 
+ 2061      34424630 
+ 2061      31393738 
+ 2061      37423843 
+ 2062 0165 35414639 		.ascii	"5AF97DB985C62C3AE0DC69BD7D0118E6D620B52AFD514AD5BFA"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 47
+
+
+ 2062      37444239 
+ 2062      38354336 
+ 2062      32433341 
+ 2062      45304443 
+ 2063 0198 38424142 		.ascii	"8BAB998332213D7DBF5C98DC86CB8D4F98A416802B892B8D6BE"
+ 2063      39393833 
+ 2063      33323231 
+ 2063      33443744 
+ 2063      42463543 
+ 2064 01cb 45354435 		.ascii	"E5D55B7E688334B281E4BEDDB11BD7B374355C5919BA5A9A1C9"
+ 2064      35423745 
+ 2064      36383833 
+ 2064      33344232 
+ 2064      38314534 
+ 2065 01fe 314600   		.ascii	"1F\000"
+ 2066 0201 000000   		.space	3
+ 2067              	.LC13:
+ 2068 0204 31303030 		.ascii	"10001\000"
+ 2068      3100
+ 2069              		.section	.rodata.atiny_do_dev_reboot.str1.4,"aMS",%progbits,1
+ 2070              		.align	2
+ 2071              	.LC5:
+ 2072 0000 64657669 		.ascii	"device is rebooting......\015\012\000"
+ 2072      63652069 
+ 2072      73207265 
+ 2072      626F6F74 
+ 2072      696E672E 
+ 2073              		.section	.rodata.atiny_do_factory_reset.str1.4,"aMS",%progbits,1
+ 2074              		.align	2
+ 2075              	.LC6:
+ 2076 0000 0A092046 		.ascii	"\012\011 FACTORY RESET\015\012\012\000"
+ 2076      4143544F 
+ 2076      52592052 
+ 2076      45534554 
+ 2076      0D0A0A00 
+ 2077              		.section	.rodata.atiny_event_notify.str1.4,"aMS",%progbits,1
+ 2078              		.align	2
+ 2079              	.LC14:
+ 2080 0000 6E6F7469 		.ascii	"notify:stat:%d\015\012\000"
+ 2080      66793A73 
+ 2080      7461743A 
+ 2080      25640D0A 
+ 2080      00
+ 2081              		.section	.rodata.atiny_get_bind_mode.str1.4,"aMS",%progbits,1
+ 2082              		.align	2
+ 2083              	.LC7:
+ 2084 0000 62696E64 		.ascii	"bind type is UQ......\015\012\000"
+ 2084      20747970 
+ 2084      65206973 
+ 2084      2055512E 
+ 2084      2E2E2E2E 
+ 2085              	.LC8:
+ 2086 0018 555100   		.ascii	"UQ\000"
+ 2087              		.section	.rodata.atiny_get_firmware_ver.str1.4,"aMS",%progbits,1
+ 2088              		.align	2
+ 2089              	.LC4:
+ 2090 0000 6578616D 		.ascii	"example_ver001\000"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 48
+
+
+ 2090      706C655F 
+ 2090      76657230 
+ 2090      303100
+ 2091              		.section	.rodata.atiny_get_manufacturer.str1.4,"aMS",%progbits,1
+ 2092              		.align	2
+ 2093              	.LC1:
+ 2094 0000 4F70656E 		.ascii	"Open Mobile Alliance\000"
+ 2094      204D6F62 
+ 2094      696C6520 
+ 2094      416C6C69 
+ 2094      616E6365 
+ 2095              		.section	.rodata.atiny_get_model_number.str1.4,"aMS",%progbits,1
+ 2096              		.align	2
+ 2097              	.LC2:
+ 2098 0000 4C696768 		.ascii	"Lightweight M2M Client\000"
+ 2098      74776569 
+ 2098      67687420 
+ 2098      4D324D20 
+ 2098      436C6965 
+ 2099              		.section	.rodata.atiny_get_serial_number.str1.4,"aMS",%progbits,1
+ 2100              		.align	2
+ 2101              	.LC3:
+ 2102 0000 33343530 		.ascii	"345000123\000"
+ 2102      30303132 
+ 2102      3300
+ 2103              		.section	.rodata.atiny_str_to_hex.str1.4,"aMS",%progbits,1
+ 2104              		.align	2
+ 2105              	.LC0:
+ 2106 0000 25303258 		.ascii	"%02X\000"
+ 2106      00
+ 2107              		.section	.rodata.atiny_trig_firmware_update.str1.4,"aMS",%progbits,1
+ 2108              		.align	2
+ 2109              	.LC9:
+ 2110 0000 6669726D 		.ascii	"firmware is updating......\015\012\000"
+ 2110      77617265 
+ 2110      20697320 
+ 2110      75706461 
+ 2110      74696E67 
+ 2111              		.section	.rodata.atiny_update_psk.str1.4,"aMS",%progbits,1
+ 2112              		.align	2
+ 2113              	.LC11:
+ 2114 0000 75706461 		.ascii	"update psk success\015\012\000"
+ 2114      74652070 
+ 2114      736B2073 
+ 2114      75636365 
+ 2114      73730D0A 
+ 2115              		.section	.rodata.atiny_write_app_write.str1.4,"aMS",%progbits,1
+ 2116              		.align	2
+ 2117              	.LC10:
+ 2118 0000 77726974 		.ascii	"write num19 object success\015\012\000"
+ 2118      65206E75 
+ 2118      6D313920 
+ 2118      6F626A65 
+ 2118      63742073 
+ 2119              		.text
+ 2120              	.Letext0:
+ 2121              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 49
+
+
+ 2122              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 2123              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 2124              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 2125              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 2126              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 2127              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 2128              		.file 9 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 2129              		.file 10 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 2130              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 2131              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 2132              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 2133              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/stm32
+ 2134              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 2135              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 2136              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 2137              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 2138              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 2139              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 2140              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 2141              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 2142              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/atiny_error.h"
+ 2143              		.file 24 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 2144              		.file 25 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 2145              		.file 26 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 2146              		.file 27 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/ota/ota_api.h"
+ 2147              		.file 28 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/atiny_lwm2m/agenttiny.h"
+ 2148              		.file 29 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/osdepends/atiny_osdep.h"
+ 2149              		.file 30 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/ota_p
+ 2150              		.file 31 "<built-in>"
+ 2151              		.file 32 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 2152              		.file 33 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 50
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 agent_tiny_cmd_ioctl.c
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:18     .text.atiny_str_to_hex:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:24     .text.atiny_str_to_hex:00000000 atiny_str_to_hex
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:113    .text.atiny_str_to_hex:0000003c $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:118    .text.atiny_get_manufacturer:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:125    .text.atiny_get_manufacturer:00000000 atiny_get_manufacturer
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:147    .text.atiny_get_manufacturer:0000000c $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:152    .text.atiny_get_model_number:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:159    .text.atiny_get_model_number:00000000 atiny_get_model_number
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:181    .text.atiny_get_model_number:0000000c $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:186    .text.atiny_get_serial_number:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:193    .text.atiny_get_serial_number:00000000 atiny_get_serial_number
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:215    .text.atiny_get_serial_number:0000000c $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:220    .text.atiny_get_firmware_ver:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:227    .text.atiny_get_firmware_ver:00000000 atiny_get_firmware_ver
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:249    .text.atiny_get_firmware_ver:0000000c $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:254    .text.atiny_do_dev_reboot:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:261    .text.atiny_do_dev_reboot:00000000 atiny_do_dev_reboot
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:285    .text.atiny_do_dev_reboot:00000010 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:290    .text.atiny_do_factory_reset:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:297    .text.atiny_do_factory_reset:00000000 atiny_do_factory_reset
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:318    .text.atiny_do_factory_reset:0000000c $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:323    .text.atiny_get_power_source:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:330    .text.atiny_get_power_source:00000000 atiny_get_power_source
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:349    .text.atiny_get_source_voltage:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:356    .text.atiny_get_source_voltage:00000000 atiny_get_source_voltage
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:375    .text.atiny_get_power_current:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:382    .text.atiny_get_power_current:00000000 atiny_get_power_current
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:401    .text.atiny_get_baterry_level:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:408    .text.atiny_get_baterry_level:00000000 atiny_get_baterry_level
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:427    .text.atiny_get_memory_free:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:434    .text.atiny_get_memory_free:00000000 atiny_get_memory_free
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:480    .text.atiny_get_memory_free:00000034 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:485    .text.atiny_get_dev_err:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:492    .text.atiny_get_dev_err:00000000 atiny_get_dev_err
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:511    .text.atiny_get_dev_err:0000000c $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:516    .text.atiny_do_reset_dev_err:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:523    .text.atiny_do_reset_dev_err:00000000 atiny_do_reset_dev_err
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:539    .text.atiny_do_reset_dev_err:00000008 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:545    .text.atiny_get_current_time:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:552    .text.atiny_get_current_time:00000000 atiny_get_current_time
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:586    .text.atiny_get_current_time:0000002c $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:591    .text.atiny_set_current_time:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:598    .text.atiny_set_current_time:00000000 atiny_set_current_time
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:630    .text.atiny_set_current_time:0000002c $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:636    .text.atiny_get_UTC_offset:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:643    .text.atiny_get_UTC_offset:00000000 atiny_get_UTC_offset
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:683    .text.atiny_get_UTC_offset:00000024 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:688    .text.atiny_set_UTC_offset:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:695    .text.atiny_set_UTC_offset:00000000 atiny_set_UTC_offset
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:721    .text.atiny_set_UTC_offset:00000010 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:726    .text.atiny_get_timezone:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:733    .text.atiny_get_timezone:00000000 atiny_get_timezone
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:773    .text.atiny_get_timezone:00000024 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:778    .text.atiny_set_timezone:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:785    .text.atiny_set_timezone:00000000 atiny_set_timezone
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 51
+
+
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:811    .text.atiny_set_timezone:00000010 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:816    .text.atiny_get_bind_mode:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:823    .text.atiny_get_bind_mode:00000000 atiny_get_bind_mode
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:857    .text.atiny_get_bind_mode:0000001c $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:863    .text.atiny_trig_firmware_update:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:870    .text.atiny_trig_firmware_update:00000000 atiny_trig_firmware_update
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:891    .text.atiny_trig_firmware_update:0000000c $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:896    .text.atiny_get_firmware_result:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:903    .text.atiny_get_firmware_result:00000000 atiny_get_firmware_result
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:922    .text.atiny_get_firmware_state:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:929    .text.atiny_get_firmware_state:00000000 atiny_get_firmware_state
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:948    .text.atiny_get_network_bearer:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:955    .text.atiny_get_network_bearer:00000000 atiny_get_network_bearer
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:974    .text.atiny_get_signal_strength:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:981    .text.atiny_get_signal_strength:00000000 atiny_get_signal_strength
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1000   .text.atiny_get_cell_id:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1007   .text.atiny_get_cell_id:00000000 atiny_get_cell_id
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1026   .text.atiny_get_link_quality:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1033   .text.atiny_get_link_quality:00000000 atiny_get_link_quality
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1052   .text.atiny_get_link_utilization:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1059   .text.atiny_get_link_utilization:00000000 atiny_get_link_utilization
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1078   .text.atiny_write_app_write:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1085   .text.atiny_write_app_write:00000000 atiny_write_app_write
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1231   .text.atiny_write_app_write:000000c0 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1241   .text.atiny_update_psk:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1248   .text.atiny_update_psk:00000000 atiny_update_psk
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1271   .text.atiny_update_psk:0000000c $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1276   .text.atiny_get_latitude:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1283   .text.atiny_get_latitude:00000000 atiny_get_latitude
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1301   .text.atiny_get_latitude:00000008 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1306   .text.atiny_get_longitude:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1313   .text.atiny_get_longitude:00000000 atiny_get_longitude
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1331   .text.atiny_get_longitude:00000008 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1336   .text.atiny_get_altitude:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1343   .text.atiny_get_altitude:00000000 atiny_get_altitude
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1361   .text.atiny_get_altitude:00000008 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1366   .text.atiny_get_radius:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1373   .text.atiny_get_radius:00000000 atiny_get_radius
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1392   .text.atiny_get_speed:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1399   .text.atiny_get_speed:00000000 atiny_get_speed
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1419   .text.atiny_get_timestamp:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1426   .text.atiny_get_timestamp:00000000 atiny_get_timestamp
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1460   .text.atiny_get_timestamp:00000030 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1466   .text.location_get_velocity:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1473   .text.location_get_velocity:00000000 location_get_velocity
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1526   .text.atiny_get_velocity:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1533   .text.atiny_get_velocity:00000000 atiny_get_velocity
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1558   .text.atiny_cmd_ioctl:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1565   .text.atiny_cmd_ioctl:00000000 atiny_cmd_ioctl
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1584   .text.atiny_cmd_ioctl:0000000e $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1620   .text.atiny_cmd_ioctl:00000032 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1981   .text.atiny_cmd_ioctl:00000170 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1987   .text.atiny_event_notify:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:1994   .text.atiny_event_notify:00000000 atiny_event_notify
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2018   .text.atiny_event_notify:0000000c $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2023   .bss.err_code:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2027   .bss.err_code:00000000 err_code
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s 			page 52
+
+
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2030   .data.g_UTC_offset:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2034   .data.g_UTC_offset:00000000 g_UTC_offset
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2037   .data.g_current_time:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2041   .data.g_current_time:00000000 g_current_time
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2045   .data.g_timezone:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2049   .data.g_timezone:00000000 g_timezone
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2053   .rodata.atiny_cmd_ioctl.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2070   .rodata.atiny_do_dev_reboot.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2074   .rodata.atiny_do_factory_reset.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2078   .rodata.atiny_event_notify.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2082   .rodata.atiny_get_bind_mode.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2088   .rodata.atiny_get_firmware_ver.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2092   .rodata.atiny_get_manufacturer.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2096   .rodata.atiny_get_model_number.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2100   .rodata.atiny_get_serial_number.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2104   .rodata.atiny_str_to_hex.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2108   .rodata.atiny_trig_firmware_update.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2112   .rodata.atiny_update_psk.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cctoIuuN.s:2116   .rodata.atiny_write_app_write.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+sprintf
+atiny_snprintf
+atiny_printf
+atiny_reboot
+atiny_random
+__aeabi_ldivmod
+atiny_gettime_ms
+strlen
+memset
+memcpy
+HAL_GPIO_WritePin
+LOS_SemPost
+s_resp_buf
+reply_sem
+__aeabi_uldivmod
+hal_get_ota_opt

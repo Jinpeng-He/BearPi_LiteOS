@@ -1,0 +1,1164 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"ota_default.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.prv_read_specific,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	prv_read_specific:
+  25              	.LFB3:
+  26              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota/ota_default.c"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  * applicable export control laws and regulations.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 2
+
+
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** #include "ota.h"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** #include "ota_errno.h"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** #include "ota_crc.h"
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** #include "ota_sha256.h"
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** #include "ota_default.h"
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** #include "board.h"
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** #include <string.h>
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** #define MAX_RESTART_CNT 5
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** #define OTA_INTEGRITY_BUF_SIZE 0x1000
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** #define OTA_IMAGE_INTEGRITY_LENGTH 32
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** typedef struct
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** {
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     ota_state state;
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     uint8_t restart_cnt;
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     uint8_t cur_state;
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     uint16_t rsv;
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     int32_t cur_offset;
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     uint32_t old_image_length;
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     uint32_t image_length;
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     uint8_t image_integrity[OTA_IMAGE_INTEGRITY_LENGTH];
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     uint32_t crc;
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** } ota_default_flag;
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** static ota_default_flag g_ota_flag;
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** static int prv_read_specific(uint32_t addr, ota_default_flag *flag)
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** {
+  27              		.loc 1 64 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  32 0000 38B5     		push	{r3, r4, r5, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 16
+  35              		.cfi_offset 3, -16
+  36              		.cfi_offset 4, -12
+  37              		.cfi_offset 5, -8
+  38              		.cfi_offset 14, -4
+  39 0002 0C46     		mov	r4, r1
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     int ret;
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     int crc;
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     ret = g_ota_assist.func_ota_read(flag, sizeof(ota_default_flag), addr);
+  40              		.loc 1 68 0
+  41 0004 094B     		ldr	r3, .L6
+  42 0006 5B68     		ldr	r3, [r3, #4]
+  43 0008 0246     		mov	r2, r0
+  44 000a 3821     		movs	r1, #56
+  45              	.LVL1:
+  46 000c 2046     		mov	r0, r4
+  47              	.LVL2:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 3
+
+
+  48 000e 9847     		blx	r3
+  49              	.LVL3:
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     if (0 == ret)
+  50              		.loc 1 69 0
+  51 0010 0546     		mov	r5, r0
+  52 0012 08B1     		cbz	r0, .L5
+  53              	.LVL4:
+  54              	.L1:
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     {
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         crc = calc_crc32(0, flag, sizeof(ota_default_flag) - sizeof(uint32_t));
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         if (crc != flag->crc)
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         {
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****             ret = -1;
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         }
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     return ret;
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** }
+  55              		.loc 1 79 0
+  56 0014 2846     		mov	r0, r5
+  57 0016 38BD     		pop	{r3, r4, r5, pc}
+  58              	.LVL5:
+  59              	.L5:
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         if (crc != flag->crc)
+  60              		.loc 1 71 0
+  61 0018 3422     		movs	r2, #52
+  62 001a 2146     		mov	r1, r4
+  63 001c FFF7FEFF 		bl	calc_crc32
+  64              	.LVL6:
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         {
+  65              		.loc 1 72 0
+  66 0020 636B     		ldr	r3, [r4, #52]
+  67 0022 9842     		cmp	r0, r3
+  68 0024 F6D0     		beq	.L1
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         }
+  69              		.loc 1 74 0
+  70 0026 4FF0FF35 		mov	r5, #-1
+  71              	.LVL7:
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** }
+  72              		.loc 1 78 0
+  73 002a F3E7     		b	.L1
+  74              	.L7:
+  75              		.align	2
+  76              	.L6:
+  77 002c 00000000 		.word	g_ota_assist
+  78              		.cfi_endproc
+  79              	.LFE3:
+  81              		.section	.text.prv_read_ota_default_flag,"ax",%progbits
+  82              		.align	1
+  83              		.syntax unified
+  84              		.thumb
+  85              		.thumb_func
+  86              		.fpu fpv4-sp-d16
+  88              	prv_read_ota_default_flag:
+  89              	.LFB5:
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** static int prv_write_specific(uint32_t addr, ota_default_flag *flag)
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 4
+
+
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** {
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     flag->crc = calc_crc32(0, flag, sizeof(ota_default_flag) - sizeof(uint32_t));
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     return g_ota_assist.func_ota_write(flag, sizeof(ota_default_flag), addr);
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** }
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** static int prv_read_ota_default_flag(void)
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** {
+  90              		.loc 1 88 0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94 0000 08B5     		push	{r3, lr}
+  95              	.LCFI1:
+  96              		.cfi_def_cfa_offset 8
+  97              		.cfi_offset 3, -8
+  98              		.cfi_offset 14, -4
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     int ret;
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     ret = prv_read_specific(OTA_FLAG_ADDR1, &g_ota_flag);
+  99              		.loc 1 91 0
+ 100 0002 0749     		ldr	r1, .L12
+ 101 0004 0020     		movs	r0, #0
+ 102 0006 FFF7FEFF 		bl	prv_read_specific
+ 103              	.LVL8:
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     if (ret != 0)
+ 104              		.loc 1 92 0
+ 105 000a 0346     		mov	r3, r0
+ 106 000c 08B9     		cbnz	r0, .L11
+ 107              	.L8:
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     {
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         ret = prv_read_specific(OTA_FLAG_ADDR2, &g_ota_flag);
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     return ret;
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** }
+ 108              		.loc 1 98 0
+ 109 000e 1846     		mov	r0, r3
+ 110              	.LVL9:
+ 111 0010 08BD     		pop	{r3, pc}
+ 112              	.LVL10:
+ 113              	.L11:
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 114              		.loc 1 94 0
+ 115 0012 0349     		ldr	r1, .L12
+ 116 0014 4FF48040 		mov	r0, #16384
+ 117              	.LVL11:
+ 118 0018 FFF7FEFF 		bl	prv_read_specific
+ 119              	.LVL12:
+ 120 001c 0346     		mov	r3, r0
+ 121              	.LVL13:
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** }
+ 122              		.loc 1 97 0
+ 123 001e F6E7     		b	.L8
+ 124              	.L13:
+ 125              		.align	2
+ 126              	.L12:
+ 127 0020 00000000 		.word	.LANCHOR0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 5
+
+
+ 128              		.cfi_endproc
+ 129              	.LFE5:
+ 131              		.section	.text.prv_write_specific,"ax",%progbits
+ 132              		.align	1
+ 133              		.syntax unified
+ 134              		.thumb
+ 135              		.thumb_func
+ 136              		.fpu fpv4-sp-d16
+ 138              	prv_write_specific:
+ 139              	.LFB4:
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     flag->crc = calc_crc32(0, flag, sizeof(ota_default_flag) - sizeof(uint32_t));
+ 140              		.loc 1 82 0
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 0
+ 143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144              	.LVL14:
+ 145 0000 38B5     		push	{r3, r4, r5, lr}
+ 146              	.LCFI2:
+ 147              		.cfi_def_cfa_offset 16
+ 148              		.cfi_offset 3, -16
+ 149              		.cfi_offset 4, -12
+ 150              		.cfi_offset 5, -8
+ 151              		.cfi_offset 14, -4
+ 152 0002 0546     		mov	r5, r0
+ 153 0004 0C46     		mov	r4, r1
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     return g_ota_assist.func_ota_write(flag, sizeof(ota_default_flag), addr);
+ 154              		.loc 1 83 0
+ 155 0006 3422     		movs	r2, #52
+ 156 0008 0020     		movs	r0, #0
+ 157              	.LVL15:
+ 158 000a FFF7FEFF 		bl	calc_crc32
+ 159              	.LVL16:
+ 160 000e 6063     		str	r0, [r4, #52]
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** }
+ 161              		.loc 1 84 0
+ 162 0010 034B     		ldr	r3, .L16
+ 163 0012 9B68     		ldr	r3, [r3, #8]
+ 164 0014 2A46     		mov	r2, r5
+ 165 0016 3821     		movs	r1, #56
+ 166 0018 2046     		mov	r0, r4
+ 167 001a 9847     		blx	r3
+ 168              	.LVL17:
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 169              		.loc 1 85 0
+ 170 001c 38BD     		pop	{r3, r4, r5, pc}
+ 171              	.LVL18:
+ 172              	.L17:
+ 173 001e 00BF     		.align	2
+ 174              	.L16:
+ 175 0020 00000000 		.word	g_ota_assist
+ 176              		.cfi_endproc
+ 177              	.LFE4:
+ 179              		.section	.text.prv_write_ota_default_flag,"ax",%progbits
+ 180              		.align	1
+ 181              		.syntax unified
+ 182              		.thumb
+ 183              		.thumb_func
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 6
+
+
+ 184              		.fpu fpv4-sp-d16
+ 186              	prv_write_ota_default_flag:
+ 187              	.LFB6:
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** static int prv_write_ota_default_flag(void)
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** {
+ 188              		.loc 1 101 0
+ 189              		.cfi_startproc
+ 190              		@ args = 0, pretend = 0, frame = 56
+ 191              		@ frame_needed = 0, uses_anonymous_args = 0
+ 192 0000 00B5     		push	{lr}
+ 193              	.LCFI3:
+ 194              		.cfi_def_cfa_offset 4
+ 195              		.cfi_offset 14, -4
+ 196 0002 8FB0     		sub	sp, sp, #60
+ 197              	.LCFI4:
+ 198              		.cfi_def_cfa_offset 64
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     int ret;
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     ota_default_flag flag_tmp;
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     memset(&flag_tmp, 0, sizeof(ota_default_flag));
+ 199              		.loc 1 105 0
+ 200 0004 3822     		movs	r2, #56
+ 201 0006 0021     		movs	r1, #0
+ 202 0008 6846     		mov	r0, sp
+ 203 000a FFF7FEFF 		bl	memset
+ 204              	.LVL19:
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     ret = prv_read_specific(OTA_FLAG_ADDR1, &flag_tmp);
+ 205              		.loc 1 106 0
+ 206 000e 6946     		mov	r1, sp
+ 207 0010 0020     		movs	r0, #0
+ 208 0012 FFF7FEFF 		bl	prv_read_specific
+ 209              	.LVL20:
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     if (0 == ret)
+ 210              		.loc 1 107 0
+ 211 0016 30B9     		cbnz	r0, .L19
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     {
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         ret = prv_write_specific(OTA_FLAG_ADDR2, &flag_tmp);
+ 212              		.loc 1 109 0
+ 213 0018 6946     		mov	r1, sp
+ 214 001a 4FF48040 		mov	r0, #16384
+ 215              	.LVL21:
+ 216 001e FFF7FEFF 		bl	prv_write_specific
+ 217              	.LVL22:
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         if (0 != ret)
+ 218              		.loc 1 110 0
+ 219 0022 0346     		mov	r3, r0
+ 220 0024 20B9     		cbnz	r0, .L18
+ 221              	.L19:
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         {
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****             return ret;
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         }
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     ret = prv_write_specific(OTA_FLAG_ADDR1, &g_ota_flag);
+ 222              		.loc 1 116 0
+ 223 0026 0449     		ldr	r1, .L22
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 7
+
+
+ 224 0028 0020     		movs	r0, #0
+ 225              	.LVL23:
+ 226 002a FFF7FEFF 		bl	prv_write_specific
+ 227              	.LVL24:
+ 228 002e 0346     		mov	r3, r0
+ 229              	.LVL25:
+ 230              	.L18:
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 		
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 		
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 		
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 		
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 		//ret = prv_read_specific(OTA_FLAG_ADDR1, &flag_tmp);///////////////////////////////
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 		
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 		
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     return ret;
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** }
+ 231              		.loc 1 126 0
+ 232 0030 1846     		mov	r0, r3
+ 233              	.LVL26:
+ 234 0032 0FB0     		add	sp, sp, #60
+ 235              	.LCFI5:
+ 236              		.cfi_def_cfa_offset 4
+ 237              		@ sp needed
+ 238 0034 5DF804FB 		ldr	pc, [sp], #4
+ 239              	.L23:
+ 240              		.align	2
+ 241              	.L22:
+ 242 0038 00000000 		.word	.LANCHOR0
+ 243              		.cfi_endproc
+ 244              	.LFE6:
+ 246              		.section	.text.prv_image_integrity,"ax",%progbits
+ 247              		.align	1
+ 248              		.syntax unified
+ 249              		.thumb
+ 250              		.thumb_func
+ 251              		.fpu fpv4-sp-d16
+ 253              	prv_image_integrity:
+ 254              	.LFB7:
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** uint8_t g_integrity_buf[OTA_INTEGRITY_BUF_SIZE];
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** static int prv_image_integrity(uint8_t *integrity)
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** {
+ 255              		.loc 1 131 0
+ 256              		.cfi_startproc
+ 257              		@ args = 0, pretend = 0, frame = 112
+ 258              		@ frame_needed = 0, uses_anonymous_args = 0
+ 259              	.LVL27:
+ 260 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 261              	.LCFI6:
+ 262              		.cfi_def_cfa_offset 20
+ 263              		.cfi_offset 4, -20
+ 264              		.cfi_offset 5, -16
+ 265              		.cfi_offset 6, -12
+ 266              		.cfi_offset 7, -8
+ 267              		.cfi_offset 14, -4
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 8
+
+
+ 268 0002 9DB0     		sub	sp, sp, #116
+ 269              	.LCFI7:
+ 270              		.cfi_def_cfa_offset 136
+ 271 0004 0746     		mov	r7, r0
+ 272              	.LVL28:
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     int ret = -1;
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     uint32_t image_addr = OTA_IMAGE_DOWNLOAD_ADDR;
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     uint32_t image_len = g_ota_flag.image_length;
+ 273              		.loc 1 134 0
+ 274 0006 1A4B     		ldr	r3, .L32
+ 275 0008 1D69     		ldr	r5, [r3, #16]
+ 276              	.LVL29:
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     ota_sha256_context ctx;
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     uint32_t check_len;
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     ota_sha256_init(&ctx);
+ 277              		.loc 1 138 0
+ 278 000a 01A8     		add	r0, sp, #4
+ 279              	.LVL30:
+ 280 000c FFF7FEFF 		bl	ota_sha256_init
+ 281              	.LVL31:
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     ota_sha256_starts(&ctx, 0);
+ 282              		.loc 1 139 0
+ 283 0010 0021     		movs	r1, #0
+ 284 0012 01A8     		add	r0, sp, #4
+ 285 0014 FFF7FEFF 		bl	ota_sha256_starts
+ 286              	.LVL32:
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     uint32_t image_len = g_ota_flag.image_length;
+ 287              		.loc 1 133 0
+ 288 0018 4FF48036 		mov	r6, #65536
+ 289              	.LVL33:
+ 290              	.L25:
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     while (image_len > 0)
+ 291              		.loc 1 141 0
+ 292 001c EDB1     		cbz	r5, .L30
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     {
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         check_len = image_len > OTA_INTEGRITY_BUF_SIZE
+ 293              		.loc 1 143 0
+ 294 001e 2C46     		mov	r4, r5
+ 295 0020 B5F5805F 		cmp	r5, #4096
+ 296 0024 28BF     		it	cs
+ 297 0026 4FF48054 		movcs	r4, #4096
+ 298              	.LVL34:
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****                     ? OTA_INTEGRITY_BUF_SIZE : image_len;
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         if (g_ota_assist.func_ota_read(g_integrity_buf, check_len, image_addr) != 0)
+ 299              		.loc 1 145 0
+ 300 002a 124B     		ldr	r3, .L32+4
+ 301 002c 5B68     		ldr	r3, [r3, #4]
+ 302 002e 3246     		mov	r2, r6
+ 303 0030 2146     		mov	r1, r4
+ 304 0032 1148     		ldr	r0, .L32+8
+ 305 0034 9847     		blx	r3
+ 306              	.LVL35:
+ 307 0036 38B9     		cbnz	r0, .L31
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         {
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****             OTA_LOG("read image failed during integrity check");
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 9
+
+
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****             goto exit;
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         }
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         ota_sha256_update(&ctx, (const unsigned char *)g_integrity_buf, check_len);
+ 308              		.loc 1 150 0
+ 309 0038 2246     		mov	r2, r4
+ 310 003a 0F49     		ldr	r1, .L32+8
+ 311 003c 01A8     		add	r0, sp, #4
+ 312 003e FFF7FEFF 		bl	ota_sha256_update
+ 313              	.LVL36:
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         image_addr += check_len;
+ 314              		.loc 1 151 0
+ 315 0042 2644     		add	r6, r6, r4
+ 316              	.LVL37:
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         image_len -= check_len;
+ 317              		.loc 1 152 0
+ 318 0044 2D1B     		subs	r5, r5, r4
+ 319              	.LVL38:
+ 320 0046 E9E7     		b	.L25
+ 321              	.L31:
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****             goto exit;
+ 322              		.loc 1 147 0
+ 323 0048 0A4B     		ldr	r3, .L32+4
+ 324 004a 1B68     		ldr	r3, [r3]
+ 325 004c 9322     		movs	r2, #147
+ 326 004e 0B49     		ldr	r1, .L32+12
+ 327 0050 0B48     		ldr	r0, .L32+16
+ 328 0052 9847     		blx	r3
+ 329              	.LVL39:
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     uint32_t image_addr = OTA_IMAGE_DOWNLOAD_ADDR;
+ 330              		.loc 1 132 0
+ 331 0054 4FF0FF34 		mov	r4, #-1
+ 332              	.LVL40:
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         }
+ 333              		.loc 1 148 0
+ 334 0058 04E0     		b	.L27
+ 335              	.LVL41:
+ 336              	.L30:
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     ota_sha256_finish(&ctx, (unsigned char *)integrity);
+ 337              		.loc 1 154 0
+ 338 005a 3946     		mov	r1, r7
+ 339 005c 01A8     		add	r0, sp, #4
+ 340 005e FFF7FEFF 		bl	ota_sha256_finish
+ 341              	.LVL42:
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     ret = 0;
+ 342              		.loc 1 156 0
+ 343 0062 0024     		movs	r4, #0
+ 344              	.LVL43:
+ 345              	.L27:
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** exit:
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     ota_sha256_free(&ctx);
+ 346              		.loc 1 159 0
+ 347 0064 01A8     		add	r0, sp, #4
+ 348 0066 FFF7FEFF 		bl	ota_sha256_free
+ 349              	.LVL44:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 10
+
+
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     return ret;
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** }
+ 350              		.loc 1 161 0
+ 351 006a 2046     		mov	r0, r4
+ 352 006c 1DB0     		add	sp, sp, #116
+ 353              	.LCFI8:
+ 354              		.cfi_def_cfa_offset 20
+ 355              		@ sp needed
+ 356 006e F0BD     		pop	{r4, r5, r6, r7, pc}
+ 357              	.LVL45:
+ 358              	.L33:
+ 359              		.align	2
+ 360              	.L32:
+ 361 0070 00000000 		.word	.LANCHOR0
+ 362 0074 00000000 		.word	g_ota_assist
+ 363 0078 00000000 		.word	g_integrity_buf
+ 364 007c 00000000 		.word	.LANCHOR1
+ 365 0080 00000000 		.word	.LC0
+ 366              		.cfi_endproc
+ 367              	.LFE7:
+ 369              		.section	.text.ota_default_init,"ax",%progbits
+ 370              		.align	1
+ 371              		.global	ota_default_init
+ 372              		.syntax unified
+ 373              		.thumb
+ 374              		.thumb_func
+ 375              		.fpu fpv4-sp-d16
+ 377              	ota_default_init:
+ 378              	.LFB8:
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** #ifdef USE_BOOTLOADER
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** static void prv_get_update_record(uint8_t *state, uint32_t *offset)
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** {
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     if (NULL != state)
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     {
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         *state = g_ota_flag.cur_state;
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     if (NULL != offset)
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     {
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         *offset = g_ota_flag.cur_offset;
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** }
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** static int prv_set_update_record(uint8_t state, uint32_t offset)
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** {
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     g_ota_flag.cur_state = state;
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     g_ota_flag.cur_offset = offset;
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     return prv_write_ota_default_flag();
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** }
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** static int prv_update_state(ota_state st)
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** {
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     g_ota_flag.state = st;
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     if (prv_write_ota_default_flag() != 0)
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 11
+
+
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         OTA_LOG("write ota flag failed");
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         return OTA_ERRNO_SPI_FLASH_WRITE;
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     return OTA_ERRNO_OK;
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** }
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** static int prv_check_integrity_value(const uint8_t *v1, const uint8_t *v2)
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** {
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     int i;
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     for (i = 0; i < OTA_IMAGE_INTEGRITY_LENGTH; ++i)
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     {
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         if (v1[i] != v2[i])
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         {
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****             return -1;
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         }
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     return 0;
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** }
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** #endif
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** int ota_default_init(void)
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** {
+ 379              		.loc 1 212 0
+ 380              		.cfi_startproc
+ 381              		@ args = 0, pretend = 0, frame = 0
+ 382              		@ frame_needed = 0, uses_anonymous_args = 0
+ 383 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 384              	.LCFI9:
+ 385              		.cfi_def_cfa_offset 24
+ 386              		.cfi_offset 3, -24
+ 387              		.cfi_offset 4, -20
+ 388              		.cfi_offset 5, -16
+ 389              		.cfi_offset 6, -12
+ 390              		.cfi_offset 7, -8
+ 391              		.cfi_offset 14, -4
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     if (prv_read_ota_default_flag() != 0)
+ 392              		.loc 1 213 0
+ 393 0002 FFF7FEFF 		bl	prv_read_ota_default_flag
+ 394              	.LVL46:
+ 395 0006 80B9     		cbnz	r0, .L38
+ 396              	.L35:
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     {
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         g_ota_flag.state = OTA_S_IDLE;
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 				
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         g_ota_flag.restart_cnt = 0;
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         g_ota_flag.cur_state = 0;
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         g_ota_flag.cur_offset = 0;
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         g_ota_flag.image_length = 0;
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         g_ota_flag.old_image_length = OTA_IMAGE_DOWNLOAD_SIZE;
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 			
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 			  
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         memset(g_ota_flag.image_integrity, 0, OTA_IMAGE_INTEGRITY_LENGTH);
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         if (prv_write_ota_default_flag() != 0)
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         {
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****             OTA_LOG("write ota flag failed");
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****             return OTA_ERRNO_SPI_FLASH_WRITE;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 12
+
+
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         }
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     OTA_LOG("state: %d", g_ota_flag.state);
+ 397              		.loc 1 231 0
+ 398 0008 154E     		ldr	r6, .L39
+ 399 000a 3768     		ldr	r7, [r6]
+ 400 000c 154D     		ldr	r5, .L39+4
+ 401 000e 164C     		ldr	r4, .L39+8
+ 402 0010 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 403 0012 E722     		movs	r2, #231
+ 404 0014 2146     		mov	r1, r4
+ 405 0016 1548     		ldr	r0, .L39+12
+ 406 0018 B847     		blx	r7
+ 407              	.LVL47:
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     OTA_LOG("restart_cnt: %d", g_ota_flag.restart_cnt);
+ 408              		.loc 1 232 0
+ 409 001a 3668     		ldr	r6, [r6]
+ 410 001c 6B78     		ldrb	r3, [r5, #1]	@ zero_extendqisi2
+ 411 001e E822     		movs	r2, #232
+ 412 0020 2146     		mov	r1, r4
+ 413 0022 1348     		ldr	r0, .L39+16
+ 414 0024 B047     		blx	r6
+ 415              	.LVL48:
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     return OTA_ERRNO_OK;
+ 416              		.loc 1 234 0
+ 417 0026 0020     		movs	r0, #0
+ 418              	.L34:
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** }
+ 419              		.loc 1 235 0
+ 420 0028 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 421              	.L38:
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 				
+ 422              		.loc 1 215 0
+ 423 002a 0E48     		ldr	r0, .L39+4
+ 424 002c 0021     		movs	r1, #0
+ 425 002e 0170     		strb	r1, [r0]
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         g_ota_flag.cur_state = 0;
+ 426              		.loc 1 217 0
+ 427 0030 4170     		strb	r1, [r0, #1]
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         g_ota_flag.cur_offset = 0;
+ 428              		.loc 1 218 0
+ 429 0032 8170     		strb	r1, [r0, #2]
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         g_ota_flag.image_length = 0;
+ 430              		.loc 1 219 0
+ 431 0034 8160     		str	r1, [r0, #8]
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         g_ota_flag.old_image_length = OTA_IMAGE_DOWNLOAD_SIZE;
+ 432              		.loc 1 220 0
+ 433 0036 0161     		str	r1, [r0, #16]
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 			
+ 434              		.loc 1 221 0
+ 435 0038 4FF48023 		mov	r3, #262144
+ 436 003c C360     		str	r3, [r0, #12]
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         if (prv_write_ota_default_flag() != 0)
+ 437              		.loc 1 224 0
+ 438 003e 2022     		movs	r2, #32
+ 439 0040 1430     		adds	r0, r0, #20
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 13
+
+
+ 440 0042 FFF7FEFF 		bl	memset
+ 441              	.LVL49:
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         {
+ 442              		.loc 1 225 0
+ 443 0046 FFF7FEFF 		bl	prv_write_ota_default_flag
+ 444              	.LVL50:
+ 445 004a 0028     		cmp	r0, #0
+ 446 004c DCD0     		beq	.L35
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****             return OTA_ERRNO_SPI_FLASH_WRITE;
+ 447              		.loc 1 227 0
+ 448 004e 044B     		ldr	r3, .L39
+ 449 0050 1B68     		ldr	r3, [r3]
+ 450 0052 E322     		movs	r2, #227
+ 451 0054 0449     		ldr	r1, .L39+8
+ 452 0056 0748     		ldr	r0, .L39+20
+ 453 0058 9847     		blx	r3
+ 454              	.LVL51:
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         }
+ 455              		.loc 1 228 0
+ 456 005a 6FF00300 		mvn	r0, #3
+ 457 005e E3E7     		b	.L34
+ 458              	.L40:
+ 459              		.align	2
+ 460              	.L39:
+ 461 0060 00000000 		.word	g_ota_assist
+ 462 0064 00000000 		.word	.LANCHOR0
+ 463 0068 00000000 		.word	.LANCHOR2
+ 464 006c 28000000 		.word	.LC2
+ 465 0070 44000000 		.word	.LC3
+ 466 0074 00000000 		.word	.LC1
+ 467              		.cfi_endproc
+ 468              	.LFE8:
+ 470              		.section	.text.ota_default_set_reboot,"ax",%progbits
+ 471              		.align	1
+ 472              		.global	ota_default_set_reboot
+ 473              		.syntax unified
+ 474              		.thumb
+ 475              		.thumb_func
+ 476              		.fpu fpv4-sp-d16
+ 478              	ota_default_set_reboot:
+ 479              	.LFB9:
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** int ota_default_set_reboot(int32_t image_len)
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** {
+ 480              		.loc 1 238 0
+ 481              		.cfi_startproc
+ 482              		@ args = 0, pretend = 0, frame = 0
+ 483              		@ frame_needed = 0, uses_anonymous_args = 0
+ 484              	.LVL52:
+ 485 0000 10B5     		push	{r4, lr}
+ 486              	.LCFI10:
+ 487              		.cfi_def_cfa_offset 8
+ 488              		.cfi_offset 4, -8
+ 489              		.cfi_offset 14, -4
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     if (image_len <= 0)
+ 490              		.loc 1 239 0
+ 491 0002 031E     		subs	r3, r0, #0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 14
+
+
+ 492 0004 10DD     		ble	.L46
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     {
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         OTA_LOG("ilegal image_len: %d", image_len);
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         return OTA_ERRNO_ILEGAL_PARAM;
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     g_ota_flag.cur_state = 0;
+ 493              		.loc 1 245 0
+ 494 0006 1648     		ldr	r0, .L49
+ 495              	.LVL53:
+ 496 0008 0022     		movs	r2, #0
+ 497 000a 8270     		strb	r2, [r0, #2]
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     g_ota_flag.cur_offset = 0;
+ 498              		.loc 1 246 0
+ 499 000c 8260     		str	r2, [r0, #8]
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     g_ota_flag.image_length = image_len;
+ 500              		.loc 1 247 0
+ 501 000e 0361     		str	r3, [r0, #16]
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     g_ota_flag.state = OTA_S_NEEDUPDATE;
+ 502              		.loc 1 248 0
+ 503 0010 0123     		movs	r3, #1
+ 504              	.LVL54:
+ 505 0012 00F8143B 		strb	r3, [r0], #20
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     if (prv_image_integrity(g_ota_flag.image_integrity) != 0)
+ 506              		.loc 1 249 0
+ 507 0016 FFF7FEFF 		bl	prv_image_integrity
+ 508              	.LVL55:
+ 509 001a 70B9     		cbnz	r0, .L47
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     {
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         OTA_LOG("do integrity check failed");
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         return OTA_ERRNO_INTEGRITY_CHECK;
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     if (prv_write_ota_default_flag() != 0)
+ 510              		.loc 1 255 0
+ 511 001c FFF7FEFF 		bl	prv_write_ota_default_flag
+ 512              	.LVL56:
+ 513 0020 0346     		mov	r3, r0
+ 514 0022 98B9     		cbnz	r0, .L48
+ 515              	.L41:
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     {
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         OTA_LOG("write ota flag failed");
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         return OTA_ERRNO_SPI_FLASH_WRITE;
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     return OTA_ERRNO_OK;
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** }
+ 516              		.loc 1 262 0
+ 517 0024 1846     		mov	r0, r3
+ 518 0026 10BD     		pop	{r4, pc}
+ 519              	.LVL57:
+ 520              	.L46:
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         return OTA_ERRNO_ILEGAL_PARAM;
+ 521              		.loc 1 241 0
+ 522 0028 0E4A     		ldr	r2, .L49+4
+ 523 002a 1468     		ldr	r4, [r2]
+ 524 002c F122     		movs	r2, #241
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 15
+
+
+ 525 002e 0E49     		ldr	r1, .L49+8
+ 526 0030 0E48     		ldr	r0, .L49+12
+ 527              	.LVL58:
+ 528 0032 A047     		blx	r4
+ 529              	.LVL59:
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 530              		.loc 1 242 0
+ 531 0034 4FF0FF33 		mov	r3, #-1
+ 532 0038 F4E7     		b	.L41
+ 533              	.L47:
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         return OTA_ERRNO_INTEGRITY_CHECK;
+ 534              		.loc 1 251 0
+ 535 003a 0A4B     		ldr	r3, .L49+4
+ 536 003c 1B68     		ldr	r3, [r3]
+ 537 003e FB22     		movs	r2, #251
+ 538 0040 0949     		ldr	r1, .L49+8
+ 539 0042 0B48     		ldr	r0, .L49+16
+ 540 0044 9847     		blx	r3
+ 541              	.LVL60:
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 542              		.loc 1 252 0
+ 543 0046 6FF00103 		mvn	r3, #1
+ 544 004a EBE7     		b	.L41
+ 545              	.L48:
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         return OTA_ERRNO_SPI_FLASH_WRITE;
+ 546              		.loc 1 257 0
+ 547 004c 054B     		ldr	r3, .L49+4
+ 548 004e 1B68     		ldr	r3, [r3]
+ 549 0050 40F20112 		movw	r2, #257
+ 550 0054 0449     		ldr	r1, .L49+8
+ 551 0056 0748     		ldr	r0, .L49+20
+ 552 0058 9847     		blx	r3
+ 553              	.LVL61:
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 554              		.loc 1 258 0
+ 555 005a 6FF00303 		mvn	r3, #3
+ 556 005e E1E7     		b	.L41
+ 557              	.L50:
+ 558              		.align	2
+ 559              	.L49:
+ 560 0060 00000000 		.word	.LANCHOR0
+ 561 0064 00000000 		.word	g_ota_assist
+ 562 0068 00000000 		.word	.LANCHOR3
+ 563 006c 00000000 		.word	.LC4
+ 564 0070 24000000 		.word	.LC5
+ 565 0074 00000000 		.word	.LC1
+ 566              		.cfi_endproc
+ 567              	.LFE9:
+ 569              		.section	.text.ota_default_check_update_state,"ax",%progbits
+ 570              		.align	1
+ 571              		.global	ota_default_check_update_state
+ 572              		.syntax unified
+ 573              		.thumb
+ 574              		.thumb_func
+ 575              		.fpu fpv4-sp-d16
+ 577              	ota_default_check_update_state:
+ 578              	.LFB10:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 16
+
+
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** int ota_default_check_update_state(ota_state *st)
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** {
+ 579              		.loc 1 265 0
+ 580              		.cfi_startproc
+ 581              		@ args = 0, pretend = 0, frame = 0
+ 582              		@ frame_needed = 0, uses_anonymous_args = 0
+ 583              	.LVL62:
+ 584 0000 08B5     		push	{r3, lr}
+ 585              	.LCFI11:
+ 586              		.cfi_def_cfa_offset 8
+ 587              		.cfi_offset 3, -8
+ 588              		.cfi_offset 14, -4
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     if (NULL != st)
+ 589              		.loc 1 266 0
+ 590 0002 10B1     		cbz	r0, .L52
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     {
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         *st = g_ota_flag.state;
+ 591              		.loc 1 268 0
+ 592 0004 0F4A     		ldr	r2, .L57
+ 593 0006 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 594 0008 0270     		strb	r2, [r0]
+ 595              	.L52:
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     if (OTA_S_SUCCEED == g_ota_flag.state || OTA_S_FAILED == g_ota_flag.state)
+ 596              		.loc 1 271 0
+ 597 000a 0E4B     		ldr	r3, .L57
+ 598 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 599 000e 033B     		subs	r3, r3, #3
+ 600 0010 DBB2     		uxtb	r3, r3
+ 601 0012 012B     		cmp	r3, #1
+ 602 0014 02D9     		bls	.L56
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     {
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         g_ota_flag.state = OTA_S_IDLE;
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         g_ota_flag.restart_cnt = 0;
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         if (OTA_S_SUCCEED == g_ota_flag.state)
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         {
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****             g_ota_flag.old_image_length = g_ota_flag.image_length;
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         }
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         if (prv_write_ota_default_flag() != 0)
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         {
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****             OTA_LOG("write ota flag failed");
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****             return OTA_ERRNO_SPI_FLASH_WRITE;
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         }
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     }
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** 
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****     return OTA_ERRNO_OK;
+ 603              		.loc 1 286 0
+ 604 0016 0023     		movs	r3, #0
+ 605              	.LVL63:
+ 606              	.L51:
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c **** }
+ 607              		.loc 1 287 0
+ 608 0018 1846     		mov	r0, r3
+ 609 001a 08BD     		pop	{r3, pc}
+ 610              	.LVL64:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 17
+
+
+ 611              	.L56:
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         g_ota_flag.restart_cnt = 0;
+ 612              		.loc 1 273 0
+ 613 001c 094B     		ldr	r3, .L57
+ 614 001e 0022     		movs	r2, #0
+ 615 0020 1A70     		strb	r2, [r3]
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         if (OTA_S_SUCCEED == g_ota_flag.state)
+ 616              		.loc 1 274 0
+ 617 0022 5A70     		strb	r2, [r3, #1]
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         {
+ 618              		.loc 1 279 0
+ 619 0024 FFF7FEFF 		bl	prv_write_ota_default_flag
+ 620              	.LVL65:
+ 621 0028 0346     		mov	r3, r0
+ 622 002a 0028     		cmp	r0, #0
+ 623 002c F4D0     		beq	.L51
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****             return OTA_ERRNO_SPI_FLASH_WRITE;
+ 624              		.loc 1 281 0
+ 625 002e 064B     		ldr	r3, .L57+4
+ 626 0030 1B68     		ldr	r3, [r3]
+ 627 0032 40F21912 		movw	r2, #281
+ 628 0036 0549     		ldr	r1, .L57+8
+ 629 0038 0548     		ldr	r0, .L57+12
+ 630 003a 9847     		blx	r3
+ 631              	.LVL66:
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\ota_default.c ****         }
+ 632              		.loc 1 282 0
+ 633 003c 6FF00303 		mvn	r3, #3
+ 634 0040 EAE7     		b	.L51
+ 635              	.L58:
+ 636 0042 00BF     		.align	2
+ 637              	.L57:
+ 638 0044 00000000 		.word	.LANCHOR0
+ 639 0048 00000000 		.word	g_ota_assist
+ 640 004c 00000000 		.word	.LANCHOR4
+ 641 0050 00000000 		.word	.LC1
+ 642              		.cfi_endproc
+ 643              	.LFE10:
+ 645              		.comm	g_integrity_buf,4096,4
+ 646              		.section	.bss.g_ota_flag,"aw",%nobits
+ 647              		.align	2
+ 648              		.set	.LANCHOR0,. + 0
+ 651              	g_ota_flag:
+ 652 0000 00000000 		.space	56
+ 652      00000000 
+ 652      00000000 
+ 652      00000000 
+ 652      00000000 
+ 653              		.section	.rodata.__FUNCTION__.6767,"a",%progbits
+ 654              		.align	2
+ 655              		.set	.LANCHOR1,. + 0
+ 658              	__FUNCTION__.6767:
+ 659 0000 7072765F 		.ascii	"prv_image_integrity\000"
+ 659      696D6167 
+ 659      655F696E 
+ 659      74656772 
+ 659      69747900 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 18
+
+
+ 660              		.section	.rodata.__FUNCTION__.6775,"a",%progbits
+ 661              		.align	2
+ 662              		.set	.LANCHOR2,. + 0
+ 665              	__FUNCTION__.6775:
+ 666 0000 6F74615F 		.ascii	"ota_default_init\000"
+ 666      64656661 
+ 666      756C745F 
+ 666      696E6974 
+ 666      00
+ 667              		.section	.rodata.__FUNCTION__.6779,"a",%progbits
+ 668              		.align	2
+ 669              		.set	.LANCHOR3,. + 0
+ 672              	__FUNCTION__.6779:
+ 673 0000 6F74615F 		.ascii	"ota_default_set_reboot\000"
+ 673      64656661 
+ 673      756C745F 
+ 673      7365745F 
+ 673      7265626F 
+ 674              		.section	.rodata.__FUNCTION__.6783,"a",%progbits
+ 675              		.align	2
+ 676              		.set	.LANCHOR4,. + 0
+ 679              	__FUNCTION__.6783:
+ 680 0000 6F74615F 		.ascii	"ota_default_check_update_state\000"
+ 680      64656661 
+ 680      756C745F 
+ 680      63686563 
+ 680      6B5F7570 
+ 681              		.section	.rodata.ota_default_init.str1.4,"aMS",%progbits,1
+ 682              		.align	2
+ 683              	.LC1:
+ 684 0000 5B4F5441 		.ascii	"[OTA][%s:%d] write ota flag failed\015\012\000"
+ 684      5D5B2573 
+ 684      3A25645D 
+ 684      20777269 
+ 684      7465206F 
+ 685 0025 000000   		.space	3
+ 686              	.LC2:
+ 687 0028 5B4F5441 		.ascii	"[OTA][%s:%d] state: %d\015\012\000"
+ 687      5D5B2573 
+ 687      3A25645D 
+ 687      20737461 
+ 687      74653A20 
+ 688 0041 000000   		.space	3
+ 689              	.LC3:
+ 690 0044 5B4F5441 		.ascii	"[OTA][%s:%d] restart_cnt: %d\015\012\000"
+ 690      5D5B2573 
+ 690      3A25645D 
+ 690      20726573 
+ 690      74617274 
+ 691              		.section	.rodata.ota_default_set_reboot.str1.4,"aMS",%progbits,1
+ 692              		.align	2
+ 693              	.LC4:
+ 694 0000 5B4F5441 		.ascii	"[OTA][%s:%d] ilegal image_len: %d\015\012\000"
+ 694      5D5B2573 
+ 694      3A25645D 
+ 694      20696C65 
+ 694      67616C20 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 19
+
+
+ 695              	.LC5:
+ 696 0024 5B4F5441 		.ascii	"[OTA][%s:%d] do integrity check failed\015\012\000"
+ 696      5D5B2573 
+ 696      3A25645D 
+ 696      20646F20 
+ 696      696E7465 
+ 697              		.section	.rodata.prv_image_integrity.str1.4,"aMS",%progbits,1
+ 698              		.align	2
+ 699              	.LC0:
+ 700 0000 5B4F5441 		.ascii	"[OTA][%s:%d] read image failed during integrity che"
+ 700      5D5B2573 
+ 700      3A25645D 
+ 700      20726561 
+ 700      6420696D 
+ 701 0033 636B0D0A 		.ascii	"ck\015\012\000"
+ 701      00
+ 702              		.text
+ 703              	.Letext0:
+ 704              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 705              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 706              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 707              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 708              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 709              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 710              		.file 8 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota/ota.h"
+ 711              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/utility/ota_sha256.h
+ 712              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/utility/ota_crc.h"
+ 713              		.file 11 "<built-in>"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ota_default.c
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:18     .text.prv_read_specific:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:24     .text.prv_read_specific:00000000 prv_read_specific
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:77     .text.prv_read_specific:0000002c $d
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:82     .text.prv_read_ota_default_flag:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:88     .text.prv_read_ota_default_flag:00000000 prv_read_ota_default_flag
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:127    .text.prv_read_ota_default_flag:00000020 $d
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:132    .text.prv_write_specific:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:138    .text.prv_write_specific:00000000 prv_write_specific
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:175    .text.prv_write_specific:00000020 $d
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:180    .text.prv_write_ota_default_flag:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:186    .text.prv_write_ota_default_flag:00000000 prv_write_ota_default_flag
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:242    .text.prv_write_ota_default_flag:00000038 $d
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:247    .text.prv_image_integrity:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:253    .text.prv_image_integrity:00000000 prv_image_integrity
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:361    .text.prv_image_integrity:00000070 $d
+                            *COM*:00001000 g_integrity_buf
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:370    .text.ota_default_init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:377    .text.ota_default_init:00000000 ota_default_init
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:461    .text.ota_default_init:00000060 $d
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:471    .text.ota_default_set_reboot:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:478    .text.ota_default_set_reboot:00000000 ota_default_set_reboot
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:560    .text.ota_default_set_reboot:00000060 $d
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:570    .text.ota_default_check_update_state:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:577    .text.ota_default_check_update_state:00000000 ota_default_check_update_state
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:638    .text.ota_default_check_update_state:00000044 $d
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:647    .bss.g_ota_flag:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:651    .bss.g_ota_flag:00000000 g_ota_flag
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:654    .rodata.__FUNCTION__.6767:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:658    .rodata.__FUNCTION__.6767:00000000 __FUNCTION__.6767
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:661    .rodata.__FUNCTION__.6775:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:665    .rodata.__FUNCTION__.6775:00000000 __FUNCTION__.6775
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:668    .rodata.__FUNCTION__.6779:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:672    .rodata.__FUNCTION__.6779:00000000 __FUNCTION__.6779
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:675    .rodata.__FUNCTION__.6783:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:679    .rodata.__FUNCTION__.6783:00000000 __FUNCTION__.6783
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:682    .rodata.ota_default_init.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:692    .rodata.ota_default_set_reboot.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccMXtsPQ.s:698    .rodata.prv_image_integrity.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+calc_crc32
+g_ota_assist
+memset
+ota_sha256_init
+ota_sha256_starts
+ota_sha256_update
+ota_sha256_finish
+ota_sha256_free

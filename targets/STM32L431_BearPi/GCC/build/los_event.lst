@@ -1,0 +1,1316 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"los_event.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.LOS_EventInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	LOS_EventInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	LOS_EventInit:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc/los_event.c"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** #include "los_priqueue.ph"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** #include "los_task.ph"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** #include "los_hw.h"
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** #include "los_hwi.h"
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** #include "los_event.inc"
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** #ifdef __cplusplus
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** #if __cplusplus
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** extern "C"{
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** #endif
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** #endif /* __cplusplus */
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** LITE_OS_SEC_TEXT_INIT UINT32 LOS_EventInit(PEVENT_CB_S pstEventCB)
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** {
+  28              		.loc 1 49 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     if (pstEventCB == NULL)
+  34              		.loc 1 50 0
+  35 0000 0246     		mov	r2, r0
+  36 0002 30B1     		cbz	r0, .L3
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         return LOS_ERRNO_EVENT_PTR_NULL;
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     pstEventCB->uwEventID = 0;
+  37              		.loc 1 54 0
+  38 0004 0020     		movs	r0, #0
+  39              	.LVL1:
+  40 0006 1346     		mov	r3, r2
+  41 0008 43F8040B 		str	r0, [r3], #4
+  42              	.LVL2:
+  43              	.LBB8:
+  44              	.LBB9:
+  45              		.file 2 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 3
+
+
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  /** @defgroup los_list Doubly linked list
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * @ingroup kernel
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #ifndef _LOS_LIST_H
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #define _LOS_LIST_H
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #include "los_typedef.h"
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #ifdef __cplusplus
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #if __cplusplus
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** extern "C" {
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #endif /* __cplusplus */
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #endif /* __cplusplus */
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *Structure of a node in a doubly linked list.
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** typedef struct LOS_DL_LIST
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     struct LOS_DL_LIST *pstPrev;            /**< Current node's pointer to the previous node*/
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     struct LOS_DL_LIST *pstNext;            /**< Current node's pointer to the next node*/
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** } LOS_DL_LIST;
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Initialize a doubly linked list.
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *This API is used to initialize a doubly linked list.
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>The parameter passed in should be ensured to be a legal pointer.</li>
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstList    [IN] Node in a doubly linked list.
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 4
+
+
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval None.
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListInit(LOS_DL_LIST *pstList)
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstNext = pstList;
+  46              		.loc 2 82 0
+  47 000c 9360     		str	r3, [r2, #8]
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstPrev = pstList;
+  48              		.loc 2 83 0
+  49 000e 5360     		str	r3, [r2, #4]
+  50              	.LVL3:
+  51              	.LBE9:
+  52              	.LBE8:
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     LOS_ListInit(&pstEventCB->stEventList);
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     return LOS_OK;
+  53              		.loc 1 56 0
+  54 0010 7047     		bx	lr
+  55              	.LVL4:
+  56              	.L3:
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+  57              		.loc 1 52 0
+  58 0012 0148     		ldr	r0, .L4
+  59              	.LVL5:
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** }
+  60              		.loc 1 57 0
+  61 0014 7047     		bx	lr
+  62              	.L5:
+  63 0016 00BF     		.align	2
+  64              	.L4:
+  65 0018 061C0002 		.word	33561606
+  66              		.cfi_endproc
+  67              	.LFE133:
+  69              		.section	.text.LOS_EventPoll,"ax",%progbits
+  70              		.align	1
+  71              		.global	LOS_EventPoll
+  72              		.syntax unified
+  73              		.thumb
+  74              		.thumb_func
+  75              		.fpu fpv4-sp-d16
+  77              	LOS_EventPoll:
+  78              	.LFB134:
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** LITE_OS_SEC_TEXT UINT32 LOS_EventPoll(UINT32 *uwEventID, UINT32 uwEventMask, UINT32 uwMode)
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** {
+  79              		.loc 1 60 0
+  80              		.cfi_startproc
+  81              		@ args = 0, pretend = 0, frame = 0
+  82              		@ frame_needed = 0, uses_anonymous_args = 0
+  83              	.LVL6:
+  84 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  85              	.LCFI0:
+  86              		.cfi_def_cfa_offset 24
+  87              		.cfi_offset 3, -24
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 5
+
+
+  88              		.cfi_offset 4, -20
+  89              		.cfi_offset 5, -16
+  90              		.cfi_offset 6, -12
+  91              		.cfi_offset 7, -8
+  92              		.cfi_offset 14, -4
+  93 0002 0746     		mov	r7, r0
+  94 0004 0D46     		mov	r5, r1
+  95 0006 1646     		mov	r6, r2
+  96              	.LVL7:
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****      UINT32     uwRet = 0;
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****      UINTPTR    uvIntSave;
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****      uvIntSave = LOS_IntLock();
+  97              		.loc 1 64 0
+  98 0008 FFF7FEFF 		bl	LOS_IntLock
+  99              	.LVL8:
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****      if (uwMode & LOS_WAITMODE_OR)
+ 100              		.loc 1 65 0
+ 101 000c 16F00204 		ands	r4, r6, #2
+ 102 0010 0BD0     		beq	.L7
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****      {
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****          if (0 != (*uwEventID & uwEventMask))
+ 103              		.loc 1 67 0
+ 104 0012 3C68     		ldr	r4, [r7]
+ 105 0014 2C40     		ands	r4, r4, r5
+ 106 0016 10D0     		beq	.L9
+ 107              	.L8:
+ 108              	.LVL9:
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****          {
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             uwRet = *uwEventID & uwEventMask;
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****          }
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****      }
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****      else
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****      {
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****          if ((uwEventMask != 0) && (uwEventMask == (*uwEventID & uwEventMask)))
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****          {
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             uwRet = *uwEventID & uwEventMask;
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****          }
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****      }
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****      if (uwRet && (LOS_WAITMODE_CLR & uwMode))
+ 109              		.loc 1 80 0
+ 110 0018 7CB1     		cbz	r4, .L9
+ 111              		.loc 1 80 0 is_stmt 0 discriminator 1
+ 112 001a 16F0010F 		tst	r6, #1
+ 113 001e 0CD0     		beq	.L9
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****      {
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         *uwEventID = *uwEventID & ~(uwRet);
+ 114              		.loc 1 82 0 is_stmt 1
+ 115 0020 3B68     		ldr	r3, [r7]
+ 116 0022 23EA0403 		bic	r3, r3, r4
+ 117 0026 3B60     		str	r3, [r7]
+ 118 0028 07E0     		b	.L9
+ 119              	.LVL10:
+ 120              	.L7:
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****          {
+ 121              		.loc 1 74 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 6
+
+
+ 122 002a 2DB1     		cbz	r5, .L10
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****          {
+ 123              		.loc 1 74 0 is_stmt 0 discriminator 1
+ 124 002c 3B68     		ldr	r3, [r7]
+ 125 002e 2B40     		ands	r3, r3, r5
+ 126 0030 AB42     		cmp	r3, r5
+ 127 0032 02D1     		bne	.L9
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****          }
+ 128              		.loc 1 76 0 is_stmt 1
+ 129 0034 1C46     		mov	r4, r3
+ 130 0036 EFE7     		b	.L8
+ 131              	.L10:
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****      UINTPTR    uvIntSave;
+ 132              		.loc 1 61 0
+ 133 0038 2C46     		mov	r4, r5
+ 134              	.LVL11:
+ 135              	.L9:
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****      }
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****      LOS_IntRestore(uvIntSave);
+ 136              		.loc 1 85 0
+ 137 003a FFF7FEFF 		bl	LOS_IntRestore
+ 138              	.LVL12:
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****      return uwRet;
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** }
+ 139              		.loc 1 87 0
+ 140 003e 2046     		mov	r0, r4
+ 141 0040 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 142              		.cfi_endproc
+ 143              	.LFE134:
+ 145              		.section	.text.LOS_EventRead,"ax",%progbits
+ 146              		.align	1
+ 147              		.global	LOS_EventRead
+ 148              		.syntax unified
+ 149              		.thumb
+ 150              		.thumb_func
+ 151              		.fpu fpv4-sp-d16
+ 153              	LOS_EventRead:
+ 154              	.LFB135:
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** LITE_OS_SEC_TEXT UINT32 LOS_EventRead(PEVENT_CB_S pstEventCB, UINT32 uwEventMask, UINT32 uwMode, UI
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** {
+ 155              		.loc 1 90 0
+ 156              		.cfi_startproc
+ 157              		@ args = 0, pretend = 0, frame = 0
+ 158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 159              	.LVL13:
+ 160 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 161              	.LCFI1:
+ 162              		.cfi_def_cfa_offset 32
+ 163              		.cfi_offset 3, -32
+ 164              		.cfi_offset 4, -28
+ 165              		.cfi_offset 5, -24
+ 166              		.cfi_offset 6, -20
+ 167              		.cfi_offset 7, -16
+ 168              		.cfi_offset 8, -12
+ 169              		.cfi_offset 9, -8
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 7
+
+
+ 170              		.cfi_offset 14, -4
+ 171              	.LVL14:
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     UINT32      uwRet = 0;
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     UINTPTR     uvIntSave;
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     LOS_TASK_CB *pstRunTsk;
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     if (pstEventCB == NULL)
+ 172              		.loc 1 95 0
+ 173 0004 0028     		cmp	r0, #0
+ 174 0006 62D0     		beq	.L18
+ 175 0008 0446     		mov	r4, r0
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         return LOS_ERRNO_EVENT_PTR_NULL;
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     if ((pstEventCB->stEventList.pstNext == NULL) || (pstEventCB->stEventList.pstPrev == NULL))
+ 176              		.loc 1 100 0
+ 177 000a 8068     		ldr	r0, [r0, #8]
+ 178              	.LVL15:
+ 179 000c 0028     		cmp	r0, #0
+ 180 000e 60D0     		beq	.L19
+ 181              		.loc 1 100 0 is_stmt 0 discriminator 1
+ 182 0010 6068     		ldr	r0, [r4, #4]
+ 183 0012 0028     		cmp	r0, #0
+ 184 0014 5FD0     		beq	.L20
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         return LOS_ERRNO_EVENT_NOT_INITIALIZED;
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     if (uwEventMask == 0)
+ 185              		.loc 1 105 0 is_stmt 1
+ 186 0016 0029     		cmp	r1, #0
+ 187 0018 5FD0     		beq	.L21
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         return LOS_ERRNO_EVENT_EVENTMASK_INVALID;
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     if (uwEventMask & LOS_ERRTYPE_ERROR)
+ 188              		.loc 1 110 0
+ 189 001a 11F0007F 		tst	r1, #33554432
+ 190 001e 60D1     		bne	.L22
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         return LOS_ERRNO_EVENT_SETBIT_INVALID;
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     if (((uwMode & LOS_WAITMODE_OR) && (uwMode & LOS_WAITMODE_AND)) ||
+ 191              		.loc 1 115 0
+ 192 0020 02F00600 		and	r0, r2, #6
+ 193 0024 0628     		cmp	r0, #6
+ 194 0026 5ED0     		beq	.L23
+ 195              		.loc 1 115 0 is_stmt 0 discriminator 1
+ 196 0028 32F00705 		bics	r5, r2, #7
+ 197 002c 5DD1     		bne	.L24
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         uwMode & ~(LOS_WAITMODE_OR | LOS_WAITMODE_AND | LOS_WAITMODE_CLR) ||
+ 198              		.loc 1 116 0 is_stmt 1
+ 199 002e 0028     		cmp	r0, #0
+ 200 0030 5DD0     		beq	.L25
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 8
+
+
+ 201 0032 9846     		mov	r8, r3
+ 202 0034 1746     		mov	r7, r2
+ 203 0036 0D46     		mov	r5, r1
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         !(uwMode & (LOS_WAITMODE_OR | LOS_WAITMODE_AND)))
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         return LOS_ERRNO_EVENT_FLAGS_INVALID;
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     if (OS_INT_ACTIVE)
+ 204              		.loc 1 122 0
+ 205 0038 FFF7FEFF 		bl	osIntNumGet
+ 206              	.LVL16:
+ 207 003c 0028     		cmp	r0, #0
+ 208 003e 58D1     		bne	.L26
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         return LOS_ERRNO_EVENT_READ_IN_INTERRUPT;
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     uvIntSave = LOS_IntLock();
+ 209              		.loc 1 127 0
+ 210 0040 FFF7FEFF 		bl	LOS_IntLock
+ 211              	.LVL17:
+ 212 0044 8146     		mov	r9, r0
+ 213              	.LVL18:
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     uwRet = LOS_EventPoll(&(pstEventCB->uwEventID), uwEventMask, uwMode);
+ 214              		.loc 1 128 0
+ 215 0046 3A46     		mov	r2, r7
+ 216 0048 2946     		mov	r1, r5
+ 217 004a 2046     		mov	r0, r4
+ 218              	.LVL19:
+ 219 004c FFF7FEFF 		bl	LOS_EventPoll
+ 220              	.LVL20:
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     if (uwRet == 0)
+ 221              		.loc 1 130 0
+ 222 0050 0646     		mov	r6, r0
+ 223 0052 0028     		cmp	r0, #0
+ 224 0054 37D1     		bne	.L14
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         if (uwTimeOut == 0)
+ 225              		.loc 1 132 0
+ 226 0056 B8F1000F 		cmp	r8, #0
+ 227 005a 21D0     		beq	.L28
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         {
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             (VOID)LOS_IntRestore(uvIntSave);
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             return uwRet;
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         }
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         if (g_usLosTaskLock)
+ 228              		.loc 1 138 0
+ 229 005c 264B     		ldr	r3, .L31
+ 230 005e 1B88     		ldrh	r3, [r3]
+ 231 0060 13BB     		cbnz	r3, .L29
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         {
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             (VOID)LOS_IntRestore(uvIntSave);
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             return LOS_ERRNO_EVENT_READ_IN_LOCK;
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 9
+
+
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         pstRunTsk = g_stLosTask.pstRunTask;
+ 232              		.loc 1 144 0
+ 233 0062 264B     		ldr	r3, .L31+4
+ 234 0064 1E68     		ldr	r6, [r3]
+ 235              	.LVL21:
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         pstRunTsk->uwEventMask = uwEventMask;
+ 236              		.loc 1 145 0
+ 237 0066 B564     		str	r5, [r6, #72]
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         pstRunTsk->uwEventMode = uwMode;
+ 238              		.loc 1 146 0
+ 239 0068 F764     		str	r7, [r6, #76]
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         osTaskWait(&pstEventCB->stEventList, OS_TASK_STATUS_PEND, uwTimeOut);
+ 240              		.loc 1 147 0
+ 241 006a 4246     		mov	r2, r8
+ 242 006c 0821     		movs	r1, #8
+ 243 006e 201D     		adds	r0, r4, #4
+ 244              	.LVL22:
+ 245 0070 FFF7FEFF 		bl	osTaskWait
+ 246              	.LVL23:
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         (VOID)LOS_IntRestore(uvIntSave);
+ 247              		.loc 1 148 0
+ 248 0074 4846     		mov	r0, r9
+ 249 0076 FFF7FEFF 		bl	LOS_IntRestore
+ 250              	.LVL24:
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         LOS_Schedule();
+ 251              		.loc 1 149 0
+ 252 007a FFF7FEFF 		bl	LOS_Schedule
+ 253              	.LVL25:
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         if (pstRunTsk->usTaskStatus & OS_TASK_STATUS_TIMEOUT)
+ 254              		.loc 1 151 0
+ 255 007e B388     		ldrh	r3, [r6, #4]
+ 256 0080 13F0400F 		tst	r3, #64
+ 257 0084 15D1     		bne	.L30
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         {
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             uvIntSave = LOS_IntLock();
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             pstRunTsk->usTaskStatus &= (~OS_TASK_STATUS_TIMEOUT);
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             (VOID)LOS_IntRestore(uvIntSave);
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             return LOS_ERRNO_EVENT_READ_TIMEOUT;
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         }
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         uvIntSave = LOS_IntLock();
+ 258              		.loc 1 159 0
+ 259 0086 FFF7FEFF 		bl	LOS_IntLock
+ 260              	.LVL26:
+ 261 008a 8046     		mov	r8, r0
+ 262              	.LVL27:
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         uwRet = LOS_EventPoll(&pstEventCB->uwEventID,uwEventMask,uwMode);
+ 263              		.loc 1 160 0
+ 264 008c 3A46     		mov	r2, r7
+ 265 008e 2946     		mov	r1, r5
+ 266 0090 2046     		mov	r0, r4
+ 267              	.LVL28:
+ 268 0092 FFF7FEFF 		bl	LOS_EventPoll
+ 269              	.LVL29:
+ 270 0096 0646     		mov	r6, r0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 10
+
+
+ 271              	.LVL30:
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         (VOID)LOS_IntRestore(uvIntSave);
+ 272              		.loc 1 161 0
+ 273 0098 4046     		mov	r0, r8
+ 274              	.LVL31:
+ 275 009a FFF7FEFF 		bl	LOS_IntRestore
+ 276              	.LVL32:
+ 277 009e 1DE0     		b	.L12
+ 278              	.LVL33:
+ 279              	.L28:
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             return uwRet;
+ 280              		.loc 1 134 0
+ 281 00a0 4846     		mov	r0, r9
+ 282              	.LVL34:
+ 283 00a2 FFF7FEFF 		bl	LOS_IntRestore
+ 284              	.LVL35:
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         }
+ 285              		.loc 1 135 0
+ 286 00a6 19E0     		b	.L12
+ 287              	.LVL36:
+ 288              	.L29:
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             return LOS_ERRNO_EVENT_READ_IN_LOCK;
+ 289              		.loc 1 140 0
+ 290 00a8 4846     		mov	r0, r9
+ 291              	.LVL37:
+ 292 00aa FFF7FEFF 		bl	LOS_IntRestore
+ 293              	.LVL38:
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         }
+ 294              		.loc 1 141 0
+ 295 00ae 144E     		ldr	r6, .L31+8
+ 296              	.LVL39:
+ 297 00b0 14E0     		b	.L12
+ 298              	.LVL40:
+ 299              	.L30:
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             pstRunTsk->usTaskStatus &= (~OS_TASK_STATUS_TIMEOUT);
+ 300              		.loc 1 153 0
+ 301 00b2 FFF7FEFF 		bl	LOS_IntLock
+ 302              	.LVL41:
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             (VOID)LOS_IntRestore(uvIntSave);
+ 303              		.loc 1 154 0
+ 304 00b6 B388     		ldrh	r3, [r6, #4]
+ 305 00b8 23F04003 		bic	r3, r3, #64
+ 306 00bc B380     		strh	r3, [r6, #4]	@ movhi
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             return LOS_ERRNO_EVENT_READ_TIMEOUT;
+ 307              		.loc 1 155 0
+ 308 00be FFF7FEFF 		bl	LOS_IntRestore
+ 309              	.LVL42:
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         }
+ 310              		.loc 1 156 0
+ 311 00c2 104E     		ldr	r6, .L31+12
+ 312              	.LVL43:
+ 313 00c4 0AE0     		b	.L12
+ 314              	.LVL44:
+ 315              	.L14:
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     else
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 11
+
+
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         (VOID)LOS_IntRestore(uvIntSave);
+ 316              		.loc 1 165 0
+ 317 00c6 4846     		mov	r0, r9
+ 318              	.LVL45:
+ 319 00c8 FFF7FEFF 		bl	LOS_IntRestore
+ 320              	.LVL46:
+ 321 00cc 06E0     		b	.L12
+ 322              	.LVL47:
+ 323              	.L18:
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 324              		.loc 1 97 0
+ 325 00ce 0E4E     		ldr	r6, .L31+16
+ 326 00d0 04E0     		b	.L12
+ 327              	.LVL48:
+ 328              	.L19:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 329              		.loc 1 102 0
+ 330 00d2 0E4E     		ldr	r6, .L31+20
+ 331 00d4 02E0     		b	.L12
+ 332              	.L20:
+ 333 00d6 0D4E     		ldr	r6, .L31+20
+ 334 00d8 00E0     		b	.L12
+ 335              	.L21:
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 336              		.loc 1 107 0
+ 337 00da 0D4E     		ldr	r6, .L31+24
+ 338              	.LVL49:
+ 339              	.L12:
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     return uwRet;
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** }
+ 340              		.loc 1 169 0
+ 341 00dc 3046     		mov	r0, r6
+ 342 00de BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 343              	.LVL50:
+ 344              	.L22:
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 345              		.loc 1 112 0
+ 346 00e2 0C4E     		ldr	r6, .L31+28
+ 347 00e4 FAE7     		b	.L12
+ 348              	.L23:
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 349              		.loc 1 119 0
+ 350 00e6 0C4E     		ldr	r6, .L31+32
+ 351 00e8 F8E7     		b	.L12
+ 352              	.L24:
+ 353 00ea 0B4E     		ldr	r6, .L31+32
+ 354 00ec F6E7     		b	.L12
+ 355              	.L25:
+ 356 00ee 0A4E     		ldr	r6, .L31+32
+ 357 00f0 F4E7     		b	.L12
+ 358              	.LVL51:
+ 359              	.L26:
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 360              		.loc 1 124 0
+ 361 00f2 0A4E     		ldr	r6, .L31+36
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 12
+
+
+ 362 00f4 F2E7     		b	.L12
+ 363              	.L32:
+ 364 00f6 00BF     		.align	2
+ 365              	.L31:
+ 366 00f8 00000000 		.word	g_usLosTaskLock
+ 367 00fc 00000000 		.word	g_stLosTask
+ 368 0100 051C0002 		.word	33561605
+ 369 0104 011C0002 		.word	33561601
+ 370 0108 061C0002 		.word	33561606
+ 371 010c 071C0002 		.word	33561607
+ 372 0110 021C0002 		.word	33561602
+ 373 0114 001C0002 		.word	33561600
+ 374 0118 041C0002 		.word	33561604
+ 375 011c 031C0002 		.word	33561603
+ 376              		.cfi_endproc
+ 377              	.LFE135:
+ 379              		.section	.text.LOS_EventWrite,"ax",%progbits
+ 380              		.align	1
+ 381              		.global	LOS_EventWrite
+ 382              		.syntax unified
+ 383              		.thumb
+ 384              		.thumb_func
+ 385              		.fpu fpv4-sp-d16
+ 387              	LOS_EventWrite:
+ 388              	.LFB136:
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** LITE_OS_SEC_TEXT UINT32 LOS_EventWrite(PEVENT_CB_S pstEventCB, UINT32 uwEvents)
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** {
+ 389              		.loc 1 172 0
+ 390              		.cfi_startproc
+ 391              		@ args = 0, pretend = 0, frame = 0
+ 392              		@ frame_needed = 0, uses_anonymous_args = 0
+ 393              	.LVL52:
+ 394 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 395              	.LCFI2:
+ 396              		.cfi_def_cfa_offset 32
+ 397              		.cfi_offset 3, -32
+ 398              		.cfi_offset 4, -28
+ 399              		.cfi_offset 5, -24
+ 400              		.cfi_offset 6, -20
+ 401              		.cfi_offset 7, -16
+ 402              		.cfi_offset 8, -12
+ 403              		.cfi_offset 9, -8
+ 404              		.cfi_offset 14, -4
+ 405              	.LVL53:
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     LOS_TASK_CB *pstResumedTask;
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     LOS_TASK_CB *pstNextTask = (LOS_TASK_CB *)NULL;
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     UINTPTR     uvIntSave;
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     UINT8       ucExitFlag = 0;
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     if (pstEventCB == NULL)
+ 406              		.loc 1 178 0
+ 407 0004 0028     		cmp	r0, #0
+ 408 0006 3DD0     		beq	.L41
+ 409 0008 0546     		mov	r5, r0
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         return LOS_ERRNO_EVENT_PTR_NULL;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 13
+
+
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     if ((pstEventCB->stEventList.pstNext == NULL) || (pstEventCB->stEventList.pstPrev == NULL))
+ 410              		.loc 1 183 0
+ 411 000a 8368     		ldr	r3, [r0, #8]
+ 412 000c 002B     		cmp	r3, #0
+ 413 000e 3CD0     		beq	.L42
+ 414              		.loc 1 183 0 is_stmt 0 discriminator 1
+ 415 0010 4368     		ldr	r3, [r0, #4]
+ 416 0012 002B     		cmp	r3, #0
+ 417 0014 3CD0     		beq	.L43
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         return LOS_ERRNO_EVENT_NOT_INITIALIZED;
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     if (uwEvents & LOS_ERRTYPE_ERROR)
+ 418              		.loc 1 188 0 is_stmt 1
+ 419 0016 11F00078 		ands	r8, r1, #33554432
+ 420 001a 3CD1     		bne	.L44
+ 421 001c 0E46     		mov	r6, r1
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         return LOS_ERRNO_EVENT_SETBIT_INVALID;
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     uvIntSave = LOS_IntLock();
+ 422              		.loc 1 193 0
+ 423 001e FFF7FEFF 		bl	LOS_IntLock
+ 424              	.LVL54:
+ 425 0022 8146     		mov	r9, r0
+ 426              	.LVL55:
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     pstEventCB->uwEventID |= uwEvents;
+ 427              		.loc 1 195 0
+ 428 0024 2B68     		ldr	r3, [r5]
+ 429 0026 3343     		orrs	r3, r3, r6
+ 430 0028 2F46     		mov	r7, r5
+ 431 002a 47F8043B 		str	r3, [r7], #4
+ 432              	.LVL56:
+ 433              	.LBB10:
+ 434              	.LBB11:
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Point to the next node pointed to by the current node.
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>This API is used to point to the next node pointed to by the current node.</li>
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>None.</li>
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstObject  [IN] Node in the doubly linked list.
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 14
+
+
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval None.
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #define LOS_DL_LIST_FIRST(pstObject) ((pstObject)->pstNext)
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Insert a new node to a doubly linked list.
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *This API is used to insert a new node to a doubly linked list.
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>The parameters passed in should be ensured to be legal pointers.</li>
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstList    [IN]   Doubly linked list where the new node is inserted.
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstNode    [IN]   New node to be inserted.
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval None
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see LOS_ListDelete
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListAdd(LOS_DL_LIST *pstList, LOS_DL_LIST *pstNode)
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstNext = pstList->pstNext;
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstPrev = pstList;
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstNext->pstPrev = pstNode;
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstNext = pstNode;
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Insert a node to the tail of a doubly linked list.
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *This API is used to insert a new node to the tail of a doubly linked list.
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>The parameters passed in should be ensured to be legal pointers.</li>
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstList     [IN] Doubly linked list where the new node is inserted.
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstNode     [IN] New node to be inserted.
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval None.
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see LOS_ListAdd | LOS_ListHeadInsert
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListTailInsert(LOS_DL_LIST *pstList, LOS_DL_LIST *pst
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 15
+
+
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     LOS_ListAdd(pstList->pstPrev, pstNode);
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Delete a specified node from a doubly linked list.
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>This API is used to delete a specified node from a doubly linked list.</li>
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>The parameter passed in should be ensured to be a legal pointer.</li>
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstNode    [IN] Node to be deleted.
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval None.
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see LOS_ListAdd
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListDelete(LOS_DL_LIST *pstNode)
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstNext->pstPrev = pstNode->pstPrev;
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstPrev->pstNext = pstNode->pstNext;
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstNext = (LOS_DL_LIST *)NULL;
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstPrev = (LOS_DL_LIST *)NULL;
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Identify whether a specified doubly linked list is empty.
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>This API is used to return whether a doubly linked list is empty.</li>
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>The parameter passed in should be ensured to be a legal pointer.</li>
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstList  [IN] Doubly linked list.
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval TRUE The doubly linked list is empty.
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval FALSE The doubly linked list is not empty.
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE BOOL LOS_ListEmpty(LOS_DL_LIST *pstNode)
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 16
+
+
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     return (BOOL)(pstNode->pstNext == pstNode);
+ 435              		.loc 2 215 0
+ 436 002e A868     		ldr	r0, [r5, #8]
+ 437              	.LVL57:
+ 438              	.LBE11:
+ 439              	.LBE10:
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     if (!LOS_ListEmpty(&pstEventCB->stEventList))
+ 440              		.loc 1 196 0
+ 441 0030 8742     		cmp	r7, r0
+ 442 0032 1DD0     		beq	.L35
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         for (pstResumedTask = LOS_DL_LIST_ENTRY((&pstEventCB->stEventList)->pstNext, LOS_TASK_CB, s
+ 443              		.loc 1 198 0
+ 444 0034 2838     		subs	r0, r0, #40
+ 445              	.LVL58:
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 446              		.loc 1 176 0
+ 447 0036 0021     		movs	r1, #0
+ 448              		.loc 1 198 0
+ 449 0038 04E0     		b	.L36
+ 450              	.LVL59:
+ 451              	.L38:
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             &pstResumedTask->stPendList != (&pstEventCB->stEventList);)
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         {
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             pstNextTask = LOS_DL_LIST_ENTRY(pstResumedTask->stPendList.pstNext, LOS_TASK_CB, stPend
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             if (((pstResumedTask->uwEventMode & LOS_WAITMODE_OR) && (pstResumedTask->uwEventMask & 
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****                 ((pstResumedTask->uwEventMode & LOS_WAITMODE_AND) && (pstResumedTask->uwEventMask &
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             {
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****                 ucExitFlag = 1;
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****                 osTaskWake(pstResumedTask, OS_TASK_STATUS_PEND);
+ 452              		.loc 1 208 0
+ 453 003a 0821     		movs	r1, #8
+ 454 003c FFF7FEFF 		bl	osTaskWake
+ 455              	.LVL60:
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 456              		.loc 1 206 0
+ 457 0040 0121     		movs	r1, #1
+ 458              	.LVL61:
+ 459              	.L39:
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 460              		.loc 1 206 0 is_stmt 0 discriminator 1
+ 461 0042 2046     		mov	r0, r4
+ 462              	.LVL62:
+ 463              	.L36:
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             &pstResumedTask->stPendList != (&pstEventCB->stEventList);)
+ 464              		.loc 1 199 0 is_stmt 1 discriminator 1
+ 465 0044 00F12803 		add	r3, r0, #40
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             &pstResumedTask->stPendList != (&pstEventCB->stEventList);)
+ 466              		.loc 1 198 0 discriminator 1
+ 467 0048 9F42     		cmp	r7, r3
+ 468 004a 10D0     		beq	.L46
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 469              		.loc 1 201 0
+ 470 004c C46A     		ldr	r4, [r0, #44]
+ 471 004e 283C     		subs	r4, r4, #40
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 17
+
+
+ 472              	.LVL63:
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****                 ((pstResumedTask->uwEventMode & LOS_WAITMODE_AND) && (pstResumedTask->uwEventMask &
+ 473              		.loc 1 203 0
+ 474 0050 C36C     		ldr	r3, [r0, #76]
+ 475 0052 13F0020F 		tst	r3, #2
+ 476 0056 02D0     		beq	.L37
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****                 ((pstResumedTask->uwEventMode & LOS_WAITMODE_AND) && (pstResumedTask->uwEventMask &
+ 477              		.loc 1 203 0 is_stmt 0 discriminator 1
+ 478 0058 826C     		ldr	r2, [r0, #72]
+ 479 005a 3242     		tst	r2, r6
+ 480 005c EDD1     		bne	.L38
+ 481              	.L37:
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****                 ((pstResumedTask->uwEventMode & LOS_WAITMODE_AND) && (pstResumedTask->uwEventMask &
+ 482              		.loc 1 203 0 discriminator 3
+ 483 005e 13F0040F 		tst	r3, #4
+ 484 0062 EED0     		beq	.L39
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             {
+ 485              		.loc 1 204 0 is_stmt 1
+ 486 0064 836C     		ldr	r3, [r0, #72]
+ 487 0066 2A68     		ldr	r2, [r5]
+ 488 0068 9343     		bics	r3, r3, r2
+ 489 006a EAD1     		bne	.L39
+ 490 006c E5E7     		b	.L38
+ 491              	.LVL64:
+ 492              	.L46:
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             }
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             pstResumedTask = pstNextTask;
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         }
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         if (ucExitFlag == 1)
+ 493              		.loc 1 213 0
+ 494 006e 19B9     		cbnz	r1, .L47
+ 495              	.LVL65:
+ 496              	.L35:
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         {
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             (VOID)LOS_IntRestore(uvIntSave);
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             LOS_Schedule();
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             return LOS_OK;
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         }
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     (VOID)LOS_IntRestore(uvIntSave);
+ 497              		.loc 1 221 0
+ 498 0070 4846     		mov	r0, r9
+ 499 0072 FFF7FEFF 		bl	LOS_IntRestore
+ 500              	.LVL66:
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     return LOS_OK;
+ 501              		.loc 1 222 0
+ 502 0076 10E0     		b	.L33
+ 503              	.LVL67:
+ 504              	.L47:
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             LOS_Schedule();
+ 505              		.loc 1 215 0
+ 506 0078 4846     		mov	r0, r9
+ 507              	.LVL68:
+ 508 007a FFF7FEFF 		bl	LOS_IntRestore
+ 509              	.LVL69:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 18
+
+
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****             return LOS_OK;
+ 510              		.loc 1 216 0
+ 511 007e FFF7FEFF 		bl	LOS_Schedule
+ 512              	.LVL70:
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         }
+ 513              		.loc 1 217 0
+ 514 0082 0AE0     		b	.L33
+ 515              	.LVL71:
+ 516              	.L41:
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 517              		.loc 1 180 0
+ 518 0084 DFF81880 		ldr	r8, .L48
+ 519 0088 07E0     		b	.L33
+ 520              	.L42:
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 521              		.loc 1 185 0
+ 522 008a DFF81880 		ldr	r8, .L48+4
+ 523 008e 04E0     		b	.L33
+ 524              	.L43:
+ 525 0090 DFF81080 		ldr	r8, .L48+4
+ 526 0094 01E0     		b	.L33
+ 527              	.L44:
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 528              		.loc 1 190 0
+ 529 0096 DFF81080 		ldr	r8, .L48+8
+ 530              	.LVL72:
+ 531              	.L33:
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** }
+ 532              		.loc 1 223 0
+ 533 009a 4046     		mov	r0, r8
+ 534 009c BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 535              	.L49:
+ 536              		.align	2
+ 537              	.L48:
+ 538 00a0 061C0002 		.word	33561606
+ 539 00a4 071C0002 		.word	33561607
+ 540 00a8 001C0002 		.word	33561600
+ 541              		.cfi_endproc
+ 542              	.LFE136:
+ 544              		.section	.text.LOS_EventDestory,"ax",%progbits
+ 545              		.align	1
+ 546              		.global	LOS_EventDestory
+ 547              		.syntax unified
+ 548              		.thumb
+ 549              		.thumb_func
+ 550              		.fpu fpv4-sp-d16
+ 552              	LOS_EventDestory:
+ 553              	.LFB137:
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** LITE_OS_SEC_TEXT_INIT UINT32 LOS_EventDestory(PEVENT_CB_S pstEventCB)
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** {
+ 554              		.loc 1 226 0
+ 555              		.cfi_startproc
+ 556              		@ args = 0, pretend = 0, frame = 0
+ 557              		@ frame_needed = 0, uses_anonymous_args = 0
+ 558              	.LVL73:
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     UINTPTR uvIntSave;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 19
+
+
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     if (pstEventCB == NULL)
+ 559              		.loc 1 229 0
+ 560 0000 90B1     		cbz	r0, .L53
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     UINTPTR uvIntSave;
+ 561              		.loc 1 226 0
+ 562 0002 38B5     		push	{r3, r4, r5, lr}
+ 563              	.LCFI3:
+ 564              		.cfi_def_cfa_offset 16
+ 565              		.cfi_offset 3, -16
+ 566              		.cfi_offset 4, -12
+ 567              		.cfi_offset 5, -8
+ 568              		.cfi_offset 14, -4
+ 569 0004 0446     		mov	r4, r0
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         return LOS_ERRNO_EVENT_PTR_NULL;
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     uvIntSave = LOS_IntLock();
+ 570              		.loc 1 234 0
+ 571 0006 FFF7FEFF 		bl	LOS_IntLock
+ 572              	.LVL74:
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     if (!LOS_ListEmpty(&pstEventCB->stEventList))
+ 573              		.loc 1 236 0
+ 574 000a 221D     		adds	r2, r4, #4
+ 575              	.LVL75:
+ 576              	.LBB12:
+ 577              	.LBB13:
+ 578              		.loc 2 215 0
+ 579 000c A368     		ldr	r3, [r4, #8]
+ 580              	.LVL76:
+ 581              	.LBE13:
+ 582              	.LBE12:
+ 583              		.loc 1 236 0
+ 584 000e 9A42     		cmp	r2, r3
+ 585 0010 03D0     		beq	.L52
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         (VOID)LOS_IntRestore(uvIntSave);
+ 586              		.loc 1 238 0
+ 587 0012 FFF7FEFF 		bl	LOS_IntRestore
+ 588              	.LVL77:
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         return LOS_ERRNO_EVENT_SHOULD_NOT_DESTORY;
+ 589              		.loc 1 239 0
+ 590 0016 0548     		ldr	r0, .L58
+ 591              	.L50:
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     pstEventCB->stEventList.pstNext = (LOS_DL_LIST *)NULL;
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     pstEventCB->stEventList.pstPrev = (LOS_DL_LIST *)NULL;
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     (VOID)LOS_IntRestore(uvIntSave);
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     return LOS_OK;
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** }
+ 592              		.loc 1 248 0
+ 593 0018 38BD     		pop	{r3, r4, r5, pc}
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 20
+
+
+ 594              	.LVL78:
+ 595              	.L52:
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     pstEventCB->stEventList.pstPrev = (LOS_DL_LIST *)NULL;
+ 596              		.loc 1 242 0
+ 597 001a 0025     		movs	r5, #0
+ 598 001c A560     		str	r5, [r4, #8]
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 599              		.loc 1 243 0
+ 600 001e 6560     		str	r5, [r4, #4]
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 601              		.loc 1 245 0
+ 602 0020 FFF7FEFF 		bl	LOS_IntRestore
+ 603              	.LVL79:
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** }
+ 604              		.loc 1 247 0
+ 605 0024 2846     		mov	r0, r5
+ 606 0026 F7E7     		b	.L50
+ 607              	.LVL80:
+ 608              	.L53:
+ 609              	.LCFI4:
+ 610              		.cfi_def_cfa_offset 0
+ 611              		.cfi_restore 3
+ 612              		.cfi_restore 4
+ 613              		.cfi_restore 5
+ 614              		.cfi_restore 14
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 615              		.loc 1 231 0
+ 616 0028 0148     		ldr	r0, .L58+4
+ 617              	.LVL81:
+ 618              		.loc 1 248 0
+ 619 002a 7047     		bx	lr
+ 620              	.L59:
+ 621              		.align	2
+ 622              	.L58:
+ 623 002c 081C0002 		.word	33561608
+ 624 0030 061C0002 		.word	33561606
+ 625              		.cfi_endproc
+ 626              	.LFE137:
+ 628              		.section	.text.LOS_EventClear,"ax",%progbits
+ 629              		.align	1
+ 630              		.global	LOS_EventClear
+ 631              		.syntax unified
+ 632              		.thumb
+ 633              		.thumb_func
+ 634              		.fpu fpv4-sp-d16
+ 636              	LOS_EventClear:
+ 637              	.LFB138:
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** LITE_OS_SEC_TEXT_MINOR UINT32 LOS_EventClear(PEVENT_CB_S pstEventCB, UINT32 uwEvents)
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** {
+ 638              		.loc 1 251 0
+ 639              		.cfi_startproc
+ 640              		@ args = 0, pretend = 0, frame = 0
+ 641              		@ frame_needed = 0, uses_anonymous_args = 0
+ 642              	.LVL82:
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     UINTPTR uvIntSave;
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 21
+
+
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     if (pstEventCB == NULL)
+ 643              		.loc 1 254 0
+ 644 0000 58B1     		cbz	r0, .L62
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     UINTPTR uvIntSave;
+ 645              		.loc 1 251 0
+ 646 0002 38B5     		push	{r3, r4, r5, lr}
+ 647              	.LCFI5:
+ 648              		.cfi_def_cfa_offset 16
+ 649              		.cfi_offset 3, -16
+ 650              		.cfi_offset 4, -12
+ 651              		.cfi_offset 5, -8
+ 652              		.cfi_offset 14, -4
+ 653 0004 0446     		mov	r4, r0
+ 654 0006 0D46     		mov	r5, r1
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     {
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****         return LOS_ERRNO_EVENT_PTR_NULL;
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     uvIntSave = LOS_IntLock();
+ 655              		.loc 1 258 0
+ 656 0008 FFF7FEFF 		bl	LOS_IntLock
+ 657              	.LVL83:
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     pstEventCB->uwEventID &= uwEvents;
+ 658              		.loc 1 259 0
+ 659 000c 2168     		ldr	r1, [r4]
+ 660 000e 2940     		ands	r1, r1, r5
+ 661 0010 2160     		str	r1, [r4]
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     (VOID)LOS_IntRestore(uvIntSave);
+ 662              		.loc 1 260 0
+ 663 0012 FFF7FEFF 		bl	LOS_IntRestore
+ 664              	.LVL84:
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** 
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     return LOS_OK;
+ 665              		.loc 1 262 0
+ 666 0016 0020     		movs	r0, #0
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c **** }
+ 667              		.loc 1 263 0
+ 668 0018 38BD     		pop	{r3, r4, r5, pc}
+ 669              	.LVL85:
+ 670              	.L62:
+ 671              	.LCFI6:
+ 672              		.cfi_def_cfa_offset 0
+ 673              		.cfi_restore 3
+ 674              		.cfi_restore 4
+ 675              		.cfi_restore 5
+ 676              		.cfi_restore 14
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_event.c ****     }
+ 677              		.loc 1 256 0
+ 678 001a 0148     		ldr	r0, .L67
+ 679              	.LVL86:
+ 680              		.loc 1 263 0
+ 681 001c 7047     		bx	lr
+ 682              	.L68:
+ 683 001e 00BF     		.align	2
+ 684              	.L67:
+ 685 0020 061C0002 		.word	33561606
+ 686              		.cfi_endproc
+ 687              	.LFE138:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 22
+
+
+ 689              		.text
+ 690              	.Letext0:
+ 691              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 692              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 693              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 694              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 695              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 696              		.file 8 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 697              		.file 9 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 698              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 699              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 700              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 701              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 702              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 703              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 704              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 705              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 706              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 707              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 708              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 709              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hw.h"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s 			page 23
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 los_event.c
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:18     .text.LOS_EventInit:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:25     .text.LOS_EventInit:00000000 LOS_EventInit
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:65     .text.LOS_EventInit:00000018 $d
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:70     .text.LOS_EventPoll:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:77     .text.LOS_EventPoll:00000000 LOS_EventPoll
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:146    .text.LOS_EventRead:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:153    .text.LOS_EventRead:00000000 LOS_EventRead
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:366    .text.LOS_EventRead:000000f8 $d
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:380    .text.LOS_EventWrite:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:387    .text.LOS_EventWrite:00000000 LOS_EventWrite
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:538    .text.LOS_EventWrite:000000a0 $d
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:545    .text.LOS_EventDestory:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:552    .text.LOS_EventDestory:00000000 LOS_EventDestory
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:623    .text.LOS_EventDestory:0000002c $d
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:629    .text.LOS_EventClear:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:636    .text.LOS_EventClear:00000000 LOS_EventClear
+c:\Users\lenovo\AppData\Local\Temp\ccpAMzUF.s:685    .text.LOS_EventClear:00000020 $d
+
+UNDEFINED SYMBOLS
+LOS_IntLock
+LOS_IntRestore
+osIntNumGet
+osTaskWait
+LOS_Schedule
+g_usLosTaskLock
+g_stLosTask
+osTaskWake

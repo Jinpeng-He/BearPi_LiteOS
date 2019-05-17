@@ -1,0 +1,2580 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"tlv.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.prv_getHeaderType,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	prv_getHeaderType:
+  25              	.LFB136:
+  26              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core/
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** /*******************************************************************************
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  *
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  * Copyright (c) 2013, 2014 Intel Corporation and others.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  * All rights reserved. This program and the accompanying materials
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  * are made available under the terms of the Eclipse Public License v1.0
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  *
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  * The Eclipse Public License is available at
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  * The Eclipse Distribution License is available at
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  *    http://www.eclipse.org/org/documents/edl-v10.php.
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  *
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  * Contributors:
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  *    David Navarro, Intel Corporation - initial API and implementation
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  *    Fabien Fleutot - Please refer to git log
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  *    Bosch Software Innovations GmbH - Please refer to git log
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  *
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****  *******************************************************************************/
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #include "internals.h"
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #include <stdlib.h>
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #include <string.h>
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #include <stdio.h>
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #include <inttypes.h>
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #include <float.h>
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #ifndef LWM2M_BIG_ENDIAN
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #ifndef LWM2M_LITTLE_ENDIAN
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #error Please define LWM2M_BIG_ENDIAN or LWM2M_LITTLE_ENDIAN
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #endif
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #endif
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 2
+
+
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #define _PRV_TLV_TYPE_MASK 0xC0
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #define _PRV_TLV_HEADER_MAX_LENGTH 6
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #define _PRV_TLV_TYPE_UNKNOWN           (uint8_t)0xFF
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #define _PRV_TLV_TYPE_OBJECT            (uint8_t)0x10
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #define _PRV_TLV_TYPE_OBJECT_INSTANCE   (uint8_t)0x00
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #define _PRV_TLV_TYPE_RESOURCE          (uint8_t)0xC0
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #define _PRV_TLV_TYPE_MULTIPLE_RESOURCE (uint8_t)0x80
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** #define _PRV_TLV_TYPE_RESOURCE_INSTANCE (uint8_t)0x40
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** static size_t prv_encodeFloat(double data,
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                               uint8_t *data_buffer)
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** {
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     size_t length = 0;
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     if ((data < 0.0 - (double)FLT_MAX) || (data > (double)FLT_MAX))
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         length = 8;
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         utils_copyValue(data_buffer, &data, 8);
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     else
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         float value;
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         length = 4;
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         value = (float)data;
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         utils_copyValue(data_buffer, &value, 4);
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     return length;
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** }
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** static size_t prv_encodeInt(int64_t data,
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                             uint8_t *data_buffer)
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** {
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     size_t length = 0;
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     if (data >= INT8_MIN && data <= INT8_MAX)
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         length = 1;
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         data_buffer[0] = data;
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     else if (data >= INT16_MIN && data <= INT16_MAX)
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         int16_t value;
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         value = data;
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         length = 2;
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         data_buffer[0] = (value >> 8) & 0xFF;
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         data_buffer[1] = value & 0xFF;
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     else if (data >= INT32_MIN && data <= INT32_MAX)
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         int32_t value;
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         value = data;
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         length = 4;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 3
+
+
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         utils_copyValue(data_buffer, &value, length);
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     else if (data >= INT64_MIN && data <= INT64_MAX)
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         length = 8;
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         utils_copyValue(data_buffer, &data, length);
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     return length;
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** }
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** static uint8_t prv_getHeaderType(lwm2m_data_type_t type)
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** {
+  27              		.loc 1 102 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     switch (type)
+  33              		.loc 1 103 0
+  34 0000 0138     		subs	r0, r0, #1
+  35              	.LVL1:
+  36 0002 0828     		cmp	r0, #8
+  37 0004 0CD8     		bhi	.L2
+  38 0006 DFE800F0 		tbb	[pc, r0]
+  39              	.L4:
+  40 000a 05       		.byte	(.L3-.L4)/2
+  41 000b 0D       		.byte	(.L8-.L4)/2
+  42 000c 07       		.byte	(.L6-.L4)/2
+  43 000d 09       		.byte	(.L7-.L4)/2
+  44 000e 09       		.byte	(.L7-.L4)/2
+  45 000f 09       		.byte	(.L7-.L4)/2
+  46 0010 09       		.byte	(.L7-.L4)/2
+  47 0011 09       		.byte	(.L7-.L4)/2
+  48 0012 09       		.byte	(.L7-.L4)/2
+  49 0013 00       		.p2align 1
+  50              	.L3:
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case LWM2M_TYPE_OBJECT:
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         return _PRV_TLV_TYPE_OBJECT;
+  51              		.loc 1 106 0
+  52 0014 1020     		movs	r0, #16
+  53 0016 7047     		bx	lr
+  54              	.L6:
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case LWM2M_TYPE_OBJECT_INSTANCE:
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         return _PRV_TLV_TYPE_OBJECT_INSTANCE;
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case LWM2M_TYPE_MULTIPLE_RESOURCE:
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         return _PRV_TLV_TYPE_MULTIPLE_RESOURCE;
+  55              		.loc 1 112 0
+  56 0018 8020     		movs	r0, #128
+  57 001a 7047     		bx	lr
+  58              	.L7:
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 4
+
+
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case LWM2M_TYPE_STRING:
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case LWM2M_TYPE_INTEGER:
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case LWM2M_TYPE_FLOAT:
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case LWM2M_TYPE_BOOLEAN:
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case LWM2M_TYPE_OPAQUE:
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case LWM2M_TYPE_OBJECT_LINK:
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         return _PRV_TLV_TYPE_RESOURCE;
+  59              		.loc 1 121 0
+  60 001c C020     		movs	r0, #192
+  61 001e 7047     		bx	lr
+  62              	.L2:
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case LWM2M_TYPE_UNDEFINED:
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     default:
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         return _PRV_TLV_TYPE_UNKNOWN;
+  63              		.loc 1 125 0
+  64 0020 FF20     		movs	r0, #255
+  65 0022 7047     		bx	lr
+  66              	.L8:
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+  67              		.loc 1 109 0
+  68 0024 0020     		movs	r0, #0
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** }
+  69              		.loc 1 127 0
+  70 0026 7047     		bx	lr
+  71              		.cfi_endproc
+  72              	.LFE136:
+  74              		.section	.text.prv_getDataType,"ax",%progbits
+  75              		.align	1
+  76              		.syntax unified
+  77              		.thumb
+  78              		.thumb_func
+  79              		.fpu fpv4-sp-d16
+  81              	prv_getDataType:
+  82              	.LFB137:
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** static lwm2m_data_type_t prv_getDataType(uint8_t type)
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** {
+  83              		.loc 1 130 0
+  84              		.cfi_startproc
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  87              		@ link register save eliminated.
+  88              	.LVL2:
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     switch (type)
+  89              		.loc 1 131 0
+  90 0000 4028     		cmp	r0, #64
+  91 0002 0DD0     		beq	.L11
+  92 0004 04D8     		bhi	.L12
+  93 0006 68B1     		cbz	r0, .L16
+  94 0008 1028     		cmp	r0, #16
+  95 000a 05D1     		bne	.L10
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case _PRV_TLV_TYPE_OBJECT:
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         return LWM2M_TYPE_OBJECT;
+  96              		.loc 1 134 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 5
+
+
+  97 000c 0120     		movs	r0, #1
+  98              	.LVL3:
+  99 000e 7047     		bx	lr
+ 100              	.LVL4:
+ 101              	.L12:
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     switch (type)
+ 102              		.loc 1 131 0
+ 103 0010 8028     		cmp	r0, #128
+ 104 0012 03D0     		beq	.L15
+ 105 0014 C028     		cmp	r0, #192
+ 106 0016 03D0     		beq	.L11
+ 107              	.L10:
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case _PRV_TLV_TYPE_OBJECT_INSTANCE:
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         return LWM2M_TYPE_OBJECT_INSTANCE;
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case _PRV_TLV_TYPE_MULTIPLE_RESOURCE:
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         return LWM2M_TYPE_MULTIPLE_RESOURCE;
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case _PRV_TLV_TYPE_RESOURCE:
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case _PRV_TLV_TYPE_RESOURCE_INSTANCE:
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         return LWM2M_TYPE_OPAQUE;
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     default:
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         return LWM2M_TYPE_UNDEFINED;
+ 108              		.loc 1 147 0
+ 109 0018 0020     		movs	r0, #0
+ 110              	.LVL5:
+ 111 001a 7047     		bx	lr
+ 112              	.LVL6:
+ 113              	.L15:
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 114              		.loc 1 140 0
+ 115 001c 0320     		movs	r0, #3
+ 116              	.LVL7:
+ 117 001e 7047     		bx	lr
+ 118              	.LVL8:
+ 119              	.L11:
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 120              		.loc 1 144 0
+ 121 0020 0520     		movs	r0, #5
+ 122              	.LVL9:
+ 123 0022 7047     		bx	lr
+ 124              	.LVL10:
+ 125              	.L16:
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 126              		.loc 1 137 0
+ 127 0024 0220     		movs	r0, #2
+ 128              	.LVL11:
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** }
+ 129              		.loc 1 149 0
+ 130 0026 7047     		bx	lr
+ 131              		.cfi_endproc
+ 132              	.LFE137:
+ 134              		.section	.text.prv_getHeaderLength,"ax",%progbits
+ 135              		.align	1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 6
+
+
+ 136              		.syntax unified
+ 137              		.thumb
+ 138              		.thumb_func
+ 139              		.fpu fpv4-sp-d16
+ 141              	prv_getHeaderLength:
+ 142              	.LFB138:
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** static int prv_getHeaderLength(uint16_t id,
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                                size_t dataLen)
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** {
+ 143              		.loc 1 153 0
+ 144              		.cfi_startproc
+ 145              		@ args = 0, pretend = 0, frame = 0
+ 146              		@ frame_needed = 0, uses_anonymous_args = 0
+ 147              		@ link register save eliminated.
+ 148              	.LVL12:
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     int length;
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     length = 2;
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     if (id > 0xFF)
+ 149              		.loc 1 158 0
+ 150 0000 FF28     		cmp	r0, #255
+ 151 0002 09D8     		bhi	.L22
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 152              		.loc 1 156 0
+ 153 0004 0220     		movs	r0, #2
+ 154              	.LVL13:
+ 155              	.L18:
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         length += 1;
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     if (dataLen > 0xFFFF)
+ 156              		.loc 1 163 0
+ 157 0006 B1F5803F 		cmp	r1, #65536
+ 158 000a 07D2     		bcs	.L23
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         length += 3;
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     else if (dataLen > 0xFF)
+ 159              		.loc 1 167 0
+ 160 000c FF29     		cmp	r1, #255
+ 161 000e 07D8     		bhi	.L24
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         length += 2;
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     else if (dataLen > 7)
+ 162              		.loc 1 171 0
+ 163 0010 0729     		cmp	r1, #7
+ 164 0012 00D9     		bls	.L17
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         length += 1;
+ 165              		.loc 1 173 0
+ 166 0014 0130     		adds	r0, r0, #1
+ 167              	.LVL14:
+ 168              	.L17:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 7
+
+
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     return length;
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** }
+ 169              		.loc 1 177 0
+ 170 0016 7047     		bx	lr
+ 171              	.LVL15:
+ 172              	.L22:
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 173              		.loc 1 160 0
+ 174 0018 0320     		movs	r0, #3
+ 175              	.LVL16:
+ 176 001a F4E7     		b	.L18
+ 177              	.LVL17:
+ 178              	.L23:
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 179              		.loc 1 165 0
+ 180 001c 0330     		adds	r0, r0, #3
+ 181              	.LVL18:
+ 182 001e 7047     		bx	lr
+ 183              	.L24:
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 184              		.loc 1 169 0
+ 185 0020 0230     		adds	r0, r0, #2
+ 186              	.LVL19:
+ 187 0022 7047     		bx	lr
+ 188              		.cfi_endproc
+ 189              	.LFE138:
+ 191              		.section	.text.prv_createHeader,"ax",%progbits
+ 192              		.align	1
+ 193              		.syntax unified
+ 194              		.thumb
+ 195              		.thumb_func
+ 196              		.fpu fpv4-sp-d16
+ 198              	prv_createHeader:
+ 199              	.LFB139:
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** static int prv_createHeader(uint8_t *header,
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                             bool isInstance,
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                             lwm2m_data_type_t type,
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                             uint16_t id,
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                             size_t data_len)
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** {
+ 200              		.loc 1 184 0
+ 201              		.cfi_startproc
+ 202              		@ args = 4, pretend = 0, frame = 0
+ 203              		@ frame_needed = 0, uses_anonymous_args = 0
+ 204              	.LVL20:
+ 205 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 206              	.LCFI0:
+ 207              		.cfi_def_cfa_offset 32
+ 208              		.cfi_offset 3, -32
+ 209              		.cfi_offset 4, -28
+ 210              		.cfi_offset 5, -24
+ 211              		.cfi_offset 6, -20
+ 212              		.cfi_offset 7, -16
+ 213              		.cfi_offset 8, -12
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 8
+
+
+ 214              		.cfi_offset 9, -8
+ 215              		.cfi_offset 14, -4
+ 216 0004 0446     		mov	r4, r0
+ 217 0006 8846     		mov	r8, r1
+ 218 0008 9146     		mov	r9, r2
+ 219 000a 1E46     		mov	r6, r3
+ 220 000c 089D     		ldr	r5, [sp, #32]
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     int header_len;
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     int offset;
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     uint8_t hdrType;
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     header_len = prv_getHeaderLength(id, data_len);
+ 221              		.loc 1 189 0
+ 222 000e 2946     		mov	r1, r5
+ 223              	.LVL21:
+ 224 0010 1846     		mov	r0, r3
+ 225              	.LVL22:
+ 226 0012 FFF7FEFF 		bl	prv_getHeaderLength
+ 227              	.LVL23:
+ 228 0016 0746     		mov	r7, r0
+ 229              	.LVL24:
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     if (isInstance == true)
+ 230              		.loc 1 190 0
+ 231 0018 B8F1000F 		cmp	r8, #0
+ 232 001c 24D1     		bne	.L33
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         hdrType = _PRV_TLV_TYPE_RESOURCE_INSTANCE;
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     else
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         hdrType = prv_getHeaderType(type);
+ 233              		.loc 1 196 0
+ 234 001e 4846     		mov	r0, r9
+ 235              	.LVL25:
+ 236 0020 FFF7FEFF 		bl	prv_getHeaderType
+ 237              	.LVL26:
+ 238              	.L26:
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     header[0] = 0;
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     header[0] |= hdrType & _PRV_TLV_TYPE_MASK;
+ 239              		.loc 1 200 0
+ 240 0024 00F0C000 		and	r0, r0, #192
+ 241              	.LVL27:
+ 242 0028 2070     		strb	r0, [r4]
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     if (id > 0xFF)
+ 243              		.loc 1 202 0
+ 244 002a FF2E     		cmp	r6, #255
+ 245 002c 1ED9     		bls	.L27
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[0] |= 0x20;
+ 246              		.loc 1 204 0
+ 247 002e 40F02000 		orr	r0, r0, #32
+ 248 0032 2070     		strb	r0, [r4]
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[1] = (id >> 8) & 0XFF;
+ 249              		.loc 1 205 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 9
+
+
+ 250 0034 330A     		lsrs	r3, r6, #8
+ 251 0036 6370     		strb	r3, [r4, #1]
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[2] = id & 0XFF;
+ 252              		.loc 1 206 0
+ 253 0038 A670     		strb	r6, [r4, #2]
+ 254              	.LVL28:
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         offset = 3;
+ 255              		.loc 1 207 0
+ 256 003a 0323     		movs	r3, #3
+ 257              	.LVL29:
+ 258              	.L28:
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     else
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[1] = id;
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         offset = 2;
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     if (data_len <= 7)
+ 259              		.loc 1 214 0
+ 260 003c 072D     		cmp	r5, #7
+ 261 003e 18D9     		bls	.L35
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[0] += data_len;
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     else if (data_len <= 0xFF)
+ 262              		.loc 1 218 0
+ 263 0040 FF2D     		cmp	r5, #255
+ 264 0042 1CD9     		bls	.L36
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[0] |= 0x08;
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[offset] = data_len;
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     else if (data_len <= 0xFFFF)
+ 265              		.loc 1 223 0
+ 266 0044 B5F5803F 		cmp	r5, #65536
+ 267 0048 1FD3     		bcc	.L37
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[0] |= 0x10;
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[offset] = (data_len >> 8) & 0XFF;
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[offset + 1] = data_len & 0XFF;
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     else if (data_len <= 0xFFFFFF)
+ 268              		.loc 1 229 0
+ 269 004a B5F1807F 		cmp	r5, #16777216
+ 270 004e 13D2     		bcs	.L25
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[0] |= 0x18;
+ 271              		.loc 1 231 0
+ 272 0050 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
+ 273 0052 42F01802 		orr	r2, r2, #24
+ 274 0056 2270     		strb	r2, [r4]
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[offset] = (data_len >> 16) & 0XFF;
+ 275              		.loc 1 232 0
+ 276 0058 2A0C     		lsrs	r2, r5, #16
+ 277 005a E254     		strb	r2, [r4, r3]
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[offset + 1] = (data_len >> 8) & 0XFF;
+ 278              		.loc 1 233 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 10
+
+
+ 279 005c 290A     		lsrs	r1, r5, #8
+ 280 005e 5A1C     		adds	r2, r3, #1
+ 281 0060 A154     		strb	r1, [r4, r2]
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[offset + 2] = data_len & 0XFF;
+ 282              		.loc 1 234 0
+ 283 0062 0233     		adds	r3, r3, #2
+ 284              	.LVL30:
+ 285 0064 E554     		strb	r5, [r4, r3]
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     return header_len;
+ 286              		.loc 1 237 0
+ 287 0066 07E0     		b	.L25
+ 288              	.LVL31:
+ 289              	.L33:
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 290              		.loc 1 192 0
+ 291 0068 4020     		movs	r0, #64
+ 292              	.LVL32:
+ 293 006a DBE7     		b	.L26
+ 294              	.L27:
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         offset = 2;
+ 295              		.loc 1 211 0
+ 296 006c 6670     		strb	r6, [r4, #1]
+ 297              	.LVL33:
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 298              		.loc 1 212 0
+ 299 006e 0223     		movs	r3, #2
+ 300 0070 E4E7     		b	.L28
+ 301              	.LVL34:
+ 302              	.L35:
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 303              		.loc 1 216 0
+ 304 0072 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 305              	.LVL35:
+ 306 0074 1D44     		add	r5, r5, r3
+ 307 0076 2570     		strb	r5, [r4]
+ 308              	.L25:
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** }
+ 309              		.loc 1 238 0
+ 310 0078 3846     		mov	r0, r7
+ 311 007a BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 312              	.LVL36:
+ 313              	.L36:
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[offset] = data_len;
+ 314              		.loc 1 220 0
+ 315 007e 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
+ 316 0080 42F00802 		orr	r2, r2, #8
+ 317 0084 2270     		strb	r2, [r4]
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 318              		.loc 1 221 0
+ 319 0086 E554     		strb	r5, [r4, r3]
+ 320 0088 F6E7     		b	.L25
+ 321              	.L37:
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[offset] = (data_len >> 8) & 0XFF;
+ 322              		.loc 1 225 0
+ 323 008a 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 11
+
+
+ 324 008c 42F01002 		orr	r2, r2, #16
+ 325 0090 2270     		strb	r2, [r4]
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         header[offset + 1] = data_len & 0XFF;
+ 326              		.loc 1 226 0
+ 327 0092 2A0A     		lsrs	r2, r5, #8
+ 328 0094 E254     		strb	r2, [r4, r3]
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 329              		.loc 1 227 0
+ 330 0096 0133     		adds	r3, r3, #1
+ 331              	.LVL37:
+ 332 0098 E554     		strb	r5, [r4, r3]
+ 333 009a EDE7     		b	.L25
+ 334              		.cfi_endproc
+ 335              	.LFE139:
+ 337              		.section	.text.prv_encodeInt,"ax",%progbits
+ 338              		.align	1
+ 339              		.syntax unified
+ 340              		.thumb
+ 341              		.thumb_func
+ 342              		.fpu fpv4-sp-d16
+ 344              	prv_encodeInt:
+ 345              	.LFB135:
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     size_t length = 0;
+ 346              		.loc 1 67 0
+ 347              		.cfi_startproc
+ 348              		@ args = 0, pretend = 0, frame = 16
+ 349              		@ frame_needed = 0, uses_anonymous_args = 0
+ 350              	.LVL38:
+ 351 0000 2DE9F048 		push	{r4, r5, r6, r7, fp, lr}
+ 352              	.LCFI1:
+ 353              		.cfi_def_cfa_offset 24
+ 354              		.cfi_offset 4, -24
+ 355              		.cfi_offset 5, -20
+ 356              		.cfi_offset 6, -16
+ 357              		.cfi_offset 7, -12
+ 358              		.cfi_offset 11, -8
+ 359              		.cfi_offset 14, -4
+ 360 0004 84B0     		sub	sp, sp, #16
+ 361              	.LCFI2:
+ 362              		.cfi_def_cfa_offset 40
+ 363 0006 CDE90001 		strd	r0, [sp]
+ 364              	.LVL39:
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 365              		.loc 1 70 0
+ 366 000a DDF804C0 		ldr	ip, [sp, #4]
+ 367 000e 10F18006 		adds	r6, r0, #128
+ 368 0012 4CF10007 		adc	r7, ip, #0
+ 369 0016 002F     		cmp	r7, #0
+ 370 0018 08BF     		it	eq
+ 371 001a B6F5807F 		cmpeq	r6, #256
+ 372 001e 1AD3     		bcc	.L44
+ 373 0020 8346     		mov	fp, r0
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 374              		.loc 1 75 0
+ 375 0022 10F50046 		adds	r6, r0, #32768
+ 376 0026 4CF10007 		adc	r7, ip, #0
+ 377 002a 002F     		cmp	r7, #0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 12
+
+
+ 378 002c 08BF     		it	eq
+ 379 002e B6F5803F 		cmpeq	r6, #65536
+ 380 0032 15D3     		bcc	.L45
+ 381 0034 1046     		mov	r0, r2
+ 382              	.LVL40:
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 383              		.loc 1 84 0
+ 384 0036 1BF10044 		adds	r4, fp, #-2147483648
+ 385 003a 4CF10005 		adc	r5, ip, #0
+ 386 003e 012D     		cmp	r5, #1
+ 387 0040 08BF     		it	eq
+ 388 0042 002C     		cmpeq	r4, #0
+ 389 0044 12D2     		bcs	.L42
+ 390              	.LBB2:
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         length = 4;
+ 391              		.loc 1 88 0
+ 392 0046 04A9     		add	r1, sp, #16
+ 393 0048 41F804BD 		str	fp, [r1, #-4]!
+ 394              	.LVL41:
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 395              		.loc 1 90 0
+ 396 004c 0422     		movs	r2, #4
+ 397              	.LVL42:
+ 398 004e FFF7FEFF 		bl	utils_copyValue
+ 399              	.LVL43:
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         utils_copyValue(data_buffer, &value, length);
+ 400              		.loc 1 89 0
+ 401 0052 0420     		movs	r0, #4
+ 402              	.LBE2:
+ 403 0054 01E0     		b	.L38
+ 404              	.LVL44:
+ 405              	.L44:
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 406              		.loc 1 73 0
+ 407 0056 1070     		strb	r0, [r2]
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         data_buffer[0] = data;
+ 408              		.loc 1 72 0
+ 409 0058 0120     		movs	r0, #1
+ 410              	.LVL45:
+ 411              	.L38:
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 412              		.loc 1 99 0
+ 413 005a 04B0     		add	sp, sp, #16
+ 414              	.LCFI3:
+ 415              		.cfi_remember_state
+ 416              		.cfi_def_cfa_offset 24
+ 417              		@ sp needed
+ 418 005c BDE8F088 		pop	{r4, r5, r6, r7, fp, pc}
+ 419              	.LVL46:
+ 420              	.L45:
+ 421              	.LCFI4:
+ 422              		.cfi_restore_state
+ 423              	.LBB3:
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         data_buffer[1] = value & 0xFF;
+ 424              		.loc 1 81 0
+ 425 0060 40F30723 		sbfx	r3, r0, #8, #8
+ 426 0064 1370     		strb	r3, [r2]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 13
+
+
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 427              		.loc 1 82 0
+ 428 0066 5070     		strb	r0, [r2, #1]
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         data_buffer[0] = (value >> 8) & 0xFF;
+ 429              		.loc 1 80 0
+ 430 0068 0220     		movs	r0, #2
+ 431              	.LVL47:
+ 432              	.LBE3:
+ 433 006a F6E7     		b	.L38
+ 434              	.LVL48:
+ 435              	.L42:
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 436              		.loc 1 95 0
+ 437 006c 0822     		movs	r2, #8
+ 438 006e 6946     		mov	r1, sp
+ 439 0070 FFF7FEFF 		bl	utils_copyValue
+ 440              	.LVL49:
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         utils_copyValue(data_buffer, &data, length);
+ 441              		.loc 1 94 0
+ 442 0074 0820     		movs	r0, #8
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** }
+ 443              		.loc 1 98 0
+ 444 0076 F0E7     		b	.L38
+ 445              		.cfi_endproc
+ 446              	.LFE135:
+ 448              		.global	__aeabi_dcmplt
+ 449              		.global	__aeabi_dcmpgt
+ 450              		.section	.text.prv_getLength,"ax",%progbits
+ 451              		.align	1
+ 452              		.syntax unified
+ 453              		.thumb
+ 454              		.thumb_func
+ 455              		.fpu fpv4-sp-d16
+ 457              	prv_getLength:
+ 458              	.LFB142:
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** int lwm2m_decode_TLV(const uint8_t *buffer,
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                      size_t buffer_len,
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                      lwm2m_data_type_t *oType,
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                      uint16_t *oID,
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                      size_t *oDataIndex,
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                      size_t *oDataLen)
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** {
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     LOG_ARG("buffer_len: %d", buffer_len);
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     ;
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     if (buffer_len < 2) return 0;
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     *oDataIndex = 2;
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     *oType = prv_getDataType(buffer[0] & _PRV_TLV_TYPE_MASK);
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     if ((buffer[0] & 0x20) == 0x20)
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         // id is 16 bits long
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         if (buffer_len < 3) return 0;
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataIndex += 1;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 14
+
+
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oID = (buffer[1] << 8) + buffer[2];
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     else
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         // id is 8 bits long
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oID = buffer[1];
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     switch (buffer[0] & 0x18)
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case 0x00:
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         // no length field
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataLen = buffer[0] & 0x07;
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         break;
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case 0x08:
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         // length field is 8 bits long
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         if (buffer_len < *oDataIndex + 1) return 0;
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataLen = buffer[*oDataIndex];
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataIndex += 1;
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         break;
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case 0x10:
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         // length field is 16 bits long
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         if (buffer_len < *oDataIndex + 2) return 0;
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataLen = (buffer[*oDataIndex] << 8) + buffer[*oDataIndex + 1];
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataIndex += 2;
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         break;
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case 0x18:
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         // length field is 24 bits long
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         if (buffer_len < *oDataIndex + 3) return 0;
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataLen = (buffer[*oDataIndex] << 16) + (buffer[*oDataIndex + 1] << 8) + buffer[*oDataInd
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataIndex += 3;
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         break;
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     default:
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         // can't happen
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         return 0;
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     if (*oDataIndex + *oDataLen > buffer_len) return 0;
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     return *oDataIndex + *oDataLen;
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** }
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** int tlv_parse(uint8_t *buffer,
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****               size_t bufferLen,
+ 306:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****               lwm2m_data_t **dataP)
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** {
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     lwm2m_data_type_t type;
+ 309:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     uint16_t id;
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     size_t dataIndex;
+ 311:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     size_t dataLen;
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     int index = 0;
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     int result;
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     int size = 0;
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     LOG_ARG("bufferLen: %d", bufferLen);
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 15
+
+
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     *dataP = NULL;
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     while (0 != (result = lwm2m_decode_TLV((uint8_t *)buffer + index, bufferLen - index, &type, &id
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 322:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         lwm2m_data_t *newTlvP;
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         newTlvP = lwm2m_data_new(size + 1);
+ 325:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         if (size >= 1)
+ 326:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 327:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             if (newTlvP == NULL)
+ 328:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             {
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 lwm2m_data_free(size, *dataP);
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 return 0;
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             }
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             else
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             {
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 memcpy(newTlvP, *dataP, size * sizeof(lwm2m_data_t));
+ 335:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 lwm2m_free(*dataP);
+ 336:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             }
+ 337:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         }
+ 338:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *dataP = newTlvP;
+ 339:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 340:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         (*dataP)[size].type = type;
+ 341:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         (*dataP)[size].id = id;
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         if (type == LWM2M_TYPE_OBJECT_INSTANCE || type == LWM2M_TYPE_MULTIPLE_RESOURCE)
+ 343:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 344:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             (*dataP)[size].value.asChildren.count = tlv_parse(buffer + index + dataIndex,
+ 345:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                                                     dataLen,
+ 346:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                                                     &((*dataP)[size].value.asChildren.array));
+ 347:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             if ((*dataP)[size].value.asChildren.count == 0)
+ 348:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             {
+ 349:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 lwm2m_data_free(size + 1, *dataP);
+ 350:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 return 0;
+ 351:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             }
+ 352:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         }
+ 353:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         else
+ 354:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 355:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             lwm2m_data_encode_opaque(buffer + index + dataIndex, dataLen, (*dataP) + size);
+ 356:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         }
+ 357:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         size++;
+ 358:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         index += result;
+ 359:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 360:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 361:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     return size;
+ 362:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** }
+ 363:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 364:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 365:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** static int prv_getLength(int size,
+ 366:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                          lwm2m_data_t *dataP)
+ 367:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** {
+ 459              		.loc 1 367 0
+ 460              		.cfi_startproc
+ 461              		@ args = 0, pretend = 0, frame = 8
+ 462              		@ frame_needed = 0, uses_anonymous_args = 0
+ 463              	.LVL50:
+ 464 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 465              	.LCFI5:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 16
+
+
+ 466              		.cfi_def_cfa_offset 36
+ 467              		.cfi_offset 4, -36
+ 468              		.cfi_offset 5, -32
+ 469              		.cfi_offset 6, -28
+ 470              		.cfi_offset 7, -24
+ 471              		.cfi_offset 8, -20
+ 472              		.cfi_offset 9, -16
+ 473              		.cfi_offset 10, -12
+ 474              		.cfi_offset 11, -8
+ 475              		.cfi_offset 14, -4
+ 476 0004 83B0     		sub	sp, sp, #12
+ 477              	.LCFI6:
+ 478              		.cfi_def_cfa_offset 48
+ 479 0006 8046     		mov	r8, r0
+ 480 0008 0F46     		mov	r7, r1
+ 481              	.LVL51:
+ 368:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     int length;
+ 369:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     int i;
+ 370:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 371:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     length = 0;
+ 372:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 373:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     for (i = 0 ; i < size && length != -1 ; i++)
+ 482              		.loc 1 373 0
+ 483 000a 0024     		movs	r4, #0
+ 371:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 484              		.loc 1 371 0
+ 485 000c 2546     		mov	r5, r4
+ 486              		.loc 1 373 0
+ 487 000e 17E0     		b	.L47
+ 488              	.LVL52:
+ 489              	.L49:
+ 490              	.LBB4:
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 375:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         switch (dataP[i].type)
+ 376:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 377:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_OBJECT_INSTANCE:
+ 378:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_MULTIPLE_RESOURCE:
+ 379:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 380:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             int subLength;
+ 381:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 382:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             subLength = prv_getLength(dataP[i].value.asChildren.count, dataP[i].value.asChildren.ar
+ 491              		.loc 1 382 0
+ 492 0010 F168     		ldr	r1, [r6, #12]
+ 493 0012 B068     		ldr	r0, [r6, #8]
+ 494 0014 FFF7F4FF 		bl	prv_getLength
+ 495              	.LVL53:
+ 496 0018 8146     		mov	r9, r0
+ 497              	.LVL54:
+ 383:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             if (subLength == -1)
+ 498              		.loc 1 383 0
+ 499 001a B0F1FF3F 		cmp	r0, #-1
+ 500 001e 6CD0     		beq	.L61
+ 384:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             {
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 length = -1;
+ 386:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             }
+ 387:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             else
+ 388:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 17
+
+
+ 389:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 length += prv_getHeaderLength(dataP[i].id, subLength) + subLength;
+ 501              		.loc 1 389 0
+ 502 0020 0146     		mov	r1, r0
+ 503 0022 7088     		ldrh	r0, [r6, #2]
+ 504              	.LVL55:
+ 505 0024 FFF7FEFF 		bl	prv_getHeaderLength
+ 506              	.LVL56:
+ 507 0028 4844     		add	r0, r0, r9
+ 508 002a 0544     		add	r5, r5, r0
+ 509              	.LVL57:
+ 510 002c 07E0     		b	.L48
+ 511              	.LVL58:
+ 512              	.L51:
+ 513              	.LBE4:
+ 390:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             }
+ 391:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         }
+ 392:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         break;
+ 393:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 394:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_STRING:
+ 395:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_OPAQUE:
+ 396:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             length += prv_getHeaderLength(dataP[i].id, dataP[i].value.asBuffer.length) + dataP[i].v
+ 514              		.loc 1 396 0
+ 515 002e D6F80890 		ldr	r9, [r6, #8]
+ 516 0032 4946     		mov	r1, r9
+ 517 0034 7088     		ldrh	r0, [r6, #2]
+ 518 0036 FFF7FEFF 		bl	prv_getHeaderLength
+ 519              	.LVL59:
+ 520 003a 4844     		add	r0, r0, r9
+ 521 003c 0544     		add	r5, r5, r0
+ 522              	.LVL60:
+ 523              	.L48:
+ 373:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 524              		.loc 1 373 0 discriminator 2
+ 525 003e 0134     		adds	r4, r4, #1
+ 526              	.LVL61:
+ 527              	.L47:
+ 373:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 528              		.loc 1 373 0 is_stmt 0 discriminator 1
+ 529 0040 4445     		cmp	r4, r8
+ 530 0042 5CDA     		bge	.L46
+ 373:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 531              		.loc 1 373 0 discriminator 3
+ 532 0044 B5F1FF3F 		cmp	r5, #-1
+ 533 0048 59D0     		beq	.L46
+ 375:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 534              		.loc 1 375 0 is_stmt 1
+ 535 004a 2301     		lsls	r3, r4, #4
+ 536 004c FE18     		adds	r6, r7, r3
+ 537 004e FB5C     		ldrb	r3, [r7, r3]	@ zero_extendqisi2
+ 538 0050 023B     		subs	r3, r3, #2
+ 539 0052 072B     		cmp	r3, #7
+ 540 0054 4ED8     		bhi	.L60
+ 541 0056 01A2     		adr	r2, .L50
+ 542 0058 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 543              		.p2align 2
+ 544              	.L50:
+ 545 005c 11000000 		.word	.L49+1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 18
+
+
+ 546 0060 11000000 		.word	.L49+1
+ 547 0064 2F000000 		.word	.L51+1
+ 548 0068 2F000000 		.word	.L51+1
+ 549 006c 7D000000 		.word	.L52+1
+ 550 0070 97000000 		.word	.L53+1
+ 551 0074 D9000000 		.word	.L54+1
+ 552 0078 E7000000 		.word	.L55+1
+ 553              		.p2align 1
+ 554              	.L52:
+ 555              	.LBB5:
+ 397:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             break;
+ 398:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 399:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_INTEGER:
+ 400:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 401:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             size_t data_len;
+ 402:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             uint8_t unused_buffer[_PRV_64BIT_BUFFER_SIZE];
+ 403:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 404:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             data_len = prv_encodeInt(dataP[i].value.asInteger, unused_buffer);
+ 556              		.loc 1 404 0
+ 557 007c 6A46     		mov	r2, sp
+ 558 007e D6E90201 		ldrd	r0, [r6, #8]
+ 559 0082 FFF7FEFF 		bl	prv_encodeInt
+ 560              	.LVL62:
+ 561 0086 8146     		mov	r9, r0
+ 562              	.LVL63:
+ 405:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             length += prv_getHeaderLength(dataP[i].id, data_len) + data_len;
+ 563              		.loc 1 405 0
+ 564 0088 0146     		mov	r1, r0
+ 565 008a 7088     		ldrh	r0, [r6, #2]
+ 566              	.LVL64:
+ 567 008c FFF7FEFF 		bl	prv_getHeaderLength
+ 568              	.LVL65:
+ 569 0090 4844     		add	r0, r0, r9
+ 570 0092 0544     		add	r5, r5, r0
+ 571              	.LVL66:
+ 572              	.LBE5:
+ 406:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         }
+ 407:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         break;
+ 573              		.loc 1 407 0
+ 574 0094 D3E7     		b	.L48
+ 575              	.LVL67:
+ 576              	.L53:
+ 577              	.LBB6:
+ 408:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 409:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_FLOAT:
+ 410:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 411:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             size_t data_len;
+ 412:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 413:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             if ((dataP[i].value.asFloat < 0.0 - (double)FLT_MAX)
+ 578              		.loc 1 413 0
+ 579 0096 D6E902AB 		ldrd	r10, [r6, #8]
+ 580 009a 4FF06042 		mov	r2, #-536870912
+ 581 009e 1A4B     		ldr	r3, .L67
+ 582 00a0 5046     		mov	r0, r10
+ 583 00a2 5946     		mov	r1, fp
+ 584 00a4 FFF7FEFF 		bl	__aeabi_dcmplt
+ 585              	.LVL68:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 19
+
+
+ 586 00a8 50B9     		cbnz	r0, .L62
+ 414:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                     || (dataP[i].value.asFloat > (double)FLT_MAX))
+ 587              		.loc 1 414 0
+ 588 00aa 4FF06042 		mov	r2, #-536870912
+ 589 00ae 174B     		ldr	r3, .L67+4
+ 590 00b0 5046     		mov	r0, r10
+ 591 00b2 5946     		mov	r1, fp
+ 592 00b4 FFF7FEFF 		bl	__aeabi_dcmpgt
+ 593              	.LVL69:
+ 594 00b8 58B1     		cbz	r0, .L65
+ 415:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             {
+ 416:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 data_len = 8;
+ 595              		.loc 1 416 0
+ 596 00ba 4FF00809 		mov	r9, #8
+ 597 00be 01E0     		b	.L56
+ 598              	.L62:
+ 599 00c0 4FF00809 		mov	r9, #8
+ 600              	.L56:
+ 601              	.LVL70:
+ 417:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             }
+ 418:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             else
+ 419:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             {
+ 420:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 data_len = 4;
+ 421:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             }
+ 422:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 423:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             length += prv_getHeaderLength(dataP[i].id, data_len) + data_len;
+ 602              		.loc 1 423 0
+ 603 00c4 4946     		mov	r1, r9
+ 604 00c6 7088     		ldrh	r0, [r6, #2]
+ 605 00c8 FFF7FEFF 		bl	prv_getHeaderLength
+ 606              	.LVL71:
+ 607 00cc 4844     		add	r0, r0, r9
+ 608 00ce 0544     		add	r5, r5, r0
+ 609              	.LVL72:
+ 610              	.LBE6:
+ 424:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         }
+ 425:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         break;
+ 611              		.loc 1 425 0
+ 612 00d0 B5E7     		b	.L48
+ 613              	.LVL73:
+ 614              	.L65:
+ 615              	.LBB7:
+ 420:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             }
+ 616              		.loc 1 420 0
+ 617 00d2 4FF00409 		mov	r9, #4
+ 618 00d6 F5E7     		b	.L56
+ 619              	.L54:
+ 620              	.LBE7:
+ 426:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 427:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_BOOLEAN:
+ 428:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             // Booleans are always encoded on one byte
+ 429:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             length += prv_getHeaderLength(dataP[i].id, 1) + 1;
+ 621              		.loc 1 429 0
+ 622 00d8 0121     		movs	r1, #1
+ 623 00da 7088     		ldrh	r0, [r6, #2]
+ 624 00dc FFF7FEFF 		bl	prv_getHeaderLength
+ 625              	.LVL74:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 20
+
+
+ 626 00e0 0130     		adds	r0, r0, #1
+ 627 00e2 0544     		add	r5, r5, r0
+ 628              	.LVL75:
+ 430:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             break;
+ 629              		.loc 1 430 0
+ 630 00e4 ABE7     		b	.L48
+ 631              	.L55:
+ 431:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 432:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_OBJECT_LINK:
+ 433:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             // Object Link are always encoded on four bytes
+ 434:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             length += prv_getHeaderLength(dataP[i].id, 4) + 4;
+ 632              		.loc 1 434 0
+ 633 00e6 0421     		movs	r1, #4
+ 634 00e8 7088     		ldrh	r0, [r6, #2]
+ 635 00ea FFF7FEFF 		bl	prv_getHeaderLength
+ 636              	.LVL76:
+ 637 00ee 0430     		adds	r0, r0, #4
+ 638 00f0 0544     		add	r5, r5, r0
+ 639              	.LVL77:
+ 435:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             break;
+ 640              		.loc 1 435 0
+ 641 00f2 A4E7     		b	.L48
+ 642              	.L60:
+ 436:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 437:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         default:
+ 438:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             length = -1;
+ 643              		.loc 1 438 0
+ 644 00f4 4FF0FF35 		mov	r5, #-1
+ 645              	.LVL78:
+ 646 00f8 A1E7     		b	.L48
+ 647              	.LVL79:
+ 648              	.L61:
+ 649              	.LBB8:
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             }
+ 650              		.loc 1 385 0
+ 651 00fa 0546     		mov	r5, r0
+ 652              	.LVL80:
+ 653 00fc 9FE7     		b	.L48
+ 654              	.LVL81:
+ 655              	.L46:
+ 656              	.LBE8:
+ 439:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             break;
+ 440:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         }
+ 441:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 442:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 443:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     return length;
+ 444:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** }
+ 657              		.loc 1 444 0
+ 658 00fe 2846     		mov	r0, r5
+ 659 0100 03B0     		add	sp, sp, #12
+ 660              	.LCFI7:
+ 661              		.cfi_def_cfa_offset 36
+ 662              		@ sp needed
+ 663 0102 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 664              	.LVL82:
+ 665              	.L68:
+ 666 0106 00BF     		.align	2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 21
+
+
+ 667              	.L67:
+ 668 0108 FFFFEFC7 		.word	-940572673
+ 669 010c FFFFEF47 		.word	1206910975
+ 670              		.cfi_endproc
+ 671              	.LFE142:
+ 673              		.global	__aeabi_d2f
+ 674              		.section	.text.prv_encodeFloat,"ax",%progbits
+ 675              		.align	1
+ 676              		.syntax unified
+ 677              		.thumb
+ 678              		.thumb_func
+ 679              		.fpu fpv4-sp-d16
+ 681              	prv_encodeFloat:
+ 682              	.LFB134:
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     size_t length = 0;
+ 683              		.loc 1 45 0
+ 684              		.cfi_startproc
+ 685              		@ args = 0, pretend = 0, frame = 16
+ 686              		@ frame_needed = 0, uses_anonymous_args = 0
+ 687              	.LVL83:
+ 688 0000 D0B5     		push	{r4, r6, r7, lr}
+ 689              	.LCFI8:
+ 690              		.cfi_def_cfa_offset 16
+ 691              		.cfi_offset 4, -16
+ 692              		.cfi_offset 6, -12
+ 693              		.cfi_offset 7, -8
+ 694              		.cfi_offset 14, -4
+ 695 0002 84B0     		sub	sp, sp, #16
+ 696              	.LCFI9:
+ 697              		.cfi_def_cfa_offset 32
+ 698 0004 CDE90001 		strd	r0, [sp]
+ 699 0008 1446     		mov	r4, r2
+ 700              	.LVL84:
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 701              		.loc 1 48 0
+ 702 000a 0646     		mov	r6, r0
+ 703 000c 0F46     		mov	r7, r1
+ 704 000e 4FF06042 		mov	r2, #-536870912
+ 705              	.LVL85:
+ 706 0012 104B     		ldr	r3, .L76
+ 707 0014 FFF7FEFF 		bl	__aeabi_dcmplt
+ 708              	.LVL86:
+ 709 0018 38B9     		cbnz	r0, .L70
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 710              		.loc 1 48 0 is_stmt 0 discriminator 1
+ 711 001a 4FF06042 		mov	r2, #-536870912
+ 712 001e 0E4B     		ldr	r3, .L76+4
+ 713 0020 3046     		mov	r0, r6
+ 714 0022 3946     		mov	r1, r7
+ 715 0024 FFF7FEFF 		bl	__aeabi_dcmpgt
+ 716              	.LVL87:
+ 717 0028 38B1     		cbz	r0, .L74
+ 718              	.L70:
+ 719              	.LVL88:
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 720              		.loc 1 51 0 is_stmt 1
+ 721 002a 0822     		movs	r2, #8
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 22
+
+
+ 722 002c 6946     		mov	r1, sp
+ 723 002e 2046     		mov	r0, r4
+ 724 0030 FFF7FEFF 		bl	utils_copyValue
+ 725              	.LVL89:
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         utils_copyValue(data_buffer, &data, 8);
+ 726              		.loc 1 50 0
+ 727 0034 0820     		movs	r0, #8
+ 728              	.LVL90:
+ 729              	.L69:
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 730              		.loc 1 63 0
+ 731 0036 04B0     		add	sp, sp, #16
+ 732              	.LCFI10:
+ 733              		.cfi_remember_state
+ 734              		.cfi_def_cfa_offset 16
+ 735              		@ sp needed
+ 736 0038 D0BD     		pop	{r4, r6, r7, pc}
+ 737              	.LVL91:
+ 738              	.L74:
+ 739              	.LCFI11:
+ 740              		.cfi_restore_state
+ 741              	.LBB9:
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         utils_copyValue(data_buffer, &value, 4);
+ 742              		.loc 1 58 0
+ 743 003a 3046     		mov	r0, r6
+ 744 003c 3946     		mov	r1, r7
+ 745 003e FFF7FEFF 		bl	__aeabi_d2f
+ 746              	.LVL92:
+ 747 0042 04A9     		add	r1, sp, #16
+ 748 0044 41F8040D 		str	r0, [r1, #-4]!	@ float
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 749              		.loc 1 59 0
+ 750 0048 0422     		movs	r2, #4
+ 751 004a 2046     		mov	r0, r4
+ 752 004c FFF7FEFF 		bl	utils_copyValue
+ 753              	.LVL93:
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         value = (float)data;
+ 754              		.loc 1 57 0
+ 755 0050 0420     		movs	r0, #4
+ 756              	.LBE9:
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** }
+ 757              		.loc 1 62 0
+ 758 0052 F0E7     		b	.L69
+ 759              	.L77:
+ 760              		.align	2
+ 761              	.L76:
+ 762 0054 FFFFEFC7 		.word	-940572673
+ 763 0058 FFFFEF47 		.word	1206910975
+ 764              		.cfi_endproc
+ 765              	.LFE134:
+ 767              		.section	.text.lwm2m_decode_TLV,"ax",%progbits
+ 768              		.align	1
+ 769              		.global	lwm2m_decode_TLV
+ 770              		.syntax unified
+ 771              		.thumb
+ 772              		.thumb_func
+ 773              		.fpu fpv4-sp-d16
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 23
+
+
+ 775              	lwm2m_decode_TLV:
+ 776              	.LFB140:
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 777              		.loc 1 246 0
+ 778              		.cfi_startproc
+ 779              		@ args = 8, pretend = 0, frame = 0
+ 780              		@ frame_needed = 0, uses_anonymous_args = 0
+ 781              	.LVL94:
+ 782 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 783              	.LCFI12:
+ 784              		.cfi_def_cfa_offset 24
+ 785              		.cfi_offset 4, -24
+ 786              		.cfi_offset 5, -20
+ 787              		.cfi_offset 6, -16
+ 788              		.cfi_offset 7, -12
+ 789              		.cfi_offset 8, -8
+ 790              		.cfi_offset 14, -4
+ 791 0004 82B0     		sub	sp, sp, #8
+ 792              	.LCFI13:
+ 793              		.cfi_def_cfa_offset 32
+ 794 0006 0446     		mov	r4, r0
+ 795 0008 0D46     		mov	r5, r1
+ 796 000a 1746     		mov	r7, r2
+ 797 000c 9846     		mov	r8, r3
+ 798 000e 089E     		ldr	r6, [sp, #32]
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     ;
+ 799              		.loc 1 248 0
+ 800 0010 FFF7FEFF 		bl	lwm2m_gettime
+ 801              	.LVL95:
+ 802 0014 0095     		str	r5, [sp]
+ 803 0016 F823     		movs	r3, #248
+ 804 0018 3D4A     		ldr	r2, .L96
+ 805 001a 0146     		mov	r1, r0
+ 806 001c 3D48     		ldr	r0, .L96+4
+ 807 001e FFF7FEFF 		bl	atiny_printf
+ 808              	.LVL96:
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 809              		.loc 1 250 0
+ 810 0022 012D     		cmp	r5, #1
+ 811 0024 66D9     		bls	.L88
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 812              		.loc 1 252 0
+ 813 0026 0223     		movs	r3, #2
+ 814 0028 3360     		str	r3, [r6]
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 815              		.loc 1 254 0
+ 816 002a 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+ 817 002c 00F0C000 		and	r0, r0, #192
+ 818 0030 FFF7FEFF 		bl	prv_getDataType
+ 819              	.LVL97:
+ 820 0034 3870     		strb	r0, [r7]
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 821              		.loc 1 256 0
+ 822 0036 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 823 0038 13F0200F 		tst	r3, #32
+ 824 003c 0BD0     		beq	.L80
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataIndex += 1;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 24
+
+
+ 825              		.loc 1 259 0
+ 826 003e 022D     		cmp	r5, #2
+ 827 0040 5CD9     		bls	.L89
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oID = (buffer[1] << 8) + buffer[2];
+ 828              		.loc 1 260 0
+ 829 0042 3368     		ldr	r3, [r6]
+ 830 0044 0133     		adds	r3, r3, #1
+ 831 0046 3360     		str	r3, [r6]
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 832              		.loc 1 261 0
+ 833 0048 6278     		ldrb	r2, [r4, #1]	@ zero_extendqisi2
+ 834 004a A378     		ldrb	r3, [r4, #2]	@ zero_extendqisi2
+ 835 004c 03EB0223 		add	r3, r3, r2, lsl #8
+ 836 0050 A8F80030 		strh	r3, [r8]	@ movhi
+ 837 0054 02E0     		b	.L81
+ 838              	.L80:
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 839              		.loc 1 266 0
+ 840 0056 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 841 0058 A8F80030 		strh	r3, [r8]	@ movhi
+ 842              	.L81:
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 843              		.loc 1 269 0
+ 844 005c 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
+ 845 005e 02F01803 		and	r3, r2, #24
+ 846 0062 182B     		cmp	r3, #24
+ 847 0064 4CD8     		bhi	.L90
+ 848 0066 DFE803F0 		tbb	[pc, r3]
+ 849              	.L83:
+ 850 006a 0D       		.byte	(.L82-.L83)/2
+ 851 006b 4B       		.byte	(.L90-.L83)/2
+ 852 006c 4B       		.byte	(.L90-.L83)/2
+ 853 006d 4B       		.byte	(.L90-.L83)/2
+ 854 006e 4B       		.byte	(.L90-.L83)/2
+ 855 006f 4B       		.byte	(.L90-.L83)/2
+ 856 0070 4B       		.byte	(.L90-.L83)/2
+ 857 0071 4B       		.byte	(.L90-.L83)/2
+ 858 0072 19       		.byte	(.L84-.L83)/2
+ 859 0073 4B       		.byte	(.L90-.L83)/2
+ 860 0074 4B       		.byte	(.L90-.L83)/2
+ 861 0075 4B       		.byte	(.L90-.L83)/2
+ 862 0076 4B       		.byte	(.L90-.L83)/2
+ 863 0077 4B       		.byte	(.L90-.L83)/2
+ 864 0078 4B       		.byte	(.L90-.L83)/2
+ 865 0079 4B       		.byte	(.L90-.L83)/2
+ 866 007a 24       		.byte	(.L85-.L83)/2
+ 867 007b 4B       		.byte	(.L90-.L83)/2
+ 868 007c 4B       		.byte	(.L90-.L83)/2
+ 869 007d 4B       		.byte	(.L90-.L83)/2
+ 870 007e 4B       		.byte	(.L90-.L83)/2
+ 871 007f 4B       		.byte	(.L90-.L83)/2
+ 872 0080 4B       		.byte	(.L90-.L83)/2
+ 873 0081 4B       		.byte	(.L90-.L83)/2
+ 874 0082 33       		.byte	(.L86-.L83)/2
+ 875 0083 00       		.p2align 1
+ 876              	.L82:
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         break;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 25
+
+
+ 877              		.loc 1 273 0
+ 878 0084 02F00702 		and	r2, r2, #7
+ 879 0088 099B     		ldr	r3, [sp, #36]
+ 880 008a 1A60     		str	r2, [r3]
+ 881              	.LVL98:
+ 882              	.L87:
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 883              		.loc 1 298 0
+ 884 008c 3068     		ldr	r0, [r6]
+ 885 008e 099B     		ldr	r3, [sp, #36]
+ 886 0090 1B68     		ldr	r3, [r3]
+ 887 0092 1844     		add	r0, r0, r3
+ 888 0094 A842     		cmp	r0, r5
+ 889 0096 2ED9     		bls	.L78
+ 890 0098 0020     		movs	r0, #0
+ 891 009a 2CE0     		b	.L78
+ 892              	.LVL99:
+ 893              	.L84:
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataLen = buffer[*oDataIndex];
+ 894              		.loc 1 277 0
+ 895 009c 3368     		ldr	r3, [r6]
+ 896 009e 5A1C     		adds	r2, r3, #1
+ 897 00a0 AA42     		cmp	r2, r5
+ 898 00a2 2FD8     		bhi	.L91
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataIndex += 1;
+ 899              		.loc 1 278 0
+ 900 00a4 E35C     		ldrb	r3, [r4, r3]	@ zero_extendqisi2
+ 901 00a6 099A     		ldr	r2, [sp, #36]
+ 902 00a8 1360     		str	r3, [r2]
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         break;
+ 903              		.loc 1 279 0
+ 904 00aa 3368     		ldr	r3, [r6]
+ 905 00ac 0133     		adds	r3, r3, #1
+ 906 00ae 3360     		str	r3, [r6]
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case 0x10:
+ 907              		.loc 1 280 0
+ 908 00b0 ECE7     		b	.L87
+ 909              	.L85:
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataLen = (buffer[*oDataIndex] << 8) + buffer[*oDataIndex + 1];
+ 910              		.loc 1 283 0
+ 911 00b2 3368     		ldr	r3, [r6]
+ 912 00b4 9A1C     		adds	r2, r3, #2
+ 913 00b6 AA42     		cmp	r2, r5
+ 914 00b8 26D8     		bhi	.L92
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataIndex += 2;
+ 915              		.loc 1 284 0
+ 916 00ba E25C     		ldrb	r2, [r4, r3]	@ zero_extendqisi2
+ 917 00bc 1C44     		add	r4, r4, r3
+ 918              	.LVL100:
+ 919 00be 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 920 00c0 03EB0223 		add	r3, r3, r2, lsl #8
+ 921 00c4 099A     		ldr	r2, [sp, #36]
+ 922 00c6 1360     		str	r3, [r2]
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         break;
+ 923              		.loc 1 285 0
+ 924 00c8 3368     		ldr	r3, [r6]
+ 925 00ca 0233     		adds	r3, r3, #2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 26
+
+
+ 926 00cc 3360     		str	r3, [r6]
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     case 0x18:
+ 927              		.loc 1 286 0
+ 928 00ce DDE7     		b	.L87
+ 929              	.LVL101:
+ 930              	.L86:
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataLen = (buffer[*oDataIndex] << 16) + (buffer[*oDataIndex + 1] << 8) + buffer[*oDataInd
+ 931              		.loc 1 289 0
+ 932 00d0 3268     		ldr	r2, [r6]
+ 933 00d2 D31C     		adds	r3, r2, #3
+ 934 00d4 AB42     		cmp	r3, r5
+ 935 00d6 19D8     		bhi	.L93
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataIndex += 3;
+ 936              		.loc 1 290 0
+ 937 00d8 A15C     		ldrb	r1, [r4, r2]	@ zero_extendqisi2
+ 938 00da 1444     		add	r4, r4, r2
+ 939              	.LVL102:
+ 940 00dc 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 941 00de 1B02     		lsls	r3, r3, #8
+ 942 00e0 03EB0143 		add	r3, r3, r1, lsl #16
+ 943 00e4 A278     		ldrb	r2, [r4, #2]	@ zero_extendqisi2
+ 944 00e6 1344     		add	r3, r3, r2
+ 945 00e8 099A     		ldr	r2, [sp, #36]
+ 946 00ea 1360     		str	r3, [r2]
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         break;
+ 947              		.loc 1 291 0
+ 948 00ec 3368     		ldr	r3, [r6]
+ 949 00ee 0333     		adds	r3, r3, #3
+ 950 00f0 3360     		str	r3, [r6]
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     default:
+ 951              		.loc 1 292 0
+ 952 00f2 CBE7     		b	.L87
+ 953              	.LVL103:
+ 954              	.L88:
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 955              		.loc 1 250 0
+ 956 00f4 0020     		movs	r0, #0
+ 957              	.LVL104:
+ 958              	.L78:
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 959              		.loc 1 301 0
+ 960 00f6 02B0     		add	sp, sp, #8
+ 961              	.LCFI14:
+ 962              		.cfi_remember_state
+ 963              		.cfi_def_cfa_offset 24
+ 964              		@ sp needed
+ 965 00f8 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 966              	.LVL105:
+ 967              	.L89:
+ 968              	.LCFI15:
+ 969              		.cfi_restore_state
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataIndex += 1;
+ 970              		.loc 1 259 0
+ 971 00fc 0020     		movs	r0, #0
+ 972 00fe FAE7     		b	.L78
+ 973              	.L90:
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 27
+
+
+ 974              		.loc 1 295 0
+ 975 0100 0020     		movs	r0, #0
+ 976 0102 F8E7     		b	.L78
+ 977              	.L91:
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataLen = buffer[*oDataIndex];
+ 978              		.loc 1 277 0
+ 979 0104 0020     		movs	r0, #0
+ 980 0106 F6E7     		b	.L78
+ 981              	.L92:
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataLen = (buffer[*oDataIndex] << 8) + buffer[*oDataIndex + 1];
+ 982              		.loc 1 283 0
+ 983 0108 0020     		movs	r0, #0
+ 984 010a F4E7     		b	.L78
+ 985              	.L93:
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *oDataLen = (buffer[*oDataIndex] << 16) + (buffer[*oDataIndex + 1] << 8) + buffer[*oDataInd
+ 986              		.loc 1 289 0
+ 987 010c 0020     		movs	r0, #0
+ 988 010e F2E7     		b	.L78
+ 989              	.L97:
+ 990              		.align	2
+ 991              	.L96:
+ 992 0110 00000000 		.word	.LANCHOR0
+ 993 0114 00000000 		.word	.LC0
+ 994              		.cfi_endproc
+ 995              	.LFE140:
+ 997              		.section	.text.tlv_parse,"ax",%progbits
+ 998              		.align	1
+ 999              		.global	tlv_parse
+ 1000              		.syntax unified
+ 1001              		.thumb
+ 1002              		.thumb_func
+ 1003              		.fpu fpv4-sp-d16
+ 1005              	tlv_parse:
+ 1006              	.LFB141:
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     lwm2m_data_type_t type;
+ 1007              		.loc 1 307 0
+ 1008              		.cfi_startproc
+ 1009              		@ args = 0, pretend = 0, frame = 24
+ 1010              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1011              	.LVL106:
+ 1012 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 1013              	.LCFI16:
+ 1014              		.cfi_def_cfa_offset 36
+ 1015              		.cfi_offset 4, -36
+ 1016              		.cfi_offset 5, -32
+ 1017              		.cfi_offset 6, -28
+ 1018              		.cfi_offset 7, -24
+ 1019              		.cfi_offset 8, -20
+ 1020              		.cfi_offset 9, -16
+ 1021              		.cfi_offset 10, -12
+ 1022              		.cfi_offset 11, -8
+ 1023              		.cfi_offset 14, -4
+ 1024 0004 89B0     		sub	sp, sp, #36
+ 1025              	.LCFI17:
+ 1026              		.cfi_def_cfa_offset 72
+ 1027 0006 8146     		mov	r9, r0
+ 1028 0008 8B46     		mov	fp, r1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 28
+
+
+ 1029 000a 1646     		mov	r6, r2
+ 1030              	.LVL107:
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 1031              		.loc 1 316 0
+ 1032 000c FFF7FEFF 		bl	lwm2m_gettime
+ 1033              	.LVL108:
+ 1034 0010 CDF800B0 		str	fp, [sp]
+ 1035 0014 4FF49E73 		mov	r3, #316
+ 1036 0018 324A     		ldr	r2, .L109
+ 1037 001a 0146     		mov	r1, r0
+ 1038 001c 3248     		ldr	r0, .L109+4
+ 1039 001e FFF7FEFF 		bl	atiny_printf
+ 1040              	.LVL109:
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 1041              		.loc 1 318 0
+ 1042 0022 0025     		movs	r5, #0
+ 1043 0024 3560     		str	r5, [r6]
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 1044              		.loc 1 314 0
+ 1045 0026 2C46     		mov	r4, r5
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 1046              		.loc 1 320 0
+ 1047 0028 23E0     		b	.L99
+ 1048              	.LVL110:
+ 1049              	.L108:
+ 1050              	.LBB10:
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 return 0;
+ 1051              		.loc 1 329 0
+ 1052 002a 3168     		ldr	r1, [r6]
+ 1053 002c 2046     		mov	r0, r4
+ 1054              	.LVL111:
+ 1055 002e FFF7FEFF 		bl	lwm2m_data_free
+ 1056              	.LVL112:
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             }
+ 1057              		.loc 1 330 0
+ 1058 0032 0024     		movs	r4, #0
+ 1059              	.LVL113:
+ 1060              	.L98:
+ 1061              	.LBE10:
+ 362:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 1062              		.loc 1 362 0
+ 1063 0034 2046     		mov	r0, r4
+ 1064 0036 09B0     		add	sp, sp, #36
+ 1065              	.LCFI18:
+ 1066              		.cfi_remember_state
+ 1067              		.cfi_def_cfa_offset 36
+ 1068              		@ sp needed
+ 1069 0038 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 1070              	.LVL114:
+ 1071              	.L100:
+ 1072              	.LCFI19:
+ 1073              		.cfi_restore_state
+ 1074              	.LBB11:
+ 338:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 1075              		.loc 1 338 0
+ 1076 003c 3760     		str	r7, [r6]
+ 340:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         (*dataP)[size].id = id;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 29
+
+
+ 1077              		.loc 1 340 0
+ 1078 003e 2401     		lsls	r4, r4, #4
+ 1079              	.LVL115:
+ 1080 0040 9DF81F30 		ldrb	r3, [sp, #31]	@ zero_extendqisi2
+ 1081 0044 3B55     		strb	r3, [r7, r4]
+ 341:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         if (type == LWM2M_TYPE_OBJECT_INSTANCE || type == LWM2M_TYPE_MULTIPLE_RESOURCE)
+ 1082              		.loc 1 341 0
+ 1083 0046 3368     		ldr	r3, [r6]
+ 1084 0048 2344     		add	r3, r3, r4
+ 1085 004a BDF81C20 		ldrh	r2, [sp, #28]
+ 1086 004e 5A80     		strh	r2, [r3, #2]	@ movhi
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 1087              		.loc 1 342 0
+ 1088 0050 9DF81F30 		ldrb	r3, [sp, #31]	@ zero_extendqisi2
+ 1089 0054 023B     		subs	r3, r3, #2
+ 1090 0056 DBB2     		uxtb	r3, r3
+ 1091 0058 012B     		cmp	r3, #1
+ 1092 005a 2DD9     		bls	.L107
+ 355:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         }
+ 1093              		.loc 1 355 0
+ 1094 005c 0698     		ldr	r0, [sp, #24]
+ 1095 005e 5044     		add	r0, r0, r10
+ 1096 0060 3268     		ldr	r2, [r6]
+ 1097 0062 2244     		add	r2, r2, r4
+ 1098 0064 0599     		ldr	r1, [sp, #20]
+ 1099 0066 4844     		add	r0, r0, r9
+ 1100 0068 FFF7FEFF 		bl	lwm2m_data_encode_opaque
+ 1101              	.LVL116:
+ 1102              	.L104:
+ 358:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 1103              		.loc 1 358 0
+ 1104 006c 039B     		ldr	r3, [sp, #12]
+ 1105 006e 1D44     		add	r5, r5, r3
+ 1106              	.LVL117:
+ 357:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         index += result;
+ 1107              		.loc 1 357 0
+ 1108 0070 4446     		mov	r4, r8
+ 1109              	.LVL118:
+ 1110              	.L99:
+ 1111              	.LBE11:
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 1112              		.loc 1 320 0
+ 1113 0072 AA46     		mov	r10, r5
+ 1114 0074 05AB     		add	r3, sp, #20
+ 1115 0076 0193     		str	r3, [sp, #4]
+ 1116 0078 06AB     		add	r3, sp, #24
+ 1117 007a 0093     		str	r3, [sp]
+ 1118 007c 07AB     		add	r3, sp, #28
+ 1119 007e 0DF11F02 		add	r2, sp, #31
+ 1120 0082 ABEB0501 		sub	r1, fp, r5
+ 1121 0086 09EB0500 		add	r0, r9, r5
+ 1122 008a FFF7FEFF 		bl	lwm2m_decode_TLV
+ 1123              	.LVL119:
+ 1124 008e 0390     		str	r0, [sp, #12]
+ 1125 0090 0028     		cmp	r0, #0
+ 1126 0092 CFD0     		beq	.L98
+ 1127              	.LBB12:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 30
+
+
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         if (size >= 1)
+ 1128              		.loc 1 324 0
+ 1129 0094 04F10108 		add	r8, r4, #1
+ 1130 0098 4046     		mov	r0, r8
+ 1131              	.LVL120:
+ 1132 009a FFF7FEFF 		bl	lwm2m_data_new
+ 1133              	.LVL121:
+ 1134 009e 0746     		mov	r7, r0
+ 1135              	.LVL122:
+ 325:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 1136              		.loc 1 325 0
+ 1137 00a0 002C     		cmp	r4, #0
+ 1138 00a2 CBDD     		ble	.L100
+ 327:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             {
+ 1139              		.loc 1 327 0
+ 1140 00a4 0028     		cmp	r0, #0
+ 1141 00a6 C0D0     		beq	.L108
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 lwm2m_free(*dataP);
+ 1142              		.loc 1 334 0
+ 1143 00a8 2201     		lsls	r2, r4, #4
+ 1144 00aa 3168     		ldr	r1, [r6]
+ 1145 00ac FFF7FEFF 		bl	memcpy
+ 1146              	.LVL123:
+ 335:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             }
+ 1147              		.loc 1 335 0
+ 1148 00b0 3068     		ldr	r0, [r6]
+ 1149 00b2 FFF7FEFF 		bl	lwm2m_free
+ 1150              	.LVL124:
+ 1151 00b6 C1E7     		b	.L100
+ 1152              	.LVL125:
+ 1153              	.L107:
+ 344:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                                                     dataLen,
+ 1154              		.loc 1 344 0
+ 1155 00b8 0698     		ldr	r0, [sp, #24]
+ 1156 00ba 5044     		add	r0, r0, r10
+ 346:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             if ((*dataP)[size].value.asChildren.count == 0)
+ 1157              		.loc 1 346 0
+ 1158 00bc 3268     		ldr	r2, [r6]
+ 1159 00be 2244     		add	r2, r2, r4
+ 344:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                                                     dataLen,
+ 1160              		.loc 1 344 0
+ 1161 00c0 0C32     		adds	r2, r2, #12
+ 1162 00c2 0599     		ldr	r1, [sp, #20]
+ 1163 00c4 4844     		add	r0, r0, r9
+ 1164 00c6 FFF7FEFF 		bl	tlv_parse
+ 1165              	.LVL126:
+ 1166 00ca 3368     		ldr	r3, [r6]
+ 1167 00cc 2344     		add	r3, r3, r4
+ 1168 00ce 9860     		str	r0, [r3, #8]
+ 347:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             {
+ 1169              		.loc 1 347 0
+ 1170 00d0 3168     		ldr	r1, [r6]
+ 1171 00d2 0C44     		add	r4, r4, r1
+ 1172 00d4 A368     		ldr	r3, [r4, #8]
+ 1173 00d6 002B     		cmp	r3, #0
+ 1174 00d8 C8D1     		bne	.L104
+ 349:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 return 0;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 31
+
+
+ 1175              		.loc 1 349 0
+ 1176 00da 4046     		mov	r0, r8
+ 1177 00dc FFF7FEFF 		bl	lwm2m_data_free
+ 1178              	.LVL127:
+ 350:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             }
+ 1179              		.loc 1 350 0
+ 1180 00e0 0024     		movs	r4, #0
+ 1181 00e2 A7E7     		b	.L98
+ 1182              	.L110:
+ 1183              		.align	2
+ 1184              	.L109:
+ 1185 00e4 00000000 		.word	.LANCHOR1
+ 1186 00e8 00000000 		.word	.LC1
+ 1187              	.LBE12:
+ 1188              		.cfi_endproc
+ 1189              	.LFE141:
+ 1191              		.section	.text.tlv_serialize,"ax",%progbits
+ 1192              		.align	1
+ 1193              		.global	tlv_serialize
+ 1194              		.syntax unified
+ 1195              		.thumb
+ 1196              		.thumb_func
+ 1197              		.fpu fpv4-sp-d16
+ 1199              	tlv_serialize:
+ 1200              	.LFB143:
+ 445:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 446:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 447:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** int tlv_serialize(bool isResourceInstance,
+ 448:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                   int size,
+ 449:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                   lwm2m_data_t *dataP,
+ 450:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                   uint8_t **bufferP)
+ 451:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** {
+ 1201              		.loc 1 451 0
+ 1202              		.cfi_startproc
+ 1203              		@ args = 0, pretend = 0, frame = 16
+ 1204              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1205              	.LVL128:
+ 1206 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 1207              	.LCFI20:
+ 1208              		.cfi_def_cfa_offset 36
+ 1209              		.cfi_offset 4, -36
+ 1210              		.cfi_offset 5, -32
+ 1211              		.cfi_offset 6, -28
+ 1212              		.cfi_offset 7, -24
+ 1213              		.cfi_offset 8, -20
+ 1214              		.cfi_offset 9, -16
+ 1215              		.cfi_offset 10, -12
+ 1216              		.cfi_offset 11, -8
+ 1217              		.cfi_offset 14, -4
+ 1218 0004 87B0     		sub	sp, sp, #28
+ 1219              	.LCFI21:
+ 1220              		.cfi_def_cfa_offset 64
+ 1221 0006 0446     		mov	r4, r0
+ 1222 0008 0290     		str	r0, [sp, #8]
+ 1223 000a 8846     		mov	r8, r1
+ 1224 000c 1746     		mov	r7, r2
+ 1225 000e 9946     		mov	r9, r3
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 32
+
+
+ 452:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     int length;
+ 453:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     int index;
+ 454:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     int i;
+ 455:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 456:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     LOG_ARG("isResourceInstance: %s, size: %d", isResourceInstance ? "true" : "false", size);
+ 1226              		.loc 1 456 0
+ 1227 0010 FFF7FEFF 		bl	lwm2m_gettime
+ 1228              	.LVL129:
+ 1229 0014 0146     		mov	r1, r0
+ 1230 0016 F4B1     		cbz	r4, .L130
+ 1231 0018 8A4B     		ldr	r3, .L138
+ 1232              	.L112:
+ 1233              		.loc 1 456 0 is_stmt 0 discriminator 4
+ 1234 001a CDF80480 		str	r8, [sp, #4]
+ 1235 001e 0093     		str	r3, [sp]
+ 1236 0020 4FF4E473 		mov	r3, #456
+ 1237 0024 884A     		ldr	r2, .L138+4
+ 1238 0026 8948     		ldr	r0, .L138+8
+ 1239 0028 FFF7FEFF 		bl	atiny_printf
+ 1240              	.LVL130:
+ 457:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 458:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     *bufferP = NULL;
+ 1241              		.loc 1 458 0 is_stmt 1 discriminator 4
+ 1242 002c 0023     		movs	r3, #0
+ 1243 002e C9F80030 		str	r3, [r9]
+ 459:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     length = prv_getLength(size, dataP);
+ 1244              		.loc 1 459 0 discriminator 4
+ 1245 0032 3946     		mov	r1, r7
+ 1246 0034 4046     		mov	r0, r8
+ 1247 0036 FFF7FEFF 		bl	prv_getLength
+ 1248              	.LVL131:
+ 460:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     if (length <= 0) return length;
+ 1249              		.loc 1 460 0 discriminator 4
+ 1250 003a 061E     		subs	r6, r0, #0
+ 1251 003c 40F3F380 		ble	.L111
+ 461:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 462:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     *bufferP = (uint8_t *)lwm2m_malloc(length);
+ 1252              		.loc 1 462 0
+ 1253 0040 3046     		mov	r0, r6
+ 1254 0042 FFF7FEFF 		bl	lwm2m_malloc
+ 1255              	.LVL132:
+ 1256 0046 C9F80000 		str	r0, [r9]
+ 463:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     if (*bufferP == NULL) return 0;
+ 1257              		.loc 1 463 0
+ 1258 004a 0028     		cmp	r0, #0
+ 1259 004c 00F0F780 		beq	.L131
+ 464:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 465:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     index = 0;
+ 466:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     for (i = 0 ; i < size && length != 0 ; i++)
+ 1260              		.loc 1 466 0
+ 1261 0050 0024     		movs	r4, #0
+ 465:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     for (i = 0 ; i < size && length != 0 ; i++)
+ 1262              		.loc 1 465 0
+ 1263 0052 2546     		mov	r5, r4
+ 1264 0054 11E0     		b	.L114
+ 1265              	.LVL133:
+ 1266              	.L130:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 33
+
+
+ 456:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 1267              		.loc 1 456 0
+ 1268 0056 7E4B     		ldr	r3, .L138+12
+ 1269 0058 DFE7     		b	.L112
+ 1270              	.LVL134:
+ 1271              	.L116:
+ 1272              	.LBB13:
+ 467:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 468:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         int headerLen;
+ 469:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         bool isInstance;
+ 470:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 471:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         isInstance = isResourceInstance;
+ 1273              		.loc 1 471 0
+ 1274 005a 0298     		ldr	r0, [sp, #8]
+ 1275 005c 00E0     		b	.L118
+ 1276              	.L133:
+ 472:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         switch (dataP[i].type)
+ 473:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 474:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_MULTIPLE_RESOURCE:
+ 475:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             isInstance = true;
+ 1277              		.loc 1 475 0
+ 1278 005e 0120     		movs	r0, #1
+ 1279              	.L118:
+ 1280              	.LVL135:
+ 1281              	.LBB14:
+ 476:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         // fall through
+ 477:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_OBJECT_INSTANCE:
+ 478:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 479:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             uint8_t *tmpBuffer;
+ 480:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             int res;
+ 481:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 482:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             res = tlv_serialize(isInstance, dataP[i].value.asChildren.count, dataP[i].value.asChild
+ 1282              		.loc 1 482 0
+ 1283 0060 04AB     		add	r3, sp, #16
+ 1284 0062 DBF80C20 		ldr	r2, [fp, #12]
+ 1285 0066 DBF80810 		ldr	r1, [fp, #8]
+ 1286 006a FFF7FEFF 		bl	tlv_serialize
+ 1287              	.LVL136:
+ 483:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             if (res < 0)
+ 1288              		.loc 1 483 0
+ 1289 006e 011E     		subs	r1, r0, #0
+ 1290 0070 0391     		str	r1, [sp, #12]
+ 1291 0072 25DA     		bge	.L136
+ 484:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             {
+ 485:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 length = -1;
+ 1292              		.loc 1 485 0
+ 1293 0074 4FF0FF36 		mov	r6, #-1
+ 1294              	.LVL137:
+ 1295              	.L115:
+ 1296              	.LBE14:
+ 1297              	.LBE13:
+ 466:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 1298              		.loc 1 466 0 discriminator 2
+ 1299 0078 0134     		adds	r4, r4, #1
+ 1300              	.LVL138:
+ 1301              	.L114:
+ 466:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 34
+
+
+ 1302              		.loc 1 466 0 is_stmt 0 discriminator 1
+ 1303 007a 4445     		cmp	r4, r8
+ 1304 007c 80F2C780 		bge	.L127
+ 466:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 1305              		.loc 1 466 0 discriminator 3
+ 1306 0080 002E     		cmp	r6, #0
+ 1307 0082 00F0C480 		beq	.L127
+ 1308              	.LVL139:
+ 1309              	.LBB20:
+ 472:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 1310              		.loc 1 472 0 is_stmt 1
+ 1311 0086 4FEA041A 		lsl	r10, r4, #4
+ 1312 008a 07EB0A0B 		add	fp, r7, r10
+ 1313 008e 17F80A20 		ldrb	r2, [r7, r10]	@ zero_extendqisi2
+ 1314 0092 931E     		subs	r3, r2, #2
+ 1315 0094 072B     		cmp	r3, #7
+ 1316 0096 00F2B780 		bhi	.L132
+ 1317 009a 01A1     		adr	r1, .L117
+ 1318 009c 51F823F0 		ldr	pc, [r1, r3, lsl #2]
+ 1319              		.p2align 2
+ 1320              	.L117:
+ 1321 00a0 5B000000 		.word	.L116+1
+ 1322 00a4 5F000000 		.word	.L133+1
+ 1323 00a8 3B010000 		.word	.L119+1
+ 1324 00ac 3B010000 		.word	.L119+1
+ 1325 00b0 6D010000 		.word	.L120+1
+ 1326 00b4 A9010000 		.word	.L121+1
+ 1327 00b8 E5010000 		.word	.L122+1
+ 1328 00bc F9000000 		.word	.L123+1
+ 1329              	.LVL140:
+ 1330              		.p2align 1
+ 1331              	.L136:
+ 1332              	.LBB16:
+ 1333              	.LBB15:
+ 486:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             }
+ 487:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             else
+ 488:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             {
+ 489:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 size_t tmpLength;
+ 490:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 491:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 tmpLength = (size_t)res;
+ 492:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 headerLen = prv_createHeader(*bufferP + index, false, dataP[i].type, dataP[i].id, t
+ 1334              		.loc 1 492 0
+ 1335 00c0 D9F80000 		ldr	r0, [r9]
+ 1336              	.LVL141:
+ 1337 00c4 17F80A20 		ldrb	r2, [r7, r10]	@ zero_extendqisi2
+ 1338 00c8 BBF80230 		ldrh	r3, [fp, #2]
+ 1339 00cc 0091     		str	r1, [sp]
+ 1340 00ce 0021     		movs	r1, #0
+ 1341              	.LVL142:
+ 1342 00d0 2844     		add	r0, r0, r5
+ 1343 00d2 FFF7FEFF 		bl	prv_createHeader
+ 1344              	.LVL143:
+ 493:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 index += headerLen;
+ 1345              		.loc 1 493 0
+ 1346 00d6 0544     		add	r5, r5, r0
+ 1347              	.LVL144:
+ 494:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 if (tmpLength > 0)
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 35
+
+
+ 1348              		.loc 1 494 0
+ 1349 00d8 0399     		ldr	r1, [sp, #12]
+ 1350 00da 0029     		cmp	r1, #0
+ 1351 00dc CCD0     		beq	.L115
+ 495:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 {
+ 496:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                     memcpy(*bufferP + index, tmpBuffer, tmpLength);
+ 1352              		.loc 1 496 0
+ 1353 00de D9F80000 		ldr	r0, [r9]
+ 1354              	.LVL145:
+ 1355 00e2 8A46     		mov	r10, r1
+ 1356 00e4 0A46     		mov	r2, r1
+ 1357 00e6 0499     		ldr	r1, [sp, #16]
+ 1358 00e8 2844     		add	r0, r0, r5
+ 1359 00ea FFF7FEFF 		bl	memcpy
+ 1360              	.LVL146:
+ 497:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                     index += tmpLength;
+ 1361              		.loc 1 497 0
+ 1362 00ee 5544     		add	r5, r5, r10
+ 1363              	.LVL147:
+ 498:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                     lwm2m_free(tmpBuffer);
+ 1364              		.loc 1 498 0
+ 1365 00f0 0498     		ldr	r0, [sp, #16]
+ 1366 00f2 FFF7FEFF 		bl	lwm2m_free
+ 1367              	.LVL148:
+ 1368 00f6 BFE7     		b	.L115
+ 1369              	.LVL149:
+ 1370              	.L123:
+ 1371              	.LBE15:
+ 1372              	.LBE16:
+ 1373              	.LBB17:
+ 499:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 }
+ 500:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             }
+ 501:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         }
+ 502:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         break;
+ 503:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 504:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_OBJECT_LINK:
+ 505:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 506:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             int k;
+ 507:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             uint8_t buf[4];
+ 508:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             uint32_t v = dataP[i].value.asObjLink.objectId;
+ 1374              		.loc 1 508 0
+ 1375 00f8 BBF80830 		ldrh	r3, [fp, #8]
+ 1376              	.LVL150:
+ 509:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             v <<= 16;
+ 510:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             v |= dataP[i].value.asObjLink.objectInstanceId;
+ 1377              		.loc 1 510 0
+ 1378 00fc BBF80A10 		ldrh	r1, [fp, #10]
+ 1379 0100 41EA0341 		orr	r1, r1, r3, lsl #16
+ 1380              	.LVL151:
+ 511:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             for (k = 3; k >= 0; --k)
+ 1381              		.loc 1 511 0
+ 1382 0104 0323     		movs	r3, #3
+ 1383 0106 05E0     		b	.L125
+ 1384              	.LVL152:
+ 1385              	.L126:
+ 512:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             {
+ 513:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 buf[k] = (uint8_t)(v & 0xFF);
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 36
+
+
+ 1386              		.loc 1 513 0 discriminator 3
+ 1387 0108 06A8     		add	r0, sp, #24
+ 1388 010a 1844     		add	r0, r0, r3
+ 1389 010c 00F8081C 		strb	r1, [r0, #-8]
+ 514:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****                 v >>= 8;
+ 1390              		.loc 1 514 0 discriminator 3
+ 1391 0110 090A     		lsrs	r1, r1, #8
+ 1392              	.LVL153:
+ 511:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             for (k = 3; k >= 0; --k)
+ 1393              		.loc 1 511 0 discriminator 3
+ 1394 0112 013B     		subs	r3, r3, #1
+ 1395              	.LVL154:
+ 1396              	.L125:
+ 511:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             for (k = 3; k >= 0; --k)
+ 1397              		.loc 1 511 0 is_stmt 0 discriminator 1
+ 1398 0114 002B     		cmp	r3, #0
+ 1399 0116 F7DA     		bge	.L126
+ 515:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             }
+ 516:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             // keep encoding as buffer
+ 517:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             headerLen = prv_createHeader(*bufferP + index, isInstance, dataP[i].type, dataP[i].id, 
+ 1400              		.loc 1 517 0 is_stmt 1
+ 1401 0118 D9F80000 		ldr	r0, [r9]
+ 1402 011c BBF80230 		ldrh	r3, [fp, #2]
+ 1403              	.LVL155:
+ 1404 0120 0421     		movs	r1, #4
+ 1405              	.LVL156:
+ 1406 0122 0091     		str	r1, [sp]
+ 1407 0124 0299     		ldr	r1, [sp, #8]
+ 1408 0126 2844     		add	r0, r0, r5
+ 1409 0128 FFF7FEFF 		bl	prv_createHeader
+ 1410              	.LVL157:
+ 518:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             index += headerLen;
+ 1411              		.loc 1 518 0
+ 1412 012c 0544     		add	r5, r5, r0
+ 1413              	.LVL158:
+ 519:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             memcpy(*bufferP + index, buf, 4);
+ 1414              		.loc 1 519 0
+ 1415 012e D9F80030 		ldr	r3, [r9]
+ 1416 0132 049A     		ldr	r2, [sp, #16]
+ 1417 0134 5A51     		str	r2, [r3, r5]	@ unaligned
+ 520:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             index += 4;
+ 1418              		.loc 1 520 0
+ 1419 0136 0435     		adds	r5, r5, #4
+ 1420              	.LVL159:
+ 1421              	.LBE17:
+ 521:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         }
+ 522:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         break;
+ 1422              		.loc 1 522 0
+ 1423 0138 9EE7     		b	.L115
+ 1424              	.LVL160:
+ 1425              	.L119:
+ 523:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 524:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_STRING:
+ 525:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_OPAQUE:
+ 526:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             headerLen = prv_createHeader(*bufferP + index, isInstance, dataP[i].type, dataP[i].id, 
+ 1426              		.loc 1 526 0
+ 1427 013a D9F80000 		ldr	r0, [r9]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 37
+
+
+ 1428 013e BBF80230 		ldrh	r3, [fp, #2]
+ 1429 0142 DBF80810 		ldr	r1, [fp, #8]
+ 1430 0146 0091     		str	r1, [sp]
+ 1431 0148 0299     		ldr	r1, [sp, #8]
+ 1432 014a 2844     		add	r0, r0, r5
+ 1433 014c FFF7FEFF 		bl	prv_createHeader
+ 1434              	.LVL161:
+ 527:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             index += headerLen;
+ 1435              		.loc 1 527 0
+ 1436 0150 0544     		add	r5, r5, r0
+ 1437              	.LVL162:
+ 528:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             memcpy(*bufferP + index, dataP[i].value.asBuffer.buffer, dataP[i].value.asBuffer.length
+ 1438              		.loc 1 528 0
+ 1439 0152 D9F80000 		ldr	r0, [r9]
+ 1440              	.LVL163:
+ 1441 0156 DBF80820 		ldr	r2, [fp, #8]
+ 1442 015a DBF80C10 		ldr	r1, [fp, #12]
+ 1443 015e 2844     		add	r0, r0, r5
+ 1444 0160 FFF7FEFF 		bl	memcpy
+ 1445              	.LVL164:
+ 529:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             index += dataP[i].value.asBuffer.length;
+ 1446              		.loc 1 529 0
+ 1447 0164 DBF80800 		ldr	r0, [fp, #8]
+ 1448 0168 0544     		add	r5, r5, r0
+ 1449              	.LVL165:
+ 530:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             break;
+ 1450              		.loc 1 530 0
+ 1451 016a 85E7     		b	.L115
+ 1452              	.L120:
+ 1453              	.LBB18:
+ 531:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 532:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_INTEGER:
+ 533:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 534:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             size_t data_len;
+ 535:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             uint8_t data_buffer[_PRV_64BIT_BUFFER_SIZE];
+ 536:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 537:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             data_len = prv_encodeInt(dataP[i].value.asInteger, data_buffer);
+ 1454              		.loc 1 537 0
+ 1455 016c 04AA     		add	r2, sp, #16
+ 1456 016e DBE90201 		ldrd	r0, [fp, #8]
+ 1457 0172 FFF7FEFF 		bl	prv_encodeInt
+ 1458              	.LVL166:
+ 1459 0176 0146     		mov	r1, r0
+ 1460              	.LVL167:
+ 538:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             headerLen = prv_createHeader(*bufferP + index, isInstance, dataP[i].type, dataP[i].id, 
+ 1461              		.loc 1 538 0
+ 1462 0178 D9F80000 		ldr	r0, [r9]
+ 1463              	.LVL168:
+ 1464 017c 17F80A20 		ldrb	r2, [r7, r10]	@ zero_extendqisi2
+ 1465 0180 BBF80230 		ldrh	r3, [fp, #2]
+ 1466 0184 0391     		str	r1, [sp, #12]
+ 1467 0186 0091     		str	r1, [sp]
+ 1468 0188 0299     		ldr	r1, [sp, #8]
+ 1469              	.LVL169:
+ 1470 018a 2844     		add	r0, r0, r5
+ 1471 018c FFF7FEFF 		bl	prv_createHeader
+ 1472              	.LVL170:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 38
+
+
+ 539:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             index += headerLen;
+ 1473              		.loc 1 539 0
+ 1474 0190 0544     		add	r5, r5, r0
+ 1475              	.LVL171:
+ 540:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             memcpy(*bufferP + index, data_buffer, data_len);
+ 1476              		.loc 1 540 0
+ 1477 0192 D9F80000 		ldr	r0, [r9]
+ 1478              	.LVL172:
+ 1479 0196 DDF80CA0 		ldr	r10, [sp, #12]
+ 1480 019a 5246     		mov	r2, r10
+ 1481 019c 04A9     		add	r1, sp, #16
+ 1482 019e 2844     		add	r0, r0, r5
+ 1483 01a0 FFF7FEFF 		bl	memcpy
+ 1484              	.LVL173:
+ 541:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             index += data_len;
+ 1485              		.loc 1 541 0
+ 1486 01a4 5544     		add	r5, r5, r10
+ 1487              	.LVL174:
+ 1488              	.LBE18:
+ 542:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         }
+ 543:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         break;
+ 1489              		.loc 1 543 0
+ 1490 01a6 67E7     		b	.L115
+ 1491              	.LVL175:
+ 1492              	.L121:
+ 1493              	.LBB19:
+ 544:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 545:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_FLOAT:
+ 546:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         {
+ 547:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             size_t data_len;
+ 548:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             uint8_t data_buffer[_PRV_64BIT_BUFFER_SIZE];
+ 549:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 550:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             data_len = prv_encodeFloat(dataP[i].value.asFloat, data_buffer);
+ 1494              		.loc 1 550 0
+ 1495 01a8 04AA     		add	r2, sp, #16
+ 1496 01aa DBE90201 		ldrd	r0, [fp, #8]
+ 1497 01ae FFF7FEFF 		bl	prv_encodeFloat
+ 1498              	.LVL176:
+ 1499 01b2 0146     		mov	r1, r0
+ 1500              	.LVL177:
+ 551:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             headerLen = prv_createHeader(*bufferP + index, isInstance, dataP[i].type, dataP[i].id, 
+ 1501              		.loc 1 551 0
+ 1502 01b4 D9F80000 		ldr	r0, [r9]
+ 1503              	.LVL178:
+ 1504 01b8 17F80A20 		ldrb	r2, [r7, r10]	@ zero_extendqisi2
+ 1505 01bc BBF80230 		ldrh	r3, [fp, #2]
+ 1506 01c0 0391     		str	r1, [sp, #12]
+ 1507 01c2 0091     		str	r1, [sp]
+ 1508 01c4 0299     		ldr	r1, [sp, #8]
+ 1509              	.LVL179:
+ 1510 01c6 2844     		add	r0, r0, r5
+ 1511 01c8 FFF7FEFF 		bl	prv_createHeader
+ 1512              	.LVL180:
+ 552:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             index += headerLen;
+ 1513              		.loc 1 552 0
+ 1514 01cc 0544     		add	r5, r5, r0
+ 1515              	.LVL181:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 39
+
+
+ 553:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             memcpy(*bufferP + index, data_buffer, data_len);
+ 1516              		.loc 1 553 0
+ 1517 01ce D9F80000 		ldr	r0, [r9]
+ 1518              	.LVL182:
+ 1519 01d2 DDF80CA0 		ldr	r10, [sp, #12]
+ 1520 01d6 5246     		mov	r2, r10
+ 1521 01d8 04A9     		add	r1, sp, #16
+ 1522 01da 2844     		add	r0, r0, r5
+ 1523 01dc FFF7FEFF 		bl	memcpy
+ 1524              	.LVL183:
+ 554:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             index += data_len;
+ 1525              		.loc 1 554 0
+ 1526 01e0 5544     		add	r5, r5, r10
+ 1527              	.LVL184:
+ 1528              	.LBE19:
+ 555:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         }
+ 556:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         break;
+ 1529              		.loc 1 556 0
+ 1530 01e2 49E7     		b	.L115
+ 1531              	.LVL185:
+ 1532              	.L122:
+ 557:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 558:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         case LWM2M_TYPE_BOOLEAN:
+ 559:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             headerLen = prv_createHeader(*bufferP + index, isInstance, dataP[i].type, dataP[i].id, 
+ 1533              		.loc 1 559 0
+ 1534 01e4 D9F80000 		ldr	r0, [r9]
+ 1535 01e8 BBF80230 		ldrh	r3, [fp, #2]
+ 1536 01ec 0121     		movs	r1, #1
+ 1537 01ee 0091     		str	r1, [sp]
+ 1538 01f0 0299     		ldr	r1, [sp, #8]
+ 1539 01f2 2844     		add	r0, r0, r5
+ 1540 01f4 FFF7FEFF 		bl	prv_createHeader
+ 1541              	.LVL186:
+ 560:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             index += headerLen;
+ 1542              		.loc 1 560 0
+ 1543 01f8 0544     		add	r5, r5, r0
+ 1544              	.LVL187:
+ 561:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             (*bufferP)[index] = dataP[i].value.asBoolean ? 1 : 0;
+ 1545              		.loc 1 561 0
+ 1546 01fa 9BF80820 		ldrb	r2, [fp, #8]	@ zero_extendqisi2
+ 1547 01fe D9F80030 		ldr	r3, [r9]
+ 1548 0202 5A55     		strb	r2, [r3, r5]
+ 562:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             index += 1;
+ 1549              		.loc 1 562 0
+ 1550 0204 0135     		adds	r5, r5, #1
+ 1551              	.LVL188:
+ 563:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             break;
+ 1552              		.loc 1 563 0
+ 1553 0206 37E7     		b	.L115
+ 1554              	.LVL189:
+ 1555              	.L132:
+ 564:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 565:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         default:
+ 566:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             length = -1;
+ 1556              		.loc 1 566 0
+ 1557 0208 4FF0FF36 		mov	r6, #-1
+ 1558              	.LVL190:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 40
+
+
+ 1559 020c 34E7     		b	.L115
+ 1560              	.LVL191:
+ 1561              	.L127:
+ 1562              	.LBE20:
+ 567:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****             break;
+ 568:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         }
+ 569:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 570:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 571:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     if (length < 0)
+ 1563              		.loc 1 571 0
+ 1564 020e 002E     		cmp	r6, #0
+ 1565 0210 0DDB     		blt	.L137
+ 1566              	.L129:
+ 572:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     {
+ 573:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         lwm2m_free(*bufferP);
+ 574:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *bufferP = NULL;
+ 575:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 576:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 577:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     LOG_ARG("returning %u", length);
+ 1567              		.loc 1 577 0
+ 1568 0212 FFF7FEFF 		bl	lwm2m_gettime
+ 1569              	.LVL192:
+ 1570 0216 0096     		str	r6, [sp]
+ 1571 0218 40F24123 		movw	r3, #577
+ 1572 021c 0A4A     		ldr	r2, .L138+4
+ 1573 021e 0146     		mov	r1, r0
+ 1574 0220 0C48     		ldr	r0, .L138+16
+ 1575 0222 FFF7FEFF 		bl	atiny_printf
+ 1576              	.LVL193:
+ 1577              	.L111:
+ 578:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 579:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     return length;
+ 580:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** }
+ 1578              		.loc 1 580 0
+ 1579 0226 3046     		mov	r0, r6
+ 1580 0228 07B0     		add	sp, sp, #28
+ 1581              	.LCFI22:
+ 1582              		.cfi_remember_state
+ 1583              		.cfi_def_cfa_offset 36
+ 1584              		@ sp needed
+ 1585 022a BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 1586              	.LVL194:
+ 1587              	.L137:
+ 1588              	.LCFI23:
+ 1589              		.cfi_restore_state
+ 573:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****         *bufferP = NULL;
+ 1590              		.loc 1 573 0
+ 1591 022e D9F80000 		ldr	r0, [r9]
+ 1592 0232 FFF7FEFF 		bl	lwm2m_free
+ 1593              	.LVL195:
+ 574:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c ****     }
+ 1594              		.loc 1 574 0
+ 1595 0236 0023     		movs	r3, #0
+ 1596 0238 C9F80030 		str	r3, [r9]
+ 1597 023c E9E7     		b	.L129
+ 1598              	.LVL196:
+ 1599              	.L131:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 41
+
+
+ 463:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core\tlv.c **** 
+ 1600              		.loc 1 463 0
+ 1601 023e 0026     		movs	r6, #0
+ 1602              	.LVL197:
+ 1603 0240 F1E7     		b	.L111
+ 1604              	.L139:
+ 1605 0242 00BF     		.align	2
+ 1606              	.L138:
+ 1607 0244 00000000 		.word	.LC2
+ 1608 0248 00000000 		.word	.LANCHOR2
+ 1609 024c 10000000 		.word	.LC4
+ 1610 0250 08000000 		.word	.LC3
+ 1611 0254 40000000 		.word	.LC5
+ 1612              		.cfi_endproc
+ 1613              	.LFE143:
+ 1615              		.section	.rodata.__func__.11629,"a",%progbits
+ 1616              		.align	2
+ 1617              		.set	.LANCHOR0,. + 0
+ 1620              	__func__.11629:
+ 1621 0000 6C776D32 		.ascii	"lwm2m_decode_TLV\000"
+ 1621      6D5F6465 
+ 1621      636F6465 
+ 1621      5F544C56 
+ 1621      00
+ 1622              		.section	.rodata.__func__.11648,"a",%progbits
+ 1623              		.align	2
+ 1624              		.set	.LANCHOR1,. + 0
+ 1627              	__func__.11648:
+ 1628 0000 746C765F 		.ascii	"tlv_parse\000"
+ 1628      70617273 
+ 1628      6500
+ 1629              		.section	.rodata.__func__.11685,"a",%progbits
+ 1630              		.align	2
+ 1631              		.set	.LANCHOR2,. + 0
+ 1634              	__func__.11685:
+ 1635 0000 746C765F 		.ascii	"tlv_serialize\000"
+ 1635      73657269 
+ 1635      616C697A 
+ 1635      6500
+ 1636              		.section	.rodata.lwm2m_decode_TLV.str1.4,"aMS",%progbits,1
+ 1637              		.align	2
+ 1638              	.LC0:
+ 1639 0000 5B25645D 		.ascii	"[%d][%s:%d] buffer_len: %d\015\012\000"
+ 1639      5B25733A 
+ 1639      25645D20 
+ 1639      62756666 
+ 1639      65725F6C 
+ 1640              		.section	.rodata.tlv_parse.str1.4,"aMS",%progbits,1
+ 1641              		.align	2
+ 1642              	.LC1:
+ 1643 0000 5B25645D 		.ascii	"[%d][%s:%d] bufferLen: %d\015\012\000"
+ 1643      5B25733A 
+ 1643      25645D20 
+ 1643      62756666 
+ 1643      65724C65 
+ 1644              		.section	.rodata.tlv_serialize.str1.4,"aMS",%progbits,1
+ 1645              		.align	2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 42
+
+
+ 1646              	.LC2:
+ 1647 0000 74727565 		.ascii	"true\000"
+ 1647      00
+ 1648 0005 000000   		.space	3
+ 1649              	.LC3:
+ 1650 0008 66616C73 		.ascii	"false\000"
+ 1650      6500
+ 1651 000e 0000     		.space	2
+ 1652              	.LC4:
+ 1653 0010 5B25645D 		.ascii	"[%d][%s:%d] isResourceInstance: %s, size: %d\015\012"
+ 1653      5B25733A 
+ 1653      25645D20 
+ 1653      69735265 
+ 1653      736F7572 
+ 1654 003e 00       		.ascii	"\000"
+ 1655 003f 00       		.space	1
+ 1656              	.LC5:
+ 1657 0040 5B25645D 		.ascii	"[%d][%s:%d] returning %u\015\012\000"
+ 1657      5B25733A 
+ 1657      25645D20 
+ 1657      72657475 
+ 1657      726E696E 
+ 1658              		.text
+ 1659              	.Letext0:
+ 1660              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1661              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1662              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 1663              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1664              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1665              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1666              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1667              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core/
+ 1668              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 1669              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 1670              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 1671              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 1672              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 1673              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 1674              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 1675              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 1676              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 1677              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 1678              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 1679              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 1680              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 1681              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core
+ 1682              		.file 24 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1683              		.file 25 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1684              		.file 26 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/osdepends/atiny_osdep.h"
+ 1685              		.file 27 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core
+ 1686              		.file 28 "<built-in>"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 43
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 tlv.c
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:18     .text.prv_getHeaderType:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:24     .text.prv_getHeaderType:00000000 prv_getHeaderType
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:40     .text.prv_getHeaderType:0000000a $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:75     .text.prv_getDataType:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:81     .text.prv_getDataType:00000000 prv_getDataType
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:135    .text.prv_getHeaderLength:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:141    .text.prv_getHeaderLength:00000000 prv_getHeaderLength
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:192    .text.prv_createHeader:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:198    .text.prv_createHeader:00000000 prv_createHeader
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:338    .text.prv_encodeInt:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:344    .text.prv_encodeInt:00000000 prv_encodeInt
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:451    .text.prv_getLength:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:457    .text.prv_getLength:00000000 prv_getLength
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:545    .text.prv_getLength:0000005c $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:553    .text.prv_getLength:0000007c $t
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:668    .text.prv_getLength:00000108 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:675    .text.prv_encodeFloat:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:681    .text.prv_encodeFloat:00000000 prv_encodeFloat
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:762    .text.prv_encodeFloat:00000054 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:768    .text.lwm2m_decode_TLV:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:775    .text.lwm2m_decode_TLV:00000000 lwm2m_decode_TLV
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:850    .text.lwm2m_decode_TLV:0000006a $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:992    .text.lwm2m_decode_TLV:00000110 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:998    .text.tlv_parse:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1005   .text.tlv_parse:00000000 tlv_parse
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1185   .text.tlv_parse:000000e4 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1192   .text.tlv_serialize:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1199   .text.tlv_serialize:00000000 tlv_serialize
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1321   .text.tlv_serialize:000000a0 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1330   .text.tlv_serialize:000000c0 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1607   .text.tlv_serialize:00000244 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1616   .rodata.__func__.11629:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1620   .rodata.__func__.11629:00000000 __func__.11629
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1623   .rodata.__func__.11648:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1627   .rodata.__func__.11648:00000000 __func__.11648
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1630   .rodata.__func__.11685:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1634   .rodata.__func__.11685:00000000 __func__.11685
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1637   .rodata.lwm2m_decode_TLV.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1641   .rodata.tlv_parse.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:1645   .rodata.tlv_serialize.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:49     .text.prv_getHeaderType:00000013 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:49     .text.prv_getHeaderType:00000014 $t
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:875    .text.lwm2m_decode_TLV:00000083 $d
+c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s:875    .text.lwm2m_decode_TLV:00000084 $t
+
+UNDEFINED SYMBOLS
+utils_copyValue
+__aeabi_dcmplt
+__aeabi_dcmpgt
+__aeabi_d2f
+lwm2m_gettime
+atiny_printf
+lwm2m_data_free
+lwm2m_data_encode_opaque
+lwm2m_data_new
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc4ADWMa.s 			page 44
+
+
+memcpy
+lwm2m_free
+lwm2m_malloc

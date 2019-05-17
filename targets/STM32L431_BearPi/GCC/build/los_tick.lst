@@ -1,0 +1,288 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwi5Zjf.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"los_tick.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.osTickHandler,"ax",%progbits
+  18              		.align	1
+  19              		.global	osTickHandler
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	osTickHandler:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core/los_tick.c"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwi5Zjf.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #include "los_tick.inc"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #include "los_base.ph"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #include "los_swtmr.ph"
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #include "los_task.ph"
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #include "los_timeslice.ph"
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #if (LOSCFG_KERNEL_TICKLESS == YES)
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #include "los_tickless.ph"
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #endif
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #ifdef __cplusplus
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #if __cplusplus
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** extern "C" {
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #endif /* __cplusplus */
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #endif /* __cplusplus */
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** LITE_OS_SEC_BSS UINT64      g_ullTickCount;
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** LITE_OS_SEC_BSS UINT32      g_uwTicksPerSec;
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** LITE_OS_SEC_BSS UINT32      g_uwCyclePerSec;
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** LITE_OS_SEC_BSS UINT32      g_uwCyclesPerTick;
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** LITE_OS_SEC_BSS UINT32      g_uwSysClock;
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** LITE_OS_SEC_DATA_INIT BOOL  g_bSysTickStart = FALSE;
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #if (LOSCFG_KERNEL_TICKLESS == YES)
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** /*****************************************************************************
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  Description : Tick interruption handler
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  Input       : None
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  Output      : None
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  Return      : None
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  *****************************************************************************/
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** LITE_OS_SEC_TEXT VOID osTickHandlerLoop(UINT32 uwElapseTicks)
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** {
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     UINT32 uwIndex;
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     for (uwIndex = 0; uwIndex < uwElapseTicks; uwIndex++)
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     {
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #if (LOSCFG_BASE_CORE_TICK_HW_TIME == YES)
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****         platform_tick_handler();
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #endif
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****         g_ullTickCount ++;
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #if(LOSCFG_BASE_CORE_TIMESLICE == YES)
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****         osTimesliceCheck();
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #endif
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****         osTaskScan();   //task timeout scan
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #if (LOSCFG_BASE_CORE_SWTMR == YES)
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****         (VOID)osSwtmrScan();
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #endif
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     }
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** }
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #endif
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwi5Zjf.s 			page 3
+
+
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** /*****************************************************************************
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  Description : Tick interruption handler
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  Input       : None
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  Output      : None
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  Return      : None
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****  *****************************************************************************/
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** LITE_OS_SEC_TEXT VOID osTickHandler(VOID)
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** {
+  28              		.loc 1 96 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 2DE90048 		push	{fp, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 11, -8
+  36              		.cfi_offset 14, -4
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #if (LOSCFG_KERNEL_TICKLESS == YES)
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     if (g_bReloadSysTickFlag)
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     {
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****         LOS_SysTickReload(OS_SYS_CLOCK / LOSCFG_BASE_CORE_TICK_PER_SECOND);
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****         g_bReloadSysTickFlag = 0;
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     }
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     g_bTickIrqFlag = g_bTicklessFlag;
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     #if (LOSCFG_PLATFORM_HWI == NO)
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     if (g_uwSysTickIntFlag == TICKLESS_OS_TICK_INT_WAIT)
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     {
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****         g_uwSysTickIntFlag = TICKLESS_OS_TICK_INT_SET;
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     }
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     #endif
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #endif
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #if (LOSCFG_BASE_CORE_TICK_HW_TIME == YES)
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     platform_tick_handler();
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #endif
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     g_ullTickCount ++;
+  37              		.loc 1 117 0
+  38 0004 0849     		ldr	r1, .L3
+  39 0006 D1E90023 		ldrd	r2, [r1]
+  40 000a 12F1010B 		adds	fp, r2, #1
+  41 000e 43F1000C 		adc	ip, r3, #0
+  42 0012 C1E900BC 		strd	fp, [r1]
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #if(LOSCFG_BASE_CORE_TIMESLICE == YES)
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     osTimesliceCheck();
+  43              		.loc 1 120 0
+  44 0016 FFF7FEFF 		bl	osTimesliceCheck
+  45              	.LVL0:
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #endif
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     osTaskScan();   //task timeout scan
+  46              		.loc 1 123 0
+  47 001a FFF7FEFF 		bl	osTaskScan
+  48              	.LVL1:
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwi5Zjf.s 			page 4
+
+
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #if (LOSCFG_BASE_CORE_SWTMR == YES)
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     (VOID)osSwtmrScan();
+  49              		.loc 1 126 0
+  50 001e FFF7FEFF 		bl	osSwtmrScan
+  51              	.LVL2:
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** #endif
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** }
+  52              		.loc 1 128 0
+  53 0022 BDE80088 		pop	{fp, pc}
+  54              	.L4:
+  55 0026 00BF     		.align	2
+  56              	.L3:
+  57 0028 00000000 		.word	g_ullTickCount
+  58              		.cfi_endproc
+  59              	.LFE133:
+  61              		.section	.text.LOS_SysClockGet,"ax",%progbits
+  62              		.align	1
+  63              		.global	LOS_SysClockGet
+  64              		.syntax unified
+  65              		.thumb
+  66              		.thumb_func
+  67              		.fpu fpv4-sp-d16
+  69              	LOS_SysClockGet:
+  70              	.LFB134:
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** 
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** LITE_OS_SEC_TEXT UINT32 LOS_SysClockGet(void)
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** {
+  71              		.loc 1 131 0
+  72              		.cfi_startproc
+  73              		@ args = 0, pretend = 0, frame = 0
+  74              		@ frame_needed = 0, uses_anonymous_args = 0
+  75              		@ link register save eliminated.
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c ****     return g_uwSysClock;
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/core\los_tick.c **** }
+  76              		.loc 1 133 0
+  77 0000 014B     		ldr	r3, .L6
+  78 0002 1868     		ldr	r0, [r3]
+  79 0004 7047     		bx	lr
+  80              	.L7:
+  81 0006 00BF     		.align	2
+  82              	.L6:
+  83 0008 00000000 		.word	g_uwSysClock
+  84              		.cfi_endproc
+  85              	.LFE134:
+  87              		.global	g_bSysTickStart
+  88              		.comm	g_uwSysClock,4,4
+  89              		.comm	g_uwCyclesPerTick,4,4
+  90              		.comm	g_uwCyclePerSec,4,4
+  91              		.comm	g_uwTicksPerSec,4,4
+  92              		.comm	g_ullTickCount,8,8
+  93              		.section	.bss.g_bSysTickStart,"aw",%nobits
+  94              		.align	2
+  97              	g_bSysTickStart:
+  98 0000 00000000 		.space	4
+  99              		.text
+ 100              	.Letext0:
+ 101              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwi5Zjf.s 			page 5
+
+
+ 102              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 103              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 104              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 105              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 106              		.file 7 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 107              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 108              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 109              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 110              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 111              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 112              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 113              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 114              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 115              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 116              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 117              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 118              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 119              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 120              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_tick.ph"
+ 121              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_swtmr.h"
+ 122              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_swtmr.ph"
+ 123              		.file 24 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_timeslice.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwi5Zjf.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 los_tick.c
+c:\Users\lenovo\AppData\Local\Temp\ccwi5Zjf.s:18     .text.osTickHandler:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccwi5Zjf.s:25     .text.osTickHandler:00000000 osTickHandler
+c:\Users\lenovo\AppData\Local\Temp\ccwi5Zjf.s:57     .text.osTickHandler:00000028 $d
+                            *COM*:00000008 g_ullTickCount
+c:\Users\lenovo\AppData\Local\Temp\ccwi5Zjf.s:62     .text.LOS_SysClockGet:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccwi5Zjf.s:69     .text.LOS_SysClockGet:00000000 LOS_SysClockGet
+c:\Users\lenovo\AppData\Local\Temp\ccwi5Zjf.s:83     .text.LOS_SysClockGet:00000008 $d
+                            *COM*:00000004 g_uwSysClock
+c:\Users\lenovo\AppData\Local\Temp\ccwi5Zjf.s:97     .bss.g_bSysTickStart:00000000 g_bSysTickStart
+                            *COM*:00000004 g_uwCyclesPerTick
+                            *COM*:00000004 g_uwCyclePerSec
+                            *COM*:00000004 g_uwTicksPerSec
+c:\Users\lenovo\AppData\Local\Temp\ccwi5Zjf.s:94     .bss.g_bSysTickStart:00000000 $d
+
+UNDEFINED SYMBOLS
+osTimesliceCheck
+osTaskScan
+osSwtmrScan

@@ -1,0 +1,644 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"sys_init.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.HAL_GetTick,"ax",%progbits
+  18              		.align	1
+  19              		.global	HAL_GetTick
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	HAL_GetTick:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src/sys_in
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** #include "sys_init.h"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** uint32_t HAL_GetTick(void)
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** {
+  28              		.loc 1 39 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     return (uint32_t)LOS_TickCountGet();
+  37              		.loc 1 40 0
+  38 0002 FFF7FEFF 		bl	LOS_TickCountGet
+  39              	.LVL0:
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** }
+  40              		.loc 1 41 0
+  41 0006 08BD     		pop	{r3, pc}
+  42              		.cfi_endproc
+  43              	.LFE133:
+  45              		.section	.text._Error_Handler,"ax",%progbits
+  46              		.align	1
+  47              		.global	_Error_Handler
+  48              		.syntax unified
+  49              		.thumb
+  50              		.thumb_func
+  51              		.fpu fpv4-sp-d16
+  53              	_Error_Handler:
+  54              	.LFB134:
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** /**
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   * @brief  This function is executed in case of error occurrence.
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   * @param  file: The file name as string.
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   * @param  line: The line in file as a number.
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   * @retval None
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   */
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** void _Error_Handler(char *file, int line)
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** {
+  55              		.loc 1 50 0
+  56              		.cfi_startproc
+  57              		@ Volatile: function does not return.
+  58              		@ args = 0, pretend = 0, frame = 0
+  59              		@ frame_needed = 0, uses_anonymous_args = 0
+  60              		@ link register save eliminated.
+  61              	.LVL1:
+  62              	.L4:
+  63 0000 FEE7     		b	.L4
+  64              		.cfi_endproc
+  65              	.LFE134:
+  67              		.section	.text.SystemClock_Config,"ax",%progbits
+  68              		.align	1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s 			page 3
+
+
+  69              		.global	SystemClock_Config
+  70              		.syntax unified
+  71              		.thumb
+  72              		.thumb_func
+  73              		.fpu fpv4-sp-d16
+  75              	SystemClock_Config:
+  76              	.LFB135:
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   /* USER CODE BEGIN Error_Handler_Debug */
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   /* User can add his own implementation to report the HAL error return state */
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   while(1)
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   {
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   }
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   /* USER CODE END Error_Handler_Debug */
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** }
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** /**
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   * @brief System Clock Configuration
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   * @retval None
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   */
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** void SystemClock_Config(void)
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** {
+  77              		.loc 1 65 0
+  78              		.cfi_startproc
+  79              		@ args = 0, pretend = 0, frame = 184
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+  81              		.loc 1 65 0
+  82 0000 00B5     		push	{lr}
+  83              	.LCFI1:
+  84              		.cfi_def_cfa_offset 4
+  85              		.cfi_offset 14, -4
+  86 0002 AFB0     		sub	sp, sp, #188
+  87              	.LCFI2:
+  88              		.cfi_def_cfa_offset 192
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_OscInitTypeDef RCC_OscInitStruct;
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct;
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_PeriphCLKInitTypeDef PeriphClkInit;
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     /**Configure LSE Drive Capability 
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     */
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   HAL_PWR_EnableBkUpAccess();
+  89              		.loc 1 72 0
+  90 0004 FFF7FEFF 		bl	HAL_PWR_EnableBkUpAccess
+  91              	.LVL2:
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
+  92              		.loc 1 74 0
+  93 0008 364A     		ldr	r2, .L15
+  94 000a D2F89030 		ldr	r3, [r2, #144]
+  95 000e 23F01803 		bic	r3, r3, #24
+  96 0012 C2F89030 		str	r3, [r2, #144]
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     /**Initializes the CPU, AHB and APB busses clocks 
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     */
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_LSE
+  97              		.loc 1 78 0
+  98 0016 1623     		movs	r3, #22
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s 			page 4
+
+
+  99 0018 1D93     		str	r3, [sp, #116]
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****                               |RCC_OSCILLATORTYPE_MSI;
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_OscInitStruct.LSEState = RCC_LSE_ON;
+ 100              		.loc 1 80 0
+ 101 001a 0123     		movs	r3, #1
+ 102 001c 1F93     		str	r3, [sp, #124]
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 103              		.loc 1 81 0
+ 104 001e 4FF48072 		mov	r2, #256
+ 105 0022 2092     		str	r2, [sp, #128]
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_OscInitStruct.HSICalibrationValue = 16;
+ 106              		.loc 1 82 0
+ 107 0024 1022     		movs	r2, #16
+ 108 0026 2192     		str	r2, [sp, #132]
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_OscInitStruct.MSIState = RCC_MSI_ON;
+ 109              		.loc 1 83 0
+ 110 0028 2393     		str	r3, [sp, #140]
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_OscInitStruct.MSICalibrationValue = 0;
+ 111              		.loc 1 84 0
+ 112 002a 0022     		movs	r2, #0
+ 113 002c 2492     		str	r2, [sp, #144]
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_6;
+ 114              		.loc 1 85 0
+ 115 002e 6022     		movs	r2, #96
+ 116 0030 2592     		str	r2, [sp, #148]
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 117              		.loc 1 86 0
+ 118 0032 0222     		movs	r2, #2
+ 119 0034 2792     		str	r2, [sp, #156]
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_MSI;
+ 120              		.loc 1 87 0
+ 121 0036 2893     		str	r3, [sp, #160]
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLM = 1;
+ 122              		.loc 1 88 0
+ 123 0038 2993     		str	r3, [sp, #164]
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLN = 40;
+ 124              		.loc 1 89 0
+ 125 003a 2823     		movs	r3, #40
+ 126 003c 2A93     		str	r3, [sp, #168]
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
+ 127              		.loc 1 90 0
+ 128 003e 0723     		movs	r3, #7
+ 129 0040 2B93     		str	r3, [sp, #172]
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
+ 130              		.loc 1 91 0
+ 131 0042 2C92     		str	r2, [sp, #176]
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
+ 132              		.loc 1 92 0
+ 133 0044 2D92     		str	r2, [sp, #180]
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 134              		.loc 1 93 0
+ 135 0046 1DA8     		add	r0, sp, #116
+ 136 0048 FFF7FEFF 		bl	HAL_RCC_OscConfig
+ 137              	.LVL3:
+ 138 004c 0028     		cmp	r0, #0
+ 139 004e 38D1     		bne	.L11
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s 			page 5
+
+
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     _Error_Handler(__FILE__, __LINE__);
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   }
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     /**Initializes the CPU, AHB and APB busses clocks 
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     */
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+ 140              		.loc 1 100 0
+ 141 0050 0F23     		movs	r3, #15
+ 142 0052 1893     		str	r3, [sp, #96]
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+ 143              		.loc 1 102 0
+ 144 0054 0323     		movs	r3, #3
+ 145 0056 1993     		str	r3, [sp, #100]
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 146              		.loc 1 103 0
+ 147 0058 0023     		movs	r3, #0
+ 148 005a 1A93     		str	r3, [sp, #104]
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+ 149              		.loc 1 104 0
+ 150 005c 1B93     		str	r3, [sp, #108]
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 151              		.loc 1 105 0
+ 152 005e 1C93     		str	r3, [sp, #112]
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+ 153              		.loc 1 107 0
+ 154 0060 0421     		movs	r1, #4
+ 155 0062 18A8     		add	r0, sp, #96
+ 156 0064 FFF7FEFF 		bl	HAL_RCC_ClockConfig
+ 157              	.LVL4:
+ 158 0068 0028     		cmp	r0, #0
+ 159 006a 2ED1     		bne	.L12
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   {
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     _Error_Handler(__FILE__, __LINE__);
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   }
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_USART2
+ 160              		.loc 1 112 0
+ 161 006c 1E4B     		ldr	r3, .L15+4
+ 162 006e 0193     		str	r3, [sp, #4]
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****                               |RCC_PERIPHCLK_USART3|RCC_PERIPHCLK_LPUART1
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****                               |RCC_PERIPHCLK_I2C1|RCC_PERIPHCLK_I2C2
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****                               |RCC_PERIPHCLK_I2C3|RCC_PERIPHCLK_SDMMC1
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****                               |RCC_PERIPHCLK_ADC;
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
+ 163              		.loc 1 117 0
+ 164 0070 0023     		movs	r3, #0
+ 165 0072 0993     		str	r3, [sp, #36]
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.Usart2ClockSelection = RCC_USART2CLKSOURCE_PCLK1;
+ 166              		.loc 1 118 0
+ 167 0074 0A93     		str	r3, [sp, #40]
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.Usart3ClockSelection = RCC_USART3CLKSOURCE_PCLK1;
+ 168              		.loc 1 119 0
+ 169 0076 0B93     		str	r3, [sp, #44]
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.Lpuart1ClockSelection = RCC_LPUART1CLKSOURCE_HSI;
+ 170              		.loc 1 120 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s 			page 6
+
+
+ 171 0078 4FF40062 		mov	r2, #2048
+ 172 007c 0C92     		str	r2, [sp, #48]
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_PCLK1;
+ 173              		.loc 1 121 0
+ 174 007e 0D93     		str	r3, [sp, #52]
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.I2c2ClockSelection = RCC_I2C2CLKSOURCE_PCLK1;
+ 175              		.loc 1 122 0
+ 176 0080 0E93     		str	r3, [sp, #56]
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.I2c3ClockSelection = RCC_I2C3CLKSOURCE_PCLK1;
+ 177              		.loc 1 123 0
+ 178 0082 0F93     		str	r3, [sp, #60]
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.AdcClockSelection = RCC_ADCCLKSOURCE_PLLSAI1;
+ 179              		.loc 1 124 0
+ 180 0084 4FF08053 		mov	r3, #268435456
+ 181 0088 1593     		str	r3, [sp, #84]
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.Sdmmc1ClockSelection = RCC_SDMMC1CLKSOURCE_PLLSAI1;
+ 182              		.loc 1 125 0
+ 183 008a 4FF08063 		mov	r3, #67108864
+ 184 008e 1393     		str	r3, [sp, #76]
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_MSI;
+ 185              		.loc 1 126 0
+ 186 0090 0123     		movs	r3, #1
+ 187 0092 0293     		str	r3, [sp, #8]
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
+ 188              		.loc 1 127 0
+ 189 0094 0393     		str	r3, [sp, #12]
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1N = 16;
+ 190              		.loc 1 128 0
+ 191 0096 1023     		movs	r3, #16
+ 192 0098 0493     		str	r3, [sp, #16]
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV7;
+ 193              		.loc 1 129 0
+ 194 009a 0723     		movs	r3, #7
+ 195 009c 0593     		str	r3, [sp, #20]
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
+ 196              		.loc 1 130 0
+ 197 009e 0223     		movs	r3, #2
+ 198 00a0 0693     		str	r3, [sp, #24]
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
+ 199              		.loc 1 131 0
+ 200 00a2 0793     		str	r3, [sp, #28]
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_48M2CLK|RCC_PLLSAI1_ADC1CLK;
+ 201              		.loc 1 132 0
+ 202 00a4 4FF08873 		mov	r3, #17825792
+ 203 00a8 0893     		str	r3, [sp, #32]
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+ 204              		.loc 1 133 0
+ 205 00aa 01A8     		add	r0, sp, #4
+ 206 00ac FFF7FEFF 		bl	HAL_RCCEx_PeriphCLKConfig
+ 207              	.LVL5:
+ 208 00b0 78B9     		cbnz	r0, .L13
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   {
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     _Error_Handler(__FILE__, __LINE__);
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   }
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     /**Configure the main internal regulator output voltage 
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     */
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s 			page 7
+
+
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
+ 209              		.loc 1 140 0
+ 210 00b2 4FF40070 		mov	r0, #512
+ 211 00b6 FFF7FEFF 		bl	HAL_PWREx_ControlVoltageScaling
+ 212              	.LVL6:
+ 213 00ba 70B9     		cbnz	r0, .L14
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   {
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     _Error_Handler(__FILE__, __LINE__);
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   }
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     /**Configure the Systick interrupt time 
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     */
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   //HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     /**Configure the Systick 
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     */
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   //HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     /**Enable MSI Auto calibration 
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     */
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   //HAL_RCCEx_EnableMSIPLLMode();
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   /* SysTick_IRQn interrupt configuration */
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   //HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** }
+ 214              		.loc 1 159 0
+ 215 00bc 2FB0     		add	sp, sp, #188
+ 216              	.LCFI3:
+ 217              		.cfi_remember_state
+ 218              		.cfi_def_cfa_offset 4
+ 219              		@ sp needed
+ 220 00be 5DF804FB 		ldr	pc, [sp], #4
+ 221              	.L11:
+ 222              	.LCFI4:
+ 223              		.cfi_restore_state
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   }
+ 224              		.loc 1 95 0
+ 225 00c2 5F21     		movs	r1, #95
+ 226 00c4 0948     		ldr	r0, .L15+8
+ 227 00c6 FFF7FEFF 		bl	_Error_Handler
+ 228              	.LVL7:
+ 229              	.L12:
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   }
+ 230              		.loc 1 109 0
+ 231 00ca 6D21     		movs	r1, #109
+ 232 00cc 0748     		ldr	r0, .L15+8
+ 233 00ce FFF7FEFF 		bl	_Error_Handler
+ 234              	.LVL8:
+ 235              	.L13:
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   }
+ 236              		.loc 1 135 0
+ 237 00d2 8721     		movs	r1, #135
+ 238 00d4 0548     		ldr	r0, .L15+8
+ 239 00d6 FFF7FEFF 		bl	_Error_Handler
+ 240              	.LVL9:
+ 241              	.L14:
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s 			page 8
+
+
+ 242              		.loc 1 142 0
+ 243 00da 8E21     		movs	r1, #142
+ 244 00dc 0348     		ldr	r0, .L15+8
+ 245 00de FFF7FEFF 		bl	_Error_Handler
+ 246              	.LVL10:
+ 247              	.L16:
+ 248 00e2 00BF     		.align	2
+ 249              	.L15:
+ 250 00e4 00100240 		.word	1073876992
+ 251 00e8 E7410800 		.word	541159
+ 252 00ec 00000000 		.word	.LC0
+ 253              		.cfi_endproc
+ 254              	.LFE135:
+ 256              		.section	.text.atiny_usleep,"ax",%progbits
+ 257              		.align	1
+ 258              		.global	atiny_usleep
+ 259              		.syntax unified
+ 260              		.thumb
+ 261              		.thumb_func
+ 262              		.fpu fpv4-sp-d16
+ 264              	atiny_usleep:
+ 265              	.LFB136:
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** #ifdef  USE_FULL_ASSERT
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** /**
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   * @brief  Reports the name of the source file and the source line number
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   *         where the assert_param error has occurred.
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   * @param  file: pointer to the source file name
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   * @param  line: assert_param error line source number
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   * @retval None
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   */
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** void assert_failed(uint8_t* file, uint32_t line)
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** { 
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   /* USER CODE BEGIN 6 */
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   /* User can add his own implementation to report the file name and line number,
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****   /* USER CODE END 6 */
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** }
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** #endif /* USE_FULL_ASSERT */
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** /*
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  * atiny_adapter user interface
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****  */
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** void atiny_usleep(unsigned long usec)
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** {
+ 266              		.loc 1 184 0
+ 267              		.cfi_startproc
+ 268              		@ args = 0, pretend = 0, frame = 0
+ 269              		@ frame_needed = 0, uses_anonymous_args = 0
+ 270              	.LVL11:
+ 271 0000 08B5     		push	{r3, lr}
+ 272              	.LCFI5:
+ 273              		.cfi_def_cfa_offset 8
+ 274              		.cfi_offset 3, -8
+ 275              		.cfi_offset 14, -4
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s 			page 9
+
+
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     delayus((uint32_t)usec);
+ 276              		.loc 1 185 0
+ 277 0002 FFF7FEFF 		bl	delayus
+ 278              	.LVL12:
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** }
+ 279              		.loc 1 186 0
+ 280 0006 08BD     		pop	{r3, pc}
+ 281              		.cfi_endproc
+ 282              	.LFE136:
+ 284              		.section	.text.atiny_random,"ax",%progbits
+ 285              		.align	1
+ 286              		.global	atiny_random
+ 287              		.syntax unified
+ 288              		.thumb
+ 289              		.thumb_func
+ 290              		.fpu fpv4-sp-d16
+ 292              	atiny_random:
+ 293              	.LFB137:
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** int atiny_random(void *output, size_t len)
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** {
+ 294              		.loc 1 189 0
+ 295              		.cfi_startproc
+ 296              		@ args = 0, pretend = 0, frame = 0
+ 297              		@ frame_needed = 0, uses_anonymous_args = 0
+ 298              	.LVL13:
+ 299 0000 08B5     		push	{r3, lr}
+ 300              	.LCFI6:
+ 301              		.cfi_def_cfa_offset 8
+ 302              		.cfi_offset 3, -8
+ 303              		.cfi_offset 14, -4
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     return hal_rng_generate_buffer(output, len);
+ 304              		.loc 1 190 0
+ 305 0002 FFF7FEFF 		bl	hal_rng_generate_buffer
+ 306              	.LVL14:
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** }
+ 307              		.loc 1 191 0
+ 308 0006 08BD     		pop	{r3, pc}
+ 309              		.cfi_endproc
+ 310              	.LFE137:
+ 312              		.section	.text.atiny_reboot,"ax",%progbits
+ 313              		.align	1
+ 314              		.global	atiny_reboot
+ 315              		.syntax unified
+ 316              		.thumb
+ 317              		.thumb_func
+ 318              		.fpu fpv4-sp-d16
+ 320              	atiny_reboot:
+ 321              	.LFB138:
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** 
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** void atiny_reboot(void)
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** {
+ 322              		.loc 1 194 0
+ 323              		.cfi_startproc
+ 324              		@ args = 0, pretend = 0, frame = 0
+ 325              		@ frame_needed = 0, uses_anonymous_args = 0
+ 326 0000 08B5     		push	{r3, lr}
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s 			page 10
+
+
+ 327              	.LCFI7:
+ 328              		.cfi_def_cfa_offset 8
+ 329              		.cfi_offset 3, -8
+ 330              		.cfi_offset 14, -4
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c ****     HAL_NVIC_SystemReset();
+ 331              		.loc 1 195 0
+ 332 0002 FFF7FEFF 		bl	HAL_NVIC_SystemReset
+ 333              	.LVL15:
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\sys_init.c **** }
+ 334              		.loc 1 196 0
+ 335 0006 08BD     		pop	{r3, pc}
+ 336              		.cfi_endproc
+ 337              	.LFE138:
+ 339              		.section	.rodata.SystemClock_Config.str1.4,"aMS",%progbits,1
+ 340              		.align	2
+ 341              	.LC0:
+ 342 0000 433A2F55 		.ascii	"C:/Users/lenovo/Desktop/liteos/Project2/BearPi_Lite"
+ 342      73657273 
+ 342      2F6C656E 
+ 342      6F766F2F 
+ 342      4465736B 
+ 343 0033 4F532F74 		.ascii	"OS/targets/STM32L431_BearPi/Src/sys_init.c\000"
+ 343      61726765 
+ 343      74732F53 
+ 343      544D3332 
+ 343      4C343331 
+ 344              		.text
+ 345              	.Letext0:
+ 346              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 347              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 348              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 349              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 350              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 351              		.file 7 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 352              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 353              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 354              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 355              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/stm32
+ 356              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 357              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 358              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 359              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 360              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 361              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 362              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 363              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 364              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 365              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 366              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 367              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 368              		.file 24 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 369              		.file 25 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 370              		.file 26 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 371              		.file 27 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 372              		.file 28 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 373              		.file 29 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_memory.h"
+ 374              		.file 30 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_queue.ph"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s 			page 11
+
+
+ 375              		.file 31 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 376              		.file 32 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/usart
+ 377              		.file 33 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/i2c.h
+ 378              		.file 34 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/spi.h
+ 379              		.file 35 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/
+ 380              		.file 36 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 381              		.file 37 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/
+ 382              		.file 38 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/dwt.h
+ 383              		.file 39 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 384              		.file 40 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 385              		.file 41 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_sys.h"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 sys_init.c
+c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s:18     .text.HAL_GetTick:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s:25     .text.HAL_GetTick:00000000 HAL_GetTick
+c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s:46     .text._Error_Handler:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s:53     .text._Error_Handler:00000000 _Error_Handler
+c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s:68     .text.SystemClock_Config:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s:75     .text.SystemClock_Config:00000000 SystemClock_Config
+c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s:250    .text.SystemClock_Config:000000e4 $d
+c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s:257    .text.atiny_usleep:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s:264    .text.atiny_usleep:00000000 atiny_usleep
+c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s:285    .text.atiny_random:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s:292    .text.atiny_random:00000000 atiny_random
+c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s:313    .text.atiny_reboot:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s:320    .text.atiny_reboot:00000000 atiny_reboot
+c:\Users\lenovo\AppData\Local\Temp\ccwVcCly.s:340    .rodata.SystemClock_Config.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+LOS_TickCountGet
+HAL_PWR_EnableBkUpAccess
+HAL_RCC_OscConfig
+HAL_RCC_ClockConfig
+HAL_RCCEx_PeriphCLKConfig
+HAL_PWREx_ControlVoltageScaling
+delayus
+hal_rng_generate_buffer
+HAL_NVIC_SystemReset

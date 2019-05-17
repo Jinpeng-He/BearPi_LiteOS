@@ -1,0 +1,603 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"net_sockets_alt.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.mbedtls_net_init,"ax",%progbits
+  18              		.align	1
+  19              		.global	mbedtls_net_init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	mbedtls_net_init:
+  26              	.LFB144:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** #if !defined(MBEDTLS_CONFIG_FILE)
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** #include "mbedtls/config.h"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** #else
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** #include MBEDTLS_CONFIG_FILE
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** #endif
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** #if !defined(MBEDTLS_NET_C)
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** #if defined(MBEDTLS_PLATFORM_C)
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** #include "mbedtls/platform.h"
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** #else
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** #include <stdlib.h>
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** #endif
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** #include "mbedtls/net_sockets.h"
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** #include "osdepends/atiny_osdep.h"
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** #include "sal/atiny_socket.h"
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** void mbedtls_net_init(mbedtls_net_context *ctx)
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** {
+  28              		.loc 1 57 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     ctx->fd = -1;
+  34              		.loc 1 58 0
+  35 0000 4FF0FF33 		mov	r3, #-1
+  36 0004 0360     		str	r3, [r0]
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** }
+  37              		.loc 1 59 0
+  38 0006 7047     		bx	lr
+  39              		.cfi_endproc
+  40              	.LFE144:
+  42              		.section	.text.mbedtls_net_connect,"ax",%progbits
+  43              		.align	1
+  44              		.global	mbedtls_net_connect
+  45              		.syntax unified
+  46              		.thumb
+  47              		.thumb_func
+  48              		.fpu fpv4-sp-d16
+  50              	mbedtls_net_connect:
+  51              	.LFB145:
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** void *mbedtls_net_connect(const char *host, const char *port, int proto)
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** {
+  52              		.loc 1 62 0
+  53              		.cfi_startproc
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s 			page 3
+
+
+  56              	.LVL1:
+  57 0000 08B5     		push	{r3, lr}
+  58              	.LCFI0:
+  59              		.cfi_def_cfa_offset 8
+  60              		.cfi_offset 3, -8
+  61              		.cfi_offset 14, -4
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     return atiny_net_connect(host, port, proto);
+  62              		.loc 1 63 0
+  63 0002 FFF7FEFF 		bl	atiny_net_connect
+  64              	.LVL2:
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** }
+  65              		.loc 1 64 0
+  66 0006 08BD     		pop	{r3, pc}
+  67              		.cfi_endproc
+  68              	.LFE145:
+  70              		.section	.text.mbedtls_net_usleep,"ax",%progbits
+  71              		.align	1
+  72              		.global	mbedtls_net_usleep
+  73              		.syntax unified
+  74              		.thumb
+  75              		.thumb_func
+  76              		.fpu fpv4-sp-d16
+  78              	mbedtls_net_usleep:
+  79              	.LFB146:
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** void mbedtls_net_usleep(unsigned long usec)
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** {
+  80              		.loc 1 67 0
+  81              		.cfi_startproc
+  82              		@ args = 0, pretend = 0, frame = 0
+  83              		@ frame_needed = 0, uses_anonymous_args = 0
+  84              	.LVL3:
+  85 0000 08B5     		push	{r3, lr}
+  86              	.LCFI1:
+  87              		.cfi_def_cfa_offset 8
+  88              		.cfi_offset 3, -8
+  89              		.cfi_offset 14, -4
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     atiny_usleep(usec);
+  90              		.loc 1 68 0
+  91 0002 FFF7FEFF 		bl	atiny_usleep
+  92              	.LVL4:
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** }
+  93              		.loc 1 69 0
+  94 0006 08BD     		pop	{r3, pc}
+  95              		.cfi_endproc
+  96              	.LFE146:
+  98              		.section	.text.mbedtls_net_recv,"ax",%progbits
+  99              		.align	1
+ 100              		.global	mbedtls_net_recv
+ 101              		.syntax unified
+ 102              		.thumb
+ 103              		.thumb_func
+ 104              		.fpu fpv4-sp-d16
+ 106              	mbedtls_net_recv:
+ 107              	.LFB147:
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** int mbedtls_net_recv(void *ctx, unsigned char *buf, size_t len)
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s 			page 4
+
+
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** {
+ 108              		.loc 1 72 0
+ 109              		.cfi_startproc
+ 110              		@ args = 0, pretend = 0, frame = 0
+ 111              		@ frame_needed = 0, uses_anonymous_args = 0
+ 112              	.LVL5:
+ 113 0000 08B5     		push	{r3, lr}
+ 114              	.LCFI2:
+ 115              		.cfi_def_cfa_offset 8
+ 116              		.cfi_offset 3, -8
+ 117              		.cfi_offset 14, -4
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     int ret = atiny_net_recv(ctx, buf, len);
+ 118              		.loc 1 73 0
+ 119 0002 FFF7FEFF 		bl	atiny_net_recv
+ 120              	.LVL6:
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     if (ret == 0)
+ 121              		.loc 1 75 0
+ 122 0006 38B1     		cbz	r0, .L8
+ 123 0008 0346     		mov	r3, r0
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     {
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****         return MBEDTLS_ERR_SSL_WANT_READ;
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     }
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     else if (ret < 0)
+ 124              		.loc 1 79 0
+ 125 000a 0028     		cmp	r0, #0
+ 126 000c 01DB     		blt	.L10
+ 127              	.L6:
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     {
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****         return MBEDTLS_ERR_NET_RECV_FAILED;
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     }
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     return ret;
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** }
+ 128              		.loc 1 85 0
+ 129 000e 1846     		mov	r0, r3
+ 130              	.LVL7:
+ 131 0010 08BD     		pop	{r3, pc}
+ 132              	.LVL8:
+ 133              	.L10:
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     }
+ 134              		.loc 1 81 0
+ 135 0012 6FF04B03 		mvn	r3, #75
+ 136 0016 FAE7     		b	.L6
+ 137              	.L8:
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     }
+ 138              		.loc 1 77 0
+ 139 0018 004B     		ldr	r3, .L11
+ 140 001a F8E7     		b	.L6
+ 141              	.L12:
+ 142              		.align	2
+ 143              	.L11:
+ 144 001c 0097FFFF 		.word	-26880
+ 145              		.cfi_endproc
+ 146              	.LFE147:
+ 148              		.section	.text.mbedtls_net_recv_timeout,"ax",%progbits
+ 149              		.align	1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s 			page 5
+
+
+ 150              		.global	mbedtls_net_recv_timeout
+ 151              		.syntax unified
+ 152              		.thumb
+ 153              		.thumb_func
+ 154              		.fpu fpv4-sp-d16
+ 156              	mbedtls_net_recv_timeout:
+ 157              	.LFB148:
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** int mbedtls_net_recv_timeout(void *ctx, unsigned char *buf, size_t len,
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****                              uint32_t timeout)
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** {
+ 158              		.loc 1 89 0
+ 159              		.cfi_startproc
+ 160              		@ args = 0, pretend = 0, frame = 0
+ 161              		@ frame_needed = 0, uses_anonymous_args = 0
+ 162              	.LVL9:
+ 163 0000 08B5     		push	{r3, lr}
+ 164              	.LCFI3:
+ 165              		.cfi_def_cfa_offset 8
+ 166              		.cfi_offset 3, -8
+ 167              		.cfi_offset 14, -4
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     int ret = atiny_net_recv_timeout(ctx, buf, len, timeout);
+ 168              		.loc 1 90 0
+ 169 0002 FFF7FEFF 		bl	atiny_net_recv_timeout
+ 170              	.LVL10:
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     if (ret < 0)
+ 171              		.loc 1 92 0
+ 172 0006 0028     		cmp	r0, #0
+ 173 0008 04DB     		blt	.L15
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     {
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****         return MBEDTLS_ERR_SSL_TIMEOUT;
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     }
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     else if (ret == 0)
+ 174              		.loc 1 96 0
+ 175 000a 00B1     		cbz	r0, .L17
+ 176              	.LVL11:
+ 177              	.L13:
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     {
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****         return MBEDTLS_ERR_SSL_WANT_READ;
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     }
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     return ret;
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** }
+ 178              		.loc 1 102 0
+ 179 000c 08BD     		pop	{r3, pc}
+ 180              	.LVL12:
+ 181              	.L17:
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     }
+ 182              		.loc 1 98 0
+ 183 000e A0F5D240 		sub	r0, r0, #26880
+ 184              	.LVL13:
+ 185 0012 FBE7     		b	.L13
+ 186              	.LVL14:
+ 187              	.L15:
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     }
+ 188              		.loc 1 94 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s 			page 6
+
+
+ 189 0014 0048     		ldr	r0, .L18
+ 190              	.LVL15:
+ 191 0016 F9E7     		b	.L13
+ 192              	.L19:
+ 193              		.align	2
+ 194              	.L18:
+ 195 0018 0098FFFF 		.word	-26624
+ 196              		.cfi_endproc
+ 197              	.LFE148:
+ 199              		.section	.text.mbedtls_net_send,"ax",%progbits
+ 200              		.align	1
+ 201              		.global	mbedtls_net_send
+ 202              		.syntax unified
+ 203              		.thumb
+ 204              		.thumb_func
+ 205              		.fpu fpv4-sp-d16
+ 207              	mbedtls_net_send:
+ 208              	.LFB149:
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** int mbedtls_net_send(void *ctx, const unsigned char *buf, size_t len)
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** {
+ 209              		.loc 1 105 0
+ 210              		.cfi_startproc
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 213              	.LVL16:
+ 214 0000 08B5     		push	{r3, lr}
+ 215              	.LCFI4:
+ 216              		.cfi_def_cfa_offset 8
+ 217              		.cfi_offset 3, -8
+ 218              		.cfi_offset 14, -4
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     int ret = atiny_net_send(ctx, buf, len);
+ 219              		.loc 1 106 0
+ 220 0002 FFF7FEFF 		bl	atiny_net_send
+ 221              	.LVL17:
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     if (ret == 0)
+ 222              		.loc 1 108 0
+ 223 0006 38B1     		cbz	r0, .L22
+ 224 0008 0346     		mov	r3, r0
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     {
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****         return MBEDTLS_ERR_SSL_WANT_WRITE;
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     }
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     else if (ret < 0)
+ 225              		.loc 1 112 0
+ 226 000a 0028     		cmp	r0, #0
+ 227 000c 01DB     		blt	.L24
+ 228              	.L20:
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     {
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****         return MBEDTLS_ERR_NET_SEND_FAILED;
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     }
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     return ret;
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** }
+ 229              		.loc 1 118 0
+ 230 000e 1846     		mov	r0, r3
+ 231              	.LVL18:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s 			page 7
+
+
+ 232 0010 08BD     		pop	{r3, pc}
+ 233              	.LVL19:
+ 234              	.L24:
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     }
+ 235              		.loc 1 114 0
+ 236 0012 6FF04D03 		mvn	r3, #77
+ 237 0016 FAE7     		b	.L20
+ 238              	.L22:
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     }
+ 239              		.loc 1 110 0
+ 240 0018 004B     		ldr	r3, .L25
+ 241 001a F8E7     		b	.L20
+ 242              	.L26:
+ 243              		.align	2
+ 244              	.L25:
+ 245 001c 8097FFFF 		.word	-26752
+ 246              		.cfi_endproc
+ 247              	.LFE149:
+ 249              		.section	.text.mbedtls_net_free,"ax",%progbits
+ 250              		.align	1
+ 251              		.global	mbedtls_net_free
+ 252              		.syntax unified
+ 253              		.thumb
+ 254              		.thumb_func
+ 255              		.fpu fpv4-sp-d16
+ 257              	mbedtls_net_free:
+ 258              	.LFB150:
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** void mbedtls_net_free(mbedtls_net_context *ctx)
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** {
+ 259              		.loc 1 121 0
+ 260              		.cfi_startproc
+ 261              		@ args = 0, pretend = 0, frame = 0
+ 262              		@ frame_needed = 0, uses_anonymous_args = 0
+ 263              	.LVL20:
+ 264 0000 08B5     		push	{r3, lr}
+ 265              	.LCFI5:
+ 266              		.cfi_def_cfa_offset 8
+ 267              		.cfi_offset 3, -8
+ 268              		.cfi_offset 14, -4
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     atiny_net_close(ctx);
+ 269              		.loc 1 122 0
+ 270 0002 FFF7FEFF 		bl	atiny_net_close
+ 271              	.LVL21:
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** }
+ 272              		.loc 1 123 0
+ 273 0006 08BD     		pop	{r3, pc}
+ 274              		.cfi_endproc
+ 275              	.LFE150:
+ 277              		.section	.text.mbedtls_net_accept,"ax",%progbits
+ 278              		.align	1
+ 279              		.global	mbedtls_net_accept
+ 280              		.syntax unified
+ 281              		.thumb
+ 282              		.thumb_func
+ 283              		.fpu fpv4-sp-d16
+ 285              	mbedtls_net_accept:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s 			page 8
+
+
+ 286              	.LFB151:
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** int mbedtls_net_accept( mbedtls_net_context *bind_ctx,
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****                         mbedtls_net_context *client_ctx,
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****                         void *client_ip, size_t buf_size, size_t *ip_len )
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** {
+ 287              		.loc 1 128 0
+ 288              		.cfi_startproc
+ 289              		@ args = 4, pretend = 0, frame = 0
+ 290              		@ frame_needed = 0, uses_anonymous_args = 0
+ 291              	.LVL22:
+ 292 0000 10B5     		push	{r4, lr}
+ 293              	.LCFI6:
+ 294              		.cfi_def_cfa_offset 8
+ 295              		.cfi_offset 4, -8
+ 296              		.cfi_offset 14, -4
+ 297 0002 82B0     		sub	sp, sp, #8
+ 298              	.LCFI7:
+ 299              		.cfi_def_cfa_offset 16
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     int ret = atiny_net_accept(bind_ctx, client_ctx, client_ip, buf_size, ip_len);
+ 300              		.loc 1 129 0
+ 301 0004 049C     		ldr	r4, [sp, #16]
+ 302 0006 0094     		str	r4, [sp]
+ 303 0008 FFF7FEFF 		bl	atiny_net_accept
+ 304              	.LVL23:
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     if (ret == ATINY_NET_ERR)
+ 305              		.loc 1 131 0
+ 306 000c B0F1FF3F 		cmp	r0, #-1
+ 307 0010 13D0     		beq	.L31
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****        return MBEDTLS_ERR_NET_UNKNOWN_HOST;
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     else if (ret == ATINY_NET_SOCKET_FAILED)
+ 308              		.loc 1 133 0
+ 309 0012 10F1070F 		cmn	r0, #7
+ 310 0016 13D0     		beq	.L32
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****        return MBEDTLS_ERR_NET_SOCKET_FAILED;
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     else if (ret == ATINY_NET_BIND_FAILED)
+ 311              		.loc 1 135 0
+ 312 0018 10F1030F 		cmn	r0, #3
+ 313 001c 13D0     		beq	.L33
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****       return MBEDTLS_ERR_NET_BIND_FAILED;
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     else if (ret == ATINY_NET_LISTEN_FAILED)
+ 314              		.loc 1 137 0
+ 315 001e 10F1040F 		cmn	r0, #4
+ 316 0022 13D0     		beq	.L34
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****         return MBEDTLS_ERR_NET_LISTEN_FAILED;
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     else if (ret == ATINY_NET_ACCEPT_FAILED)
+ 317              		.loc 1 139 0
+ 318 0024 10F1050F 		cmn	r0, #5
+ 319 0028 13D0     		beq	.L35
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****         return MBEDTLS_ERR_NET_ACCEPT_FAILED;
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     else if(ret == ATINY_NET_BUF_SMALL_FAILED)
+ 320              		.loc 1 141 0
+ 321 002a 10F1060F 		cmn	r0, #6
+ 322 002e 01D0     		beq	.L37
+ 323              	.LVL24:
+ 324              	.L29:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s 			page 9
+
+
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****         return MBEDTLS_ERR_NET_BUFFER_TOO_SMALL;
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** 
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     return ret;
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c **** }
+ 325              		.loc 1 145 0
+ 326 0030 02B0     		add	sp, sp, #8
+ 327              	.LCFI8:
+ 328              		.cfi_remember_state
+ 329              		.cfi_def_cfa_offset 8
+ 330              		@ sp needed
+ 331 0032 10BD     		pop	{r4, pc}
+ 332              	.LVL25:
+ 333              	.L37:
+ 334              	.LCFI9:
+ 335              		.cfi_restore_state
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****         return MBEDTLS_ERR_NET_BUFFER_TOO_SMALL;
+ 336              		.loc 1 142 0
+ 337 0034 6FF04200 		mvn	r0, #66
+ 338              	.LVL26:
+ 339 0038 FAE7     		b	.L29
+ 340              	.LVL27:
+ 341              	.L31:
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     else if (ret == ATINY_NET_SOCKET_FAILED)
+ 342              		.loc 1 132 0
+ 343 003a 6FF05100 		mvn	r0, #81
+ 344              	.LVL28:
+ 345 003e F7E7     		b	.L29
+ 346              	.LVL29:
+ 347              	.L32:
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     else if (ret == ATINY_NET_BIND_FAILED)
+ 348              		.loc 1 134 0
+ 349 0040 6FF04100 		mvn	r0, #65
+ 350              	.LVL30:
+ 351 0044 F4E7     		b	.L29
+ 352              	.LVL31:
+ 353              	.L33:
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     else if (ret == ATINY_NET_LISTEN_FAILED)
+ 354              		.loc 1 136 0
+ 355 0046 6FF04500 		mvn	r0, #69
+ 356              	.LVL32:
+ 357 004a F1E7     		b	.L29
+ 358              	.LVL33:
+ 359              	.L34:
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     else if (ret == ATINY_NET_ACCEPT_FAILED)
+ 360              		.loc 1 138 0
+ 361 004c 6FF04700 		mvn	r0, #71
+ 362              	.LVL34:
+ 363 0050 EEE7     		b	.L29
+ 364              	.LVL35:
+ 365              	.L35:
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls_port\net_sockets_alt.c ****     else if(ret == ATINY_NET_BUF_SMALL_FAILED)
+ 366              		.loc 1 140 0
+ 367 0052 6FF04900 		mvn	r0, #73
+ 368              	.LVL36:
+ 369 0056 EBE7     		b	.L29
+ 370              		.cfi_endproc
+ 371              	.LFE151:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s 			page 10
+
+
+ 373              		.text
+ 374              	.Letext0:
+ 375              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 376              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 377              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 378              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 379              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 380              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 381              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 382              		.file 9 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 383              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtl
+ 384              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtl
+ 385              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 386              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 387              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 388              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 389              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 390              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 391              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 392              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 393              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 394              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 395              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 396              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 397              		.file 24 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 398              		.file 25 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/sal/atiny_socket.h"
+ 399              		.file 26 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/osdepends/atiny_osdep.h"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 net_sockets_alt.c
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:18     .text.mbedtls_net_init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:25     .text.mbedtls_net_init:00000000 mbedtls_net_init
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:43     .text.mbedtls_net_connect:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:50     .text.mbedtls_net_connect:00000000 mbedtls_net_connect
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:71     .text.mbedtls_net_usleep:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:78     .text.mbedtls_net_usleep:00000000 mbedtls_net_usleep
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:99     .text.mbedtls_net_recv:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:106    .text.mbedtls_net_recv:00000000 mbedtls_net_recv
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:144    .text.mbedtls_net_recv:0000001c $d
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:149    .text.mbedtls_net_recv_timeout:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:156    .text.mbedtls_net_recv_timeout:00000000 mbedtls_net_recv_timeout
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:195    .text.mbedtls_net_recv_timeout:00000018 $d
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:200    .text.mbedtls_net_send:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:207    .text.mbedtls_net_send:00000000 mbedtls_net_send
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:245    .text.mbedtls_net_send:0000001c $d
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:250    .text.mbedtls_net_free:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:257    .text.mbedtls_net_free:00000000 mbedtls_net_free
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:278    .text.mbedtls_net_accept:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6mT8Lz.s:285    .text.mbedtls_net_accept:00000000 mbedtls_net_accept
+
+UNDEFINED SYMBOLS
+atiny_net_connect
+atiny_usleep
+atiny_net_recv
+atiny_net_recv_timeout
+atiny_net_send
+atiny_net_close
+atiny_net_accept

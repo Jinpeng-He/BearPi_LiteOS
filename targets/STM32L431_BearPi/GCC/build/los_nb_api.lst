@@ -1,0 +1,557 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"los_nb_api.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.los_nb_init,"ax",%progbits
+  18              		.align	1
+  19              		.global	los_nb_init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	los_nb_init:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot/los_
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** #if defined(WITH_AT_FRAMEWORK)
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** #include "nb_iot/los_nb_api.h"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** #include "at_frame/at_api.h"
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** //#include "atiny_socket.h"
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** #include "at_device/bc95.h"
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** int los_nb_init(const int8_t* host, const int8_t* port, sec_param_s* psk)
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** {
+  28              		.loc 1 42 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 40
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 24
+  36              		.cfi_offset 4, -24
+  37              		.cfi_offset 5, -20
+  38              		.cfi_offset 6, -16
+  39              		.cfi_offset 7, -12
+  40              		.cfi_offset 8, -8
+  41              		.cfi_offset 14, -4
+  42 0004 8AB0     		sub	sp, sp, #40
+  43              	.LCFI1:
+  44              		.cfi_def_cfa_offset 64
+  45 0006 0746     		mov	r7, r0
+  46 0008 8846     		mov	r8, r1
+  47 000a 1646     		mov	r6, r2
+  48              	.LVL1:
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     int ret;
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     int timecnt = 0;
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     //if(port == NULL)
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         //return -1;
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     /*when used nb with agenttiny*/
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     /*the following para is replaced by call nb_int()*/
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     at_config at_user_conf = {
+  49              		.loc 1 49 0
+  50 000c 01AC     		add	r4, sp, #4
+  51 000e 1E4D     		ldr	r5, .L13
+  52 0010 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+  53              	.LVL2:
+  54 0012 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+  55 0014 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+  56 0016 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+  57 0018 2B68     		ldr	r3, [r5]
+  58 001a 2360     		str	r3, [r4]
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         .name = AT_MODU_NAME,
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         .usart_port = AT_USART_PORT,
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         .buardrate = AT_BUARDRATE,
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         .linkid_num = AT_MAX_LINK_NUM,
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         .user_buf_len = MAX_AT_USERDATA_LEN,
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         .cmd_begin = AT_CMD_BEGIN,
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         .line_end = AT_LINE_END,
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         .mux_mode = 1, //support multi connection mode
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s 			page 3
+
+
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         .timeout = AT_CMD_TIMEOUT,   //  ms
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     };
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     at.init(&at_user_conf);
+  59              		.loc 1 61 0
+  60 001c 1B4B     		ldr	r3, .L13+4
+  61 001e 5B6C     		ldr	r3, [r3, #68]
+  62 0020 01A8     		add	r0, sp, #4
+  63 0022 9847     		blx	r3
+  64              	.LVL3:
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     nb_reboot();
+  65              		.loc 1 63 0
+  66 0024 FFF7FEFF 		bl	nb_reboot
+  67              	.LVL4:
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     //LOS_TaskDelay(2000);
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     if(psk != NULL)//encryption v1.9
+  68              		.loc 1 65 0
+  69 0028 2EB1     		cbz	r6, .L5
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     {
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         if(psk->setpsk)
+  70              		.loc 1 67 0
+  71 002a 337A     		ldrb	r3, [r6, #8]	@ zero_extendqisi2
+  72 002c CBB1     		cbz	r3, .L3
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****             nb_send_psk(psk->pskid, psk->psk);
+  73              		.loc 1 68 0
+  74 002e 3168     		ldr	r1, [r6]
+  75 0030 7068     		ldr	r0, [r6, #4]
+  76 0032 FFF7FEFF 		bl	nb_send_psk
+  77              	.LVL5:
+  78              	.L5:
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         else
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****             nb_set_no_encrypt();
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     }
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     while(1)
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     {
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         ret = nb_hw_detect();
+  79              		.loc 1 75 0
+  80 0036 FFF7FEFF 		bl	nb_hw_detect
+  81              	.LVL6:
+  82 003a 0446     		mov	r4, r0
+  83              	.LVL7:
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         printf("call nb_hw_detect,ret is %d\n",ret);
+  84              		.loc 1 76 0
+  85 003c 0146     		mov	r1, r0
+  86 003e 1448     		ldr	r0, .L13+8
+  87              	.LVL8:
+  88 0040 FFF7FEFF 		bl	printf
+  89              	.LVL9:
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         if(ret == AT_OK)
+  90              		.loc 1 77 0
+  91 0044 002C     		cmp	r4, #0
+  92 0046 F6D1     		bne	.L5
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     //if(port == NULL)
+  93              		.loc 1 44 0
+  94 0048 2546     		mov	r5, r4
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s 			page 4
+
+
+  95              	.LVL10:
+  96              	.L4:
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****             break;
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         //LOS_TaskDelay(1000);
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     }
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     //nb_get_auto_connect();
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     //nb_connect(NULL, NULL, NULL);
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 	while(timecnt < 120)
+  97              		.loc 1 84 0
+  98 004a 772D     		cmp	r5, #119
+  99 004c 0FDC     		bgt	.L7
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 	{
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 		ret = nb_get_netstat();
+ 100              		.loc 1 86 0
+ 101 004e FFF7FEFF 		bl	nb_get_netstat
+ 102              	.LVL11:
+ 103 0052 0446     		mov	r4, r0
+ 104              	.LVL12:
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 		nb_check_csq();
+ 105              		.loc 1 87 0
+ 106 0054 FFF7FEFF 		bl	nb_check_csq
+ 107              	.LVL13:
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 		if(ret != AT_FAILED)
+ 108              		.loc 1 88 0
+ 109 0058 B4F1FF3F 		cmp	r4, #-1
+ 110 005c 04D1     		bne	.L12
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 		{
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 			ret = nb_query_ip();
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 			break;
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 		}
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 		//LOS_TaskDelay(1000);
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 		timecnt++;
+ 111              		.loc 1 94 0
+ 112 005e 0135     		adds	r5, r5, #1
+ 113              	.LVL14:
+ 114 0060 F3E7     		b	.L4
+ 115              	.LVL15:
+ 116              	.L3:
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     }
+ 117              		.loc 1 70 0
+ 118 0062 FFF7FEFF 		bl	nb_set_no_encrypt
+ 119              	.LVL16:
+ 120 0066 E6E7     		b	.L5
+ 121              	.LVL17:
+ 122              	.L12:
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 			break;
+ 123              		.loc 1 90 0
+ 124 0068 FFF7FEFF 		bl	nb_query_ip
+ 125              	.LVL18:
+ 126 006c 0446     		mov	r4, r0
+ 127              	.LVL19:
+ 128              	.L7:
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 	}
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 	if(ret != AT_FAILED)
+ 129              		.loc 1 96 0
+ 130 006e B4F1FF3F 		cmp	r4, #-1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s 			page 5
+
+
+ 131 0072 01D0     		beq	.L9
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 	{
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 		nb_query_ip();
+ 132              		.loc 1 98 0
+ 133 0074 FFF7FEFF 		bl	nb_query_ip
+ 134              	.LVL20:
+ 135              	.L9:
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 	}
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 	ret = nb_set_cdpserver((char *)host, (char *)port);
+ 136              		.loc 1 100 0
+ 137 0078 4146     		mov	r1, r8
+ 138 007a 3846     		mov	r0, r7
+ 139 007c FFF7FEFF 		bl	nb_set_cdpserver
+ 140              	.LVL21:
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     return ret;
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** }
+ 141              		.loc 1 102 0
+ 142 0080 0AB0     		add	sp, sp, #40
+ 143              	.LCFI2:
+ 144              		.cfi_def_cfa_offset 24
+ 145              		@ sp needed
+ 146 0082 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 147              	.LVL22:
+ 148              	.L14:
+ 149 0086 00BF     		.align	2
+ 150              	.L13:
+ 151 0088 00000000 		.word	.LANCHOR0
+ 152 008c 00000000 		.word	at
+ 153 0090 00000000 		.word	.LC4
+ 154              		.cfi_endproc
+ 155              	.LFE133:
+ 157              		.section	.text.los_nb_report,"ax",%progbits
+ 158              		.align	1
+ 159              		.global	los_nb_report
+ 160              		.syntax unified
+ 161              		.thumb
+ 162              		.thumb_func
+ 163              		.fpu fpv4-sp-d16
+ 165              	los_nb_report:
+ 166              	.LFB134:
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** int los_nb_report(const char* buf, int len)
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** {
+ 167              		.loc 1 105 0
+ 168              		.cfi_startproc
+ 169              		@ args = 0, pretend = 0, frame = 0
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171              	.LVL23:
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     if(buf == NULL || len <= 0)
+ 172              		.loc 1 106 0
+ 173 0000 28B1     		cbz	r0, .L17
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     if(buf == NULL || len <= 0)
+ 174              		.loc 1 105 0 discriminator 1
+ 175 0002 08B5     		push	{r3, lr}
+ 176              	.LCFI3:
+ 177              		.cfi_def_cfa_offset 8
+ 178              		.cfi_offset 3, -8
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s 			page 6
+
+
+ 179              		.cfi_offset 14, -4
+ 180              		.loc 1 106 0 discriminator 1
+ 181 0004 0029     		cmp	r1, #0
+ 182 0006 05DD     		ble	.L18
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         return -1;
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     return nb_send_payload(buf, len);
+ 183              		.loc 1 108 0
+ 184 0008 FFF7FEFF 		bl	nb_send_payload
+ 185              	.LVL24:
+ 186              	.L15:
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** }
+ 187              		.loc 1 109 0
+ 188 000c 08BD     		pop	{r3, pc}
+ 189              	.LVL25:
+ 190              	.L17:
+ 191              	.LCFI4:
+ 192              		.cfi_def_cfa_offset 0
+ 193              		.cfi_restore 3
+ 194              		.cfi_restore 14
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         return -1;
+ 195              		.loc 1 107 0
+ 196 000e 4FF0FF30 		mov	r0, #-1
+ 197              	.LVL26:
+ 198              		.loc 1 109 0
+ 199 0012 7047     		bx	lr
+ 200              	.LVL27:
+ 201              	.L18:
+ 202              	.LCFI5:
+ 203              		.cfi_def_cfa_offset 8
+ 204              		.cfi_offset 3, -8
+ 205              		.cfi_offset 14, -4
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         return -1;
+ 206              		.loc 1 107 0
+ 207 0014 4FF0FF30 		mov	r0, #-1
+ 208              	.LVL28:
+ 209 0018 F8E7     		b	.L15
+ 210              		.cfi_endproc
+ 211              	.LFE134:
+ 213              		.section	.text.los_nb_notify,"ax",%progbits
+ 214              		.align	1
+ 215              		.global	los_nb_notify
+ 216              		.syntax unified
+ 217              		.thumb
+ 218              		.thumb_func
+ 219              		.fpu fpv4-sp-d16
+ 221              	los_nb_notify:
+ 222              	.LFB135:
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** int los_nb_notify(char* featurestr,int cmdlen, oob_callback callback, oob_cmd_match cmd_match)
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** {
+ 223              		.loc 1 112 0
+ 224              		.cfi_startproc
+ 225              		@ args = 0, pretend = 0, frame = 0
+ 226              		@ frame_needed = 0, uses_anonymous_args = 0
+ 227              	.LVL29:
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     if(featurestr == NULL ||cmdlen <= 0 || cmdlen >= OOB_CMD_LEN - 1)
+ 228              		.loc 1 113 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s 			page 7
+
+
+ 229 0000 40B1     		cbz	r0, .L25
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     if(featurestr == NULL ||cmdlen <= 0 || cmdlen >= OOB_CMD_LEN - 1)
+ 230              		.loc 1 112 0 discriminator 1
+ 231 0002 10B5     		push	{r4, lr}
+ 232              	.LCFI6:
+ 233              		.cfi_def_cfa_offset 8
+ 234              		.cfi_offset 4, -8
+ 235              		.cfi_offset 14, -4
+ 236              		.loc 1 113 0 discriminator 1
+ 237 0004 0029     		cmp	r1, #0
+ 238 0006 08DD     		ble	.L26
+ 239              		.loc 1 113 0 is_stmt 0 discriminator 2
+ 240 0008 2629     		cmp	r1, #38
+ 241 000a 09DC     		bgt	.L27
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         return -1;
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     return at.oob_register(featurestr,cmdlen, callback,cmd_match);
+ 242              		.loc 1 115 0 is_stmt 1
+ 243 000c 064C     		ldr	r4, .L32
+ 244 000e 646D     		ldr	r4, [r4, #84]
+ 245 0010 A047     		blx	r4
+ 246              	.LVL30:
+ 247              	.L23:
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** }
+ 248              		.loc 1 116 0
+ 249 0012 10BD     		pop	{r4, pc}
+ 250              	.LVL31:
+ 251              	.L25:
+ 252              	.LCFI7:
+ 253              		.cfi_def_cfa_offset 0
+ 254              		.cfi_restore 4
+ 255              		.cfi_restore 14
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         return -1;
+ 256              		.loc 1 114 0
+ 257 0014 4FF0FF30 		mov	r0, #-1
+ 258              	.LVL32:
+ 259              		.loc 1 116 0
+ 260 0018 7047     		bx	lr
+ 261              	.LVL33:
+ 262              	.L26:
+ 263              	.LCFI8:
+ 264              		.cfi_def_cfa_offset 8
+ 265              		.cfi_offset 4, -8
+ 266              		.cfi_offset 14, -4
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****         return -1;
+ 267              		.loc 1 114 0
+ 268 001a 4FF0FF30 		mov	r0, #-1
+ 269              	.LVL34:
+ 270 001e F8E7     		b	.L23
+ 271              	.LVL35:
+ 272              	.L27:
+ 273 0020 4FF0FF30 		mov	r0, #-1
+ 274              	.LVL36:
+ 275 0024 F5E7     		b	.L23
+ 276              	.L33:
+ 277 0026 00BF     		.align	2
+ 278              	.L32:
+ 279 0028 00000000 		.word	at
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s 			page 8
+
+
+ 280              		.cfi_endproc
+ 281              	.LFE135:
+ 283              		.section	.text.los_nb_deinit,"ax",%progbits
+ 284              		.align	1
+ 285              		.global	los_nb_deinit
+ 286              		.syntax unified
+ 287              		.thumb
+ 288              		.thumb_func
+ 289              		.fpu fpv4-sp-d16
+ 291              	los_nb_deinit:
+ 292              	.LFB136:
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** int los_nb_deinit(void)
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** {
+ 293              		.loc 1 119 0
+ 294              		.cfi_startproc
+ 295              		@ args = 0, pretend = 0, frame = 0
+ 296              		@ frame_needed = 0, uses_anonymous_args = 0
+ 297 0000 08B5     		push	{r3, lr}
+ 298              	.LCFI9:
+ 299              		.cfi_def_cfa_offset 8
+ 300              		.cfi_offset 3, -8
+ 301              		.cfi_offset 14, -4
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c ****     nb_reboot();
+ 302              		.loc 1 120 0
+ 303 0002 FFF7FEFF 		bl	nb_reboot
+ 304              	.LVL37:
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 	at.deinit();
+ 305              		.loc 1 121 0
+ 306 0006 024B     		ldr	r3, .L36
+ 307 0008 9B6D     		ldr	r3, [r3, #88]
+ 308 000a 9847     		blx	r3
+ 309              	.LVL38:
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** 	return 0;
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/nb_iot\los_nb_api.c **** }
+ 310              		.loc 1 123 0
+ 311 000c 0020     		movs	r0, #0
+ 312 000e 08BD     		pop	{r3, pc}
+ 313              	.L37:
+ 314              		.align	2
+ 315              	.L36:
+ 316 0010 00000000 		.word	at
+ 317              		.cfi_endproc
+ 318              	.LFE136:
+ 320              		.section	.rodata
+ 321              		.align	2
+ 322              		.set	.LANCHOR0,. + 0
+ 323              	.LC3:
+ 324 0000 00000000 		.word	.LC0
+ 325 0004 04000000 		.word	4
+ 326 0008 80250000 		.word	9600
+ 327 000c 04000000 		.word	4
+ 328 0010 00080000 		.word	2048
+ 329 0014 0C000000 		.word	.LC1
+ 330 0018 0C000000 		.word	.LC1
+ 331 001c 01000000 		.word	1
+ 332 0020 204E0000 		.word	20000
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s 			page 9
+
+
+ 333              		.section	.rodata.los_nb_init.str1.4,"aMS",%progbits,1
+ 334              		.align	2
+ 335              	.LC4:
+ 336 0000 63616C6C 		.ascii	"call nb_hw_detect,ret is %d\012\000"
+ 336      206E625F 
+ 336      68775F64 
+ 336      65746563 
+ 336      742C7265 
+ 337              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 338              		.align	2
+ 339              	.LC0:
+ 340 0000 6E625F6E 		.ascii	"nb_neul95\000"
+ 340      65756C39 
+ 340      3500
+ 341 000a 0000     		.space	2
+ 342              	.LC1:
+ 343 000c 0D0A00   		.ascii	"\015\012\000"
+ 344              		.text
+ 345              	.Letext0:
+ 346              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 347              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 348              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 349              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 350              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 351              		.file 7 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 352              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 353              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 354              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 355              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 356              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 357              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 358              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 359              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 360              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 361              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 362              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 363              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 364              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 365              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/at_frame/at_main.h"
+ 366              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/nb_iot/los_nb_api.h"
+ 367              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/at_device/bc95.h"
+ 368              		.file 24 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 los_nb_api.c
+c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s:18     .text.los_nb_init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s:25     .text.los_nb_init:00000000 los_nb_init
+c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s:151    .text.los_nb_init:00000088 $d
+c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s:158    .text.los_nb_report:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s:165    .text.los_nb_report:00000000 los_nb_report
+c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s:214    .text.los_nb_notify:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s:221    .text.los_nb_notify:00000000 los_nb_notify
+c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s:279    .text.los_nb_notify:00000028 $d
+c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s:284    .text.los_nb_deinit:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s:291    .text.los_nb_deinit:00000000 los_nb_deinit
+c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s:316    .text.los_nb_deinit:00000010 $d
+c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s:321    .rodata:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s:334    .rodata.los_nb_init.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cc0sGSvf.s:338    .rodata.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+nb_reboot
+nb_send_psk
+nb_hw_detect
+printf
+nb_get_netstat
+nb_check_csq
+nb_set_no_encrypt
+nb_query_ip
+nb_set_cdpserver
+at
+nb_send_payload

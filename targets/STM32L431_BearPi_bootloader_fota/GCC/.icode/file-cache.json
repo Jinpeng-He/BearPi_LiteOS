@@ -1,0 +1,36 @@
+{
+    "openFiles": [
+        {
+            "file": {
+                "name": "Makefile",
+                "size": 17863,
+                "path": "Makefile",
+                "fileExtension": "",
+                "isFolder": false,
+                "isOpen": false,
+                "level": 2,
+                "parentPath": "C:\\Users\\49542\\Downloads\\LiteOS-master\\LiteOS-master\\targets\\STM32L431_BearPi\\GCC"
+            },
+            "currentShow": false,
+            "isPreview": false,
+            "isChange": false
+        },
+        {
+            "file": {
+                "name": "Makefile_Sota",
+                "size": 4687,
+                "path": "Makefile_Sota",
+                "fileExtension": "",
+                "isFolder": false,
+                "isOpen": false,
+                "level": 2,
+                "parentPath": "C:\\Users\\49542\\Downloads\\LiteOS-master\\LiteOS-master\\targets\\STM32L431_BearPi\\GCC"
+            },
+            "currentShow": false,
+            "isPreview": false,
+            "isChange": false
+        }
+    ],
+    "previewName": "D:\\Program Files\\LiteOS Studio",
+    "currentShowName": "Makefile"
+}

@@ -1,0 +1,695 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"flash_adaptor.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.flash_adaptor_write,"ax",%progbits
+  18              		.align	1
+  19              		.global	flash_adaptor_write
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	flash_adaptor_write:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src/flash_
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** #include "flash_adaptor.h"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** #include "hal_qspi_flash.h"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** #include <string.h>
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** #include <stdlib.h>
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** #include "osdepends/atiny_osdep.h"
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** #include <board.h>
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** #include "common.h"
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** #define FLASH_BLOCK_SIZE 0x1000
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** #define FLASH_BLOCK_MASK 0xfe
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** uint8_t TEXT_Buffer[] = {"123456789"};
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** #define TEST_SIZE sizeof(TEXT_Buffer)
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** uint32_t location=0x00010000 - 0x200;
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** int flash_adaptor_write(uint32_t offset, const uint8_t *buffer, uint32_t len)
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** {
+  28              		.loc 1 51 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 32
+  36              		.cfi_offset 4, -32
+  37              		.cfi_offset 5, -28
+  38              		.cfi_offset 6, -24
+  39              		.cfi_offset 7, -20
+  40              		.cfi_offset 8, -16
+  41              		.cfi_offset 9, -12
+  42              		.cfi_offset 10, -8
+  43              		.cfi_offset 14, -4
+  44 0004 82B0     		sub	sp, sp, #8
+  45              	.LCFI1:
+  46              		.cfi_def_cfa_offset 40
+  47 0006 0546     		mov	r5, r0
+  48 0008 1446     		mov	r4, r2
+  49              	.LVL1:
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     int ret = ERR;
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     uint8_t *block_buff;
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     if((NULL == buffer) || (0 == len) || (len > FLASH_BLOCK_SIZE)
+  50              		.loc 1 55 0
+  51 000a 81B3     		cbz	r1, .L2
+  52 000c 8846     		mov	r8, r1
+  53              		.loc 1 55 0 is_stmt 0 discriminator 1
+  54 000e 72B3     		cbz	r2, .L2
+  55              		.loc 1 55 0 discriminator 2
+  56 0010 B2F5805F 		cmp	r2, #4096
+  57 0014 2BD8     		bhi	.L2
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         || ((offset & FLASH_BLOCK_MASK)))
+  58              		.loc 1 56 0 is_stmt 1
+  59 0016 10F0FE0F 		tst	r0, #254
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s 			page 3
+
+
+  60 001a 28D1     		bne	.L2
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     {
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         HAL_OTA_LOG("invalid param len %ld, offset %ld", len, offset);
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         return ERR;
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     }
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     if (len == FLASH_BLOCK_SIZE)
+  61              		.loc 1 62 0
+  62 001c B2F5805F 		cmp	r2, #4096
+  63 0020 32D0     		beq	.L10
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     {
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 				printf("*****writing spi flash!!*****\r\n");
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         ret = hal_spi_flash_erase_write(buffer, FLASH_BLOCK_SIZE, offset);
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         if(ret != OK)
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         {
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****            HAL_OTA_LOG("hal_ota_write_flash fail offset %lu, len %u", offset, FLASH_BLOCK_SIZE);
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         }
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         return ret;
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     }
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     block_buff = atiny_malloc(FLASH_BLOCK_SIZE);
+  64              		.loc 1 73 0
+  65 0022 4FF48050 		mov	r0, #4096
+  66              	.LVL2:
+  67 0026 FFF7FEFF 		bl	atiny_malloc
+  68              	.LVL3:
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     if(NULL == block_buff)
+  69              		.loc 1 74 0
+  70 002a 0646     		mov	r6, r0
+  71 002c 0028     		cmp	r0, #0
+  72 002e 44D0     		beq	.L11
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     {
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         HAL_OTA_LOG("atiny_malloc fail");
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         return ERR;
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     }
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     ret = hal_spi_flash_read(block_buff + len, FLASH_BLOCK_SIZE - len, offset + len);
+  73              		.loc 1 80 0
+  74 0030 C4F5805A 		rsb	r10, r4, #4096
+  75 0034 04EB0509 		add	r9, r4, r5
+  76 0038 4A46     		mov	r2, r9
+  77 003a 5146     		mov	r1, r10
+  78 003c 2044     		add	r0, r0, r4
+  79              	.LVL4:
+  80 003e FFF7FEFF 		bl	hal_spi_flash_read
+  81              	.LVL5:
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     if(ret != OK)
+  82              		.loc 1 81 0
+  83 0042 0746     		mov	r7, r0
+  84 0044 0028     		cmp	r0, #0
+  85 0046 43D0     		beq	.L7
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     {
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         HAL_OTA_LOG("hal_spi_flash_read fail offset %lu, len %lu", offset + len, FLASH_BLOCK_SIZE -
+  86              		.loc 1 83 0
+  87 0048 FFF7FEFF 		bl	atiny_gettime_ms
+  88              	.LVL6:
+  89 004c CDF804A0 		str	r10, [sp, #4]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s 			page 4
+
+
+  90 0050 CDF80090 		str	r9, [sp]
+  91 0054 0346     		mov	r3, r0
+  92 0056 5322     		movs	r2, #83
+  93 0058 2B49     		ldr	r1, .L12
+  94 005a 2C48     		ldr	r0, .L12+4
+  95 005c FFF7FEFF 		bl	printf
+  96              	.LVL7:
+  97              	.L8:
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         goto EXIT;
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     }
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     (void)memcpy(block_buff, buffer, len);
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     ret = hal_spi_flash_erase_write(block_buff, FLASH_BLOCK_SIZE, offset);
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     if(ret != OK)
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     {
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         HAL_OTA_LOG("hal_ota_write_flash fail offset %lu, len %u", offset, FLASH_BLOCK_SIZE);
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     }
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** EXIT:
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     atiny_free(block_buff);
+  98              		.loc 1 93 0
+  99 0060 3046     		mov	r0, r6
+ 100 0062 FFF7FEFF 		bl	atiny_free
+ 101              	.LVL8:
+ 102              	.L1:
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     return ret;
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** }
+ 103              		.loc 1 95 0
+ 104 0066 3846     		mov	r0, r7
+ 105 0068 02B0     		add	sp, sp, #8
+ 106              	.LCFI2:
+ 107              		.cfi_remember_state
+ 108              		.cfi_def_cfa_offset 32
+ 109              		@ sp needed
+ 110 006a BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 111              	.LVL9:
+ 112              	.L2:
+ 113              	.LCFI3:
+ 114              		.cfi_restore_state
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         return ERR;
+ 115              		.loc 1 58 0
+ 116 006e FFF7FEFF 		bl	atiny_gettime_ms
+ 117              	.LVL10:
+ 118 0072 0195     		str	r5, [sp, #4]
+ 119 0074 0094     		str	r4, [sp]
+ 120 0076 0346     		mov	r3, r0
+ 121 0078 3A22     		movs	r2, #58
+ 122 007a 2349     		ldr	r1, .L12
+ 123 007c 2448     		ldr	r0, .L12+8
+ 124 007e FFF7FEFF 		bl	printf
+ 125              	.LVL11:
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     }
+ 126              		.loc 1 59 0
+ 127 0082 4FF0FF37 		mov	r7, #-1
+ 128 0086 EEE7     		b	.L1
+ 129              	.LVL12:
+ 130              	.L10:
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         ret = hal_spi_flash_erase_write(buffer, FLASH_BLOCK_SIZE, offset);
+ 131              		.loc 1 64 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s 			page 5
+
+
+ 132 0088 2248     		ldr	r0, .L12+12
+ 133              	.LVL13:
+ 134 008a FFF7FEFF 		bl	puts
+ 135              	.LVL14:
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         if(ret != OK)
+ 136              		.loc 1 65 0
+ 137 008e 2A46     		mov	r2, r5
+ 138 0090 4FF48051 		mov	r1, #4096
+ 139 0094 4046     		mov	r0, r8
+ 140 0096 FFF7FEFF 		bl	hal_spi_flash_erase_write
+ 141              	.LVL15:
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         {
+ 142              		.loc 1 66 0
+ 143 009a 0746     		mov	r7, r0
+ 144 009c 0028     		cmp	r0, #0
+ 145 009e E2D0     		beq	.L1
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         }
+ 146              		.loc 1 68 0
+ 147 00a0 FFF7FEFF 		bl	atiny_gettime_ms
+ 148              	.LVL16:
+ 149 00a4 4FF48053 		mov	r3, #4096
+ 150 00a8 0193     		str	r3, [sp, #4]
+ 151 00aa 0095     		str	r5, [sp]
+ 152 00ac 0346     		mov	r3, r0
+ 153 00ae 4422     		movs	r2, #68
+ 154 00b0 1549     		ldr	r1, .L12
+ 155 00b2 1948     		ldr	r0, .L12+16
+ 156 00b4 FFF7FEFF 		bl	printf
+ 157              	.LVL17:
+ 158 00b8 D5E7     		b	.L1
+ 159              	.LVL18:
+ 160              	.L11:
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         return ERR;
+ 161              		.loc 1 76 0
+ 162 00ba FFF7FEFF 		bl	atiny_gettime_ms
+ 163              	.LVL19:
+ 164 00be 0346     		mov	r3, r0
+ 165 00c0 4C22     		movs	r2, #76
+ 166 00c2 1149     		ldr	r1, .L12
+ 167 00c4 1548     		ldr	r0, .L12+20
+ 168 00c6 FFF7FEFF 		bl	printf
+ 169              	.LVL20:
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     }
+ 170              		.loc 1 77 0
+ 171 00ca 4FF0FF37 		mov	r7, #-1
+ 172 00ce CAE7     		b	.L1
+ 173              	.LVL21:
+ 174              	.L7:
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     ret = hal_spi_flash_erase_write(block_buff, FLASH_BLOCK_SIZE, offset);
+ 175              		.loc 1 86 0
+ 176 00d0 2246     		mov	r2, r4
+ 177 00d2 4146     		mov	r1, r8
+ 178 00d4 3046     		mov	r0, r6
+ 179              	.LVL22:
+ 180 00d6 FFF7FEFF 		bl	memcpy
+ 181              	.LVL23:
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     if(ret != OK)
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s 			page 6
+
+
+ 182              		.loc 1 87 0
+ 183 00da 2A46     		mov	r2, r5
+ 184 00dc 4FF48051 		mov	r1, #4096
+ 185 00e0 3046     		mov	r0, r6
+ 186 00e2 FFF7FEFF 		bl	hal_spi_flash_erase_write
+ 187              	.LVL24:
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     {
+ 188              		.loc 1 88 0
+ 189 00e6 0746     		mov	r7, r0
+ 190 00e8 0028     		cmp	r0, #0
+ 191 00ea B9D0     		beq	.L8
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     }
+ 192              		.loc 1 90 0
+ 193 00ec FFF7FEFF 		bl	atiny_gettime_ms
+ 194              	.LVL25:
+ 195 00f0 4FF48053 		mov	r3, #4096
+ 196 00f4 0193     		str	r3, [sp, #4]
+ 197 00f6 0095     		str	r5, [sp]
+ 198 00f8 0346     		mov	r3, r0
+ 199 00fa 5A22     		movs	r2, #90
+ 200 00fc 0249     		ldr	r1, .L12
+ 201 00fe 0648     		ldr	r0, .L12+16
+ 202 0100 FFF7FEFF 		bl	printf
+ 203              	.LVL26:
+ 204 0104 ACE7     		b	.L8
+ 205              	.L13:
+ 206 0106 00BF     		.align	2
+ 207              	.L12:
+ 208 0108 00000000 		.word	.LANCHOR0
+ 209 010c AC000000 		.word	.LC4
+ 210 0110 00000000 		.word	.LC0
+ 211 0114 30000000 		.word	.LC1
+ 212 0118 50000000 		.word	.LC2
+ 213 011c 8C000000 		.word	.LC3
+ 214              		.cfi_endproc
+ 215              	.LFE133:
+ 217              		.section	.text.flash_adaptor_init,"ax",%progbits
+ 218              		.align	1
+ 219              		.global	flash_adaptor_init
+ 220              		.syntax unified
+ 221              		.thumb
+ 222              		.thumb_func
+ 223              		.fpu fpv4-sp-d16
+ 225              	flash_adaptor_init:
+ 226              	.LFB134:
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** void flash_adaptor_init(void)
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** {
+ 227              		.loc 1 100 0
+ 228              		.cfi_startproc
+ 229              		@ args = 0, pretend = 0, frame = 0
+ 230              		@ frame_needed = 0, uses_anonymous_args = 0
+ 231 0000 08B5     		push	{r3, lr}
+ 232              	.LCFI4:
+ 233              		.cfi_def_cfa_offset 8
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s 			page 7
+
+
+ 234              		.cfi_offset 3, -8
+ 235              		.cfi_offset 14, -4
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     hal_spi_flash_config();
+ 236              		.loc 1 101 0
+ 237 0002 FFF7FEFF 		bl	hal_spi_flash_config
+ 238              	.LVL27:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 	
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 		//uint8_t datatemp[TEST_SIZE];
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 		//hal_spi_flash_write(TEXT_Buffer, TEST_SIZE, &location);		//从指定地址处开始,写入SIZE长度的数据 
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     //hal_spi_flash_read(datatemp, TEST_SIZE, location);					//从指定地址处开始,读出SIZE个字节
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 		//printf("SPI  datatemp :%s\r\n",datatemp);
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** }
+ 239              		.loc 1 107 0
+ 240 0006 08BD     		pop	{r3, pc}
+ 241              		.cfi_endproc
+ 242              	.LFE134:
+ 244              		.section	.text.flash_adaptor_write_mqtt_info,"ax",%progbits
+ 245              		.align	1
+ 246              		.global	flash_adaptor_write_mqtt_info
+ 247              		.syntax unified
+ 248              		.thumb
+ 249              		.thumb_func
+ 250              		.fpu fpv4-sp-d16
+ 252              	flash_adaptor_write_mqtt_info:
+ 253              	.LFB135:
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** int flash_adaptor_write_mqtt_info(const void *buffer, uint32_t len)
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** {
+ 254              		.loc 1 110 0
+ 255              		.cfi_startproc
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258              	.LVL28:
+ 259 0000 10B5     		push	{r4, lr}
+ 260              	.LCFI5:
+ 261              		.cfi_def_cfa_offset 8
+ 262              		.cfi_offset 4, -8
+ 263              		.cfi_offset 14, -4
+ 264 0002 82B0     		sub	sp, sp, #8
+ 265              	.LCFI6:
+ 266              		.cfi_def_cfa_offset 16
+ 267 0004 0C46     		mov	r4, r1
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     if(len > MQTT_INFO_SIZE)
+ 268              		.loc 1 111 0
+ 269 0006 B1F5004F 		cmp	r1, #32768
+ 270 000a 07D8     		bhi	.L20
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     {
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         HAL_OTA_LOG("err offset len %lu",  len);
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         return ERR;
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     }
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     return flash_adaptor_write(MQTT_INFO_ADDR, (const uint8_t *)buffer, len);
+ 271              		.loc 1 117 0
+ 272 000c 0A46     		mov	r2, r1
+ 273 000e 0146     		mov	r1, r0
+ 274              	.LVL29:
+ 275 0010 4FF40040 		mov	r0, #32768
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s 			page 8
+
+
+ 276              	.LVL30:
+ 277 0014 FFF7FEFF 		bl	flash_adaptor_write
+ 278              	.LVL31:
+ 279              	.L16:
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** }
+ 280              		.loc 1 118 0
+ 281 0018 02B0     		add	sp, sp, #8
+ 282              	.LCFI7:
+ 283              		.cfi_remember_state
+ 284              		.cfi_def_cfa_offset 8
+ 285              		@ sp needed
+ 286 001a 10BD     		pop	{r4, pc}
+ 287              	.LVL32:
+ 288              	.L20:
+ 289              	.LCFI8:
+ 290              		.cfi_restore_state
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         return ERR;
+ 291              		.loc 1 113 0
+ 292 001c FFF7FEFF 		bl	atiny_gettime_ms
+ 293              	.LVL33:
+ 294 0020 0094     		str	r4, [sp]
+ 295 0022 0346     		mov	r3, r0
+ 296 0024 7122     		movs	r2, #113
+ 297 0026 0349     		ldr	r1, .L21
+ 298 0028 0348     		ldr	r0, .L21+4
+ 299 002a FFF7FEFF 		bl	printf
+ 300              	.LVL34:
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     }
+ 301              		.loc 1 114 0
+ 302 002e 4FF0FF30 		mov	r0, #-1
+ 303 0032 F1E7     		b	.L16
+ 304              	.L22:
+ 305              		.align	2
+ 306              	.L21:
+ 307 0034 00000000 		.word	.LANCHOR1
+ 308 0038 00000000 		.word	.LC5
+ 309              		.cfi_endproc
+ 310              	.LFE135:
+ 312              		.section	.text.flash_adaptor_read_mqtt_info,"ax",%progbits
+ 313              		.align	1
+ 314              		.global	flash_adaptor_read_mqtt_info
+ 315              		.syntax unified
+ 316              		.thumb
+ 317              		.thumb_func
+ 318              		.fpu fpv4-sp-d16
+ 320              	flash_adaptor_read_mqtt_info:
+ 321              	.LFB136:
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** 
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** int flash_adaptor_read_mqtt_info(void *buffer, uint32_t len)
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** {
+ 322              		.loc 1 121 0
+ 323              		.cfi_startproc
+ 324              		@ args = 0, pretend = 0, frame = 0
+ 325              		@ frame_needed = 0, uses_anonymous_args = 0
+ 326              	.LVL35:
+ 327 0000 10B5     		push	{r4, lr}
+ 328              	.LCFI9:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s 			page 9
+
+
+ 329              		.cfi_def_cfa_offset 8
+ 330              		.cfi_offset 4, -8
+ 331              		.cfi_offset 14, -4
+ 332 0002 82B0     		sub	sp, sp, #8
+ 333              	.LCFI10:
+ 334              		.cfi_def_cfa_offset 16
+ 335 0004 0C46     		mov	r4, r1
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     if(len > MQTT_INFO_SIZE)
+ 336              		.loc 1 122 0
+ 337 0006 B1F5004F 		cmp	r1, #32768
+ 338 000a 05D8     		bhi	.L27
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     {
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         HAL_OTA_LOG("err offset len %lu",  len);
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         return ERR;
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     }
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****      return hal_spi_flash_read(buffer, len, MQTT_INFO_ADDR);
+ 339              		.loc 1 127 0
+ 340 000c 4FF40042 		mov	r2, #32768
+ 341 0010 FFF7FEFF 		bl	hal_spi_flash_read
+ 342              	.LVL36:
+ 343              	.L23:
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c **** }
+ 344              		.loc 1 128 0
+ 345 0014 02B0     		add	sp, sp, #8
+ 346              	.LCFI11:
+ 347              		.cfi_remember_state
+ 348              		.cfi_def_cfa_offset 8
+ 349              		@ sp needed
+ 350 0016 10BD     		pop	{r4, pc}
+ 351              	.LVL37:
+ 352              	.L27:
+ 353              	.LCFI12:
+ 354              		.cfi_restore_state
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****         return ERR;
+ 355              		.loc 1 124 0
+ 356 0018 FFF7FEFF 		bl	atiny_gettime_ms
+ 357              	.LVL38:
+ 358 001c 0094     		str	r4, [sp]
+ 359 001e 0346     		mov	r3, r0
+ 360 0020 7C22     		movs	r2, #124
+ 361 0022 0349     		ldr	r1, .L28
+ 362 0024 0348     		ldr	r0, .L28+4
+ 363 0026 FFF7FEFF 		bl	printf
+ 364              	.LVL39:
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Src\flash_adaptor.c ****     }
+ 365              		.loc 1 125 0
+ 366 002a 4FF0FF30 		mov	r0, #-1
+ 367 002e F1E7     		b	.L23
+ 368              	.L29:
+ 369              		.align	2
+ 370              	.L28:
+ 371 0030 00000000 		.word	.LANCHOR2
+ 372 0034 00000000 		.word	.LC5
+ 373              		.cfi_endproc
+ 374              	.LFE136:
+ 376              		.global	location
+ 377              		.global	TEXT_Buffer
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s 			page 10
+
+
+ 378              		.section	.data.TEXT_Buffer,"aw",%progbits
+ 379              		.align	2
+ 382              	TEXT_Buffer:
+ 383 0000 31323334 		.ascii	"123456789\000"
+ 383      35363738 
+ 383      3900
+ 384              		.section	.data.location,"aw",%progbits
+ 385              		.align	2
+ 388              	location:
+ 389 0000 00FE0000 		.word	65024
+ 390              		.section	.rodata.__FUNCTION__.10330,"a",%progbits
+ 391              		.align	2
+ 392              		.set	.LANCHOR0,. + 0
+ 395              	__FUNCTION__.10330:
+ 396 0000 666C6173 		.ascii	"flash_adaptor_write\000"
+ 396      685F6164 
+ 396      6170746F 
+ 396      725F7772 
+ 396      69746500 
+ 397              		.section	.rodata.__FUNCTION__.10339,"a",%progbits
+ 398              		.align	2
+ 399              		.set	.LANCHOR1,. + 0
+ 402              	__FUNCTION__.10339:
+ 403 0000 666C6173 		.ascii	"flash_adaptor_write_mqtt_info\000"
+ 403      685F6164 
+ 403      6170746F 
+ 403      725F7772 
+ 403      6974655F 
+ 404              		.section	.rodata.__FUNCTION__.10344,"a",%progbits
+ 405              		.align	2
+ 406              		.set	.LANCHOR2,. + 0
+ 409              	__FUNCTION__.10344:
+ 410 0000 666C6173 		.ascii	"flash_adaptor_read_mqtt_info\000"
+ 410      685F6164 
+ 410      6170746F 
+ 410      725F7265 
+ 410      61645F6D 
+ 411              		.section	.rodata.flash_adaptor_write.str1.4,"aMS",%progbits,1
+ 412              		.align	2
+ 413              	.LC0:
+ 414 0000 5B25733A 		.ascii	"[%s:%d][%lu]invalid param len %ld, offset %ld\015\012"
+ 414      25645D5B 
+ 414      256C755D 
+ 414      696E7661 
+ 414      6C696420 
+ 415 002f 00       		.ascii	"\000"
+ 416              	.LC1:
+ 417 0030 2A2A2A2A 		.ascii	"*****writing spi flash!!*****\015\000"
+ 417      2A777269 
+ 417      74696E67 
+ 417      20737069 
+ 417      20666C61 
+ 418 004f 00       		.space	1
+ 419              	.LC2:
+ 420 0050 5B25733A 		.ascii	"[%s:%d][%lu]hal_ota_write_flash fail offset %lu, le"
+ 420      25645D5B 
+ 420      256C755D 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s 			page 11
+
+
+ 420      68616C5F 
+ 420      6F74615F 
+ 421 0083 6E202575 		.ascii	"n %u\015\012\000"
+ 421      0D0A00
+ 422 008a 0000     		.space	2
+ 423              	.LC3:
+ 424 008c 5B25733A 		.ascii	"[%s:%d][%lu]atiny_malloc fail\015\012\000"
+ 424      25645D5B 
+ 424      256C755D 
+ 424      6174696E 
+ 424      795F6D61 
+ 425              	.LC4:
+ 426 00ac 5B25733A 		.ascii	"[%s:%d][%lu]hal_spi_flash_read fail offset %lu, len"
+ 426      25645D5B 
+ 426      256C755D 
+ 426      68616C5F 
+ 426      7370695F 
+ 427 00df 20256C75 		.ascii	" %lu\015\012\000"
+ 427      0D0A00
+ 428              		.section	.rodata.flash_adaptor_write_mqtt_info.str1.4,"aMS",%progbits,1
+ 429              		.align	2
+ 430              	.LC5:
+ 431 0000 5B25733A 		.ascii	"[%s:%d][%lu]err offset len %lu\015\012\000"
+ 431      25645D5B 
+ 431      256C755D 
+ 431      65727220 
+ 431      6F666673 
+ 432              		.text
+ 433              	.Letext0:
+ 434              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 435              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 436              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 437              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 438              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 439              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 440              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 441              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 442              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 443              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 444              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 445              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 446              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 447              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 448              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 449              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 450              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 451              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 452              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 453              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 454              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Hardware/
+ 455              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/osdepends/atiny_osdep.h"
+ 456              		.file 24 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 457              		.file 25 "<built-in>"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 flash_adaptor.c
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:18     .text.flash_adaptor_write:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:25     .text.flash_adaptor_write:00000000 flash_adaptor_write
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:208    .text.flash_adaptor_write:00000108 $d
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:218    .text.flash_adaptor_init:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:225    .text.flash_adaptor_init:00000000 flash_adaptor_init
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:245    .text.flash_adaptor_write_mqtt_info:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:252    .text.flash_adaptor_write_mqtt_info:00000000 flash_adaptor_write_mqtt_info
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:307    .text.flash_adaptor_write_mqtt_info:00000034 $d
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:313    .text.flash_adaptor_read_mqtt_info:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:320    .text.flash_adaptor_read_mqtt_info:00000000 flash_adaptor_read_mqtt_info
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:371    .text.flash_adaptor_read_mqtt_info:00000030 $d
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:388    .data.location:00000000 location
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:382    .data.TEXT_Buffer:00000000 TEXT_Buffer
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:379    .data.TEXT_Buffer:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:385    .data.location:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:391    .rodata.__FUNCTION__.10330:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:395    .rodata.__FUNCTION__.10330:00000000 __FUNCTION__.10330
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:398    .rodata.__FUNCTION__.10339:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:402    .rodata.__FUNCTION__.10339:00000000 __FUNCTION__.10339
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:405    .rodata.__FUNCTION__.10344:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:409    .rodata.__FUNCTION__.10344:00000000 __FUNCTION__.10344
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:412    .rodata.flash_adaptor_write.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccIfMfa9.s:429    .rodata.flash_adaptor_write_mqtt_info.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+atiny_malloc
+hal_spi_flash_read
+atiny_gettime_ms
+printf
+atiny_free
+puts
+hal_spi_flash_erase_write
+memcpy
+hal_spi_flash_config

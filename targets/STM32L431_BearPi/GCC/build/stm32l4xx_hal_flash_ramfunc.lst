@@ -1,0 +1,267 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccBZIuEg.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32l4xx_hal_flash_ramfunc.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.RamFunc,"ax",%progbits
+  18              		.align	1
+  19              		.global	HAL_FLASHEx_EnableRunPowerDown
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	HAL_FLASHEx_EnableRunPowerDown:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/ST
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** /**
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   ******************************************************************************
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * @file    stm32l4xx_hal_flash_ramfunc.c
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * @author  MCD Application Team
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * @brief   FLASH RAMFUNC driver.
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *          This file provides a Flash firmware functions which should be 
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *          executed from internal SRAM
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *            + FLASH HalfPage Programming
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *            + FLASH Power Down in Run mode
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *  @verbatim
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   ==============================================================================
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****                    ##### Flash RAM functions #####
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   ==============================================================================    
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** 
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****     *** ARM Compiler ***
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****     --------------------
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****     [..] RAM functions are defined using the toolchain options. 
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****          Functions that are executed in RAM should reside in a separate
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****          source module. Using the 'Options for File' dialog you can simply change
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****          the 'Code / Const' area of a module to a memory space in physical RAM.
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****          Available memory areas are declared in the 'Target' tab of the 
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****          Options for Target' dialog.
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** 
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****     *** ICCARM Compiler ***
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****     -----------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****     [..] RAM functions are defined using a specific toolchain keyword "__ramfunc".
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** 
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****     *** GNU Compiler ***
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****     --------------------
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****     [..] RAM functions are defined using a specific toolchain attribute
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccBZIuEg.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****          "__attribute__((section(".RamFunc")))".
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   @endverbatim
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   ******************************************************************************
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * @attention
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * are permitted provided that the following conditions are met:
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *      this list of conditions and the following disclaimer.
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *      this list of conditions and the following disclaimer in the documentation
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *      and/or other materials provided with the distribution.
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *      may be used to endorse or promote products derived from this software
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *      without specific prior written permission.
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   *
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   ******************************************************************************
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   */ 
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** 
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** /* Includes ------------------------------------------------------------------*/
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** #include "stm32l4xx_hal.h"
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** 
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** /** @addtogroup STM32L4xx_HAL_Driver
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * @{
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   */
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** 
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** /** @defgroup FLASH_RAMFUNC FLASH_RAMFUNC
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * @brief FLASH functions executed from RAM
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * @{
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   */
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** 
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** #ifdef HAL_FLASH_MODULE_ENABLED
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** 
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** /* Private typedef -----------------------------------------------------------*/
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** /* Private define ------------------------------------------------------------*/
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** /* Private macro -------------------------------------------------------------*/
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** /* Private variables ---------------------------------------------------------*/
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** extern FLASH_ProcessTypeDef pFlash;
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** 
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** /* Private function prototypes -----------------------------------------------*/
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** /* Exported functions -------------------------------------------------------*/
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** 
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** /** @defgroup FLASH_RAMFUNC_Exported_Functions FLASH in RAM function Exported Functions
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccBZIuEg.s 			page 3
+
+
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * @{
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   */
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** 
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** /** @defgroup FLASH_RAMFUNC_Exported_Functions_Group1 Peripheral features functions 
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****  *  @brief   Data transfers functions 
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****  *
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** @verbatim   
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****  ===============================================================================
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****                       ##### ramfunc functions #####
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****  ===============================================================================  
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****     [..]
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****     This subsection provides a set of functions that should be executed from RAM.
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** 
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** @endverbatim
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * @{
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   */
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** 
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** /**
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * @brief   Enable the Power down in Run Mode
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * @note    This function should be called and executed from SRAM memory
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * @retval None
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   */
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** __RAM_FUNC HAL_FLASHEx_EnableRunPowerDown(void)
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** {
+  28              		.loc 1 112 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   /* Enable the Power Down in Run mode*/
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   __HAL_FLASH_POWER_DOWN_ENABLE();
+  33              		.loc 1 114 0
+  34 0000 054B     		ldr	r3, .L2
+  35 0002 064A     		ldr	r2, .L2+4
+  36 0004 5A60     		str	r2, [r3, #4]
+  37 0006 064A     		ldr	r2, .L2+8
+  38 0008 5A60     		str	r2, [r3, #4]
+  39 000a 1A68     		ldr	r2, [r3]
+  40 000c 42F40052 		orr	r2, r2, #8192
+  41 0010 1A60     		str	r2, [r3]
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   return HAL_OK;
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** }
+  42              		.loc 1 118 0
+  43 0012 0020     		movs	r0, #0
+  44 0014 7047     		bx	lr
+  45              	.L3:
+  46 0016 00BF     		.align	2
+  47              	.L2:
+  48 0018 00200240 		.word	1073881088
+  49 001c 37261504 		.word	68494903
+  50 0020 FDFCFBFA 		.word	-84148995
+  51              		.cfi_endproc
+  52              	.LFE133:
+  54              		.align	1
+  55              		.global	HAL_FLASHEx_DisableRunPowerDown
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccBZIuEg.s 			page 4
+
+
+  56              		.syntax unified
+  57              		.thumb
+  58              		.thumb_func
+  59              		.fpu fpv4-sp-d16
+  61              	HAL_FLASHEx_DisableRunPowerDown:
+  62              	.LFB134:
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** 
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** /**
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * @brief   Disable the Power down in Run Mode
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * @note    This function should be called and executed from SRAM memory
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   * @retval None
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   */
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** __RAM_FUNC HAL_FLASHEx_DisableRunPowerDown(void)
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** {
+  63              		.loc 1 126 0
+  64              		.cfi_startproc
+  65              		@ args = 0, pretend = 0, frame = 0
+  66              		@ frame_needed = 0, uses_anonymous_args = 0
+  67              		@ link register save eliminated.
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   /* Disable the Power Down in Run mode*/
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   __HAL_FLASH_POWER_DOWN_DISABLE();
+  68              		.loc 1 128 0
+  69 0024 054B     		ldr	r3, .L5
+  70 0026 064A     		ldr	r2, .L5+4
+  71 0028 5A60     		str	r2, [r3, #4]
+  72 002a 064A     		ldr	r2, .L5+8
+  73 002c 5A60     		str	r2, [r3, #4]
+  74 002e 1A68     		ldr	r2, [r3]
+  75 0030 22F40052 		bic	r2, r2, #8192
+  76 0034 1A60     		str	r2, [r3]
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** 
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c ****   return HAL_OK;  
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/STM32L4xx_HAL_Driver/Src\stm32l4xx_hal_flash_ramfunc.c **** }
+  77              		.loc 1 131 0
+  78 0036 0020     		movs	r0, #0
+  79 0038 7047     		bx	lr
+  80              	.L6:
+  81 003a 00BF     		.align	2
+  82              	.L5:
+  83 003c 00200240 		.word	1073881088
+  84 0040 37261504 		.word	68494903
+  85 0044 FDFCFBFA 		.word	-84148995
+  86              		.cfi_endproc
+  87              	.LFE134:
+  89              		.text
+  90              	.Letext0:
+  91              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  92              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  93              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  94              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+  95              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  96              		.file 7 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+  97              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+  98              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+  99              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 100              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/stm32
+ 101              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccBZIuEg.s 			page 5
+
+
+ 102              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 103              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 104              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 105              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 106              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 107              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 108              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 109              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 110              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 111              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ 112              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Drivers/S
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccBZIuEg.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32l4xx_hal_flash_ramfunc.c
+c:\Users\lenovo\AppData\Local\Temp\ccBZIuEg.s:18     .RamFunc:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccBZIuEg.s:25     .RamFunc:00000000 HAL_FLASHEx_EnableRunPowerDown
+c:\Users\lenovo\AppData\Local\Temp\ccBZIuEg.s:48     .RamFunc:00000018 $d
+c:\Users\lenovo\AppData\Local\Temp\ccBZIuEg.s:54     .RamFunc:00000024 $t
+c:\Users\lenovo\AppData\Local\Temp\ccBZIuEg.s:61     .RamFunc:00000024 HAL_FLASHEx_DisableRunPowerDown
+c:\Users\lenovo\AppData\Local\Temp\ccBZIuEg.s:83     .RamFunc:0000003c $d
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,1638 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"los_heap.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.osHeapPrvGetNext,"ax",%progbits
+  18              		.align	1
+  19              		.global	osHeapPrvGetNext
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	osHeapPrvGetNext:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little/los_
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** /**@defgroup los_heap Heap
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  * @ingroup kernel
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  */
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #include <string.h>
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #include <los_hwi.h>
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #include <los_config.h>
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #include <los_heap.ph>
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #include <los_typedef.h>
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #if (LOSCFG_MEM_TASK_USED_STATISTICS == YES)
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #include "los_memstat.inc"
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #endif
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** LITE_OS_SEC_DATA_INIT static UINT32 g_uwAllocCount = 0;
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** LITE_OS_SEC_DATA_INIT static UINT32 g_uwFreeCount = 0;
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #if (LOSCFG_HEAP_MEMORY_PEAK_STATISTICS == YES)
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** LITE_OS_SEC_DATA_INIT static UINT32 g_uwCurHeapUsed = 0;
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** LITE_OS_SEC_DATA_INIT static UINT32 g_uwMaxHeapUsed = 0;
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #endif
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #define HEAP_CAST(t, exp) ((t)(exp))
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #define HEAP_ALIGN 4
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #define ALIGNE(sz) (sz + HEAP_ALIGN - 1) & ~(HEAP_ALIGN - 1)
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** /*****************************************************************************
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Function : osHeapPrvGetNext
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Description : look up the next memory node according to one memory node in the memory block list.
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Input       : struct LOS_HEAP_MANAGER *pHeapMan    --- Pointer to the manager,to distinguish heap
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****                struct LOS_HEAP_NODE* node  --- Size of memory in bytes to allocate
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Output      : None
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Return      : Pointer to next memory node
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** *****************************************************************************/
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** LITE_OS_SEC_TEXT struct LOS_HEAP_NODE* osHeapPrvGetNext(struct LOS_HEAP_MANAGER *pstHeapMan, struct
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** {
+  28              		.loc 1 69 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     return (pstHeapMan->pstTail == pstNode) ? NULL : (struct LOS_HEAP_NODE*)(pstNode->ucData + pstN
+  34              		.loc 1 70 0
+  35 0000 4368     		ldr	r3, [r0, #4]
+  36 0002 8B42     		cmp	r3, r1
+  37 0004 06D0     		beq	.L3
+  38              		.loc 1 70 0 is_stmt 0 discriminator 1
+  39 0006 01F10800 		add	r0, r1, #8
+  40              	.LVL1:
+  41 000a 4B68     		ldr	r3, [r1, #4]
+  42 000c C3F31D03 		ubfx	r3, r3, #0, #30
+  43 0010 1844     		add	r0, r0, r3
+  44 0012 7047     		bx	lr
+  45              	.LVL2:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 3
+
+
+  46              	.L3:
+  47              		.loc 1 70 0
+  48 0014 0020     		movs	r0, #0
+  49              	.LVL3:
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** }
+  50              		.loc 1 71 0 is_stmt 1
+  51 0016 7047     		bx	lr
+  52              		.cfi_endproc
+  53              	.LFE133:
+  55              		.section	.text.osHeapInit,"ax",%progbits
+  56              		.align	1
+  57              		.global	osHeapInit
+  58              		.syntax unified
+  59              		.thumb
+  60              		.thumb_func
+  61              		.fpu fpv4-sp-d16
+  63              	osHeapInit:
+  64              	.LFB134:
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** /*****************************************************************************
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Function : osHeapInit
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Description : To initialize the heap memory and get the begin address and size of heap memory,then
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Input       : struct LOS_HEAP_MANAGER *pHeapMan    --- Pointer to the manager,to distinguish heap
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****                VOID *pPool  --- begin address of the heap memory pool
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****                UITN32 uwSz  --- size of the heap memory pool
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Output      : None
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Return      : 1:success 0:error
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** *****************************************************************************/
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** LITE_OS_SEC_TEXT_INIT BOOL osHeapInit(VOID *pPool, UINT32 uwSz)
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** {
+  65              		.loc 1 83 0
+  66              		.cfi_startproc
+  67              		@ args = 0, pretend = 0, frame = 0
+  68              		@ frame_needed = 0, uses_anonymous_args = 0
+  69              	.LVL4:
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     struct LOS_HEAP_NODE* pstNode;
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     struct LOS_HEAP_MANAGER *pstHeapMan = HEAP_CAST(struct LOS_HEAP_MANAGER *, pPool);
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if (!pstHeapMan || (uwSz <= (sizeof(struct LOS_HEAP_NODE) +  sizeof(struct LOS_HEAP_MANAGER))))
+  70              		.loc 1 87 0
+  71 0000 F8B1     		cbz	r0, .L6
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     struct LOS_HEAP_NODE* pstNode;
+  72              		.loc 1 83 0 discriminator 1
+  73 0002 38B5     		push	{r3, r4, r5, lr}
+  74              	.LCFI0:
+  75              		.cfi_def_cfa_offset 16
+  76              		.cfi_offset 3, -16
+  77              		.cfi_offset 4, -12
+  78              		.cfi_offset 5, -8
+  79              		.cfi_offset 14, -4
+  80 0004 0546     		mov	r5, r0
+  81              		.loc 1 87 0 discriminator 1
+  82 0006 5829     		cmp	r1, #88
+  83 0008 01D8     		bhi	.L12
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         return FALSE;
+  84              		.loc 1 88 0
+  85 000a 0020     		movs	r0, #0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 4
+
+
+  86              	.LVL5:
+  87              	.L4:
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     memset(pPool, 0, uwSz);
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstHeapMan->uwSize = uwSz;
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstNode = pstHeapMan->pstHead = (struct LOS_HEAP_NODE*)((UINT8*)pPool + sizeof(struct LOS_HEAP_
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstHeapMan->pstTail = pstNode;
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstNode->uwUsed = 0;
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstNode->pstPrev = NULL;
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstNode->uwSize = uwSz - sizeof(struct LOS_HEAP_NODE) - sizeof(struct LOS_HEAP_MANAGER);
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     return TRUE;
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** }
+  88              		.loc 1 103 0
+  89 000c 38BD     		pop	{r3, r4, r5, pc}
+  90              	.LVL6:
+  91              	.L12:
+  92 000e 0C46     		mov	r4, r1
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+  93              		.loc 1 90 0
+  94 0010 0A46     		mov	r2, r1
+  95 0012 0021     		movs	r1, #0
+  96              	.LVL7:
+  97 0014 FFF7FEFF 		bl	memset
+  98              	.LVL8:
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+  99              		.loc 1 92 0
+ 100 0018 AC60     		str	r4, [r5, #8]
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 101              		.loc 1 94 0
+ 102 001a 05F15003 		add	r3, r5, #80
+ 103 001e 2B60     		str	r3, [r5]
+ 104              	.LVL9:
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 105              		.loc 1 96 0
+ 106 0020 6B60     		str	r3, [r5, #4]
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstNode->pstPrev = NULL;
+ 107              		.loc 1 98 0
+ 108 0022 95F85720 		ldrb	r2, [r5, #87]	@ zero_extendqisi2
+ 109 0026 6FF38612 		bfc	r2, #6, #1
+ 110 002a 85F85720 		strb	r2, [r5, #87]
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstNode->uwSize = uwSz - sizeof(struct LOS_HEAP_NODE) - sizeof(struct LOS_HEAP_MANAGER);
+ 111              		.loc 1 99 0
+ 112 002e 0022     		movs	r2, #0
+ 113 0030 2A65     		str	r2, [r5, #80]
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 114              		.loc 1 100 0
+ 115 0032 A4F15801 		sub	r1, r4, #88
+ 116 0036 6A6D     		ldr	r2, [r5, #84]
+ 117 0038 61F31D02 		bfi	r2, r1, #0, #30
+ 118 003c 6A65     		str	r2, [r5, #84]
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** }
+ 119              		.loc 1 102 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 5
+
+
+ 120 003e 0120     		movs	r0, #1
+ 121 0040 E4E7     		b	.L4
+ 122              	.LVL10:
+ 123              	.L6:
+ 124              	.LCFI1:
+ 125              		.cfi_def_cfa_offset 0
+ 126              		.cfi_restore 3
+ 127              		.cfi_restore 4
+ 128              		.cfi_restore 5
+ 129              		.cfi_restore 14
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 130              		.loc 1 88 0
+ 131 0042 0020     		movs	r0, #0
+ 132              	.LVL11:
+ 133              		.loc 1 103 0
+ 134 0044 7047     		bx	lr
+ 135              		.cfi_endproc
+ 136              	.LFE134:
+ 138              		.section	.text.osHeapFree,"ax",%progbits
+ 139              		.align	1
+ 140              		.global	osHeapFree
+ 141              		.syntax unified
+ 142              		.thumb
+ 143              		.thumb_func
+ 144              		.fpu fpv4-sp-d16
+ 146              	osHeapFree:
+ 147              	.LFB137:
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** /*****************************************************************************
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Function : osHeapAlloc
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Description : To alloc memory block from the heap memory poll
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Input       : VOID *pPool   --- Pointer to the manager,to distinguish heap
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****                UINT32 uwSz   --- size of the heap memory pool
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Output      : None
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Return      : NULL:error    other value:the address of the memory we alloced
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** *****************************************************************************/
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** LITE_OS_SEC_TEXT VOID* osHeapAlloc(VOID *pPool, UINT32 uwSz)
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** {
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     struct LOS_HEAP_NODE *pstNode, *pstT, *pstBest = NULL;
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     VOID* pRet = NULL;
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     UINT32 uvIntSave;
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     struct LOS_HEAP_MANAGER *pstHeapMan = HEAP_CAST(struct LOS_HEAP_MANAGER *, pPool);
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if (!pstHeapMan)
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         return NULL;
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     uvIntSave = LOS_IntLock();
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     uwSz = ALIGNE(uwSz);
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstNode = pstHeapMan->pstTail;
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     while (pstNode)
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         if (!pstNode->uwUsed && pstNode->uwSize >= uwSz && (!pstBest || pstBest->uwSize > pstNode->
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         {
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 6
+
+
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             pstBest = pstNode;
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             if (pstBest->uwSize == uwSz)
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             {
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****                 goto SIZE_MATCH;
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             }
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         }
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstNode = pstNode->pstPrev;
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if (!pstBest) /*alloc failed*/
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         PRINT_ERR("there's not enough whole to alloc %x Bytes!\n",uwSz);
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         goto out;
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if (pstBest->uwSize - uwSz > sizeof(struct LOS_HEAP_NODE))
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         /* hole divide into 2 */
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstNode = (struct LOS_HEAP_NODE*)(pstBest->ucData + uwSz);
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstNode->uwUsed = 0;
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstNode->uwSize = pstBest->uwSize - uwSz- sizeof(struct LOS_HEAP_NODE);
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstNode->pstPrev = pstBest;
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstT = osHeapPrvGetNext(pstHeapMan, pstBest);
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         if (pstT == NULL)
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         {
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             pstHeapMan->pstTail = pstNode;      /* pstBest is tail */
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         }
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         else
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         {
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             pstT->pstPrev = pstNode;
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         }
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstBest->uwSize = uwSz;
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** SIZE_MATCH:
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstBest->uwAlign = 0;
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstBest->uwUsed = 1;
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pRet = pstBest->ucData;
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #if (LOSCFG_MEM_TASK_USED_STATISTICS == YES)
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     OS_MEM_ADD_USED(pstBest->uwSize);
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #endif
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #if (LOSCFG_HEAP_MEMORY_PEAK_STATISTICS == YES)
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     g_uwCurHeapUsed += (uwSz + sizeof(struct LOS_HEAP_NODE));
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if(g_uwCurHeapUsed > g_uwMaxHeapUsed)
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         g_uwMaxHeapUsed = g_uwCurHeapUsed;
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #endif
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     g_uwAllocCount++;
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** out:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 7
+
+
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if (pstHeapMan->pstTail->uwSize < 1024)
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         osAlarmHeapInfo(pstHeapMan);
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     LOS_IntRestore(uvIntSave);
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     return pRet;
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** }
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** /*****************************************************************************
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Function : osHeapAllocAlign
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Description : To alloc memory block from the heap memory poll with
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Input       : VOID *pPool   --- Pointer to the manager,to distinguish heap
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****                UINT32 uwSz   --- size of the heap memory pool
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****                UINT32 uwBoundary --- boundary the heap needs align
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Output      : None
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Return      : NULL:error    other value:the address of the memory we alloced
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** *****************************************************************************/
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** LITE_OS_SEC_TEXT VOID* osHeapAllocAlign(VOID *pPool, UINT32 uwSz, UINT32 uwBoundary)
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** {
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     VOID *pRet = NULL;
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     UINT32 uwUseSize;
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     UINT32 uwGapSize;
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     VOID *pAlignedPtr;
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if ((NULL == pPool) || (0 == uwSz) || (uwBoundary < sizeof(VOID *)) || !IS_ALIGNED(uwBoundary))
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         return NULL;
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     /* worst case is that the node happen to be 4 bytes ahead of the boundary */
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     uwUseSize = uwSz + uwBoundary - sizeof(void*);
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pRet = osHeapAlloc(pPool, uwUseSize);
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if (pRet)
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pAlignedPtr = (VOID *)OS_MEM_ALIGN(pRet, uwBoundary);
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         if (pRet == pAlignedPtr)
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         {
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             goto out;
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         }
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         uwGapSize = (UINT32)pAlignedPtr - (UINT32)pRet;
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         OS_MEM_SET_ALIGN_FLAG(uwGapSize);
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         *((UINT32 *)((UINT32)pAlignedPtr - 4)) = uwGapSize;
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pRet = pAlignedPtr;
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** out:
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     return pRet;
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** }
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** /*****************************************************************************
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Function : osHeapFree
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Description : To free the  memory block from  heap memory poll
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Input       : VOID* pPool      --- Pointer to the manager,to distinguish heap
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****                VOID* pPtr:      --- the pointer of heap memory we want to free
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Output      : None
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 8
+
+
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****  Return      : 1:success 0:error
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** *****************************************************************************/
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** LITE_OS_SEC_TEXT BOOL osHeapFree(VOID *pPool, VOID* pPtr)
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** {
+ 148              		.loc 1 251 0
+ 149              		.cfi_startproc
+ 150              		@ args = 0, pretend = 0, frame = 0
+ 151              		@ frame_needed = 0, uses_anonymous_args = 0
+ 152              	.LVL12:
+ 153 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 154              	.LCFI2:
+ 155              		.cfi_def_cfa_offset 24
+ 156              		.cfi_offset 4, -24
+ 157              		.cfi_offset 5, -20
+ 158              		.cfi_offset 6, -16
+ 159              		.cfi_offset 7, -12
+ 160              		.cfi_offset 8, -8
+ 161              		.cfi_offset 14, -4
+ 162              	.LVL13:
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     struct LOS_HEAP_NODE *pstNode, *pstT;
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     UINT32 uvIntSave, uwGapSize;
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     BOOL bRet = TRUE;
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     struct LOS_HEAP_MANAGER *pstHeapMan = HEAP_CAST(struct LOS_HEAP_MANAGER *, pPool);
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if (!pstHeapMan || !pPtr)
+ 163              		.loc 1 258 0
+ 164 0004 0028     		cmp	r0, #0
+ 165 0006 00F08280 		beq	.L28
+ 166 000a 0C46     		mov	r4, r1
+ 167 000c 0546     		mov	r5, r0
+ 168              		.loc 1 258 0 is_stmt 0 discriminator 1
+ 169 000e 0029     		cmp	r1, #0
+ 170 0010 7FD0     		beq	.L29
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         return LOS_NOK;
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     /* find the real ptr through gap size */
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     uwGapSize = *((UINT32 *)((UINT32)pPtr - 4));
+ 171              		.loc 1 264 0 is_stmt 1
+ 172 0012 51F8043C 		ldr	r3, [r1, #-4]
+ 173              	.LVL14:
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if (OS_MEM_GET_ALIGN_FLAG(uwGapSize))
+ 174              		.loc 1 265 0
+ 175 0016 002B     		cmp	r3, #0
+ 176 0018 12DB     		blt	.L36
+ 177              	.LVL15:
+ 178              	.L15:
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         uwGapSize = OS_MEM_GET_ALIGN_GAPSIZE(uwGapSize);
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pPtr = (VOID *)((UINT32)pPtr - uwGapSize);
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if ((UINT32)pPtr < (UINT32)pstHeapMan->pstHead
+ 179              		.loc 1 271 0
+ 180 001a 2B68     		ldr	r3, [r5]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 9
+
+
+ 181              	.LVL16:
+ 182 001c 2646     		mov	r6, r4
+ 183 001e A342     		cmp	r3, r4
+ 184 0020 03D8     		bhi	.L16
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         || (UINT32)pPtr > ((UINT32)pstHeapMan->pstTail + sizeof(struct LOS_HEAP_NODE)))
+ 185              		.loc 1 272 0
+ 186 0022 6B68     		ldr	r3, [r5, #4]
+ 187 0024 0833     		adds	r3, r3, #8
+ 188 0026 9C42     		cmp	r4, r3
+ 189 0028 0ED9     		bls	.L17
+ 190              	.L16:
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         PRINT_ERR("0x%x out of range!\n", (UINT32)pPtr);
+ 191              		.loc 1 274 0
+ 192 002a 3B48     		ldr	r0, .L37
+ 193              	.LVL17:
+ 194 002c FFF7FEFF 		bl	printf
+ 195              	.LVL18:
+ 196 0030 3146     		mov	r1, r6
+ 197 0032 3A48     		ldr	r0, .L37+4
+ 198 0034 FFF7FEFF 		bl	printf
+ 199              	.LVL19:
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         return FALSE;
+ 200              		.loc 1 275 0
+ 201 0038 0024     		movs	r4, #0
+ 202              	.LVL20:
+ 203              	.L13:
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     uvIntSave = LOS_IntLock();
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstNode = ((struct LOS_HEAP_NODE*)pPtr) - 1;
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     /* check if the address is a node of the heap memory list*/
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if ((pstNode->uwUsed == 0) || (!((UINT32)pstNode == (UINT32)pstHeapMan->pstHead)
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         && ((UINT32)pstNode->pstPrev < (UINT32)pstHeapMan->pstHead
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             || (UINT32)pstNode->pstPrev > ((UINT32)pstHeapMan->pstTail + sizeof(struct LOS_HEAP_NOD
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             || ((UINT32)osHeapPrvGetNext(pstHeapMan, pstNode->pstPrev) != (UINT32)pstNode)
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         )))
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         bRet = FALSE;
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         goto out;
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     /* set to unused status */
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstNode->uwUsed = 0;
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #if (LOSCFG_MEM_TASK_USED_STATISTICS == YES)
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     OS_MEM_REDUCE_USED(pstNode->uwSize);
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #endif
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #if (LOSCFG_HEAP_MEMORY_PEAK_STATISTICS == YES)
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if (g_uwCurHeapUsed >= (pstNode->uwSize + sizeof(struct LOS_HEAP_NODE)))
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         g_uwCurHeapUsed -= (pstNode->uwSize + sizeof(struct LOS_HEAP_NODE));
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #endif
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 10
+
+
+ 306:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     /* unused region before and after combination */
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     while (pstNode->pstPrev && !pstNode->pstPrev->uwUsed)
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstNode = pstNode->pstPrev;
+ 309:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     while (((pstT = osHeapPrvGetNext(pstHeapMan, pstNode)) != NULL) && !pstT->uwUsed)
+ 311:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstNode->uwSize += sizeof(struct LOS_HEAP_NODE) + pstT->uwSize;
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         if (pstHeapMan->pstTail == pstT)
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             pstHeapMan->pstTail = pstNode;
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if ((pstT = osHeapPrvGetNext(pstHeapMan, pstNode)) != NULL)
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstT->pstPrev = pstNode;
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     g_uwFreeCount++;
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 322:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** out:
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     LOS_IntRestore(uvIntSave);
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 325:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     return bRet;
+ 326:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** }
+ 204              		.loc 1 326 0
+ 205 003a 2046     		mov	r0, r4
+ 206 003c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 207              	.LVL21:
+ 208              	.L36:
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pPtr = (VOID *)((UINT32)pPtr - uwGapSize);
+ 209              		.loc 1 267 0
+ 210 0040 23F00043 		bic	r3, r3, #-2147483648
+ 211              	.LVL22:
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 212              		.loc 1 268 0
+ 213 0044 CC1A     		subs	r4, r1, r3
+ 214              	.LVL23:
+ 215 0046 E8E7     		b	.L15
+ 216              	.LVL24:
+ 217              	.L17:
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 218              		.loc 1 278 0
+ 219 0048 FFF7FEFF 		bl	LOS_IntLock
+ 220              	.LVL25:
+ 221 004c 0646     		mov	r6, r0
+ 222              	.LVL26:
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 223              		.loc 1 280 0
+ 224 004e A4F10807 		sub	r7, r4, #8
+ 225              	.LVL27:
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         && ((UINT32)pstNode->pstPrev < (UINT32)pstHeapMan->pstHead
+ 226              		.loc 1 283 0
+ 227 0052 14F8013C 		ldrb	r3, [r4, #-1]	@ zero_extendqisi2
+ 228 0056 13F0400F 		tst	r3, #64
+ 229 005a 4FD0     		beq	.L30
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         && ((UINT32)pstNode->pstPrev < (UINT32)pstHeapMan->pstHead
+ 230              		.loc 1 283 0 is_stmt 0 discriminator 1
+ 231 005c 2B68     		ldr	r3, [r5]
+ 232 005e BB42     		cmp	r3, r7
+ 233 0060 0ED0     		beq	.L19
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 11
+
+
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             || (UINT32)pstNode->pstPrev > ((UINT32)pstHeapMan->pstTail + sizeof(struct LOS_HEAP_NOD
+ 234              		.loc 1 284 0 is_stmt 1
+ 235 0062 54F8081C 		ldr	r1, [r4, #-8]
+ 236 0066 8B42     		cmp	r3, r1
+ 237 0068 4DD8     		bhi	.L31
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             || ((UINT32)osHeapPrvGetNext(pstHeapMan, pstNode->pstPrev) != (UINT32)pstNode)
+ 238              		.loc 1 285 0
+ 239 006a 6B68     		ldr	r3, [r5, #4]
+ 240 006c 0833     		adds	r3, r3, #8
+ 241 006e 9942     		cmp	r1, r3
+ 242 0070 4BD8     		bhi	.L32
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         )))
+ 243              		.loc 1 286 0
+ 244 0072 2846     		mov	r0, r5
+ 245              	.LVL28:
+ 246 0074 FFF7FEFF 		bl	osHeapPrvGetNext
+ 247              	.LVL29:
+ 248 0078 8742     		cmp	r7, r0
+ 249 007a 01D0     		beq	.L19
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         goto out;
+ 250              		.loc 1 289 0
+ 251 007c 0024     		movs	r4, #0
+ 252              	.LVL30:
+ 253 007e 3EE0     		b	.L18
+ 254              	.LVL31:
+ 255              	.L19:
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #if (LOSCFG_MEM_TASK_USED_STATISTICS == YES)
+ 256              		.loc 1 294 0
+ 257 0080 14F8013C 		ldrb	r3, [r4, #-1]	@ zero_extendqisi2
+ 258 0084 6FF38613 		bfc	r3, #6, #1
+ 259 0088 04F8013C 		strb	r3, [r4, #-1]
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 260              		.loc 1 300 0
+ 261 008c 54F8043C 		ldr	r3, [r4, #-4]
+ 262 0090 C3F31D03 		ubfx	r3, r3, #0, #30
+ 263 0094 03F10801 		add	r1, r3, #8
+ 264 0098 214A     		ldr	r2, .L37+8
+ 265 009a 1268     		ldr	r2, [r2]
+ 266 009c 9142     		cmp	r1, r2
+ 267 009e 05D8     		bhi	.L22
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 268              		.loc 1 302 0
+ 269 00a0 D31A     		subs	r3, r2, r3
+ 270 00a2 083B     		subs	r3, r3, #8
+ 271 00a4 1E4A     		ldr	r2, .L37+8
+ 272 00a6 1360     		str	r3, [r2]
+ 273 00a8 00E0     		b	.L22
+ 274              	.L34:
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 275              		.loc 1 308 0
+ 276 00aa 1F46     		mov	r7, r3
+ 277              	.LVL32:
+ 278              	.L22:
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstNode = pstNode->pstPrev;
+ 279              		.loc 1 307 0
+ 280 00ac 3B68     		ldr	r3, [r7]
+ 281 00ae 1BB1     		cbz	r3, .L23
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 12
+
+
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstNode = pstNode->pstPrev;
+ 282              		.loc 1 307 0 is_stmt 0 discriminator 1
+ 283 00b0 DA79     		ldrb	r2, [r3, #7]	@ zero_extendqisi2
+ 284 00b2 12F0400F 		tst	r2, #64
+ 285 00b6 F8D0     		beq	.L34
+ 286              	.L23:
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 287              		.loc 1 310 0 is_stmt 1
+ 288 00b8 3946     		mov	r1, r7
+ 289 00ba 2846     		mov	r0, r5
+ 290 00bc FFF7FEFF 		bl	osHeapPrvGetNext
+ 291              	.LVL33:
+ 292 00c0 0146     		mov	r1, r0
+ 293 00c2 98B1     		cbz	r0, .L25
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 294              		.loc 1 310 0 is_stmt 0 discriminator 1
+ 295 00c4 C379     		ldrb	r3, [r0, #7]	@ zero_extendqisi2
+ 296 00c6 13F0400F 		tst	r3, #64
+ 297 00ca 0FD1     		bne	.L25
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         if (pstHeapMan->pstTail == pstT)
+ 298              		.loc 1 312 0 is_stmt 1
+ 299 00cc 4A68     		ldr	r2, [r1, #4]
+ 300 00ce C2F31D00 		ubfx	r0, r2, #0, #30
+ 301              	.LVL34:
+ 302 00d2 7B68     		ldr	r3, [r7, #4]
+ 303 00d4 C3F31D02 		ubfx	r2, r3, #0, #30
+ 304 00d8 0244     		add	r2, r2, r0
+ 305 00da 0832     		adds	r2, r2, #8
+ 306 00dc 62F31D03 		bfi	r3, r2, #0, #30
+ 307 00e0 7B60     		str	r3, [r7, #4]
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             pstHeapMan->pstTail = pstNode;
+ 308              		.loc 1 313 0
+ 309 00e2 6B68     		ldr	r3, [r5, #4]
+ 310 00e4 8B42     		cmp	r3, r1
+ 311 00e6 E7D1     		bne	.L23
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 312              		.loc 1 314 0
+ 313 00e8 6F60     		str	r7, [r5, #4]
+ 314 00ea E5E7     		b	.L23
+ 315              	.LVL35:
+ 316              	.L25:
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstT->pstPrev = pstNode;
+ 317              		.loc 1 317 0
+ 318 00ec 01B1     		cbz	r1, .L27
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 319              		.loc 1 318 0
+ 320 00ee 0F60     		str	r7, [r1]
+ 321              	.L27:
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 322              		.loc 1 320 0
+ 323 00f0 0C4A     		ldr	r2, .L37+12
+ 324 00f2 1368     		ldr	r3, [r2]
+ 325 00f4 0133     		adds	r3, r3, #1
+ 326 00f6 1360     		str	r3, [r2]
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 327              		.loc 1 254 0
+ 328 00f8 0124     		movs	r4, #1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 13
+
+
+ 329              	.LVL36:
+ 330 00fa 00E0     		b	.L18
+ 331              	.LVL37:
+ 332              	.L30:
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         goto out;
+ 333              		.loc 1 289 0
+ 334 00fc 0024     		movs	r4, #0
+ 335              	.LVL38:
+ 336              	.L18:
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 337              		.loc 1 323 0
+ 338 00fe 3046     		mov	r0, r6
+ 339 0100 FFF7FEFF 		bl	LOS_IntRestore
+ 340              	.LVL39:
+ 325:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** }
+ 341              		.loc 1 325 0
+ 342 0104 99E7     		b	.L13
+ 343              	.LVL40:
+ 344              	.L31:
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         goto out;
+ 345              		.loc 1 289 0
+ 346 0106 0024     		movs	r4, #0
+ 347              	.LVL41:
+ 348 0108 F9E7     		b	.L18
+ 349              	.LVL42:
+ 350              	.L32:
+ 351 010a 0024     		movs	r4, #0
+ 352              	.LVL43:
+ 353 010c F7E7     		b	.L18
+ 354              	.LVL44:
+ 355              	.L28:
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 356              		.loc 1 260 0
+ 357 010e 0124     		movs	r4, #1
+ 358 0110 93E7     		b	.L13
+ 359              	.L29:
+ 360 0112 0124     		movs	r4, #1
+ 361 0114 91E7     		b	.L13
+ 362              	.L38:
+ 363 0116 00BF     		.align	2
+ 364              	.L37:
+ 365 0118 00000000 		.word	.LC0
+ 366 011c 08000000 		.word	.LC1
+ 367 0120 00000000 		.word	.LANCHOR0
+ 368 0124 00000000 		.word	.LANCHOR1
+ 369              		.cfi_endproc
+ 370              	.LFE137:
+ 372              		.section	.text.osHeapStatisticsGet,"ax",%progbits
+ 373              		.align	1
+ 374              		.global	osHeapStatisticsGet
+ 375              		.syntax unified
+ 376              		.thumb
+ 377              		.thumb_func
+ 378              		.fpu fpv4-sp-d16
+ 380              	osHeapStatisticsGet:
+ 381              	.LFB139:
+ 327:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 14
+
+
+ 328:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** LITE_OS_SEC_TEXT_MINOR VOID osAlarmHeapInfo(VOID *pPool)
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** {
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     struct LOS_HEAP_MANAGER *pstHeapMan = HEAP_CAST(struct LOS_HEAP_MANAGER *, pPool);
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     LOS_HEAP_STATUS stStatus = {0};
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if (LOS_NOK == osHeapStatisticsGet(pPool, &stStatus))
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         return;
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 335:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     PRINT_INFO("pool addr    pool size    total size     used size    free size   alloc Count    fr
+ 336:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****                         pPool, pstHeapMan->uwSize, stStatus.totalSize, stStatus.usedSize, stStatus.
+ 337:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     (void)pstHeapMan;
+ 338:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** }
+ 339:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 340:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** LITE_OS_SEC_TEXT_MINOR UINT32 osHeapStatisticsGet(VOID *pPool, LOS_HEAP_STATUS *pstStatus)
+ 341:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** {
+ 382              		.loc 1 341 0
+ 383              		.cfi_startproc
+ 384              		@ args = 0, pretend = 0, frame = 0
+ 385              		@ frame_needed = 0, uses_anonymous_args = 0
+ 386              		@ link register save eliminated.
+ 387              	.LVL45:
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     UINT32 uwHeapUsed = 0;
+ 343:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     struct LOS_HEAP_NODE *pstNode = NULL;
+ 344:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     struct LOS_HEAP_MANAGER *pstRamHeap = HEAP_CAST(struct LOS_HEAP_MANAGER *, pPool);
+ 345:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 346:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if (!pstRamHeap)
+ 388              		.loc 1 346 0
+ 389 0000 18B3     		cbz	r0, .L44
+ 341:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     UINT32 uwHeapUsed = 0;
+ 390              		.loc 1 341 0
+ 391 0002 10B4     		push	{r4}
+ 392              	.LCFI3:
+ 393              		.cfi_def_cfa_offset 4
+ 394              		.cfi_offset 4, -4
+ 395 0004 0446     		mov	r4, r0
+ 347:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 348:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         return LOS_NOK;
+ 349:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 350:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 351:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if (NULL == pstStatus)
+ 396              		.loc 1 351 0
+ 397 0006 11B3     		cbz	r1, .L45
+ 352:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 353:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         return LOS_NOK;
+ 354:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 355:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 356:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstNode = pstRamHeap->pstTail;
+ 398              		.loc 1 356 0
+ 399 0008 4368     		ldr	r3, [r0, #4]
+ 400              	.LVL46:
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     struct LOS_HEAP_NODE *pstNode = NULL;
+ 401              		.loc 1 342 0
+ 402 000a 0022     		movs	r2, #0
+ 357:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     while (pstNode)
+ 403              		.loc 1 357 0
+ 404 000c 00E0     		b	.L41
+ 405              	.LVL47:
+ 406              	.L42:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 15
+
+
+ 358:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 359:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         if (pstNode->uwUsed)
+ 360:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         {
+ 361:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             uwHeapUsed += (pstNode->uwSize + sizeof(struct LOS_HEAP_NODE));
+ 362:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         }
+ 363:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstNode = pstNode->pstPrev;
+ 407              		.loc 1 363 0
+ 408 000e 1B68     		ldr	r3, [r3]
+ 409              	.LVL48:
+ 410              	.L41:
+ 357:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     while (pstNode)
+ 411              		.loc 1 357 0
+ 412 0010 4BB1     		cbz	r3, .L51
+ 359:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         {
+ 413              		.loc 1 359 0
+ 414 0012 D879     		ldrb	r0, [r3, #7]	@ zero_extendqisi2
+ 415 0014 10F0400F 		tst	r0, #64
+ 416 0018 F9D0     		beq	.L42
+ 361:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         }
+ 417              		.loc 1 361 0
+ 418 001a 5868     		ldr	r0, [r3, #4]
+ 419 001c C0F31D00 		ubfx	r0, r0, #0, #30
+ 420 0020 0244     		add	r2, r2, r0
+ 421              	.LVL49:
+ 422 0022 0832     		adds	r2, r2, #8
+ 423              	.LVL50:
+ 424 0024 F3E7     		b	.L42
+ 425              	.L51:
+ 364:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 365:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 366:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if (pstRamHeap->uwSize < uwHeapUsed)
+ 426              		.loc 1 366 0
+ 427 0026 A368     		ldr	r3, [r4, #8]
+ 428              	.LVL51:
+ 429 0028 9342     		cmp	r3, r2
+ 430 002a 12D3     		bcc	.L46
+ 367:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 368:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         return LOS_NOK;
+ 369:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 370:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 371:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstStatus->usedSize    = uwHeapUsed;
+ 431              		.loc 1 371 0
+ 432 002c 4A60     		str	r2, [r1, #4]
+ 372:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstStatus->totalSize   = pstRamHeap->uwSize;
+ 433              		.loc 1 372 0
+ 434 002e A368     		ldr	r3, [r4, #8]
+ 435 0030 0B60     		str	r3, [r1]
+ 373:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstStatus->freeSize    = pstStatus->totalSize - pstStatus->usedSize;
+ 436              		.loc 1 373 0
+ 437 0032 9A1A     		subs	r2, r3, r2
+ 438              	.LVL52:
+ 439 0034 8A60     		str	r2, [r1, #8]
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstStatus->allocCount  = g_uwAllocCount;
+ 440              		.loc 1 374 0
+ 441 0036 084B     		ldr	r3, .L52
+ 442 0038 1B68     		ldr	r3, [r3]
+ 443 003a CB60     		str	r3, [r1, #12]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 16
+
+
+ 375:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstStatus->freeCount   = g_uwFreeCount;
+ 444              		.loc 1 375 0
+ 445 003c 074B     		ldr	r3, .L52+4
+ 446 003e 1B68     		ldr	r3, [r3]
+ 447 0040 0B61     		str	r3, [r1, #16]
+ 376:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 377:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     return LOS_OK;
+ 448              		.loc 1 377 0
+ 449 0042 0020     		movs	r0, #0
+ 450              	.LVL53:
+ 451              	.L39:
+ 378:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** }
+ 452              		.loc 1 378 0
+ 453 0044 5DF8044B 		ldr	r4, [sp], #4
+ 454              	.LCFI4:
+ 455              		.cfi_restore 4
+ 456              		.cfi_def_cfa_offset 0
+ 457              	.LVL54:
+ 458 0048 7047     		bx	lr
+ 459              	.LVL55:
+ 460              	.L44:
+ 348:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 461              		.loc 1 348 0
+ 462 004a 0120     		movs	r0, #1
+ 463              	.LVL56:
+ 464              		.loc 1 378 0
+ 465 004c 7047     		bx	lr
+ 466              	.LVL57:
+ 467              	.L45:
+ 468              	.LCFI5:
+ 469              		.cfi_def_cfa_offset 4
+ 470              		.cfi_offset 4, -4
+ 353:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 471              		.loc 1 353 0
+ 472 004e 0120     		movs	r0, #1
+ 473              	.LVL58:
+ 474 0050 F8E7     		b	.L39
+ 475              	.LVL59:
+ 476              	.L46:
+ 368:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 477              		.loc 1 368 0
+ 478 0052 0120     		movs	r0, #1
+ 479 0054 F6E7     		b	.L39
+ 480              	.L53:
+ 481 0056 00BF     		.align	2
+ 482              	.L52:
+ 483 0058 00000000 		.word	.LANCHOR2
+ 484 005c 00000000 		.word	.LANCHOR1
+ 485              		.cfi_endproc
+ 486              	.LFE139:
+ 488              		.section	.text.osAlarmHeapInfo,"ax",%progbits
+ 489              		.align	1
+ 490              		.global	osAlarmHeapInfo
+ 491              		.syntax unified
+ 492              		.thumb
+ 493              		.thumb_func
+ 494              		.fpu fpv4-sp-d16
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 17
+
+
+ 496              	osAlarmHeapInfo:
+ 497              	.LFB138:
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     struct LOS_HEAP_MANAGER *pstHeapMan = HEAP_CAST(struct LOS_HEAP_MANAGER *, pPool);
+ 498              		.loc 1 329 0
+ 499              		.cfi_startproc
+ 500              		@ args = 0, pretend = 0, frame = 24
+ 501              		@ frame_needed = 0, uses_anonymous_args = 0
+ 502              	.LVL60:
+ 503 0000 00B5     		push	{lr}
+ 504              	.LCFI6:
+ 505              		.cfi_def_cfa_offset 4
+ 506              		.cfi_offset 14, -4
+ 507 0002 87B0     		sub	sp, sp, #28
+ 508              	.LCFI7:
+ 509              		.cfi_def_cfa_offset 32
+ 510              	.LVL61:
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if (LOS_NOK == osHeapStatisticsGet(pPool, &stStatus))
+ 511              		.loc 1 331 0
+ 512 0004 0023     		movs	r3, #0
+ 513 0006 0193     		str	r3, [sp, #4]
+ 514 0008 0293     		str	r3, [sp, #8]
+ 515 000a 0393     		str	r3, [sp, #12]
+ 516 000c 0493     		str	r3, [sp, #16]
+ 517 000e 0593     		str	r3, [sp, #20]
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         return;
+ 518              		.loc 1 332 0
+ 519 0010 01A9     		add	r1, sp, #4
+ 520 0012 FFF7FEFF 		bl	osHeapStatisticsGet
+ 521              	.LVL62:
+ 338:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 522              		.loc 1 338 0
+ 523 0016 07B0     		add	sp, sp, #28
+ 524              	.LCFI8:
+ 525              		.cfi_def_cfa_offset 4
+ 526              		@ sp needed
+ 527 0018 5DF804FB 		ldr	pc, [sp], #4
+ 528              		.cfi_endproc
+ 529              	.LFE138:
+ 531              		.section	.text.osHeapAlloc,"ax",%progbits
+ 532              		.align	1
+ 533              		.global	osHeapAlloc
+ 534              		.syntax unified
+ 535              		.thumb
+ 536              		.thumb_func
+ 537              		.fpu fpv4-sp-d16
+ 539              	osHeapAlloc:
+ 540              	.LFB135:
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     struct LOS_HEAP_NODE *pstNode, *pstT, *pstBest = NULL;
+ 541              		.loc 1 114 0
+ 542              		.cfi_startproc
+ 543              		@ args = 0, pretend = 0, frame = 0
+ 544              		@ frame_needed = 0, uses_anonymous_args = 0
+ 545              	.LVL63:
+ 546 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 547              	.LCFI9:
+ 548              		.cfi_def_cfa_offset 24
+ 549              		.cfi_offset 4, -24
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 18
+
+
+ 550              		.cfi_offset 5, -20
+ 551              		.cfi_offset 6, -16
+ 552              		.cfi_offset 7, -12
+ 553              		.cfi_offset 8, -8
+ 554              		.cfi_offset 14, -4
+ 555              	.LVL64:
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 556              		.loc 1 120 0
+ 557 0004 0028     		cmp	r0, #0
+ 558 0006 7ED0     		beq	.L71
+ 559 0008 0546     		mov	r5, r0
+ 560 000a 0C46     		mov	r4, r1
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 561              		.loc 1 125 0
+ 562 000c FFF7FEFF 		bl	LOS_IntLock
+ 563              	.LVL65:
+ 564 0010 0646     		mov	r6, r0
+ 565              	.LVL66:
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstNode = pstHeapMan->pstTail;
+ 566              		.loc 1 127 0
+ 567 0012 0334     		adds	r4, r4, #3
+ 568              	.LVL67:
+ 569 0014 24F00304 		bic	r4, r4, #3
+ 570              	.LVL68:
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 571              		.loc 1 128 0
+ 572 0018 6B68     		ldr	r3, [r5, #4]
+ 573              	.LVL69:
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     VOID* pRet = NULL;
+ 574              		.loc 1 115 0
+ 575 001a 0027     		movs	r7, #0
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 576              		.loc 1 130 0
+ 577 001c 03E0     		b	.L60
+ 578              	.LVL70:
+ 579              	.L62:
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             {
+ 580              		.loc 1 135 0
+ 581 001e A242     		cmp	r2, r4
+ 582 0020 6BD0     		beq	.L72
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             if (pstBest->uwSize == uwSz)
+ 583              		.loc 1 134 0
+ 584 0022 1F46     		mov	r7, r3
+ 585              	.LVL71:
+ 586              	.L61:
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 587              		.loc 1 140 0
+ 588 0024 1B68     		ldr	r3, [r3]
+ 589              	.LVL72:
+ 590              	.L60:
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 591              		.loc 1 130 0
+ 592 0026 83B1     		cbz	r3, .L74
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         {
+ 593              		.loc 1 132 0
+ 594 0028 DA79     		ldrb	r2, [r3, #7]	@ zero_extendqisi2
+ 595 002a 12F0400F 		tst	r2, #64
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 19
+
+
+ 596 002e F9D1     		bne	.L61
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         {
+ 597              		.loc 1 132 0 is_stmt 0 discriminator 1
+ 598 0030 5A68     		ldr	r2, [r3, #4]
+ 599 0032 C2F31D02 		ubfx	r2, r2, #0, #30
+ 600 0036 A242     		cmp	r2, r4
+ 601 0038 F4D3     		bcc	.L61
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         {
+ 602              		.loc 1 132 0 discriminator 2
+ 603 003a 002F     		cmp	r7, #0
+ 604 003c EFD0     		beq	.L62
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         {
+ 605              		.loc 1 132 0 discriminator 3
+ 606 003e 7968     		ldr	r1, [r7, #4]
+ 607 0040 C1F31D01 		ubfx	r1, r1, #0, #30
+ 608 0044 8A42     		cmp	r2, r1
+ 609 0046 EDD2     		bcs	.L61
+ 610 0048 E9E7     		b	.L62
+ 611              	.L74:
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 612              		.loc 1 143 0 is_stmt 1
+ 613 004a 002F     		cmp	r7, #0
+ 614 004c 4AD0     		beq	.L75
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 615              		.loc 1 149 0
+ 616 004e 7B68     		ldr	r3, [r7, #4]
+ 617              	.LVL73:
+ 618 0050 C3F31D03 		ubfx	r3, r3, #0, #30
+ 619 0054 1B1B     		subs	r3, r3, r4
+ 620 0056 082B     		cmp	r3, #8
+ 621 0058 21D9     		bls	.L63
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 622              		.loc 1 152 0
+ 623 005a 07F10802 		add	r2, r7, #8
+ 624 005e 02EB0408 		add	r8, r2, r4
+ 625              	.LVL74:
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstNode->uwSize = pstBest->uwSize - uwSz- sizeof(struct LOS_HEAP_NODE);
+ 626              		.loc 1 154 0
+ 627 0062 98F80730 		ldrb	r3, [r8, #7]	@ zero_extendqisi2
+ 628 0066 6FF38613 		bfc	r3, #6, #1
+ 629 006a 88F80730 		strb	r3, [r8, #7]
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstNode->pstPrev = pstBest;
+ 630              		.loc 1 155 0
+ 631 006e 7B68     		ldr	r3, [r7, #4]
+ 632 0070 C3F31D03 		ubfx	r3, r3, #0, #30
+ 633 0074 1B1B     		subs	r3, r3, r4
+ 634 0076 083B     		subs	r3, r3, #8
+ 635 0078 D8F80410 		ldr	r1, [r8, #4]
+ 636 007c 63F31D01 		bfi	r1, r3, #0, #30
+ 637 0080 C8F80410 		str	r1, [r8, #4]
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 638              		.loc 1 156 0
+ 639 0084 1751     		str	r7, [r2, r4]
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 640              		.loc 1 158 0
+ 641 0086 3946     		mov	r1, r7
+ 642 0088 2846     		mov	r0, r5
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 20
+
+
+ 643              	.LVL75:
+ 644 008a FFF7FEFF 		bl	osHeapPrvGetNext
+ 645              	.LVL76:
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         {
+ 646              		.loc 1 160 0
+ 647 008e 0028     		cmp	r0, #0
+ 648 0090 30D0     		beq	.L76
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         }
+ 649              		.loc 1 166 0
+ 650 0092 C0F80080 		str	r8, [r0]
+ 651              	.L68:
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 652              		.loc 1 169 0
+ 653 0096 7B68     		ldr	r3, [r7, #4]
+ 654 0098 64F31D03 		bfi	r3, r4, #0, #30
+ 655 009c 7B60     		str	r3, [r7, #4]
+ 656              	.LVL77:
+ 657              	.L63:
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstBest->uwUsed = 1;
+ 658              		.loc 1 173 0
+ 659 009e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pRet = pstBest->ucData;
+ 660              		.loc 1 174 0
+ 661 00a0 03F07F03 		and	r3, r3, #127
+ 662 00a4 43F04003 		orr	r3, r3, #64
+ 663 00a8 FB71     		strb	r3, [r7, #7]
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #if (LOSCFG_MEM_TASK_USED_STATISTICS == YES)
+ 664              		.loc 1 175 0
+ 665 00aa 0837     		adds	r7, r7, #8
+ 666              	.LVL78:
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if(g_uwCurHeapUsed > g_uwMaxHeapUsed)
+ 667              		.loc 1 181 0
+ 668 00ac 174B     		ldr	r3, .L78
+ 669 00ae 1A68     		ldr	r2, [r3]
+ 670 00b0 1444     		add	r4, r4, r2
+ 671              	.LVL79:
+ 672 00b2 0834     		adds	r4, r4, #8
+ 673 00b4 1C60     		str	r4, [r3]
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 674              		.loc 1 182 0
+ 675 00b6 164B     		ldr	r3, .L78+4
+ 676 00b8 1B68     		ldr	r3, [r3]
+ 677 00ba 9C42     		cmp	r4, r3
+ 678 00bc 01D9     		bls	.L69
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 679              		.loc 1 184 0
+ 680 00be 144B     		ldr	r3, .L78+4
+ 681 00c0 1C60     		str	r4, [r3]
+ 682              	.L69:
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 683              		.loc 1 188 0
+ 684 00c2 144A     		ldr	r2, .L78+8
+ 685 00c4 1368     		ldr	r3, [r2]
+ 686 00c6 0133     		adds	r3, r3, #1
+ 687 00c8 1360     		str	r3, [r2]
+ 688              	.LVL80:
+ 689              	.L66:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 21
+
+
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         osAlarmHeapInfo(pstHeapMan);
+ 690              		.loc 1 191 0
+ 691 00ca 6B68     		ldr	r3, [r5, #4]
+ 692 00cc 5B68     		ldr	r3, [r3, #4]
+ 693 00ce C3F31D03 		ubfx	r3, r3, #0, #30
+ 694 00d2 B3F5806F 		cmp	r3, #1024
+ 695 00d6 12D3     		bcc	.L77
+ 696              	.L70:
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 697              		.loc 1 194 0
+ 698 00d8 3046     		mov	r0, r6
+ 699 00da FFF7FEFF 		bl	LOS_IntRestore
+ 700              	.LVL81:
+ 701              	.L58:
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 702              		.loc 1 197 0
+ 703 00de 3846     		mov	r0, r7
+ 704 00e0 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 705              	.LVL82:
+ 706              	.L75:
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         goto out;
+ 707              		.loc 1 145 0
+ 708 00e4 0C48     		ldr	r0, .L78+12
+ 709              	.LVL83:
+ 710 00e6 FFF7FEFF 		bl	printf
+ 711              	.LVL84:
+ 712 00ea 2146     		mov	r1, r4
+ 713 00ec 0B48     		ldr	r0, .L78+16
+ 714 00ee FFF7FEFF 		bl	printf
+ 715              	.LVL85:
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 716              		.loc 1 146 0
+ 717 00f2 EAE7     		b	.L66
+ 718              	.LVL86:
+ 719              	.L76:
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         }
+ 720              		.loc 1 162 0
+ 721 00f4 C5F80480 		str	r8, [r5, #4]
+ 722 00f8 CDE7     		b	.L68
+ 723              	.LVL87:
+ 724              	.L72:
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             if (pstBest->uwSize == uwSz)
+ 725              		.loc 1 134 0
+ 726 00fa 1F46     		mov	r7, r3
+ 727 00fc CFE7     		b	.L63
+ 728              	.LVL88:
+ 729              	.L77:
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 730              		.loc 1 192 0
+ 731 00fe 2846     		mov	r0, r5
+ 732 0100 FFF7FEFF 		bl	osAlarmHeapInfo
+ 733              	.LVL89:
+ 734 0104 E8E7     		b	.L70
+ 735              	.LVL90:
+ 736              	.L71:
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 737              		.loc 1 122 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 22
+
+
+ 738 0106 0027     		movs	r7, #0
+ 739 0108 E9E7     		b	.L58
+ 740              	.L79:
+ 741 010a 00BF     		.align	2
+ 742              	.L78:
+ 743 010c 00000000 		.word	.LANCHOR0
+ 744 0110 00000000 		.word	.LANCHOR3
+ 745 0114 00000000 		.word	.LANCHOR2
+ 746 0118 00000000 		.word	.LC0
+ 747 011c 00000000 		.word	.LC2
+ 748              		.cfi_endproc
+ 749              	.LFE135:
+ 751              		.section	.text.osHeapAllocAlign,"ax",%progbits
+ 752              		.align	1
+ 753              		.global	osHeapAllocAlign
+ 754              		.syntax unified
+ 755              		.thumb
+ 756              		.thumb_func
+ 757              		.fpu fpv4-sp-d16
+ 759              	osHeapAllocAlign:
+ 760              	.LFB136:
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     VOID *pRet = NULL;
+ 761              		.loc 1 209 0
+ 762              		.cfi_startproc
+ 763              		@ args = 0, pretend = 0, frame = 0
+ 764              		@ frame_needed = 0, uses_anonymous_args = 0
+ 765              	.LVL91:
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 766              		.loc 1 215 0
+ 767 0000 0346     		mov	r3, r0
+ 768 0002 08B3     		cbz	r0, .L87
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 769              		.loc 1 215 0 is_stmt 0 discriminator 1
+ 770 0004 D9B1     		cbz	r1, .L83
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 771              		.loc 1 215 0 discriminator 2
+ 772 0006 032A     		cmp	r2, #3
+ 773 0008 1BD9     		bls	.L84
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 774              		.loc 1 215 0 discriminator 3
+ 775 000a 501E     		subs	r0, r2, #1
+ 776              	.LVL92:
+ 777 000c 1042     		tst	r0, r2
+ 778 000e 1AD1     		bne	.L85
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     VOID *pRet = NULL;
+ 779              		.loc 1 209 0 is_stmt 1
+ 780 0010 10B5     		push	{r4, lr}
+ 781              	.LCFI10:
+ 782              		.cfi_def_cfa_offset 8
+ 783              		.cfi_offset 4, -8
+ 784              		.cfi_offset 14, -4
+ 785 0012 1846     		mov	r0, r3
+ 786 0014 1446     		mov	r4, r2
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pRet = osHeapAlloc(pPool, uwUseSize);
+ 787              		.loc 1 221 0
+ 788 0016 1144     		add	r1, r1, r2
+ 789              	.LVL93:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 23
+
+
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 790              		.loc 1 222 0
+ 791 0018 0439     		subs	r1, r1, #4
+ 792              	.LVL94:
+ 793 001a FFF7FEFF 		bl	osHeapAlloc
+ 794              	.LVL95:
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 795              		.loc 1 224 0
+ 796 001e 0346     		mov	r3, r0
+ 797 0020 58B1     		cbz	r0, .L80
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         if (pRet == pAlignedPtr)
+ 798              		.loc 1 226 0
+ 799 0022 0219     		adds	r2, r0, r4
+ 800 0024 511E     		subs	r1, r2, #1
+ 801 0026 6242     		negs	r2, r4
+ 802 0028 0A40     		ands	r2, r2, r1
+ 803              	.LVL96:
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         {
+ 804              		.loc 1 227 0
+ 805 002a 9042     		cmp	r0, r2
+ 806 002c 05D0     		beq	.L80
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         OS_MEM_SET_ALIGN_FLAG(uwGapSize);
+ 807              		.loc 1 232 0
+ 808 002e 131A     		subs	r3, r2, r0
+ 809              	.LVL97:
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         *((UINT32 *)((UINT32)pAlignedPtr - 4)) = uwGapSize;
+ 810              		.loc 1 233 0
+ 811 0030 43F00043 		orr	r3, r3, #-2147483648
+ 812              	.LVL98:
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 813              		.loc 1 234 0
+ 814 0034 42F8043C 		str	r3, [r2, #-4]
+ 815              	.LVL99:
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 816              		.loc 1 236 0
+ 817 0038 1346     		mov	r3, r2
+ 818              	.LVL100:
+ 819              	.L80:
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 820              		.loc 1 240 0
+ 821 003a 1846     		mov	r0, r3
+ 822 003c 10BD     		pop	{r4, pc}
+ 823              	.LVL101:
+ 824              	.L83:
+ 825              	.LCFI11:
+ 826              		.cfi_def_cfa_offset 0
+ 827              		.cfi_restore 4
+ 828              		.cfi_restore 14
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 829              		.loc 1 217 0
+ 830 003e 0023     		movs	r3, #0
+ 831 0040 02E0     		b	.L87
+ 832              	.L84:
+ 833 0042 0023     		movs	r3, #0
+ 834 0044 00E0     		b	.L87
+ 835              	.LVL102:
+ 836              	.L85:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 24
+
+
+ 837 0046 0023     		movs	r3, #0
+ 838              	.LVL103:
+ 839              	.L87:
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 840              		.loc 1 240 0
+ 841 0048 1846     		mov	r0, r3
+ 842 004a 7047     		bx	lr
+ 843              		.cfi_endproc
+ 844              	.LFE136:
+ 846              		.section	.text.osHeapGetHeapMemoryPeak,"ax",%progbits
+ 847              		.align	1
+ 848              		.global	osHeapGetHeapMemoryPeak
+ 849              		.syntax unified
+ 850              		.thumb
+ 851              		.thumb_func
+ 852              		.fpu fpv4-sp-d16
+ 854              	osHeapGetHeapMemoryPeak:
+ 855              	.LFB140:
+ 379:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 380:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #if (LOSCFG_HEAP_MEMORY_PEAK_STATISTICS == YES)
+ 381:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** LITE_OS_SEC_TEXT_MINOR UINT32 osHeapGetHeapMemoryPeak(VOID)
+ 382:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** {
+ 856              		.loc 1 382 0
+ 857              		.cfi_startproc
+ 858              		@ args = 0, pretend = 0, frame = 0
+ 859              		@ frame_needed = 0, uses_anonymous_args = 0
+ 860              		@ link register save eliminated.
+ 383:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     return g_uwMaxHeapUsed;
+ 384:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** }
+ 861              		.loc 1 384 0
+ 862 0000 014B     		ldr	r3, .L91
+ 863 0002 1868     		ldr	r0, [r3]
+ 864 0004 7047     		bx	lr
+ 865              	.L92:
+ 866 0006 00BF     		.align	2
+ 867              	.L91:
+ 868 0008 00000000 		.word	.LANCHOR3
+ 869              		.cfi_endproc
+ 870              	.LFE140:
+ 872              		.section	.text.osHeapGetMaxFreeBlkSize,"ax",%progbits
+ 873              		.align	1
+ 874              		.global	osHeapGetMaxFreeBlkSize
+ 875              		.syntax unified
+ 876              		.thumb
+ 877              		.thumb_func
+ 878              		.fpu fpv4-sp-d16
+ 880              	osHeapGetMaxFreeBlkSize:
+ 881              	.LFB141:
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** #endif
+ 386:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 387:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** LITE_OS_SEC_TEXT_MINOR UINT32 osHeapGetMaxFreeBlkSize(VOID *pPool)
+ 388:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** {
+ 882              		.loc 1 388 0
+ 883              		.cfi_startproc
+ 884              		@ args = 0, pretend = 0, frame = 0
+ 885              		@ frame_needed = 0, uses_anonymous_args = 0
+ 886              		@ link register save eliminated.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 25
+
+
+ 887              	.LVL104:
+ 389:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     UINT32 uwSize = 0;
+ 390:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     UINT32 uwTemp = 0;
+ 391:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     struct LOS_HEAP_NODE *pstNode = NULL;
+ 392:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 393:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     struct LOS_HEAP_MANAGER *pstRamHeap = HEAP_CAST(struct LOS_HEAP_MANAGER *, pPool);
+ 394:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 395:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     if (!pstRamHeap)
+ 888              		.loc 1 395 0
+ 889 0000 80B1     		cbz	r0, .L98
+ 396:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 397:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         return LOS_NOK;
+ 398:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 399:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 400:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     pstNode = pstRamHeap->pstTail;
+ 890              		.loc 1 400 0
+ 891 0002 4368     		ldr	r3, [r0, #4]
+ 892              	.LVL105:
+ 389:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     UINT32 uwSize = 0;
+ 893              		.loc 1 389 0
+ 894 0004 0020     		movs	r0, #0
+ 895              	.LVL106:
+ 401:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** 
+ 402:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     while (pstNode)
+ 896              		.loc 1 402 0
+ 897 0006 00E0     		b	.L95
+ 898              	.LVL107:
+ 899              	.L96:
+ 403:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 404:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         if (!(pstNode->uwUsed))
+ 405:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         {
+ 406:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             uwTemp = pstNode->uwSize;
+ 407:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             if (uwTemp > uwSize)
+ 408:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             {
+ 409:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****                 uwSize = uwTemp;
+ 410:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             }
+ 411:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         }
+ 412:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         pstNode = pstNode->pstPrev;
+ 900              		.loc 1 412 0
+ 901 0008 1B68     		ldr	r3, [r3]
+ 902              	.LVL108:
+ 903              	.L95:
+ 402:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     {
+ 904              		.loc 1 402 0
+ 905 000a 53B1     		cbz	r3, .L100
+ 404:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****         {
+ 906              		.loc 1 404 0
+ 907 000c DA79     		ldrb	r2, [r3, #7]	@ zero_extendqisi2
+ 908 000e 12F0400F 		tst	r2, #64
+ 909 0012 F9D1     		bne	.L96
+ 406:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             if (uwTemp > uwSize)
+ 910              		.loc 1 406 0
+ 911 0014 5A68     		ldr	r2, [r3, #4]
+ 912 0016 C2F31D02 		ubfx	r2, r2, #0, #30
+ 913              	.LVL109:
+ 407:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             {
+ 914              		.loc 1 407 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 26
+
+
+ 915 001a 9042     		cmp	r0, r2
+ 916 001c F4D2     		bcs	.L96
+ 409:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****             }
+ 917              		.loc 1 409 0
+ 918 001e 1046     		mov	r0, r2
+ 919              	.LVL110:
+ 920 0020 F2E7     		b	.L96
+ 921              	.LVL111:
+ 922              	.L100:
+ 923 0022 7047     		bx	lr
+ 924              	.LVL112:
+ 925              	.L98:
+ 397:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 926              		.loc 1 397 0
+ 927 0024 0120     		movs	r0, #1
+ 928              	.LVL113:
+ 413:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     }
+ 414:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c ****     return uwSize;
+ 415:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/mem/bestfit_little\los_heap.c **** }
+ 929              		.loc 1 415 0
+ 930 0026 7047     		bx	lr
+ 931              		.cfi_endproc
+ 932              	.LFE141:
+ 934              		.section	.bss.g_uwAllocCount,"aw",%nobits
+ 935              		.align	2
+ 936              		.set	.LANCHOR2,. + 0
+ 939              	g_uwAllocCount:
+ 940 0000 00000000 		.space	4
+ 941              		.section	.bss.g_uwCurHeapUsed,"aw",%nobits
+ 942              		.align	2
+ 943              		.set	.LANCHOR0,. + 0
+ 946              	g_uwCurHeapUsed:
+ 947 0000 00000000 		.space	4
+ 948              		.section	.bss.g_uwFreeCount,"aw",%nobits
+ 949              		.align	2
+ 950              		.set	.LANCHOR1,. + 0
+ 953              	g_uwFreeCount:
+ 954 0000 00000000 		.space	4
+ 955              		.section	.bss.g_uwMaxHeapUsed,"aw",%nobits
+ 956              		.align	2
+ 957              		.set	.LANCHOR3,. + 0
+ 960              	g_uwMaxHeapUsed:
+ 961 0000 00000000 		.space	4
+ 962              		.section	.rodata.osHeapAlloc.str1.4,"aMS",%progbits,1
+ 963              		.align	2
+ 964              	.LC2:
+ 965 0000 74686572 		.ascii	"there's not enough whole to alloc %x Bytes!\012\000"
+ 965      65277320 
+ 965      6E6F7420 
+ 965      656E6F75 
+ 965      67682077 
+ 966              		.section	.rodata.osHeapFree.str1.4,"aMS",%progbits,1
+ 967              		.align	2
+ 968              	.LC0:
+ 969 0000 5B455252 		.ascii	"[ERR] \000"
+ 969      5D2000
+ 970 0007 00       		.space	1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 27
+
+
+ 971              	.LC1:
+ 972 0008 30782578 		.ascii	"0x%x out of range!\012\000"
+ 972      206F7574 
+ 972      206F6620 
+ 972      72616E67 
+ 972      65210A00 
+ 973              		.text
+ 974              	.Letext0:
+ 975              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 976              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 977              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 978              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 979              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 980              		.file 7 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 981              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 982              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 983              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 984              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 985              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 986              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 987              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 988              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 989              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 990              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 991              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 992              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 993              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 994              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_slab.ph"
+ 995              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_heap.h"
+ 996              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_heap.ph"
+ 997              		.file 24 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 998              		.file 25 "<built-in>"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s 			page 28
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 los_heap.c
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:18     .text.osHeapPrvGetNext:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:25     .text.osHeapPrvGetNext:00000000 osHeapPrvGetNext
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:56     .text.osHeapInit:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:63     .text.osHeapInit:00000000 osHeapInit
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:139    .text.osHeapFree:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:146    .text.osHeapFree:00000000 osHeapFree
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:365    .text.osHeapFree:00000118 $d
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:373    .text.osHeapStatisticsGet:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:380    .text.osHeapStatisticsGet:00000000 osHeapStatisticsGet
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:483    .text.osHeapStatisticsGet:00000058 $d
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:489    .text.osAlarmHeapInfo:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:496    .text.osAlarmHeapInfo:00000000 osAlarmHeapInfo
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:532    .text.osHeapAlloc:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:539    .text.osHeapAlloc:00000000 osHeapAlloc
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:743    .text.osHeapAlloc:0000010c $d
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:752    .text.osHeapAllocAlign:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:759    .text.osHeapAllocAlign:00000000 osHeapAllocAlign
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:847    .text.osHeapGetHeapMemoryPeak:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:854    .text.osHeapGetHeapMemoryPeak:00000000 osHeapGetHeapMemoryPeak
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:868    .text.osHeapGetHeapMemoryPeak:00000008 $d
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:873    .text.osHeapGetMaxFreeBlkSize:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:880    .text.osHeapGetMaxFreeBlkSize:00000000 osHeapGetMaxFreeBlkSize
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:935    .bss.g_uwAllocCount:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:939    .bss.g_uwAllocCount:00000000 g_uwAllocCount
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:942    .bss.g_uwCurHeapUsed:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:946    .bss.g_uwCurHeapUsed:00000000 g_uwCurHeapUsed
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:949    .bss.g_uwFreeCount:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:953    .bss.g_uwFreeCount:00000000 g_uwFreeCount
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:956    .bss.g_uwMaxHeapUsed:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:960    .bss.g_uwMaxHeapUsed:00000000 g_uwMaxHeapUsed
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:963    .rodata.osHeapAlloc.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccN1XfX1.s:967    .rodata.osHeapFree.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+memset
+printf
+LOS_IntLock
+LOS_IntRestore

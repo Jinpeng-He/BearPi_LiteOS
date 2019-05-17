@@ -1,0 +1,664 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"sota_hal.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.do_crc,"ax",%progbits
+  18              		.align	1
+  19              		.global	do_crc
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	do_crc:
+  26              	.LFB3:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota/sota_hal.c"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** //#include <board.h>
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** #include <stdio.h>
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** #include <stdint.h>
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** #include <string.h>
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** #include <ctype.h>
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** #include <stdbool.h>
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** //#include "hal_spi_flash.h"
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** //#include "at_frame/at_main.h"
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** 
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** int32_t crc16_ccitt_table[] = { 0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7, 0x8
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0xb16b, 0xc18c, 0xd1ad, 0xe1ce, 0xf1ef, 0x1231, 0x0210, 0x3273, 0x2252,
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0xa35a, 0xd3bd, 0xc39c, 0xf3ff, 0xe3de, 0x2462, 0x3443, 0x0420, 0x1401,
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0x9509, 0xe5ee, 0xf5cf, 0xc5ac, 0xd58d, 0x3653, 0x2672, 0x1611, 0x0630,
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0x8738, 0xf7df, 0xe7fe, 0xd79d, 0xc7bc, 0x48c4, 0x58e5, 0x6886, 0x78a7,
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0xf9af, 0x8948, 0x9969, 0xa90a, 0xb92b, 0x5af5, 0x4ad4, 0x7ab7, 0x6a96,
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0xeb9e, 0x9b79, 0x8b58, 0xbb3b, 0xab1a, 0x6ca6, 0x7c87, 0x4ce4, 0x5cc5,
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0xddcd, 0xad2a, 0xbd0b, 0x8d68, 0x9d49, 0x7e97, 0x6eb6, 0x5ed5, 0x4ef4,
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0xcffc, 0xbf1b, 0xaf3a, 0x9f59, 0x8f78, 0x9188, 0x81a9, 0xb1ca, 0xa1eb,
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0x20e3, 0x5004, 0x4025, 0x7046, 0x6067, 0x83b9, 0x9398, 0xa3fb, 0xb3da,
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0x32d2, 0x4235, 0x5214, 0x6277, 0x7256, 0xb5ea, 0xa5cb, 0x95a8, 0x8589,
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0x0481, 0x7466, 0x6447, 0x5424, 0x4405, 0xa7db, 0xb7fa, 0x8799, 0x97b8,
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0x16b0, 0x6657, 0x7676, 0x4615, 0x5634, 0xd94c, 0xc96d, 0xf90e, 0xe92f,
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0x6827, 0x18c0, 0x08e1, 0x3882, 0x28a3, 0xcb7d, 0xdb5c, 0xeb3f, 0xfb1e,
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0x7a16, 0x0af1, 0x1ad0, 0x2ab3, 0x3a92, 0xfd2e, 0xed0f, 0xdd6c, 0xcd4d,
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0x4c45, 0x3ca2, 0x2c83, 0x1ce0, 0x0cc1, 0xef1f, 0xff3e, 0xcf5d, 0xdf7c,
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                             0x5e74, 0x2e93, 0x3eb2, 0x0ed1, 0x1ef0
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****                           };
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** 
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** int32_t do_crc(int32_t reg_init, const unsigned char *massage, int len)
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** {
+  28              		.loc 1 63 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  34 0000 30B4     		push	{r4, r5}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 4, -8
+  38              		.cfi_offset 5, -4
+  39              	.LVL1:
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     int32_t crc_reg = 0;
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     int i = 0;
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     crc_reg = reg_init;
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** 
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     for(i = 0; i < len; i++)
+  40              		.loc 1 68 0
+  41 0002 0024     		movs	r4, #0
+  42 0004 08E0     		b	.L2
+  43              	.LVL2:
+  44              	.L3:
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     {
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****         crc_reg = (crc_reg >> 8) ^ crc16_ccitt_table[(crc_reg ^ massage[i]) & 0xff];
+  45              		.loc 1 70 0 discriminator 3
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s 			page 3
+
+
+  46 0006 0B5D     		ldrb	r3, [r1, r4]	@ zero_extendqisi2
+  47 0008 4340     		eors	r3, r3, r0
+  48 000a DBB2     		uxtb	r3, r3
+  49 000c 044D     		ldr	r5, .L5
+  50 000e 55F82330 		ldr	r3, [r5, r3, lsl #2]
+  51 0012 83EA2020 		eor	r0, r3, r0, asr #8
+  52              	.LVL3:
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     {
+  53              		.loc 1 68 0 discriminator 3
+  54 0016 0134     		adds	r4, r4, #1
+  55              	.LVL4:
+  56              	.L2:
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     {
+  57              		.loc 1 68 0 is_stmt 0 discriminator 1
+  58 0018 9442     		cmp	r4, r2
+  59 001a F4DB     		blt	.L3
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     }
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     return crc_reg;
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** }
+  60              		.loc 1 73 0 is_stmt 1
+  61 001c 30BC     		pop	{r4, r5}
+  62              	.LCFI1:
+  63              		.cfi_restore 5
+  64              		.cfi_restore 4
+  65              		.cfi_def_cfa_offset 0
+  66              	.LVL5:
+  67 001e 7047     		bx	lr
+  68              	.L6:
+  69              		.align	2
+  70              	.L5:
+  71 0020 00000000 		.word	.LANCHOR0
+  72              		.cfi_endproc
+  73              	.LFE3:
+  75              		.section	.text.crc_check,"ax",%progbits
+  76              		.align	1
+  77              		.global	crc_check
+  78              		.syntax unified
+  79              		.thumb
+  80              		.thumb_func
+  81              		.fpu fpv4-sp-d16
+  83              	crc_check:
+  84              	.LFB4:
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** 
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** int32_t crc_check(const unsigned char *message, int len)
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** {
+  85              		.loc 1 76 0
+  86              		.cfi_startproc
+  87              		@ args = 0, pretend = 0, frame = 0
+  88              		@ frame_needed = 0, uses_anonymous_args = 0
+  89              	.LVL6:
+  90 0000 08B5     		push	{r3, lr}
+  91              	.LCFI2:
+  92              		.cfi_def_cfa_offset 8
+  93              		.cfi_offset 3, -8
+  94              		.cfi_offset 14, -4
+  95              	.LVL7:
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     int32_t crc_reg = 0x0000;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s 			page 4
+
+
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     return do_crc(crc_reg, message, len);
+  96              		.loc 1 78 0
+  97 0002 0A46     		mov	r2, r1
+  98 0004 0146     		mov	r1, r0
+  99              	.LVL8:
+ 100 0006 0020     		movs	r0, #0
+ 101              	.LVL9:
+ 102 0008 FFF7FEFF 		bl	do_crc
+ 103              	.LVL10:
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** }
+ 104              		.loc 1 79 0
+ 105 000c 08BD     		pop	{r3, pc}
+ 106              		.cfi_endproc
+ 107              	.LFE4:
+ 109              		.section	.text.HexStrToByte,"ax",%progbits
+ 110              		.align	1
+ 111              		.global	HexStrToByte
+ 112              		.syntax unified
+ 113              		.thumb
+ 114              		.thumb_func
+ 115              		.fpu fpv4-sp-d16
+ 117              	HexStrToByte:
+ 118              	.LFB5:
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** 
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** int HexStrToByte(const unsigned char *bufin, unsigned char *bufout, int sourceLen)
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** {
+ 119              		.loc 1 82 0
+ 120              		.cfi_startproc
+ 121              		@ args = 0, pretend = 0, frame = 0
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
+ 123              		@ link register save eliminated.
+ 124              	.LVL11:
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     int i = 0;
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     unsigned char tmp2 = 0x0;
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     unsigned int tmp = 0;
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     if (NULL == bufin || sourceLen <= 0 || NULL == bufout)
+ 125              		.loc 1 86 0
+ 126 0000 28B3     		cbz	r0, .L17
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     int i = 0;
+ 127              		.loc 1 82 0 discriminator 1
+ 128 0002 70B4     		push	{r4, r5, r6}
+ 129              	.LCFI3:
+ 130              		.cfi_def_cfa_offset 12
+ 131              		.cfi_offset 4, -12
+ 132              		.cfi_offset 5, -8
+ 133              		.cfi_offset 6, -4
+ 134 0004 0546     		mov	r5, r0
+ 135              		.loc 1 86 0 discriminator 1
+ 136 0006 002A     		cmp	r2, #0
+ 137 0008 24DD     		ble	.L18
+ 138              		.loc 1 86 0 is_stmt 0 discriminator 2
+ 139 000a 31B3     		cbz	r1, .L19
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     {
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****         return -1;
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     }
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     for(i = 0; i < sourceLen; i = i + 2)
+ 140              		.loc 1 90 0 is_stmt 1
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s 			page 5
+
+
+ 141 000c 0020     		movs	r0, #0
+ 142              	.LVL12:
+ 143 000e 0DE0     		b	.L11
+ 144              	.LVL13:
+ 145              	.L12:
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     {
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****         tmp2 =  bufin[i];
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****         tmp2 =  tmp2 <= '9' ? tmp2 - 0x30 : tmp2 - 0x37;
+ 146              		.loc 1 93 0 discriminator 2
+ 147 0010 373B     		subs	r3, r3, #55
+ 148              	.LVL14:
+ 149 0012 DBB2     		uxtb	r3, r3
+ 150              	.LVL15:
+ 151 0014 12E0     		b	.L13
+ 152              	.LVL16:
+ 153              	.L14:
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****         tmp =  bufin[i + 1];
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****         tmp =  tmp <= '9' ? tmp - 0x30 : tmp - 0x37;
+ 154              		.loc 1 95 0 discriminator 2
+ 155 0016 373C     		subs	r4, r4, #55
+ 156              	.LVL17:
+ 157              	.L15:
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****         bufout[i / 2] = (tmp2 << 4) | (tmp & 0x0F);
+ 158              		.loc 1 96 0 discriminator 4
+ 159 0018 1B01     		lsls	r3, r3, #4
+ 160              	.LVL18:
+ 161 001a DBB2     		uxtb	r3, r3
+ 162 001c 04F00F04 		and	r4, r4, #15
+ 163              	.LVL19:
+ 164 0020 00EBD076 		add	r6, r0, r0, lsr #31
+ 165 0024 7610     		asrs	r6, r6, #1
+ 166 0026 2343     		orrs	r3, r3, r4
+ 167 0028 8B55     		strb	r3, [r1, r6]
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     {
+ 168              		.loc 1 90 0 discriminator 4
+ 169 002a 0230     		adds	r0, r0, #2
+ 170              	.LVL20:
+ 171              	.L11:
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     {
+ 172              		.loc 1 90 0 is_stmt 0 discriminator 2
+ 173 002c 9042     		cmp	r0, r2
+ 174 002e 0BDA     		bge	.L24
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****         tmp2 =  tmp2 <= '9' ? tmp2 - 0x30 : tmp2 - 0x37;
+ 175              		.loc 1 92 0 is_stmt 1
+ 176 0030 0446     		mov	r4, r0
+ 177 0032 2B5C     		ldrb	r3, [r5, r0]	@ zero_extendqisi2
+ 178              	.LVL21:
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****         tmp =  bufin[i + 1];
+ 179              		.loc 1 93 0
+ 180 0034 392B     		cmp	r3, #57
+ 181 0036 EBD8     		bhi	.L12
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****         tmp =  bufin[i + 1];
+ 182              		.loc 1 93 0 is_stmt 0 discriminator 1
+ 183 0038 303B     		subs	r3, r3, #48
+ 184              	.LVL22:
+ 185 003a DBB2     		uxtb	r3, r3
+ 186              	.LVL23:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s 			page 6
+
+
+ 187              	.L13:
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****         tmp =  tmp <= '9' ? tmp - 0x30 : tmp - 0x37;
+ 188              		.loc 1 94 0 is_stmt 1 discriminator 4
+ 189 003c 2C44     		add	r4, r4, r5
+ 190 003e 6478     		ldrb	r4, [r4, #1]	@ zero_extendqisi2
+ 191              	.LVL24:
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****         bufout[i / 2] = (tmp2 << 4) | (tmp & 0x0F);
+ 192              		.loc 1 95 0 discriminator 4
+ 193 0040 392C     		cmp	r4, #57
+ 194 0042 E8D8     		bhi	.L14
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****         bufout[i / 2] = (tmp2 << 4) | (tmp & 0x0F);
+ 195              		.loc 1 95 0 is_stmt 0 discriminator 1
+ 196 0044 303C     		subs	r4, r4, #48
+ 197              	.LVL25:
+ 198 0046 E7E7     		b	.L15
+ 199              	.LVL26:
+ 200              	.L24:
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     }
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     return 0;
+ 201              		.loc 1 98 0 is_stmt 1
+ 202 0048 0020     		movs	r0, #0
+ 203              	.LVL27:
+ 204              	.L9:
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c **** }
+ 205              		.loc 1 99 0
+ 206 004a 70BC     		pop	{r4, r5, r6}
+ 207              	.LCFI4:
+ 208              		.cfi_restore 6
+ 209              		.cfi_restore 5
+ 210              		.cfi_restore 4
+ 211              		.cfi_def_cfa_offset 0
+ 212              	.LVL28:
+ 213 004c 7047     		bx	lr
+ 214              	.LVL29:
+ 215              	.L17:
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     }
+ 216              		.loc 1 88 0
+ 217 004e 4FF0FF30 		mov	r0, #-1
+ 218              	.LVL30:
+ 219              		.loc 1 99 0
+ 220 0052 7047     		bx	lr
+ 221              	.LVL31:
+ 222              	.L18:
+ 223              	.LCFI5:
+ 224              		.cfi_def_cfa_offset 12
+ 225              		.cfi_offset 4, -12
+ 226              		.cfi_offset 5, -8
+ 227              		.cfi_offset 6, -4
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/ota/sota\sota_hal.c ****     }
+ 228              		.loc 1 88 0
+ 229 0054 4FF0FF30 		mov	r0, #-1
+ 230              	.LVL32:
+ 231 0058 F7E7     		b	.L9
+ 232              	.LVL33:
+ 233              	.L19:
+ 234 005a 4FF0FF30 		mov	r0, #-1
+ 235              	.LVL34:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s 			page 7
+
+
+ 236 005e F4E7     		b	.L9
+ 237              		.cfi_endproc
+ 238              	.LFE5:
+ 240              		.global	crc16_ccitt_table
+ 241              		.section	.data.crc16_ccitt_table,"aw",%progbits
+ 242              		.align	2
+ 243              		.set	.LANCHOR0,. + 0
+ 246              	crc16_ccitt_table:
+ 247 0000 00000000 		.word	0
+ 248 0004 21100000 		.word	4129
+ 249 0008 42200000 		.word	8258
+ 250 000c 63300000 		.word	12387
+ 251 0010 84400000 		.word	16516
+ 252 0014 A5500000 		.word	20645
+ 253 0018 C6600000 		.word	24774
+ 254 001c E7700000 		.word	28903
+ 255 0020 08810000 		.word	33032
+ 256 0024 29910000 		.word	37161
+ 257 0028 4AA10000 		.word	41290
+ 258 002c 6BB10000 		.word	45419
+ 259 0030 8CC10000 		.word	49548
+ 260 0034 ADD10000 		.word	53677
+ 261 0038 CEE10000 		.word	57806
+ 262 003c EFF10000 		.word	61935
+ 263 0040 31120000 		.word	4657
+ 264 0044 10020000 		.word	528
+ 265 0048 73320000 		.word	12915
+ 266 004c 52220000 		.word	8786
+ 267 0050 B5520000 		.word	21173
+ 268 0054 94420000 		.word	17044
+ 269 0058 F7720000 		.word	29431
+ 270 005c D6620000 		.word	25302
+ 271 0060 39930000 		.word	37689
+ 272 0064 18830000 		.word	33560
+ 273 0068 7BB30000 		.word	45947
+ 274 006c 5AA30000 		.word	41818
+ 275 0070 BDD30000 		.word	54205
+ 276 0074 9CC30000 		.word	50076
+ 277 0078 FFF30000 		.word	62463
+ 278 007c DEE30000 		.word	58334
+ 279 0080 62240000 		.word	9314
+ 280 0084 43340000 		.word	13379
+ 281 0088 20040000 		.word	1056
+ 282 008c 01140000 		.word	5121
+ 283 0090 E6640000 		.word	25830
+ 284 0094 C7740000 		.word	29895
+ 285 0098 A4440000 		.word	17572
+ 286 009c 85540000 		.word	21637
+ 287 00a0 6AA50000 		.word	42346
+ 288 00a4 4BB50000 		.word	46411
+ 289 00a8 28850000 		.word	34088
+ 290 00ac 09950000 		.word	38153
+ 291 00b0 EEE50000 		.word	58862
+ 292 00b4 CFF50000 		.word	62927
+ 293 00b8 ACC50000 		.word	50604
+ 294 00bc 8DD50000 		.word	54669
+ 295 00c0 53360000 		.word	13907
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s 			page 8
+
+
+ 296 00c4 72260000 		.word	9842
+ 297 00c8 11160000 		.word	5649
+ 298 00cc 30060000 		.word	1584
+ 299 00d0 D7760000 		.word	30423
+ 300 00d4 F6660000 		.word	26358
+ 301 00d8 95560000 		.word	22165
+ 302 00dc B4460000 		.word	18100
+ 303 00e0 5BB70000 		.word	46939
+ 304 00e4 7AA70000 		.word	42874
+ 305 00e8 19970000 		.word	38681
+ 306 00ec 38870000 		.word	34616
+ 307 00f0 DFF70000 		.word	63455
+ 308 00f4 FEE70000 		.word	59390
+ 309 00f8 9DD70000 		.word	55197
+ 310 00fc BCC70000 		.word	51132
+ 311 0100 C4480000 		.word	18628
+ 312 0104 E5580000 		.word	22757
+ 313 0108 86680000 		.word	26758
+ 314 010c A7780000 		.word	30887
+ 315 0110 40080000 		.word	2112
+ 316 0114 61180000 		.word	6241
+ 317 0118 02280000 		.word	10242
+ 318 011c 23380000 		.word	14371
+ 319 0120 CCC90000 		.word	51660
+ 320 0124 EDD90000 		.word	55789
+ 321 0128 8EE90000 		.word	59790
+ 322 012c AFF90000 		.word	63919
+ 323 0130 48890000 		.word	35144
+ 324 0134 69990000 		.word	39273
+ 325 0138 0AA90000 		.word	43274
+ 326 013c 2BB90000 		.word	47403
+ 327 0140 F55A0000 		.word	23285
+ 328 0144 D44A0000 		.word	19156
+ 329 0148 B77A0000 		.word	31415
+ 330 014c 966A0000 		.word	27286
+ 331 0150 711A0000 		.word	6769
+ 332 0154 500A0000 		.word	2640
+ 333 0158 333A0000 		.word	14899
+ 334 015c 122A0000 		.word	10770
+ 335 0160 FDDB0000 		.word	56317
+ 336 0164 DCCB0000 		.word	52188
+ 337 0168 BFFB0000 		.word	64447
+ 338 016c 9EEB0000 		.word	60318
+ 339 0170 799B0000 		.word	39801
+ 340 0174 588B0000 		.word	35672
+ 341 0178 3BBB0000 		.word	47931
+ 342 017c 1AAB0000 		.word	43802
+ 343 0180 A66C0000 		.word	27814
+ 344 0184 877C0000 		.word	31879
+ 345 0188 E44C0000 		.word	19684
+ 346 018c C55C0000 		.word	23749
+ 347 0190 222C0000 		.word	11298
+ 348 0194 033C0000 		.word	15363
+ 349 0198 600C0000 		.word	3168
+ 350 019c 411C0000 		.word	7233
+ 351 01a0 AEED0000 		.word	60846
+ 352 01a4 8FFD0000 		.word	64911
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s 			page 9
+
+
+ 353 01a8 ECCD0000 		.word	52716
+ 354 01ac CDDD0000 		.word	56781
+ 355 01b0 2AAD0000 		.word	44330
+ 356 01b4 0BBD0000 		.word	48395
+ 357 01b8 688D0000 		.word	36200
+ 358 01bc 499D0000 		.word	40265
+ 359 01c0 977E0000 		.word	32407
+ 360 01c4 B66E0000 		.word	28342
+ 361 01c8 D55E0000 		.word	24277
+ 362 01cc F44E0000 		.word	20212
+ 363 01d0 133E0000 		.word	15891
+ 364 01d4 322E0000 		.word	11826
+ 365 01d8 511E0000 		.word	7761
+ 366 01dc 700E0000 		.word	3696
+ 367 01e0 9FFF0000 		.word	65439
+ 368 01e4 BEEF0000 		.word	61374
+ 369 01e8 DDDF0000 		.word	57309
+ 370 01ec FCCF0000 		.word	53244
+ 371 01f0 1BBF0000 		.word	48923
+ 372 01f4 3AAF0000 		.word	44858
+ 373 01f8 599F0000 		.word	40793
+ 374 01fc 788F0000 		.word	36728
+ 375 0200 88910000 		.word	37256
+ 376 0204 A9810000 		.word	33193
+ 377 0208 CAB10000 		.word	45514
+ 378 020c EBA10000 		.word	41451
+ 379 0210 0CD10000 		.word	53516
+ 380 0214 2DC10000 		.word	49453
+ 381 0218 4EF10000 		.word	61774
+ 382 021c 6FE10000 		.word	57711
+ 383 0220 80100000 		.word	4224
+ 384 0224 A1000000 		.word	161
+ 385 0228 C2300000 		.word	12482
+ 386 022c E3200000 		.word	8419
+ 387 0230 04500000 		.word	20484
+ 388 0234 25400000 		.word	16421
+ 389 0238 46700000 		.word	28742
+ 390 023c 67600000 		.word	24679
+ 391 0240 B9830000 		.word	33721
+ 392 0244 98930000 		.word	37784
+ 393 0248 FBA30000 		.word	41979
+ 394 024c DAB30000 		.word	46042
+ 395 0250 3DC30000 		.word	49981
+ 396 0254 1CD30000 		.word	54044
+ 397 0258 7FE30000 		.word	58239
+ 398 025c 5EF30000 		.word	62302
+ 399 0260 B1020000 		.word	689
+ 400 0264 90120000 		.word	4752
+ 401 0268 F3220000 		.word	8947
+ 402 026c D2320000 		.word	13010
+ 403 0270 35420000 		.word	16949
+ 404 0274 14520000 		.word	21012
+ 405 0278 77620000 		.word	25207
+ 406 027c 56720000 		.word	29270
+ 407 0280 EAB50000 		.word	46570
+ 408 0284 CBA50000 		.word	42443
+ 409 0288 A8950000 		.word	38312
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s 			page 10
+
+
+ 410 028c 89850000 		.word	34185
+ 411 0290 6EF50000 		.word	62830
+ 412 0294 4FE50000 		.word	58703
+ 413 0298 2CD50000 		.word	54572
+ 414 029c 0DC50000 		.word	50445
+ 415 02a0 E2340000 		.word	13538
+ 416 02a4 C3240000 		.word	9411
+ 417 02a8 A0140000 		.word	5280
+ 418 02ac 81040000 		.word	1153
+ 419 02b0 66740000 		.word	29798
+ 420 02b4 47640000 		.word	25671
+ 421 02b8 24540000 		.word	21540
+ 422 02bc 05440000 		.word	17413
+ 423 02c0 DBA70000 		.word	42971
+ 424 02c4 FAB70000 		.word	47098
+ 425 02c8 99870000 		.word	34713
+ 426 02cc B8970000 		.word	38840
+ 427 02d0 5FE70000 		.word	59231
+ 428 02d4 7EF70000 		.word	63358
+ 429 02d8 1DC70000 		.word	50973
+ 430 02dc 3CD70000 		.word	55100
+ 431 02e0 D3260000 		.word	9939
+ 432 02e4 F2360000 		.word	14066
+ 433 02e8 91060000 		.word	1681
+ 434 02ec B0160000 		.word	5808
+ 435 02f0 57660000 		.word	26199
+ 436 02f4 76760000 		.word	30326
+ 437 02f8 15460000 		.word	17941
+ 438 02fc 34560000 		.word	22068
+ 439 0300 4CD90000 		.word	55628
+ 440 0304 6DC90000 		.word	51565
+ 441 0308 0EF90000 		.word	63758
+ 442 030c 2FE90000 		.word	59695
+ 443 0310 C8990000 		.word	39368
+ 444 0314 E9890000 		.word	35305
+ 445 0318 8AB90000 		.word	47498
+ 446 031c ABA90000 		.word	43435
+ 447 0320 44580000 		.word	22596
+ 448 0324 65480000 		.word	18533
+ 449 0328 06780000 		.word	30726
+ 450 032c 27680000 		.word	26663
+ 451 0330 C0180000 		.word	6336
+ 452 0334 E1080000 		.word	2273
+ 453 0338 82380000 		.word	14466
+ 454 033c A3280000 		.word	10403
+ 455 0340 7DCB0000 		.word	52093
+ 456 0344 5CDB0000 		.word	56156
+ 457 0348 3FEB0000 		.word	60223
+ 458 034c 1EFB0000 		.word	64286
+ 459 0350 F98B0000 		.word	35833
+ 460 0354 D89B0000 		.word	39896
+ 461 0358 BBAB0000 		.word	43963
+ 462 035c 9ABB0000 		.word	48026
+ 463 0360 754A0000 		.word	19061
+ 464 0364 545A0000 		.word	23124
+ 465 0368 376A0000 		.word	27191
+ 466 036c 167A0000 		.word	31254
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s 			page 11
+
+
+ 467 0370 F10A0000 		.word	2801
+ 468 0374 D01A0000 		.word	6864
+ 469 0378 B32A0000 		.word	10931
+ 470 037c 923A0000 		.word	14994
+ 471 0380 2EFD0000 		.word	64814
+ 472 0384 0FED0000 		.word	60687
+ 473 0388 6CDD0000 		.word	56684
+ 474 038c 4DCD0000 		.word	52557
+ 475 0390 AABD0000 		.word	48554
+ 476 0394 8BAD0000 		.word	44427
+ 477 0398 E89D0000 		.word	40424
+ 478 039c C98D0000 		.word	36297
+ 479 03a0 267C0000 		.word	31782
+ 480 03a4 076C0000 		.word	27655
+ 481 03a8 645C0000 		.word	23652
+ 482 03ac 454C0000 		.word	19525
+ 483 03b0 A23C0000 		.word	15522
+ 484 03b4 832C0000 		.word	11395
+ 485 03b8 E01C0000 		.word	7392
+ 486 03bc C10C0000 		.word	3265
+ 487 03c0 1FEF0000 		.word	61215
+ 488 03c4 3EFF0000 		.word	65342
+ 489 03c8 5DCF0000 		.word	53085
+ 490 03cc 7CDF0000 		.word	57212
+ 491 03d0 9BAF0000 		.word	44955
+ 492 03d4 BABF0000 		.word	49082
+ 493 03d8 D98F0000 		.word	36825
+ 494 03dc F89F0000 		.word	40952
+ 495 03e0 176E0000 		.word	28183
+ 496 03e4 367E0000 		.word	32310
+ 497 03e8 554E0000 		.word	20053
+ 498 03ec 745E0000 		.word	24180
+ 499 03f0 932E0000 		.word	11923
+ 500 03f4 B23E0000 		.word	16050
+ 501 03f8 D10E0000 		.word	3793
+ 502 03fc F01E0000 		.word	7920
+ 503              		.text
+ 504              	.Letext0:
+ 505              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 506              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 507              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 508              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 509              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 510              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 511              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 sota_hal.c
+c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s:18     .text.do_crc:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s:25     .text.do_crc:00000000 do_crc
+c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s:71     .text.do_crc:00000020 $d
+c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s:76     .text.crc_check:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s:83     .text.crc_check:00000000 crc_check
+c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s:110    .text.HexStrToByte:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s:117    .text.HexStrToByte:00000000 HexStrToByte
+c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s:246    .data.crc16_ccitt_table:00000000 crc16_ccitt_table
+c:\Users\lenovo\AppData\Local\Temp\cc0PgbTY.s:242    .data.crc16_ccitt_table:00000000 $d
+
+NO UNDEFINED SYMBOLS

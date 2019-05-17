@@ -1,0 +1,1572 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"los_sem.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.osSemInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	osSemInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	osSemInit:
+  26              	.LFB135:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc/los_sem.c"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #include "los_sem.inc"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #include "los_base.ph"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #include "los_err.ph"
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #include "los_memory.ph"
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #include "los_priqueue.ph"
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #include "los_sys.ph"
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #include "los_task.ph"
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #if (LOSCFG_PLATFORM_EXC == YES)
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #include "los_exc.h"
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #endif
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #ifdef __cplusplus
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #if __cplusplus
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** extern "C"{
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #endif
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #endif /* __cplusplus */
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #if (LOSCFG_BASE_IPC_SEM == YES)
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** LITE_OS_SEC_BSS LOS_DL_LIST  g_stUnusedSemList;
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** LITE_OS_SEC_BSS SEM_CB_S    *g_pstAllSem;
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** /*****************************************************************************
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Function     : osSemInit
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Description  : Initialize the  Semaphore doubly linked list,
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Input        : None,
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Output       : None,
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Return       : LOS_OK on success ,or error code on failure
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  *****************************************************************************/
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** LITE_OS_SEC_TEXT_INIT UINT32 osSemInit(VOID)
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** {
+  28              		.loc 1 66 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+  37              	.LVL0:
+  38              	.LBB22:
+  39              	.LBB23:
+  40              		.file 2 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * of conditions and the following disclaimer in the documentation and/or other materials
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 3
+
+
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  /** @defgroup los_list Doubly linked list
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  * @ingroup kernel
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #ifndef _LOS_LIST_H
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #define _LOS_LIST_H
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #include "los_typedef.h"
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #ifdef __cplusplus
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #if __cplusplus
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** extern "C" {
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #endif /* __cplusplus */
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #endif /* __cplusplus */
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *Structure of a node in a doubly linked list.
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** typedef struct LOS_DL_LIST
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     struct LOS_DL_LIST *pstPrev;            /**< Current node's pointer to the previous node*/
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     struct LOS_DL_LIST *pstNext;            /**< Current node's pointer to the next node*/
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** } LOS_DL_LIST;
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Initialize a doubly linked list.
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *This API is used to initialize a doubly linked list.
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 4
+
+
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>The parameter passed in should be ensured to be a legal pointer.</li>
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstList    [IN] Node in a doubly linked list.
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval None.
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListInit(LOS_DL_LIST *pstList)
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstNext = pstList;
+  41              		.loc 2 82 0
+  42 0002 134B     		ldr	r3, .L7
+  43 0004 5B60     		str	r3, [r3, #4]
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstPrev = pstList;
+  44              		.loc 2 83 0
+  45 0006 1B60     		str	r3, [r3]
+  46              	.LVL1:
+  47              	.LBE23:
+  48              	.LBE22:
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     SEM_CB_S    *pstSemNode;
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     UINT16      uwIndex;
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     LOS_ListInit(&g_stUnusedSemList);
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (LOSCFG_BASE_IPC_SEM_LIMIT == 0)   /*lint !e506*/
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         return LOS_ERRNO_SEM_MAXNUM_ZERO;
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     g_pstAllSem = (SEM_CB_S *)LOS_MemAlloc(m_aucSysMem0, (LOSCFG_BASE_IPC_SEM_LIMIT * sizeof(SEM_CB
+  49              		.loc 1 77 0
+  50 0008 4FF4A071 		mov	r1, #320
+  51 000c 114B     		ldr	r3, .L7+4
+  52 000e 1868     		ldr	r0, [r3]
+  53 0010 FFF7FEFF 		bl	LOS_MemAlloc
+  54              	.LVL2:
+  55 0014 104B     		ldr	r3, .L7+8
+  56 0016 1860     		str	r0, [r3]
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (NULL == g_pstAllSem)
+  57              		.loc 1 78 0
+  58 0018 C0B1     		cbz	r0, .L5
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         return LOS_ERRNO_SEM_NO_MEMORY;
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     /* Connect all the ECBs in a doubly linked list. */
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     for (uwIndex = 0; uwIndex < LOSCFG_BASE_IPC_SEM_LIMIT; uwIndex++)
+  59              		.loc 1 84 0
+  60 001a 0023     		movs	r3, #0
+  61 001c 12E0     		b	.L3
+  62              	.LVL3:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 5
+
+
+  63              	.L4:
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         pstSemNode = ((SEM_CB_S *)g_pstAllSem) + uwIndex;
+  64              		.loc 1 86 0 discriminator 3
+  65 001e 0E4A     		ldr	r2, .L7+8
+  66 0020 1068     		ldr	r0, [r2]
+  67 0022 1A01     		lsls	r2, r3, #4
+  68 0024 8118     		adds	r1, r0, r2
+  69              	.LVL4:
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         pstSemNode->usSemID = uwIndex;
+  70              		.loc 1 87 0 discriminator 3
+  71 0026 CB80     		strh	r3, [r1, #6]	@ movhi
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         pstSemNode->usSemStat = OS_SEM_UNUSED;
+  72              		.loc 1 88 0 discriminator 3
+  73 0028 0024     		movs	r4, #0
+  74 002a 8452     		strh	r4, [r0, r2]	@ movhi
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         LOS_ListTailInsert(&g_stUnusedSemList, &pstSemNode->stSemList);
+  75              		.loc 1 89 0 discriminator 3
+  76 002c 01F10800 		add	r0, r1, #8
+  77              	.LVL5:
+  78              	.LBB24:
+  79              	.LBB25:
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Point to the next node pointed to by the current node.
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>This API is used to point to the next node pointed to by the current node.</li>
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>None.</li>
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstObject  [IN] Node in the doubly linked list.
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval None.
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** #define LOS_DL_LIST_FIRST(pstObject) ((pstObject)->pstNext)
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Insert a new node to a doubly linked list.
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *This API is used to insert a new node to a doubly linked list.
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>The parameters passed in should be ensured to be legal pointers.</li>
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 6
+
+
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstList    [IN]   Doubly linked list where the new node is inserted.
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstNode    [IN]   New node to be inserted.
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval None
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see LOS_ListDelete
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListAdd(LOS_DL_LIST *pstList, LOS_DL_LIST *pstNode)
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstNext = pstList->pstNext;
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstPrev = pstList;
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstNext->pstPrev = pstNode;
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstNext = pstNode;
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Insert a node to the tail of a doubly linked list.
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *This API is used to insert a new node to the tail of a doubly linked list.
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>The parameters passed in should be ensured to be legal pointers.</li>
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstList     [IN] Doubly linked list where the new node is inserted.
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstNode     [IN] New node to be inserted.
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval None.
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see LOS_ListAdd | LOS_ListHeadInsert
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListTailInsert(LOS_DL_LIST *pstList, LOS_DL_LIST *pst
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     LOS_ListAdd(pstList->pstPrev, pstNode);
+  80              		.loc 2 159 0 discriminator 3
+  81 0030 074A     		ldr	r2, .L7
+  82 0032 1268     		ldr	r2, [r2]
+  83              	.LVL6:
+  84              	.LBB26:
+  85              	.LBB27:
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstPrev = pstList;
+  86              		.loc 2 131 0 discriminator 3
+  87 0034 5468     		ldr	r4, [r2, #4]
+  88 0036 CC60     		str	r4, [r1, #12]
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstNext->pstPrev = pstNode;
+  89              		.loc 2 132 0 discriminator 3
+  90 0038 8A60     		str	r2, [r1, #8]
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstNext = pstNode;
+  91              		.loc 2 133 0 discriminator 3
+  92 003a 5168     		ldr	r1, [r2, #4]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 7
+
+
+  93              	.LVL7:
+  94 003c 0860     		str	r0, [r1]
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+  95              		.loc 2 134 0 discriminator 3
+  96 003e 5060     		str	r0, [r2, #4]
+  97              	.LVL8:
+  98              	.LBE27:
+  99              	.LBE26:
+ 100              	.LBE25:
+ 101              	.LBE24:
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 102              		.loc 1 84 0 discriminator 3
+ 103 0040 0133     		adds	r3, r3, #1
+ 104              	.LVL9:
+ 105 0042 9BB2     		uxth	r3, r3
+ 106              	.LVL10:
+ 107              	.L3:
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 108              		.loc 1 84 0 is_stmt 0 discriminator 1
+ 109 0044 132B     		cmp	r3, #19
+ 110 0046 EAD9     		bls	.L4
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     return LOS_OK;
+ 111              		.loc 1 91 0 is_stmt 1
+ 112 0048 0020     		movs	r0, #0
+ 113              	.LVL11:
+ 114              	.L1:
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** }
+ 115              		.loc 1 92 0
+ 116 004a 10BD     		pop	{r4, pc}
+ 117              	.L5:
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 118              		.loc 1 80 0
+ 119 004c 0348     		ldr	r0, .L7+12
+ 120 004e FCE7     		b	.L1
+ 121              	.L8:
+ 122              		.align	2
+ 123              	.L7:
+ 124 0050 00000000 		.word	g_stUnusedSemList
+ 125 0054 00000000 		.word	m_aucSysMem0
+ 126 0058 00000000 		.word	g_pstAllSem
+ 127 005c 00070002 		.word	33556224
+ 128              		.cfi_endproc
+ 129              	.LFE135:
+ 131              		.section	.text.osSemCreate,"ax",%progbits
+ 132              		.align	1
+ 133              		.global	osSemCreate
+ 134              		.syntax unified
+ 135              		.thumb
+ 136              		.thumb_func
+ 137              		.fpu fpv4-sp-d16
+ 139              	osSemCreate:
+ 140              	.LFB136:
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** /*****************************************************************************
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Function     : osSemCreate
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 8
+
+
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Description  : create the  Semaphore
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Input        : None,
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Output       : None,
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Return       : LOS_OK on success ,or error code on failure
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  *****************************************************************************/
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** LITE_OS_SEC_TEXT_INIT UINT32 osSemCreate (UINT16 usCount, UINT16 usMaxCount, UINT32 *puwSemHandle)
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** {
+ 141              		.loc 1 103 0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145              	.LVL12:
+ 146 0000 70B5     		push	{r4, r5, r6, lr}
+ 147              	.LCFI1:
+ 148              		.cfi_def_cfa_offset 16
+ 149              		.cfi_offset 4, -16
+ 150              		.cfi_offset 5, -12
+ 151              		.cfi_offset 6, -8
+ 152              		.cfi_offset 14, -4
+ 153 0002 82B0     		sub	sp, sp, #8
+ 154              	.LCFI2:
+ 155              		.cfi_def_cfa_offset 24
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     UINT32      uwIntSave;
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     SEM_CB_S    *pstSemCreated;
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     LOS_DL_LIST *pstUnusedSem;
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     UINT32      uwErrNo;
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     UINT32      uwErrLine;
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (NULL == puwSemHandle)
+ 156              		.loc 1 110 0
+ 157 0004 002A     		cmp	r2, #0
+ 158 0006 2FD0     		beq	.L13
+ 159 0008 1646     		mov	r6, r2
+ 160 000a 0C46     		mov	r4, r1
+ 161 000c 0546     		mov	r5, r0
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         return LOS_ERRNO_SEM_PTR_NULL;
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (usCount > usMaxCount)
+ 162              		.loc 1 115 0
+ 163 000e 8842     		cmp	r0, r1
+ 164 0010 1FD8     		bhi	.L14
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         OS_GOTO_ERR_HANDLER(LOS_ERRNO_SEM_OVERFLOW);
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     uwIntSave = LOS_IntLock();
+ 165              		.loc 1 120 0
+ 166 0012 FFF7FEFF 		bl	LOS_IntLock
+ 167              	.LVL13:
+ 168              	.LBB28:
+ 169              	.LBB29:
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 9
+
+
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Delete a specified node from a doubly linked list.
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>This API is used to delete a specified node from a doubly linked list.</li>
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>The parameter passed in should be ensured to be a legal pointer.</li>
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstNode    [IN] Node to be deleted.
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval None.
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see LOS_ListAdd
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListDelete(LOS_DL_LIST *pstNode)
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstNext->pstPrev = pstNode->pstPrev;
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstPrev->pstNext = pstNode->pstNext;
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstNext = (LOS_DL_LIST *)NULL;
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstPrev = (LOS_DL_LIST *)NULL;
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** 
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** /**
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@ingroup los_list
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@brief Identify whether a specified doubly linked list is empty.
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Description:
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>This API is used to return whether a doubly linked list is empty.</li>
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@attention
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul>
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<li>The parameter passed in should be ensured to be a legal pointer.</li>
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *</ul>
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@param pstList  [IN] Doubly linked list.
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval TRUE The doubly linked list is empty.
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@retval FALSE The doubly linked list is not empty.
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@par Dependency:
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@see
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****  */
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE BOOL LOS_ListEmpty(LOS_DL_LIST *pstNode)
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** {
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     return (BOOL)(pstNode->pstNext == pstNode);
+ 170              		.loc 2 215 0
+ 171 0016 154A     		ldr	r2, .L17
+ 172 0018 5368     		ldr	r3, [r2, #4]
+ 173              	.LVL14:
+ 174              	.LBE29:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 10
+
+
+ 175              	.LBE28:
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (LOS_ListEmpty(&g_stUnusedSemList))
+ 176              		.loc 1 122 0
+ 177 001a 9342     		cmp	r3, r2
+ 178 001c 15D0     		beq	.L16
+ 179              	.LVL15:
+ 180              	.LBB30:
+ 181              	.LBB31:
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstPrev->pstNext = pstNode->pstNext;
+ 182              		.loc 2 185 0
+ 183 001e 5A68     		ldr	r2, [r3, #4]
+ 184 0020 1968     		ldr	r1, [r3]
+ 185 0022 1160     		str	r1, [r2]
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstNext = (LOS_DL_LIST *)NULL;
+ 186              		.loc 2 186 0
+ 187 0024 1A68     		ldr	r2, [r3]
+ 188 0026 5968     		ldr	r1, [r3, #4]
+ 189 0028 5160     		str	r1, [r2, #4]
+ 190              	.LVL16:
+ 191              	.LBE31:
+ 192              	.LBE30:
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         LOS_IntRestore(uwIntSave);
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         OS_GOTO_ERR_HANDLER(LOS_ERRNO_SEM_ALL_BUSY);
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     pstUnusedSem = LOS_DL_LIST_FIRST(&(g_stUnusedSemList));
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     LOS_ListDelete(pstUnusedSem);
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     pstSemCreated = (GET_SEM_LIST(pstUnusedSem)); /*lint !e413*/
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     pstSemCreated->usSemCount = usCount;
+ 193              		.loc 1 131 0
+ 194 002a 23F8065C 		strh	r5, [r3, #-6]	@ movhi
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     pstSemCreated->usSemStat = OS_SEM_USED;
+ 195              		.loc 1 132 0
+ 196 002e 0122     		movs	r2, #1
+ 197 0030 23F8082C 		strh	r2, [r3, #-8]	@ movhi
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     pstSemCreated->usMaxSemCount = usMaxCount;
+ 198              		.loc 1 133 0
+ 199 0034 23F8044C 		strh	r4, [r3, #-4]	@ movhi
+ 200              	.LVL17:
+ 201              	.LBB32:
+ 202              	.LBB33:
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstPrev = pstList;
+ 203              		.loc 2 82 0
+ 204 0038 5B60     		str	r3, [r3, #4]
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+ 205              		.loc 2 83 0
+ 206 003a 1B60     		str	r3, [r3]
+ 207              	.LVL18:
+ 208              	.LBE33:
+ 209              	.LBE32:
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     LOS_ListInit(&pstSemCreated->stSemList);
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     *puwSemHandle = (UINT32)pstSemCreated->usSemID;
+ 210              		.loc 1 135 0
+ 211 003c 33F8023C 		ldrh	r3, [r3, #-2]
+ 212              	.LVL19:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 11
+
+
+ 213 0040 3360     		str	r3, [r6]
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     LOS_IntRestore(uwIntSave);
+ 214              		.loc 1 136 0
+ 215 0042 FFF7FEFF 		bl	LOS_IntRestore
+ 216              	.LVL20:
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     return LOS_OK;
+ 217              		.loc 1 137 0
+ 218 0046 0024     		movs	r4, #0
+ 219 0048 0BE0     		b	.L9
+ 220              	.LVL21:
+ 221              	.L16:
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         OS_GOTO_ERR_HANDLER(LOS_ERRNO_SEM_ALL_BUSY);
+ 222              		.loc 1 124 0
+ 223 004a FFF7FEFF 		bl	LOS_IntRestore
+ 224              	.LVL22:
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 225              		.loc 1 125 0
+ 226 004e 084C     		ldr	r4, .L17+4
+ 227 0050 00E0     		b	.L11
+ 228              	.LVL23:
+ 229              	.L14:
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 230              		.loc 1 117 0
+ 231 0052 084C     		ldr	r4, .L17+8
+ 232              	.LVL24:
+ 233              	.L11:
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** ErrHandler:
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     OS_RETURN_ERROR_P2(uwErrLine, uwErrNo);
+ 234              		.loc 1 140 0
+ 235 0054 0023     		movs	r3, #0
+ 236 0056 0093     		str	r3, [sp]
+ 237 0058 2246     		mov	r2, r4
+ 238 005a 0749     		ldr	r1, .L17+12
+ 239 005c 0748     		ldr	r0, .L17+16
+ 240 005e FFF7FEFF 		bl	LOS_ErrHandle
+ 241              	.LVL25:
+ 242              	.L9:
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** }
+ 243              		.loc 1 141 0
+ 244 0062 2046     		mov	r0, r4
+ 245 0064 02B0     		add	sp, sp, #8
+ 246              	.LCFI3:
+ 247              		.cfi_remember_state
+ 248              		.cfi_def_cfa_offset 16
+ 249              		@ sp needed
+ 250 0066 70BD     		pop	{r4, r5, r6, pc}
+ 251              	.LVL26:
+ 252              	.L13:
+ 253              	.LCFI4:
+ 254              		.cfi_restore_state
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 255              		.loc 1 112 0
+ 256 0068 054C     		ldr	r4, .L17+20
+ 257 006a FAE7     		b	.L9
+ 258              	.L18:
+ 259              		.align	2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 12
+
+
+ 260              	.L17:
+ 261 006c 00000000 		.word	g_stUnusedSemList
+ 262 0070 03070002 		.word	33556227
+ 263 0074 08070002 		.word	33556232
+ 264 0078 F8C3B2A1 		.word	-1582119944
+ 265 007c 00000000 		.word	.LC0
+ 266 0080 02070002 		.word	33556226
+ 267              		.cfi_endproc
+ 268              	.LFE136:
+ 270              		.section	.text.LOS_SemCreate,"ax",%progbits
+ 271              		.align	1
+ 272              		.global	LOS_SemCreate
+ 273              		.syntax unified
+ 274              		.thumb
+ 275              		.thumb_func
+ 276              		.fpu fpv4-sp-d16
+ 278              	LOS_SemCreate:
+ 279              	.LFB137:
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** /*****************************************************************************
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Function     : LOS_SemCreate
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Description  : Create a semaphore,
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Input        : uwCount--------- semaphore count,
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Output       : puwSemHandle-----Index of semaphore,
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Return       : LOS_OK on success ,or error code on failure
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  *****************************************************************************/
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** LITE_OS_SEC_TEXT_INIT UINT32 LOS_SemCreate (UINT16 usCount, UINT32 *puwSemHandle)
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** {
+ 280              		.loc 1 151 0
+ 281              		.cfi_startproc
+ 282              		@ args = 0, pretend = 0, frame = 0
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 284              	.LVL27:
+ 285 0000 08B5     		push	{r3, lr}
+ 286              	.LCFI5:
+ 287              		.cfi_def_cfa_offset 8
+ 288              		.cfi_offset 3, -8
+ 289              		.cfi_offset 14, -4
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     return osSemCreate(usCount, OS_SEM_COUNTING_MAX_COUNT, puwSemHandle);
+ 290              		.loc 1 152 0
+ 291 0002 0A46     		mov	r2, r1
+ 292 0004 4FF6FF71 		movw	r1, #65535
+ 293              	.LVL28:
+ 294 0008 FFF7FEFF 		bl	osSemCreate
+ 295              	.LVL29:
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** }
+ 296              		.loc 1 153 0
+ 297 000c 08BD     		pop	{r3, pc}
+ 298              		.cfi_endproc
+ 299              	.LFE137:
+ 301              		.section	.text.LOS_BinarySemCreate,"ax",%progbits
+ 302              		.align	1
+ 303              		.global	LOS_BinarySemCreate
+ 304              		.syntax unified
+ 305              		.thumb
+ 306              		.thumb_func
+ 307              		.fpu fpv4-sp-d16
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 13
+
+
+ 309              	LOS_BinarySemCreate:
+ 310              	.LFB138:
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** /*****************************************************************************
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Function     : LOS_BinarySemCreate
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Description  : Create a binary semaphore,
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Input        : uwCount--------- semaphore count,
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Output       : puwSemHandle-----Index of semaphore,
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Return       : LOS_OK on success ,or error code on failure
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  *****************************************************************************/
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** LITE_OS_SEC_TEXT_INIT UINT32 LOS_BinarySemCreate (UINT16 usCount, UINT32 *puwSemHandle)
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** {
+ 311              		.loc 1 163 0
+ 312              		.cfi_startproc
+ 313              		@ args = 0, pretend = 0, frame = 0
+ 314              		@ frame_needed = 0, uses_anonymous_args = 0
+ 315              	.LVL30:
+ 316 0000 08B5     		push	{r3, lr}
+ 317              	.LCFI6:
+ 318              		.cfi_def_cfa_offset 8
+ 319              		.cfi_offset 3, -8
+ 320              		.cfi_offset 14, -4
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     return osSemCreate(usCount, OS_SEM_BINARY_MAX_COUNT, puwSemHandle);
+ 321              		.loc 1 164 0
+ 322 0002 0A46     		mov	r2, r1
+ 323 0004 0121     		movs	r1, #1
+ 324              	.LVL31:
+ 325 0006 FFF7FEFF 		bl	osSemCreate
+ 326              	.LVL32:
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** }
+ 327              		.loc 1 165 0
+ 328 000a 08BD     		pop	{r3, pc}
+ 329              		.cfi_endproc
+ 330              	.LFE138:
+ 332              		.section	.text.LOS_SemDelete,"ax",%progbits
+ 333              		.align	1
+ 334              		.global	LOS_SemDelete
+ 335              		.syntax unified
+ 336              		.thumb
+ 337              		.thumb_func
+ 338              		.fpu fpv4-sp-d16
+ 340              	LOS_SemDelete:
+ 341              	.LFB139:
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** /*****************************************************************************
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Function     : LOS_SemDelete
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Description : Delete a semaphore,
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Input          : uwSemHandle--------- semaphore operation handle,
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Output       : None
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Return       : LOS_OK on success or error code on failure
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  *****************************************************************************/
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** LITE_OS_SEC_TEXT_INIT UINT32 LOS_SemDelete(UINT32 uwSemHandle)
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** {
+ 342              		.loc 1 175 0
+ 343              		.cfi_startproc
+ 344              		@ args = 0, pretend = 0, frame = 0
+ 345              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 14
+
+
+ 346              	.LVL33:
+ 347 0000 70B5     		push	{r4, r5, r6, lr}
+ 348              	.LCFI7:
+ 349              		.cfi_def_cfa_offset 16
+ 350              		.cfi_offset 4, -16
+ 351              		.cfi_offset 5, -12
+ 352              		.cfi_offset 6, -8
+ 353              		.cfi_offset 14, -4
+ 354 0002 82B0     		sub	sp, sp, #8
+ 355              	.LCFI8:
+ 356              		.cfi_def_cfa_offset 24
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     UINT32      uwIntSave;
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     SEM_CB_S    *pstSemDeleted;
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     UINT32      uwErrNo;
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     UINT32      uwErrLine;
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (uwSemHandle >= (UINT32)LOSCFG_BASE_IPC_SEM_LIMIT)
+ 357              		.loc 1 181 0
+ 358 0004 1328     		cmp	r0, #19
+ 359 0006 1FD8     		bhi	.L28
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         OS_GOTO_ERR_HANDLER(LOS_ERRNO_SEM_INVALID);
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     pstSemDeleted = GET_SEM(uwSemHandle);
+ 360              		.loc 1 186 0
+ 361 0008 154B     		ldr	r3, .L31
+ 362 000a 1E68     		ldr	r6, [r3]
+ 363 000c 0501     		lsls	r5, r0, #4
+ 364 000e 7419     		adds	r4, r6, r5
+ 365              	.LVL34:
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     uwIntSave = LOS_IntLock();
+ 366              		.loc 1 187 0
+ 367 0010 FFF7FEFF 		bl	LOS_IntLock
+ 368              	.LVL35:
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (OS_SEM_UNUSED == pstSemDeleted->usSemStat)
+ 369              		.loc 1 188 0
+ 370 0014 735B     		ldrh	r3, [r6, r5]
+ 371 0016 43B1     		cbz	r3, .L30
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         LOS_IntRestore(uwIntSave);
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         OS_GOTO_ERR_HANDLER(LOS_ERRNO_SEM_INVALID);
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (!LOS_ListEmpty(&pstSemDeleted->stSemList))
+ 372              		.loc 1 194 0
+ 373 0018 04F10803 		add	r3, r4, #8
+ 374              	.LVL36:
+ 375              	.LBB34:
+ 376              	.LBB35:
+ 377              		.loc 2 215 0
+ 378 001c E268     		ldr	r2, [r4, #12]
+ 379              	.LVL37:
+ 380              	.LBE35:
+ 381              	.LBE34:
+ 382              		.loc 1 194 0
+ 383 001e 9342     		cmp	r3, r2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 15
+
+
+ 384 0020 07D0     		beq	.L26
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         LOS_IntRestore(uwIntSave);
+ 385              		.loc 1 196 0
+ 386 0022 FFF7FEFF 		bl	LOS_IntRestore
+ 387              	.LVL38:
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         OS_GOTO_ERR_HANDLER(LOS_ERRNO_SEM_PENDED);
+ 388              		.loc 1 197 0
+ 389 0026 0F4C     		ldr	r4, .L31+4
+ 390              	.LVL39:
+ 391 0028 0FE0     		b	.L24
+ 392              	.LVL40:
+ 393              	.L30:
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         OS_GOTO_ERR_HANDLER(LOS_ERRNO_SEM_INVALID);
+ 394              		.loc 1 190 0
+ 395 002a FFF7FEFF 		bl	LOS_IntRestore
+ 396              	.LVL41:
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 397              		.loc 1 191 0
+ 398 002e 0E4C     		ldr	r4, .L31+8
+ 399              	.LVL42:
+ 400 0030 0BE0     		b	.L24
+ 401              	.LVL43:
+ 402              	.L26:
+ 403              	.LBB36:
+ 404              	.LBB37:
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstNode->pstPrev = pstList;
+ 405              		.loc 2 131 0
+ 406 0032 0E4A     		ldr	r2, .L31+12
+ 407 0034 5168     		ldr	r1, [r2, #4]
+ 408 0036 E160     		str	r1, [r4, #12]
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstNext->pstPrev = pstNode;
+ 409              		.loc 2 132 0
+ 410 0038 A260     		str	r2, [r4, #8]
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h ****     pstList->pstNext = pstNode;
+ 411              		.loc 2 133 0
+ 412 003a 0B60     		str	r3, [r1]
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include\los_list.h **** }
+ 413              		.loc 2 134 0
+ 414 003c 5360     		str	r3, [r2, #4]
+ 415              	.LVL44:
+ 416              	.LBE37:
+ 417              	.LBE36:
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     LOS_ListAdd(&g_stUnusedSemList, &pstSemDeleted->stSemList);
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     pstSemDeleted->usSemStat = OS_SEM_UNUSED;
+ 418              		.loc 1 201 0
+ 419 003e 0024     		movs	r4, #0
+ 420              	.LVL45:
+ 421 0040 7453     		strh	r4, [r6, r5]	@ movhi
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     LOS_IntRestore(uwIntSave);
+ 422              		.loc 1 202 0
+ 423 0042 FFF7FEFF 		bl	LOS_IntRestore
+ 424              	.LVL46:
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     return LOS_OK;
+ 425              		.loc 1 203 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 16
+
+
+ 426 0046 07E0     		b	.L23
+ 427              	.LVL47:
+ 428              	.L28:
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 429              		.loc 1 183 0
+ 430 0048 074C     		ldr	r4, .L31+8
+ 431              	.LVL48:
+ 432              	.L24:
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** ErrHandler:
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     OS_RETURN_ERROR_P2(uwErrLine, uwErrNo);
+ 433              		.loc 1 205 0
+ 434 004a 0023     		movs	r3, #0
+ 435 004c 0093     		str	r3, [sp]
+ 436 004e 2246     		mov	r2, r4
+ 437 0050 0749     		ldr	r1, .L31+16
+ 438 0052 0848     		ldr	r0, .L31+20
+ 439 0054 FFF7FEFF 		bl	LOS_ErrHandle
+ 440              	.LVL49:
+ 441              	.L23:
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** }
+ 442              		.loc 1 206 0
+ 443 0058 2046     		mov	r0, r4
+ 444 005a 02B0     		add	sp, sp, #8
+ 445              	.LCFI9:
+ 446              		.cfi_def_cfa_offset 16
+ 447              		@ sp needed
+ 448 005c 70BD     		pop	{r4, r5, r6, pc}
+ 449              	.L32:
+ 450 005e 00BF     		.align	2
+ 451              	.L31:
+ 452 0060 00000000 		.word	g_pstAllSem
+ 453 0064 09070002 		.word	33556233
+ 454 0068 01070002 		.word	33556225
+ 455 006c 00000000 		.word	g_stUnusedSemList
+ 456 0070 F8C3B2A1 		.word	-1582119944
+ 457 0074 00000000 		.word	.LC0
+ 458              		.cfi_endproc
+ 459              	.LFE139:
+ 461              		.section	.text.LOS_SemPend,"ax",%progbits
+ 462              		.align	1
+ 463              		.global	LOS_SemPend
+ 464              		.syntax unified
+ 465              		.thumb
+ 466              		.thumb_func
+ 467              		.fpu fpv4-sp-d16
+ 469              	LOS_SemPend:
+ 470              	.LFB140:
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** /*****************************************************************************
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Function     : LOS_SemPend
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Description : Specified semaphore P operation,
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Input          : uwSemHandle--------- semaphore operation handle,
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  		     uwTimeout   ---------- waitting time
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Output       : None
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Return       : LOS_OK on success or error code on failure
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  *****************************************************************************/
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** LITE_OS_SEC_TEXT UINT32 LOS_SemPend(UINT32 uwSemHandle, UINT32 uwTimeout)
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 17
+
+
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** {
+ 471              		.loc 1 217 0
+ 472              		.cfi_startproc
+ 473              		@ args = 0, pretend = 0, frame = 0
+ 474              		@ frame_needed = 0, uses_anonymous_args = 0
+ 475              	.LVL50:
+ 476 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 477              	.LCFI10:
+ 478              		.cfi_def_cfa_offset 24
+ 479              		.cfi_offset 4, -24
+ 480              		.cfi_offset 5, -20
+ 481              		.cfi_offset 6, -16
+ 482              		.cfi_offset 7, -12
+ 483              		.cfi_offset 8, -8
+ 484              		.cfi_offset 14, -4
+ 485 0004 82B0     		sub	sp, sp, #8
+ 486              	.LCFI11:
+ 487              		.cfi_def_cfa_offset 32
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     UINT32      uwIntSave;
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     SEM_CB_S    *pstSemPended;
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     UINT32      uwRetErr;
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     LOS_TASK_CB *pstRunTsk;
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (uwSemHandle >= (UINT32)LOSCFG_BASE_IPC_SEM_LIMIT)
+ 488              		.loc 1 223 0
+ 489 0006 1328     		cmp	r0, #19
+ 490 0008 1CD8     		bhi	.L43
+ 491 000a 0F46     		mov	r7, r1
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         OS_RETURN_ERROR(LOS_ERRNO_SEM_INVALID);
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     pstSemPended = GET_SEM(uwSemHandle);
+ 492              		.loc 1 228 0
+ 493 000c 334B     		ldr	r3, .L47
+ 494 000e 1D68     		ldr	r5, [r3]
+ 495 0010 0401     		lsls	r4, r0, #4
+ 496 0012 2E19     		adds	r6, r5, r4
+ 497              	.LVL51:
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     uwIntSave = LOS_IntLock();
+ 498              		.loc 1 229 0
+ 499 0014 FFF7FEFF 		bl	LOS_IntLock
+ 500              	.LVL52:
+ 501 0018 8046     		mov	r8, r0
+ 502              	.LVL53:
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (OS_SEM_UNUSED == pstSemPended->usSemStat)
+ 503              		.loc 1 230 0
+ 504 001a 2B5B     		ldrh	r3, [r5, r4]
+ 505 001c DBB1     		cbz	r3, .L44
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         LOS_IntRestore(uwIntSave);
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         OS_RETURN_ERROR(LOS_ERRNO_SEM_INVALID);
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (pstSemPended->usSemCount > 0)
+ 506              		.loc 1 236 0
+ 507 001e 7388     		ldrh	r3, [r6, #2]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 18
+
+
+ 508 0020 23BB     		cbnz	r3, .L45
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         pstSemPended->usSemCount--;
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         LOS_IntRestore(uwIntSave);
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         return LOS_OK;
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (!uwTimeout)
+ 509              		.loc 1 243 0
+ 510 0022 002F     		cmp	r7, #0
+ 511 0024 4AD0     		beq	.L41
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         uwRetErr = LOS_ERRNO_SEM_UNAVAILABLE;
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         goto errre_uniSemPend;
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (OS_INT_ACTIVE)
+ 512              		.loc 1 249 0
+ 513 0026 FFF7FEFF 		bl	osIntNumGet
+ 514              	.LVL54:
+ 515 002a 0446     		mov	r4, r0
+ 516 002c 20BB     		cbnz	r0, .L46
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         uwRetErr = LOS_ERRNO_SEM_PEND_INTERR;
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         PRINT_ERR("!!!LOS_ERRNO_SEM_PEND_INTERR!!!\n");
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #if (LOSCFG_PLATFORM_EXC == YES)
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         osBackTrace();
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #endif
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         goto errre_uniSemPend;
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (g_usLosTaskLock)
+ 517              		.loc 1 259 0
+ 518 002e 2C4B     		ldr	r3, .L47+4
+ 519 0030 1B88     		ldrh	r3, [r3]
+ 520 0032 4BB3     		cbz	r3, .L40
+ 521              	.LVL55:
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         uwRetErr = LOS_ERRNO_SEM_PEND_IN_LOCK;
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         PRINT_ERR("!!!LOS_ERRNO_SEM_PEND_IN_LOCK!!!\n");
+ 522              		.loc 1 262 0
+ 523 0034 2B48     		ldr	r0, .L47+8
+ 524 0036 FFF7FEFF 		bl	printf
+ 525              	.LVL56:
+ 526 003a 2B48     		ldr	r0, .L47+12
+ 527 003c FFF7FEFF 		bl	puts
+ 528              	.LVL57:
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         PRINT_ERR("!!!LOS_ERRNO_SEM_PEND_IN_LOCK!!!\n");
+ 529              		.loc 1 261 0
+ 530 0040 2A4C     		ldr	r4, .L47+16
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #if (LOSCFG_PLATFORM_EXC == YES)
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         osBackTrace();
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #endif
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         goto errre_uniSemPend;
+ 531              		.loc 1 266 0
+ 532 0042 3CE0     		b	.L38
+ 533              	.LVL58:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 19
+
+
+ 534              	.L43:
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 535              		.loc 1 225 0
+ 536 0044 2A4C     		ldr	r4, .L47+20
+ 537 0046 0023     		movs	r3, #0
+ 538 0048 0093     		str	r3, [sp]
+ 539 004a 2246     		mov	r2, r4
+ 540 004c 2949     		ldr	r1, .L47+24
+ 541              	.LVL59:
+ 542 004e 2A48     		ldr	r0, .L47+28
+ 543              	.LVL60:
+ 544 0050 FFF7FEFF 		bl	LOS_ErrHandle
+ 545              	.LVL61:
+ 546 0054 3DE0     		b	.L33
+ 547              	.LVL62:
+ 548              	.L44:
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         OS_RETURN_ERROR(LOS_ERRNO_SEM_INVALID);
+ 549              		.loc 1 232 0
+ 550 0056 FFF7FEFF 		bl	LOS_IntRestore
+ 551              	.LVL63:
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 552              		.loc 1 233 0
+ 553 005a 254C     		ldr	r4, .L47+20
+ 554 005c 0023     		movs	r3, #0
+ 555 005e 0093     		str	r3, [sp]
+ 556 0060 2246     		mov	r2, r4
+ 557 0062 2449     		ldr	r1, .L47+24
+ 558 0064 2448     		ldr	r0, .L47+28
+ 559 0066 FFF7FEFF 		bl	LOS_ErrHandle
+ 560              	.LVL64:
+ 561 006a 32E0     		b	.L33
+ 562              	.LVL65:
+ 563              	.L45:
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         LOS_IntRestore(uwIntSave);
+ 564              		.loc 1 238 0
+ 565 006c 013B     		subs	r3, r3, #1
+ 566 006e 7380     		strh	r3, [r6, #2]	@ movhi
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         return LOS_OK;
+ 567              		.loc 1 239 0
+ 568 0070 FFF7FEFF 		bl	LOS_IntRestore
+ 569              	.LVL66:
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 570              		.loc 1 240 0
+ 571 0074 0024     		movs	r4, #0
+ 572 0076 2CE0     		b	.L33
+ 573              	.L46:
+ 574              	.LVL67:
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** #if (LOSCFG_PLATFORM_EXC == YES)
+ 575              		.loc 1 252 0
+ 576 0078 1A48     		ldr	r0, .L47+8
+ 577 007a FFF7FEFF 		bl	printf
+ 578              	.LVL68:
+ 579 007e 1F48     		ldr	r0, .L47+32
+ 580 0080 FFF7FEFF 		bl	puts
+ 581              	.LVL69:
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         PRINT_ERR("!!!LOS_ERRNO_SEM_PEND_INTERR!!!\n");
+ 582              		.loc 1 251 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 20
+
+
+ 583 0084 1E4C     		ldr	r4, .L47+36
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 584              		.loc 1 256 0
+ 585 0086 1AE0     		b	.L38
+ 586              	.LVL70:
+ 587              	.L40:
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     pstRunTsk = (LOS_TASK_CB *)g_stLosTask.pstRunTask;
+ 588              		.loc 1 269 0
+ 589 0088 1E4B     		ldr	r3, .L47+40
+ 590 008a 1D68     		ldr	r5, [r3]
+ 591              	.LVL71:
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     pstRunTsk->pTaskSem = (VOID *)pstSemPended;
+ 592              		.loc 1 270 0
+ 593 008c AE61     		str	r6, [r5, #24]
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     osTaskWait(&pstSemPended->stSemList, OS_TASK_STATUS_PEND, uwTimeout);
+ 594              		.loc 1 271 0
+ 595 008e 3A46     		mov	r2, r7
+ 596 0090 0821     		movs	r1, #8
+ 597 0092 7018     		adds	r0, r6, r1
+ 598 0094 FFF7FEFF 		bl	osTaskWait
+ 599              	.LVL72:
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     (VOID)LOS_IntRestore(uwIntSave);
+ 600              		.loc 1 272 0
+ 601 0098 4046     		mov	r0, r8
+ 602 009a FFF7FEFF 		bl	LOS_IntRestore
+ 603              	.LVL73:
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     LOS_Schedule();
+ 604              		.loc 1 273 0
+ 605 009e FFF7FEFF 		bl	LOS_Schedule
+ 606              	.LVL74:
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (pstRunTsk->usTaskStatus & OS_TASK_STATUS_TIMEOUT)
+ 607              		.loc 1 275 0
+ 608 00a2 AB88     		ldrh	r3, [r5, #4]
+ 609 00a4 13F0400F 		tst	r3, #64
+ 610 00a8 13D0     		beq	.L33
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         uwIntSave = LOS_IntLock();
+ 611              		.loc 1 277 0
+ 612 00aa FFF7FEFF 		bl	LOS_IntLock
+ 613              	.LVL75:
+ 614 00ae 8046     		mov	r8, r0
+ 615              	.LVL76:
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         pstRunTsk->usTaskStatus &= (~OS_TASK_STATUS_TIMEOUT);
+ 616              		.loc 1 278 0
+ 617 00b0 AB88     		ldrh	r3, [r5, #4]
+ 618 00b2 23F04003 		bic	r3, r3, #64
+ 619 00b6 AB80     		strh	r3, [r5, #4]	@ movhi
+ 620              	.LVL77:
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         uwRetErr = LOS_ERRNO_SEM_TIMEOUT;
+ 621              		.loc 1 279 0
+ 622 00b8 134C     		ldr	r4, .L47+44
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         goto errre_uniSemPend;
+ 623              		.loc 1 280 0
+ 624 00ba 00E0     		b	.L38
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 21
+
+
+ 625              	.LVL78:
+ 626              	.L41:
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         goto errre_uniSemPend;
+ 627              		.loc 1 245 0
+ 628 00bc 134C     		ldr	r4, .L47+48
+ 629              	.LVL79:
+ 630              	.L38:
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     return LOS_OK;
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** errre_uniSemPend:
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     (VOID)LOS_IntRestore(uwIntSave);
+ 631              		.loc 1 286 0
+ 632 00be 4046     		mov	r0, r8
+ 633 00c0 FFF7FEFF 		bl	LOS_IntRestore
+ 634              	.LVL80:
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     OS_RETURN_ERROR(uwRetErr);
+ 635              		.loc 1 287 0
+ 636 00c4 0023     		movs	r3, #0
+ 637 00c6 0093     		str	r3, [sp]
+ 638 00c8 2246     		mov	r2, r4
+ 639 00ca 0A49     		ldr	r1, .L47+24
+ 640 00cc 0A48     		ldr	r0, .L47+28
+ 641 00ce FFF7FEFF 		bl	LOS_ErrHandle
+ 642              	.LVL81:
+ 643              	.L33:
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** }
+ 644              		.loc 1 288 0
+ 645 00d2 2046     		mov	r0, r4
+ 646 00d4 02B0     		add	sp, sp, #8
+ 647              	.LCFI12:
+ 648              		.cfi_def_cfa_offset 24
+ 649              		@ sp needed
+ 650 00d6 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 651              	.L48:
+ 652 00da 00BF     		.align	2
+ 653              	.L47:
+ 654 00dc 00000000 		.word	g_pstAllSem
+ 655 00e0 00000000 		.word	g_usLosTaskLock
+ 656 00e4 00000000 		.word	.LC1
+ 657 00e8 28000000 		.word	.LC3
+ 658 00ec 06070002 		.word	33556230
+ 659 00f0 01070002 		.word	33556225
+ 660 00f4 F8C3B2A1 		.word	-1582119944
+ 661 00f8 00000000 		.word	.LC0
+ 662 00fc 08000000 		.word	.LC2
+ 663 0100 05070002 		.word	33556229
+ 664 0104 00000000 		.word	g_stLosTask
+ 665 0108 07070002 		.word	33556231
+ 666 010c 04070002 		.word	33556228
+ 667              		.cfi_endproc
+ 668              	.LFE140:
+ 670              		.section	.text.LOS_SemPost,"ax",%progbits
+ 671              		.align	1
+ 672              		.global	LOS_SemPost
+ 673              		.syntax unified
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 22
+
+
+ 674              		.thumb
+ 675              		.thumb_func
+ 676              		.fpu fpv4-sp-d16
+ 678              	LOS_SemPost:
+ 679              	.LFB141:
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** /*****************************************************************************
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Function     : LOS_SemPend
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Description  : Specified semaphore V operation,
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Input        : uwSemHandle--------- semaphore operation handle,
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Output       : None
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  Return       : LOS_OK on success or error code on failure
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****  *****************************************************************************/
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** LITE_OS_SEC_TEXT UINT32 LOS_SemPost(UINT32 uwSemHandle)
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** {
+ 680              		.loc 1 298 0
+ 681              		.cfi_startproc
+ 682              		@ args = 0, pretend = 0, frame = 0
+ 683              		@ frame_needed = 0, uses_anonymous_args = 0
+ 684              	.LVL82:
+ 685 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 686              	.LCFI13:
+ 687              		.cfi_def_cfa_offset 20
+ 688              		.cfi_offset 4, -20
+ 689              		.cfi_offset 5, -16
+ 690              		.cfi_offset 6, -12
+ 691              		.cfi_offset 7, -8
+ 692              		.cfi_offset 14, -4
+ 693 0002 83B0     		sub	sp, sp, #12
+ 694              	.LCFI14:
+ 695              		.cfi_def_cfa_offset 32
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     UINT32      uwIntSave;
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     SEM_CB_S    *pstSemPosted = GET_SEM(uwSemHandle);
+ 696              		.loc 1 300 0
+ 697 0004 214B     		ldr	r3, .L58
+ 698 0006 1E68     		ldr	r6, [r3]
+ 699 0008 0501     		lsls	r5, r0, #4
+ 700 000a 7419     		adds	r4, r6, r5
+ 701              	.LVL83:
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     LOS_TASK_CB *pstResumedTask;
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (uwSemHandle >= LOSCFG_BASE_IPC_SEM_LIMIT)
+ 702              		.loc 1 303 0
+ 703 000c 1328     		cmp	r0, #19
+ 704 000e 3AD8     		bhi	.L54
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         return LOS_ERRNO_SEM_INVALID;
+ 306:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     uwIntSave = LOS_IntLock();
+ 705              		.loc 1 308 0
+ 706 0010 FFF7FEFF 		bl	LOS_IntLock
+ 707              	.LVL84:
+ 708 0014 0746     		mov	r7, r0
+ 709              	.LVL85:
+ 309:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (OS_SEM_UNUSED == pstSemPosted->usSemStat)
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 23
+
+
+ 710              		.loc 1 310 0
+ 711 0016 735B     		ldrh	r3, [r6, r5]
+ 712 0018 B3B1     		cbz	r3, .L56
+ 311:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         LOS_IntRestore(uwIntSave);
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         OS_RETURN_ERROR(LOS_ERRNO_SEM_INVALID);
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (pstSemPosted->usMaxSemCount == pstSemPosted->usSemCount)
+ 713              		.loc 1 316 0
+ 714 001a A388     		ldrh	r3, [r4, #4]
+ 715 001c 6288     		ldrh	r2, [r4, #2]
+ 716 001e 9342     		cmp	r3, r2
+ 717 0020 1ED0     		beq	.L57
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         (VOID)LOS_IntRestore(uwIntSave);
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         OS_RETURN_ERROR(LOS_ERRNO_SEM_OVERFLOW);
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     if (!LOS_ListEmpty(&pstSemPosted->stSemList))
+ 718              		.loc 1 321 0
+ 719 0022 04F10803 		add	r3, r4, #8
+ 720              	.LBB38:
+ 721              	.LBB39:
+ 722              		.loc 2 215 0
+ 723 0026 E068     		ldr	r0, [r4, #12]
+ 724              	.LVL86:
+ 725              	.LBE39:
+ 726              	.LBE38:
+ 727              		.loc 1 321 0
+ 728 0028 8342     		cmp	r3, r0
+ 729 002a 25D0     		beq	.L53
+ 730              	.LVL87:
+ 322:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         pstResumedTask = OS_TCB_FROM_PENDLIST(LOS_DL_LIST_FIRST(&(pstSemPosted->stSemList))); /*lin
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         pstResumedTask->pTaskSem = NULL;
+ 731              		.loc 1 324 0
+ 732 002c 0024     		movs	r4, #0
+ 733              	.LVL88:
+ 734 002e 40F8104C 		str	r4, [r0, #-16]
+ 325:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         osTaskWake(pstResumedTask, OS_TASK_STATUS_PEND);
+ 735              		.loc 1 325 0
+ 736 0032 0821     		movs	r1, #8
+ 737 0034 2838     		subs	r0, r0, #40
+ 738              	.LVL89:
+ 739 0036 FFF7FEFF 		bl	osTaskWake
+ 740              	.LVL90:
+ 326:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 327:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         (VOID)LOS_IntRestore(uwIntSave);
+ 741              		.loc 1 327 0
+ 742 003a 3846     		mov	r0, r7
+ 743 003c FFF7FEFF 		bl	LOS_IntRestore
+ 744              	.LVL91:
+ 328:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         LOS_Schedule();
+ 745              		.loc 1 328 0
+ 746 0040 FFF7FEFF 		bl	LOS_Schedule
+ 747              	.LVL92:
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 24
+
+
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     else
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     {
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         pstSemPosted->usSemCount++;
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         (VOID)LOS_IntRestore(uwIntSave);
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 335:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** 
+ 336:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     return LOS_OK;
+ 748              		.loc 1 336 0
+ 749 0044 2046     		mov	r0, r4
+ 750 0046 1FE0     		b	.L49
+ 751              	.LVL93:
+ 752              	.L56:
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         OS_RETURN_ERROR(LOS_ERRNO_SEM_INVALID);
+ 753              		.loc 1 312 0
+ 754 0048 FFF7FEFF 		bl	LOS_IntRestore
+ 755              	.LVL94:
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 756              		.loc 1 313 0
+ 757 004c 104C     		ldr	r4, .L58+4
+ 758              	.LVL95:
+ 759 004e 0023     		movs	r3, #0
+ 760 0050 0093     		str	r3, [sp]
+ 761 0052 2246     		mov	r2, r4
+ 762 0054 0F49     		ldr	r1, .L58+8
+ 763 0056 1048     		ldr	r0, .L58+12
+ 764 0058 FFF7FEFF 		bl	LOS_ErrHandle
+ 765              	.LVL96:
+ 766 005c 2046     		mov	r0, r4
+ 767 005e 13E0     		b	.L49
+ 768              	.LVL97:
+ 769              	.L57:
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         OS_RETURN_ERROR(LOS_ERRNO_SEM_OVERFLOW);
+ 770              		.loc 1 318 0
+ 771 0060 FFF7FEFF 		bl	LOS_IntRestore
+ 772              	.LVL98:
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 773              		.loc 1 319 0
+ 774 0064 0D4C     		ldr	r4, .L58+16
+ 775              	.LVL99:
+ 776 0066 0023     		movs	r3, #0
+ 777 0068 0093     		str	r3, [sp]
+ 778 006a 2246     		mov	r2, r4
+ 779 006c 0949     		ldr	r1, .L58+8
+ 780 006e 0A48     		ldr	r0, .L58+12
+ 781 0070 FFF7FEFF 		bl	LOS_ErrHandle
+ 782              	.LVL100:
+ 783 0074 2046     		mov	r0, r4
+ 784 0076 07E0     		b	.L49
+ 785              	.LVL101:
+ 786              	.L53:
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****         (VOID)LOS_IntRestore(uwIntSave);
+ 787              		.loc 1 332 0
+ 788 0078 0132     		adds	r2, r2, #1
+ 789 007a 6280     		strh	r2, [r4, #2]	@ movhi
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 790              		.loc 1 333 0
+ 791 007c 3846     		mov	r0, r7
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 25
+
+
+ 792 007e FFF7FEFF 		bl	LOS_IntRestore
+ 793              	.LVL102:
+ 794              		.loc 1 336 0
+ 795 0082 0020     		movs	r0, #0
+ 796 0084 00E0     		b	.L49
+ 797              	.LVL103:
+ 798              	.L54:
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c ****     }
+ 799              		.loc 1 305 0
+ 800 0086 0248     		ldr	r0, .L58+4
+ 801              	.LVL104:
+ 802              	.L49:
+ 337:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/ipc\los_sem.c **** }
+ 803              		.loc 1 337 0
+ 804 0088 03B0     		add	sp, sp, #12
+ 805              	.LCFI15:
+ 806              		.cfi_def_cfa_offset 20
+ 807              		@ sp needed
+ 808 008a F0BD     		pop	{r4, r5, r6, r7, pc}
+ 809              	.LVL105:
+ 810              	.L59:
+ 811              		.align	2
+ 812              	.L58:
+ 813 008c 00000000 		.word	g_pstAllSem
+ 814 0090 01070002 		.word	33556225
+ 815 0094 F8C3B2A1 		.word	-1582119944
+ 816 0098 00000000 		.word	.LC0
+ 817 009c 08070002 		.word	33556232
+ 818              		.cfi_endproc
+ 819              	.LFE141:
+ 821              		.comm	g_pstAllSem,4,4
+ 822              		.comm	g_stUnusedSemList,8,4
+ 823              		.section	.rodata.LOS_SemPend.str1.4,"aMS",%progbits,1
+ 824              		.align	2
+ 825              	.LC1:
+ 826 0000 5B455252 		.ascii	"[ERR] \000"
+ 826      5D2000
+ 827 0007 00       		.space	1
+ 828              	.LC2:
+ 829 0008 2121214C 		.ascii	"!!!LOS_ERRNO_SEM_PEND_INTERR!!!\000"
+ 829      4F535F45 
+ 829      52524E4F 
+ 829      5F53454D 
+ 829      5F50454E 
+ 830              	.LC3:
+ 831 0028 2121214C 		.ascii	"!!!LOS_ERRNO_SEM_PEND_IN_LOCK!!!\000"
+ 831      4F535F45 
+ 831      52524E4F 
+ 831      5F53454D 
+ 831      5F50454E 
+ 832              		.section	.rodata.osSemCreate.str1.4,"aMS",%progbits,1
+ 833              		.align	2
+ 834              	.LC0:
+ 835 0000 6F735F75 		.ascii	"os_unspecific_file\000"
+ 835      6E737065 
+ 835      63696669 
+ 835      635F6669 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 26
+
+
+ 835      6C6500
+ 836              		.text
+ 837              	.Letext0:
+ 838              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 839              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 840              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 841              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 842              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 843              		.file 8 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 844              		.file 9 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 845              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 846              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 847              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 848              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 849              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 850              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 851              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 852              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 853              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 854              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 855              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 856              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_sem.ph"
+ 857              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_memory.h"
+ 858              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hw.h"
+ 859              		.file 24 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 860              		.file 25 "<built-in>"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s 			page 27
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 los_sem.c
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:18     .text.osSemInit:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:25     .text.osSemInit:00000000 osSemInit
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:124    .text.osSemInit:00000050 $d
+                            *COM*:00000008 g_stUnusedSemList
+                            *COM*:00000004 g_pstAllSem
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:132    .text.osSemCreate:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:139    .text.osSemCreate:00000000 osSemCreate
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:261    .text.osSemCreate:0000006c $d
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:271    .text.LOS_SemCreate:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:278    .text.LOS_SemCreate:00000000 LOS_SemCreate
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:302    .text.LOS_BinarySemCreate:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:309    .text.LOS_BinarySemCreate:00000000 LOS_BinarySemCreate
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:333    .text.LOS_SemDelete:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:340    .text.LOS_SemDelete:00000000 LOS_SemDelete
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:452    .text.LOS_SemDelete:00000060 $d
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:462    .text.LOS_SemPend:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:469    .text.LOS_SemPend:00000000 LOS_SemPend
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:654    .text.LOS_SemPend:000000dc $d
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:671    .text.LOS_SemPost:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:678    .text.LOS_SemPost:00000000 LOS_SemPost
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:813    .text.LOS_SemPost:0000008c $d
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:824    .rodata.LOS_SemPend.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\cchWwuxh.s:833    .rodata.osSemCreate.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+LOS_MemAlloc
+m_aucSysMem0
+LOS_IntLock
+LOS_IntRestore
+LOS_ErrHandle
+osIntNumGet
+printf
+puts
+osTaskWait
+LOS_Schedule
+g_usLosTaskLock
+g_stLosTask
+osTaskWake

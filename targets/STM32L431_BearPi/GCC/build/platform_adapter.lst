@@ -1,0 +1,424 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"platform_adapter.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.lwm2m_malloc,"ax",%progbits
+  18              		.align	1
+  19              		.global	lwm2m_malloc
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	lwm2m_malloc:
+  26              	.LFB134:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** /*******************************************************************************
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  *
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * Copyright (c) 2013, 2014, 2015 Intel Corporation and others.
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * All rights reserved. This program and the accompanying materials
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * are made available under the terms of the Eclipse Public License v1.0
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  *
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * The Eclipse Public License is available at
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * The Eclipse Distribution License is available at
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  *    http://www.eclipse.org/org/documents/edl-v10.php.
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  *
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  * Contributors:
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  *    David Navarro, Intel Corporation - initial API and implementation
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****  *******************************************************************************/
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** 
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** #include <stdarg.h>
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** 
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** #include "internals.h"
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** #include "osdepends/atiny_osdep.h"
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** 
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** #ifndef LWM2M_MEMORY_TRACE
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** 
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** void *lwm2m_malloc(size_t s)
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** {
+  28              		.loc 1 59 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  38              	.LVL1:
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****     void *mem = NULL;
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****     mem = atiny_malloc(s);
+  39              		.loc 1 61 0
+  40 0002 FFF7FEFF 		bl	atiny_malloc
+  41              	.LVL2:
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****     return mem;
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** }
+  42              		.loc 1 63 0
+  43 0006 08BD     		pop	{r3, pc}
+  44              		.cfi_endproc
+  45              	.LFE134:
+  47              		.section	.text.lwm2m_free,"ax",%progbits
+  48              		.align	1
+  49              		.global	lwm2m_free
+  50              		.syntax unified
+  51              		.thumb
+  52              		.thumb_func
+  53              		.fpu fpv4-sp-d16
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s 			page 3
+
+
+  55              	lwm2m_free:
+  56              	.LFB135:
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** 
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** void lwm2m_free(void *p)
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** {
+  57              		.loc 1 66 0
+  58              		.cfi_startproc
+  59              		@ args = 0, pretend = 0, frame = 0
+  60              		@ frame_needed = 0, uses_anonymous_args = 0
+  61              	.LVL3:
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****     if(NULL != p)
+  62              		.loc 1 67 0
+  63 0000 18B1     		cbz	r0, .L6
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****     if(NULL != p)
+  64              		.loc 1 66 0
+  65 0002 08B5     		push	{r3, lr}
+  66              	.LCFI1:
+  67              		.cfi_def_cfa_offset 8
+  68              		.cfi_offset 3, -8
+  69              		.cfi_offset 14, -4
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****         atiny_free(p);
+  70              		.loc 1 68 0
+  71 0004 FFF7FEFF 		bl	atiny_free
+  72              	.LVL4:
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** }
+  73              		.loc 1 69 0
+  74 0008 08BD     		pop	{r3, pc}
+  75              	.LVL5:
+  76              	.L6:
+  77              	.LCFI2:
+  78              		.cfi_def_cfa_offset 0
+  79              		.cfi_restore 3
+  80              		.cfi_restore 14
+  81 000a 7047     		bx	lr
+  82              		.cfi_endproc
+  83              	.LFE135:
+  85              		.section	.text.lwm2m_strdup,"ax",%progbits
+  86              		.align	1
+  87              		.global	lwm2m_strdup
+  88              		.syntax unified
+  89              		.thumb
+  90              		.thumb_func
+  91              		.fpu fpv4-sp-d16
+  93              	lwm2m_strdup:
+  94              	.LFB136:
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** 
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** 
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** char *lwm2m_strdup(const char *str)
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** {
+  95              		.loc 1 73 0
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 0, uses_anonymous_args = 0
+  99              	.LVL6:
+ 100 0000 38B5     		push	{r3, r4, r5, lr}
+ 101              	.LCFI3:
+ 102              		.cfi_def_cfa_offset 16
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s 			page 4
+
+
+ 103              		.cfi_offset 3, -16
+ 104              		.cfi_offset 4, -12
+ 105              		.cfi_offset 5, -8
+ 106              		.cfi_offset 14, -4
+ 107 0002 0546     		mov	r5, r0
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****     int len = strlen(str) + 1;
+ 108              		.loc 1 74 0
+ 109 0004 FFF7FEFF 		bl	strlen
+ 110              	.LVL7:
+ 111 0008 441C     		adds	r4, r0, #1
+ 112              	.LVL8:
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****     void *new = lwm2m_malloc(len);
+ 113              		.loc 1 75 0
+ 114 000a 2046     		mov	r0, r4
+ 115 000c FFF7FEFF 		bl	lwm2m_malloc
+ 116              	.LVL9:
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****     if (new == NULL)
+ 117              		.loc 1 76 0
+ 118 0010 20B1     		cbz	r0, .L11
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****         return NULL;
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****     return (char *)memcpy(new, str, len);
+ 119              		.loc 1 78 0
+ 120 0012 2246     		mov	r2, r4
+ 121 0014 2946     		mov	r1, r5
+ 122 0016 FFF7FEFF 		bl	memcpy
+ 123              	.LVL10:
+ 124              	.L9:
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** 
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** }
+ 125              		.loc 1 80 0
+ 126 001a 38BD     		pop	{r3, r4, r5, pc}
+ 127              	.LVL11:
+ 128              	.L11:
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****         return NULL;
+ 129              		.loc 1 77 0
+ 130 001c 0020     		movs	r0, #0
+ 131              	.LVL12:
+ 132 001e FCE7     		b	.L9
+ 133              		.cfi_endproc
+ 134              	.LFE136:
+ 136              		.section	.text.lwm2m_strncmp,"ax",%progbits
+ 137              		.align	1
+ 138              		.global	lwm2m_strncmp
+ 139              		.syntax unified
+ 140              		.thumb
+ 141              		.thumb_func
+ 142              		.fpu fpv4-sp-d16
+ 144              	lwm2m_strncmp:
+ 145              	.LFB137:
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** 
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** #endif
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** 
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** int lwm2m_strncmp(const char *s1,
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****                   const char *s2,
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****                   size_t n)
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** {
+ 146              		.loc 1 87 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s 			page 5
+
+
+ 147              		.cfi_startproc
+ 148              		@ args = 0, pretend = 0, frame = 0
+ 149              		@ frame_needed = 0, uses_anonymous_args = 0
+ 150              	.LVL13:
+ 151 0000 08B5     		push	{r3, lr}
+ 152              	.LCFI4:
+ 153              		.cfi_def_cfa_offset 8
+ 154              		.cfi_offset 3, -8
+ 155              		.cfi_offset 14, -4
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****     return strncmp(s1, s2, n);
+ 156              		.loc 1 88 0
+ 157 0002 FFF7FEFF 		bl	strncmp
+ 158              	.LVL14:
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** }
+ 159              		.loc 1 89 0
+ 160 0006 08BD     		pop	{r3, pc}
+ 161              		.cfi_endproc
+ 162              	.LFE137:
+ 164              		.global	__aeabi_uldivmod
+ 165              		.section	.text.lwm2m_gettime,"ax",%progbits
+ 166              		.align	1
+ 167              		.global	lwm2m_gettime
+ 168              		.syntax unified
+ 169              		.thumb
+ 170              		.thumb_func
+ 171              		.fpu fpv4-sp-d16
+ 173              	lwm2m_gettime:
+ 174              	.LFB138:
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** 
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** time_t lwm2m_gettime(void)
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** {
+ 175              		.loc 1 92 0
+ 176              		.cfi_startproc
+ 177              		@ args = 0, pretend = 0, frame = 0
+ 178              		@ frame_needed = 0, uses_anonymous_args = 0
+ 179 0000 08B5     		push	{r3, lr}
+ 180              	.LCFI5:
+ 181              		.cfi_def_cfa_offset 8
+ 182              		.cfi_offset 3, -8
+ 183              		.cfi_offset 14, -4
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****     return (uint32_t)(atiny_gettime_ms() / 1000);
+ 184              		.loc 1 93 0
+ 185 0002 FFF7FEFF 		bl	atiny_gettime_ms
+ 186              	.LVL15:
+ 187 0006 4FF47A72 		mov	r2, #1000
+ 188 000a 0023     		movs	r3, #0
+ 189 000c FFF7FEFF 		bl	__aeabi_uldivmod
+ 190              	.LVL16:
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** }
+ 191              		.loc 1 94 0
+ 192 0010 0021     		movs	r1, #0
+ 193 0012 08BD     		pop	{r3, pc}
+ 194              		.cfi_endproc
+ 195              	.LFE138:
+ 197              		.section	.text.lwm2m_rand,"ax",%progbits
+ 198              		.align	1
+ 199              		.global	lwm2m_rand
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s 			page 6
+
+
+ 200              		.syntax unified
+ 201              		.thumb
+ 202              		.thumb_func
+ 203              		.fpu fpv4-sp-d16
+ 205              	lwm2m_rand:
+ 206              	.LFB139:
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** 
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** int lwm2m_rand(void *output, size_t len)
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** {
+ 207              		.loc 1 97 0
+ 208              		.cfi_startproc
+ 209              		@ args = 0, pretend = 0, frame = 0
+ 210              		@ frame_needed = 0, uses_anonymous_args = 0
+ 211              	.LVL17:
+ 212 0000 08B5     		push	{r3, lr}
+ 213              	.LCFI6:
+ 214              		.cfi_def_cfa_offset 8
+ 215              		.cfi_offset 3, -8
+ 216              		.cfi_offset 14, -4
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****     return atiny_random(output, len);
+ 217              		.loc 1 98 0
+ 218 0002 FFF7FEFF 		bl	atiny_random
+ 219              	.LVL18:
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** }
+ 220              		.loc 1 99 0
+ 221 0006 08BD     		pop	{r3, pc}
+ 222              		.cfi_endproc
+ 223              	.LFE139:
+ 225              		.section	.text.lwm2m_delay,"ax",%progbits
+ 226              		.align	1
+ 227              		.global	lwm2m_delay
+ 228              		.syntax unified
+ 229              		.thumb
+ 230              		.thumb_func
+ 231              		.fpu fpv4-sp-d16
+ 233              	lwm2m_delay:
+ 234              	.LFB140:
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** 
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** void lwm2m_delay(uint32_t second)
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** {
+ 235              		.loc 1 102 0
+ 236              		.cfi_startproc
+ 237              		@ args = 0, pretend = 0, frame = 0
+ 238              		@ frame_needed = 0, uses_anonymous_args = 0
+ 239              	.LVL19:
+ 240 0000 08B5     		push	{r3, lr}
+ 241              	.LCFI7:
+ 242              		.cfi_def_cfa_offset 8
+ 243              		.cfi_offset 3, -8
+ 244              		.cfi_offset 14, -4
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c ****     atiny_delay(second);
+ 245              		.loc 1 103 0
+ 246 0002 FFF7FEFF 		bl	atiny_delay
+ 247              	.LVL20:
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/agent_tiny/atiny_lwm2m\platform_adapter.c **** }
+ 248              		.loc 1 104 0
+ 249 0006 08BD     		pop	{r3, pc}
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s 			page 7
+
+
+ 250              		.cfi_endproc
+ 251              	.LFE140:
+ 253              		.text
+ 254              	.Letext0:
+ 255              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 256              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 257              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 258              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 259              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 260              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 261              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 262              		.file 9 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 263              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/connectivity/lwm2m/core
+ 264              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 265              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 266              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 267              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 268              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 269              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 270              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 271              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 272              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 273              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 274              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 275              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 276              		.file 23 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 277              		.file 24 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 278              		.file 25 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 279              		.file 26 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/osdepends/atiny_osdep.h"
+ 280              		.file 27 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 281              		.file 28 "<built-in>"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 platform_adapter.c
+c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s:18     .text.lwm2m_malloc:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s:25     .text.lwm2m_malloc:00000000 lwm2m_malloc
+c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s:48     .text.lwm2m_free:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s:55     .text.lwm2m_free:00000000 lwm2m_free
+c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s:86     .text.lwm2m_strdup:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s:93     .text.lwm2m_strdup:00000000 lwm2m_strdup
+c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s:137    .text.lwm2m_strncmp:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s:144    .text.lwm2m_strncmp:00000000 lwm2m_strncmp
+c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s:166    .text.lwm2m_gettime:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s:173    .text.lwm2m_gettime:00000000 lwm2m_gettime
+c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s:198    .text.lwm2m_rand:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s:205    .text.lwm2m_rand:00000000 lwm2m_rand
+c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s:226    .text.lwm2m_delay:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cclAEU6l.s:233    .text.lwm2m_delay:00000000 lwm2m_delay
+
+UNDEFINED SYMBOLS
+atiny_malloc
+atiny_free
+strlen
+memcpy
+strncmp
+__aeabi_uldivmod
+atiny_gettime_ms
+atiny_random
+atiny_delay

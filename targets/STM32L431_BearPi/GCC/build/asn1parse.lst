@@ -1,0 +1,1742 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"asn1parse.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.mbedtls_zeroize,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	mbedtls_zeroize:
+  25              	.LFB3:
+  26              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** /*
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *  Generic ASN.1 parsing
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *  Copyright (C) 2006-2015, ARM Limited, All Rights Reserved
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *  SPDX-License-Identifier: Apache-2.0
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *  Licensed under the Apache License, Version 2.0 (the "License"); you may
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *  not use this file except in compliance with the License.
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *  You may obtain a copy of the License at
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *  http://www.apache.org/licenses/LICENSE-2.0
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *  Unless required by applicable law or agreed to in writing, software
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *  See the License for the specific language governing permissions and
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *  limitations under the License.
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *  This file is part of mbed TLS (https://tls.mbed.org)
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  */
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #if !defined(MBEDTLS_CONFIG_FILE)
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #include "mbedtls/config.h"
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #else
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #include MBEDTLS_CONFIG_FILE
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #endif
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #if defined(MBEDTLS_ASN1_PARSE_C)
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #include "mbedtls/asn1.h"
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #include <string.h>
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 2
+
+
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #if defined(MBEDTLS_BIGNUM_C)
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #include "mbedtls/bignum.h"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #endif
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #if defined(MBEDTLS_PLATFORM_C)
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #include "mbedtls/platform.h"
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #else
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #include <stdlib.h>
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #define mbedtls_calloc    calloc
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #define mbedtls_free       free
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #endif
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** /* Implementation that should never be optimized out by the compiler */
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** static void mbedtls_zeroize( void *v, size_t n ) {
+  27              		.loc 1 47 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     volatile unsigned char *p = (unsigned char*)v; while( n-- ) *p++ = 0;
+  33              		.loc 1 48 0
+  34 0000 03E0     		b	.L2
+  35              	.LVL1:
+  36              	.L3:
+  37              		.loc 1 48 0 is_stmt 0 discriminator 3
+  38 0002 0022     		movs	r2, #0
+  39 0004 0270     		strb	r2, [r0]
+  40 0006 0130     		adds	r0, r0, #1
+  41              	.LVL2:
+  42 0008 1946     		mov	r1, r3
+  43              	.LVL3:
+  44              	.L2:
+  45              		.loc 1 48 0 discriminator 1
+  46 000a 4B1E     		subs	r3, r1, #1
+  47              	.LVL4:
+  48 000c 0029     		cmp	r1, #0
+  49 000e F8D1     		bne	.L3
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** }
+  50              		.loc 1 49 0 is_stmt 1
+  51 0010 7047     		bx	lr
+  52              		.cfi_endproc
+  53              	.LFE3:
+  55              		.section	.text.mbedtls_asn1_get_len,"ax",%progbits
+  56              		.align	1
+  57              		.global	mbedtls_asn1_get_len
+  58              		.syntax unified
+  59              		.thumb
+  60              		.thumb_func
+  61              		.fpu fpv4-sp-d16
+  63              	mbedtls_asn1_get_len:
+  64              	.LFB4:
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** /*
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  * ASN.1 DER decoding routines
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  */
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 3
+
+
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** int mbedtls_asn1_get_len( unsigned char **p,
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                   const unsigned char *end,
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                   size_t *len )
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** {
+  65              		.loc 1 57 0
+  66              		.cfi_startproc
+  67              		@ args = 0, pretend = 0, frame = 0
+  68              		@ frame_needed = 0, uses_anonymous_args = 0
+  69              		@ link register save eliminated.
+  70              	.LVL5:
+  71 0000 30B4     		push	{r4, r5}
+  72              	.LCFI0:
+  73              		.cfi_def_cfa_offset 8
+  74              		.cfi_offset 4, -8
+  75              		.cfi_offset 5, -4
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( ( end - *p ) < 1 )
+  76              		.loc 1 58 0
+  77 0002 0368     		ldr	r3, [r0]
+  78 0004 CD1A     		subs	r5, r1, r3
+  79 0006 002D     		cmp	r5, #0
+  80 0008 4DDD     		ble	.L13
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_OUT_OF_DATA );
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( ( **p & 0x80 ) == 0 )
+  81              		.loc 1 61 0
+  82 000a 1C78     		ldrb	r4, [r3]	@ zero_extendqisi2
+  83 000c 14F0800F 		tst	r4, #128
+  84 0010 0BD1     		bne	.L6
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         *len = *(*p)++;
+  85              		.loc 1 62 0
+  86 0012 5C1C     		adds	r4, r3, #1
+  87 0014 0460     		str	r4, [r0]
+  88 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  89 0018 1360     		str	r3, [r2]
+  90              	.L7:
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     else
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     {
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         switch( **p & 0x7F )
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         {
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         case 1:
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             if( ( end - *p ) < 2 )
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                 return( MBEDTLS_ERR_ASN1_OUT_OF_DATA );
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             *len = (*p)[1];
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             (*p) += 2;
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             break;
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         case 2:
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             if( ( end - *p ) < 3 )
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                 return( MBEDTLS_ERR_ASN1_OUT_OF_DATA );
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             *len = ( (size_t)(*p)[1] << 8 ) | (*p)[2];
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             (*p) += 3;
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             break;
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         case 3:
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             if( ( end - *p ) < 4 )
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 4
+
+
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                 return( MBEDTLS_ERR_ASN1_OUT_OF_DATA );
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             *len = ( (size_t)(*p)[1] << 16 ) |
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                    ( (size_t)(*p)[2] << 8  ) | (*p)[3];
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             (*p) += 4;
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             break;
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         case 4:
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             if( ( end - *p ) < 5 )
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                 return( MBEDTLS_ERR_ASN1_OUT_OF_DATA );
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             *len = ( (size_t)(*p)[1] << 24 ) | ( (size_t)(*p)[2] << 16 ) |
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                    ( (size_t)(*p)[3] << 8  ) |           (*p)[4];
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             (*p) += 5;
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             break;
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         default:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             return( MBEDTLS_ERR_ASN1_INVALID_LENGTH );
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         }
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     }
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( *len > (size_t) ( end - *p ) )
+  91              		.loc 1 106 0
+  92 001a 1368     		ldr	r3, [r2]
+  93 001c 0268     		ldr	r2, [r0]
+  94              	.LVL6:
+  95 001e 891A     		subs	r1, r1, r2
+  96              	.LVL7:
+  97 0020 8B42     		cmp	r3, r1
+  98 0022 3DD8     		bhi	.L21
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_OUT_OF_DATA );
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     return( 0 );
+  99              		.loc 1 109 0
+ 100 0024 0020     		movs	r0, #0
+ 101              	.LVL8:
+ 102              	.L4:
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** }
+ 103              		.loc 1 110 0
+ 104 0026 30BC     		pop	{r4, r5}
+ 105              	.LCFI1:
+ 106              		.cfi_remember_state
+ 107              		.cfi_restore 5
+ 108              		.cfi_restore 4
+ 109              		.cfi_def_cfa_offset 0
+ 110 0028 7047     		bx	lr
+ 111              	.LVL9:
+ 112              	.L6:
+ 113              	.LCFI2:
+ 114              		.cfi_restore_state
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         {
+ 115              		.loc 1 65 0
+ 116 002a 04F07F04 		and	r4, r4, #127
+ 117 002e 013C     		subs	r4, r4, #1
+ 118 0030 032C     		cmp	r4, #3
+ 119 0032 3BD8     		bhi	.L14
+ 120 0034 DFE804F0 		tbb	[pc, r4]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 5
+
+
+ 121              	.L9:
+ 122 0038 02       		.byte	(.L8-.L9)/2
+ 123 0039 0A       		.byte	(.L10-.L9)/2
+ 124 003a 15       		.byte	(.L11-.L9)/2
+ 125 003b 23       		.byte	(.L12-.L9)/2
+ 126              		.p2align 1
+ 127              	.L8:
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                 return( MBEDTLS_ERR_ASN1_OUT_OF_DATA );
+ 128              		.loc 1 68 0
+ 129 003c 012D     		cmp	r5, #1
+ 130 003e 38DD     		ble	.L15
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             (*p) += 2;
+ 131              		.loc 1 71 0
+ 132 0040 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 133 0042 1360     		str	r3, [r2]
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             break;
+ 134              		.loc 1 72 0
+ 135 0044 0368     		ldr	r3, [r0]
+ 136 0046 0233     		adds	r3, r3, #2
+ 137 0048 0360     		str	r3, [r0]
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 138              		.loc 1 73 0
+ 139 004a E6E7     		b	.L7
+ 140              	.L10:
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                 return( MBEDTLS_ERR_ASN1_OUT_OF_DATA );
+ 141              		.loc 1 76 0
+ 142 004c 022D     		cmp	r5, #2
+ 143 004e 33DD     		ble	.L16
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             (*p) += 3;
+ 144              		.loc 1 79 0
+ 145 0050 5C78     		ldrb	r4, [r3, #1]	@ zero_extendqisi2
+ 146 0052 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 147 0054 43EA0423 		orr	r3, r3, r4, lsl #8
+ 148 0058 1360     		str	r3, [r2]
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             break;
+ 149              		.loc 1 80 0
+ 150 005a 0368     		ldr	r3, [r0]
+ 151 005c 0333     		adds	r3, r3, #3
+ 152 005e 0360     		str	r3, [r0]
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 153              		.loc 1 81 0
+ 154 0060 DBE7     		b	.L7
+ 155              	.L11:
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                 return( MBEDTLS_ERR_ASN1_OUT_OF_DATA );
+ 156              		.loc 1 84 0
+ 157 0062 032D     		cmp	r5, #3
+ 158 0064 2BDD     		ble	.L17
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                    ( (size_t)(*p)[2] << 8  ) | (*p)[3];
+ 159              		.loc 1 87 0
+ 160 0066 5D78     		ldrb	r5, [r3, #1]	@ zero_extendqisi2
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             (*p) += 4;
+ 161              		.loc 1 88 0
+ 162 0068 9C78     		ldrb	r4, [r3, #2]	@ zero_extendqisi2
+ 163 006a 2402     		lsls	r4, r4, #8
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                    ( (size_t)(*p)[2] << 8  ) | (*p)[3];
+ 164              		.loc 1 87 0
+ 165 006c 44EA0544 		orr	r4, r4, r5, lsl #16
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 6
+
+
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             (*p) += 4;
+ 166              		.loc 1 88 0
+ 167 0070 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 168 0072 2343     		orrs	r3, r3, r4
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                    ( (size_t)(*p)[2] << 8  ) | (*p)[3];
+ 169              		.loc 1 87 0
+ 170 0074 1360     		str	r3, [r2]
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             break;
+ 171              		.loc 1 89 0
+ 172 0076 0368     		ldr	r3, [r0]
+ 173 0078 0433     		adds	r3, r3, #4
+ 174 007a 0360     		str	r3, [r0]
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 175              		.loc 1 90 0
+ 176 007c CDE7     		b	.L7
+ 177              	.L12:
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                 return( MBEDTLS_ERR_ASN1_OUT_OF_DATA );
+ 178              		.loc 1 93 0
+ 179 007e 042D     		cmp	r5, #4
+ 180 0080 20DD     		ble	.L18
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                    ( (size_t)(*p)[3] << 8  ) |           (*p)[4];
+ 181              		.loc 1 96 0
+ 182 0082 5D78     		ldrb	r5, [r3, #1]	@ zero_extendqisi2
+ 183 0084 9C78     		ldrb	r4, [r3, #2]	@ zero_extendqisi2
+ 184 0086 2404     		lsls	r4, r4, #16
+ 185 0088 44EA0564 		orr	r4, r4, r5, lsl #24
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             (*p) += 5;
+ 186              		.loc 1 97 0
+ 187 008c DD78     		ldrb	r5, [r3, #3]	@ zero_extendqisi2
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                    ( (size_t)(*p)[3] << 8  ) |           (*p)[4];
+ 188              		.loc 1 96 0
+ 189 008e 44EA0524 		orr	r4, r4, r5, lsl #8
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             (*p) += 5;
+ 190              		.loc 1 97 0
+ 191 0092 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 192 0094 2343     		orrs	r3, r3, r4
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                    ( (size_t)(*p)[3] << 8  ) |           (*p)[4];
+ 193              		.loc 1 96 0
+ 194 0096 1360     		str	r3, [r2]
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             break;
+ 195              		.loc 1 98 0
+ 196 0098 0368     		ldr	r3, [r0]
+ 197 009a 0533     		adds	r3, r3, #5
+ 198 009c 0360     		str	r3, [r0]
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 199              		.loc 1 99 0
+ 200 009e BCE7     		b	.L7
+ 201              	.LVL10:
+ 202              	.L21:
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 203              		.loc 1 107 0
+ 204 00a0 6FF05F00 		mvn	r0, #95
+ 205              	.LVL11:
+ 206 00a4 BFE7     		b	.L4
+ 207              	.LVL12:
+ 208              	.L13:
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 7
+
+
+ 209              		.loc 1 59 0
+ 210 00a6 6FF05F00 		mvn	r0, #95
+ 211              	.LVL13:
+ 212 00aa BCE7     		b	.L4
+ 213              	.LVL14:
+ 214              	.L14:
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         }
+ 215              		.loc 1 102 0
+ 216 00ac 6FF06300 		mvn	r0, #99
+ 217              	.LVL15:
+ 218 00b0 B9E7     		b	.L4
+ 219              	.LVL16:
+ 220              	.L15:
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 221              		.loc 1 69 0
+ 222 00b2 6FF05F00 		mvn	r0, #95
+ 223              	.LVL17:
+ 224 00b6 B6E7     		b	.L4
+ 225              	.LVL18:
+ 226              	.L16:
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 227              		.loc 1 77 0
+ 228 00b8 6FF05F00 		mvn	r0, #95
+ 229              	.LVL19:
+ 230 00bc B3E7     		b	.L4
+ 231              	.LVL20:
+ 232              	.L17:
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 233              		.loc 1 85 0
+ 234 00be 6FF05F00 		mvn	r0, #95
+ 235              	.LVL21:
+ 236 00c2 B0E7     		b	.L4
+ 237              	.LVL22:
+ 238              	.L18:
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 239              		.loc 1 94 0
+ 240 00c4 6FF05F00 		mvn	r0, #95
+ 241              	.LVL23:
+ 242 00c8 ADE7     		b	.L4
+ 243              		.cfi_endproc
+ 244              	.LFE4:
+ 246              		.section	.text.mbedtls_asn1_get_tag,"ax",%progbits
+ 247              		.align	1
+ 248              		.global	mbedtls_asn1_get_tag
+ 249              		.syntax unified
+ 250              		.thumb
+ 251              		.thumb_func
+ 252              		.fpu fpv4-sp-d16
+ 254              	mbedtls_asn1_get_tag:
+ 255              	.LFB5:
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** int mbedtls_asn1_get_tag( unsigned char **p,
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                   const unsigned char *end,
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                   size_t *len, int tag )
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** {
+ 256              		.loc 1 115 0
+ 257              		.cfi_startproc
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 8
+
+
+ 258              		@ args = 0, pretend = 0, frame = 0
+ 259              		@ frame_needed = 0, uses_anonymous_args = 0
+ 260              	.LVL24:
+ 261 0000 38B5     		push	{r3, r4, r5, lr}
+ 262              	.LCFI3:
+ 263              		.cfi_def_cfa_offset 16
+ 264              		.cfi_offset 3, -16
+ 265              		.cfi_offset 4, -12
+ 266              		.cfi_offset 5, -8
+ 267              		.cfi_offset 14, -4
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( ( end - *p ) < 1 )
+ 268              		.loc 1 116 0
+ 269 0002 0468     		ldr	r4, [r0]
+ 270 0004 0D1B     		subs	r5, r1, r4
+ 271 0006 002D     		cmp	r5, #0
+ 272 0008 07DD     		ble	.L24
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_OUT_OF_DATA );
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( **p != tag )
+ 273              		.loc 1 119 0
+ 274 000a 2578     		ldrb	r5, [r4]	@ zero_extendqisi2
+ 275 000c 9D42     		cmp	r5, r3
+ 276 000e 07D1     		bne	.L25
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_UNEXPECTED_TAG );
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     (*p)++;
+ 277              		.loc 1 122 0
+ 278 0010 0134     		adds	r4, r4, #1
+ 279 0012 0460     		str	r4, [r0]
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     return( mbedtls_asn1_get_len( p, end, len ) );
+ 280              		.loc 1 124 0
+ 281 0014 FFF7FEFF 		bl	mbedtls_asn1_get_len
+ 282              	.LVL25:
+ 283              	.L22:
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** }
+ 284              		.loc 1 125 0
+ 285 0018 38BD     		pop	{r3, r4, r5, pc}
+ 286              	.LVL26:
+ 287              	.L24:
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 288              		.loc 1 117 0
+ 289 001a 6FF05F00 		mvn	r0, #95
+ 290              	.LVL27:
+ 291 001e FBE7     		b	.L22
+ 292              	.LVL28:
+ 293              	.L25:
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 294              		.loc 1 120 0
+ 295 0020 6FF06100 		mvn	r0, #97
+ 296              	.LVL29:
+ 297 0024 F8E7     		b	.L22
+ 298              		.cfi_endproc
+ 299              	.LFE5:
+ 301              		.section	.text.mbedtls_asn1_get_bool,"ax",%progbits
+ 302              		.align	1
+ 303              		.global	mbedtls_asn1_get_bool
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 9
+
+
+ 304              		.syntax unified
+ 305              		.thumb
+ 306              		.thumb_func
+ 307              		.fpu fpv4-sp-d16
+ 309              	mbedtls_asn1_get_bool:
+ 310              	.LFB6:
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** int mbedtls_asn1_get_bool( unsigned char **p,
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                    const unsigned char *end,
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                    int *val )
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** {
+ 311              		.loc 1 130 0
+ 312              		.cfi_startproc
+ 313              		@ args = 0, pretend = 0, frame = 8
+ 314              		@ frame_needed = 0, uses_anonymous_args = 0
+ 315              	.LVL30:
+ 316 0000 30B5     		push	{r4, r5, lr}
+ 317              	.LCFI4:
+ 318              		.cfi_def_cfa_offset 12
+ 319              		.cfi_offset 4, -12
+ 320              		.cfi_offset 5, -8
+ 321              		.cfi_offset 14, -4
+ 322 0002 83B0     		sub	sp, sp, #12
+ 323              	.LCFI5:
+ 324              		.cfi_def_cfa_offset 24
+ 325 0004 0446     		mov	r4, r0
+ 326 0006 1546     		mov	r5, r2
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     int ret;
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     size_t len;
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( ( ret = mbedtls_asn1_get_tag( p, end, &len, MBEDTLS_ASN1_BOOLEAN ) ) != 0 )
+ 327              		.loc 1 134 0
+ 328 0008 0123     		movs	r3, #1
+ 329 000a 01AA     		add	r2, sp, #4
+ 330              	.LVL31:
+ 331 000c FFF7FEFF 		bl	mbedtls_asn1_get_tag
+ 332              	.LVL32:
+ 333 0010 0246     		mov	r2, r0
+ 334 0012 58B9     		cbnz	r0, .L27
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( ret );
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( len != 1 )
+ 335              		.loc 1 137 0
+ 336 0014 019B     		ldr	r3, [sp, #4]
+ 337 0016 012B     		cmp	r3, #1
+ 338 0018 0BD1     		bne	.L29
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_INVALID_LENGTH );
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     *val = ( **p != 0 ) ? 1 : 0;
+ 339              		.loc 1 140 0
+ 340 001a 2368     		ldr	r3, [r4]
+ 341 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 342 001e 0033     		adds	r3, r3, #0
+ 343 0020 18BF     		it	ne
+ 344 0022 0123     		movne	r3, #1
+ 345 0024 2B60     		str	r3, [r5]
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     (*p)++;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 10
+
+
+ 346              		.loc 1 141 0
+ 347 0026 2368     		ldr	r3, [r4]
+ 348 0028 0133     		adds	r3, r3, #1
+ 349 002a 2360     		str	r3, [r4]
+ 350              	.L27:
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     return( 0 );
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** }
+ 351              		.loc 1 144 0
+ 352 002c 1046     		mov	r0, r2
+ 353              	.LVL33:
+ 354 002e 03B0     		add	sp, sp, #12
+ 355              	.LCFI6:
+ 356              		.cfi_remember_state
+ 357              		.cfi_def_cfa_offset 12
+ 358              		@ sp needed
+ 359 0030 30BD     		pop	{r4, r5, pc}
+ 360              	.LVL34:
+ 361              	.L29:
+ 362              	.LCFI7:
+ 363              		.cfi_restore_state
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 364              		.loc 1 138 0
+ 365 0032 6FF06302 		mvn	r2, #99
+ 366 0036 F9E7     		b	.L27
+ 367              		.cfi_endproc
+ 368              	.LFE6:
+ 370              		.section	.text.mbedtls_asn1_get_int,"ax",%progbits
+ 371              		.align	1
+ 372              		.global	mbedtls_asn1_get_int
+ 373              		.syntax unified
+ 374              		.thumb
+ 375              		.thumb_func
+ 376              		.fpu fpv4-sp-d16
+ 378              	mbedtls_asn1_get_int:
+ 379              	.LFB7:
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** int mbedtls_asn1_get_int( unsigned char **p,
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                   const unsigned char *end,
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                   int *val )
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** {
+ 380              		.loc 1 149 0
+ 381              		.cfi_startproc
+ 382              		@ args = 0, pretend = 0, frame = 8
+ 383              		@ frame_needed = 0, uses_anonymous_args = 0
+ 384              	.LVL35:
+ 385 0000 30B5     		push	{r4, r5, lr}
+ 386              	.LCFI8:
+ 387              		.cfi_def_cfa_offset 12
+ 388              		.cfi_offset 4, -12
+ 389              		.cfi_offset 5, -8
+ 390              		.cfi_offset 14, -4
+ 391 0002 83B0     		sub	sp, sp, #12
+ 392              	.LCFI9:
+ 393              		.cfi_def_cfa_offset 24
+ 394 0004 0446     		mov	r4, r0
+ 395 0006 1546     		mov	r5, r2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 11
+
+
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     int ret;
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     size_t len;
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( ( ret = mbedtls_asn1_get_tag( p, end, &len, MBEDTLS_ASN1_INTEGER ) ) != 0 )
+ 396              		.loc 1 153 0
+ 397 0008 0223     		movs	r3, #2
+ 398 000a 01AA     		add	r2, sp, #4
+ 399              	.LVL36:
+ 400 000c FFF7FEFF 		bl	mbedtls_asn1_get_tag
+ 401              	.LVL37:
+ 402 0010 0146     		mov	r1, r0
+ 403 0012 C8B9     		cbnz	r0, .L31
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( ret );
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( len == 0 || len > sizeof( int ) || ( **p & 0x80 ) != 0 )
+ 404              		.loc 1 156 0
+ 405 0014 019B     		ldr	r3, [sp, #4]
+ 406 0016 013B     		subs	r3, r3, #1
+ 407 0018 032B     		cmp	r3, #3
+ 408 001a 18D8     		bhi	.L35
+ 409              		.loc 1 156 0 is_stmt 0 discriminator 1
+ 410 001c 2368     		ldr	r3, [r4]
+ 411 001e 93F90030 		ldrsb	r3, [r3]
+ 412 0022 002B     		cmp	r3, #0
+ 413 0024 16DB     		blt	.L36
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_INVALID_LENGTH );
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     *val = 0;
+ 414              		.loc 1 159 0 is_stmt 1
+ 415 0026 0023     		movs	r3, #0
+ 416 0028 2B60     		str	r3, [r5]
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     while( len-- > 0 )
+ 417              		.loc 1 161 0
+ 418 002a 08E0     		b	.L33
+ 419              	.L34:
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     {
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         *val = ( *val << 8 ) | **p;
+ 420              		.loc 1 163 0
+ 421 002c 2A68     		ldr	r2, [r5]
+ 422 002e 2368     		ldr	r3, [r4]
+ 423 0030 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 424 0032 43EA0223 		orr	r3, r3, r2, lsl #8
+ 425 0036 2B60     		str	r3, [r5]
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         (*p)++;
+ 426              		.loc 1 164 0
+ 427 0038 2368     		ldr	r3, [r4]
+ 428 003a 0133     		adds	r3, r3, #1
+ 429 003c 2360     		str	r3, [r4]
+ 430              	.L33:
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     {
+ 431              		.loc 1 161 0
+ 432 003e 019B     		ldr	r3, [sp, #4]
+ 433 0040 5A1E     		subs	r2, r3, #1
+ 434 0042 0192     		str	r2, [sp, #4]
+ 435 0044 002B     		cmp	r3, #0
+ 436 0046 F1D1     		bne	.L34
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 12
+
+
+ 437              	.L31:
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     }
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     return( 0 );
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** }
+ 438              		.loc 1 168 0
+ 439 0048 0846     		mov	r0, r1
+ 440              	.LVL38:
+ 441 004a 03B0     		add	sp, sp, #12
+ 442              	.LCFI10:
+ 443              		.cfi_remember_state
+ 444              		.cfi_def_cfa_offset 12
+ 445              		@ sp needed
+ 446 004c 30BD     		pop	{r4, r5, pc}
+ 447              	.LVL39:
+ 448              	.L35:
+ 449              	.LCFI11:
+ 450              		.cfi_restore_state
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 451              		.loc 1 157 0
+ 452 004e 6FF06301 		mvn	r1, #99
+ 453 0052 F9E7     		b	.L31
+ 454              	.L36:
+ 455 0054 6FF06301 		mvn	r1, #99
+ 456 0058 F6E7     		b	.L31
+ 457              		.cfi_endproc
+ 458              	.LFE7:
+ 460              		.section	.text.mbedtls_asn1_get_mpi,"ax",%progbits
+ 461              		.align	1
+ 462              		.global	mbedtls_asn1_get_mpi
+ 463              		.syntax unified
+ 464              		.thumb
+ 465              		.thumb_func
+ 466              		.fpu fpv4-sp-d16
+ 468              	mbedtls_asn1_get_mpi:
+ 469              	.LFB8:
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #if defined(MBEDTLS_BIGNUM_C)
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** int mbedtls_asn1_get_mpi( unsigned char **p,
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                   const unsigned char *end,
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                   mbedtls_mpi *X )
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** {
+ 470              		.loc 1 174 0
+ 471              		.cfi_startproc
+ 472              		@ args = 0, pretend = 0, frame = 8
+ 473              		@ frame_needed = 0, uses_anonymous_args = 0
+ 474              	.LVL40:
+ 475 0000 30B5     		push	{r4, r5, lr}
+ 476              	.LCFI12:
+ 477              		.cfi_def_cfa_offset 12
+ 478              		.cfi_offset 4, -12
+ 479              		.cfi_offset 5, -8
+ 480              		.cfi_offset 14, -4
+ 481 0002 83B0     		sub	sp, sp, #12
+ 482              	.LCFI13:
+ 483              		.cfi_def_cfa_offset 24
+ 484 0004 0446     		mov	r4, r0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 13
+
+
+ 485 0006 1546     		mov	r5, r2
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     int ret;
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     size_t len;
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( ( ret = mbedtls_asn1_get_tag( p, end, &len, MBEDTLS_ASN1_INTEGER ) ) != 0 )
+ 486              		.loc 1 178 0
+ 487 0008 0223     		movs	r3, #2
+ 488 000a 01AA     		add	r2, sp, #4
+ 489              	.LVL41:
+ 490 000c FFF7FEFF 		bl	mbedtls_asn1_get_tag
+ 491              	.LVL42:
+ 492 0010 0346     		mov	r3, r0
+ 493 0012 10B1     		cbz	r0, .L41
+ 494              	.L38:
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( ret );
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     ret = mbedtls_mpi_read_binary( X, *p, len );
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     *p += len;
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     return( ret );
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** }
+ 495              		.loc 1 186 0
+ 496 0014 1846     		mov	r0, r3
+ 497              	.LVL43:
+ 498 0016 03B0     		add	sp, sp, #12
+ 499              	.LCFI14:
+ 500              		.cfi_remember_state
+ 501              		.cfi_def_cfa_offset 12
+ 502              		@ sp needed
+ 503 0018 30BD     		pop	{r4, r5, pc}
+ 504              	.LVL44:
+ 505              	.L41:
+ 506              	.LCFI15:
+ 507              		.cfi_restore_state
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 508              		.loc 1 181 0
+ 509 001a 019A     		ldr	r2, [sp, #4]
+ 510 001c 2168     		ldr	r1, [r4]
+ 511 001e 2846     		mov	r0, r5
+ 512              	.LVL45:
+ 513 0020 FFF7FEFF 		bl	mbedtls_mpi_read_binary
+ 514              	.LVL46:
+ 515 0024 0346     		mov	r3, r0
+ 516              	.LVL47:
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 517              		.loc 1 183 0
+ 518 0026 2268     		ldr	r2, [r4]
+ 519 0028 0199     		ldr	r1, [sp, #4]
+ 520 002a 0A44     		add	r2, r2, r1
+ 521 002c 2260     		str	r2, [r4]
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** }
+ 522              		.loc 1 185 0
+ 523 002e F1E7     		b	.L38
+ 524              		.cfi_endproc
+ 525              	.LFE8:
+ 527              		.section	.text.mbedtls_asn1_get_bitstring,"ax",%progbits
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 14
+
+
+ 528              		.align	1
+ 529              		.global	mbedtls_asn1_get_bitstring
+ 530              		.syntax unified
+ 531              		.thumb
+ 532              		.thumb_func
+ 533              		.fpu fpv4-sp-d16
+ 535              	mbedtls_asn1_get_bitstring:
+ 536              	.LFB9:
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** #endif /* MBEDTLS_BIGNUM_C */
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** int mbedtls_asn1_get_bitstring( unsigned char **p, const unsigned char *end,
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                         mbedtls_asn1_bitstring *bs)
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** {
+ 537              		.loc 1 191 0
+ 538              		.cfi_startproc
+ 539              		@ args = 0, pretend = 0, frame = 0
+ 540              		@ frame_needed = 0, uses_anonymous_args = 0
+ 541              	.LVL48:
+ 542 0000 70B5     		push	{r4, r5, r6, lr}
+ 543              	.LCFI16:
+ 544              		.cfi_def_cfa_offset 16
+ 545              		.cfi_offset 4, -16
+ 546              		.cfi_offset 5, -12
+ 547              		.cfi_offset 6, -8
+ 548              		.cfi_offset 14, -4
+ 549 0002 0546     		mov	r5, r0
+ 550 0004 0E46     		mov	r6, r1
+ 551 0006 1446     		mov	r4, r2
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     int ret;
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     /* Certificate type is a single byte bitstring */
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( ( ret = mbedtls_asn1_get_tag( p, end, &bs->len, MBEDTLS_ASN1_BIT_STRING ) ) != 0 )
+ 552              		.loc 1 195 0
+ 553 0008 0323     		movs	r3, #3
+ 554 000a FFF7FEFF 		bl	mbedtls_asn1_get_tag
+ 555              	.LVL49:
+ 556 000e 0246     		mov	r2, r0
+ 557 0010 90B9     		cbnz	r0, .L42
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( ret );
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     /* Check length, subtract one for actual bit string length */
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( bs->len < 1 )
+ 558              		.loc 1 199 0
+ 559 0012 2368     		ldr	r3, [r4]
+ 560 0014 ABB1     		cbz	r3, .L44
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_OUT_OF_DATA );
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     bs->len -= 1;
+ 561              		.loc 1 201 0
+ 562 0016 013B     		subs	r3, r3, #1
+ 563 0018 2360     		str	r3, [r4]
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     /* Get number of unused bits, ensure unused bits <= 7 */
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     bs->unused_bits = **p;
+ 564              		.loc 1 204 0
+ 565 001a 2B68     		ldr	r3, [r5]
+ 566 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 567 001e 2371     		strb	r3, [r4, #4]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 15
+
+
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( bs->unused_bits > 7 )
+ 568              		.loc 1 205 0
+ 569 0020 072B     		cmp	r3, #7
+ 570 0022 11D8     		bhi	.L45
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_INVALID_LENGTH );
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     (*p)++;
+ 571              		.loc 1 207 0
+ 572 0024 2B68     		ldr	r3, [r5]
+ 573 0026 0133     		adds	r3, r3, #1
+ 574 0028 2B60     		str	r3, [r5]
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     /* Get actual bitstring */
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     bs->p = *p;
+ 575              		.loc 1 210 0
+ 576 002a A360     		str	r3, [r4, #8]
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     *p += bs->len;
+ 577              		.loc 1 211 0
+ 578 002c 2168     		ldr	r1, [r4]
+ 579 002e 2B68     		ldr	r3, [r5]
+ 580 0030 0B44     		add	r3, r3, r1
+ 581 0032 2B60     		str	r3, [r5]
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( *p != end )
+ 582              		.loc 1 213 0
+ 583 0034 B342     		cmp	r3, r6
+ 584 0036 01D1     		bne	.L47
+ 585              	.L42:
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_LENGTH_MISMATCH );
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     return( 0 );
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** }
+ 586              		.loc 1 217 0
+ 587 0038 1046     		mov	r0, r2
+ 588              	.LVL50:
+ 589 003a 70BD     		pop	{r4, r5, r6, pc}
+ 590              	.LVL51:
+ 591              	.L47:
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_LENGTH_MISMATCH );
+ 592              		.loc 1 214 0
+ 593 003c 6FF06502 		mvn	r2, #101
+ 594 0040 FAE7     		b	.L42
+ 595              	.L44:
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     bs->len -= 1;
+ 596              		.loc 1 200 0
+ 597 0042 6FF05F02 		mvn	r2, #95
+ 598 0046 F7E7     		b	.L42
+ 599              	.L45:
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     (*p)++;
+ 600              		.loc 1 206 0
+ 601 0048 6FF06302 		mvn	r2, #99
+ 602 004c F4E7     		b	.L42
+ 603              		.cfi_endproc
+ 604              	.LFE9:
+ 606              		.section	.text.mbedtls_asn1_get_bitstring_null,"ax",%progbits
+ 607              		.align	1
+ 608              		.global	mbedtls_asn1_get_bitstring_null
+ 609              		.syntax unified
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 16
+
+
+ 610              		.thumb
+ 611              		.thumb_func
+ 612              		.fpu fpv4-sp-d16
+ 614              	mbedtls_asn1_get_bitstring_null:
+ 615              	.LFB10:
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** /*
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  * Get a bit string without unused bits
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  */
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** int mbedtls_asn1_get_bitstring_null( unsigned char **p, const unsigned char *end,
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                              size_t *len )
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** {
+ 616              		.loc 1 224 0
+ 617              		.cfi_startproc
+ 618              		@ args = 0, pretend = 0, frame = 0
+ 619              		@ frame_needed = 0, uses_anonymous_args = 0
+ 620              	.LVL52:
+ 621 0000 38B5     		push	{r3, r4, r5, lr}
+ 622              	.LCFI17:
+ 623              		.cfi_def_cfa_offset 16
+ 624              		.cfi_offset 3, -16
+ 625              		.cfi_offset 4, -12
+ 626              		.cfi_offset 5, -8
+ 627              		.cfi_offset 14, -4
+ 628 0002 0546     		mov	r5, r0
+ 629 0004 1446     		mov	r4, r2
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     int ret;
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( ( ret = mbedtls_asn1_get_tag( p, end, len, MBEDTLS_ASN1_BIT_STRING ) ) != 0 )
+ 630              		.loc 1 227 0
+ 631 0006 0323     		movs	r3, #3
+ 632 0008 FFF7FEFF 		bl	mbedtls_asn1_get_tag
+ 633              	.LVL53:
+ 634 000c 0346     		mov	r3, r0
+ 635 000e 48B9     		cbnz	r0, .L48
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( ret );
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( (*len)-- < 2 || *(*p)++ != 0 )
+ 636              		.loc 1 230 0
+ 637 0010 2268     		ldr	r2, [r4]
+ 638 0012 511E     		subs	r1, r2, #1
+ 639 0014 2160     		str	r1, [r4]
+ 640 0016 012A     		cmp	r2, #1
+ 641 0018 06D9     		bls	.L50
+ 642              		.loc 1 230 0 is_stmt 0 discriminator 1
+ 643 001a 2A68     		ldr	r2, [r5]
+ 644 001c 511C     		adds	r1, r2, #1
+ 645 001e 2960     		str	r1, [r5]
+ 646 0020 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 647 0022 22B9     		cbnz	r2, .L53
+ 648              	.L48:
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_INVALID_DATA );
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     return( 0 );
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** }
+ 649              		.loc 1 234 0 is_stmt 1
+ 650 0024 1846     		mov	r0, r3
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 17
+
+
+ 651              	.LVL54:
+ 652 0026 38BD     		pop	{r3, r4, r5, pc}
+ 653              	.LVL55:
+ 654              	.L50:
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_INVALID_DATA );
+ 655              		.loc 1 231 0
+ 656 0028 6FF06703 		mvn	r3, #103
+ 657 002c FAE7     		b	.L48
+ 658              	.L53:
+ 659 002e 6FF06703 		mvn	r3, #103
+ 660 0032 F7E7     		b	.L48
+ 661              		.cfi_endproc
+ 662              	.LFE10:
+ 664              		.section	.text.mbedtls_asn1_get_sequence_of,"ax",%progbits
+ 665              		.align	1
+ 666              		.global	mbedtls_asn1_get_sequence_of
+ 667              		.syntax unified
+ 668              		.thumb
+ 669              		.thumb_func
+ 670              		.fpu fpv4-sp-d16
+ 672              	mbedtls_asn1_get_sequence_of:
+ 673              	.LFB11:
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** /*
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  *  Parses and splits an ASN.1 "SEQUENCE OF <tag>"
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****  */
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** int mbedtls_asn1_get_sequence_of( unsigned char **p,
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                           const unsigned char *end,
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                           mbedtls_asn1_sequence *cur,
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                           int tag)
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** {
+ 674              		.loc 1 245 0
+ 675              		.cfi_startproc
+ 676              		@ args = 0, pretend = 0, frame = 8
+ 677              		@ frame_needed = 0, uses_anonymous_args = 0
+ 678              	.LVL56:
+ 679 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 680              	.LCFI18:
+ 681              		.cfi_def_cfa_offset 24
+ 682              		.cfi_offset 4, -24
+ 683              		.cfi_offset 5, -20
+ 684              		.cfi_offset 6, -16
+ 685              		.cfi_offset 7, -12
+ 686              		.cfi_offset 8, -8
+ 687              		.cfi_offset 14, -4
+ 688 0004 82B0     		sub	sp, sp, #8
+ 689              	.LCFI19:
+ 690              		.cfi_def_cfa_offset 32
+ 691 0006 0446     		mov	r4, r0
+ 692 0008 0D46     		mov	r5, r1
+ 693 000a 1646     		mov	r6, r2
+ 694 000c 1F46     		mov	r7, r3
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     int ret;
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     size_t len;
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     mbedtls_asn1_buf *buf;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 18
+
+
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     /* Get main sequence tag */
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( ( ret = mbedtls_asn1_get_tag( p, end, &len,
+ 695              		.loc 1 251 0
+ 696 000e 3023     		movs	r3, #48
+ 697              	.LVL57:
+ 698 0010 01AA     		add	r2, sp, #4
+ 699              	.LVL58:
+ 700 0012 FFF7FEFF 		bl	mbedtls_asn1_get_tag
+ 701              	.LVL59:
+ 702 0016 8046     		mov	r8, r0
+ 703 0018 50BB     		cbnz	r0, .L54
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             MBEDTLS_ASN1_CONSTRUCTED | MBEDTLS_ASN1_SEQUENCE ) ) != 0 )
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( ret );
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( *p + len != end )
+ 704              		.loc 1 255 0
+ 705 001a 2368     		ldr	r3, [r4]
+ 706 001c 019A     		ldr	r2, [sp, #4]
+ 707 001e 1344     		add	r3, r3, r2
+ 708 0020 AB42     		cmp	r3, r5
+ 709 0022 2CD1     		bne	.L63
+ 710              	.LVL60:
+ 711              	.L57:
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_LENGTH_MISMATCH );
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     while( *p < end )
+ 712              		.loc 1 258 0
+ 713 0024 2368     		ldr	r3, [r4]
+ 714 0026 AB42     		cmp	r3, r5
+ 715 0028 1DD2     		bcs	.L64
+ 716              	.LVL61:
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     {
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         buf = &(cur->buf);
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         buf->tag = **p;
+ 717              		.loc 1 261 0
+ 718 002a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 719 002c 3246     		mov	r2, r6
+ 720 002e 42F8043B 		str	r3, [r2], #4
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         if( ( ret = mbedtls_asn1_get_tag( p, end, &buf->len, tag ) ) != 0 )
+ 721              		.loc 1 263 0
+ 722 0032 3B46     		mov	r3, r7
+ 723 0034 2946     		mov	r1, r5
+ 724 0036 2046     		mov	r0, r4
+ 725 0038 FFF7FEFF 		bl	mbedtls_asn1_get_tag
+ 726              	.LVL62:
+ 727 003c 10BB     		cbnz	r0, .L60
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             return( ret );
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         buf->p = *p;
+ 728              		.loc 1 266 0
+ 729 003e 2368     		ldr	r3, [r4]
+ 730 0040 B360     		str	r3, [r6, #8]
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         *p += buf->len;
+ 731              		.loc 1 267 0
+ 732 0042 7268     		ldr	r2, [r6, #4]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 19
+
+
+ 733 0044 2368     		ldr	r3, [r4]
+ 734 0046 1344     		add	r3, r3, r2
+ 735 0048 2360     		str	r3, [r4]
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         /* Allocate and assign next pointer */
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         if( *p < end )
+ 736              		.loc 1 270 0
+ 737 004a AB42     		cmp	r3, r5
+ 738 004c EAD2     		bcs	.L57
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         {
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             cur->next = (mbedtls_asn1_sequence*)mbedtls_calloc( 1,
+ 739              		.loc 1 272 0
+ 740 004e 0E4B     		ldr	r3, .L66
+ 741 0050 1B68     		ldr	r3, [r3]
+ 742 0052 1021     		movs	r1, #16
+ 743 0054 0120     		movs	r0, #1
+ 744              	.LVL63:
+ 745 0056 9847     		blx	r3
+ 746              	.LVL64:
+ 747 0058 F060     		str	r0, [r6, #12]
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                                             sizeof( mbedtls_asn1_sequence ) );
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             if( cur->next == NULL )
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                 return( MBEDTLS_ERR_ASN1_ALLOC_FAILED );
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             cur = cur->next;
+ 748              		.loc 1 278 0
+ 749 005a 0646     		mov	r6, r0
+ 750              	.LVL65:
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                 return( MBEDTLS_ERR_ASN1_ALLOC_FAILED );
+ 751              		.loc 1 275 0
+ 752 005c 0028     		cmp	r0, #0
+ 753 005e E1D1     		bne	.L57
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 754              		.loc 1 276 0
+ 755 0060 6FF06908 		mvn	r8, #105
+ 756 0064 04E0     		b	.L54
+ 757              	.LVL66:
+ 758              	.L64:
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         }
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     }
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     /* Set final sequence entry's next pointer to NULL */
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     cur->next = NULL;
+ 759              		.loc 1 283 0
+ 760 0066 0023     		movs	r3, #0
+ 761 0068 F360     		str	r3, [r6, #12]
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( *p != end )
+ 762              		.loc 1 285 0
+ 763 006a 2368     		ldr	r3, [r4]
+ 764 006c AB42     		cmp	r3, r5
+ 765 006e 03D1     		bne	.L65
+ 766              	.LVL67:
+ 767              	.L54:
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_LENGTH_MISMATCH );
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 20
+
+
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     return( 0 );
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** }
+ 768              		.loc 1 289 0
+ 769 0070 4046     		mov	r0, r8
+ 770 0072 02B0     		add	sp, sp, #8
+ 771              	.LCFI20:
+ 772              		.cfi_remember_state
+ 773              		.cfi_def_cfa_offset 24
+ 774              		@ sp needed
+ 775 0074 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 776              	.LVL68:
+ 777              	.L65:
+ 778              	.LCFI21:
+ 779              		.cfi_restore_state
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_LENGTH_MISMATCH );
+ 780              		.loc 1 286 0
+ 781 0078 6FF06508 		mvn	r8, #101
+ 782 007c F8E7     		b	.L54
+ 783              	.LVL69:
+ 784              	.L63:
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 785              		.loc 1 256 0
+ 786 007e 6FF06508 		mvn	r8, #101
+ 787 0082 F5E7     		b	.L54
+ 788              	.LVL70:
+ 789              	.L60:
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 790              		.loc 1 264 0
+ 791 0084 8046     		mov	r8, r0
+ 792 0086 F3E7     		b	.L54
+ 793              	.L67:
+ 794              		.align	2
+ 795              	.L66:
+ 796 0088 00000000 		.word	mbedtls_calloc
+ 797              		.cfi_endproc
+ 798              	.LFE11:
+ 800              		.section	.text.mbedtls_asn1_get_alg,"ax",%progbits
+ 801              		.align	1
+ 802              		.global	mbedtls_asn1_get_alg
+ 803              		.syntax unified
+ 804              		.thumb
+ 805              		.thumb_func
+ 806              		.fpu fpv4-sp-d16
+ 808              	mbedtls_asn1_get_alg:
+ 809              	.LFB12:
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** int mbedtls_asn1_get_alg( unsigned char **p,
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                   const unsigned char *end,
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                   mbedtls_asn1_buf *alg, mbedtls_asn1_buf *params )
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** {
+ 810              		.loc 1 294 0
+ 811              		.cfi_startproc
+ 812              		@ args = 0, pretend = 0, frame = 8
+ 813              		@ frame_needed = 0, uses_anonymous_args = 0
+ 814              	.LVL71:
+ 815 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 816              	.LCFI22:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 21
+
+
+ 817              		.cfi_def_cfa_offset 24
+ 818              		.cfi_offset 4, -24
+ 819              		.cfi_offset 5, -20
+ 820              		.cfi_offset 6, -16
+ 821              		.cfi_offset 7, -12
+ 822              		.cfi_offset 8, -8
+ 823              		.cfi_offset 14, -4
+ 824 0004 82B0     		sub	sp, sp, #8
+ 825              	.LCFI23:
+ 826              		.cfi_def_cfa_offset 32
+ 827 0006 0446     		mov	r4, r0
+ 828 0008 0E46     		mov	r6, r1
+ 829 000a 1746     		mov	r7, r2
+ 830 000c 9846     		mov	r8, r3
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     int ret;
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     size_t len;
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( ( ret = mbedtls_asn1_get_tag( p, end, &len,
+ 831              		.loc 1 298 0
+ 832 000e 3023     		movs	r3, #48
+ 833              	.LVL72:
+ 834 0010 01AA     		add	r2, sp, #4
+ 835              	.LVL73:
+ 836 0012 FFF7FEFF 		bl	mbedtls_asn1_get_tag
+ 837              	.LVL74:
+ 838 0016 0546     		mov	r5, r0
+ 839 0018 80BB     		cbnz	r0, .L68
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             MBEDTLS_ASN1_CONSTRUCTED | MBEDTLS_ASN1_SEQUENCE ) ) != 0 )
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( ret );
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( ( end - *p ) < 1 )
+ 840              		.loc 1 302 0
+ 841 001a 2368     		ldr	r3, [r4]
+ 842 001c F61A     		subs	r6, r6, r3
+ 843              	.LVL75:
+ 844 001e 002E     		cmp	r6, #0
+ 845 0020 38DD     		ble	.L71
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_OUT_OF_DATA );
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     alg->tag = **p;
+ 846              		.loc 1 305 0
+ 847 0022 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 848 0024 3A46     		mov	r2, r7
+ 849 0026 42F8043B 		str	r3, [r2], #4
+ 306:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     end = *p + len;
+ 850              		.loc 1 306 0
+ 851 002a 2668     		ldr	r6, [r4]
+ 852 002c 019B     		ldr	r3, [sp, #4]
+ 853 002e 1E44     		add	r6, r6, r3
+ 854              	.LVL76:
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( ( ret = mbedtls_asn1_get_tag( p, end, &alg->len, MBEDTLS_ASN1_OID ) ) != 0 )
+ 855              		.loc 1 308 0
+ 856 0030 0623     		movs	r3, #6
+ 857 0032 3146     		mov	r1, r6
+ 858 0034 2046     		mov	r0, r4
+ 859              	.LVL77:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 22
+
+
+ 860 0036 FFF7FEFF 		bl	mbedtls_asn1_get_tag
+ 861              	.LVL78:
+ 862 003a 0546     		mov	r5, r0
+ 863 003c F0B9     		cbnz	r0, .L68
+ 309:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( ret );
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 311:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     alg->p = *p;
+ 864              		.loc 1 311 0
+ 865 003e 2368     		ldr	r3, [r4]
+ 866 0040 BB60     		str	r3, [r7, #8]
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     *p += alg->len;
+ 867              		.loc 1 312 0
+ 868 0042 7A68     		ldr	r2, [r7, #4]
+ 869 0044 2168     		ldr	r1, [r4]
+ 870 0046 8B18     		adds	r3, r1, r2
+ 871 0048 2360     		str	r3, [r4]
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( *p == end )
+ 872              		.loc 1 314 0
+ 873 004a B342     		cmp	r3, r6
+ 874 004c 1AD0     		beq	.L73
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     {
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         mbedtls_zeroize( params, sizeof(mbedtls_asn1_buf) );
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( 0 );
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     }
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     params->tag = **p;
+ 875              		.loc 1 320 0
+ 876 004e 8B5C     		ldrb	r3, [r1, r2]	@ zero_extendqisi2
+ 877 0050 4246     		mov	r2, r8
+ 878 0052 42F8043B 		str	r3, [r2], #4
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     (*p)++;
+ 879              		.loc 1 321 0
+ 880 0056 2368     		ldr	r3, [r4]
+ 881 0058 0133     		adds	r3, r3, #1
+ 882 005a 2360     		str	r3, [r4]
+ 322:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( ( ret = mbedtls_asn1_get_len( p, end, &params->len ) ) != 0 )
+ 883              		.loc 1 323 0
+ 884 005c 3146     		mov	r1, r6
+ 885 005e 2046     		mov	r0, r4
+ 886              	.LVL79:
+ 887 0060 FFF7FEFF 		bl	mbedtls_asn1_get_len
+ 888              	.LVL80:
+ 889 0064 0546     		mov	r5, r0
+ 890 0066 48B9     		cbnz	r0, .L68
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( ret );
+ 325:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 326:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     params->p = *p;
+ 891              		.loc 1 326 0
+ 892 0068 2368     		ldr	r3, [r4]
+ 893 006a C8F80830 		str	r3, [r8, #8]
+ 327:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     *p += params->len;
+ 894              		.loc 1 327 0
+ 895 006e D8F80420 		ldr	r2, [r8, #4]
+ 896 0072 2368     		ldr	r3, [r4]
+ 897 0074 1344     		add	r3, r3, r2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 23
+
+
+ 898 0076 2360     		str	r3, [r4]
+ 328:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( *p != end )
+ 899              		.loc 1 329 0
+ 900 0078 B342     		cmp	r3, r6
+ 901 007a 08D1     		bne	.L74
+ 902              	.LVL81:
+ 903              	.L68:
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_LENGTH_MISMATCH );
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     return( 0 );
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** }
+ 904              		.loc 1 333 0
+ 905 007c 2846     		mov	r0, r5
+ 906 007e 02B0     		add	sp, sp, #8
+ 907              	.LCFI24:
+ 908              		.cfi_remember_state
+ 909              		.cfi_def_cfa_offset 24
+ 910              		@ sp needed
+ 911 0080 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 912              	.LVL82:
+ 913              	.L73:
+ 914              	.LCFI25:
+ 915              		.cfi_restore_state
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( 0 );
+ 916              		.loc 1 316 0
+ 917 0084 0C21     		movs	r1, #12
+ 918 0086 4046     		mov	r0, r8
+ 919              	.LVL83:
+ 920 0088 FFF7FEFF 		bl	mbedtls_zeroize
+ 921              	.LVL84:
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     }
+ 922              		.loc 1 317 0
+ 923 008c F6E7     		b	.L68
+ 924              	.LVL85:
+ 925              	.L74:
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_LENGTH_MISMATCH );
+ 926              		.loc 1 330 0
+ 927 008e 6FF06505 		mvn	r5, #101
+ 928 0092 F3E7     		b	.L68
+ 929              	.LVL86:
+ 930              	.L71:
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 931              		.loc 1 303 0
+ 932 0094 6FF05F05 		mvn	r5, #95
+ 933 0098 F0E7     		b	.L68
+ 934              		.cfi_endproc
+ 935              	.LFE12:
+ 937              		.section	.text.mbedtls_asn1_get_alg_null,"ax",%progbits
+ 938              		.align	1
+ 939              		.global	mbedtls_asn1_get_alg_null
+ 940              		.syntax unified
+ 941              		.thumb
+ 942              		.thumb_func
+ 943              		.fpu fpv4-sp-d16
+ 945              	mbedtls_asn1_get_alg_null:
+ 946              	.LFB13:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 24
+
+
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 335:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** int mbedtls_asn1_get_alg_null( unsigned char **p,
+ 336:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                        const unsigned char *end,
+ 337:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                        mbedtls_asn1_buf *alg )
+ 338:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** {
+ 947              		.loc 1 338 0
+ 948              		.cfi_startproc
+ 949              		@ args = 0, pretend = 0, frame = 16
+ 950              		@ frame_needed = 0, uses_anonymous_args = 0
+ 951              	.LVL87:
+ 952 0000 00B5     		push	{lr}
+ 953              	.LCFI26:
+ 954              		.cfi_def_cfa_offset 4
+ 955              		.cfi_offset 14, -4
+ 956 0002 85B0     		sub	sp, sp, #20
+ 957              	.LCFI27:
+ 958              		.cfi_def_cfa_offset 24
+ 339:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     int ret;
+ 340:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     mbedtls_asn1_buf params;
+ 341:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     memset( &params, 0, sizeof(mbedtls_asn1_buf) );
+ 959              		.loc 1 342 0
+ 960 0004 0023     		movs	r3, #0
+ 961 0006 0193     		str	r3, [sp, #4]
+ 962 0008 0293     		str	r3, [sp, #8]
+ 963 000a 0393     		str	r3, [sp, #12]
+ 343:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 344:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( ( ret = mbedtls_asn1_get_alg( p, end, alg, &params ) ) != 0 )
+ 964              		.loc 1 344 0
+ 965 000c 01AB     		add	r3, sp, #4
+ 966 000e FFF7FEFF 		bl	mbedtls_asn1_get_alg
+ 967              	.LVL88:
+ 968 0012 0346     		mov	r3, r0
+ 969 0014 28B9     		cbnz	r0, .L75
+ 345:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( ret );
+ 346:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 347:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( ( params.tag != MBEDTLS_ASN1_NULL && params.tag != 0 ) || params.len != 0 )
+ 970              		.loc 1 347 0
+ 971 0016 019A     		ldr	r2, [sp, #4]
+ 972 0018 052A     		cmp	r2, #5
+ 973 001a 00D0     		beq	.L77
+ 974              		.loc 1 347 0 is_stmt 0 discriminator 1
+ 975 001c 42B9     		cbnz	r2, .L78
+ 976              	.L77:
+ 977              		.loc 1 347 0 discriminator 3
+ 978 001e 029A     		ldr	r2, [sp, #8]
+ 979 0020 1AB9     		cbnz	r2, .L80
+ 980              	.L75:
+ 348:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_INVALID_DATA );
+ 349:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 350:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     return( 0 );
+ 351:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** }
+ 981              		.loc 1 351 0 is_stmt 1
+ 982 0022 1846     		mov	r0, r3
+ 983              	.LVL89:
+ 984 0024 05B0     		add	sp, sp, #20
+ 985              	.LCFI28:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 25
+
+
+ 986              		.cfi_remember_state
+ 987              		.cfi_def_cfa_offset 4
+ 988              		@ sp needed
+ 989 0026 5DF804FB 		ldr	pc, [sp], #4
+ 990              	.LVL90:
+ 991              	.L80:
+ 992              	.LCFI29:
+ 993              		.cfi_restore_state
+ 348:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return( MBEDTLS_ERR_ASN1_INVALID_DATA );
+ 994              		.loc 1 348 0
+ 995 002a 6FF06703 		mvn	r3, #103
+ 996 002e F8E7     		b	.L75
+ 997              	.L78:
+ 998 0030 6FF06703 		mvn	r3, #103
+ 999 0034 F5E7     		b	.L75
+ 1000              		.cfi_endproc
+ 1001              	.LFE13:
+ 1003              		.section	.text.mbedtls_asn1_free_named_data,"ax",%progbits
+ 1004              		.align	1
+ 1005              		.global	mbedtls_asn1_free_named_data
+ 1006              		.syntax unified
+ 1007              		.thumb
+ 1008              		.thumb_func
+ 1009              		.fpu fpv4-sp-d16
+ 1011              	mbedtls_asn1_free_named_data:
+ 1012              	.LFB14:
+ 352:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 353:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** void mbedtls_asn1_free_named_data( mbedtls_asn1_named_data *cur )
+ 354:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** {
+ 1013              		.loc 1 354 0
+ 1014              		.cfi_startproc
+ 1015              		@ args = 0, pretend = 0, frame = 0
+ 1016              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1017              	.LVL91:
+ 355:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( cur == NULL )
+ 1018              		.loc 1 355 0
+ 1019 0000 68B1     		cbz	r0, .L84
+ 354:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     if( cur == NULL )
+ 1020              		.loc 1 354 0
+ 1021 0002 38B5     		push	{r3, r4, r5, lr}
+ 1022              	.LCFI30:
+ 1023              		.cfi_def_cfa_offset 16
+ 1024              		.cfi_offset 3, -16
+ 1025              		.cfi_offset 4, -12
+ 1026              		.cfi_offset 5, -8
+ 1027              		.cfi_offset 14, -4
+ 1028 0004 0446     		mov	r4, r0
+ 356:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         return;
+ 357:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 358:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     mbedtls_free( cur->oid.p );
+ 1029              		.loc 1 358 0
+ 1030 0006 064D     		ldr	r5, .L87
+ 1031 0008 2B68     		ldr	r3, [r5]
+ 1032 000a 8068     		ldr	r0, [r0, #8]
+ 1033              	.LVL92:
+ 1034 000c 9847     		blx	r3
+ 1035              	.LVL93:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 26
+
+
+ 359:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     mbedtls_free( cur->val.p );
+ 1036              		.loc 1 359 0
+ 1037 000e 2B68     		ldr	r3, [r5]
+ 1038 0010 6069     		ldr	r0, [r4, #20]
+ 1039 0012 9847     		blx	r3
+ 1040              	.LVL94:
+ 360:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 361:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     mbedtls_zeroize( cur, sizeof( mbedtls_asn1_named_data ) );
+ 1041              		.loc 1 361 0
+ 1042 0014 2021     		movs	r1, #32
+ 1043 0016 2046     		mov	r0, r4
+ 1044 0018 FFF7FEFF 		bl	mbedtls_zeroize
+ 1045              	.LVL95:
+ 362:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** }
+ 1046              		.loc 1 362 0
+ 1047 001c 38BD     		pop	{r3, r4, r5, pc}
+ 1048              	.LVL96:
+ 1049              	.L84:
+ 1050              	.LCFI31:
+ 1051              		.cfi_def_cfa_offset 0
+ 1052              		.cfi_restore 3
+ 1053              		.cfi_restore 4
+ 1054              		.cfi_restore 5
+ 1055              		.cfi_restore 14
+ 1056 001e 7047     		bx	lr
+ 1057              	.L88:
+ 1058              		.align	2
+ 1059              	.L87:
+ 1060 0020 00000000 		.word	mbedtls_free
+ 1061              		.cfi_endproc
+ 1062              	.LFE14:
+ 1064              		.section	.text.mbedtls_asn1_free_named_data_list,"ax",%progbits
+ 1065              		.align	1
+ 1066              		.global	mbedtls_asn1_free_named_data_list
+ 1067              		.syntax unified
+ 1068              		.thumb
+ 1069              		.thumb_func
+ 1070              		.fpu fpv4-sp-d16
+ 1072              	mbedtls_asn1_free_named_data_list:
+ 1073              	.LFB15:
+ 363:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 364:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** void mbedtls_asn1_free_named_data_list( mbedtls_asn1_named_data **head )
+ 365:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** {
+ 1074              		.loc 1 365 0
+ 1075              		.cfi_startproc
+ 1076              		@ args = 0, pretend = 0, frame = 0
+ 1077              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1078              	.LVL97:
+ 1079 0000 38B5     		push	{r3, r4, r5, lr}
+ 1080              	.LCFI32:
+ 1081              		.cfi_def_cfa_offset 16
+ 1082              		.cfi_offset 3, -16
+ 1083              		.cfi_offset 4, -12
+ 1084              		.cfi_offset 5, -8
+ 1085              		.cfi_offset 14, -4
+ 1086 0002 0546     		mov	r5, r0
+ 366:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     mbedtls_asn1_named_data *cur;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 27
+
+
+ 367:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 368:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     while( ( cur = *head ) != NULL )
+ 1087              		.loc 1 368 0
+ 1088 0004 08E0     		b	.L90
+ 1089              	.LVL98:
+ 1090              	.L91:
+ 369:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     {
+ 370:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         *head = cur->next;
+ 1091              		.loc 1 370 0
+ 1092 0006 A369     		ldr	r3, [r4, #24]
+ 1093 0008 2B60     		str	r3, [r5]
+ 371:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         mbedtls_asn1_free_named_data( cur );
+ 1094              		.loc 1 371 0
+ 1095 000a 2046     		mov	r0, r4
+ 1096 000c FFF7FEFF 		bl	mbedtls_asn1_free_named_data
+ 1097              	.LVL99:
+ 372:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         mbedtls_free( cur );
+ 1098              		.loc 1 372 0
+ 1099 0010 034B     		ldr	r3, .L93
+ 1100 0012 1B68     		ldr	r3, [r3]
+ 1101 0014 2046     		mov	r0, r4
+ 1102 0016 9847     		blx	r3
+ 1103              	.LVL100:
+ 1104              	.L90:
+ 368:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     {
+ 1105              		.loc 1 368 0
+ 1106 0018 2C68     		ldr	r4, [r5]
+ 1107              	.LVL101:
+ 1108 001a 002C     		cmp	r4, #0
+ 1109 001c F3D1     		bne	.L91
+ 373:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     }
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** }
+ 1110              		.loc 1 374 0
+ 1111 001e 38BD     		pop	{r3, r4, r5, pc}
+ 1112              	.LVL102:
+ 1113              	.L94:
+ 1114              		.align	2
+ 1115              	.L93:
+ 1116 0020 00000000 		.word	mbedtls_free
+ 1117              		.cfi_endproc
+ 1118              	.LFE15:
+ 1120              		.section	.text.mbedtls_asn1_find_named_data,"ax",%progbits
+ 1121              		.align	1
+ 1122              		.global	mbedtls_asn1_find_named_data
+ 1123              		.syntax unified
+ 1124              		.thumb
+ 1125              		.thumb_func
+ 1126              		.fpu fpv4-sp-d16
+ 1128              	mbedtls_asn1_find_named_data:
+ 1129              	.LFB16:
+ 375:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 376:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** mbedtls_asn1_named_data *mbedtls_asn1_find_named_data( mbedtls_asn1_named_data *list,
+ 377:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****                                        const char *oid, size_t len )
+ 378:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** {
+ 1130              		.loc 1 378 0
+ 1131              		.cfi_startproc
+ 1132              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 28
+
+
+ 1133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1134              	.LVL103:
+ 1135 0000 70B5     		push	{r4, r5, r6, lr}
+ 1136              	.LCFI33:
+ 1137              		.cfi_def_cfa_offset 16
+ 1138              		.cfi_offset 4, -16
+ 1139              		.cfi_offset 5, -12
+ 1140              		.cfi_offset 6, -8
+ 1141              		.cfi_offset 14, -4
+ 1142 0002 0446     		mov	r4, r0
+ 1143 0004 0E46     		mov	r6, r1
+ 1144 0006 1546     		mov	r5, r2
+ 379:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     while( list != NULL )
+ 1145              		.loc 1 379 0
+ 1146 0008 00E0     		b	.L96
+ 1147              	.LVL104:
+ 1148              	.L97:
+ 380:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     {
+ 381:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         if( list->oid.len == len &&
+ 382:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             memcmp( list->oid.p, oid, len ) == 0 )
+ 383:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         {
+ 384:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             break;
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         }
+ 386:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 387:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         list = list->next;
+ 1149              		.loc 1 387 0
+ 1150 000a A469     		ldr	r4, [r4, #24]
+ 1151              	.LVL105:
+ 1152              	.L96:
+ 379:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     while( list != NULL )
+ 1153              		.loc 1 379 0
+ 1154 000c 4CB1     		cbz	r4, .L98
+ 381:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             memcmp( list->oid.p, oid, len ) == 0 )
+ 1155              		.loc 1 381 0
+ 1156 000e 6368     		ldr	r3, [r4, #4]
+ 1157 0010 AB42     		cmp	r3, r5
+ 1158 0012 FAD1     		bne	.L97
+ 382:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****         {
+ 1159              		.loc 1 382 0 discriminator 1
+ 1160 0014 2A46     		mov	r2, r5
+ 1161 0016 3146     		mov	r1, r6
+ 1162 0018 A068     		ldr	r0, [r4, #8]
+ 1163 001a FFF7FEFF 		bl	memcmp
+ 1164              	.LVL106:
+ 381:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****             memcmp( list->oid.p, oid, len ) == 0 )
+ 1165              		.loc 1 381 0 discriminator 1
+ 1166 001e 0028     		cmp	r0, #0
+ 1167 0020 F3D1     		bne	.L97
+ 1168              	.L98:
+ 388:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     }
+ 389:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** 
+ 390:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c ****     return( list );
+ 391:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls-2.6.0/library\asn1parse.c **** }
+ 1169              		.loc 1 391 0
+ 1170 0022 2046     		mov	r0, r4
+ 1171 0024 70BD     		pop	{r4, r5, r6, pc}
+ 1172              		.cfi_endproc
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 29
+
+
+ 1173              	.LFE16:
+ 1175              		.text
+ 1176              	.Letext0:
+ 1177              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1178              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 1179              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1180              		.file 5 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls
+ 1181              		.file 6 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtls
+ 1182              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1183              		.file 8 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1184              		.file 9 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 1185              		.file 10 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1186              		.file 11 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ 1187              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/security/mbedtls/mbedtl
+ 1188              		.file 13 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s 			page 30
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 asn1parse.c
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:18     .text.mbedtls_zeroize:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:24     .text.mbedtls_zeroize:00000000 mbedtls_zeroize
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:56     .text.mbedtls_asn1_get_len:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:63     .text.mbedtls_asn1_get_len:00000000 mbedtls_asn1_get_len
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:122    .text.mbedtls_asn1_get_len:00000038 $d
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:126    .text.mbedtls_asn1_get_len:0000003c $t
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:247    .text.mbedtls_asn1_get_tag:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:254    .text.mbedtls_asn1_get_tag:00000000 mbedtls_asn1_get_tag
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:302    .text.mbedtls_asn1_get_bool:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:309    .text.mbedtls_asn1_get_bool:00000000 mbedtls_asn1_get_bool
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:371    .text.mbedtls_asn1_get_int:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:378    .text.mbedtls_asn1_get_int:00000000 mbedtls_asn1_get_int
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:461    .text.mbedtls_asn1_get_mpi:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:468    .text.mbedtls_asn1_get_mpi:00000000 mbedtls_asn1_get_mpi
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:528    .text.mbedtls_asn1_get_bitstring:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:535    .text.mbedtls_asn1_get_bitstring:00000000 mbedtls_asn1_get_bitstring
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:607    .text.mbedtls_asn1_get_bitstring_null:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:614    .text.mbedtls_asn1_get_bitstring_null:00000000 mbedtls_asn1_get_bitstring_null
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:665    .text.mbedtls_asn1_get_sequence_of:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:672    .text.mbedtls_asn1_get_sequence_of:00000000 mbedtls_asn1_get_sequence_of
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:796    .text.mbedtls_asn1_get_sequence_of:00000088 $d
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:801    .text.mbedtls_asn1_get_alg:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:808    .text.mbedtls_asn1_get_alg:00000000 mbedtls_asn1_get_alg
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:938    .text.mbedtls_asn1_get_alg_null:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:945    .text.mbedtls_asn1_get_alg_null:00000000 mbedtls_asn1_get_alg_null
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:1004   .text.mbedtls_asn1_free_named_data:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:1011   .text.mbedtls_asn1_free_named_data:00000000 mbedtls_asn1_free_named_data
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:1060   .text.mbedtls_asn1_free_named_data:00000020 $d
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:1065   .text.mbedtls_asn1_free_named_data_list:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:1072   .text.mbedtls_asn1_free_named_data_list:00000000 mbedtls_asn1_free_named_data_list
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:1116   .text.mbedtls_asn1_free_named_data_list:00000020 $d
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:1121   .text.mbedtls_asn1_find_named_data:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\cc6Z1diP.s:1128   .text.mbedtls_asn1_find_named_data:00000000 mbedtls_asn1_find_named_data
+
+UNDEFINED SYMBOLS
+mbedtls_mpi_read_binary
+mbedtls_calloc
+mbedtls_free
+memcmp

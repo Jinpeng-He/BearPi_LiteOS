@@ -1,0 +1,1219 @@
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"atiny_socket.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.atiny_net_bind,"ax",%progbits
+  18              		.align	1
+  19              		.global	atiny_net_bind
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	atiny_net_bind:
+  26              	.LFB133:
+  27              		.file 1 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal/atiny_socket.c"
+   1:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * All rights reserved.
+   4:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * conditions and the following disclaimer.
+   8:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * provided with the distribution.
+  11:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * permission.
+  14:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * Notice of Export Control Law
+  28:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * ===============================================
+  29:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 2
+
+
+  32:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  * applicable export control laws and regulations.
+  33:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+  35:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #include "sal/atiny_socket.h"
+  36:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #include "osdepends/atiny_osdep.h"
+  37:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+  38:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+  39:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if defined(WITH_LINUX)
+  40:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #include <sys/types.h>
+  41:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #include <sys/socket.h>
+  42:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #include <netinet/in.h>
+  43:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #include <arpa/inet.h>
+  44:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #include <sys/time.h>
+  45:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #include <unistd.h>
+  46:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #include <fcntl.h>
+  47:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #include <netdb.h>
+  48:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #include <errno.h>
+  49:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif defined(WITH_LWIP)
+  50:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #include "lwip/sockets.h"
+  51:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #include "lwip/netdb.h"
+  52:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #include "lwip/errno.h"
+  53:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif defined(WITH_AT_FRAMEWORK)
+  54:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #include "at_frame/at_api.h"
+  55:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+  56:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #else
+  57:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** // TODO
+  58:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+  59:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+  60:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #define SOCKET_DEBUG
+  61:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+  62:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if defined(SOCKET_DEBUG)
+  63:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #define SOCKET_LOG(fmt, ...) \
+  64:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     do \
+  65:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     { \
+  66:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         (void)atiny_printf("[SOCKET][%s:%d] " fmt "\r\n", \
+  67:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         __FUNCTION__, __LINE__, ##__VA_ARGS__); \
+  68:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     } while(0)
+  69:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #else
+  70:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #define SOCKET_LOG(fmt, ...) ((void)0)
+  71:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+  72:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+  73:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+  74:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** typedef struct
+  75:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** {
+  76:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int fd;
+  77:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** } atiny_net_context;
+  78:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+  79:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** void *atiny_net_bind(const char *host, const char *port, int proto)
+  80:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** {
+  28              		.loc 1 80 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 24
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 3
+
+
+  36              		.cfi_offset 3, -24
+  37              		.cfi_offset 4, -20
+  38              		.cfi_offset 5, -16
+  39              		.cfi_offset 6, -12
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  42 0002 0546     		mov	r5, r0
+  43 0004 0E46     		mov	r6, r1
+  44 0006 1746     		mov	r7, r2
+  81:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if defined (WITH_LWIP) || defined (WITH_LINUX)
+  82:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     (void)host;
+  83:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     (void)port;
+  84:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     (void)proto;
+  85:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     return NULL;
+  86:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** /*
+  87:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     struct sockaddr_in sock_addr;
+  88:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int port_i;
+  89:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int ret = ATINY_NET_ERR;
+  90:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+  91:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (NULL == port || (proto != ATINY_PROTO_UDP && proto != ATINY_PROTO_TCP))
+  92:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return NULL;
+  93:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+  94:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ctx = atiny_malloc(sizeof(atiny_net_context));
+  95:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+  96:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     sscanf(port , "%d", &port_i);
+  97:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     sock_addr.sin_family = AF_INET;
+  98:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     sock_addr.sin_port = lwip_htons(port_i);
+  99:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     sock_addr.sin_addr.s_addr = (host == NULL ? IPADDR_ANY : inet_addr(host));
+ 100:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     sock_addr.sin_len = sizeof(struct sockaddr_in);
+ 101:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 102:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ctx->fd = socket(AF_INET,
+ 103:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         proto == ATINY_PROTO_TCP ? SOCK_STREAM : SOCK_DGRAM,
+ 104:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         proto == ATINY_PROTO_TCP ? IPPROTO_TCP : IPPROTO_UDP);
+ 105:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 106:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (ctx->fd < 0)
+ 107:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 108:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         ret = ATINY_NET_SOCKET_FAILED;
+ 109:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         atiny_free(ctx);
+ 110:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return NULL;
+ 111:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 112:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 113:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 	int n = 1;
+ 114:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 	if( (ret = setsockopt( ctx->fd, SOL_SOCKET, SO_REUSEADDR,
+ 115:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 					(const char *) &n, sizeof( n )) ) != 0 )
+ 116:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 	{
+ 117:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 		ret = ATINY_NET_SOCKET_FAILED;
+ 118:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 		goto exit_failed;
+ 119:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 	}
+ 120:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 121:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ret = bind(ctx->fd, (struct sockaddr*)&sock_addr, sizeof(struct sockaddr));
+ 122:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (ret < 0)
+ 123:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 124:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****        ret = ATINY_NET_BIND_FAILED;
+ 125:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****        goto exit_failed;
+ 126:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 127:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 128:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (proto == ATINY_PROTO_TCP)
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 4
+
+
+ 129:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 130:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         ret = listen(ctx->fd, 20);
+ 131:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         if (ret < 0)
+ 132:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         {
+ 133:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             ret = ATINY_NET_LISTEN_FAILED;
+ 134:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             goto exit_failed;
+ 135:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         }
+ 136:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 137:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 138:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     return ctx;
+ 139:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 140:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** exit_failed:
+ 141:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****        close(ctx->fd);
+ 142:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****        atiny_free(ctx);
+ 143:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****        return NULL;
+ 144:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****        */
+ 145:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 146:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 147:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif defined(WITH_AT_FRAMEWORK)
+ 148:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     atiny_net_context *ctx;
+ 149:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ctx = atiny_malloc(sizeof(atiny_net_context));
+  45              		.loc 1 149 0
+  46 0008 0420     		movs	r0, #4
+  47              	.LVL1:
+  48 000a FFF7FEFF 		bl	atiny_malloc
+  49              	.LVL2:
+ 150:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (NULL == ctx)
+  50              		.loc 1 150 0
+  51 000e 50B1     		cbz	r0, .L5
+  52 0010 0446     		mov	r4, r0
+ 151:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     	SOCKET_LOG("malloc failed for socket context");
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     	return NULL;
+ 154:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 155:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 156:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ctx->fd = at_api_bind(host, port, proto);
+  53              		.loc 1 156 0
+  54 0012 3A46     		mov	r2, r7
+  55 0014 3146     		mov	r1, r6
+  56 0016 2846     		mov	r0, r5
+  57              	.LVL3:
+  58 0018 FFF7FEFF 		bl	at_api_bind
+  59              	.LVL4:
+  60 001c 2060     		str	r0, [r4]
+ 157:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (ctx->fd < 0)
+  61              		.loc 1 157 0
+  62 001e 0028     		cmp	r0, #0
+  63 0020 08DB     		blt	.L6
+  64              	.LVL5:
+  65              	.L1:
+ 158:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     	SOCKET_LOG("unkown host or port");
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     	atiny_free(ctx);
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     	ctx = NULL;
+ 162:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 163:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 		return ctx;
+ 164:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 5
+
+
+ 165:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 166:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** }
+  66              		.loc 1 166 0
+  67 0022 2046     		mov	r0, r4
+  68 0024 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+  69              	.LVL6:
+  70              	.L5:
+ 152:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     	return NULL;
+  71              		.loc 1 152 0
+  72 0026 9822     		movs	r2, #152
+  73 0028 0749     		ldr	r1, .L7
+  74 002a 0848     		ldr	r0, .L7+4
+  75              	.LVL7:
+  76 002c FFF7FEFF 		bl	atiny_printf
+  77              	.LVL8:
+ 153:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+  78              		.loc 1 153 0
+  79 0030 0024     		movs	r4, #0
+  80 0032 F6E7     		b	.L1
+  81              	.LVL9:
+  82              	.L6:
+ 159:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     	atiny_free(ctx);
+  83              		.loc 1 159 0
+  84 0034 9F22     		movs	r2, #159
+  85 0036 0449     		ldr	r1, .L7
+  86 0038 0548     		ldr	r0, .L7+8
+  87 003a FFF7FEFF 		bl	atiny_printf
+  88              	.LVL10:
+ 160:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     	ctx = NULL;
+  89              		.loc 1 160 0
+  90 003e 2046     		mov	r0, r4
+  91 0040 FFF7FEFF 		bl	atiny_free
+  92              	.LVL11:
+ 161:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+  93              		.loc 1 161 0
+  94 0044 0024     		movs	r4, #0
+  95 0046 ECE7     		b	.L1
+  96              	.L8:
+  97              		.align	2
+  98              	.L7:
+  99 0048 00000000 		.word	.LANCHOR0
+ 100 004c 00000000 		.word	.LC0
+ 101 0050 34000000 		.word	.LC1
+ 102              		.cfi_endproc
+ 103              	.LFE133:
+ 105              		.section	.text.atiny_net_accept,"ax",%progbits
+ 106              		.align	1
+ 107              		.global	atiny_net_accept
+ 108              		.syntax unified
+ 109              		.thumb
+ 110              		.thumb_func
+ 111              		.fpu fpv4-sp-d16
+ 113              	atiny_net_accept:
+ 114              	.LFB134:
+ 167:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** int atiny_net_accept( void *bind_ctx, void *client_ctx, void *client_ip, size_t buf_size, size_t *i
+ 168:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** {
+ 115              		.loc 1 168 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 6
+
+
+ 116              		.cfi_startproc
+ 117              		@ args = 4, pretend = 0, frame = 0
+ 118              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119              		@ link register save eliminated.
+ 120              	.LVL12:
+ 169:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if defined (WITH_LWIP) || defined (WITH_LINUX)
+ 170:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int bind_fd = ((atiny_net_context*)bind_ctx)->fd;
+ 171:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int client_fd = ((atiny_net_context*)client_ctx)->fd;
+ 172:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int type;
+ 173:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int ret = ATINY_NET_ERR;
+ 174:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if LWIP_IPV4 && LWIP_IPV6
+ 175:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif LWIP_IPV6
+ 176:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     struct sockaddr_in6 client_addr;
+ 177:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #else
+ 178:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     struct sockaddr_in client_addr;
+ 179:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 180:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     socklen_t type_len, client_addr_len;
+ 181:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 182:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     type_len = sizeof(type);
+ 183:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (getsockopt(bind_fd, SOL_SOCKET, SO_TYPE, (void*)&type, &type_len) != 0 ||
+ 184:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         (type != SOCK_STREAM && type != SOCK_DGRAM))
+ 185:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 186:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return ATINY_NET_ACCEPT_FAILED;
+ 187:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 188:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if LWIP_IPV4 && LWIP_IPV6
+ 189:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif LWIP_IPV6
+ 190:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     client_addr_len = sizeof(struct sockaddr_in6);
+ 191:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #else
+ 192:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     client_addr_len = sizeof(struct sockaddr_in);
+ 193:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 194:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (type == SOCK_STREAM)
+ 195:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 196:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         ret = client_fd = accept(bind_fd, (struct sockaddr*)&client_addr, &client_addr_len);
+ 197:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 198:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     else
+ 199:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 200:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         //udp
+ 201:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         char buf[1] = {0};
+ 202:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         ret = recvfrom(bind_fd, buf, sizeof(buf), MSG_PEEK, (struct sockaddr*)&client_addr, &client
+ 203:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 204:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 205:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (ret < 0)
+ 206:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return ATINY_NET_ACCEPT_FAILED;
+ 207:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (type != SOCK_STREAM)
+ 208:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 209:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if LWIP_IPV4 && LWIP_IPV6
+ 210:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif LWIP_IPV6
+ 211:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         struct sockaddr_in6  local_addr;
+ 212:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         socklen_t n = sizeof(struct sockaddr_in6);
+ 213:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #else
+ 214:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         struct sockaddr_in  local_addr;
+ 215:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         socklen_t n = sizeof(struct sockaddr_in);
+ 216:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 217:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         char port_s[6] = {0};
+ 218:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         int one = 1; 
+ 219:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         
+ 220:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         ((atiny_net_context*)client_ctx)->fd = client_fd = bind_fd;
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 7
+
+
+ 221:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         ((atiny_net_context*)bind_ctx)->fd = bind_fd = -1;
+ 222:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 223:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         if (connect(client_fd, (struct sockaddr *)&client_addr, client_addr_len) != 0)
+ 224:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             return ATINY_NET_ACCEPT_FAILED;
+ 225:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 226:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         ret = getsockname(client_fd, (struct sockaddr*)&local_addr, &n);
+ 227:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if LWIP_IPV4 && LWIP_IPV6
+ 228:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif LWIP_IPV6
+ 229:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         snprintf(port_s, sizeof(port_s), "%d", ntohs(local_addr.sin6_port));
+ 230:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         ((atiny_net_context*)bind_ctx)->fd = socket(local_addr.sin6_family, SOCK_DGRAM, IPPROTO_UDP
+ 231:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #else
+ 232:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         snprintf(port_s, sizeof(port_s), "%d", ntohs(local_addr.sin_port));
+ 233:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         ((atiny_net_context*)bind_ctx)->fd = socket(local_addr.sin_family, SOCK_DGRAM, IPPROTO_UDP)
+ 234:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif 
+ 235:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         if( (ret = setsockopt( ((atiny_net_context*)bind_ctx)->fd, SOL_SOCKET, SO_REUSEADDR,
+ 236:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 					(const char *) &one, sizeof( one )) ) != 0 )
+ 237:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     	{
+ 238:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     		ret = ATINY_NET_SOCKET_FAILED;
+ 239:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     	}
+ 240:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 241:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         if (ret != 0)
+ 242:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             return ret;
+ 243:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 244:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 245:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (client_ip != NULL)
+ 246:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 247:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if LWIP_IPV4 && LWIP_IPV6
+ 248:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif LWIP_IPV6
+ 249:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         if( client_addr.sin6_family == AF_INET6 )
+ 250:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         {
+ 251:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             struct sockaddr_in6 *addr = (struct sockaddr_in6 *) &client_addr;
+ 252:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             *ip_len = sizeof( addr->sin6_addr.s6_addr );
+ 253:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 254:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             if( buf_size < *ip_len )
+ 255:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****                 return( ATINY_NET_BUF_SMALL_FAILED );
+ 256:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 257:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             memcpy( client_ip, &addr->sin6_addr.s6_addr, *ip_len );
+ 258:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         }
+ 259:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #else
+ 260:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         if( client_addr.sin_family == AF_INET )
+ 261:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         {
+ 262:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             struct sockaddr_in *addr = (struct sockaddr_in *) &client_addr;
+ 263:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             *ip_len = sizeof( addr->sin_addr.s_addr );
+ 264:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 265:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             if( buf_size < *ip_len )
+ 266:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****                 return( ATINY_NET_BUF_SMALL_FAILED );
+ 267:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 268:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             memcpy( client_ip, &addr->sin_addr.s_addr, *ip_len );
+ 269:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         }
+ 270:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 271:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 272:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #else
+ 273:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ((atiny_net_context*)client_ctx)->fd = ((atiny_net_context*)bind_ctx)->fd;
+ 121              		.loc 1 273 0
+ 122 0000 0368     		ldr	r3, [r0]
+ 123              	.LVL13:
+ 124 0002 0B60     		str	r3, [r1]
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 8
+
+
+ 274:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 275:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     return 0;
+ 276:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** }
+ 125              		.loc 1 276 0
+ 126 0004 0020     		movs	r0, #0
+ 127              	.LVL14:
+ 128 0006 7047     		bx	lr
+ 129              		.cfi_endproc
+ 130              	.LFE134:
+ 132              		.section	.text.atiny_net_connect,"ax",%progbits
+ 133              		.align	1
+ 134              		.global	atiny_net_connect
+ 135              		.syntax unified
+ 136              		.thumb
+ 137              		.thumb_func
+ 138              		.fpu fpv4-sp-d16
+ 140              	atiny_net_connect:
+ 141              	.LFB135:
+ 277:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 278:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** void *atiny_net_connect(const char *host, const char *port, int proto)
+ 279:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** {
+ 142              		.loc 1 279 0
+ 143              		.cfi_startproc
+ 144              		@ args = 0, pretend = 0, frame = 0
+ 145              		@ frame_needed = 0, uses_anonymous_args = 0
+ 146              	.LVL15:
+ 147 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 148              	.LCFI1:
+ 149              		.cfi_def_cfa_offset 20
+ 150              		.cfi_offset 4, -20
+ 151              		.cfi_offset 5, -16
+ 152              		.cfi_offset 6, -12
+ 153              		.cfi_offset 7, -8
+ 154              		.cfi_offset 14, -4
+ 155 0002 83B0     		sub	sp, sp, #12
+ 156              	.LCFI2:
+ 157              		.cfi_def_cfa_offset 32
+ 158 0004 0646     		mov	r6, r0
+ 159 0006 1446     		mov	r4, r2
+ 160              	.LVL16:
+ 280:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     atiny_net_context *ctx = NULL;
+ 281:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if defined(WITH_LINUX) || defined(WITH_LWIP)
+ 282:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int flags;
+ 283:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int ret;
+ 284:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     struct addrinfo hints;
+ 285:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     struct addrinfo *addr_list;
+ 286:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     struct addrinfo *cur;
+ 287:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 288:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 289:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     //if (NULL == host || NULL == port ||
+ 290:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (NULL == port ||
+ 161              		.loc 1 290 0
+ 162 0008 0F46     		mov	r7, r1
+ 163 000a 89B1     		cbz	r1, .L11
+ 164              		.loc 1 290 0 is_stmt 0 discriminator 1
+ 165 000c 012A     		cmp	r2, #1
+ 166 000e 0FD8     		bhi	.L11
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 9
+
+
+ 291:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             (proto != ATINY_PROTO_UDP && proto != ATINY_PROTO_TCP))
+ 292:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         SOCKET_LOG("ilegal incoming parameters,(%p,%p,%d)",host,port,proto);
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return NULL;
+ 295:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 296:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 297:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if defined(WITH_LINUX) || defined(WITH_LWIP)
+ 298:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 299:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     /* Do name resolution with both IPv6 and IPv4 */
+ 300:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     memset(&hints, 0, sizeof(hints));
+ 301:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     hints.ai_family = AF_UNSPEC;
+ 302:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     hints.ai_socktype = proto == ATINY_PROTO_UDP ? SOCK_DGRAM : SOCK_STREAM;
+ 303:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     hints.ai_protocol = proto == ATINY_PROTO_UDP ? IPPROTO_UDP : IPPROTO_TCP;
+ 304:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 305:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     SOCKET_LOG("try to do name resolution now...");
+ 306:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 307:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if ((ret = getaddrinfo(host, port, &hints, &addr_list)) != 0)
+ 308:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 309:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         SOCKET_LOG("getaddrinfo failed: 0x%x", ret);
+ 310:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return NULL;
+ 311:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 312:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 313:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     SOCKET_LOG("do name resolution succeed");
+ 314:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 315:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ctx = atiny_malloc(sizeof(atiny_net_context));
+ 316:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 317:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (NULL == ctx)
+ 318:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 319:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         SOCKET_LOG("malloc failed for socket context");
+ 320:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         freeaddrinfo(addr_list);
+ 321:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return NULL;
+ 322:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 323:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 324:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ctx->fd = -1;
+ 325:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 326:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     /* Try the sockaddrs until a connection succeeds */
+ 327:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     for (cur = addr_list; cur != NULL; cur = cur->ai_next)
+ 328:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 329:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         ctx->fd = socket(cur->ai_family, cur->ai_socktype, cur->ai_protocol);
+ 330:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 331:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         if (ctx->fd < 0)
+ 332:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         {
+ 333:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             continue;
+ 334:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         }
+ 335:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 336:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         if (proto == ATINY_PROTO_UDP)
+ 337:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         {
+ 338:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             flags = fcntl(ctx->fd, F_GETFL, 0);
+ 339:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 340:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             if (flags < 0 || fcntl(ctx->fd, F_SETFL, flags | O_NONBLOCK) < 0)
+ 341:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             {
+ 342:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****                 close(ctx->fd);
+ 343:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****                 ctx->fd = -1;
+ 344:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****                 continue;
+ 345:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             }
+ 346:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         }
+ 347:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 10
+
+
+ 348:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         if (connect(ctx->fd, cur->ai_addr, cur->ai_addrlen) == 0)
+ 349:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         {
+ 350:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             break;
+ 351:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         }
+ 352:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 353:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         close(ctx->fd);
+ 354:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         ctx->fd = -1;
+ 355:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 356:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 357:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     freeaddrinfo(addr_list);
+ 358:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 359:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (ctx->fd < 0)
+ 360:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 361:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         SOCKET_LOG("unkown host or port");
+ 362:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         atiny_free(ctx);
+ 363:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return NULL;
+ 364:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 365:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 366:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (proto == ATINY_PROTO_UDP)
+ 367:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 368:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         SOCKET_LOG("UDP create socket and bind to server finished");
+ 369:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 370:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     else /* proto == ATINY_PROTO_TCP */
+ 371:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 372:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         SOCKET_LOG("TCP connect to server succeed");
+ 373:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 374:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif defined(WITH_AT_FRAMEWORK)
+ 375:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ctx = atiny_malloc(sizeof(atiny_net_context));
+ 167              		.loc 1 375 0 is_stmt 1
+ 168 0010 0420     		movs	r0, #4
+ 169              	.LVL17:
+ 170 0012 FFF7FEFF 		bl	atiny_malloc
+ 171              	.LVL18:
+ 376:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (NULL == ctx)
+ 172              		.loc 1 376 0
+ 173 0016 0546     		mov	r5, r0
+ 174 0018 A8B1     		cbz	r0, .L16
+ 377:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 378:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         SOCKET_LOG("malloc failed for socket context");
+ 379:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return NULL;
+ 380:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 381:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 382:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ctx->fd = at_api_connect(host, port, proto);
+ 175              		.loc 1 382 0
+ 176 001a 2246     		mov	r2, r4
+ 177 001c 3946     		mov	r1, r7
+ 178 001e 3046     		mov	r0, r6
+ 179              	.LVL19:
+ 180 0020 FFF7FEFF 		bl	at_api_connect
+ 181              	.LVL20:
+ 182 0024 2860     		str	r0, [r5]
+ 383:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (ctx->fd < 0)
+ 183              		.loc 1 383 0
+ 184 0026 0028     		cmp	r0, #0
+ 185 0028 15DB     		blt	.L17
+ 186              	.LVL21:
+ 187              	.L10:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 11
+
+
+ 384:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         SOCKET_LOG("unkown host or port");
+ 386:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         atiny_free(ctx);
+ 387:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         ctx = NULL;
+ 388:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 389:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif defined(WITH_WIZNET)
+ 390:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ctx = atiny_malloc(sizeof(atiny_net_context));
+ 391:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (NULL == ctx)
+ 392:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 393:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         SOCKET_LOG("malloc failed for socket context");
+ 394:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return NULL;
+ 395:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 396:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 397:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ctx->fd = wiznet_connect(host, port, proto);
+ 398:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (ctx->fd < 0)
+ 399:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 400:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         SOCKET_LOG("unkown host or port");
+ 401:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         atiny_free(ctx);
+ 402:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         ctx = NULL;
+ 403:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 404:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #else
+ 405:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 406:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     return ctx;
+ 407:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** }
+ 188              		.loc 1 407 0
+ 189 002a 2846     		mov	r0, r5
+ 190 002c 03B0     		add	sp, sp, #12
+ 191              	.LCFI3:
+ 192              		.cfi_remember_state
+ 193              		.cfi_def_cfa_offset 20
+ 194              		@ sp needed
+ 195 002e F0BD     		pop	{r4, r5, r6, r7, pc}
+ 196              	.LVL22:
+ 197              	.L11:
+ 198              	.LCFI4:
+ 199              		.cfi_restore_state
+ 293:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return NULL;
+ 200              		.loc 1 293 0
+ 201 0030 0194     		str	r4, [sp, #4]
+ 202 0032 0097     		str	r7, [sp]
+ 203 0034 3346     		mov	r3, r6
+ 204 0036 40F22512 		movw	r2, #293
+ 205              	.LVL23:
+ 206 003a 0C49     		ldr	r1, .L18
+ 207              	.LVL24:
+ 208 003c 0C48     		ldr	r0, .L18+4
+ 209              	.LVL25:
+ 210 003e FFF7FEFF 		bl	atiny_printf
+ 211              	.LVL26:
+ 294:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 212              		.loc 1 294 0
+ 213 0042 0025     		movs	r5, #0
+ 214 0044 F1E7     		b	.L10
+ 215              	.LVL27:
+ 216              	.L16:
+ 378:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return NULL;
+ 217              		.loc 1 378 0
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 12
+
+
+ 218 0046 4FF4BD72 		mov	r2, #378
+ 219 004a 0849     		ldr	r1, .L18
+ 220 004c 0948     		ldr	r0, .L18+8
+ 221              	.LVL28:
+ 222 004e FFF7FEFF 		bl	atiny_printf
+ 223              	.LVL29:
+ 379:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 224              		.loc 1 379 0
+ 225 0052 0025     		movs	r5, #0
+ 226              	.LVL30:
+ 227 0054 E9E7     		b	.L10
+ 228              	.LVL31:
+ 229              	.L17:
+ 385:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         atiny_free(ctx);
+ 230              		.loc 1 385 0
+ 231 0056 40F28112 		movw	r2, #385
+ 232 005a 0449     		ldr	r1, .L18
+ 233 005c 0648     		ldr	r0, .L18+12
+ 234 005e FFF7FEFF 		bl	atiny_printf
+ 235              	.LVL32:
+ 386:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         ctx = NULL;
+ 236              		.loc 1 386 0
+ 237 0062 2846     		mov	r0, r5
+ 238 0064 FFF7FEFF 		bl	atiny_free
+ 239              	.LVL33:
+ 387:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 240              		.loc 1 387 0
+ 241 0068 0025     		movs	r5, #0
+ 242 006a DEE7     		b	.L10
+ 243              	.L19:
+ 244              		.align	2
+ 245              	.L18:
+ 246 006c 00000000 		.word	.LANCHOR1
+ 247 0070 00000000 		.word	.LC2
+ 248 0074 00000000 		.word	.LC0
+ 249 0078 34000000 		.word	.LC1
+ 250              		.cfi_endproc
+ 251              	.LFE135:
+ 253              		.section	.text.atiny_net_recv,"ax",%progbits
+ 254              		.align	1
+ 255              		.global	atiny_net_recv
+ 256              		.syntax unified
+ 257              		.thumb
+ 258              		.thumb_func
+ 259              		.fpu fpv4-sp-d16
+ 261              	atiny_net_recv:
+ 262              	.LFB136:
+ 408:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 409:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** int atiny_net_recv(void *ctx, unsigned char *buf, size_t len)
+ 410:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** {
+ 263              		.loc 1 410 0
+ 264              		.cfi_startproc
+ 265              		@ args = 0, pretend = 0, frame = 0
+ 266              		@ frame_needed = 0, uses_anonymous_args = 0
+ 267              	.LVL34:
+ 268 0000 08B5     		push	{r3, lr}
+ 269              	.LCFI5:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 13
+
+
+ 270              		.cfi_def_cfa_offset 8
+ 271              		.cfi_offset 3, -8
+ 272              		.cfi_offset 14, -4
+ 273              	.LVL35:
+ 411:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int ret = -1;
+ 412:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int fd = ((atiny_net_context *)ctx)->fd;
+ 413:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if defined(WITH_LINUX) || defined(WITH_LWIP)
+ 414:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ret = recv(fd, buf, len, 0);
+ 415:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif defined(WITH_AT_FRAMEWORK)
+ 416:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ret = at_api_recv(fd, buf, len);
+ 274              		.loc 1 416 0
+ 275 0002 0068     		ldr	r0, [r0]
+ 276              	.LVL36:
+ 277 0004 FFF7FEFF 		bl	at_api_recv
+ 278              	.LVL37:
+ 417:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif defined(WITH_WIZNET)
+ 418:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ret = wiznet_recv(fd, buf, len);
+ 419:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #else
+ 420:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     (void)fd; //clear unuse warning
+ 421:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 422:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 423:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if defined(WITH_LINUX) || defined(WITH_LWIP)
+ 424:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (ret < 0)
+ 425:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 426:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         if (errno == EAGAIN || errno == EWOULDBLOCK || errno == EINTR)
+ 427:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         {
+ 428:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             SOCKET_LOG("no data available for now");
+ 429:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             return 0;
+ 430:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         }
+ 431:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         else
+ 432:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         {
+ 433:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             SOCKET_LOG("error accured when recv: 0x%x", errno);
+ 434:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             return -1;
+ 435:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         }
+ 436:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 437:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 438:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     else if (ret == 0)
+ 439:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 440:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         SOCKET_LOG("socket was closed by peer");
+ 441:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return -1;
+ 442:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 443:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 444:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     return ret;
+ 445:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** }
+ 279              		.loc 1 445 0
+ 280 0008 08BD     		pop	{r3, pc}
+ 281              		.cfi_endproc
+ 282              	.LFE136:
+ 284              		.section	.text.atiny_net_recv_timeout,"ax",%progbits
+ 285              		.align	1
+ 286              		.global	atiny_net_recv_timeout
+ 287              		.syntax unified
+ 288              		.thumb
+ 289              		.thumb_func
+ 290              		.fpu fpv4-sp-d16
+ 292              	atiny_net_recv_timeout:
+ 293              	.LFB137:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 14
+
+
+ 446:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 447:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** int atiny_net_recv_timeout(void *ctx, unsigned char *buf, size_t len,
+ 448:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****                            uint32_t timeout)
+ 449:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** {
+ 294              		.loc 1 449 0
+ 295              		.cfi_startproc
+ 296              		@ args = 0, pretend = 0, frame = 0
+ 297              		@ frame_needed = 0, uses_anonymous_args = 0
+ 298              	.LVL38:
+ 299 0000 00B5     		push	{lr}
+ 300              	.LCFI6:
+ 301              		.cfi_def_cfa_offset 4
+ 302              		.cfi_offset 14, -4
+ 303 0002 83B0     		sub	sp, sp, #12
+ 304              	.LCFI7:
+ 305              		.cfi_def_cfa_offset 16
+ 306              	.LVL39:
+ 450:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int ret = -1;
+ 451:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if defined(WITH_LINUX) || defined(WITH_LWIP)
+ 452:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     struct timeval tv;
+ 453:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     fd_set read_fds;
+ 454:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 455:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 456:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int fd = ((atiny_net_context *)ctx)->fd;
+ 307              		.loc 1 456 0
+ 308 0004 0068     		ldr	r0, [r0]
+ 309              	.LVL40:
+ 457:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 458:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if defined(WITH_LINUX) || defined(WITH_LWIP)
+ 459:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (fd < 0)
+ 460:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 461:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         SOCKET_LOG("ilegal socket(%d)", fd);
+ 462:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return ATINY_NET_ERR;
+ 463:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 464:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 465:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     FD_ZERO(&read_fds);
+ 466:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     FD_SET(fd, &read_fds);
+ 467:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 468:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     tv.tv_sec  = timeout / 1000;
+ 469:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     tv.tv_usec = (timeout % 1000) * 1000;
+ 470:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 471:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****    ret = select(fd + 1, &read_fds, NULL, NULL, &tv);
+ 472:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 473:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (ret == 0)
+ 474:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 475:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****        // SOCKET_LOG("recv timeout");
+ 476:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return ATINY_NET_TIMEOUT;
+ 477:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 478:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 479:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if(ret < 0)
+ 480:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 481:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         SOCKET_LOG("select error ret=%d,err 0x%x", ret, errno);
+ 482:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return ATINY_NET_ERR;
+ 483:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 484:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 485:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ret = atiny_net_recv(ctx, buf, len);
+ 486:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 15
+
+
+ 487:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif defined(WITH_AT_FRAMEWORK)
+ 488:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ret = at_api_recv_timeout(fd, buf, len, NULL,NULL,timeout);
+ 310              		.loc 1 488 0
+ 311 0006 0193     		str	r3, [sp, #4]
+ 312 0008 0023     		movs	r3, #0
+ 313              	.LVL41:
+ 314 000a 0093     		str	r3, [sp]
+ 315 000c FFF7FEFF 		bl	at_api_recv_timeout
+ 316              	.LVL42:
+ 489:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif defined(WITH_WIZNET)
+ 490:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ret = wiznet_recv_timeout(fd, buf, len, timeout);
+ 491:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #else
+ 492:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     (void)fd; //clear unuse warning
+ 493:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 494:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     return ret;
+ 495:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** }
+ 317              		.loc 1 495 0
+ 318 0010 03B0     		add	sp, sp, #12
+ 319              	.LCFI8:
+ 320              		.cfi_def_cfa_offset 4
+ 321              		@ sp needed
+ 322 0012 5DF804FB 		ldr	pc, [sp], #4
+ 323              		.cfi_endproc
+ 324              	.LFE137:
+ 326              		.section	.text.atiny_net_send,"ax",%progbits
+ 327              		.align	1
+ 328              		.global	atiny_net_send
+ 329              		.syntax unified
+ 330              		.thumb
+ 331              		.thumb_func
+ 332              		.fpu fpv4-sp-d16
+ 334              	atiny_net_send:
+ 335              	.LFB138:
+ 496:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 497:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** int atiny_net_send(void *ctx, const unsigned char *buf, size_t len)
+ 498:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** {
+ 336              		.loc 1 498 0
+ 337              		.cfi_startproc
+ 338              		@ args = 0, pretend = 0, frame = 0
+ 339              		@ frame_needed = 0, uses_anonymous_args = 0
+ 340              	.LVL43:
+ 341 0000 08B5     		push	{r3, lr}
+ 342              	.LCFI9:
+ 343              		.cfi_def_cfa_offset 8
+ 344              		.cfi_offset 3, -8
+ 345              		.cfi_offset 14, -4
+ 346              	.LVL44:
+ 499:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int ret = -1;
+ 500:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int fd = ((atiny_net_context *)ctx)->fd;
+ 347              		.loc 1 500 0
+ 348 0002 0068     		ldr	r0, [r0]
+ 349              	.LVL45:
+ 501:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 502:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (fd < 0)
+ 350              		.loc 1 502 0
+ 351 0004 0028     		cmp	r0, #0
+ 352 0006 02DB     		blt	.L28
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 16
+
+
+ 503:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 504:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         SOCKET_LOG("ilegal socket(%d)", fd);
+ 505:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return -1;
+ 506:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 507:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 508:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if defined(WITH_LINUX) || defined(WITH_LWIP)
+ 509:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ret = send(fd, buf, len, 0);
+ 510:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif defined(WITH_AT_FRAMEWORK)
+ 511:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ret = at_api_send(fd, buf, len);
+ 353              		.loc 1 511 0
+ 354 0008 FFF7FEFF 		bl	at_api_send
+ 355              	.LVL46:
+ 356              	.L24:
+ 512:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif defined(WITH_WIZNET)
+ 513:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     ret = wiznet_send(fd, buf, len);
+ 514:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #else
+ 515:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 516:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 517:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if defined(WITH_LINUX) || defined(WITH_LWIP)
+ 518:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (ret < 0)
+ 519:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 520:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         /* no data available for now */
+ 521:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         if (errno == EAGAIN || errno == EWOULDBLOCK || errno == EINTR)
+ 522:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         {
+ 523:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             return 0;
+ 524:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         }
+ 525:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         else
+ 526:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         {
+ 527:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             SOCKET_LOG("error accured when send: 0x%x", errno);
+ 528:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****             return -1;
+ 529:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         }
+ 530:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 531:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 532:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 533:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     return ret;
+ 534:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** }
+ 357              		.loc 1 534 0
+ 358 000c 08BD     		pop	{r3, pc}
+ 359              	.LVL47:
+ 360              	.L28:
+ 504:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return -1;
+ 361              		.loc 1 504 0
+ 362 000e 0346     		mov	r3, r0
+ 363 0010 4FF4FC72 		mov	r2, #504
+ 364              	.LVL48:
+ 365 0014 0349     		ldr	r1, .L29
+ 366              	.LVL49:
+ 367 0016 0448     		ldr	r0, .L29+4
+ 368              	.LVL50:
+ 369 0018 FFF7FEFF 		bl	atiny_printf
+ 370              	.LVL51:
+ 505:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 371              		.loc 1 505 0
+ 372 001c 4FF0FF30 		mov	r0, #-1
+ 373 0020 F4E7     		b	.L24
+ 374              	.L30:
+ 375 0022 00BF     		.align	2
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 17
+
+
+ 376              	.L29:
+ 377 0024 00000000 		.word	.LANCHOR2
+ 378 0028 00000000 		.word	.LC3
+ 379              		.cfi_endproc
+ 380              	.LFE138:
+ 382              		.section	.text.atiny_net_close,"ax",%progbits
+ 383              		.align	1
+ 384              		.global	atiny_net_close
+ 385              		.syntax unified
+ 386              		.thumb
+ 387              		.thumb_func
+ 388              		.fpu fpv4-sp-d16
+ 390              	atiny_net_close:
+ 391              	.LFB139:
+ 535:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 536:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** void atiny_net_close(void *ctx)
+ 537:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** {
+ 392              		.loc 1 537 0
+ 393              		.cfi_startproc
+ 394              		@ args = 0, pretend = 0, frame = 0
+ 395              		@ frame_needed = 0, uses_anonymous_args = 0
+ 396              	.LVL52:
+ 397 0000 10B5     		push	{r4, lr}
+ 398              	.LCFI10:
+ 399              		.cfi_def_cfa_offset 8
+ 400              		.cfi_offset 4, -8
+ 401              		.cfi_offset 14, -4
+ 402 0002 0446     		mov	r4, r0
+ 538:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int fd = ((atiny_net_context *)ctx)->fd;
+ 403              		.loc 1 538 0
+ 404 0004 0068     		ldr	r0, [r0]
+ 405              	.LVL53:
+ 539:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 540:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (fd >= 0)
+ 406              		.loc 1 540 0
+ 407 0006 0028     		cmp	r0, #0
+ 408 0008 01DB     		blt	.L32
+ 541:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 542:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if defined(WITH_LINUX) || defined(WITH_LWIP)
+ 543:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         close(fd);
+ 544:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif defined(WITH_AT_FRAMEWORK)
+ 545:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         at_api_close(fd);
+ 409              		.loc 1 545 0
+ 410 000a FFF7FEFF 		bl	at_api_close
+ 411              	.LVL54:
+ 412              	.L32:
+ 546:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif defined(WITH_WIZNET)
+ 547:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         wiznet_close(fd);
+ 548:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 549:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 550:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 551:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     atiny_free(ctx);
+ 413              		.loc 1 551 0
+ 414 000e 2046     		mov	r0, r4
+ 415 0010 FFF7FEFF 		bl	atiny_free
+ 416              	.LVL55:
+ 552:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** }
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 18
+
+
+ 417              		.loc 1 552 0
+ 418 0014 10BD     		pop	{r4, pc}
+ 419              		.cfi_endproc
+ 420              	.LFE139:
+ 422              		.section	.text.atiny_net_send_timeout,"ax",%progbits
+ 423              		.align	1
+ 424              		.global	atiny_net_send_timeout
+ 425              		.syntax unified
+ 426              		.thumb
+ 427              		.thumb_func
+ 428              		.fpu fpv4-sp-d16
+ 430              	atiny_net_send_timeout:
+ 431              	.LFB140:
+ 553:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 554:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if defined(WITH_LINUX) || defined(WITH_LWIP)
+ 555:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** static int atiny_net_write_sock(void *ctx, const unsigned char *buffer, int len, uint32_t timeout_m
+ 556:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** {
+ 557:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     int fd;
+ 558:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     struct timeval interval = {timeout_ms / 1000, (timeout_ms % 1000) * 1000};
+ 559:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 560:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     fd = ((atiny_net_context *)ctx)->fd;
+ 561:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     if (interval.tv_sec < 0 || (interval.tv_sec == 0 && interval.tv_usec <= 0))
+ 562:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     {
+ 563:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         interval.tv_sec = 0;
+ 564:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         interval.tv_usec = 100;
+ 565:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     }
+ 566:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 567:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     setsockopt(fd, SOL_SOCKET, SO_SNDTIMEO, (char *)&interval, sizeof(struct timeval));
+ 568:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     return write(fd, buffer, len);
+ 569:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** }
+ 570:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 571:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 572:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** int atiny_net_send_timeout(void *ctx, const unsigned char *buf, size_t len,
+ 573:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****                           uint32_t timeout)
+ 574:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** {
+ 432              		.loc 1 574 0
+ 433              		.cfi_startproc
+ 434              		@ args = 0, pretend = 0, frame = 0
+ 435              		@ frame_needed = 0, uses_anonymous_args = 0
+ 436              	.LVL56:
+ 437 0000 08B5     		push	{r3, lr}
+ 438              	.LCFI11:
+ 439              		.cfi_def_cfa_offset 8
+ 440              		.cfi_offset 3, -8
+ 441              		.cfi_offset 14, -4
+ 442              	.LVL57:
+ 575:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #if defined(WITH_LINUX) || defined(WITH_LWIP)
+ 576:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****     return atiny_net_write_sock(ctx, buf, len, timeout);
+ 577:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #elif defined(WITH_AT_FRAMEWORK)
+ 578:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         int fd;
+ 579:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         fd = ((atiny_net_context *)ctx)->fd;
+ 580:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c ****         return at_api_send(fd , buf, (uint32_t)len);
+ 443              		.loc 1 580 0
+ 444 0002 0068     		ldr	r0, [r0]
+ 445              	.LVL58:
+ 446 0004 FFF7FEFF 		bl	at_api_send
+ 447              	.LVL59:
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 19
+
+
+ 581:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** #endif
+ 582:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** 
+ 583:C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/components/net/sal\atiny_socket.c **** }
+ 448              		.loc 1 583 0
+ 449 0008 08BD     		pop	{r3, pc}
+ 450              		.cfi_endproc
+ 451              	.LFE140:
+ 453              		.section	.rodata.__FUNCTION__.10005,"a",%progbits
+ 454              		.align	2
+ 455              		.set	.LANCHOR1,. + 0
+ 458              	__FUNCTION__.10005:
+ 459 0000 6174696E 		.ascii	"atiny_net_connect\000"
+ 459      795F6E65 
+ 459      745F636F 
+ 459      6E6E6563 
+ 459      7400
+ 460              		.section	.rodata.__FUNCTION__.10028,"a",%progbits
+ 461              		.align	2
+ 462              		.set	.LANCHOR2,. + 0
+ 465              	__FUNCTION__.10028:
+ 466 0000 6174696E 		.ascii	"atiny_net_send\000"
+ 466      795F6E65 
+ 466      745F7365 
+ 466      6E6400
+ 467              		.section	.rodata.__FUNCTION__.9991,"a",%progbits
+ 468              		.align	2
+ 469              		.set	.LANCHOR0,. + 0
+ 472              	__FUNCTION__.9991:
+ 473 0000 6174696E 		.ascii	"atiny_net_bind\000"
+ 473      795F6E65 
+ 473      745F6269 
+ 473      6E6400
+ 474              		.section	.rodata.atiny_net_bind.str1.4,"aMS",%progbits,1
+ 475              		.align	2
+ 476              	.LC0:
+ 477 0000 5B534F43 		.ascii	"[SOCKET][%s:%d] malloc failed for socket context\015"
+ 477      4B45545D 
+ 477      5B25733A 
+ 477      25645D20 
+ 477      6D616C6C 
+ 478 0031 0A00     		.ascii	"\012\000"
+ 479 0033 00       		.space	1
+ 480              	.LC1:
+ 481 0034 5B534F43 		.ascii	"[SOCKET][%s:%d] unkown host or port\015\012\000"
+ 481      4B45545D 
+ 481      5B25733A 
+ 481      25645D20 
+ 481      756E6B6F 
+ 482              		.section	.rodata.atiny_net_connect.str1.4,"aMS",%progbits,1
+ 483              		.align	2
+ 484              	.LC2:
+ 485 0000 5B534F43 		.ascii	"[SOCKET][%s:%d] ilegal incoming parameters,(%p,%p,%"
+ 485      4B45545D 
+ 485      5B25733A 
+ 485      25645D20 
+ 485      696C6567 
+ 486 0033 64290D0A 		.ascii	"d)\015\012\000"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 20
+
+
+ 486      00
+ 487              		.section	.rodata.atiny_net_send.str1.4,"aMS",%progbits,1
+ 488              		.align	2
+ 489              	.LC3:
+ 490 0000 5B534F43 		.ascii	"[SOCKET][%s:%d] ilegal socket(%d)\015\012\000"
+ 490      4B45545D 
+ 490      5B25733A 
+ 490      25645D20 
+ 490      696C6567 
+ 491              		.text
+ 492              	.Letext0:
+ 493              		.file 2 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 494              		.file 3 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\lib\\gcc\\arm-none-eabi
+ 495              		.file 4 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 496              		.file 5 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 497              		.file 6 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 498              		.file 7 "c:\\program files (x86)\\liteos studio\\resources\\arm-none-eabi\\arm-none-eabi\\include\
+ 499              		.file 8 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_typedef.h"
+ 500              		.file 9 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/common/cmsis/core_cm4.h"
+ 501              		.file 10 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/syste
+ 502              		.file 11 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_list.h"
+ 503              		.file 12 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_err.h"
+ 504              		.file 13 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/arch/arm/arm-m/include/los_hwi.h"
+ 505              		.file 14 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_tick.h"
+ 506              		.file 15 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_event.h"
+ 507              		.file 16 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_task.h"
+ 508              		.file 17 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/base/include/los_task.ph"
+ 509              		.file 18 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/Inc/main.
+ 510              		.file 19 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/targets/STM32L431_BearPi/OS_CONFIG
+ 511              		.file 20 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/kernel/include/los_config.h"
+ 512              		.file 21 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/at_frame/at_api.h"
+ 513              		.file 22 "C:/Users/lenovo/Desktop/liteos/Project2/BearPi_LiteOS/include/osdepends/atiny_osdep.h"
+ARM GAS  c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s 			page 21
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 atiny_socket.c
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:18     .text.atiny_net_bind:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:25     .text.atiny_net_bind:00000000 atiny_net_bind
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:99     .text.atiny_net_bind:00000048 $d
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:106    .text.atiny_net_accept:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:113    .text.atiny_net_accept:00000000 atiny_net_accept
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:133    .text.atiny_net_connect:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:140    .text.atiny_net_connect:00000000 atiny_net_connect
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:246    .text.atiny_net_connect:0000006c $d
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:254    .text.atiny_net_recv:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:261    .text.atiny_net_recv:00000000 atiny_net_recv
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:285    .text.atiny_net_recv_timeout:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:292    .text.atiny_net_recv_timeout:00000000 atiny_net_recv_timeout
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:327    .text.atiny_net_send:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:334    .text.atiny_net_send:00000000 atiny_net_send
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:377    .text.atiny_net_send:00000024 $d
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:383    .text.atiny_net_close:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:390    .text.atiny_net_close:00000000 atiny_net_close
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:423    .text.atiny_net_send_timeout:00000000 $t
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:430    .text.atiny_net_send_timeout:00000000 atiny_net_send_timeout
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:454    .rodata.__FUNCTION__.10005:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:458    .rodata.__FUNCTION__.10005:00000000 __FUNCTION__.10005
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:461    .rodata.__FUNCTION__.10028:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:465    .rodata.__FUNCTION__.10028:00000000 __FUNCTION__.10028
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:468    .rodata.__FUNCTION__.9991:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:472    .rodata.__FUNCTION__.9991:00000000 __FUNCTION__.9991
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:475    .rodata.atiny_net_bind.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:483    .rodata.atiny_net_connect.str1.4:00000000 $d
+c:\Users\lenovo\AppData\Local\Temp\ccM3LgVe.s:488    .rodata.atiny_net_send.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+atiny_malloc
+at_api_bind
+atiny_printf
+atiny_free
+at_api_connect
+at_api_recv
+at_api_recv_timeout
+at_api_send
+at_api_close
